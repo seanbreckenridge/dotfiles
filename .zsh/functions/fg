@@ -1,0 +1,11 @@
+# Change zsh fg to bash fg
+#
+# Source: https://stackoverflow.com/a/32614814/9348376
+
+function fg() {
+    if [[ $# -eq 1 && $1 = - ]]; then
+        builtin fg %-
+    else
+        builtin fg %"$@"
+    fi
+}

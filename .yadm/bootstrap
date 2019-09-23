@@ -1,0 +1,57 @@
+#!/bin/bash
+
+# Try to install oh-my-zsh
+if [ ! -d ~/.oh-my-zsh ]; then
+  echo 'Could not find oh-my-zsh installed at ~/.oh-my-zsh'
+  echo "Run the following command to install it there:"
+  echo 'sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"'
+  exit 1
+fi
+
+if [ ! $(echo $SHELL | grep zsh) ]; then
+  if [ ! $(which zsh) ]; then
+    sudo pacman -S zsh
+  fi
+  sudo chsh -s $(which zsh)
+else
+  echo "zsh is already set as your default shell"
+fi
+
+echo 'Setting up zsh directory structure...'
+# make sure original oh-my-zsh files are removed
+original_files=("${HOME}/.zshenv" "${HOME}/.zshrc" "${HOME}/.zsh_history")
+
+for file in "${original_files[@]}"; do
+  if [ -f "$file" ]; then
+    rm "$file"
+  fi
+done
+
+echo 'Symlinking zshenv...'
+# ZDOTDIR is located at ~/.zsh
+if [ ! -f ~/.zshenv ]; then
+  ln -s ~/.zsh/.zshenv ~/.zshenv
+fi
+
+# Setting up default user directories
+if [ ! -d ~/code ]; then
+  mkdir ~/code
+fi
+
+echo 'Checking git config...'
+
+# check for global name config
+if [[ -z $(git config --global user.name) ]]; then
+  printf "No global name set. Enter full name: "
+  read -r githubusername
+  git config --global user.name "$githubusername"
+fi
+
+# check for global email config
+if [[ -z $(git config --global user.email) ]]; then
+  printf "No global email set. Enter email connected to your GitHub account: "
+  read -r githubemail
+  git config --global user.email "$githubemail"
+fi
+
+git config --global core.editor nano
