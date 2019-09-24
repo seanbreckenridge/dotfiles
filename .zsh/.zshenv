@@ -9,7 +9,7 @@ export ZDOTDIR="${DOTDIR}/.zsh"
 # custom config files/plugins
 export ZSH_CUSTOM="${ZDOTDIR}/custom"
 
-# locations for additional functions
+# locations for additional functons
 export fpath=( "${ZDOTDIR}/functions" ${fpath[@]} )
 
 # Path to your oh-my-zsh installation.
