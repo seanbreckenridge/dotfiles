@@ -67,6 +67,9 @@ ZSH_THEME="refined"
 # see 'man strftime' for details.
 # HIST_STAMPS="mm/dd/yyyy"
 
+# History Control: Omit duplicate and commands that begin with a space
+export HISTCONTROL='ignoreboth';
+
 # Which plugins would you like to load?
 # Standard plugins can be found in ~/.oh-my-zsh/plugins/*
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/

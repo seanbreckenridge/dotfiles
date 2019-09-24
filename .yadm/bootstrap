@@ -1,5 +1,28 @@
 #!/bin/bash
 
+# Make sure required binaries/libraries are installed
+required_commands=("git" "rofi" "light" "wget" "pactl" "python3" "yadm")
+required_pacman_libraries=("xorg-server" "pulseaudio")
+
+echo 'Checking if requred commands are installed...'
+for cmd_name in "${required_commands[@]}"; do
+  if [[ ! $(which "${cmd_name}") ]]; then
+    echo -e "Required command ${cmd_name} is not installed\nExiting..."
+    exit 1
+  fi
+done
+
+echo 'Checking if required libraries are installed...'
+for library_name in "${required_libraries[@]}"; do
+  if pacman -Qs "$library_name" > /dev/null; then
+    echo -e "Required library ${library_name} is not installed\nExiting..."
+    exit 1
+  fi
+done
+
+# Check for iosevka font. Installed from the AUR as 'ttf-iosevka'
+[[ ! $(fc-list | grep -i iosevka) ]] && echo "Iosevka is not installed\!"
+
 # Try to install oh-my-zsh
 if [ ! -d ~/.oh-my-zsh ]; then
   echo 'Could not find oh-my-zsh installed at ~/.oh-my-zsh'

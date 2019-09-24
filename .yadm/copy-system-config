@@ -1,0 +1,23 @@
+#!/usr/bin/env zsh
+
+# This is a script to copy configuration files from somewhere else on the system
+# These are not symlinks or hardlinks - they're duplicates of the files
+# These typically wont be changed, and aren't installed by 'yadm bootstrap' automatically
+# They are synced as reference and for completeness
+
+# provide absolute paths
+dirs=("/etc/X11/xorg.conf.d/")
+
+# Remove and recreate system config directory
+if [[ -d ~/.system-config ]]; then
+  rm -rf ~/.system-config
+  mkdir -p ~/.system-config
+  chmod 777 ~/.system-config
+fi
+
+for d in "${dirs[@]}"; do
+  sys_conf_target="${HOME}/.system-config${d}"
+  echo "Copying to ${sys_conf_target}"
+  mkdir -p "${sys_conf_target}"
+  cp -R "${d}" "${sys_conf_target}"
+done
