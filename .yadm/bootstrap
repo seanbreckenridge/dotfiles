@@ -11,7 +11,6 @@ echo "Checking ~/.yadm/packages.txt for any packages to install"
 for lib in $(cat ~/.yadm/packages.txt); do
   if [[ ! $(yay -Qs "${lib}") ]]; then  # if package isn't installed
     read -p "Do you want to install '${lib}'? [Y/n] " -n 1 -r
-    echo # newline
     if [[ ! $REPLY =~ ^[Nn]$ ]]; then  # REPLY is automatically used as read variable
       yay "${lib}"
     fi

@@ -20,3 +20,4 @@ htop
 rxvt-unicode
 xclip
 tree
+keepassxc
