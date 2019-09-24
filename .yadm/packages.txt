@@ -19,3 +19,4 @@ i3-gaps
 htop
 rxvt-unicode
 xclip
+tree
