@@ -19,5 +19,5 @@ for d in "${dirs[@]}"; do
   sys_conf_target="${HOME}/.system-config${d}"
   echo "Copying to ${sys_conf_target}"
   mkdir -p "${sys_conf_target}"
-  cp -R "${d}" "${sys_conf_target}"
+  cp -R "${d}"* "${sys_conf_target}"
 done
