@@ -36,4 +36,5 @@ it gets added automatically to the next commit.
 This does have the downside of not being able to commit README changes directly, and
 there are some edge cases, but it works for its intended purpose.
 
-The easiest way to edit the README is through modifying it on github, and then `yadm pull`.
+The easiest way to edit the README directly (without attaching it to another commit)
+is through modifying it on github, and then `yadm pull`.
