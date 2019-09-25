@@ -12,7 +12,7 @@ for lib in $(cat ~/.yadm/packages.txt); do
   if [[ ! $(yay -Qs "${lib}") ]]; then  # if package isn't installed
     read -p "Do you want to install '${lib}'? [Y/n] " -n 1 -r
     if [[ ! $REPLY =~ ^[Nn]$ ]]; then  # REPLY is automatically used as read variable
-      yay "${lib}"
+      yay -S "${lib}"
     fi
   fi
 done
