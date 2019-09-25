@@ -23,6 +23,7 @@
 /.pki/nssdb/
 /.wget-hsts
 /.oh-my-zsh
+/.ssh
 /code
 /Documents
 /Desktop
