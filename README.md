@@ -33,5 +33,4 @@ yadm gitconfig core.hooksPath ~/.yadm/hooks
 Then, by editing the README at .yadm/README.md locally, if its been changed
 it gets automatically added to the next commit you do.
 
-This does have the downside of not being able to commit README.md changes directly, and
-there are some edge cases, but it works for its intended purpose.
+This does have the downside of not being able to commit readme changes directly.
