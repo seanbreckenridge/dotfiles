@@ -11,9 +11,9 @@ dirs=("/etc/X11/xorg.conf.d/")
 # Remove and recreate system config directory
 if [[ -d ~/.system-config ]]; then
   rm -rf ~/.system-config
-  mkdir -p ~/.system-config
-  chmod 755 ~/.system-config
 fi
+mkdir -p ~/.system-config
+chmod 755 ~/.system-config
 
 for d in "${dirs[@]}"; do
   sys_conf_target="${HOME}/.system-config${d}"
