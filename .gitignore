@@ -1,0 +1,32 @@
+# Emacs
+
+*~
+\#*\#
+.\#*
+
+# zsh
+
+.zsh_history
+.personal_aliases
+.zcompdump*
+
+# Ignore top level dirs
+/.cache
+/.mozilla
+/.minecraft
+/.yadm
+/.thunderbird
+/.config/discord
+/.config/pulse
+/.bash_history
+/.xsession-errors*
+/.pki/nssdb/
+/.wget-hsts
+/.oh-my-zsh
+/code
+/Documents
+/Desktop
+/Downloads
+/Pictures
+/Movies
+/Music
