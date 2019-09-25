@@ -10,11 +10,14 @@
 .personal_aliases
 .zcompdump*
 
+# Ignore README - handled by git hooks
+README.md
+
 # Ignore top level dirs
 /.cache
 /.mozilla
 /.minecraft
-/.yadm
+/.yadm/repo.git
 /.thunderbird
 /.config/discord
 /.config/pulse
