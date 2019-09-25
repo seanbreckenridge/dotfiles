@@ -2,7 +2,7 @@
 # yadm bootstrap script
 # Uses yay to install from AUR
 
-if [ ! $(which yay) ]; then
+if [[ ! $(which yay) ]]; then
   echo -e "Could not find yay. Install that and re-run bootstrap\nExiting..."
   exit 1
 fi
@@ -20,15 +20,15 @@ done
 [[ ! $(fc-list | grep -i iosevka) ]] && echo -e "Iosevka (font) is not installed\!\nInstall it from the AUR: 'ttf-iosevka'"
 
 # Try to install oh-my-zsh
-if [ ! -d ~/.oh-my-zsh ]; then
+if [[ ! -d ~/.oh-my-zsh ]]; then
   echo 'Could not find oh-my-zsh installed at ~/.oh-my-zsh'
   echo "Run the following command to install it there:"
   echo 'sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"'
   exit 1
 fi
 
-if [ ! $(echo $SHELL | grep zsh) ]; then
-  if [ ! $(which zsh) ]; then
+if [[ ! $(echo $SHELL | grep zsh) ]]; then
+  if [[ ! $(which zsh) ]]; then
     sudo pacman -S zsh
   fi
   sudo chsh -s $(which zsh)
@@ -41,21 +41,25 @@ echo 'Setting up zsh directory structure...'
 original_files=("${HOME}/.zshenv" "${HOME}/.zshrc" "${HOME}/.zsh_history")
 
 for file in "${original_files[@]}"; do
-  if [ -f "$file" ]; then
+  if [[ -f "$file" ]]; then
     rm "$file"
   fi
 done
 
 echo 'Symlinking zshenv...'
 # ZDOTDIR is located at ~/.zsh
-if [ ! -f ~/.zshenv ]; then
+if [[ ! -f ~/.zshenv ]]; then
   ln -s ~/.zsh/.zshenv ~/.zshenv
 fi
 
 # Setting up default user directories
-if [ ! -d ~/code ]; then
-  mkdir ~/code
-fi
+default_user_dirs=("bin" "code" "Desktop" "Documents" "Downloads")
+
+for d_name in "${default_user_dirs[@]}"; do
+  if [[ ! -d "${HOME}/${d_name}" ]]; then
+    mkdir "${HOME}/${d_name}"
+  fi
+done
 
 echo 'Checking git config...'
 

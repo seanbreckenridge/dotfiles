@@ -25,3 +25,5 @@ discord
 thunar
 thunderbird
 hub
+reflector
+youtube-dl

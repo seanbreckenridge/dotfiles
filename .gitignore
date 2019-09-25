@@ -14,7 +14,7 @@
 README.md
 .yadm/README.md
 
-# Ignore top level dirs
+# Top level dirs to ignore
 /.cache
 /.mozilla
 /.minecraft
@@ -22,6 +22,7 @@ README.md
 /.thunderbird
 /.config/discord
 /.config/pulse
+/.config/hub
 /.bash_history
 /.xsession-errors*
 /.pki/nssdb/

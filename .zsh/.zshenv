@@ -9,6 +9,11 @@ export ZDOTDIR="${DOTDIR}/.zsh"
 # custom config files/plugins
 export ZSH_CUSTOM="${ZDOTDIR}/custom"
 
+PATH="\
+${HOME}/bin:\
+${PATH}"
+export PATH
+
 # locations for additional functons
 export fpath=( "${ZDOTDIR}/functions" ${fpath[@]} )
 
