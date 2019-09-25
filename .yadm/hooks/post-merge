@@ -1,0 +1,5 @@
+#!/bin/bash
+# Deletes the README.md after its downloaded from github
+
+cd "${HOME}"
+[[ -f ~/README.md ]] && mv ~/README.md ~/.yadm/README.md
