@@ -11,6 +11,7 @@ export ZSH_CUSTOM="${ZDOTDIR}/custom"
 
 PATH="\
 ${HOME}/bin:\
+${HOME}/.local/bin:\
 ${PATH}"
 export PATH
 
@@ -63,6 +64,13 @@ ZSH_THEME="refined"
 # under VCS as dirty. This makes repository status check for large repositories
 # much, much faster.
 # DISABLE_UNTRACKED_FILES_DIRTY="true"
+
+### HISTORY SETTINGS ###
+
+HISTFILE="${HOME}/.zsh/zsh_history"
+HISTSIZE=50000
+SAVEHIST=50000
+setopt appendhistory
 
 # Uncomment the following line if you want to change the command execution time
 # stamp shown in the history command output.

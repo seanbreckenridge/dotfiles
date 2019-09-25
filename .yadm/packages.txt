@@ -27,3 +27,10 @@ thunderbird
 hub
 reflector
 youtube-dl
+vim
+mpv
+libmysqlclient
+python-mysqlclient
+chromium
+python-selenium
+pinta

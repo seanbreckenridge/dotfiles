@@ -14,7 +14,7 @@
 README.md
 .yadm/README.md
 
-# Top level dirs to ignore
+# Top level files to ignore
 /.cache
 /.mozilla
 /.minecraft
@@ -29,6 +29,14 @@ README.md
 /.wget-hsts
 /.oh-my-zsh
 /.ssh
+/.m2
+/.java
+/.local/lib/python*
+/.local/bin
+/.local/include
+/.local/share
+/.runelite
+/.python_history
 /code
 /Documents
 /Desktop
@@ -36,3 +44,4 @@ README.md
 /Pictures
 /Movies
 /Music
+/jagexcache
