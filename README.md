@@ -22,7 +22,7 @@ the `README.md` to `$HOME` while commiting, and then deleting it afterwards.
 Theres another hook that moves `~/README.md` to `~/.yadm/README.md` `post-merge`, so that
 README changes done through the web interface stay updated locally.
 
-As long as you're on git>=2.9, you can use `core.hooksPath` to change the hooks dir.
+As long as you're on `git>=2.9`, you can use `core.hooksPath` to change the hooks dir.
 
 After cloning, that can be setup by doing:
 
