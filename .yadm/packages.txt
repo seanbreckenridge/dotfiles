@@ -34,3 +34,4 @@ python-mysqlclient
 chromium
 python-selenium
 pinta
+npm

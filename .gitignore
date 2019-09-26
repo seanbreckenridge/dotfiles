@@ -6,7 +6,8 @@
 
 # zsh
 
-.zsh_history
+/.zshenv  # only top level .zshenv (symlink)
+*zsh_history
 .personal_aliases
 .zcompdump*
 
@@ -23,6 +24,9 @@ README.md
 /.config/discord
 /.config/pulse
 /.config/hub
+/.config/mono.addins
+/.config/chromium
+/.config/keepassxc/keepassxc.ini
 /.bash_history
 /.xsession-errors*
 /.pki/nssdb/
@@ -37,6 +41,8 @@ README.md
 /.local/share
 /.runelite
 /.python_history
+/.npm
+/.npm-packages
 /code
 /Documents
 /Desktop
