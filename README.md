@@ -4,7 +4,7 @@ Work in progress dotfiles for arch [i3-gaps].
 
 Uses [yadm](https://yadm.io) to manage dotfiles.
 
-[.yadm](./.yadm) includes lists of packages for pacman/yay, python libs to install with pip, and global npm cli tols.
+[.yadm](./.yadm) includes lists of packages for pacman/yay, python libs to install with pip, and global npm cli tools.
 
 The package lists can be updated, and `yadm bootstrap` can be run repeatedely to make sure everything is installed.
 
