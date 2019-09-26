@@ -34,3 +34,5 @@ done
 # Aliases
 alias ll='ls -l'
 alias la='ll -a'
+
+eval $(thefuck --alias)

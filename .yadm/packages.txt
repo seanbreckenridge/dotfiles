@@ -35,3 +35,15 @@ chromium
 python-selenium
 pinta
 npm
+imagemagick
+unrar
+redshift
+ffmpeg
+php
+composer
+pyenv
+atom
+slack-desktop-dark
+sqlitebrowser
+docker
+balena-etcher
