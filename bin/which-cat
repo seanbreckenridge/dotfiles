@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+
+usage="$(basename "$0") SHELL_COMMAND [-h]
+
+calls 'which' to locate an executable
+prints the contents of the file if it exists, and is readable
+
+Arguments:
+  -h  show help message
+"
+
+if [[ "$1" == "-h" || "$1" == "-help" || "$1" == "--help" ]]; then
+  echo "${usage}"
+  exit 0
+fi
+
+OUT=$(which "$@")
+if [ -z "$OUT" ]; then
+  echo "$@ not found"
+  exit 1
+else
+  if [ ! -f "$OUT" ]; then
+    echo "'which' returned '${OUT}', but that file doesn't exist."
+    exit 1
+  fi
+  # Source: https://unix.stackexchange.com/a/275659
+  if iconv --from-code="utf-8" --to-code="utf-8" "$OUT" > /dev/null 2>&1; then
+    echo "$OUT"
+    cat "$OUT"
+  else
+    echo "${OUT} -- omitting contents since the file isn't human-readable"
+  fi
+fi

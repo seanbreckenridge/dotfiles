@@ -1,0 +1,48 @@
+#!/usr/bin/env zsh
+
+usage="Usage:
+$(basename "$0") [-h]
+$(basename "$0") FILENAME...
+
+gives you the duration of a audio/video file
+prints a line like:
+xxxs|xm:xs|filename
+for each file
+you can get a specific part of these by using cut:
+
+duration movie.mp4 | cut -d \"|\" -f 1
+duration movie.mp4 | cut -d \"|\" -f 2
+duration movie.mp4 | cut -d \"|\" -f 3
+"
+
+if [[ "$1" == "-h" || "$1" == "-help" || "$1" == "--help" ]]; then
+  echo "${usage}"
+  exit 0
+fi
+
+if [ -z "$1" ]; then
+  echo "You must provide at least one file on command line.
+Ex: duration filename.mp4 otherfile.mkv song.mp3
+Run 'duration -h' to get more information"
+  exit 1
+fi
+
+
+for file in "$@"; do
+  if [ -f "$file" ]; then # ignore directories
+    seconds=$(ffprobe -i "$file" -show_entries format=duration -v quiet -of csv="p=0")
+    echo -ne "${seconds%.*}s|"
+    minutes=$(perl -E "say int(${seconds}/60)")
+    seconds=$(( $seconds % 60 ))
+    if (( $minutes > 60 )); then
+      hours=$(perl -E "say int(${minutes}/60)")
+      minutes=$(( $minutes % 60 ))
+      # print hours, minutes and seconds
+      echo -ne "${hours}h:${minutes}m:${seconds%.*}s" # truncate decimal part on seconds
+    else
+      # print minutes and seconds
+      echo -ne "${minutes}m:${seconds%.*}s"
+    fi
+    echo -e "|$file"
+  fi
+done

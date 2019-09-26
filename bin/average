@@ -1,0 +1,19 @@
+#!/usr/bin/env zsh
+
+usage="Usage:
+    $(basename "$0") [-h]
+    $(basename "$0") FILES...
+
+uses the duration script to get the average duration
+in seconds of files given on command line
+
+Example usage:
+  average ~/Music/some_album/*
+  "
+
+if [[ "$1" == "-h" || "$1" == "-help" || "$1" == "--help" || -z "$1" ]]; then
+  echo "${usage}"
+  exit 0
+fi
+
+duration "$@" | cut -d "s" -f 1 | awk '{total += $1} END {printf "%ds", total/NR}'

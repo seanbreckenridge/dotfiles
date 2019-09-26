@@ -1,0 +1,25 @@
+#!/usr/bin/env python3
+
+"""Usage: usdate [-du] [--help]
+
+Prints the date in the US format, because I'm used to the European
+
+-d, --dashes           use dashes instead of forward
+                       slashes as seperators
+-u --underscores       use underscores instead of forward
+                       slashes as seperators
+--help                 show this help message
+"""
+
+import datetime
+import docopt
+
+args = docopt.docopt(__doc__)
+
+sep = "/"
+if args["--dashes"]:
+    sep = "-"
+elif args["--underscores"]:
+    sep = "_"
+
+print(datetime.datetime.now().strftime("%m{s}%d{s}%y".format(s=sep)))

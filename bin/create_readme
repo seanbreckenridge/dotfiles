@@ -1,0 +1,69 @@
+#!/usr/bin/env python3
+#
+# Creates the README for this bin directory
+
+import sys
+import os
+import subprocess
+import shlex
+from glob import glob
+
+
+def read_octothrope_readme(contents):
+    """Strategy one; described below"""
+    for line in contents[2:]:
+        if line.startswith("#"):
+            line = line.replace("#", "").strip()
+            if line:  # not an empty line connecting to shebang
+                yield line
+        else:
+            break
+
+
+bin_dir = os.path.abspath(os.path.dirname(__file__))
+output_file = f"{bin_dir}/README.md"
+
+readme = {}
+
+
+# When recursive is set, ** followed by a path separator
+# matches 0 or more subdirectories.
+for file in sorted(glob(f"{bin_dir}/**/*", recursive=True)):
+
+    relative_filename = file.replace(bin_dir, "").lstrip("/")
+
+    # ignore readme, hidden files, links and directories
+    if "README.md" in file or file.startswith(
+            '.') or os.path.islink(file) or os.path.isdir(file):
+        continue
+
+    # Stragegy one: 'read comments at top of file'
+    with open(file, 'r') as f:
+        contents = f.readlines()
+
+    # my scripts that don't have docstrings/help have "#" connecting
+    # the docstring to the shebang
+    if contents[0].startswith("#!/usr/bin/env") and contents[1].strip() == "#":
+        readme[relative_filename] = "\n".join(
+            list(read_octothrope_readme(contents)))
+        continue
+
+    # Strategy two: run 'script -h'
+    resp = subprocess.run(shlex.split(f"{file} -h"), capture_output=True)
+    if resp.returncode == 0:
+        readme[relative_filename] = resp.stdout.decode("utf-8")
+    else:
+        print(f"Couldn't get readme for {file}", file=sys.stderr)
+
+
+with open(output_file, 'w') as readme_f:
+    readme_f.write("Created by [create_readme](./create_readme)\n")
+    for script_name, script_readme in readme.items():
+        readme_f.write(
+            f"""
+### [{script_name}](./{script_name})
+```
+{script_readme}
+```
+"""
+        )

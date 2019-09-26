@@ -1,0 +1,26 @@
+#!/usr/bin/env python3
+#
+# Opens the current git repository in your browser, if you're in one
+
+import subprocess
+import webbrowser
+
+from giturlparse import parse
+
+result = subprocess.run(['git', 'config', '--get', 'remote.origin.url'],
+                        stdout=subprocess.PIPE)
+git_url = result.stdout.decode("utf-8").strip()
+
+if not git_url:
+    print("Not currently in a git repository.")
+else:
+    try:
+        # try to use giturlparse
+        https_url = parse(git_url).urls["https"]
+        webbrowser.open_new_tab(https_url)
+    except:
+        # try to directly open url
+        try:
+            webbrowser.open_new_tab(git_url)
+        except:
+            print("Error parsing {}, make sure its formatted properly.".format(git_url))

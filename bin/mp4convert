@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+#
+# converts all inputs on command line to mp4 files.
+#
+# e.g. 720convert pulpfiction.mp4
+
+for var in "$@"; do
+    filename=$(basename "$var")
+    if ! echo "${filename}" | grep -q ".mp4"; then
+	filename="${filename%.*}"
+	outputfile="${filename}.mp4"
+	echo $outputfile
+	ffmpeg -i "$var" "$outputfile"
+    fi
+done

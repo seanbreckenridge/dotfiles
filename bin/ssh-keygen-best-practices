@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+
+usage="Usage:
+    $(basename "$0") [-h]
+
+Creates a good ssh key
+Source: https://security.stackexchange.com/a/144044
+
+scheme: rsa
+bits: 4096
+OpenSSH format
+100 KDF (key derivation function) rounds. Higher numbers result in slower
+  passphrase verification and increased resistance to brute-force
+  password cracking (should the keys be stolen).
+
+Arguments:
+  -h  show help message
+"
+
+if [[ "$1" == "-h" || "$1" == "-help" || "$1" == "--help" ]]; then
+  echo "${usage}"
+  exit 0
+fi
+
+ssh-keygen -t rsa -b 4096 -o -a 100
