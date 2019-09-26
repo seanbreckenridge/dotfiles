@@ -63,7 +63,6 @@ for d_name in "${default_user_dirs[@]}"; do
 done
 
 echo 'Checking git config...'
-
 # check for global name config
 if [[ -z $(git config --global user.name) ]]; then
   printf "No global name set. Enter full name: "
