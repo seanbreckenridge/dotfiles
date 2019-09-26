@@ -12,8 +12,8 @@
 .zcompdump*
 
 # Ignore README - handled by git hooks -- see .yadm/README.md
-README.md
-.yadm/README.md
+/README.md
+/.yadm/README.md
 
 # Top level files to ignore
 
