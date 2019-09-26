@@ -8,6 +8,8 @@ Uses [yadm](https://yadm.io) to manage dotfiles.
 
 The package lists can be updated, and `yadm bootstrap` can be run repeatedely to make sure everything is installed.
 
+[bin/README.md](./bin/README.md) has a summary of each script in bin.
+
 
 ## Install
 
@@ -45,7 +47,7 @@ is through modifying it on github, and then `yadm pull`.
 
 #### LICENSE
 
-Unless where attributed, all code is licensed under the MIT License:
+Unless where attributed, all is licensed under the MIT License:
 
 MIT License
 
