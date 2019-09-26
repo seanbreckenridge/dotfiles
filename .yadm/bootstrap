@@ -77,7 +77,7 @@ if [[ -z $(git config --global user.email) ]]; then
   git config --global user.email "$githubemail"
 fi
 
-git config --global core.editor nano
+git config --global core.editor vim
 
 # Install python packages
 

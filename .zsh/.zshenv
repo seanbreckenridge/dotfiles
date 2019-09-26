@@ -95,7 +95,7 @@ export LANG='en_US.UTF-8'
 export LC_ALL='en_US.UTF-8'
 
 # Preferred editor
-export EDITOR=nano
+export EDITOR=vim
 
 # Preferred pager
 export PAGER=less
