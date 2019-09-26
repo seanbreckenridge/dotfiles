@@ -1,5 +1,5 @@
 #!/usr/bin/env zsh
-# requires clipcopy, which is installed by oh-my-zsh
+# requires clipcopy, which is installed by oh-my-zsh (platform agnostic copy to clipboard)
 # This uses my password generator at https://github.com/seanbreckenridge/genpasswd
 
 genpass() {
