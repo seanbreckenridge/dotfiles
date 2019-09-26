@@ -5,8 +5,10 @@
 # These typically wont be changed, and aren't installed by 'yadm bootstrap' automatically
 # They are synced as reference and for completeness
 
-# provide absolute paths
+# provide absolute paths to directories, ending with a forward slash
 dirs=("/etc/X11/xorg.conf.d/")
+# provide absolute paths to files
+files=()
 
 # Remove and recreate system config directory
 if [[ -d ~/.system-config ]]; then
@@ -20,4 +22,11 @@ for d in "${dirs[@]}"; do
   echo "Copying to ${sys_conf_target}"
   mkdir -p "${sys_conf_target}"
   cp -R "${d}"* "${sys_conf_target}"
+done
+
+for f in "${files[@]}"; do
+  enclosing_dir="${HOME}/.system-config"`dirname "${f}"`
+  [[ ! -d "${enclosing_dir}" ]] && mkdir -p "${enclosing_dir}"
+  echo -e "Copying to ${enclosing_dir}"
+  cp "${f}" "${enclosing_dir}"
 done
