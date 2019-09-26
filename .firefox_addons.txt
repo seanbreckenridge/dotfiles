@@ -1,0 +1,11 @@
+https://addons.mozilla.org/en-US/firefox/addon/ublock-origin/
+https://addons.mozilla.org/en-US/firefox/addon/reddit-enhancement-suite/
+https://addons.mozilla.org/en-US/firefox/addon/markdown-viewer-webext/
+https://addons.mozilla.org/en-US/firefox/addon/cookie-autodelete/
+https://addons.mozilla.org/en-US/firefox/addon/honey/
+https://addons.mozilla.org/en-US/firefox/addon/https-everywhere/
+https://addons.mozilla.org/en-US/firefox/addon/violentmonkey/
+https://addons.mozilla.org/en-US/firefox/addon/ghostery/
+https://addons.mozilla.org/en-US/firefox/addon/styl-us/
+https://addons.mozilla.org/en-US/firefox/addon/refined-github-/
+https://www.frankerfacez.com/
