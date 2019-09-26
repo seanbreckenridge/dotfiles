@@ -48,3 +48,4 @@ sqlitebrowser
 docker
 balena-etcher
 python-gobject
+go
