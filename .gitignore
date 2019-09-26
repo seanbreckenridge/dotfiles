@@ -34,6 +34,7 @@ README.md
 /.oh-my-zsh
 /.ssh
 /.m2
+/.node-gyp
 /.java
 /.local/lib/python*
 /.local/bin

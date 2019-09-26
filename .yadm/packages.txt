@@ -47,3 +47,4 @@ slack-desktop-dark
 sqlitebrowser
 docker
 balena-etcher
+python-gobject
