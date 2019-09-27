@@ -1,0 +1,11 @@
+# Open a file with your defualt editor
+# If no files are supplied, opens the current directory
+
+function e() {
+  if [[ $# -eq 0 ]]; then
+    $EDITOR .
+  else
+    $EDITOR "$@"
+  fi
+}
+

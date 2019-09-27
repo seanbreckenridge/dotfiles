@@ -32,6 +32,9 @@
 /.config/keepassxc/keepassxc.ini
 /.config/dconf
 /.config/Atom/
+/.config/google-chrome
+/.config/Slack
+/.config/Code - OSS
 
 /.atom/compile-cache
 /.atom/blob-store

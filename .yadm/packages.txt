@@ -29,8 +29,6 @@ reflector
 youtube-dl
 vim
 mpv
-libmysqlclient
-python-mysqlclient
 chromium
 python-selenium
 pinta
@@ -49,3 +47,4 @@ docker
 balena-etcher
 python-gobject
 go
+pacman-contrib
