@@ -8,7 +8,7 @@
 
 /.zshenv  # only top level .zshenv (symlink)
 *zsh_history
-.personal_aliases
+/.zsh/zsh_aliases  # common aliases are defined in ~/.zshrc
 .zcompdump*
 
 # Ignore README - handled by git hooks -- see .yadm/README.md

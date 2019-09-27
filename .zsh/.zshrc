@@ -35,4 +35,6 @@ done
 alias ll='ls -l'
 alias la='ll -a'
 
+[[ -f ~/.zsh/zsh_aliases ]] && source ~/.zsh/zsh_aliases
+
 eval $(thefuck --alias)
