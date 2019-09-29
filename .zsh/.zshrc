@@ -16,7 +16,7 @@ PATH="\
 ${HOME}/bin:\
 ${HOME}/.local/bin:\
 ${NPM_PACKAGES}/bin:\
-${HOME}/.i3bin:\
+${HOME}/.configbin:\
 ${PATH}"
 export PATH
 
@@ -36,6 +36,9 @@ done
 alias ll='ls -l'
 alias la='ll -a'
 alias dotfiles='yadm gitconfig --get remote.origin.url | python3 -c "from giturlparse import parse; from webbrowser import open_new_tab; open_new_tab(parse(input()).urls[\"https\"])"'
+alias reboot="sudo systemctl reboot"
+alias poweroff="sudo systemctl poweroff"
+alias halt="sudo systemctl halt"
 
 # Personal Aliases
 [[ -f ~/.zsh/zsh_aliases ]] && source ~/.zsh/zsh_aliases

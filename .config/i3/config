@@ -21,12 +21,26 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 # and nm-applet is a desktop environment-independent system tray GUI for it.
 exec --no-startup-id nm-applet
 
+# use compton for display compositing
+exec --no-startup-id compton -b
+
+# Use feh to choose a random picture from the ~/Pictures/wallpapers
+# directory to use as a wallpaper
+exec --no-startup-id feh --randomize --bg-fill "${HOME}"/Pictures/wallpapers/*
+
 # Bind brightness keys
 # This required fiddling with the /sys/class/baclight/amdgpu_b10 file permissions
 # and giving myself the 'video' group
 set $brightness_step 3 # rate at which to increase/decrease brightness
 bindsym XF86MonBrightnessUp exec --no-startup-id light -A $brightness_step
 bindsym XF86MonBrightnessDown exec --no-startup-id light -U $brightness_step
+
+# Bind $mod+Brightness keys to transparency toggle
+# Uses compton-trans to set the transparency to 100/85% (same as active/inactive)
+# This "breaks" inactive transparency for that tile, but that can be fixed by deleting/re-creating
+# Doesn't typically affect use case as transparency for an unfocused firefox/mpv is set permanently
+bindsym $mod+XF86MonBrightnessUp exec --no-startup-id ~/.configbin/transparent enable
+bindsym $mod+XF86MonBrightnessDown exec --no-startup-id ~/.configbin/transparent disable
 
 # Use pactl to adjust volume in PulseAudio.
 set $volume_step 5
@@ -40,7 +54,7 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec --no-startup-id urxvt
+bindsym $mod+Return exec --no-startup-id kitty
 
 # kill focused window
 bindsym $mod+q kill
@@ -73,10 +87,10 @@ bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
 # resize windows - keys above "vim arrow" keys
-bindsym $mod+Ctrl+y exec --no-startup-id ~/.i3bin/i3resize left
-bindsym $mod+Ctrl+u exec --no-startup-id ~/.i3bin/i3resize down
-bindsym $mod+Ctrl+i exec --no-startup-id ~/.i3bin/i3resize up
-bindsym $mod+Ctrl+o exec --no-startup-id ~/.i3bin/i3resize right
+bindsym $mod+Ctrl+y exec --no-startup-id ~/.configbin/i3resize left
+bindsym $mod+Ctrl+u exec --no-startup-id ~/.configbin/i3resize down
+bindsym $mod+Ctrl+i exec --no-startup-id ~/.configbin/i3resize up
+bindsym $mod+Ctrl+o exec --no-startup-id ~/.configbin/i3resize right
 
 # split in horizontal orientation
 #bindsym $mod+h split h

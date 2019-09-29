@@ -48,3 +48,6 @@ balena-etcher
 python-gobject
 go
 pacman-contrib
+kitty
+cmatrix
+compton

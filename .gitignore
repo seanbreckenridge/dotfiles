@@ -21,8 +21,9 @@
 /.xsession-errors*
 /.gitconfig
 /.lesshst
-.bash_history
-.python_history
+/.bash_history
+/.python_history
+/.fehbg
 
 /.config/discord
 /.config/pulse
