@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
-# enable/disable transparency for the currently moused over applicaiton
+# enable/disable transparency for the currently moused over application
 
 # List of applications
 if [[ "$1" == "disable" ]]; then
-    set_to_opacity=100
-else
     set_to_opacity=85
+else
+    set_to_opacity=100
 fi
 
 compton-trans -c $set_to_opacity

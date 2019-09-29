@@ -87,10 +87,10 @@ bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
 # resize windows - keys above "vim arrow" keys
-bindsym $mod+Ctrl+y exec --no-startup-id ~/.configbin/i3resize left
-bindsym $mod+Ctrl+u exec --no-startup-id ~/.configbin/i3resize down
-bindsym $mod+Ctrl+i exec --no-startup-id ~/.configbin/i3resize up
-bindsym $mod+Ctrl+o exec --no-startup-id ~/.configbin/i3resize right
+bindsym $mod+Shift+y exec --no-startup-id ~/.configbin/i3resize left
+bindsym $mod+Shift+u exec --no-startup-id ~/.configbin/i3resize down
+bindsym $mod+Shift+i exec --no-startup-id ~/.configbin/i3resize up
+bindsym $mod+Shift+o exec --no-startup-id ~/.configbin/i3resize right
 
 # split in horizontal orientation
 #bindsym $mod+h split h
