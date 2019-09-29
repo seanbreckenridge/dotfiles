@@ -62,6 +62,15 @@ bindsym $mod+q kill
 # rofi run menu
 bindsym $mod+d exec --no-startup-id rofi -show run
 
+# gaps config
+
+for_window [class=".*"] border pixel 0
+smart_borders on
+smart_gaps on
+smart_borders no_gaps
+gaps inner 10
+gaps outer 10
+
 # change focus
 bindsym $mod+h focus left
 bindsym $mod+j focus down
