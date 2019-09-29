@@ -27,7 +27,7 @@ thunderbird
 hub
 reflector
 youtube-dl
-vim
+neovim
 mpv
 chromium
 python-selenium

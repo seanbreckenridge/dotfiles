@@ -16,6 +16,7 @@ PATH="\
 ${HOME}/bin:\
 ${HOME}/.local/bin:\
 ${NPM_PACKAGES}/bin:\
+${HOME}/.i3bin:\
 ${PATH}"
 export PATH
 

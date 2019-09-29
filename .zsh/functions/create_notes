@@ -1,0 +1,6 @@
+# Creates a date.md file (with the current date as the filename) in the current directory
+# e.g. 09_27_19.md
+
+function create_notes() {
+    touch "$(usdate --underscores).md"
+}

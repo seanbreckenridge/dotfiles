@@ -35,6 +35,7 @@
 /.config/google-chrome
 /.config/Slack
 /.config/Code - OSS
+/.config/Electron
 
 /.atom/compile-cache
 /.atom/blob-store

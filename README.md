@@ -47,7 +47,7 @@ is through modifying it on github, and then `yadm pull`.
 
 #### LICENSE
 
-Unless where attributed, all is licensed under the MIT License:
+Unless where attributed, any customization and any scripts are licensed under the MIT License:
 
 MIT License
 
