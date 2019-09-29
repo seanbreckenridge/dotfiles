@@ -50,4 +50,5 @@ go
 pacman-contrib
 kitty
 cmatrix
+compton
 shellcheck-static
