@@ -44,3 +44,8 @@ alias halt="sudo systemctl halt"
 [[ -f ~/.zsh/zsh_aliases ]] && source ~/.zsh/zsh_aliases
 
 eval $(thefuck --alias)
+
+# kitty completion
+autoload -Uz compinit
+compinit
+kitty +complete setup zsh | source /dev/stdin
