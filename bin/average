@@ -1,15 +1,15 @@
-#!/usr/bin/env zsh
+#!/usr/bin/env bash
 
 usage="Usage:
-    $(basename "$0") [-h]
-    $(basename "$0") FILES...
+    average [-h]
+    average FILES...
 
 uses the duration script to get the average duration
 in seconds of files given on command line
 
 Example usage:
   average ~/Music/some_album/*
-  "
+"
 
 if [[ "$1" == "-h" || "$1" == "-help" || "$1" == "--help" || -z "$1" ]]; then
   echo "${usage}"

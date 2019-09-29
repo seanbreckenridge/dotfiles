@@ -1,4 +1,4 @@
-Created by [create_readme](./create_readme)
+﻿Created by [create_readme](./create_readme)
 
 ### [720convert](./720convert)
 ```
@@ -8,7 +8,7 @@ e.g. 720convert pulpfiction.mp4
 
 ### [average](./average)
 ```
-]2;usage= ]1;]2;if [[ "$1" == "-h" || "$1" == "-help" || "$1" == "--help" || -z "$1" ]]; then]1;Usage:
+Usage:
     average [-h]
     average FILES...
 
@@ -17,7 +17,7 @@ in seconds of files given on command line
 
 Example usage:
   average ~/Music/some_album/*
-  
+
 
 ```
 
@@ -64,7 +64,7 @@ If SUBSTR is a number, will decode HASH that many times
 
 ### [duration](./duration)
 ```
-]2;usage= ]1;]2;if [[ "$1" == "-h" || "$1" == "-help" || "$1" == "--help" ]]; then; echo ;  0]1;Usage:
+Usage:
 duration [-h]
 duration FILENAME...
 

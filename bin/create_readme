@@ -4,6 +4,7 @@
 
 import sys
 import os
+import codecs
 import subprocess
 import shlex
 from glob import glob
@@ -56,7 +57,7 @@ for file in sorted(glob(f"{bin_dir}/**/*", recursive=True)):
         print(f"Couldn't get readme for {file}", file=sys.stderr)
 
 
-with open(output_file, 'w') as readme_f:
+with codecs.open(output_file, 'w', "utf-8-sig") as readme_f:
     readme_f.write("Created by [create_readme](./create_readme)\n")
     for script_name, script_readme in readme.items():
         readme_f.write(
@@ -67,3 +68,4 @@ with open(output_file, 'w') as readme_f:
 ```
 """
         )
+

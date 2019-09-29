@@ -1,4 +1,4 @@
-#!/usr/bin/env zsh
+#!/usr/bin/env bash
 
 usage="Usage:
 $(basename "$0") [-h]
@@ -31,12 +31,13 @@ fi
 for file in "$@"; do
   if [ -f "$file" ]; then # ignore directories
     seconds=$(ffprobe -i "$file" -show_entries format=duration -v quiet -of csv="p=0")
+    seconds=${seconds%.*} # remove decimals
     echo -ne "${seconds%.*}s|"
     minutes=$(perl -E "say int(${seconds}/60)")
-    seconds=$(( $seconds % 60 ))
-    if (( $minutes > 60 )); then
+    seconds=$(( seconds % 60 ))
+    if (( minutes > 60 )); then
       hours=$(perl -E "say int(${minutes}/60)")
-      minutes=$(( $minutes % 60 ))
+      minutes=$(( minutes % 60 ))
       # print hours, minutes and seconds
       echo -ne "${hours}h:${minutes}m:${seconds%.*}s" # truncate decimal part on seconds
     else
