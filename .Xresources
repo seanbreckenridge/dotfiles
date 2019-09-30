@@ -1,0 +1,10 @@
+
+! Basic font configuraton !
+
+URxvt.font: xft:Iosevka:style=medium:size=12
+URxvt.boldFont: xft:Iosevka:style=bold:size=12
+URxvt.italicFont: xft:Iosevka:style=italic:size=12
+URxvt.boldItalicFont: xft:Iosevka:style=medium:size=12
+
+! Fix letter/unciode spacing !
+URxvt*letterSpace: 0
