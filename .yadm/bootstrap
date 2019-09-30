@@ -1,5 +1,4 @@
-#!/bin/bash
-
+#!/usr/bin/env bash
 # yadm bootstrap script
 # Uses yay to install from AUR
 
@@ -105,3 +104,17 @@ for npkg in $(cat ~/.yadm/global_node_packages.txt); do
     npm install --global "${npkg}"
   fi
 done
+
+# Check services
+echo "Checking if default services are running..."
+# CUPS and avahi are for printing
+services=("NetworkManager" "avahi-daemon" "org.cups.cupsd")
+for serv in "${services[@]}"; do
+  if [[ $(systemctl show -p SubState --value "${serv}") != "running" ]]; then
+    echo -e "${serv} is not running, you should enable it with: 'sudo systemctl enable ${serv}'"
+  fi
+done
+
+# Update oh-my-zsh
+sh "$ZSH"/tools/upgrade.sh
+

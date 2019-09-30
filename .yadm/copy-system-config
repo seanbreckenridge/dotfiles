@@ -8,7 +8,7 @@
 # provide absolute paths to directories, ending with a forward slash
 dirs=("/etc/X11/xorg.conf.d/")
 # provide absolute paths to files
-files=("/etc/pacman.conf")
+files=("/etc/pacman.conf" "/etc/nsswitch.conf")
 
 # Remove and recreate system config directory
 if [[ -d ~/.system-config ]]; then

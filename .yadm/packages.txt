@@ -56,3 +56,7 @@ zathura
 checkbashisms
 dash
 dashbinsh
+cups
+cups-pdf
+avahi
+nss-mdns

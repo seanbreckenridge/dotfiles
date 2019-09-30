@@ -30,18 +30,22 @@ for func in $(command ls -1 "${ZDOTDIR}/functions/"); do
 done
 
 # Aliases
+
+# Standard
 alias ll='ls -l'
 alias la='ll -a'
-alias dotfiles='yadm gitconfig --get remote.origin.url | python3 -c "from giturlparse import parse; from webbrowser import open_new_tab; open_new_tab(parse(input()).urls[\"https\"])"'
 alias reboot="sudo systemctl reboot"
 alias poweroff="sudo systemctl poweroff"
 alias halt="sudo systemctl halt"
+
+# Non-standard
+alias dotfiles='yadm gitconfig --get remote.origin.url | python3 -c "from giturlparse import parse; from webbrowser import open_new_tab; open_new_tab(parse(input()).urls[\"https\"])"'
+alias printer_server='sudo cat /etc/cups/cupsd.conf | grep -i "Listen localhost" | cut -d":" -f 2 | xargs -I {} $BROWSER "localhost:{}"'
 
 # Personal Aliases
 [[ -f ~/.zsh/zsh_aliases ]] && source ~/.zsh/zsh_aliases
 
 # app specific init
-
 eval $(thefuck --alias)
 kitty +complete setup zsh | source /dev/stdin
 # Change npm install dir from /usr/local/bin (which requires sudo)
