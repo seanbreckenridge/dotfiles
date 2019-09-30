@@ -1,4 +1,4 @@
-#!/usr/bin/env zsh
+#!/usr/bin/env bash
 
 # This is a script to copy configuration files from somewhere else on the system
 # These are not symlinks or hardlinks - they're duplicates of the files
@@ -12,21 +12,21 @@ files=("/etc/pacman.conf" "/etc/nsswitch.conf")
 
 # Remove and recreate system config directory
 if [[ -d ~/.system-config ]]; then
-  rm -rf ~/.system-config
+	rm -rf ~/.system-config
 fi
 mkdir -p ~/.system-config
 chmod 755 ~/.system-config
 
 for d in "${dirs[@]}"; do
-  sys_conf_target="${HOME}/.system-config${d}"
-  echo "Copying to ${sys_conf_target}"
-  mkdir -p "${sys_conf_target}"
-  cp -R "${d}"* "${sys_conf_target}"
+	sys_conf_target="${HOME}/.system-config${d}"
+	echo "Copying to ${sys_conf_target}"
+	mkdir -p "${sys_conf_target}"
+	cp -R "${d}"* "${sys_conf_target}"
 done
 
 for f in "${files[@]}"; do
-  enclosing_dir="${HOME}/.system-config"`dirname "${f}"`
-  [[ ! -d "${enclosing_dir}" ]] && mkdir -p "${enclosing_dir}"
-  echo -e "Copying to ${enclosing_dir}"
-  cp "${f}" "${enclosing_dir}"
+	enclosing_dir="${HOME}/.system-config"$(dirname "${f}")
+	[[ ! -d "${enclosing_dir}" ]] && mkdir -p "${enclosing_dir}"
+	echo -e "Copying to ${enclosing_dir}"
+	cp "${f}" "${enclosing_dir}"
 done

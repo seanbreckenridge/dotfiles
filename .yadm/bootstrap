@@ -2,38 +2,40 @@
 # yadm bootstrap script
 # Uses yay to install from AUR
 
-if [[ ! $(which yay) ]]; then
-  echo -e "Could not find yay. Install that and re-run bootstrap\nExiting..."
-  exit 1
+if [[ ! $(command -v yay) ]]; then
+	echo -e "Could not find yay. Install that and re-run bootstrap\nExiting..."
+	exit 1
 fi
 
 echo "Checking ~/.yadm/packages.txt for any packages to install..."
-for lib in $(cat ~/.yadm/packages.txt); do
-  if [[ ! $(yay -Q "${lib}") ]]; then  # if package isn't installed
-    read -p "Do you want to install '${lib}'? [Y/n] " -n 1 -r
-    if [[ ! $REPLY =~ ^[Nn]$ ]]; then  # REPLY is automatically used as read variable
-      yay "${lib}"
-    fi
-  fi
-done
+while read -r lib; do
+	if [[ ! $(yay -Q "${lib}") ]]; then # if package isn't installed
+		read -p "Do you want to install '${lib}'? [Y/n] " -n 1 -r
+		if [[ ! $REPLY =~ ^[Nn]$ ]]; then # REPLY is automatically used as read variable
+			yay "${lib}"
+		fi
+	fi
+done <"${HOME}/.yadm/packages.txt"
 
-[[ ! $(fc-list | grep -i iosevka) ]] && echo -e "Iosevka (font) is not installed\!\nInstall it from the AUR: 'ttf-iosevka'"
+if ! fc-list | grep -qi iosevka; then
+	echo -e "Iosevka (font) is not installed\!\nInstall it from the AUR: 'ttf-iosevka'"
+fi
 
 # Try to install oh-my-zsh
 if [[ ! -d ~/.oh-my-zsh ]]; then
-  echo 'Could not find oh-my-zsh installed at ~/.oh-my-zsh'
-  echo "Run the following command to install it there:"
-  echo 'sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"'
-  exit 1
+	echo 'Could not find oh-my-zsh installed at ~/.oh-my-zsh'
+	echo "Run the following command to install it there:"
+	echo 'sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"'
+	exit 1
 fi
 
-if [[ ! $(echo $SHELL | grep zsh) ]]; then
-  if [[ ! $(which zsh) ]]; then
-    sudo pacman -S zsh
-  fi
-  sudo chsh -s $(which zsh)
+if ! echo "$SHELL" | grep -q zsh; then
+	if [[ ! "$(command -v zsh)" ]]; then
+		sudo pacman -S zsh
+	fi
+	sudo chsh -s "$(command -v zsh)"
 else
-  echo "zsh is already set as your default shell"
+	echo "zsh is already set as your default shell"
 fi
 
 echo 'Setting up zsh directory structure...'
@@ -41,45 +43,45 @@ echo 'Setting up zsh directory structure...'
 original_files=("${HOME}/.zshenv" "${HOME}/.zshrc" "${HOME}/.zsh_history")
 
 for file in "${original_files[@]}"; do
-  if [[ -f "$file" ]]; then
-    rm "$file"
-  fi
+	if [[ -f "$file" ]]; then
+		rm "$file"
+	fi
 done
 
 echo 'Symlinking zshenv...'
 # ZDOTDIR is located at ~/.zsh
 if [[ ! -f ~/.zshenv ]]; then
-  ln -s ~/.zsh/.zshenv ~/.zshenv
+	ln -s ~/.zsh/.zshenv ~/.zshenv
 fi
 
 # Setting up default user directories
 default_user_dirs=("bin" "code" "Desktop" "Documents" "Downloads")
 
 for d_name in "${default_user_dirs[@]}"; do
-  if [[ ! -d "${HOME}/${d_name}" ]]; then
-    mkdir "${HOME}/${d_name}"
-  fi
+	if [[ ! -d "${HOME}/${d_name}" ]]; then
+		mkdir "${HOME}/${d_name}"
+	fi
 done
 
 echo 'Checking git config...'
 # check for global name config
 if [[ -z $(git config --global user.name) ]]; then
-  printf "No global name set. Enter full name: "
-  read -r githubusername
-  git config --global user.name "$githubusername"
+	printf "No global name set. Enter full name: "
+	read -r githubusername
+	git config --global user.name "$githubusername"
 fi
 
 # check for global email config
 if [[ -z $(git config --global user.email) ]]; then
-  printf "No global email set. Enter email connected to your GitHub account: "
-  read -r githubemail
-  git config --global user.email "$githubemail"
+	printf "No global email set. Enter email connected to your GitHub account: "
+	read -r githubemail
+	git config --global user.email "$githubemail"
 fi
 
 if [[ -z "$EDITOR" ]]; then
-  git config --global core.editor nano
+	git config --global core.editor nano
 else
-  git config --global core.editor nvim
+	git config --global core.editor nvim
 fi
 
 # Install python packages
@@ -91,30 +93,30 @@ pip3 install -q --user -r ~/.yadm/python3_packages.txt
 # speedtest and speedtest-cli, which both have the same
 # functionatly. This removes speedtest-cli to make
 # tab completion nicer
-[[ $(command -v speedtest-cli) ]] && rm `which speedtest-cli`
+[[ $(command -v speedtest-cli) ]] && rm "$(command -v speedtest-cli)"
 
 # ~/.npmrc defines the prefix as ~/.npm-packages
 echo "Installing global npm packages..."
 NPM_PKG_DIR="${HOME}/.npm-packages"
 echo -e "npm global package dir: ${NPM_PKG_DIR}"
-[[ ! -d "${NPM_PKG_DIR}" ]] && mkdir -p "${NPM_PKG_DIR}" && sudo chown -R $(whoami) "${NPM_PGK_DIR}"
-for npkg in $(cat ~/.yadm/global_node_packages.txt); do
-  if [[ ! $(ls -1 `npm root -g` | grep "${npkg}") ]]; then
-    echo -e "Installing ${npkg}"
-    npm install --global "${npkg}"
-  fi
-done
+[[ ! -d "${NPM_PKG_DIR}" ]] && mkdir -p "${NPM_PKG_DIR}" && sudo chown -R "$(whoami)" "${NPM_PKG_DIR}"
+while read -r npkg; do
+	if ! find "$(npm root -g)" | grep -q "${npkg}"; then
+		echo -e "Installing ${npkg}"
+		npm install --global "${npkg}"
+	fi
+done <"${HOME}/.yadm/global_node_packages.txt"
 
 # Check services
 echo "Checking if default services are running..."
 # CUPS and avahi are for printing
 services=("NetworkManager" "avahi-daemon" "org.cups.cupsd")
 for serv in "${services[@]}"; do
-  if [[ $(systemctl show -p SubState --value "${serv}") != "running" ]]; then
-    echo -e "${serv} is not running, you should enable it with: 'sudo systemctl enable ${serv}'"
-  fi
+	if ! systemctl show -p SubState --value "${serv}" | grep -q "running"; then
+		echo -e "${serv} is not running, you should enable it with: 'sudo systemctl enable ${serv}'"
+	fi
 done
 
 # Update oh-my-zsh
-sh "$ZSH"/tools/upgrade.sh
-
+echo "Upgrading oh-my-zsh..."
+cd "$ZSH" && git pull --rebase

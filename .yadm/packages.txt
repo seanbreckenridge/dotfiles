@@ -60,3 +60,4 @@ cups
 cups-pdf
 avahi
 nss-mdns
+shfmt
