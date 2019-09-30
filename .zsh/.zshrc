@@ -17,8 +17,17 @@ ${NPM_PACKAGES}/share/man:\
 $(manpath)"
 export MANPATH
 
-# some completion features from: https://gist.github.com/LukeSmithxyz/e62f26e55ea8b0ed41a65912fbebbe52
+# antigen configuration
+source /usr/share/zsh/share/antigen.zsh
+antigen bundle zsh-users/zsh-syntax-highlighting
+antigen bundle command-not-found
+antigen theme denysdovhan/spaceship-prompt
+antigen apply
 
+# zsh theme
+ZSH_THEME="spaceship"
+
+# some completion features from: https://gist.github.com/LukeSmithxyz/e62f26e55ea8b0ed41a65912fbebbe52
 autoload -Uz compinit  # zsh tab completion
 zstyle ':completion:*' menu select  #  http://zsh.sourceforge.net/Guide/zshguide06.html
 zmodload zsh/complist  # http://zsh.sourceforge.net/Doc/Release/Zsh-Modules.html#The-zsh_002fcomplist-Module
@@ -53,3 +62,6 @@ kitty +complete setup zsh | source /dev/stdin
 # ~/.npmrc should have the contents:  `prefix=${HOME}/.npm-packages`
 NPM_PACKAGES="${HOME}/.npm-packages"
 NODE_PATH="${NPM_PACKAGES}/lib/node_modules:${NODE_PATH}"
+# powerline
+powerline-daemon -q
+source /usr/lib/python3.7/site-packages/powerline/bindings/zsh/powerline.zsh

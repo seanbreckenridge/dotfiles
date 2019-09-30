@@ -8,14 +8,14 @@ if [[ ! $(command -v yay) ]]; then
 fi
 
 echo "Checking ~/.yadm/packages.txt for any packages to install..."
-while read -r lib; do
+for lib in $(cat "${HOME}/.yadm/packages.txt"); do
 	if [[ ! $(yay -Q "${lib}") ]]; then # if package isn't installed
 		read -p "Do you want to install '${lib}'? [Y/n] " -n 1 -r
 		if [[ ! $REPLY =~ ^[Nn]$ ]]; then # REPLY is automatically used as read variable
 			yay "${lib}"
 		fi
 	fi
-done <"${HOME}/.yadm/packages.txt"
+done
 
 if ! fc-list | grep -qi iosevka; then
 	echo -e "Iosevka (font) is not installed\!\nInstall it from the AUR: 'ttf-iosevka'"

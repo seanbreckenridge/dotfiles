@@ -13,6 +13,7 @@ __pycache__
 *zsh_history
 zsh_aliases
 .zcompdump*
+.zshrc.zwc
 
 # Ignore README - handled by git hooks -- see .yadm/README.md
 /README.md
@@ -59,6 +60,7 @@ zsh_aliases
 /.atom/config.cson
 /.atom/github.cson
 
+/.antigen
 /.pki/nssdb/
 /.wget-hsts
 /.vim/.netrwhist
