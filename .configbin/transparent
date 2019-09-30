@@ -1,7 +1,8 @@
 #!/usr/bin/env sh
 # enable/disable transparency for the currently moused over application
+# Usage:
+#     transparent [enable|dsiable]
 
-# List of applications
 if [ "$1" = "disable" ]; then
     set_to_opacity=85
 else

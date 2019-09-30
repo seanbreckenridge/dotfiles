@@ -4,6 +4,9 @@
 \#*\#
 .\#*
 
+# cache
+__pycache__
+
 # zsh
 
 /.zshenv  # only top level .zshenv (symlink)
