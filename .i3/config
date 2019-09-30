@@ -9,10 +9,6 @@ set $mod Mod4
 #font pango:monospace 8
 font pango:Iosevka 12
 
-# This font is widely installed, provides lots of unicode glyphs, right-to-left
-# text rendering and scalability on retina/hidpi displays (thanks to pango).
-#font pango:DejaVu Sans Mono 8
-
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
@@ -28,8 +24,8 @@ exec --no-startup-id compton -b
 # directory to use as a wallpaper
 exec --no-startup-id feh --randomize --bg-fill "${HOME}"/Pictures/wallpapers/*
 
-# Disable touchpad
-exec --no-startup-id ~/.configbin/touchpad disable
+# Enable touchpad
+exec --no-startup-id ~/.configbin/touchpad enable
 
 # Bind brightness keys
 # This required fiddling with the /sys/class/baclight/amdgpu_b10 file permissions
@@ -53,7 +49,7 @@ bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 
-# Toggle (enable/disable) the touchpad
+# bind key to toggle (enable/disable) the touchpad
 bindsym $mod+Shift+t exec --no-startup-id ~/.configbin/touchpad
 
 # Use Mouse+$mod to drag floating windows to their wanted position
@@ -67,6 +63,9 @@ bindsym $mod+q kill
 
 # rofi run menu
 bindsym $mod+d exec --no-startup-id rofi -show run
+
+# rofi switch window menu
+bindsym $mod+r exec --no-startup-id rofi -show window
 
 # gaps config
 for_window [class=".*"] border pixel 0
@@ -171,12 +170,8 @@ bindsym $mod+Shift+8 move container to workspace number $ws8
 bindsym $mod+Shift+9 move container to workspace number $ws9
 bindsym $mod+Shift+0 move container to workspace number $ws10
 
-# reload the configuration file
-bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
-# exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)

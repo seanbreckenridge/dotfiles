@@ -1,0 +1,9 @@
+#!/usr/bin/env zsh
+
+alias ll='ls -l'
+alias la='ll -a'
+
+# commonly editor config files
+alias i3c='$EDITOR ~/.i3/config'
+alias zshc='$EDITOR ~/.zsh/.zshrc'
+
