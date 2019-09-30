@@ -1,12 +1,22 @@
 #!/usr/bin/env sh
 # enable/disable transparency for the currently moused over application
 # Usage:
-#     transparent [enable|dsiable]
+#     transparent <enable|disable> [target]
+# optionally, specify target to change the moues into a target -- the next click will target that application
+# target exists because some applicaitons cant be 'moused over' (e.g. mpv)
 
 if [ "$1" = "disable" ]; then
-	set_to_opacity=85
+	if [ "$2" = "target" ]; then
+		compton-trans -s 85
+	else
+		compton-trans -c 85
+	fi
+elif [ "$1" = "enable" ]; then
+	if [ "$2" = "target" ]; then
+		compton-trans -s 100
+	else
+		compton-trans -c 100
+	fi
 else
-	set_to_opacity=100
+	printf "You must specify either enable or disable\n"
 fi
-
-compton-trans -c $set_to_opacity
