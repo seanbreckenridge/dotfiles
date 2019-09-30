@@ -5,9 +5,9 @@
 # e.g. 720convert pulpfiction.mp4
 
 for var in "$@"; do
-    filename=$(basename "$var")
-    filename="${filename%.*}"
-    outputfile="${filename}-720.mp4"
-    echo "$outputfile"
-    ffmpeg -i "$var" -s hd720 -c:v libx264 -c:a aac -strict -2 -q:a 0 -q:v 0 "$outputfile"
+	filename=$(basename "$var")
+	filename="${filename%.*}"
+	outputfile="${filename}-720.mp4"
+	echo "$outputfile"
+	ffmpeg -i "$var" -s hd720 -c:v libx264 -c:a aac -strict -2 -q:a 0 -q:v 0 "$outputfile"
 done

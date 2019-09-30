@@ -27,8 +27,8 @@ Modified from: https://github.com/holman/dotfiles/blob/master/bin/movieme
 "
 
 if [ "$1" = "-h" ] || [ "$1" = "-help" ] || [ "$1" = "--help" ]; then
-  echo "$usage"
-  exit 0
+	echo "$usage"
+	exit 0
 fi
 
 # quit if ffmpeg fails
@@ -40,7 +40,7 @@ mkdir -p /tmp/gifme
 
 # check for command line arguments
 if [ -z "$3" ]; then
-  printf "You didn't provide enough arguments.
+	printf "You didn't provide enough arguments.
 Type 'gifme -h' for additional help.
 
 \$1 - the path to the movie we're converting
@@ -49,15 +49,15 @@ Type 'gifme -h' for additional help.
 Time(s) can be in seconds, or it also accepts the \"hh:mm:ss[.xxx]\" format
 \$4 - (optional) specify an integer fps value. default is 10
 For best output, it should be a factor of 100; e.g. 10, 20, 25, 50"
-  exit 1
+	exit 1
 fi
 
 # process fps arg
 fps=10
 if [ -n "$4" ]; then
-  fps=$4
+	fps=$4
 fi
-convert_delay=$(( 100 / fps ))
+convert_delay=$((100 / fps))
 
 # generate output filename based on input file
 current_time=$(date +%H.%M.%S)

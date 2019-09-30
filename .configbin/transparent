@@ -4,9 +4,9 @@
 #     transparent [enable|dsiable]
 
 if [ "$1" = "disable" ]; then
-    set_to_opacity=85
+	set_to_opacity=85
 else
-    set_to_opacity=100
+	set_to_opacity=100
 fi
 
 compton-trans -c $set_to_opacity
