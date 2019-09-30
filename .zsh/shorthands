@@ -3,6 +3,8 @@
 alias ll='ls -l'
 alias la='ll -a'
 
+alias yb='yadm bootstrap'
+
 # commonly editor config files
 alias i3c='$EDITOR ~/.i3/config'
 alias zshc='$EDITOR ~/.zsh/.zshrc'
