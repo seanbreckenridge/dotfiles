@@ -11,7 +11,7 @@ __pycache__
 
 /.zshenv  # only top level .zshenv (symlink)
 *zsh_history
-/.zsh/zsh_aliases  # common aliases are defined in ~/.zshrc
+zsh_aliases
 .zcompdump*
 
 # Ignore README - handled by git hooks -- see .yadm/README.md
@@ -27,6 +27,7 @@ __pycache__
 /.bash_history
 /.python_history
 /.fehbg
+/.plus1_blacklist.txt
 
 /.config/discord
 /.config/pulse
@@ -49,14 +50,17 @@ __pycache__
 /.config/configstore
 /.config/menus/
 
-
 /.atom/compile-cache
 /.atom/blob-store
 /.atom/storage
 /.atom/nohup.out
+/.atom/.apm/.apmrc
+/.atom/config.cson
+/.atom/github.cson
 
 /.pki/nssdb/
 /.wget-hsts
+/.vim/.netrwhist
 /.gnome/apps
 /.gnome/apps
 /.oh-my-zsh
