@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env sh
 
 usage="Usage:
     average [-h]
@@ -11,9 +11,9 @@ Example usage:
   average ~/Music/some_album/*
 "
 
-if [[ "$1" == "-h" || "$1" == "-help" || "$1" == "--help" || -z "$1" ]]; then
-  echo "${usage}"
+if [ "$1" = "-h" ] || [ "$1" = "-help" ] || [ "$1" = "--help" ] || [ -z "$1" ] ; then
+  echo "$usage"
   exit 0
 fi
 
-duration "$@" | cut -d "s" -f 1 | awk '{total += $1} END {printf "%ds", total/NR}'
+duration "$@" | cut -d"s" -f1 | awk '{total += $1} END {printf "%ds\n", total/NR}'

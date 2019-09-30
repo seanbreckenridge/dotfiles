@@ -7,8 +7,9 @@ import webbrowser
 
 from giturlparse import parse
 
-result = subprocess.run(['git', 'config', '--get', 'remote.origin.url'],
-                        stdout=subprocess.PIPE)
+result = subprocess.run(
+    ["git", "config", "--get", "remote.origin.url"], stdout=subprocess.PIPE
+)
 git_url = result.stdout.decode("utf-8").strip()
 
 if not git_url:

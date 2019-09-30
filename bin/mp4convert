@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env sh
 #
 # converts all inputs on command line to mp4 files.
 #
@@ -9,7 +9,7 @@ for var in "$@"; do
     if ! echo "${filename}" | grep -q ".mp4"; then
 	filename="${filename%.*}"
 	outputfile="${filename}.mp4"
-	echo $outputfile
+	echo "$outputfile"
 	ffmpeg -i "$var" "$outputfile"
     fi
 done

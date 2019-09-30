@@ -1,12 +1,12 @@
-#!/usr/bin/env bash
+#!/usr/bin/env sh
 #
 # Prints your git username and email for the current repository
 # Used to manage repository specific credentials for different Github accounts
 
 # check if this is a git repository
-if [[ $(git status 2> /dev/null) ]]; then
+if [ "$(git status 2> /dev/null)" ]; then
     git config --get user.name
     git config --get user.email
 else
-    echo "Not currently in a git repository"
+    printf "Not currently in a git repository\n"
 fi

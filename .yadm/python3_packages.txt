@@ -3,6 +3,7 @@ asyncio
 autopep8
 backoff
 bpython
+black
 bs4
 cget
 colorama
@@ -20,7 +21,7 @@ itsdangerous
 jikanpy
 lxml
 matplotlib
-mysqlclient
+#mysqlclient
 ndg-httpsclient
 numpy
 oauth2client

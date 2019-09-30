@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env sh
 #
 # https://www.gitignore.io/docs
 #
@@ -6,4 +6,4 @@
 # use `gi list` to list gitignore files
 # From: https://github.com/AndrewSB/dotfiles/blob/master/zsh/functions/gi
 
-curl -s -L https://www.gitignore.io/api/"$@"
+curl -sL "https://www.gitignore.io/api/$*"

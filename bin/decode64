@@ -8,19 +8,17 @@ Will repetitvely base64 decode HASH till SUBSTR is in decoded string
 If SUBSTR is a number, will decode HASH that many times
 """
 
-import sys
 import base64
-
 import docopt
 
 args = docopt.docopt(__doc__)
-hash = args['HASH']
+hash = args["HASH"]
 
 try:
-    for _ in range(int(args['SUBSTR'])):
+    for _ in range(int(args["SUBSTR"])):
         hash = base64.b64decode(hash)
 except:
-    while args['SUBSTR'].lower() not in str(hash.lower()):
+    while args["SUBSTR"].lower() not in str(hash.lower()):
         hash = base64.b64decode(hash)
 
 print(str(hash, "utf-8"))

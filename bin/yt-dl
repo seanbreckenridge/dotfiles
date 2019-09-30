@@ -3,13 +3,32 @@
 import os
 import argparse
 
-parser = argparse.ArgumentParser(description="Download a video using youtube-dl, and then do something with it")
-parser.add_argument("--open", action="store_true", help="Open this video after it finishes downloading")
-parser.add_argument("--wait", action="store_true", help="After this video finishes downloading, wait for the user to hit enter, and then open it.")
-parser.add_argument("--name", help="Change the name from the default youtube-dl file to the passed name")
+parser = argparse.ArgumentParser(
+    description="Download a video using youtube-dl, and then do something with it"
+)
+parser.add_argument(
+    "--open", action="store_true", help="Open this video after it finishes downloading"
+)
+parser.add_argument(
+    "--wait",
+    action="store_true",
+    help="After this video finishes downloading, wait for the user to hit enter, and then open it.",
+)
+parser.add_argument(
+    "--name", help="Change the name from the default youtube-dl file to the passed name"
+)
 dest = parser.add_mutually_exclusive_group()
-dest.add_argument("--downloads", action="store_true", default=False, help="Change download destination to ~/Downloads")
-dest.add_argument("--tmp", action="store_true", help="Download a video to the /tmp directory, it will be deleted on computer restart")
+dest.add_argument(
+    "--downloads",
+    action="store_true",
+    default=False,
+    help="Change download destination to ~/Downloads",
+)
+dest.add_argument(
+    "--tmp",
+    action="store_true",
+    help="Download a video to the /tmp directory, it will be deleted on computer restart",
+)
 args, unknownargs = parser.parse_known_args()
 
 # give youtube-dl leftover arguments
@@ -34,7 +53,7 @@ if args.name is not None and args.name.strip():
 # use youtube-dl's --exec flag to open the files once downloaded
 exec_str = ""
 if args.wait:
-    exec_str = "--exec \"echo 'Press \'enter/return\' to open...'; read; open {}\""
+    exec_str = "--exec \"echo 'Press 'enter/return' to open...'; read; open {}\""
 elif args.open:
     exec_str = '--exec "open {}"'
 

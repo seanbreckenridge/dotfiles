@@ -46,9 +46,10 @@ print(_file)
 # open, if specified
 if args["--open"]:
     import platform
+
     operating_system = platform.system()
     # windows
-    if operating_system == 'Windows':
+    if operating_system == "Windows":
         os.startfile(_file)
     # mac
     elif operating_system == "Darwin":
@@ -59,6 +60,7 @@ if args["--open"]:
 
 if args["--wait"]:
     import time
+
     time.sleep(3)
 
 if args["--exec"] is not None:
@@ -66,5 +68,5 @@ if args["--exec"] is not None:
         print("Could not find a replacement field {} in string, ignoring...")
     else:
         # surround filename with double quotes
-        command = args['--exec'].format('"{}"'.format(_file))
+        command = args["--exec"].format('"{}"'.format(_file))
         subprocess.call(shlex.split(command))

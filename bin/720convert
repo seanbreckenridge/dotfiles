@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env sh
 #
 # converts all inputs on command line to 720p mp4 files.
 #
@@ -8,6 +8,6 @@ for var in "$@"; do
     filename=$(basename "$var")
     filename="${filename%.*}"
     outputfile="${filename}-720.mp4"
-    echo $outputfile
+    echo "$outputfile"
     ffmpeg -i "$var" -s hd720 -c:v libx264 -c:a aac -strict -2 -q:a 0 -q:v 0 "$outputfile"
 done

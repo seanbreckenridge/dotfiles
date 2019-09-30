@@ -52,3 +52,7 @@ kitty
 cmatrix
 compton
 shellcheck-static
+zathura
+checkbashisms
+dash
+dashbinsh

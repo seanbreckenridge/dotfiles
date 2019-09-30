@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env sh
 
 usage="Usage:
 $(basename "$0") [-h]
@@ -15,7 +15,7 @@ duration movie.mp4 | cut -d \"|\" -f 2
 duration movie.mp4 | cut -d \"|\" -f 3
 "
 
-if [[ "$1" == "-h" || "$1" == "-help" || "$1" == "--help" ]]; then
+if [ "$1" = "-h" ] || [ "$1" = "-help" ] || [ "$1" = "--help" ]; then
   echo "${usage}"
   exit 0
 fi
@@ -27,23 +27,22 @@ Run 'duration -h' to get more information"
   exit 1
 fi
 
-
 for file in "$@"; do
   if [ -f "$file" ]; then # ignore directories
     seconds=$(ffprobe -i "$file" -show_entries format=duration -v quiet -of csv="p=0")
     seconds=${seconds%.*} # remove decimals
-    echo -ne "${seconds%.*}s|"
-    minutes=$(perl -E "say int(${seconds}/60)")
+    printf "%ds|" "$seconds"
+    minutes=$(( seconds / 60 ))
     seconds=$(( seconds % 60 ))
-    if (( minutes > 60 )); then
-      hours=$(perl -E "say int(${minutes}/60)")
+    if [ $(( minutes > 60 )) ] ; then
+      hours=$(( minutes / 60 ))
       minutes=$(( minutes % 60 ))
       # print hours, minutes and seconds
-      echo -ne "${hours}h:${minutes}m:${seconds%.*}s" # truncate decimal part on seconds
+      printf "%dh:%dm:%ds" "$hours" "$minutes" "$seconds" 
     else
       # print minutes and seconds
-      echo -ne "${minutes}m:${seconds%.*}s"
+      printf "%dm:%ds" "$minutes" "$seconds"
     fi
-    echo -e "|$file"
+    printf "|%s\n" "$file"
   fi
 done

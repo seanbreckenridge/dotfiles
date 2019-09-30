@@ -66,14 +66,6 @@ HISTSIZE=50000
 SAVEHIST=50000
 setopt appendhistory
 
-# Uncomment the following line if you want to change the command execution time
-# stamp shown in the history command output.
-# You can set one of the optional three formats:
-# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-# or set a custom format using the strftime function format specifications,
-# see 'man strftime' for details.
-# HIST_STAMPS="mm/dd/yyyy"
-
 # History Control: Omit duplicate and commands that begin with a space
 export HISTCONTROL='ignoreboth';
 
@@ -88,29 +80,20 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
-# export MANPATH="/usr/local/man:$MANPATH"
-
 # You may need to manually set your language environment
 export LANG='en_US.UTF-8'
 export LC_ALL='en_US.UTF-8'
 
-# Use vim if connected via ssh, else nvim (neovim)
-if [[ -n $SSH_CONNECTION ]]; then
-  export EDITOR='vim'
-else
-  export EDITOR='nvim'
-fi
+# Set default applicaitons
 
-# Preferred pager
-export PAGER=less
+export EDITOR='nvim'
+export PAGER='less'
+export TERMINAL='kitty'
+export BROWSER='firefox'
+export READER='zathura'
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
-
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
 
 # temporary prompt
 PS1="> "

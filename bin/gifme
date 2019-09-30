@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env sh
 
 usage="Usage:
 $(basename "$0") [-h]
@@ -26,8 +26,8 @@ requires 'imagemagick' and 'ffmpeg'
 Modified from: https://github.com/holman/dotfiles/blob/master/bin/movieme
 "
 
-if [[ "$1" == "-h" || "$1" == "-help" || "$1" == "--help" ]]; then
-  echo "${usage}"
+if [ "$1" = "-h" ] || [ "$1" = "-help" ] || [ "$1" = "--help" ]; then
+  echo "$usage"
   exit 0
 fi
 
@@ -40,7 +40,7 @@ mkdir -p /tmp/gifme
 
 # check for command line arguments
 if [ -z "$3" ]; then
-  echo -e "You didn't provide enough arguments.
+  printf "You didn't provide enough arguments.
 Type 'gifme -h' for additional help.
 
 \$1 - the path to the movie we're converting
@@ -54,10 +54,10 @@ fi
 
 # process fps arg
 fps=10
-if [ ! -z "$4" ]; then
+if [ -n "$4" ]; then
   fps=$4
 fi
-convert_delay=$(( 100 / $fps ))
+convert_delay=$(( 100 / fps ))
 
 # generate output filename based on input file
 current_time=$(date +%H.%M.%S)
@@ -71,10 +71,10 @@ output_filename="${output_filename}-gifme-${current_time}.gif"
 # ss - start time
 # t - time
 # r - fps
-ffmpeg -i "$1" -f image2 -ss $2 -t $3 -r $fps /tmp/gifme/d-%09d.png
-printf "Converting %d frames to a gif...\n" $(ls -1 /tmp/gifme | wc -l)
+ffmpeg -i "$1" -f image2 -ss "$2" -t "$3" -r "$fps" /tmp/gifme/d-%09d.png
+printf "Converting %d frames to a gif...\n" "$(find /tmp/gifme | wc -l)"
 # convert to gif
 # delay - speed, determined by fps above
 # loop 0 - make gif repeat itself
 convert -delay $convert_delay -loop 0 /tmp/gifme/*.png "$output_filename"
-echo -e "Created ${output_filename} successfully"
+printf "Created %s successfully" "$output_filename"

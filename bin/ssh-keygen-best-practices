@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env sh
 
 usage="Usage:
     $(basename "$0") [-h]
@@ -17,8 +17,8 @@ Arguments:
   -h  show help message
 "
 
-if [[ "$1" == "-h" || "$1" == "-help" || "$1" == "--help" ]]; then
-  echo "${usage}"
+if [ "$1" = "-h" ] || [ "$1" = "-help" ] || [ "$1" = "--help" ]; then
+  echo "$usage"
   exit 0
 fi
 

@@ -81,11 +81,6 @@ duration movie.mp4 | cut -d "|" -f 3
 
 ```
 
-### [echopath](./echopath)
-```
-prints everything on your $PATH seperated by newlines
-```
-
 ### [gi](./gi)
 ```
 https://www.gitignore.io/docs

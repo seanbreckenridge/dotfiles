@@ -1,15 +1,5 @@
 # Additional/non-zsh alias/path/function/config
 
-### npm configuration
-
-# Change npm install dir from /usr/local/bin (which requires sudo)
-NPM_PACKAGES="${HOME}/.npm-packages"
-NODE_PATH="${NPM_PACKAGES}/lib/node_modules:${NODE_PATH}"
-
-###
-# ~/.npmrc should have the contents:  `prefix=${HOME}/.npm-packages`
-###
-
 # Path manipulations for user scripts and package manager (pip, npm, cargo) bin dirs
 # User compiled binaries are copied to /usr/local/bin
 PATH="\
@@ -27,7 +17,14 @@ ${NPM_PACKAGES}/share/man:\
 $(manpath)"
 export MANPATH
 
-# load functions
+# some completion features from: https://gist.github.com/LukeSmithxyz/e62f26e55ea8b0ed41a65912fbebbe52
+
+autoload -Uz compinit  # zsh tab completion
+zstyle ':completion:*' menu select  #  http://zsh.sourceforge.net/Guide/zshguide06.html
+zmodload zsh/complist  # http://zsh.sourceforge.net/Doc/Release/Zsh-Modules.html#The-zsh_002fcomplist-Module
+setopt globdots
+
+# load user defined functions
 for func in $(command ls -1 "${ZDOTDIR}/functions/"); do
   autoload -Uz $func
 done
@@ -43,9 +40,11 @@ alias halt="sudo systemctl halt"
 # Personal Aliases
 [[ -f ~/.zsh/zsh_aliases ]] && source ~/.zsh/zsh_aliases
 
-eval $(thefuck --alias)
+# app specific init
 
-# kitty completion
-autoload -Uz compinit
-compinit
+eval $(thefuck --alias)
 kitty +complete setup zsh | source /dev/stdin
+# Change npm install dir from /usr/local/bin (which requires sudo)
+# ~/.npmrc should have the contents:  `prefix=${HOME}/.npm-packages`
+NPM_PACKAGES="${HOME}/.npm-packages"
+NODE_PATH="${NPM_PACKAGES}/lib/node_modules:${NODE_PATH}"
