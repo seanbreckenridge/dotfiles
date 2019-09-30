@@ -37,6 +37,7 @@
 /.config/Slack
 /.config/Code - OSS
 /.config/Electron
+/.config/nvim/.netrwhist
 
 /.atom/compile-cache
 /.atom/blob-store

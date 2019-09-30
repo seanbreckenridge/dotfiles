@@ -1,0 +1,6 @@
+# prints everything on your $PATH, seperated by newlines
+
+function echopath () {
+    echo "$PATH" | tr ":" "\n"
+}
+
