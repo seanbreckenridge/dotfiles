@@ -9,7 +9,7 @@ __pycache__
 
 # zsh
 
-/.zshenv  # only top level .zshenv (symlink)
+.zshenv
 *zsh_history
 zsh_aliases
 .zcompdump*
@@ -28,6 +28,7 @@ zsh_aliases
 /.python_history
 /.fehbg
 /.plus1_blacklist.txt
+/.viminfo
 
 /.config/discord
 /.config/pulse
