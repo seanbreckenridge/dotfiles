@@ -1,0 +1,2 @@
+rofi.modi:       window,run 
+rofi.theme:      solarized-darker
