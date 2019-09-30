@@ -49,6 +49,7 @@ is through modifying it on github, and then `yadm pull`.
 
 Unless where attributed, any customization and any scripts are licensed under the MIT License:
 
+```
 MIT License
 
 Copyright (c) 2019 Sean Breckenridge
@@ -70,3 +71,4 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+```
