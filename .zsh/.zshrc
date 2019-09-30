@@ -1,5 +1,10 @@
 # Additional/non-zsh alias/path/function/config
 
+# Change npm install dir from /usr/local/bin (which requires sudo)
+# ~/.npmrc should have the contents:  `prefix=${HOME}/.npm-packages`
+NPM_PACKAGES="${HOME}/.npm-packages"
+NODE_PATH="${NPM_PACKAGES}/lib/node_modules:${NODE_PATH}"
+
 # Path manipulations for user scripts and package manager (pip, npm, cargo) bin dirs
 # User compiled binaries are copied to /usr/local/bin
 PATH="\
@@ -58,10 +63,6 @@ alias printer_server='sudo cat /etc/cups/cupsd.conf | grep -i "Listen localhost"
 # app specific init
 eval $(thefuck --alias)
 kitty +complete setup zsh | source /dev/stdin
-# Change npm install dir from /usr/local/bin (which requires sudo)
-# ~/.npmrc should have the contents:  `prefix=${HOME}/.npm-packages`
-NPM_PACKAGES="${HOME}/.npm-packages"
-NODE_PATH="${NPM_PACKAGES}/lib/node_modules:${NODE_PATH}"
 # powerline
 powerline-daemon -q
 source /usr/lib/python3.7/site-packages/powerline/bindings/zsh/powerline.zsh
