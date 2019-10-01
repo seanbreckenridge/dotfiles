@@ -22,7 +22,7 @@ Packages can be added to the `.txt` files manually, and then `yadm bootstrap` ca
     yadm clone https://github.com/seanbreckenridge/dotfiles
     yadm bootstrap
 
-##### yadm with a README.md
+##### yadm README
 
 Since yadm acts directly on the `$HOME` directory instead of symlinking,
 in order to have a README for this repo without polluting `$HOME` with a `README.md`
