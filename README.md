@@ -3,7 +3,7 @@
 - zsh ([oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh)), [antigen](https://github.com/zsh-users/antigen) for autocompletion/highlighting, powerline defaults as 'theme'
 - [i3-gaps](https://github.com/Airblader/i3)
 - [yadm](https://yadm.io) to manage dotfiles
-- [kitty](https://sw.kovidgoyal.net/kitty/index.html) for terminal
+- [kitty](https://sw.kovidgoyal.net/kitty/index.html) for terminal (+colors)
 - [compton](https://github.com/yshui/compton) for compositing - translucent windows
 - firefox
 - [rofi](https://github.com/davatorium/rofi) with [solarized-darker](https://github.com/davatorium/rofi-themes/blob/master/User%20Themes/solarized-darker.rasi)
