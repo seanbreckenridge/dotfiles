@@ -27,6 +27,7 @@ zsh_aliases
 /.lesshst
 /.bash_history
 /.python_history
+/.ghc/ghci_history
 /.fehbg
 /.plus1_blacklist.txt
 /.viminfo

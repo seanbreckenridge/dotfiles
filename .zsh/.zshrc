@@ -26,11 +26,8 @@ export MANPATH
 source /usr/share/zsh/share/antigen.zsh
 antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle command-not-found
-antigen theme denysdovhan/spaceship-prompt
+antigen bundle zsh-users/zsh-autosuggestions
 antigen apply
-
-# zsh theme
-ZSH_THEME="spaceship"
 
 # some completion features from: https://gist.github.com/LukeSmithxyz/e62f26e55ea8b0ed41a65912fbebbe52
 autoload -Uz compinit  # zsh tab completion

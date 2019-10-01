@@ -1,8 +1,14 @@
 # dotfiles
 
-Work in progress dotfiles for arch [i3-gaps].
-
-Uses [yadm](https://yadm.io) to manage dotfiles.
+- zsh ([oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh)), [antigen](https://github.com/zsh-users/antigen) for autocompletion/highlighting, powerline defaults as 'theme'
+- [i3-gaps](https://github.com/Airblader/i3)
+- [yadm](https://yadm.io) to manage dotfiles
+- [kitty](https://sw.kovidgoyal.net/kitty/index.html) for terminal
+- [compton](https://github.com/yshui/compton) for compositing - translucent windows
+- firefox
+- [rofi](https://github.com/davatorium/rofi) with [solarized-darker](https://github.com/davatorium/rofi-themes/blob/master/User%20Themes/solarized-darker.rasi)
+- [nvim](https://neovim.io/)
+- grub-customizer [starfield](https://github.com/shlevy/grub/tree/master/themes/starfield) boot theme (replaced image with more sensible pixel art)
 
 [.yadm](./.yadm) includes lists of packages for pacman/yay, python, and npm.
 
@@ -11,14 +17,12 @@ Packages can be added to the `.txt` files manually, and then `yadm bootstrap` ca
 [bin/README.md](./bin/README.md) has a summary of each script in bin.
 
 
-## Install
+### Install
 
-```
-yadm clone https://github.com/seanbreckenridge/dotfiles
-yadm bootstrap
-```
+    yadm clone https://github.com/seanbreckenridge/dotfiles
+    yadm bootstrap
 
-#### yadm with a README.md
+##### yadm with a README.md
 
 Since yadm acts directly on the `$HOME` directory instead of symlinking,
 in order to have a README for this repo without polluting `$HOME` with a `README.md`

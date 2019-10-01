@@ -65,3 +65,7 @@ powerline
 powerline-fonts
 antigen-git
 pandoc
+ranger
+ghc
+ghc-libs
+grub-customizer
