@@ -86,6 +86,3 @@ export READER='zathura'
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
-
-# temporary prompt
-PS1="> "

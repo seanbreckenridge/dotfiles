@@ -3,7 +3,7 @@
 - zsh ([oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh)), [antigen](https://github.com/zsh-users/antigen) for autocompletion/highlighting, powerline defaults as 'theme'
 - [i3-gaps](https://github.com/Airblader/i3)
 - [yadm](https://yadm.io) to manage dotfiles
-- [kitty](https://sw.kovidgoyal.net/kitty/index.html) for terminal (+colors)
+- [kitty](https://sw.kovidgoyal.net/kitty/index.html) for terminal
 - [compton](https://github.com/yshui/compton) for compositing - translucent windows
 - firefox
 - [rofi](https://github.com/davatorium/rofi) with [solarized-darker](https://github.com/davatorium/rofi-themes/blob/master/User%20Themes/solarized-darker.rasi)
@@ -22,36 +22,9 @@ Packages can be added to the `.txt` files manually, and then `yadm bootstrap` ca
     yadm clone https://github.com/seanbreckenridge/dotfiles
     yadm bootstrap
 
-##### yadm README
-
-Since yadm acts directly on the `$HOME` directory instead of symlinking,
-in order to have a README for this repo without polluting `$HOME` with a `README.md`
-file, this uses hooks located at [.yadm/hooks](.yadm/hooks) to temporarily copy
-the `README.md` to `$HOME` while commiting, and then deleting it afterwards.
-
-Theres another hook that moves `~/README.md` to `~/.yadm/README.md` `post-merge`, so that
-README changes done through the web interface stay updated locally.
-
-As long as you're on `git>=2.9`, you can use `core.hooksPath` to change the hooks dir.
-
-After cloning, that can be setup by doing:
-
-```
-yadm gitconfig core.hooksPath ~/.yadm/hooks
-```
-
-Then, by editing the README at `~/.yadm/README.md` locally, 
-it gets added automatically to the next commit.
-
-This does have the downside of not being able to commit README changes directly, and
-there are some edge cases, but it works for its intended purpose.
-
-The easiest way to edit the README directly (without attaching it to another commit)
-is through modifying it on github, and then `yadm pull`.
-
 #### LICENSE
 
-Unless where attributed, any customization and any scripts are licensed under the MIT License:
+Unless where attributed, any customization and scripts are licensed under the MIT License:
 
 ```
 MIT License
