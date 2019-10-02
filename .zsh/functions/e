@@ -1,4 +1,4 @@
-# Open a file with your defualt editor
+# Open a file with your default editor
 # If no files are supplied, opens the current directory
 
 function e() {
@@ -8,4 +8,3 @@ function e() {
     $EDITOR "$@"
   fi
 }
-
