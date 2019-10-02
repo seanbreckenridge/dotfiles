@@ -2,5 +2,5 @@
 # e.g. 09_27_19.md
 
 function create_notes() {
-    touch "$(usdate --underscores).md"
+    touch "$(date +"%m_%d_%Y").md"
 }
