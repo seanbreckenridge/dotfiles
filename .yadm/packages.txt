@@ -87,3 +87,7 @@ xorg-fonts-encodings
 xorg-fonts-misc
 xorg-fonts-type1
 xorg-font-util
+tk
+scrot
+toilet
+megasync
