@@ -5,9 +5,10 @@
 - [yadm](https://yadm.io) to manage dotfiles
 - [kitty](https://sw.kovidgoyal.net/kitty/index.html) for terminal (+colors)
 - [compton](https://github.com/yshui/compton) for compositing - translucent windows
-- firefox
+- [firefox](https://www.archlinux.org/packages/extra/x86_64/firefox/)
 - [rofi](https://github.com/davatorium/rofi) with [solarized-darker](https://github.com/davatorium/rofi-themes/blob/master/User%20Themes/solarized-darker.rasi)
 - [nvim](https://neovim.io/)
+- [i3lock-fancy](https://github.com/meskarune/i3lock-fancy) for screen locking
 
 [.yadm](./.yadm) includes lists of packages for pacman/yay, python, and npm.
 
