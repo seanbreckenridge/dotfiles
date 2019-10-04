@@ -24,7 +24,7 @@ exec --no-startup-id compton -b
 exec --no-startup-id feh --randomize --bg-fill "${HOME}"/Pictures/wallpapers/*
 
 # Disable touchpad 
-# exec --no-startup-id ~/.configbin/touchpad disable
+# exec --no-startup-id ~/.scripts/touchpad disable
 
 # Bind brightness keys
 # This required fiddling with the /sys/class/baclight/amdgpu_b10 file permissions
@@ -35,10 +35,10 @@ bindsym XF86MonBrightnessDown exec --no-startup-id light -U $brightness_step
 
 # Bind $mod+Brightness keys to transparency toggle
 # Uses compton-trans to set the transparency to 100/85% (same as active/inactive)
-# This "breaks" inactive transparency for that tile, but that can be fixed by deleting/re-creating
+# This "breaks" inactive transparency for that tile, but that can be fixed by reloading i3 ($mod+Shift+R)
 # Doesn't typically affect use case as transparency for an unfocused firefox/mpv is set permanently
-bindsym $mod+XF86MonBrightnessUp exec --no-startup-id ~/.configbin/transparent enable target
-bindsym $mod+XF86MonBrightnessDown exec --no-startup-id ~/.configbin/transparent disable target
+bindsym $mod+XF86MonBrightnessUp exec --no-startup-id ~/.scripts/transparent enable target
+bindsym $mod+XF86MonBrightnessDown exec --no-startup-id ~/.scripts/transparent disable target
 
 # Use pactl to adjust volume in PulseAudio.
 set $volume_step 5
@@ -49,7 +49,7 @@ bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ to
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 
 # bind key to toggle (enable/disable) the touchpad
-bindsym $mod+Shift+t exec --no-startup-id ~/.configbin/touchpad
+bindsym $mod+Shift+t exec --no-startup-id ~/.scripts/touchpad
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -99,10 +99,10 @@ bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
 # resize windows - keys above "vim arrow" keys
-bindsym $mod+Shift+y exec --no-startup-id ~/.configbin/i3resize left
-bindsym $mod+Shift+u exec --no-startup-id ~/.configbin/i3resize down
-bindsym $mod+Shift+i exec --no-startup-id ~/.configbin/i3resize up
-bindsym $mod+Shift+o exec --no-startup-id ~/.configbin/i3resize right
+bindsym $mod+Shift+y exec --no-startup-id ~/.scripts/i3resize left
+bindsym $mod+Shift+u exec --no-startup-id ~/.scripts/i3resize down
+bindsym $mod+Shift+i exec --no-startup-id ~/.scripts/i3resize up
+bindsym $mod+Shift+o exec --no-startup-id ~/.scripts/i3resize right
 
 # split in horizontal orientation
 bindsym $mod+Shift+z split h

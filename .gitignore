@@ -75,6 +75,8 @@ zsh_aliases
 /.minecraft
 /.yadm/repo.git
 /.thunderbird
+/.PyCharm*
+/.aspell*
 /.ssh
 /.m2
 /.node-gyp

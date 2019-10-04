@@ -107,6 +107,8 @@ while read -r npkg; do
 	fi
 done <"${HOME}/.yadm/global_node_packages.txt"
 
+npm update -g
+
 # Check services
 echo "Checking if default services are running..."
 # CUPS and avahi are for printing

@@ -11,7 +11,7 @@ PATH="\
 ${HOME}/bin:\
 ${HOME}/.local/bin:\
 ${NPM_PACKAGES}/bin:\
-${HOME}/.configbin:\
+${HOME}/.scripts:\
 ${PATH}"
 export PATH
 
@@ -46,6 +46,8 @@ done
 alias reboot="sudo systemctl reboot"
 alias poweroff="sudo systemctl poweroff"
 alias halt="sudo systemctl halt"
+alias du="du -h"
+alias df="df -h"
 
 # Non-standard
 alias dotfiles='yadm gitconfig --get remote.origin.url | python3 -c "from giturlparse import parse; from webbrowser import open_new_tab; open_new_tab(parse(input()).urls[\"https\"])"'
