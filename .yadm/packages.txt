@@ -95,3 +95,4 @@ unarchiver
 pycharm-community-edition
 aspell
 aspell-en
+i3lock-fancy-git
