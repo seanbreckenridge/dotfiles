@@ -8,7 +8,6 @@
 - firefox
 - [rofi](https://github.com/davatorium/rofi) with [solarized-darker](https://github.com/davatorium/rofi-themes/blob/master/User%20Themes/solarized-darker.rasi)
 - [nvim](https://neovim.io/)
-- grub-customizer [starfield](https://github.com/shlevy/grub/tree/master/themes/starfield) boot theme (replaced image with more sensible pixel art)
 
 [.yadm](./.yadm) includes lists of packages for pacman/yay, python, and npm.
 
