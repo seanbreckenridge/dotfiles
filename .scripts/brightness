@@ -1,0 +1,16 @@
+#!/bin/sh
+# increases/decreases brightness and refreshes i3blocks
+# call like:
+# brightness up 5
+# brightness down 10
+
+case $1 in
+up)
+	light -A "$2"
+	;;
+down)
+	light -U "$2"
+	;;
+esac
+
+pkill -RTMIN+10 i3blocks

@@ -10,6 +10,12 @@ command="${HOME}/.config/i3blocks/blocks/volume"
 signal=1
 interval=once
 
+[brightness]
+command=light | cut -d"." -f1 | awk '{print $0 "%"}'
+interval=once
+signal=10
+label=🔆
+
 [battery]
 command="${HOME}/.config/i3blocks/blocks/battery" BAT0
 interval=4
