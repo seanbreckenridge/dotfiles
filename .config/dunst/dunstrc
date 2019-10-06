@@ -1,9 +1,9 @@
-# https://github.com/LukeSmithxyz/voidrice/blob/archi3/.config/dunst/dunstrc
+# Modified from: https://github.com/LukeSmithxyz/voidrice/blob/archi3/.config/dunst/dunstrc
 
 [global]
     monitor = 0
     follow = keyboard
-    geometry = "350x5-0+24"
+    geometry = "250x5-30+30"
     indicate_hidden = yes
     shrink = yes
     transparency = 20
