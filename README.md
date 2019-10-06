@@ -1,14 +1,16 @@
 # dotfiles
 
 - zsh ([oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh)), [antigen](https://github.com/zsh-users/antigen) for autocompletion/highlighting, powerline defaults as 'theme'
-- [i3-gaps](https://github.com/Airblader/i3)
+- [i3-gaps](https://github.com/Airblader/i3) - window manager
 - [yadm](https://yadm.io) to manage dotfiles
 - [kitty](https://sw.kovidgoyal.net/kitty/index.html) for terminal (+colors)
 - [compton](https://github.com/yshui/compton) for compositing - translucent windows
-- [firefox](https://www.archlinux.org/packages/extra/x86_64/firefox/)
+- [firefox](https://wiki.archlinux.org/index.php/firefox)
 - [rofi](https://github.com/davatorium/rofi) with [solarized-darker](https://github.com/davatorium/rofi-themes/blob/master/User%20Themes/solarized-darker.rasi)
-- [nvim](https://neovim.io/)
+- [nvim](https://neovim.io/) as editor
 - [i3lock-fancy](https://github.com/meskarune/i3lock-fancy) for screen locking
+- [dunst](https://dunst-project.org/) for notificaitons
+- [i3blocks](https://github.com/vivien/i3blocks) - status bar
 
 [.yadm](./.yadm) includes lists of packages for pacman/yay, python, and npm.
 
