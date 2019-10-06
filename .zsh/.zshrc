@@ -52,6 +52,7 @@ alias df="df -h"
 # Non-standard
 alias dotfiles='yadm gitconfig --get remote.origin.url | python3 -c "from giturlparse import parse; from webbrowser import open_new_tab; open_new_tab(parse(input()).urls[\"https\"])"'
 alias printer_server='sudo cat /etc/cups/cupsd.conf | grep -i "Listen localhost" | cut -d":" -f 2 | xargs -I {} $BROWSER "localhost:{}"'
+alias speed='speedtest --simple | tail -n 2'
 
 # Shorthands
 [[ -f ~/.zsh/shorthands ]] && source ~/.zsh/shorthands
