@@ -81,6 +81,7 @@ ttf-freefont
 ttf-liberation
 ttf-ms-fonts
 ttf-oxygen
+ttf-joypixels
 xorg-fonts-75dpi
 xorg-fonts-alias
 xorg-fonts-cyrillic
@@ -97,3 +98,5 @@ pycharm-community-edition
 aspell
 aspell-en
 i3lock-fancy-git
+pamixer
+sysstat

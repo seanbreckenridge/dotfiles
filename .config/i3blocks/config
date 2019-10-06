@@ -1,0 +1,22 @@
+seperator_block_width=15
+markup=pango
+
+[weather]
+command="${HOME}/.config/i3blocks/blocks/weather"
+interval=3600
+
+[volume]
+command="${HOME}/.config/i3blocks/blocks/volume"
+signal=1
+interval=once
+
+[battery]
+command="${HOME}/.config/i3blocks/blocks/battery" BAT0
+interval=5
+
+[clock]
+command="${HOME}/.config/i3blocks/blocks/clock"
+interval=10
+
+[help]
+interval=once

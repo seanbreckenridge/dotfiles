@@ -1,0 +1,16 @@
+#!/bin/sh
+# https://github.com/LukeSmithxyz/voidrice/blob/archi3/.local/bin/statusbar/volume
+
+[ $(pamixer --get-mute) = "true" ] && printf "🔇\\n" && exit
+
+vol=$(pamixer --get-volume | tr -d "\n")
+
+if [ "$vol" -gt "70" ]; then
+	icon="🔊"
+elif [ "$vol" -lt "30" ]; then
+	icon="🔈"
+else
+	icon="🔉"
+fi
+
+printf "%s %s%%\\n" "$icon" "$vol"
