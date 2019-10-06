@@ -18,5 +18,9 @@ interval=5
 command="${HOME}/.config/i3blocks/blocks/clock"
 interval=10
 
+[ssid]
+command="${HOME}/.config/i3blocks/blocks/ssid"
+interval=10
+
 [help]
 interval=once
