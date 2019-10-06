@@ -21,12 +21,12 @@ command="${HOME}/.config/i3blocks/blocks/battery" BAT0
 interval=4
 
 [clock]
-command="${HOME}/.config/i3blocks/blocks/clock"
+command=date '+%b %d (%a) %I:%M%p'
 interval=10
 
 [ssid]
-command="${HOME}/.config/i3blocks/blocks/ssid"
-interval=10
+command=iwgetid -r
+interval=60
 
 [help]
 interval=once
