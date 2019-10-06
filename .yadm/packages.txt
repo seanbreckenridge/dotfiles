@@ -100,3 +100,4 @@ aspell-en
 i3lock-fancy-git
 pamixer
 sysstat
+neofetch
