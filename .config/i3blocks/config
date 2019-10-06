@@ -12,7 +12,7 @@ interval=once
 
 [battery]
 command="${HOME}/.config/i3blocks/blocks/battery" BAT0
-interval=5
+interval=4
 
 [clock]
 command="${HOME}/.config/i3blocks/blocks/clock"
