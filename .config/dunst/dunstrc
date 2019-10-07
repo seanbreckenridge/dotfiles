@@ -9,7 +9,7 @@
     transparency = 20
     notification_height = 0
     separator_height = 2
-    padding = 25 
+    padding = 5
     horizontal_padding = 8
     frame_width = 3
     frame_color = "#282828"

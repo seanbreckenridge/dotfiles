@@ -101,3 +101,4 @@ i3lock-fancy-git
 pamixer
 sysstat
 neofetch
+maim

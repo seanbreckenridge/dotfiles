@@ -84,6 +84,7 @@ zsh_aliases
 /.runelite
 /.npm
 /.npm-packages
+/.mal-id-cache
 
 /.local/lib/python*
 /.local/bin

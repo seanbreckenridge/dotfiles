@@ -1,0 +1,4 @@
+#!/bin/sh
+# Lock the screen
+
+i3lock-fancy -pgt "" --nofork
