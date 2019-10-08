@@ -25,6 +25,7 @@ matplotlib
 ndg-httpsclient
 numpy
 oauth2client
+pandas
 Pillow
 pipenv
 prettytable
