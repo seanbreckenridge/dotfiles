@@ -102,3 +102,4 @@ pamixer
 sysstat
 neofetch
 maim
+steam
