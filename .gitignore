@@ -52,6 +52,7 @@ zsh_aliases
 /.config/gtk-*
 /.config/configstore
 /.config/menus/
+/.config/okularrc
 
 /.atom/compile-cache
 /.atom/blob-store
