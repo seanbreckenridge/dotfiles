@@ -35,7 +35,7 @@ exec --no-startup-id dunst
 # Bind brightness keys
 # This required fiddling with the /sys/class/backlight/amdgpu_b10 file permissions
 # and giving myself the 'video' group
-set $brightness_step 3 # rate at which to increase/decrease brightness
+set $brightness_step 2 # rate at which to increase/decrease brightness
 bindsym XF86MonBrightnessUp exec --no-startup-id ~/.scripts/brightness up $brightness_step
 bindsym XF86MonBrightnessDown exec --no-startup-id ~/.scripts/brightness down $brightness_step
 
@@ -75,10 +75,6 @@ bindsym $mod+d exec --no-startup-id rofi -show window
 
 # take a screenshot
 bindsym --release Print exec --no-startup-id maim -s "$(date +%s).png"
-
-# remove Caps Lock functionality and rebind caps lock to Escape
-execalways --no-startup-id xmodmap -e "clear lock"
-execalways --no-startup-id xmodmap -e "keysym Caps_Lock = Escape"
 
 # gaps config
 for_window [class=".*"] border pixel 0
