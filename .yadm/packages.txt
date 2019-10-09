@@ -53,7 +53,6 @@ kitty
 cmatrix
 compton
 shellcheck-static
-zathura
 checkbashisms
 dash
 dashbinsh
@@ -103,3 +102,4 @@ sysstat
 neofetch
 maim
 steam
+okular
