@@ -82,8 +82,10 @@ zsh_aliases
 /.node-gyp
 /.java
 /.runelite
+/.steam*
 /.npm
 /.npm-packages
+/.config/composer/.htaccess
 /.mal-id-cache
 
 /.local/lib/python*
