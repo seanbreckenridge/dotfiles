@@ -42,6 +42,8 @@ done
 
 # Aliases
 
+alias ls='ls -h'
+
 # Standard
 alias reboot="sudo systemctl reboot"
 alias poweroff="sudo systemctl poweroff"
