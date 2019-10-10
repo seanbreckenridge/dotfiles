@@ -56,7 +56,7 @@ alias dotfiles='yadm gitconfig --get remote.origin.url | python3 -c "from giturl
 alias printer_server='sudo cat /etc/cups/cupsd.conf | grep -i "Listen localhost" | cut -d":" -f 2 | xargs -I {} $BROWSER "localhost:{}"' # open localhost printer console
 alias speed='speedtest --simple | tail -n 2'  # shorthand speedtest
 alias icat="kitty +kitten icat" # for printing images in the terminal
-alias usb_mount='echo -e "use fdisk/lsblk -f to print UUID"; sudo ldm -u $(whoami)' # start the ldm (light device mounter) daemon, to mount usb/harddrives
+alias usb_mount='echo -e "use lsblk -f to view disk IDs, umount -l /dev/sdxx to unmount"; sudo ldm -u $(whoami)' # start the ldm (light device mounter) daemon, to mount usb/harddrives
 alias drive_mount='usb_mount'
 
 # Shorthands
