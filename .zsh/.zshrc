@@ -42,7 +42,7 @@ done
 
 # Aliases
 
-alias ls='ls -h'
+alias ls='ls -h --color=tty'
 
 # Standard
 alias reboot="sudo systemctl reboot"
@@ -52,10 +52,12 @@ alias du="du -h"
 alias df="df -h"
 
 # Non-standard
-alias dotfiles='yadm gitconfig --get remote.origin.url | python3 -c "from giturlparse import parse; from webbrowser import open_new_tab; open_new_tab(parse(input()).urls[\"https\"])"'
-alias printer_server='sudo cat /etc/cups/cupsd.conf | grep -i "Listen localhost" | cut -d":" -f 2 | xargs -I {} $BROWSER "localhost:{}"'
-alias speed='speedtest --simple | tail -n 2'
-alias icat="kitty +kitten icat"
+alias dotfiles='yadm gitconfig --get remote.origin.url | python3 -c "from giturlparse import parse; from webbrowser import open_new_tab; open_new_tab(parse(input()).urls[\"https\"])"' # open dotfiles repo
+alias printer_server='sudo cat /etc/cups/cupsd.conf | grep -i "Listen localhost" | cut -d":" -f 2 | xargs -I {} $BROWSER "localhost:{}"' # open localhost printer console
+alias speed='speedtest --simple | tail -n 2'  # shorthand speedtest
+alias icat="kitty +kitten icat" # for printing images in the terminal
+alias usb_mount='echo -e "use fdisk/lsblk -f to print UUID"; sudo ldm -u $(whoami)' # start the ldm (light device mounter) daemon, to mount usb/harddrives
+alias drive_mount='usb_mount'
 
 # Shorthands
 [[ -f ~/.zsh/shorthands ]] && source ~/.zsh/shorthands
