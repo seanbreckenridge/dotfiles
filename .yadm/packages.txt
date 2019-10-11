@@ -106,3 +106,5 @@ steam
 okular
 gparted
 ldm
+rxvt-unicode
+redis
