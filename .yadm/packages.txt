@@ -28,7 +28,6 @@ thunar
 thunderbird
 hub
 reflector
-youtube-dl
 neovim
 mpv
 chromium
