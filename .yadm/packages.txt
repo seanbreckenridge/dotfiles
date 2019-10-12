@@ -13,7 +13,6 @@ pulseaudio
 zsh
 xorg-server
 rofi
-ttf-iosevka
 feh
 firefox
 gnome-keyring
@@ -69,6 +68,7 @@ ranger
 ghc
 ghc-libs
 grub-customizer
+adobe-source-code-pro-fonts
 adobe-source-han-sans-otc-fonts
 cantarell-fonts
 dina-font
@@ -107,3 +107,4 @@ gparted
 ldm
 rxvt-unicode
 redis
+simplescreenrecorder

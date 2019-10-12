@@ -17,10 +17,6 @@ for lib in $(cat "${HOME}/.yadm/packages.txt"); do
 	fi
 done
 
-if ! fc-list | grep -qi iosevka; then
-	echo -e "Iosevka (font) is not installed\!\nInstall it from the AUR: 'ttf-iosevka'"
-fi
-
 # Try to install oh-my-zsh
 if [[ ! -d ~/.oh-my-zsh ]]; then
 	echo 'Could not find oh-my-zsh installed at ~/.oh-my-zsh'
