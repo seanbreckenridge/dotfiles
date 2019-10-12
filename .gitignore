@@ -21,21 +21,6 @@ zsh_aliases
 
 # Top level files to ignore
 
-/.Xauthority
-/.xsession-errors*
-/.gitconfig
-/.lesshst
-/.bash_history
-/.python_history
-/.ghc/ghci_history
-/.fehbg
-/.plus1_blacklist.txt
-/.viminfo
-/.pulse-cookie
-
-/.local/etc/bash_completion.d
-/.local/etc/fish/completions
-
 /.config/mimeapps.list
 /.config/autostart
 /.config/cef_user_data
@@ -89,6 +74,17 @@ zsh_aliases
 /.aspell*
 /.ssh
 /.m2
+/.Xauthority
+/.xsession-errors*
+/.gitconfig
+/.lesshst
+/.bash_history
+/.python_history
+/.ghc/ghci_history
+/.fehbg
+/.plus1_blacklist.txt
+/.viminfo
+/.pulse-cookie
 /.node-gyp
 /.java
 /.runelite
@@ -102,6 +98,8 @@ zsh_aliases
 /.local/bin
 /.local/include
 /.local/share
+/.local/etc/bash_completion.d
+/.local/etc/fish/completions
 
 /code
 /Documents
