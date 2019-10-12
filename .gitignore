@@ -31,7 +31,15 @@ zsh_aliases
 /.fehbg
 /.plus1_blacklist.txt
 /.viminfo
+/.pulse-cookie
 
+/.local/etc/bash_completion.d
+/.local/etc/fish/completions
+
+/.config/mimeapps.list
+/.config/autostart
+/.config/cef_user_data
+/.config/neofetch
 /.config/discord
 /.config/pulse
 /.config/hub
@@ -72,6 +80,7 @@ zsh_aliases
 /.oh-my-zsh
 /.credentials
 /.cache
+/.keras
 /.mozilla
 /.minecraft
 /.yadm/repo.git
