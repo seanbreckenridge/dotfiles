@@ -21,13 +21,12 @@ itsdangerous
 jikanpy
 lxml
 matplotlib
-#mysqlclient
+mysqlclient
 ndg-httpsclient
 numpy
 oauth2client
 pandas
 Pillow
-pipenv
 prettytable
 prompt-toolkit
 prompt_toolkit

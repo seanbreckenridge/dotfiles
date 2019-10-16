@@ -5,6 +5,10 @@
 NPM_PACKAGES="${HOME}/.npm-packages"
 NODE_PATH="${NPM_PACKAGES}/lib/node_modules:${NODE_PATH}"
 
+# Python/Venv related
+export PYENV_ROOT="${HOME}/.pyenv"
+export PIPENV_PYTHON="${PYENV_ROOT}/shims/python"
+
 # Path manipulations for user scripts and package manager (pip, npm, cargo) bin dirs
 # User compiled binaries are copied to /usr/local/bin
 PATH="\
@@ -55,7 +59,6 @@ alias df="df -h"
 alias dotfiles='yadm gitconfig --get remote.origin.url | python3 -c "from giturlparse import parse; from webbrowser import open_new_tab; open_new_tab(parse(input()).urls[\"https\"])"' # open dotfiles repo
 alias printer_server='sudo cat /etc/cups/cupsd.conf | grep -i "Listen localhost" | cut -d":" -f 2 | xargs -I {} $BROWSER "localhost:{}"' # open localhost printer console
 alias speed='speedtest --simple | tail -n 2'  # shorthand speedtest
-alias icat="kitty +kitten icat" # for printing images in the terminal
 alias usb_mount='echo -e "use lsblk -f to view disk IDs, umount -l /dev/sdxx to unmount"; sudo ldm -u $(whoami)' # start the ldm (light device mounter) daemon, to mount usb/harddrives
 alias drive_mount='usb_mount'
 
@@ -67,7 +70,6 @@ alias drive_mount='usb_mount'
 
 # app specific init
 eval $(thefuck --alias)
-kitty +complete setup zsh | source /dev/stdin
 # powerline
 powerline-daemon -q
-source /usr/lib/python3.7/site-packages/powerline/bindings/zsh/powerline.zsh
+source /usr/lib/python*/site-packages/powerline/bindings/zsh/powerline.zsh

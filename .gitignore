@@ -56,8 +56,9 @@ zsh_aliases
 /.atom/github.cson
 /.atom/*socket*
 
+/.pyenv
 /.antigen
-/.pki/nssdb/
+/.pki/nssdb
 /.wget-hsts
 /.vim/.netrwhist
 /.gnome/apps
@@ -80,6 +81,7 @@ zsh_aliases
 /.lesshst
 /.bash_history
 /.python_history
+/.mysql_history
 /.ghc/ghci_history
 /.fehbg
 /.plus1_blacklist.txt

@@ -48,7 +48,7 @@ balena-etcher
 python-gobject
 go
 pacman-contrib
-kitty
+termite
 cmatrix
 compton
 shellcheck-static
@@ -108,3 +108,6 @@ ldm
 rxvt-unicode
 redis
 simplescreenrecorder
+python-pipenv
+elixir
+mariadb

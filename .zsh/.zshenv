@@ -81,7 +81,7 @@ export LC_ALL='en_US.UTF-8'
 
 export EDITOR='nvim'
 export PAGER='less'
-export TERMINAL='kitty'
+export TERMINAL='termite'
 export BROWSER='firefox'
 export READER='okular'
 
