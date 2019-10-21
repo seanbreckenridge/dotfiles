@@ -8,7 +8,7 @@ interval=1800
 [volume]
 command="${HOME}/.config/i3blocks/blocks/volume"
 signal=1
-interval=once
+interval=300
 
 [brightness]
 command=light | cut -d"." -f1 | awk '{print $0 "%"}'
