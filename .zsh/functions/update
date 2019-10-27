@@ -1,0 +1,9 @@
+# Update typically used packages
+
+function update() {
+	yay -Syu
+	yadm bootstrap
+	python3 -m pip list --outdated --format=freeze | cut -d"=" -f 1 | xargs -n1 python3 -m pip install --upgrade --user
+	antigen update
+	npm update -g --verbose
+}
