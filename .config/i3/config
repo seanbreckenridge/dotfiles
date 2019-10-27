@@ -179,6 +179,18 @@ bindsym $mod+Shift+0 move container to workspace number $ws10
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 
+bindsym $mod+Tab mode "$launcher"
+
+mode "$launcher" {
+    bindsym f exec firefox
+    bindsym t exec thunderbird
+    bindsym d exec discord
+    bindsym s exec slack
+    bindsym k exec keepassxc
+    bindsym Escape mode "default"
+    bindsym Return mode "default"
+}
+
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
