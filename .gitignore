@@ -56,6 +56,11 @@ zsh_aliases
 /.atom/github.cson
 /.atom/*socket*
 
+/.pythonanywhere*
+/.scramble_history.txt
+/.node_repl_history
+/.mix
+/.hex
 /.pyenv
 /.antigen
 /.pki/nssdb
@@ -90,6 +95,8 @@ zsh_aliases
 /.node-gyp
 /.java
 /.runelite
+/.vscode-oss
+/.cargo
 /.ssr
 /.steam*
 /.npm

@@ -1,7 +1,6 @@
 yadm-git
 python3
 python-pip
-python-tensorflow
 git
 rofi
 wget
@@ -65,8 +64,6 @@ powerline-fonts
 antigen-git
 pandoc
 ranger
-ghc
-ghc-libs
 grub-customizer
 adobe-source-code-pro-fonts
 adobe-source-han-sans-otc-fonts
@@ -111,3 +108,4 @@ simplescreenrecorder
 python-pipenv
 elixir
 mariadb
+rust

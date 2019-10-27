@@ -42,7 +42,6 @@ selenium
 setuptools
 speedtest-cli
 termcolor
-tensorflow
 thefuck
 toml
 xlrd
