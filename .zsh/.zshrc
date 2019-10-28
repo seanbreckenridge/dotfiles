@@ -33,6 +33,9 @@ antigen bundle command-not-found
 antigen bundle zsh-users/zsh-autosuggestions
 antigen apply
 
+# using antigen to install robbyrussel/oh-my-zsh might be nice for the auto updates
+# but it causes some weird circular dependencies that make installing it not nice
+
 # some completion features from: https://gist.github.com/LukeSmithxyz/e62f26e55ea8b0ed41a65912fbebbe52
 autoload -Uz compinit  # zsh tab completion
 zstyle ':completion:*' menu select  #  http://zsh.sourceforge.net/Guide/zshguide06.html

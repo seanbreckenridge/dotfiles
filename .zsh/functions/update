@@ -1,9 +1,15 @@
 # Update typically used packages
 
 function update() {
+	echo -e "Updating system (pacman/yay) packages..."
 	yay -Syu
 	yadm bootstrap
+	echo -e "Updating python packages..."
 	python3 -m pip list --outdated --format=freeze | cut -d"=" -f 1 | xargs -n1 python3 -m pip install --upgrade --user
+	echo -e "Updating zsh plugins..."
 	antigen update
+	echo -e "Updating oh-my-zsh..."
+	cd "$ZSH" && git pull --rebase
+	echo -e "Updating global npm packages..."
 	npm update -g --verbose
 }
