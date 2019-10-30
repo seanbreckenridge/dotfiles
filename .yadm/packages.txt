@@ -109,3 +109,4 @@ python-pipenv
 elixir
 mariadb
 rust
+figlet

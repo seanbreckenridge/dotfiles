@@ -56,6 +56,7 @@ zsh_aliases
 /.atom/github.cson
 /.atom/*socket*
 
+/.swipl-dir*
 /.pythonanywhere*
 /.scramble_history.txt
 /.node_repl_history
