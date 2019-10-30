@@ -51,7 +51,7 @@ if [[ ! -f ~/.zshenv ]]; then
 fi
 
 # Setting up default user directories
-default_user_dirs=("bin" "code" "Desktop" "Documents" "Downloads")
+default_user_dirs=("bin" "code" "Desktop" "Documents" "Downloads" ".local" ".cache" ".credentials")
 
 for d_name in "${default_user_dirs[@]}"; do
 	if [[ ! -d "${HOME}/${d_name}" ]]; then
