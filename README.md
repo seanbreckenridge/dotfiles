@@ -12,7 +12,7 @@
 - [dunst](https://dunst-project.org/) for notificaitons
 - [i3blocks](https://github.com/vivien/i3blocks) - status bar
 
-[.yadm](./.yadm) includes lists of packages for pacman/yay, python, and npm.
+[.config/yadm](./.config/yadm) includes lists of packages for pacman/yay, python, and npm.
 
 Packages can be added to the `.txt` files manually, and then `yadm bootstrap` can be run repeatedely to make sure everything is installed.
 

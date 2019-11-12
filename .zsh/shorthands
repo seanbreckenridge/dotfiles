@@ -2,6 +2,7 @@
 
 alias ll='ls -l'
 alias la='ll -a'
+alias l.='ls -a'
 
 # commonly editor config files
 alias i3c='$EDITOR ~/.config/i3/config'
