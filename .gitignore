@@ -46,6 +46,7 @@ zsh_aliases
 /.config/configstore
 /.config/menus/
 /.config/okularrc
+/.config/yadm/repo.git
 
 /.atom/compile-cache
 /.atom/blob-store
@@ -75,7 +76,6 @@ zsh_aliases
 /.keras
 /.mozilla
 /.minecraft
-/.yadm/repo.git
 /.thunderbird
 /.PyCharm*
 /.aspell*

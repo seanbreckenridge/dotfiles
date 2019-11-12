@@ -3,6 +3,6 @@
 # post-commit moves the README.md back so as to not pollute $HOME
 
 cd "${HOME}"
-cp ~/.yadm/README.md ~/README.md
+cp ~/.config/yadm/README.md ~/README.md
 yadm add -f ~/README.md
 

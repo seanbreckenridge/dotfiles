@@ -7,8 +7,8 @@ if [[ ! $(command -v yay) ]]; then
 	exit 1
 fi
 
-echo "Checking ~/.yadm/packages.txt for any packages to install..."
-for lib in $(cat "${HOME}/.yadm/packages.txt"); do
+echo "Checking ~/.config/yadm/packages.txt for any packages to install..."
+for lib in $(cat "${HOME}/.config/yadm/packages.txt"); do
 	if [[ ! $(yay -Q "${lib}") ]]; then # if package isn't installed
 		read -p "Do you want to install '${lib}'? [Y/n] " -n 1 -r
 		if [[ ! $REPLY =~ ^[Nn]$ ]]; then # REPLY is automatically used as read variable
@@ -83,7 +83,7 @@ fi
 # Install python packages
 
 echo "Installing global python site-packages..."
-pip3 install -q --user -r ~/.yadm/python3_packages.txt
+pip3 install -q --user -r ~/.config/yadm/python3_packages.txt
 
 # speedtest installs 2 executable scripts
 # speedtest and speedtest-cli, which both have the same
@@ -101,7 +101,7 @@ while read -r npkg; do
 		echo -e "Installing ${npkg}"
 		npm install --global "${npkg}"
 	fi
-done <"${HOME}/.yadm/global_node_packages.txt"
+done <"${HOME}/.config/yadm/global_node_packages.txt"
 
 # Check services
 echo "Checking if default services are running..."

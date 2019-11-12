@@ -110,3 +110,5 @@ elixir
 mariadb
 rust
 figlet
+rebar3
+rebar3-zsh
