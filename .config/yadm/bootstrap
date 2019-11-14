@@ -83,7 +83,7 @@ fi
 # Install python packages
 
 echo "Installing global python site-packages..."
-pip3 install -q --user -r ~/.config/yadm/python3_packages.txt
+python3 -m pip install -q --user -r ~/.config/yadm/python3_packages.txt
 
 # speedtest installs 2 executable scripts
 # speedtest and speedtest-cli, which both have the same
