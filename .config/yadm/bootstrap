@@ -97,7 +97,7 @@ NPM_PKG_DIR="${HOME}/.npm-packages"
 echo -e "npm global package dir: ${NPM_PKG_DIR}"
 [[ ! -d "${NPM_PKG_DIR}" ]] && mkdir -p "${NPM_PKG_DIR}" && sudo chown -R "$(whoami)" "${NPM_PKG_DIR}"
 while read -r npkg; do
-	if ! find "$(npm root -g)" | grep -q "${npkg}"; then
+	if ! ls -1 "$(npm root -g)" | grep -q "${npkg}"; then
 		echo -e "Installing ${npkg}"
 		npm install --global "${npkg}"
 	fi
