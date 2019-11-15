@@ -43,8 +43,14 @@ bindsym XF86MonBrightnessDown exec --no-startup-id ~/.scripts/brightness down $b
 # Uses compton-trans to set the transparency to 100/85% (same as active/inactive)
 # This "breaks" inactive transparency for that tile, but that can be fixed by reloading i3 ($mod+Shift+R)
 # Doesn't typically affect use case as transparency for an unfocused firefox/mpv is set permanently
-bindsym $mod+XF86MonBrightnessUp exec --no-startup-id ~/.scripts/transparent enable target
-bindsym $mod+XF86MonBrightnessDown exec --no-startup-id ~/.scripts/transparent disable target
+
+# Highligted Window
+bindsym $mod+XF86MonBrightnessUp exec --no-startup-id ~/.scripts/transparent enable
+bindsym $mod+XF86MonBrightnessDown exec --no-startup-id ~/.scripts/transparent disable
+
+# Change mouse to target
+bindsym $mod+Shift+XF86MonBrightnessUp exec --no-startup-id ~/.scripts/transparent enable target
+bindsym $mod+Shift+XF86MonBrightnessDown exec --no-startup-id ~/.scripts/transparent disable target
 
 # Use pactl to adjust volume in PulseAudio.
 set $volume_step 5
