@@ -7,15 +7,15 @@
 
 if [ "$1" = "disable" ]; then
 	if [ "$2" = "target" ]; then
-		compton-trans -s 85
+		picom-trans -s 85
 	else
-		compton-trans -c 85
+		picom-trans -c 85
 	fi
 elif [ "$1" = "enable" ]; then
 	if [ "$2" = "target" ]; then
-		compton-trans -s 100
+		picom-trans -s 100
 	else
-		compton-trans -c 100
+		picom-trans -c 100
 	fi
 else
 	printf "You must specify either enable or disable\n"

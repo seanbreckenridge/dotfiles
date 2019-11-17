@@ -49,7 +49,7 @@ go
 pacman-contrib
 termite
 cmatrix
-compton
+picom
 shellcheck-static
 checkbashisms
 dash
@@ -112,3 +112,4 @@ rust
 figlet
 rebar3
 rebar3-zsh
+wasm-pack

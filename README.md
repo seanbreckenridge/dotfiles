@@ -4,7 +4,7 @@
 - [i3-gaps](https://github.com/Airblader/i3) - window manager
 - [yadm](https://yadm.io) to manage dotfiles
 - [termite](https://github.com/thestinger/termite) for terminal
-- [compton](https://github.com/yshui/compton) for compositing - translucent windows
+- [picom ](https://github.com/yshui/picom) for compositing - translucent windows
 - [firefox](https://wiki.archlinux.org/index.php/firefox)
 - [rofi](https://github.com/davatorium/rofi) with [solarized-darker](https://github.com/davatorium/rofi-themes/blob/master/User%20Themes/solarized-darker.rasi)
 - [nvim](https://neovim.io/) as editor

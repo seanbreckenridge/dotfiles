@@ -19,8 +19,8 @@ bindsym $mod+Escape exec --no-startup-id ~/.scripts/lock-screen
 # and nm-applet is a desktop environment-independent system tray GUI for it.
 exec --no-startup-id nm-applet
 
-# use compton for display compositing
-exec --no-startup-id compton -b
+# use picom for display compositing
+exec --no-startup-id picom -b
 
 # Use feh to choose a random picture from the ~/Pictures/wallpapers
 # directory to use as a wallpaper
@@ -40,7 +40,7 @@ bindsym XF86MonBrightnessUp exec --no-startup-id ~/.scripts/brightness up $brigh
 bindsym XF86MonBrightnessDown exec --no-startup-id ~/.scripts/brightness down $brightness_step
 
 # Bind $mod+Brightness keys to transparency toggle
-# Uses compton-trans to set the transparency to 100/85% (same as active/inactive)
+# Uses picom-trans to set the transparency to 100/85% (same as active/inactive)
 # This "breaks" inactive transparency for that tile, but that can be fixed by reloading i3 ($mod+Shift+R)
 # Doesn't typically affect use case as transparency for an unfocused firefox/mpv is set permanently
 
