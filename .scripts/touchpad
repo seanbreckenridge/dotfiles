@@ -6,7 +6,7 @@
 # See here for more: https://wiki.archlinux.org/index.php/Libinput
 #
 # Usage:
-#     touchpad [enable/disable]
+#     touchpad [enable|disable]
 # calling without any options toggles the touchpad
 
 tpad_name="$(xinput list --name-only | grep -i 'touchpad')"
