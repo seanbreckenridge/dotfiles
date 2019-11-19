@@ -1,6 +1,7 @@
 # Update typically used packages
 
 function update() {
+	START_TIME=$(date +%s)
 	echo -e "Updating system (pacman/yay) packages..."
 	yay -Syu
 	yadm bootstrap
@@ -11,4 +12,5 @@ function update() {
 	upgrade_oh_my_zsh
 	echo -e "Updating global npm packages..."
 	npm update -g --verbose
+	printf "Finished updates in %d seconds\n" $(echo -e "$(date +%s) - ${START_TIME}" | bc) | boxes -d shell -p t1l2b1r2
 }
