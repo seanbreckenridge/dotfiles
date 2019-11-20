@@ -13,4 +13,5 @@ function update() {
 	echo -e "Updating global npm packages..."
 	npm update -g --verbose
 	printf "Finished updates in %d seconds\n" $(echo -e "$(date +%s) - ${START_TIME}" | bc) | boxes -d shell -p t1l2b1r2
+	unset START_TIME
 }
