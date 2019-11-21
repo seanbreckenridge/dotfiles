@@ -114,3 +114,4 @@ rebar3
 rebar3-zsh
 wasm-pack
 boxes
+mypy
