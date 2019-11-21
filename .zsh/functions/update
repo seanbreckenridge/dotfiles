@@ -1,6 +1,7 @@
 # Update typically used packages
 
 function update() {
+	wait-for-internet --text "(waiting for internet)"
 	START_TIME=$(date +%s)
 	echo -e "Updating system (pacman/yay) packages..."
 	yay -Syu
