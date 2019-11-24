@@ -64,6 +64,7 @@ alias printer_server='sudo cat /etc/cups/cupsd.conf | grep -i "Listen localhost"
 alias speed='speedtest --simple | tail -n 2'  # shorthand speedtest
 alias usb_mount='echo -e "use lsblk -f to view disk IDs, umount -l /dev/sdxx to unmount"; sudo ldm -u $(whoami)' # start the ldm (light device mounter) daemon, to mount usb/harddrives
 alias drive_mount='usb_mount'
+alias remove_orphans='sudo pacman -Rns $(pacman -Qtdq)'  # remove packages that arent being used for anything
 
 # Shorthands
 [[ -f ~/.zsh/shorthands ]] && source ~/.zsh/shorthands
