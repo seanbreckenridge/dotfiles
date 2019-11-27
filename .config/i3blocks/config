@@ -1,9 +1,9 @@
 seperator_block_width=15
 markup=pango
 
-[weather]
-command="${HOME}/.config/i3blocks/blocks/weather"
-interval=1800
+# [weather]
+# command="${HOME}/.config/i3blocks/blocks/weather"
+# interval=1800
 
 [volume]
 command="${HOME}/.config/i3blocks/blocks/volume"
