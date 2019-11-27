@@ -188,7 +188,7 @@ bindsym $mod+Shift+r restart
 bindsym $mod+Tab mode "launcher"
 
 mode "launcher" {
-    bindsym f exec firefox
+    bindsym f exec firefox-developer-edition
     bindsym t exec thunderbird
     bindsym d exec discord
     bindsym s exec slack

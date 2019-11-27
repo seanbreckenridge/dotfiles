@@ -13,7 +13,7 @@ zsh
 xorg-server
 rofi
 feh
-firefox
+firefox-developer-edition
 gnome-keyring
 i3-gaps
 htop
