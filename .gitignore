@@ -61,6 +61,7 @@ zsh_aliases
 /.pythonanywhere*
 /.scramble_history.txt
 /.node_repl_history
+/.sqlite_history
 /.mix
 /.hex
 /.pyenv
