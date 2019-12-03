@@ -5,10 +5,17 @@ markup=pango
 # command="${HOME}/.config/i3blocks/blocks/weather"
 # interval=1800
 
+
+# entr in ~/.config/i3/config refreshes this when the file changes
+[todo]
+command="${HOME}/.config/i3blocks/blocks/todo"
+interval=once
+signal=2
+
 [volume]
 command="${HOME}/.config/i3blocks/blocks/volume"
 signal=1
-interval=300
+interval=300 # incase headphones are plugged in
 
 [brightness]
 command=light | cut -d"." -f1 | awk '{print $0 "%"}'

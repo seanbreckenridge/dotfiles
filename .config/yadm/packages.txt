@@ -116,3 +116,4 @@ wasm-pack
 boxes
 mypy
 todotxt-git
+entr

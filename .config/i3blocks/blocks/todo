@@ -1,0 +1,10 @@
+#!/bin/sh
+# Lists the number of todos using todo.txt
+
+TODO_COUNT=$(wc -l "${HOME}/.todo/todo.txt" | cut -d" " -f1)
+
+if [ "$TODO_COUNT" -gt "0" ]; then
+  printf "%d📝\\n" "$TODO_COUNT"
+else
+  printf "%d✅\\n" "$TODO_COUNT"
+fi
