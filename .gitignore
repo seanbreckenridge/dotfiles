@@ -9,7 +9,7 @@ __pycache__
 
 # zsh
 
-.zshenv
+/.zshenv
 *zsh_history
 zsh_aliases
 .zcompdump*

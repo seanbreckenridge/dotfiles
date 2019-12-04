@@ -8,4 +8,3 @@ alias l.='ls -a'
 alias i3c='$EDITOR ~/.config/i3/config'
 alias zshc='$EDITOR "${ZDOTDIR}/.zshrc"'
 
-

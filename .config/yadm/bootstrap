@@ -45,9 +45,9 @@ for file in "${original_files[@]}"; do
 done
 
 echo 'Symlinking zshenv...'
-# ZDOTDIR is located at ~/.zsh
+# ZDOTDIR is located at ~/.config/zsh
 if [[ ! -f ~/.zshenv ]]; then
-	cd ~/.zsh && ln .zshenv ../.zshenv
+	cd ~/.config/zsh && ln .zshenv ${HOME}/.zshenv
 fi
 
 # Setting up default user directories

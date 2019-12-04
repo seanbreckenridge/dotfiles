@@ -4,7 +4,7 @@
 export DOTDIR="${HOME}"
 
 # rest of zsh dotfile configuration
-export ZDOTDIR="${DOTDIR}/.zsh"
+export ZDOTDIR="${HOME}/.config/zsh"
 
 # custom config files/plugins
 export ZSH_CUSTOM="${ZDOTDIR}/custom"
@@ -54,7 +54,7 @@ DISABLE_AUTO_UPDATE="true"
 
 ### HISTORY SETTINGS ###
 
-HISTFILE="${HOME}/.zsh/zsh_history"
+HISTFILE="${ZDOTDIR}/zsh_history"
 HISTSIZE=50000
 SAVEHIST=50000
 setopt appendhistory

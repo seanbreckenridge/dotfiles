@@ -67,10 +67,10 @@ alias drive_mount='usb_mount'
 alias remove_orphans='sudo pacman -Rns $(pacman -Qtdq)'  # remove packages that arent being used for anything
 
 # Shorthands
-[[ -f ~/.zsh/shorthands ]] && source ~/.zsh/shorthands
+[[ -f  "${ZDOTDIR}/shorthands" ]] && source "${ZDOTDIR}/shorthands"
 
 # Personal Aliases
-[[ -f ~/.zsh/zsh_aliases ]] && source ~/.zsh/zsh_aliases
+[[ -f "${ZDOTDIR}/zsh_aliases" ]] && source "${ZDOTDIR}/zsh_aliases"
 
 # app specific init
 eval $(thefuck --alias)

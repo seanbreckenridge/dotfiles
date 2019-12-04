@@ -1,5 +1,5 @@
 # Opens the zsh_alises file using your default editor
 
 function alias-edit() {
-   $EDITOR ~/.zsh/zsh_aliases
+   $EDITOR ~/.config/zsh/zsh_aliases
 }
