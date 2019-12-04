@@ -18,7 +18,6 @@ in seconds of files given on command line
 Example usage:
   average ~/Music/some_album/*
 
-
 ```
 
 ### [choose](./choose)

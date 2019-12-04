@@ -8,8 +8,7 @@ uses the duration script to get the average duration
 in seconds of files given on command line
 
 Example usage:
-  average ~/Music/some_album/*
-"
+  average ~/Music/some_album/*"
 
 if [ "$1" = "-h" ] || [ "$1" = "-help" ] || [ "$1" = "--help" ] || [ -z "$1" ]; then
 	echo "$usage"
