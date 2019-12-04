@@ -62,6 +62,10 @@ setopt appendhistory
 # History Control: Omit duplicate and commands that begin with a space
 export HISTCONTROL='ignoreboth';
 
+# Change ZSH_COMPDUMP location
+HOST_VER=$(uname -r)
+ZSH_COMPDUMP="${HOME}/.cache/zcompdump-${HOST_VER}-${ZSH_VERSION}"
+
 # Which plugins would you like to load?
 # Standard plugins can be found in ~/.oh-my-zsh/plugins/*
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
