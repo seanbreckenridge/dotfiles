@@ -35,10 +35,10 @@ case "$FILENAME" in
   *) printf "Unsuppoted file extension: %s\n" "$FILENAME" && exit 1;;
 esac
 
-MD_RENDER_START=$(date +%s)  # use unix time as an id
-OUTPUT_FILE_NAME="/tmp/${MD_RENDER_START}.pdf"
+RENDER_START=$(date +%s)  # use unix time as an id
+OUTPUT_FILE_NAME="/tmp/${RENDER_START}.pdf"
 pandoc -f "$PANDOC_TYPE" -t html5 "$FULL_PATH" -o "$OUTPUT_FILE_NAME" # do initial render
-$PDF_VIEWER "$OUTPUT_FILE_NAME" &  # open with okular as background process
+$PDF_VIEWER "$OUTPUT_FILE_NAME" &  # open with pdf viewer as background process
 trap 'kill $!' INT  # kill pdf viewer when script exits
 # when the file is changed/saved, re-render
 echo "$FULL_PATH" | entr pandoc -f "$PANDOC_TYPE" -t html5 "$FULL_PATH" -o "$OUTPUT_FILE_NAME"
