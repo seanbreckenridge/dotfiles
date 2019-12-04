@@ -141,7 +141,7 @@ it to a pdf, and opens it in a pdf viewer.
 Whenever the file changes, it re-compiles, and the
 pdf viewer loads the changed file from disk.
 This uses okular, which supports live-reloading
-requires: pandoc, wkhtmltopdf, pdflatex, entr, okular, realpath
+requires: pandoc, wkhtmltopdf, entr, okular, realpath
 ```
 
 ### [moviesearch](./moviesearch)

@@ -5,7 +5,7 @@
 # Whenever the file changes, it re-compiles, and the
 # pdf viewer loads the changed file from disk.
 # This uses okular, which supports live-reloading
-# requires: pandoc, wkhtmltopdf, pdflatex, entr, okular, realpath
+# requires: pandoc, wkhtmltopdf, entr, okular, realpath
 
 # can be changed to some other editor that supports live re-loading (e.g. zathura)
 PDF_VIEWER=okular
