@@ -44,7 +44,7 @@ for file in sorted(glob(f"{bin_dir}/**/*", recursive=True)):
 
     # my scripts that don't have docstrings/help have "#" connecting
     # the docstring to the shebang
-    if contents[0].startswith("#!/usr/bin/env") and contents[1].strip() == "#":
+    if contents[0].startswith("#!") and contents[1].strip() == "#":
         readme[relative_filename] = "\n".join(
             list(read_octothrope_readme(contents)))
         continue
