@@ -13,8 +13,8 @@ PDF_VIEWER=okular
 # make sure filename was passed
 if [ -z "$1" ]; then
   echo "You didn't pass a file to render as the first argument!"
-  echo "e.g. render-markup ~/Documents/notes.md"
-  echo "e.g. render-markup ~/Desktop/final-paper.tex"
+  echo "e.g. live-render ~/Documents/notes.md"
+  echo "e.g. live-render ~/Desktop/final-paper.tex"
   exit 1
 fi
 
