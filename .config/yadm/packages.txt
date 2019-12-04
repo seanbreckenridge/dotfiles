@@ -116,3 +116,5 @@ wasm-pack
 boxes
 mypy
 entr
+pdflatex
+wkhtmltopdf

@@ -135,6 +135,16 @@ Prints your git username and email for the current repository
 Used to manage repository specific credentials for different Github accounts
 ```
 
+### [live-render](./live-render)
+```
+takes a markdown/latex file as the first argument, converts
+it to a pdf, and opens it in a pdf viewer.
+Whenever the file changes, it re-compiles, and the
+pdf viewer loads the changed file from disk.
+This uses okular, which supports live-reloading
+requires: pandoc, wkhtmltopdf, pdflatex, entr, okular, realpath
+```
+
 ### [moviesearch](./moviesearch)
 ```
 Usage:
