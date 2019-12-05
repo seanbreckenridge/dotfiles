@@ -118,3 +118,4 @@ mypy
 entr
 wkhtmltopdf
 todotxt
+scala
