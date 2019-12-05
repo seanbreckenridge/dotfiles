@@ -10,10 +10,11 @@ __pycache__
 # zsh
 
 /.zshenv
-*zsh_history
-zsh_aliases
+personal_aliases
+zsh_history
 .zcompdump*
 .zshrc.zwc
+/.profile
 
 # Ignore README - handled by git hooks -- see .yadm/README.md
 /README.md

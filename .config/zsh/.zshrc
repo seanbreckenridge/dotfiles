@@ -26,16 +26,6 @@ export PYTHONSTARTUP="${HOME}/.config/pythonrc"
 # SQLite history file
 export SQLITE_HISTORY="${HOME}/.cache/sqlite_history"
 
-# Path manipulations for user scripts and package manager (pip, npm, cargo) bin dirs
-# User compiled binaries are copied to /usr/local/bin
-PATH="\
-${HOME}/bin:\
-${HOME}/.local/bin:\
-${NPM_PACKAGES}/bin:\
-${HOME}/.scripts:\
-${PATH}"
-export PATH
-
 # inherit from /etc/manpath and add npm man pages
 unset MANPATH
 MANPATH="\
@@ -64,30 +54,11 @@ for func in $(command ls -1 "${ZDOTDIR}/functions/"); do
   autoload -Uz $func
 done
 
-# Aliases
+# General Aliases
+[[ -f  "${ZDOTDIR}/zsh_aliases" ]] && source "${ZDOTDIR}/zsh_aliases"
 
-alias ls='ls -h --color=tty'
-
-# Standard
-alias reboot="sudo systemctl reboot"
-alias poweroff="sudo systemctl poweroff"
-alias halt="sudo systemctl halt"
-alias du="du -h"
-alias df="df -h"
-
-# Non-standard
-alias dotfiles='yadm gitconfig --get remote.origin.url | python3 -c "from giturlparse import parse; from webbrowser import open_new_tab; open_new_tab(parse(input()).urls[\"https\"])"' # open dotfiles repo
-alias printer_server='sudo cat /etc/cups/cupsd.conf | grep -i "Listen localhost" | cut -d":" -f 2 | xargs -I {} $BROWSER "localhost:{}"' # open localhost printer console
-alias speed='speedtest --simple | tail -n 2'  # shorthand speedtest
-alias usb_mount='echo -e "use lsblk -f to view disk IDs, umount -l /dev/sdxx to unmount"; sudo ldm -u $(whoami)' # start the ldm (light device mounter) daemon, to mount usb/harddrives
-alias drive_mount='usb_mount'
-alias remove_orphans='sudo pacman -Rns $(pacman -Qtdq)'  # remove packages that arent being used for anything
-
-# Shorthands
-[[ -f  "${ZDOTDIR}/shorthands" ]] && source "${ZDOTDIR}/shorthands"
-
-# Personal Aliases
-[[ -f "${ZDOTDIR}/zsh_aliases" ]] && source "${ZDOTDIR}/zsh_aliases"
+# Personal Aliases (e.g. ssh to servers)
+[[ -f "${ZDOTDIR}/personal_aliases" ]] && source "${ZDOTDIR}/zsh_aliases"
 
 # app specific init
 eval $(thefuck --alias)

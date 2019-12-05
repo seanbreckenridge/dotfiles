@@ -117,3 +117,4 @@ boxes
 mypy
 entr
 wkhtmltopdf
+todotxt

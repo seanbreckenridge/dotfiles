@@ -1,0 +1,32 @@
+#!/usr/bin/env zsh
+
+alias ls='ls -h --color=tty'
+alias ll='ls -l'
+alias la='ll -a'
+alias l.='ls -a'
+alias todo='todo.sh'
+
+# commonly editor config files
+alias i3c='$EDITOR ~/.config/i3/config'
+alias zc='$EDITOR "${ZDOTDIR}/.zshenv"'
+alias zrc='$EDITOR "${ZDOTDIR}/.zshrc"'
+alias ybc='$EDITOR "${HOME}/.config/yadm/bootstrap"'
+alias pacc='$EDITOR "${HOME}/.config/yadm/packages.txt"'
+alias alias-edit='$EDITOR "${ZDOTDIR}/personal_aliases"'
+
+# Standard
+alias reboot="sudo systemctl reboot"
+alias poweroff="sudo systemctl poweroff"
+alias halt="sudo systemctl halt"
+alias du="du -h"
+alias df="df -h"
+
+# Non-standard
+alias dotfiles='yadm gitconfig --get remote.origin.url | python3 -c "from giturlparse import parse; from webbrowser import open_new_tab; open_new_tab(parse(input()).urls[\"https\"])"' # open dotfiles repo
+alias printer_server='sudo cat /etc/cups/cupsd.conf | grep -i "Listen localhost" | cut -d":" -f 2 | xargs -I {} $BROWSER "localhost:{}"' # open localhost printer console
+alias speed='speedtest --simple | tail -n 2'  # shorthand speedtest
+alias usb_mount='echo -e "use lsblk -f to view disk IDs, umount -l /dev/sdxx to unmount"; sudo ldm -u $(whoami)' # start the ldm (light device mounter) daemon, to mount usb/harddrives
+alias drive_mount='usb_mount'
+alias remove_orphans='sudo pacman -Rns $(pacman -Qtdq)'  # remove packages that arent being used for anything
+alias create_notes='touch $(date +"%m_%d_%y").md'
+alias echopath='echo $PATH | tr ":" "\n"'

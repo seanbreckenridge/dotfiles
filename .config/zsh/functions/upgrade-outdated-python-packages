@@ -1,5 +1,0 @@
-# Opens the zsh_alises file using your default editor
-
-function upgrade-outdated-python-packages() {
-  python3 -m pip list --outdated --format=freeze | cut -d"=" -f1 | xargs -n1 python3 -m pip install --user --upgrade
-}

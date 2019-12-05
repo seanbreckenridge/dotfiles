@@ -13,7 +13,7 @@ As long as you're on `git>=2.9`, you can use `core.hooksPath` to change the hook
 After cloning, that can be setup by doing:
 
 ```
-yadm gitconfig core.hooksPath ~/.yadm/hooks
+yadm gitconfig core.hooksPath ~/.config/yadm/hooks
 ```
 
 Then, by editing the README at `~/.config/yadm/README.md` locally,
