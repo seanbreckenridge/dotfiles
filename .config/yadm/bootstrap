@@ -122,3 +122,13 @@ done
 if ! systemctl show -p SubState --value "mariadb" | grep -q "running"; then
 	printf "Setup mariadb by following %s\n" "https://wiki.archlinux.org/index.php/MariaDB"
 fi
+
+# Check for manually installed binaries, installed at /usr/local/bin
+
+binaries=("wait-for-internet" "genpasswd")
+for binary in "${binaries[@]}"; do
+  if [ ! "$(command -v $binary)" ]; then
+    echo -e "Warning: Couldn't find ${binary}. Install it at https://github.com/seanbreckenridge/${binary}\n"
+  fi
+done
+
