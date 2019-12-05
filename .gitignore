@@ -88,7 +88,6 @@ zsh_history
 /.gitconfig
 /.lesshst
 /.ghc/ghci_history
-/.scala_history
 /.fehbg
 /.plus1_blacklist.txt
 /.viminfo
