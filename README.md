@@ -5,7 +5,7 @@
 - [yadm](https://yadm.io) to manage dotfiles
 - [termite](https://github.com/thestinger/termite) for terminal
 - [picom ](https://github.com/yshui/picom) for compositing - translucent windows
-- [firefox-developer-edition](https://wiki.archlinux.org/index.php/firefox)
+- [firefox-developer-edition](https://www.archlinux.org/packages/community/x86_64/firefox-developer-edition/)
 - [rofi](https://github.com/davatorium/rofi) with [solarized-darker](https://github.com/davatorium/rofi-themes/blob/master/User%20Themes/solarized-darker.rasi)
 - [nvim](https://neovim.io/) as editor
 - [i3lock-fancy](https://github.com/meskarune/i3lock-fancy) for screen locking
