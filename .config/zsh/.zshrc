@@ -58,7 +58,7 @@ done
 [[ -f  "${ZDOTDIR}/zsh_aliases" ]] && source "${ZDOTDIR}/zsh_aliases"
 
 # Personal Aliases (e.g. ssh to servers)
-[[ -f "${ZDOTDIR}/personal_aliases" ]] && source "${ZDOTDIR}/zsh_aliases"
+[[ -f "${ZDOTDIR}/personal_aliases" ]] && source "${ZDOTDIR}/personal_aliases"
 
 # app specific init
 eval $(thefuck --alias)
