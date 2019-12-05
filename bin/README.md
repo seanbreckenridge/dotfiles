@@ -80,6 +80,12 @@ duration movie.mp4 | cut -d "|" -f 3
 
 ```
 
+### [edit-config](./edit-config)
+```
+Edit common configuration files
+A list of names -> filepaths is located at ~/.config/yadm/config_files.txt
+```
+
 ### [gi](./gi)
 ```
 https://www.gitignore.io/docs

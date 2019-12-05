@@ -26,6 +26,7 @@ ndg-httpsclient
 numpy
 oauth2client
 pandas
+pick
 Pillow
 prettytable
 prompt-toolkit

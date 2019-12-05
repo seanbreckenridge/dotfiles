@@ -5,7 +5,6 @@ markup=pango
 # command="${HOME}/.config/i3blocks/blocks/weather"
 # interval=1800
 
-
 # entr in ~/.config/i3/config refreshes this when the file changes
 [todo]
 command="${HOME}/.config/i3blocks/blocks/todo"

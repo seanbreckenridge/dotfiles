@@ -1,0 +1,51 @@
+#!/usr/bin/python3
+#
+# Bring up a menu to edit common configuration files in a vimbuffer
+# A list of names -> filepaths is located at ~/.config/yadm/config_files.txt
+
+import os
+import sys
+import subprocess
+import tempfile
+
+try:
+    from pick import pick
+except ImportError:
+    print("pick isn't installed, install it with 'python3 -m pip install --user pip'", file=sys.stderr)
+    sys.exit(1)
+
+editor = os.environ.get("EDITOR", 'nano')
+
+# load configuration file
+config_file = os.path.join(os.path.expanduser("~"), ".config/yadm/config_files.txt")
+if not os.path.exists(config_file):
+    print(f"Config file at {config_file} doesn't exist", file=sys.stderr)
+    sys.exit(1)
+
+# build name -> filepath
+config_map = {}
+with open(config_file, 'r') as f:
+    for line in f:
+        # remove comments/empty lines
+        if line.strip() and line.strip()[0] != "#":
+            file_name, _, file_path = line.strip().partition(' ')
+            config_map[file_name] = os.path.abspath(os.path.expanduser(file_path))
+
+for path in config_map.values():
+    if not os.path.exists(path):
+        print(f"'{path}' described in {config_file} doesn't exist.", file=sys.stderr)
+        sys.exit(1)
+
+# get option from user
+option, _ = pick(list(config_map.keys()), "Pick a config file to edit.")
+
+# use tempfile buffer to edit file contents and re-save it
+with tempfile.NamedTemporaryFile(suffix='.tmp') as tf:
+    with open(config_map[option], 'r') as config_file_contents:
+        tf.write(config_file_contents.read().encode())
+    tf.flush()
+    subprocess.call([editor, tf.name])
+    tf.seek(0)
+    edited_message = tf.read().decode('utf-8')
+    with open(config_map[option], 'w') as config_file:
+        config_file.write(edited_message)

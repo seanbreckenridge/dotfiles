@@ -6,14 +6,6 @@ alias la='ll -a'
 alias l.='ls -a'
 alias todo='todo.sh'
 
-# commonly editor config files
-alias i3c='$EDITOR ~/.config/i3/config'
-alias zc='$EDITOR "${ZDOTDIR}/.zshenv"'
-alias zrc='$EDITOR "${ZDOTDIR}/.zshrc"'
-alias ybc='$EDITOR "${HOME}/.config/yadm/bootstrap"'
-alias pacc='$EDITOR "${HOME}/.config/yadm/packages.txt"'
-alias alias-edit='$EDITOR "${ZDOTDIR}/personal_aliases"'
-
 # Standard
 alias reboot="sudo systemctl reboot"
 alias poweroff="sudo systemctl poweroff"
