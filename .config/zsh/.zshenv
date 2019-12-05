@@ -64,7 +64,7 @@ export HISTCONTROL='ignoreboth';
 
 # Change ZSH_COMPDUMP location
 HOST_VER=$(uname -r)
-ZSH_COMPDUMP="${HOME}/.cache/zcompdump-${HOST_VER}-${ZSH_VERSION}"
+export ZSH_COMPDUMP="${HOME}/.cache/zcompdump-${HOST_VER}-${ZSH_VERSION}"
 
 # Which plugins would you like to load?
 # Standard plugins can be found in ~/.oh-my-zsh/plugins/*

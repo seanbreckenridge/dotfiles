@@ -1,5 +1,7 @@
 # Additional/non-zsh alias/path/function/config
 
+# environment/history configuration
+
 # Change npm install dir from /usr/local/bin (which requires sudo)
 # ~/.npmrc should have the contents:  `prefix=${HOME}/.npm-packages`
 NPM_PACKAGES="${HOME}/.npm-packages"
@@ -8,6 +10,21 @@ NODE_PATH="${NPM_PACKAGES}/lib/node_modules:${NODE_PATH}"
 # Python/Venv related
 export PYENV_ROOT="${HOME}/.pyenv"
 export PIPENV_PYTHON="${PYENV_ROOT}/shims/python"
+
+# MySQL History File
+export MYSQL_HISTFILE="${HOME}/.cache/mysql_history"
+
+# Node History File
+export NODE_REPL_HISTORY="${HOME}/.cache/node_repl_history"
+
+# Python History File
+# set PYTHON_STARTUP python file, which runs when an
+# interactive shell is opened
+# reads from the history file in ~/.cache/python_history
+export PYTHONSTARTUP="${HOME}/.config/pythonrc"
+
+# SQLite history file
+export SQLITE_HISTORY="${HOME}/.cache/sqlite_history"
 
 # Path manipulations for user scripts and package manager (pip, npm, cargo) bin dirs
 # User compiled binaries are copied to /usr/local/bin

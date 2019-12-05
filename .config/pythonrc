@@ -1,0 +1,16 @@
+#!/usr/bin/env python3
+
+import atexit
+import os
+import readline
+
+history = os.path.join(os.path.expanduser("~"), ".cache", "python_history")
+try:
+    readline.read_history_file(history)
+    # default history len is -1 (infinite), which may grow unruly
+    readline.set_history_length(1000)
+    # https://bugs.python.org/issue20886#msg265568
+except FileNotFoundError:
+    pass
+
+atexit.register(readline.write_history_file, history)
