@@ -63,8 +63,6 @@ zsh_history
 /.swipl-dir*
 /.pythonanywhere*
 /.scramble_history.txt
-/.node_repl_history
-/.sqlite_history
 /.mix
 /.hex
 /.pyenv
@@ -89,10 +87,8 @@ zsh_history
 /.xsession-errors*
 /.gitconfig
 /.lesshst
-/.bash_history
-/.python_history
-/.mysql_history
 /.ghc/ghci_history
+/.scala_history
 /.fehbg
 /.plus1_blacklist.txt
 /.viminfo
