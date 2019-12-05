@@ -60,6 +60,8 @@ zsh_history
 
 /.todo/*
 !/.todo/config
+/.scala_history
+/.scalac/
 /.swipl-dir*
 /.pythonanywhere*
 /.scramble_history.txt
