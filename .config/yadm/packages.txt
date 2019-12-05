@@ -119,3 +119,4 @@ entr
 wkhtmltopdf
 todotxt
 scala
+qrencode
