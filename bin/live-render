@@ -10,6 +10,15 @@
 # can be changed to some other editor that supports live re-loading (e.g. zathura)
 PDF_VIEWER=okular
 
+if [ "$(pgrep "$PDF_VIEWER")" ]; then
+  ERR="Warning! There are other instances of ${PDF_VIEWER} open. If nothing happens, 'killall ${PDF_VIEWER}' and restart the script"
+  if [ "$(command -v boxes)" ]; then
+    echo "$ERR" | boxes -d shell -p l2r2
+  else
+    echo "$ERR"
+  fi
+fi
+
 # make sure filename was passed
 if [ -z "$1" ]; then
 	echo "You didn't pass a file to render as the first argument!"
