@@ -8,6 +8,8 @@ zshrc ~/.config/zsh/.zshrc
 zshenv ~/.config/zsh/.zshenv
 zsh_aliases ~/.config/zsh/zsh_aliases
 personal_aliases ~/.config/zsh/personal_aliases
+python-packages ~/.config/yadm/python3_packages.txt
+node-packages ~/.config/yadm/global_node_packages.txt
 dunst ~/.config/dunst/dunstrc
 config-file-list ~/.config/yadm/config_files.txt
 rofi ~/.config/rofi/config
