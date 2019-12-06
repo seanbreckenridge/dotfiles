@@ -82,7 +82,7 @@ duration movie.mp4 | cut -d "|" -f 3
 
 ### [edit-config](./edit-config)
 ```
-Edit common configuration files
+Bring up a menu to edit common configuration files in a vimbuffer
 A list of names -> filepaths is located at ~/.config/yadm/config_files.txt
 ```
 
