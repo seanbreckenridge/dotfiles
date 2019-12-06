@@ -37,7 +37,10 @@ for path in config_map.values():
         sys.exit(1)
 
 # get option from user
-option, _ = pick(list(config_map.keys()), "Pick a config file to edit.")
+try:
+    option, _ = pick(list(config_map.keys()), "Pick a config file to edit.")
+except KeyboardInterrupt:
+    sys.exit(1)
 
 # use tempfile buffer to edit file contents and re-save it
 with tempfile.NamedTemporaryFile(suffix='.tmp') as tf:
