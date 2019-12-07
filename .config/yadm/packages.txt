@@ -120,3 +120,4 @@ wkhtmltopdf
 todotxt
 qrencode
 rofi-dmenu
+sxiv
