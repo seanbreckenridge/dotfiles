@@ -48,6 +48,8 @@ zsh_history
 /.config/menus/
 /.config/okularrc
 /.config/yadm/repo.git
+/.config/joplin/*
+!/.config/joplin/keymap.json
 
 /.atom/compile-cache
 /.atom/blob-store
@@ -95,6 +97,7 @@ zsh_history
 /.viminfo
 /.pulse-cookie
 /.node-gyp
+/.electron-gyp
 /.java
 /.runelite
 /.vscode-oss

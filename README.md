@@ -4,13 +4,16 @@
 - [i3-gaps](https://github.com/Airblader/i3) - window manager
 - [yadm](https://yadm.io) to manage dotfiles
 - [termite](https://github.com/thestinger/termite) for terminal
-- [picom ](https://github.com/yshui/picom) for compositing - translucent windows
+- [picom ](https://github.com/yshui/picom) for window compositing
 - [firefox-developer-edition](https://www.archlinux.org/packages/community/x86_64/firefox-developer-edition/)
-- [rofi](https://github.com/davatorium/rofi) with [solarized-darker](https://github.com/davatorium/rofi-themes/blob/master/User%20Themes/solarized-darker.rasi)
+- [rofi](https://github.com/davatorium/rofi) (launcher) with [solarized-darker](https://github.com/davatorium/rofi-themes/blob/master/User%20Themes/solarized-darker.rasi)
 - [nvim](https://neovim.io/) as editor
 - [i3lock-fancy](https://github.com/meskarune/i3lock-fancy) for screen locking
 - [dunst](https://dunst-project.org/) for notificaitons
-- [i3blocks](https://github.com/vivien/i3blocks) - status bar
+- [i3blocks](https://github.com/vivien/i3blocks) for status bar
+- [lightdm](https://wiki.archlinux.org/index.php/LightDM) - display manager
+- [todotxt](http://todotxt.org/) for todos
+- [joplin](https://joplinapp.org/) for notes
 
 [.config/yadm](./.config/yadm) includes lists of packages for pacman/yay, python, and npm.
 

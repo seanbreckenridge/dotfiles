@@ -121,3 +121,4 @@ todotxt
 qrencode
 rofi-dmenu
 sxiv
+joplin
