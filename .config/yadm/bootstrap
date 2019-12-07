@@ -127,7 +127,7 @@ fi
 
 binaries=("wait-for-internet" "genpasswd")
 for binary in "${binaries[@]}"; do
-  if [ ! "$(command -v $binary)" ]; then
+  if [ ! "$(command -v "$binary")" ]; then
     echo -e "Warning: Couldn't find ${binary}. Install it at https://github.com/seanbreckenridge/${binary}\n"
   fi
 done
