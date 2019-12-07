@@ -9,4 +9,5 @@ https://addons.mozilla.org/en-US/firefox/addon/ghostery/
 https://addons.mozilla.org/en-US/firefox/addon/styl-us/
 https://addons.mozilla.org/en-US/firefox/addon/refined-github-/
 https://addons.mozilla.org/en-US/firefox/addon/vimium-ff/
+https://addons.mozilla.org/en-US/firefox/addon/xkcd-enhancements/
 https://www.frankerfacez.com/
