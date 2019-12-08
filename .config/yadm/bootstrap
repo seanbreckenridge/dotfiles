@@ -57,7 +57,7 @@ if [[ ! -f "${HOME}/.profile" ]]; then
 fi
 
 # Setting up default user directories
-default_user_dirs=("bin" "code" "Desktop" "Documents" "Downloads" "Desktop/Screenshots" ".local" ".cache" ".credentials")
+default_user_dirs=("bin" "code" "Desktop" "Documents" "Downloads" "Desktop/Screenshots" "Pictures" "Pictures/wallpapers" ".local" ".cache" ".credentials")
 
 for d_name in "${default_user_dirs[@]}"; do
 	if [[ ! -d "${HOME}/${d_name}" ]]; then
