@@ -13,7 +13,6 @@
 - [i3blocks](https://github.com/vivien/i3blocks) for status bar
 - [lightdm](https://wiki.archlinux.org/index.php/LightDM) - display manager
 - [todotxt](http://todotxt.org/) for todos
-- [joplin](https://joplinapp.org/) for notes
 
 [.config/yadm](./.config/yadm) includes lists of packages for pacman/yay, python, and npm.
 
