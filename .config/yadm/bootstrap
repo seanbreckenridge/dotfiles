@@ -57,7 +57,7 @@ if [[ ! -f "${HOME}/.profile" ]]; then
 fi
 
 # Setting up default user directories
-default_user_dirs=("bin" "code" "Desktop" "Documents" "Downloads" "Desktop/Screenshots" "Pictures" "Pictures/wallpapers" ".local" ".cache" ".credentials")
+default_user_dirs=("bin" "code" "Desktop" "Documents" "Documents/Notes" "Downloads" "Desktop/Screenshots" "Pictures" "Pictures/wallpapers" ".local" ".cache" ".credentials")
 
 for d_name in "${default_user_dirs[@]}"; do
 	if [[ ! -d "${HOME}/${d_name}" ]]; then
@@ -132,9 +132,3 @@ for binary in "${binaries[@]}"; do
   fi
 done
 
-if [ "$(command -v joplin)" ]; then
-  joplin config sync.interval 600
-  mkdir -p "${HOME}/.local/share/joplin"
-  joplin config sync.2.path "${HOME}/.local/share/joplin"
-  joplin config editor nvim
-fi

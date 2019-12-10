@@ -120,4 +120,5 @@ todotxt
 qrencode
 rofi-dmenu
 sxiv
-joplin
+ncdu
+terminalimageviewer-git

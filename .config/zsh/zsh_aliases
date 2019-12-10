@@ -5,6 +5,7 @@ alias ll='ls -l'
 alias la='ll -a'
 alias l.='ls -a'
 alias todo='todo.sh'
+alias notes='cd ~/Documents/Notes; $EDITOR .'
 
 # Standard
 alias reboot="sudo systemctl reboot"
