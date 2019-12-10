@@ -22,9 +22,11 @@ exec --no-startup-id nm-applet
 # use picom for display compositing
 exec --no-startup-id picom -b
 
-# Use feh to choose a random picture from the ~/Pictures/wallpapers
-# directory to use as a wallpaper
-exec --no-startup-id feh --randomize --bg-fill "${HOME}"/Pictures/wallpapers/*
+# wrapper script to randomize the wallpaper every 30 minutes
+exec --no-startup-id ~/.scripts/randomize-wallpaper loop
+
+# bind display key to randomize wallpaper
+bindsym XF86Display exec --no-startup-id ~/.scripts/randomize-wallpaper
 
 # Disable touchpad 
 exec --no-startup-id ~/.scripts/touchpad disable

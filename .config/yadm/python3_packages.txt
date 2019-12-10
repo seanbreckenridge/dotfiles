@@ -28,6 +28,7 @@ oauth2client
 pandas
 pick
 Pillow
+pip-licenses
 prettytable
 prompt-toolkit
 prompt_toolkit

@@ -134,6 +134,7 @@ done
 
 if [ "$(command -v joplin)" ]; then
   joplin config sync.interval 600
+  mkdir -p "${HOME}/.local/share/joplin"
   joplin config sync.2.path "${HOME}/.local/share/joplin"
   joplin config editor nvim
 fi
