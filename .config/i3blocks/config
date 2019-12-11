@@ -1,10 +1,6 @@
 seperator_block_width=15
 markup=pango
 
-# [weather]
-# command="${HOME}/.config/i3blocks/blocks/weather"
-# interval=1800
-
 # entr in ~/.config/i3/config refreshes this when the file changes
 [todo]
 command=wc -l < "${HOME}/.todo/todo.txt"
@@ -28,8 +24,8 @@ command="${HOME}/.config/i3blocks/blocks/battery" BAT0
 interval=10
 
 [clock]
-command=date '+%b %d (%a) %I:%M%p'
-interval=10
+command="${HOME}/.config/i3blocks/blocks/date"
+interval=5
 
 [ssid]
 command=iwgetid -r
