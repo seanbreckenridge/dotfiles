@@ -36,7 +36,7 @@ fi
 
 echo 'Setting up zsh directory structure...'
 # make sure original oh-my-zsh files are removed
-original_files=("${HOME}/.zshenv" "${HOME}/.zshrc" "${HOME}/.zsh_history" "${HOME}/.zprofile" "${HOME}/.profile")
+original_files=("${HOME}/.zshenv" "${HOME}/.zshrc" "${HOME}/.zsh_history" "${HOME}/.zprofile")
 
 for file in "${original_files[@]}"; do
 	if [[ -f "$file" ]]; then
@@ -48,12 +48,6 @@ echo 'Symlinking zshenv/zprofile...'
 # ZDOTDIR is located at ~/.config/zsh
 if [[ ! -f "${HOME}/.zshenv" ]]; then
   ln "${HOME}/.config/zsh/.zshenv" "${HOME}/.zshenv"
-fi
-
-# Set ~/.profile so that non zsh applications that
-# need access to the path have it
-if [[ ! -f "${HOME}/.profile" ]]; then
-  ln "${HOME}/.config/zsh/.zprofile" "${HOME}/.profile"
 fi
 
 # Setting up default user directories

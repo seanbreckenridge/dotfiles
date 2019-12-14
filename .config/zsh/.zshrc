@@ -1,5 +1,7 @@
 # Additional/non-zsh alias/path/function/config
 
+[[ -f "${HOME}/.profile" ]] && source "${HOME}/.profile"
+
 # environment/history configuration
 
 # Change npm install dir from /usr/local/bin (which requires sudo)

@@ -6,7 +6,6 @@ alias la='ll -a'
 alias l.='ls -a'
 alias todo='todo.sh'
 alias notes='cd ~/Documents/Notes; $EDITOR .'
-alias ec='edit-config'
 
 # yadm
 alias yds="yadm diff --staged"
