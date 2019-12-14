@@ -39,7 +39,9 @@ option = subprocess.run(
     stderr=subprocess.PIPE,
 ).stdout.strip()
 
-# if user responded, edit file
 if option:
-    vimbuffer.buffer(file=config_map[option])
+    if option not in config_map:
+        print(f"Couldn't find '{option}' as a choice", file=sys.stderr)
+    else:
+        vimbuffer.buffer(file=config_map[option])
 
