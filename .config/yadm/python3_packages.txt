@@ -28,7 +28,6 @@ ndg-httpsclient
 numpy
 oauth2client
 pandas
-pick
 Pillow
 pip-licenses
 prettytable

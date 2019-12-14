@@ -6,6 +6,15 @@ alias la='ll -a'
 alias l.='ls -a'
 alias todo='todo.sh'
 alias notes='cd ~/Documents/Notes; $EDITOR .'
+alias ec='edit-config'
+
+# yadm
+alias yds="yadm diff --staged"
+alias ys="yadm status"
+alias yd="yadm diff"
+alias ysu="yadm status -u"
+alias ya="yadm add"
+alias yc="yadm commit"
 
 # Standard
 alias reboot="sudo systemctl reboot"
