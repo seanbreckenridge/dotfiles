@@ -3,10 +3,9 @@ markup=pango
 
 # entr in ~/.config/i3/config refreshes this when the file changes
 [todo]
-command=wc -l < "${HOME}/.todo/todo.txt"
+command="${HOME}/.config/i3blocks/blocks/todo"
 interval=once
 signal=2
-label=📝
 
 [volume]
 command="${HOME}/.config/i3blocks/blocks/volume"
