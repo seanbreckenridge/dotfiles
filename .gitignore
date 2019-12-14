@@ -21,7 +21,7 @@ zsh_history
 /.config/yadm/README.md
 
 # Top level files to ignore
-
+/.config/jrnl/jrnl.yaml
 /.config/mimeapps.list
 /.config/autostart
 /.config/cef_user_data
@@ -60,6 +60,9 @@ zsh_history
 /.atom/github.cson
 /.atom/*socket*
 
+/.cookiecutter_replay/*
+/.gem/*
+/.bundle/*
 /.todo/*
 !/.todo/config
 /.scala_history
