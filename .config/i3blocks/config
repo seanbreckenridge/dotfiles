@@ -10,7 +10,7 @@ signal=2
 [volume]
 command="${HOME}/.config/i3blocks/blocks/volume"
 signal=1
-interval=300 # incase headphones are plugged in
+interval=10 # incase headphones are plugged in
 
 [brightness]
 command=echo "$(light | cut -d"." -f1)%"
