@@ -11,6 +11,9 @@ NODE_PATH="${NPM_PACKAGES}/lib/node_modules:${NODE_PATH}"
 export PYENV_ROOT="${HOME}/.pyenv"
 export PIPENV_PYTHON="${PYENV_ROOT}/shims/python"
 
+# Cookiecutter - for pypi projects
+export COOKIECUTTER_CONFIG="${HOME}/.config/cookiecutterrc"
+
 # MySQL History File
 export MYSQL_HISTFILE="${HOME}/.cache/mysql_history"
 
@@ -25,6 +28,9 @@ export PYTHONSTARTUP="${HOME}/.config/pythonrc"
 
 # SQLite history file
 export SQLITE_HISTORY="${HOME}/.cache/sqlite_history"
+
+# ruby
+export GEM_HOME="${HOME}/.gem"
 
 # inherit from /etc/manpath and add npm man pages
 unset MANPATH

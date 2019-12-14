@@ -7,6 +7,7 @@ black
 bs4
 cget
 colorama
+cookiecutter
 cube-scramble-cli
 discogs-client
 discogs_client
@@ -19,6 +20,7 @@ HTMLParser
 idna
 itsdangerous
 jikanpy
+jrnl
 lxml
 matplotlib
 mysqlclient
@@ -35,6 +37,7 @@ prompt_toolkit
 pyautogui
 PyExecJS
 pyperclip
+pytest
 PyYAML
 radon
 requests
@@ -47,6 +50,7 @@ termcolor
 thefuck
 toml
 twine
+vimbuffer
 xlrd
 yattag
 youtube-dl

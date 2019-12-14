@@ -122,3 +122,6 @@ rofi-dmenu
 sxiv
 ncdu
 terminalimageviewer-git
+ruby
+ruby-bundler
+unzip
