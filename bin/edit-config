@@ -43,5 +43,5 @@ if option:
     if option not in config_map:
         print(f"Couldn't find '{option}' as a choice", file=sys.stderr)
     else:
-        vimbuffer.buffer(file=config_map[option])
+        vimbuffer.buffer(file=config_map[option], name_prefix=option + "-")
 
