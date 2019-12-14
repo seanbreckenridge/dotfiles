@@ -15,6 +15,7 @@ alias yd="yadm diff"
 alias ysu="yadm status -u"
 alias ya="yadm add"
 alias yc="yadm commit"
+alias yp='yadm push'
 
 # Standard
 alias reboot="sudo systemctl reboot"
