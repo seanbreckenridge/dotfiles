@@ -7,7 +7,7 @@ ${HOME}/bin:\
 ${HOME}/.local/bin:\
 ${HOME}/.npm-packages/bin:\
 ${HOME}/.scripts:\
-${HOME}/.shortcuts:\
+${HOME}/.local/shortcuts:\
 ${PATH}"
 export PATH
 

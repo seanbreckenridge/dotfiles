@@ -35,6 +35,7 @@ prompt-toolkit
 prompt_toolkit
 pyautogui
 PyExecJS
+python-rofi
 pyperclip
 pytest
 PyYAML
@@ -49,7 +50,9 @@ termcolor
 thefuck
 toml
 twine
+urlextract
 vimbuffer
 xlrd
 yattag
 youtube-dl
+pyclip-copycat

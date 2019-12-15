@@ -1,5 +1,0 @@
-#!/usr/bin/env sh
-#
-# print your current git configuration
-
-git config --list | cat

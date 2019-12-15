@@ -125,3 +125,5 @@ terminalimageviewer-git
 ruby
 ruby-bundler
 unzip
+lftp
+xclip

@@ -34,6 +34,10 @@ export SQLITE_HISTORY="${HOME}/.cache/sqlite_history"
 # ruby
 export GEM_HOME="${HOME}/.gem"
 
+# shortcuts
+export SHORTCUTS_CONFIG="${HOME}/.config/shortcuts.cfg"
+export SHORTCUTS_DIR="${HOME}/.local/shortcuts"
+
 # inherit from /etc/manpath and add npm man pages
 unset MANPATH
 MANPATH="\

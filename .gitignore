@@ -65,6 +65,7 @@ zsh_history
 /.todo/*
 !/.todo/config
 /.scala_history
+/.irb_history
 /.scalac/
 /.swipl-dir*
 /.pythonanywhere*
@@ -112,11 +113,13 @@ zsh_history
 /.mal-id-cache
 
 /.local/lib/python*
+/.local/lib/pkgconfig/*
 /.local/bin
 /.local/include
 /.local/share
 /.local/etc/bash_completion.d
 /.local/etc/fish/completions
+/.local/shortcuts/*
 
 /code
 /Documents

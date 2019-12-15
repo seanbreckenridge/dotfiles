@@ -18,8 +18,7 @@
 
 Packages can be added to the `.txt` files manually, and then `yadm bootstrap` can be run repeatedely to make sure everything is installed.
 
-[bin/README.md](./bin/README.md) has a summary of each script in bin.
-
+[bin/README.md](./bin/README.md) has a summary of each script in bin; [.config/shortcuts.cfg](.config/shortcuts.cfg) describes a few more that are created with [shortcuts](https://github.com/seanbreckenridge/shortcuts)
 
 ### Install
 
