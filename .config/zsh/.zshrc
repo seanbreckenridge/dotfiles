@@ -6,8 +6,8 @@
 
 # Change npm install dir from /usr/local/bin (which requires sudo)
 # ~/.npmrc should have the contents:  `prefix=${HOME}/.npm-packages`
-NPM_PACKAGES="${HOME}/.npm-packages"
-NODE_PATH="${NPM_PACKAGES}/lib/node_modules:${NODE_PATH}"
+export NPM_PACKAGES="${HOME}/.npm-packages"
+export NODE_PATH="${NPM_PACKAGES}/lib/node_modules:${NODE_PATH}"
 
 # Python/Venv related
 export PYENV_ROOT="${HOME}/.pyenv"
@@ -34,8 +34,7 @@ export SQLITE_HISTORY="${HOME}/.cache/sqlite_history"
 # ruby
 export GEM_HOME="${HOME}/.gem"
 
-# shortcuts
-export SHORTCUTS_CONFIG="${HOME}/.config/shortcuts.cfg"
+# shortcuts: https://github.com/seanbreckenridge/shortcuts
 export SHORTCUTS_DIR="${HOME}/.local/shortcuts"
 
 # inherit from /etc/manpath and add npm man pages
