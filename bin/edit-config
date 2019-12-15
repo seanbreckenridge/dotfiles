@@ -5,8 +5,8 @@
 
 import os
 import sys
-import shlex
-import subprocess
+
+import rofi
 import vimbuffer
 
 # load configuration file
@@ -30,16 +30,11 @@ for path in config_map.values():
         print(f"'{path}' described in {config_file} doesn't exist.", file=sys.stderr)
         sys.exit(1)
 
-# prompt for user input using rofi
-option = subprocess.run(
-    shlex.split('rofi -dmenu -p "Pick a config file to edit > "'),
-    input="\n".join(config_map.keys()),
-    encoding="utf-8",
-    stdout=subprocess.PIPE,
-    stderr=subprocess.PIPE,
-).stdout.strip()
+options = list(config_map.keys())
+index, key = rofi.Rofi().select("Pick a config file to edit > ", options)
 
-if option:
+if key != -1:
+    option = options[index]
     if option not in config_map:
         print(f"Couldn't find '{option}' as a choice", file=sys.stderr)
     else:

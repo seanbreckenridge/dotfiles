@@ -13,7 +13,7 @@ font pango:Source Code Pro 12
 #exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 #exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock-fancy --greyscale --pixelate -t "" --nofork
 # keybind lock (does not automatically lock on lid close)
-bindsym $mod+Escape exec --no-startup-id ~/.scripts/lock-screen
+bindsym $mod+Escape exec --no-startup-id lock-screen
 
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
@@ -23,13 +23,13 @@ exec --no-startup-id nm-applet
 exec --no-startup-id picom -b
 
 # wrapper script to randomize the wallpaper every 30 minutes
-exec --no-startup-id ~/.scripts/randomize-wallpaper loop
+exec --no-startup-id randomize-wallpaper loop
 
 # bind display key to randomize wallpaper
-bindsym XF86Display exec --no-startup-id ~/.scripts/randomize-wallpaper
+bindsym XF86Display exec --no-startup-id randomize-wallpaper
 
 # Disable touchpad 
-exec --no-startup-id ~/.scripts/touchpad disable
+# exec --no-startup-id touchpad disable
 
 # dunst, for Notifications
 exec --no-startup-id dunst
@@ -37,12 +37,14 @@ exec --no-startup-id dunst
 # start discord, minimized
 exec --no-startup-id "discord --start-minimized"
 
+# command to display/run i3 key bindings
+bindsym $mod+Shift+Tab exec --no-startup-id i3binds-prompt
+
 # Bind brightness keys
 # This required fiddling with the /sys/class/backlight/amdgpu_b10 file permissions
 # and giving myself the 'video' group
-set $brightness_step 2 # rate at which to increase/decrease brightness
-bindsym XF86MonBrightnessUp exec --no-startup-id ~/.scripts/brightness up $brightness_step
-bindsym XF86MonBrightnessDown exec --no-startup-id ~/.scripts/brightness down $brightness_step
+bindsym XF86MonBrightnessUp exec --no-startup-id brightness up 2
+bindsym XF86MonBrightnessDown exec --no-startup-id brightness down 2
 
 # Bind $mod+Brightness keys to transparency toggle
 # Uses picom-trans to set the transparency to 100/85% (same as active/inactive)
@@ -50,12 +52,12 @@ bindsym XF86MonBrightnessDown exec --no-startup-id ~/.scripts/brightness down $b
 # Doesn't typically affect use case as transparency for an unfocused firefox/mpv is set permanently
 
 # Highligted Window
-bindsym $mod+XF86MonBrightnessUp exec --no-startup-id ~/.scripts/transparent enable
-bindsym $mod+XF86MonBrightnessDown exec --no-startup-id ~/.scripts/transparent disable
+bindsym $mod+XF86MonBrightnessUp exec --no-startup-id transparent enable
+bindsym $mod+XF86MonBrightnessDown exec --no-startup-id transparent disable
 
 # Change mouse to target
-bindsym $mod+Shift+XF86MonBrightnessUp exec --no-startup-id ~/.scripts/transparent enable target
-bindsym $mod+Shift+XF86MonBrightnessDown exec --no-startup-id ~/.scripts/transparent disable target
+bindsym $mod+Shift+XF86MonBrightnessUp exec --no-startup-id transparent enable target
+bindsym $mod+Shift+XF86MonBrightnessDown exec --no-startup-id transparent disable target
 
 # Use pactl to adjust volume in PulseAudio.
 set $volume_step 5
@@ -123,10 +125,10 @@ bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
 # resize windows - keys above "vim arrow" keys
-bindsym $mod+Shift+y exec --no-startup-id ~/.scripts/i3resize left
-bindsym $mod+Shift+u exec --no-startup-id ~/.scripts/i3resize down
-bindsym $mod+Shift+i exec --no-startup-id ~/.scripts/i3resize up
-bindsym $mod+Shift+o exec --no-startup-id ~/.scripts/i3resize right
+bindsym $mod+Shift+y exec --no-startup-id i3resize left
+bindsym $mod+Shift+u exec --no-startup-id i3resize down
+bindsym $mod+Shift+i exec --no-startup-id i3resize up
+bindsym $mod+Shift+o exec --no-startup-id i3resize right
 
 # split in horizontal orientation
 bindsym $mod+Shift+z split h
@@ -156,44 +158,31 @@ bindsym $mod+space focus mode_toggle
 bindsym $mod+a focus parent
 
 # focus the child container
-#bindsym $mod+d focus child
-
-# Define names for default workspaces for which we configure key bindings later on.
-# We use variables to avoid repeating the names in multiple places.
-set $ws1 "1"
-set $ws2 "2"
-set $ws3 "3"
-set $ws4 "4"
-set $ws5 "5"
-set $ws6 "6"
-set $ws7 "7"
-set $ws8 "8"
-set $ws9 "9"
-set $ws10 "10"
+bindsym $mod+z focus child
 
 # switch to workspace
-bindsym $mod+1 workspace number $ws1
-bindsym $mod+2 workspace number $ws2
-bindsym $mod+3 workspace number $ws3
-bindsym $mod+4 workspace number $ws4
-bindsym $mod+5 workspace number $ws5
-bindsym $mod+6 workspace number $ws6
-bindsym $mod+7 workspace number $ws7
-bindsym $mod+8 workspace number $ws8
-bindsym $mod+9 workspace number $ws9
-bindsym $mod+0 workspace number $ws10
+bindsym $mod+1 workspace number "1"
+bindsym $mod+2 workspace number "2"
+bindsym $mod+3 workspace number "3"
+bindsym $mod+4 workspace number "4"
+bindsym $mod+5 workspace number "5"
+bindsym $mod+6 workspace number "6"
+bindsym $mod+7 workspace number "7"
+bindsym $mod+8 workspace number "8"
+bindsym $mod+9 workspace number "9"
+bindsym $mod+0 workspace number "10"
 
 # move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace number $ws1
-bindsym $mod+Shift+2 move container to workspace number $ws2
-bindsym $mod+Shift+3 move container to workspace number $ws3
-bindsym $mod+Shift+4 move container to workspace number $ws4
-bindsym $mod+Shift+5 move container to workspace number $ws5
-bindsym $mod+Shift+6 move container to workspace number $ws6
-bindsym $mod+Shift+7 move container to workspace number $ws7
-bindsym $mod+Shift+8 move container to workspace number $ws8
-bindsym $mod+Shift+9 move container to workspace number $ws9
-bindsym $mod+Shift+0 move container to workspace number $ws10
+bindsym $mod+Shift+1 move container to workspace number "1"
+bindsym $mod+Shift+2 move container to workspace number "2"
+bindsym $mod+Shift+3 move container to workspace number "3"
+bindsym $mod+Shift+4 move container to workspace number "4"
+bindsym $mod+Shift+5 move container to workspace number "5"
+bindsym $mod+Shift+6 move container to workspace number "6"
+bindsym $mod+Shift+7 move container to workspace number "7"
+bindsym $mod+Shift+8 move container to workspace number "8"
+bindsym $mod+Shift+9 move container to workspace number "9"
+bindsym $mod+Shift+0 move container to workspace number "10"
 
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
