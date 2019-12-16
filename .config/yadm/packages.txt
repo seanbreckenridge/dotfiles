@@ -127,3 +127,4 @@ ruby-bundler
 unzip
 lftp
 xclip
+fzf

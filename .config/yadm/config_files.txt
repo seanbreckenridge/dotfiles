@@ -9,6 +9,7 @@ zshrc ~/.config/zsh/.zshrc
 zshenv ~/.config/zsh/.zshenv
 zsh_aliases ~/.config/zsh/zsh_aliases
 personal_aliases ~/.config/zsh/personal_aliases
+shortcuts ~/.config/shortcuts.conf
 python-packages ~/.config/yadm/python3_packages.txt
 node-packages ~/.config/yadm/global_node_packages.txt
 config-file-list ~/.config/yadm/config_files.txt
