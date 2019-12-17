@@ -28,3 +28,5 @@ export TERMINAL='termite'
 export BROWSER='firefox-developer-edition'
 export READER='okular'
 
+# Compilation flags
+export ARCHFLAGS="-arch x86_64"
