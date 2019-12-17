@@ -3,10 +3,10 @@
 # this is sourced at the top of $ZDOTDIR/.zshrc
 
 PATH="\
-${HOME}/bin:\
 ${HOME}/.local/bin:\
 ${HOME}/.npm-packages/bin:\
-${HOME}/.scripts:\
+${HOME}/.scripts/system:\
+${HOME}/.scripts/bin:\
 ${HOME}/.local/shortcuts:\
 ${PATH}"
 export PATH

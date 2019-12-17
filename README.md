@@ -18,7 +18,9 @@
 
 Packages can be added to the `.txt` files manually, and then `yadm bootstrap` can be run repeatedely to make sure everything is installed.
 
-[bin/README.md](./bin/README.md) has a summary of each script in bin; [.config/shortcuts.conf](.config/shortcuts.conf) describes a few more that are created with [shortcuts](https://github.com/seanbreckenridge/shortcuts)
+- [.scripts/bin](.scripts/bin) - generic scripts
+- [.scripts/system](.scripts/system) - i3 related scripts
+- [.config/shortcuts.conf](.config/shortcuts.conf) - describes basic shell scripts that are created by [shortcuts](https://github.com/seanbreckenridge/shortcuts)
 
 ### Install
 
