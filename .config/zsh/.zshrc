@@ -47,7 +47,7 @@ source /usr/share/zsh/share/antigen.zsh
 antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle zsh-users/zsh-autosuggestions
 antigen bundle zsh-users/zsh-completions
-antigen bundle djui/alias-tips
+antigen bundle MichaelAquilina/zsh-you-should-use
 antigen apply
 
 # vim style bindings
