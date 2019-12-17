@@ -2,10 +2,55 @@
 
 [[ -f "${HOME}/.profile" ]] && source "${HOME}/.profile"
 
-# Set color scheme in the background
+# Set color scheme (pywal) in the background
 (cat ~/.cache/wal/sequences &)
 
-# environment/history configuration
+# prompt/completion features from: https://github.com/LukeSmithxyz/voidrice/blob/master/.config/zsh/.zshrc
+autoload -U colors && colors
+export PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%~%{$fg[red]%}]%{$reset_color%}$%b "
+
+autoload -Uz compinit  # zsh tab completion
+zstyle ':completion:*' menu select  #  http://zsh.sourceforge.net/Guide/zshguide06.html
+zmodload zsh/complist  # http://zsh.sourceforge.net/Doc/Release/Zsh-Modules.html#The-zsh_002fcomplist-Module
+setopt globdots
+
+# inherit from /etc/manpath and add npm man pages
+unset MANPATH
+MANPATH="\
+${NPM_PACKAGES}/share/man:\
+$(manpath)"
+export MANPATH
+
+# antigen config
+source /usr/share/zsh/share/antigen.zsh
+antigen bundle zsh-users/zsh-syntax-highlighting
+antigen bundle zsh-users/zsh-autosuggestions
+antigen bundle zsh-users/zsh-completions
+antigen apply
+
+# vim style bindings
+# Escape to enter command mode
+export KEYTIMEOUT=1
+bindkey -v
+# basic emacs bindings
+bindkey '^A' vi-beginning-of-line
+bindkey '^E' vi-end-of-line
+bindkey '^K' vi-kill-eol
+
+# load user defined functions
+for func in $(command ls -1 "${ZDOTDIR}/functions/"); do
+  autoload -Uz $func
+done
+
+source "${ZDOTDIR}/zsh_aliases"
+
+# Git aliases (from oh-my-zsh)
+source "${ZDOTDIR}/git_aliases"
+
+# Personal Aliases (e.g. ssh to servers)
+[[ -f "${ZDOTDIR}/personal_aliases" ]] && source "${ZDOTDIR}/personal_aliases"
+
+# application environment/history configuration
 
 # Change npm install dir from /usr/local/bin (which requires sudo)
 # ~/.npmrc should have the contents:  `prefix=${HOME}/.npm-packages`
@@ -40,42 +85,6 @@ export GEM_HOME="${HOME}/.gem"
 # shortcuts: https://github.com/seanbreckenridge/shortcuts
 export SHORTCUTS_DIR="${HOME}/.local/shortcuts"
 
-# inherit from /etc/manpath and add npm man pages
-unset MANPATH
-MANPATH="\
-${NPM_PACKAGES}/share/man:\
-$(manpath)"
-export MANPATH
-
-# antigen configuration
-source /usr/share/zsh/share/antigen.zsh
-antigen bundle zsh-users/zsh-syntax-highlighting
-antigen bundle command-not-found
-antigen bundle zsh-users/zsh-autosuggestions
-antigen apply
-
-# using antigen to install robbyrussel/oh-my-zsh might be nice for the auto updates
-# but it causes some weird circular dependencies that make installing it not nice
-
-# some completion features from: https://gist.github.com/LukeSmithxyz/e62f26e55ea8b0ed41a65912fbebbe52
-autoload -Uz compinit  # zsh tab completion
-zstyle ':completion:*' menu select  #  http://zsh.sourceforge.net/Guide/zshguide06.html
-zmodload zsh/complist  # http://zsh.sourceforge.net/Doc/Release/Zsh-Modules.html#The-zsh_002fcomplist-Module
-setopt globdots
-
-# load user defined functions
-for func in $(command ls -1 "${ZDOTDIR}/functions/"); do
-  autoload -Uz $func
-done
-
-# General Aliases
-[[ -f  "${ZDOTDIR}/zsh_aliases" ]] && source "${ZDOTDIR}/zsh_aliases"
-
-# Personal Aliases (e.g. ssh to servers)
-[[ -f "${ZDOTDIR}/personal_aliases" ]] && source "${ZDOTDIR}/personal_aliases"
-
 # app specific init
 eval $(thefuck --alias)
-# powerline
-powerline-daemon -q
-source /usr/lib/python*/site-packages/powerline/bindings/zsh/powerline.zsh
+

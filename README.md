@@ -1,6 +1,6 @@
 # dotfiles
 
-- zsh ([oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh)), [antigen](https://github.com/zsh-users/antigen) for autocompletion/highlighting, powerline defaults as 'theme'
+- zsh, [antigen](https://github.com/zsh-users/antigen) for autocompletion/highlighting
 - [i3-gaps](https://github.com/Airblader/i3) - window manager
 - [yadm](https://yadm.io) to manage dotfiles
 - [termite](https://github.com/thestinger/termite) for terminal

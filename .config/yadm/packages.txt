@@ -59,8 +59,6 @@ cups-pdf
 avahi
 nss-mdns
 shfmt
-powerline
-powerline-fonts
 antigen-git
 pandoc
 ranger
