@@ -4,7 +4,6 @@ alias ls='ls -h --color=tty'
 alias ll='ls -l'
 alias la='ll -a'
 alias l.='ls -a'
-alias todo='todo.sh'
 
 # yadm
 alias yds="yadm diff --staged"
@@ -21,6 +20,8 @@ alias poweroff="sudo systemctl poweroff"
 alias halt="sudo systemctl halt"
 alias du="du -h"
 alias df="df -h"
+alias history='history 0'
+alias todo='todo.sh'
 
 # Non-standard
 alias screens='sxiv -t ~/Desktop/Screenshots/*.png'
