@@ -79,7 +79,6 @@ zsh_history
 /.vim/.netrwhist
 /.gnome/apps
 /.gnome/apps
-/.oh-my-zsh
 /.credentials
 /.cache
 /.keras

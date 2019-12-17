@@ -128,3 +128,4 @@ xclip
 fzf
 python-pywal
 neovim-plug-git
+fd
