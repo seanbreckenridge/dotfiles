@@ -127,3 +127,6 @@ for binary in "${binaries[@]}"; do
   fi
 done
 
+echo "Updating nvim packages..."
+nvim +PlugInstall +qall
+nvim +PlugUpdate +qall

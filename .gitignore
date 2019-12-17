@@ -113,6 +113,7 @@ zsh_history
 /.mal-id-cache
 
 /.local/lib/python*
+/.local/plugged/*
 /.local/lib/pkgconfig/*
 /.local/bin
 /.local/include

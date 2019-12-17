@@ -23,10 +23,10 @@ exec --no-startup-id nm-applet
 exec --no-startup-id picom -b
 
 # wrapper script to randomize the wallpaper every 30 minutes
-exec --no-startup-id randomize-wallpaper loop
+exec --no-startup-id wal -i "${HOME}/Documents/wallpapers"
 
 # bind display key to randomize wallpaper
-bindsym XF86Display exec --no-startup-id randomize-wallpaper
+bindsym XF86Display exec --no-startup-id wal -i "${HOME}/Documents/wallpapers"
 
 # Disable touchpad 
 # exec --no-startup-id touchpad disable
@@ -208,3 +208,5 @@ bar {
     position top
     status_command i3blocks
 }
+
+# vim:filetype=i3

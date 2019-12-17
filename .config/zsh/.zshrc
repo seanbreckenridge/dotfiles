@@ -2,6 +2,9 @@
 
 [[ -f "${HOME}/.profile" ]] && source "${HOME}/.profile"
 
+# Set color scheme in the background
+(cat ~/.cache/wal/sequences &)
+
 # environment/history configuration
 
 # Change npm install dir from /usr/local/bin (which requires sudo)

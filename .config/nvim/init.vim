@@ -6,7 +6,10 @@ set nocompatible
 " Helps force plugins to load correctly when it is turned back on below
 filetype off
 
-" TODO: Load plugins here (pathogen or vundle)
+call plug#begin('~/.local/plugged')
+Plug 'PotatoesMaster/i3-vim-syntax'
+Plug 'scrooloose/nerdtree'
+call plug#end()
 
 " Turn on syntax highlighting
 syntax on
@@ -21,7 +24,7 @@ filetype plugin indent on
 set modelines=0
 
 " Show line numbers
-set number
+set number relativenumber
 
 " Show file stats
 set ruler
@@ -92,12 +95,5 @@ set listchars=tab:▸\ ,eol:¬
 " Or use your leader key + l to toggle on/off
 map <leader>l :set list!<CR> " Toggle tabs and EOL
 
-" Color scheme (terminal)
-set t_Co=256
-set background=dark
-let g:solarized_termcolors=256
-let g:solarized_termtrans=1
-" put https://raw.github.com/altercation/vim-colors-solarized/master/colors/solarized.vim
-" in ~/.vim/colors/ and uncomment:
-" colorscheme solarized
-
+" Plugins
+map <C-f> :NERDTreeToggle<CR>
