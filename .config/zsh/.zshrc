@@ -42,11 +42,12 @@ ${NPM_PACKAGES}/share/man:\
 $(manpath)"
 export MANPATH
 
-# antigen config
+# antigen
 source /usr/share/zsh/share/antigen.zsh
 antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle zsh-users/zsh-autosuggestions
 antigen bundle zsh-users/zsh-completions
+antigen bundle djui/alias-tips
 antigen apply
 
 # vim style bindings
