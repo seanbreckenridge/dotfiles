@@ -17,7 +17,7 @@ prompt_todos() {
 
 # give the user a dialog to add a new todo
 add_todo() {
-  NEW_TODO="$(rofi -dmenu -p "Add todo > " -theme-str 'listview {enabled: false;}')"
+  NEW_TODO="$(rofi-input -p "Add todo > ")"
   if [ -n "$NEW_TODO" ]; then
     notify-send "$(todo.sh -p add "$NEW_TODO")"
   fi

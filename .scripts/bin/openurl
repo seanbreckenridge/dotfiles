@@ -1,0 +1,20 @@
+#!/usr/bin/python
+
+import sys
+import subprocess
+
+from clipboard import paste
+from rofi import Rofi
+from urlextract import URLExtract
+
+cb = paste()
+if cb is False:
+    subprocess.call(["notify-send", "Your clipboard is empty"])
+    sys.exit(1)
+urls = URLExtract().find_urls(cb.decode())
+if not urls:
+    subprocess.call(["notify-send", "No urls found on your clipboard"])
+    sys.exit(1)
+index, key = Rofi().select("Open which URL? > ", urls)
+if key != -1:
+    subprocess.call(["xdg-open", urls[index]])
