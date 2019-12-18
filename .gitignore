@@ -107,6 +107,7 @@ zsh_history
 /.ssr
 /.steam*
 /.npm
+/.elvish
 /.npm-packages
 /.config/composer/.htaccess
 /.mal-id-cache
