@@ -129,3 +129,4 @@ fzf
 python-pywal
 neovim-plug-git
 fd
+elvish
