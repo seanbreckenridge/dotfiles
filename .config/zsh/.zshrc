@@ -74,6 +74,12 @@ source "${ZDOTDIR}/git_aliases"
 
 # application environment/history configuration
 
+# XDG user dirs
+
+export XDG_CONFIG_HOME="${HOME}/.config"
+export XDG_CACHE_HOME="${HOME}/.cache"
+export XDG_DATA_HOME="${HOME}/.local/share"
+
 # Change npm install dir from /usr/local/bin (which requires sudo)
 # ~/.npmrc should have the contents:  `prefix=${HOME}/.npm-packages`
 export NPM_PACKAGES="${HOME}/.npm-packages"
