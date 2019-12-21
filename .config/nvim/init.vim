@@ -9,6 +9,7 @@ filetype off
 call plug#begin('~/.local/plugged')
 Plug 'PotatoesMaster/i3-vim-syntax'
 Plug 'scrooloose/nerdtree'
+Plug 'elixir-editors/vim-elixir'
 call plug#end()
 
 " Turn on syntax highlighting
@@ -29,7 +30,7 @@ set number relativenumber
 " Show file stats
 set ruler
 
-" Blink cursor on error instead of beeping (grr)
+" Blink cursor on error instead of beeping
 set visualbell
 
 " Encoding
@@ -95,5 +96,14 @@ set listchars=tab:▸\ ,eol:¬
 " Or use your leader key + l to toggle on/off
 map <leader>l :set list!<CR> " Toggle tabs and EOL
 
+" Allow find commands to search the current directory recursively
+set path+=**
+
+" display all matching files for tab completion
+set wildmenu
+
 " Plugins
 map <C-f> :NERDTreeToggle<CR>
+
+" open ranger
+nnoremap ,ranger :!rn 2>&1 > /dev/null <CR>
