@@ -54,6 +54,7 @@ antigen apply
 # Escape to enter command mode
 export KEYTIMEOUT=1
 bindkey -v
+bindkey -v '^?' backward-delete-char  # allow backspace to delete items after exiting command mode
 # basic emacs bindings
 bindkey '^A' vi-beginning-of-line
 bindkey '^E' vi-end-of-line
