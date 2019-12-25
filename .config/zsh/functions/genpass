@@ -1,10 +1,9 @@
 #!/usr/bin/env zsh
-# requires clipcopy, which is installed by oh-my-zsh (platform agnostic copy to clipboard)
 # This uses my password generator at https://github.com/seanbreckenridge/genpasswd
 
 genpass() {
     pw=$(genpasswd "$@" | head -n 1 | tr -d "\n")
     echo -e "$pw"
-    echo -en "$pw" | clipcopy
+    [[ "$(command -v xclip)" ]] && echo -en "$pw" | xclip -in -selection clipboard
 }
 
