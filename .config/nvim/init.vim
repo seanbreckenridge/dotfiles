@@ -106,4 +106,5 @@ set wildmenu
 map <C-f> :NERDTreeToggle<CR>
 
 " open ranger
-nnoremap ,ranger :!rn 2>&1 > /dev/null <CR>
+nnoremap ,rn :!rn 2>&1 > /dev/null <CR>
+
