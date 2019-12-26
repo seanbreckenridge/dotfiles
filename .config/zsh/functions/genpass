@@ -1,9 +1,0 @@
-#!/usr/bin/env zsh
-# This uses my password generator at https://github.com/seanbreckenridge/genpasswd
-
-genpass() {
-    pw=$(genpasswd "$@" | head -n 1 | tr -d "\n")
-    echo -e "$pw"
-    [[ "$(command -v xclip)" ]] && echo -en "$pw" | xclip -in -selection clipboard
-}
-

@@ -78,6 +78,9 @@ exec --no-startup-id echo "${HOME}/.todo/todo.txt" | entr pkill -RTMIN+2 i3block
 bindsym $mod+t exec --no-startup-id ~/.config/i3blocks/blocks/todo list
 bindsym $mod+Shift+t exec --no-startup-id ~/.config/i3blocks/blocks/todo add
 
+# search google
+bindsym $mod+s exec --no-startup-id google
+
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
@@ -91,7 +94,7 @@ bindsym $mod+q kill
 bindsym $mod+r exec --no-startup-id rofi -show run
 
 # rofi switch window menu
-bindsym $mod+d exec --no-startup-id rofi -show window
+bindsym $mod+Tab exec --no-startup-id rofi -show window
 
 # take a screenshot
 bindsym --release Print exec --no-startup-id "maim -s | tee ~/Desktop/Screenshots/$(date '+%d-%m-%Y--%R:%S').png | xclip -t image/png -selection clipboard"
@@ -190,7 +193,7 @@ bindsym $mod+Shift+0 move container to workspace number "10"
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 
-bindsym $mod+Tab mode "launcher"
+bindsym $mod+d mode "launcher"
 
 mode "launcher" {
     bindsym f exec firefox-developer-edition
