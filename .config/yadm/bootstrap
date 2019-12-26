@@ -111,7 +111,7 @@ fi
 
 # Check for manually installed binaries, installed at /usr/local/bin
 
-echo "Checking manually installed binaries..."
+echo "Checking for manually installed binaries..."
 binaries=("wait-for-internet" "genpasswd" "shortcuts")
 for binary in "${binaries[@]}"; do
   if [ ! "$(command -v "$binary")" ]; then
