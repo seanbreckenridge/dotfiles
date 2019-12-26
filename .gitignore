@@ -59,6 +59,7 @@ zsh_history
 /.atom/github.cson
 /.atom/*socket*
 
+/jagexcache
 /.cookiecutter_replay/*
 /.gem/*
 /.bundle/*
