@@ -7,6 +7,18 @@ import webbrowser
 
 from giturlparse import parse
 
+
+def detch_open_webbrowser(url):
+    """
+    If no browser is open, and webbrowser.open is called,
+    the python process itself is what launches the browser.
+    `gitopen` stays running till the browser dies.
+
+    use xdg-open instead, as that detaches the process
+    """
+    subprocess.run(["xdg-open", url], check=True)
+
+
 result = subprocess.run(
     ["git", "config", "--get", "remote.origin.url"], stdout=subprocess.PIPE
 )
@@ -18,10 +30,10 @@ else:
     try:
         # try to use giturlparse
         https_url = parse(git_url).urls["https"]
-        webbrowser.open_new_tab(https_url)
+        detch_open_webbrowser(https_url)
     except:
         # try to directly open url
         try:
-            webbrowser.open_new_tab(git_url)
+            detach_open_webbrowser(git_url)
         except:
             print("Error parsing {}, make sure its formatted properly.".format(git_url))
