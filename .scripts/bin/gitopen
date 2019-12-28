@@ -14,9 +14,11 @@ def detch_open_webbrowser(url):
     the python process itself is what launches the browser.
     `gitopen` stays running till the browser dies.
 
-    use xdg-open instead, as that detaches the process
+    open the browser if its not already open
+    then call xdg-open
     """
-    subprocess.run(["xdg-open", url], check=True)
+    subprocess.run("open-browser")
+    webbrowser.open_new_tab(url)
 
 
 result = subprocess.run(

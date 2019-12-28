@@ -17,4 +17,5 @@ if not urls:
     sys.exit(1)
 index, key = Rofi().select("Open which URL? > ", urls)
 if key != -1:
+    subprocess.run("open-browser")
     subprocess.call(["xdg-open", urls[index]])
