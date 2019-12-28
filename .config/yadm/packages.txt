@@ -131,3 +131,4 @@ neovim-plug-git
 fd
 elvish
 runelite
+screenkey-git
