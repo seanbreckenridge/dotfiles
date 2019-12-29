@@ -16,5 +16,8 @@ fi
 # this is often more than one, depending on the number of tabs
 BROWSER_PROC_COUNT="$(ps -aux | grep "$BROWSER" | grep -v "grep $BROWSER" | wc -l)"
 
-[ "$BROWSER_PROC_COUNT" -eq 0 ] && "$BROWSER" &
+if [ "$BROWSER_PROC_COUNT" -eq 0 ]; then
+  "$BROWSER" &
+  sleep 1
+fi
 
