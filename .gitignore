@@ -60,6 +60,8 @@ zsh_history
 /.atom/*socket*
 
 /jagexcache
+/jagex_cl_oldschool_LIVE.dat
+/random.dat
 /.cookiecutter_replay/*
 /.gem/*
 /.bundle/*
