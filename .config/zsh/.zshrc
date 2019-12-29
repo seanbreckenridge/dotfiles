@@ -108,6 +108,9 @@ export PYTHONSTARTUP="${HOME}/.config/pythonrc"
 # SQLite history file
 export SQLITE_HISTORY="${HOME}/.cache/sqlite_history"
 
+# cube scramble cli history file
+export SCRAMBLE_HISTORY="${HOME}/.cache/scramble_history"
+
 # ruby
 export GEM_HOME="${HOME}/.gem"
 
