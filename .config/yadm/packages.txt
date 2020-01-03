@@ -134,3 +134,4 @@ runelite
 screenkey-git
 exfat-utils
 fuse-exfat
+xdotool
