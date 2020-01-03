@@ -132,3 +132,5 @@ fd
 elvish
 runelite
 screenkey-git
+exfat-utils
+fuse-exfat
