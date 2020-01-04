@@ -34,7 +34,6 @@ pinta
 npm
 imagemagick
 unrar
-redshift
 ffmpeg
 php
 composer
