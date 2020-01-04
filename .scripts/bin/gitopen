@@ -15,7 +15,7 @@ def detch_open_webbrowser(url):
     `gitopen` stays running till the browser dies.
 
     open the browser if its not already open
-    then call xdg-open
+    then open with webbrowser module
     """
     subprocess.run("open-browser")
     webbrowser.open_new_tab(url)
