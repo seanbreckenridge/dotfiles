@@ -62,6 +62,7 @@ zsh_history
 /jagexcache
 /jagex_cl_oldschool_LIVE.dat
 /random.dat
+/gdrive
 /.cookiecutter_replay/*
 /.gem/*
 /.bundle/*
@@ -76,6 +77,7 @@ zsh_history
 /.mix
 /.hex
 /.pyenv
+/.ipython
 /.antigen
 /.pki/nssdb
 /.wget-hsts
