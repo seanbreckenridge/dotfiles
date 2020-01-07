@@ -43,7 +43,7 @@ if [[ ! -f "${HOME}/.zshenv" ]]; then
 fi
 
 # Setting up default user directories
-default_user_dirs=("code" "Desktop" "Documents" "Documents/Notes" "Documents/wallpapers" "Downloads" "Desktop/Screenshots" "Pictures" ".local" ".cache" ".credentials")
+default_user_dirs=("code" "Desktop" "Documents" "Documents/Notes" "Documents/wallpapers" "Downloads" "Desktop/Screenshots" "Pictures" ".local" ".cache" ".credentials" "gdrive")
 
 for d_name in "${default_user_dirs[@]}"; do
 	if [[ ! -d "${HOME}/${d_name}" ]]; then
@@ -98,7 +98,7 @@ done <"${HOME}/.config/yadm/global_node_packages.txt"
 # Check services
 echo "Checking if default services are running..."
 # CUPS and avahi are for printing
-services=("NetworkManager" "avahi-daemon" "org.cups.cupsd" "redis")
+services=("NetworkManager" "avahi-daemon" "org.cups.cupsd" "redis" "cronie")
 for serv in "${services[@]}"; do
 	if ! systemctl show -p SubState --value "${serv}" | grep -q "running"; then
 		echo -e "${serv} is not running, you should enable it with: 'sudo systemctl enable ${serv}'"

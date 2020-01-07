@@ -134,3 +134,5 @@ screenkey-git
 exfat-utils
 fuse-exfat
 xdotool
+cronie
+drive-git
