@@ -20,7 +20,6 @@ HTMLParser
 idna
 itsdangerous
 jikanpy
-jrnl
 lxml
 matplotlib
 mysqlclient
