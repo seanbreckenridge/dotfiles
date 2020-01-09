@@ -126,6 +126,8 @@ zsh_history
 /.local/etc/bash_completion.d
 /.local/etc/fish/completions
 /.local/shortcuts/*
+/.local/MATLAB/*
+/.matlab
 
 /code
 /Documents
