@@ -1,6 +1,11 @@
 seperator_block_width=15
 markup=pango
 
+[server]
+command="${HOME}/.config/i3blocks/blocks/monitor_server"
+label=🖥️
+interval=600
+
 # entr in ~/.config/i3/config refreshes this when the file changes
 [todo]
 command="${HOME}/.config/i3blocks/blocks/todo"
