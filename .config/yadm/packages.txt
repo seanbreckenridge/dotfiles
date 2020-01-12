@@ -39,7 +39,7 @@ php
 composer
 pyenv
 atom
-slack-desktop-dark
+slack-desktop
 sqlitebrowser
 docker
 balena-etcher
