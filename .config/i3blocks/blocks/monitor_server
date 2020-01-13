@@ -5,6 +5,8 @@ SSH_USER="sean"
 SSH_IP="51.158.71.26"
 EXPECTED_PROC_COUNT=6
 
+wait-for-internet > /dev/null
+
 SCREEN_OUTPUT=$(ssh -i "$SSH_IDENTITY" "$SSH_USER"@"$SSH_IP" "screen -ls")
 SCREEN_COUNT=$(echo "$SCREEN_OUTPUT" | grep -c "Detached" )
 echo "$SCREEN_COUNT"
