@@ -98,7 +98,7 @@ done <"${HOME}/.config/yadm/global_node_packages.txt"
 # Check services
 echo "Checking if default services are running..."
 # CUPS and avahi are for printing
-services=("NetworkManager" "avahi-daemon" "org.cups.cupsd" "redis" "cronie")
+services=("NetworkManager" "avahi-daemon" "org.cups.cupsd" "cronie")
 for serv in "${services[@]}"; do
 	if ! systemctl show -p SubState --value "${serv}" | grep -q "running"; then
 		echo -e "${serv} is not running, you should enable it with: 'sudo systemctl enable ${serv}'"
@@ -112,7 +112,7 @@ fi
 # Check for manually installed binaries, installed at /usr/local/bin
 
 echo "Checking for manually installed binaries..."
-binaries=("wait-for-internet" "genpasswd" "shortcuts")
+binaries=("wait-for-internet" "genpasswd" "shortcuts" "largechar")
 for binary in "${binaries[@]}"; do
   if [ ! "$(command -v "$binary")" ]; then
     echo -e "Warning: Couldn't find ${binary}. Install it at https://github.com/seanbreckenridge/${binary}\n"
