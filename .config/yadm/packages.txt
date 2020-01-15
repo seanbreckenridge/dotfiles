@@ -136,3 +136,4 @@ fuse-exfat
 xdotool
 cronie
 drive-git
+yarn
