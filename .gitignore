@@ -26,6 +26,7 @@ zsh_history
 /.config/cef_user_data
 /.config/neofetch
 /.config/discord
+/.config/largechar
 /.config/pulse
 /.config/hub
 /.config/mono.addins
@@ -110,6 +111,7 @@ zsh_history
 /.vscode-oss
 /.cargo
 /.ssr
+/.gnupg
 /.steam*
 /.npm
 /.elvish
