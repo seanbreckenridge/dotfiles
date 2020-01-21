@@ -108,7 +108,7 @@ for_window [class=".*"] border pixel 0
 smart_borders on
 smart_gaps on
 smart_borders no_gaps
-gaps inner 5
+gaps inner 15
 gaps outer 0
 
 # change focus
