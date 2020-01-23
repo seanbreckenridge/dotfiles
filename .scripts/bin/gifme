@@ -48,7 +48,8 @@ Type 'gifme -h' for additional help.
 \$3 - duration; the length of the video clip after the start time to convert
 Time(s) can be in seconds, or it also accepts the \"hh:mm:ss[.xxx]\" format
 \$4 - (optional) specify an integer fps value. default is 10
-For best output, it should be a factor of 100; e.g. 10, 20, 25, 50"
+For best output, it should be a factor of 100; e.g. 10, 20, 25, 50
+"
 	exit 1
 fi
 
