@@ -24,6 +24,8 @@ zsh_history
 /.config/mimeapps.list
 /.config/autostart
 /.config/cef_user_data
+/.config/sqlitebrowser/*
+/.config/clojure
 /.config/neofetch
 /.config/discord
 /.config/largechar
@@ -75,6 +77,7 @@ zsh_history
 /.swipl-dir*
 /.pythonanywhere*
 /.scramble_history.txt
+/.yarnrc
 /.mix
 /.hex
 /.pyenv
