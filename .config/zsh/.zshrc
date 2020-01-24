@@ -14,6 +14,11 @@ zstyle ':completion:*' menu select  #  http://zsh.sourceforge.net/Guide/zshguide
 zmodload zsh/complist  # http://zsh.sourceforge.net/Doc/Release/Zsh-Modules.html#The-zsh_002fcomplist-Module
 setopt globdots
 
+# load user defined functions
+for func in $(command ls -1 "${ZDOTDIR}/functions/"); do
+  autoload -Uz $func
+done
+
 # Change cursor shape for different vi modes.
 function zle-keymap-select {
   if [[ ${KEYMAP} == vicmd ]] ||
@@ -60,10 +65,10 @@ bindkey '^A' vi-beginning-of-line
 bindkey '^E' vi-end-of-line
 bindkey '^K' vi-kill-eol
 
-# load user defined functions
-for func in $(command ls -1 "${ZDOTDIR}/functions/"); do
-  autoload -Uz $func
-done
+# bind zsh functions to zle keymaps
+zle -N fzffd
+
+bindkey '^F' fzffd
 
 source "${ZDOTDIR}/zsh_aliases"
 
