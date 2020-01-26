@@ -140,3 +140,4 @@ yarn
 the_silver_searcher
 ctags
 unclutter
+mlocate

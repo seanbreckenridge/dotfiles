@@ -138,6 +138,6 @@ eval $(thefuck --alias)
 source /usr/share/fzf/key-bindings.zsh
 source /usr/share/fzf/completion.zsh
 export FZF_DEFAULT_OPTS="--extended"
-export FZF_DEFAULT_COMMAND="fd -L --type f"  # ignore files in gitignore
+export FZF_DEFAULT_COMMAND="fd -L"  # ignore files in gitignore
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
