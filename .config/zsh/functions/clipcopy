@@ -1,0 +1,7 @@
+# pipes stdin to the clipboard
+# <command> | clipcopy
+
+function clipcopy() {
+  emulate -L zsh
+  xclip -in -selection clipboard
+}
