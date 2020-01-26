@@ -11,3 +11,4 @@ function fzffd() {
   unset FZFFOUNDFILENAME
   zle reset-prompt  # so that PS1 updates
 }
+

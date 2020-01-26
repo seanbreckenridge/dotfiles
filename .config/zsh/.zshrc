@@ -65,9 +65,14 @@ bindkey '^A' vi-beginning-of-line
 bindkey '^E' vi-end-of-line
 bindkey '^K' vi-kill-eol
 
+# press space in vi command mode
+# to open current command in a vimbuffer
+autoload -z edit-command-line
+zle -N edit-command-line
+bindkey -M vicmd ' ' edit-command-line
+
 # bind zsh functions to zle keymaps
 zle -N fzffd
-
 bindkey '^F' fzffd
 
 source "${ZDOTDIR}/zsh_aliases"
@@ -123,5 +128,16 @@ export GEM_HOME="${HOME}/.gem"
 export SHORTCUTS_DIR="${HOME}/.local/shortcuts"
 
 # app specific init
+
+# thefuck to correct commands
 eval $(thefuck --alias)
+
+# fzf
+# ctrl t to autocomplete files from cwd
+# ctrl r to fuzzy match through command history
+source /usr/share/fzf/key-bindings.zsh
+source /usr/share/fzf/completion.zsh
+export FZF_DEFAULT_OPTS="--extended"
+export FZF_DEFAULT_COMMAND="fd -L --type f"  # ignore files in gitignore
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 

@@ -8,8 +8,12 @@ filetype off
 
 call plug#begin('~/.local/plugged')
 Plug 'PotatoesMaster/i3-vim-syntax'
+Plug 'junegunn/goyo.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'elixir-editors/vim-elixir'
+Plug '/usr/bin/fzf'
+Plug 'junegunn/fzf.vim'
+Plug 'terryma/vim-multiple-cursors'
 call plug#end()
 
 " Turn on syntax highlighting
@@ -18,8 +22,7 @@ syntax on
 " For plugins to load correctly
 filetype plugin indent on
 
-" TODO: Pick a leader key
-" let mapleader = ","
+let mapleader =" "
 
 " Security
 set modelines=0
@@ -103,8 +106,16 @@ set path+=**
 set wildmenu
 
 " Plugins
-map <C-f> :NERDTreeToggle<CR>
+" Nerdtree
+map <leader>w :NERDTreeToggle<CR>
 
-" open ranger
-nnoremap ,rn :!rn 2>&1 > /dev/null <CR>
+" goyo
+map <leader>g :Goyo<CR>
 
+" fzf
+map <leader>b :Buffers<CR>
+map <leader>f :Files<CR>
+map <leader>l :Lines<CR>
+" match all lines/files recursively using the_silver_searcher
+map <leader>r :Ag<CR>
+map <leader>c :Commands<CR>
