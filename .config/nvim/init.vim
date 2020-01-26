@@ -14,6 +14,7 @@ Plug 'elixir-editors/vim-elixir'
 Plug '/usr/bin/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'terryma/vim-multiple-cursors'
+Plug 'ludovicchabant/vim-gutentags'
 call plug#end()
 
 " Turn on syntax highlighting
