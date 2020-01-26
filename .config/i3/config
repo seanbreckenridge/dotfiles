@@ -87,9 +87,6 @@ exec --no-startup-id echo "${HOME}/.todo/todo.txt" | entr pkill -RTMIN+2 i3block
 bindsym $mod+t exec --no-startup-id ~/.config/i3blocks/blocks/todo list
 bindsym $mod+Shift+t exec --no-startup-id ~/.config/i3blocks/blocks/todo add
 
-# search google
-bindsym $mod+s exec --no-startup-id google
-
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
@@ -113,7 +110,7 @@ for_window [class=".*"] border pixel 0
 smart_borders on
 smart_gaps on
 smart_borders no_gaps
-gaps inner 15
+gaps inner 5
 gaps outer 0
 
 # change focus
@@ -152,14 +149,14 @@ bindsym $mod+Shift+z split h
 bindsym $mod+Shift+v split v
 
 # prefer toggle over explicit switching - switch split default orientation
-# bindsym $mod+t split toggle
+# bindsym $mod+s split toggle
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
 
-# change container layout (stacked, tabbed, toggle split)
-# bindsym $mod+s layout stacking
-# bindsym $mod+w layout tabbed
+# toggle between tabbed and tiling
+bindsym $mod+s layout tabbed
+bindsym $mod+Shift+s layout splitv
 
 # swap the current layout for this window to horizontal/vertical
 bindsym $mod+e layout toggle split
