@@ -1,14 +1,13 @@
 # fuzzy search for files and cd to the enclosing directory
 
 function fzffd() {
-  FZFFOUNDFILENAME="$(fd -L | fzf +m)"
+  local FZFFOUNDFILENAME="$(fd -L | fzf +m)"
   # go to directory if its a directory, else go to enclosing directory
   if [ -d "$FZFFOUNDFILENAME" ]; then
     cd "$FZFFOUNDFILENAME"
   else
     cd "$(dirname "$FZFFOUNDFILENAME")"
   fi
-  unset FZFFOUNDFILENAME
   zle reset-prompt  # so that PS1 updates
 }
 
