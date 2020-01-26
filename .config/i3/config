@@ -22,7 +22,7 @@ exec --no-startup-id nm-applet
 # use picom for display compositing
 exec --no-startup-id picom -b
 
-# wrapper script to randomize the wallpaper every 30 minutes
+# set a random wallpaper
 exec --no-startup-id wal -i "${HOME}/Documents/wallpapers"
 
 # bind display key to randomize wallpaper
