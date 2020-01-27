@@ -9,10 +9,13 @@
 autoload -U colors && colors
 export PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%~%{$fg[red]%}]%{$reset_color%}$%b "
 
-autoload -Uz compinit  # zsh tab completion
+# load zsh-completions installed with pacman to (among other things) allow menu select w/ highlight
+fpath=(/usr/share/zsh/site-functions $fpath)  zmodload zsh/complist  # http://zsh.sourceforge.net/Doc/Release/Zsh-Modules.html#The-zsh_002fcomplist-Module
 zstyle ':completion:*' menu select  #  http://zsh.sourceforge.net/Guide/zshguide06.html
 zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*' # Auto complete with case insenstivity
-zmodload zsh/complist  # http://zsh.sourceforge.net/Doc/Release/Zsh-Modules.html#The-zsh_002fcomplist-Module
+autoload -Uz compinit && compinit
+
+# allow autocompletion to target hidden files
 setopt globdots
 
 # load user defined functions
