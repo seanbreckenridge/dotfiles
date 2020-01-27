@@ -58,7 +58,6 @@ cups-pdf
 avahi
 nss-mdns
 shfmt
-antigen-git
 pandoc
 ranger
 grub-customizer
@@ -143,3 +142,7 @@ unclutter
 mlocate
 pistol-git
 pkgfile
+zsh-syntax-highlighting
+zsh-autosuggestions
+zsh-completions
+zsh-you-should-use

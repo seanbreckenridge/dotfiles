@@ -48,17 +48,6 @@ ${NPM_PACKAGES}/share/man:\
 $(manpath)"
 export MANPATH
 
-# antigen
-source /usr/share/zsh/share/antigen.zsh
-antigen bundle zsh-users/zsh-syntax-highlighting
-antigen bundle zsh-users/zsh-autosuggestions
-antigen bundle zsh-users/zsh-completions
-antigen bundle MichaelAquilina/zsh-you-should-use
-antigen apply
-
-# command not found
-source /usr/share/doc/pkgfile/command-not-found.zsh
-
 # vim style bindings
 # Escape to enter command mode
 export KEYTIMEOUT=1
@@ -144,6 +133,13 @@ export LESS_TERMCAP_ue=$'\e[0m'
 export LESS_TERMCAP_us=$'\e[1;4;31m'
 
 # app specific init
+
+# zsh plugins
+source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /usr/share/doc/pkgfile/command-not-found.zsh
+source /usr/share/zsh/plugins/zsh-you-should-use/you-should-use.plugin.zsh
+
 # thefuck to correct commands
 eval $(thefuck --alias)
 

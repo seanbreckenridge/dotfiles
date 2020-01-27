@@ -1,6 +1,6 @@
 # dotfiles
 
-- zsh, [antigen](https://github.com/zsh-users/antigen) for autocompletion/highlighting
+- zsh
 - [i3-gaps](https://github.com/Airblader/i3) - window manager
 - [yadm](https://yadm.io) to manage dotfiles
 - [termite](https://github.com/thestinger/termite) for terminal
