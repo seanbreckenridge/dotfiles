@@ -200,6 +200,9 @@ bindsym $mod+Shift+0 move container to workspace number "10"
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 
+# use xprop to find class names
+assign [class="Thunderbird"] 10
+
 bindsym $mod+d mode "launcher"
 
 mode "launcher" {
