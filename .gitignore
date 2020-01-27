@@ -78,6 +78,7 @@ zsh_history
 /.swipl-dir*
 /.pythonanywhere*
 /.scramble_history.txt
+/.psql_history
 /.yarnrc
 /.mix
 /.hex
