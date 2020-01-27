@@ -10,18 +10,22 @@ autoload -U colors && colors
 export PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%~%{$fg[red]%}]%{$reset_color%}$%b "
 
 # load zsh-completions installed with pacman to (among other things) allow menu select w/ highlight
-fpath=(/usr/share/zsh/site-functions $fpath)  zmodload zsh/complist  # http://zsh.sourceforge.net/Doc/Release/Zsh-Modules.html#The-zsh_002fcomplist-Module
+# load user defined zsh functions
+fpath=(
+  /usr/share/zsh/site-functions
+  "$ZDOTDIR/functions"
+  "${fpath[@]}"
+)
+
+autoload -Uz "$ZDOTDIR/functions"/*
+
+zmodload zsh/complist  # http://zsh.sourceforge.net/Doc/Release/Zsh-Modules.html#The-zsh_002fcomplist-Module
 zstyle ':completion:*' menu select  #  http://zsh.sourceforge.net/Guide/zshguide06.html
 zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*' # Auto complete with case insenstivity
 autoload -Uz compinit && compinit
-
 # allow autocompletion to target hidden files
 setopt globdots
 
-# load user defined functions
-for func in $(command ls -1 "${ZDOTDIR}/functions/"); do
-  autoload -Uz $func
-done
 
 # Change cursor shape for different vi modes.
 function zle-keymap-select {
