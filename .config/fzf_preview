@@ -33,7 +33,7 @@ case "$mimetype" in
     try exiftool "$path" && { dump | trim; exit 0; }
     ;;
   application/json)
-    try pygmentize "$path" && { dump | trim; exit 0; }
+    try pygmentize -l json "$path" && { dump | trim; exit 0; }
     ;;
   # Syntax highlight for text files:
   text/* | */xml)
