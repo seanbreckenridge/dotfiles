@@ -141,3 +141,4 @@ the_silver_searcher
 ctags
 unclutter
 mlocate
+pistol-git

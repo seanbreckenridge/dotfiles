@@ -56,3 +56,4 @@ yattag
 youtube-dl
 pyclip-copycat
 bandcamp-downloader
+ueberzug
