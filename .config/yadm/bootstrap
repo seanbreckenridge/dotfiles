@@ -119,7 +119,7 @@ for binary in "${binaries[@]}"; do
   fi
 done
 
-echo "Creating directory shortcuts... "
+echo "Creating directory aliases..."
 dir-aliases
 
 echo "Installing nvim packages..."
