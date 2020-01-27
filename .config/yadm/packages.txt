@@ -142,3 +142,4 @@ ctags
 unclutter
 mlocate
 pistol-git
+pkgfile

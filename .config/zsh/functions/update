@@ -1,18 +1,20 @@
 # Update typically used packages
 
 function update() {
-	wait-for-internet --text "(waiting for internet)"
-	local START_TIME=$(date +%s)
-	echo -e "Updating system (pacman/yay) packages..."
-	yay -Syu
-	yadm bootstrap
+  local START_TIME=$(date +%s)
+  wait-for-internet --text "(waiting for internet)"
+  echo -e "Updating system (pacman/yay) packages..."
+  yay -Syu
+  echo -e "Updating pkgfile indexes..."
+  sudo pkgfile --update
+  yadm bootstrap
   echo -e "Updating nvim packages..."
   nvim +PlugUpdate +qall
-	echo -e "Updating python packages..."
-	python3 -m pip list --outdated --format=freeze | cut -d"=" -f 1 | xargs -r -n1 python3 -m pip install --upgrade --user
-	echo -e "Updating antigen (zsh plugins)..."
-	antigen update
-	echo -e "Updating global npm packages..."
-	npm update -g
-	printf "Finished updates in %d seconds\n" $(echo -e "$(date +%s) - ${START_TIME}" | bc) | boxes -d shell -p t1l2b1r2
+  echo -e "Updating python packages..."
+  python3 -m pip list --outdated --format=freeze | cut -d"=" -f 1 | xargs -r -n1 python3 -m pip install --upgrade --user
+  echo -e "Updating antigen (zsh plugins)..."
+  antigen update
+  echo -e "Updating global npm packages..."
+  npm update -g
+  printf "Finished updates in %d seconds\n" $(echo -e "$(date +%s) - ${START_TIME}" | bc) | boxes -d shell -p t1l2b1r2
 }

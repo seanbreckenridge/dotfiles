@@ -11,6 +11,7 @@ export PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg
 
 autoload -Uz compinit  # zsh tab completion
 zstyle ':completion:*' menu select  #  http://zsh.sourceforge.net/Guide/zshguide06.html
+zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*' # Auto complete with case insenstivity
 zmodload zsh/complist  # http://zsh.sourceforge.net/Doc/Release/Zsh-Modules.html#The-zsh_002fcomplist-Module
 setopt globdots
 
@@ -54,6 +55,9 @@ antigen bundle zsh-users/zsh-autosuggestions
 antigen bundle zsh-users/zsh-completions
 antigen bundle MichaelAquilina/zsh-you-should-use
 antigen apply
+
+# command not found
+source /usr/share/doc/pkgfile/command-not-found.zsh
 
 # vim style bindings
 # Escape to enter command mode
@@ -130,8 +134,16 @@ export GEM_HOME="${HOME}/.gem"
 # shortcuts: https://github.com/seanbreckenridge/shortcuts
 export SHORTCUTS_DIR="${HOME}/.local/shortcuts"
 
-# app specific init
+# colors for manpages
+export LESS_TERMCAP_mb=$'\e[1;32m'
+export LESS_TERMCAP_md=$'\e[1;32m'
+export LESS_TERMCAP_me=$'\e[0m'
+export LESS_TERMCAP_se=$'\e[0m'
+export LESS_TERMCAP_so=$'\e[01;33m'
+export LESS_TERMCAP_ue=$'\e[0m'
+export LESS_TERMCAP_us=$'\e[1;4;31m'
 
+# app specific init
 # thefuck to correct commands
 eval $(thefuck --alias)
 
