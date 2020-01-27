@@ -1,0 +1,47 @@
+#!/bin/bash
+
+path="$1"
+maxln=$(( $(tput lines) - 2 ))
+
+# Find out something about the file:
+mimetype=$(file --mime-type -Lb "$path")
+# extension=$(/bin/echo "${path##*.}" | awk '{print tolower($0)}')
+
+# Functions:
+# runs a command and saves its output into $output.  Useful if you need
+# the return value AND want to use the output in a pipe
+try() { output=$(eval '"$@"'); }
+
+# writes the output of the previously used "try" command
+dump() { /bin/echo "$output"; }
+
+# a common post-processing function used after most commands
+trim() { head -n "$maxln"; }
+
+case "$mimetype" in
+  inode/directory)
+    printf "==> %s Contents <==\n" "$path"
+    ls -1 "$path" | head -n "$(( maxln - 1))"&& exit 0
+    ;;
+  image/*)
+    column_width=$(( COLUMNS / 2 - 4))
+    column_height=$(( maxln - 5 ))
+    try tiv -h ${column_height} -w "${column_width}" "$path" 2>/dev/null && { dump; exit 0; }
+    ;;
+  # Display information about media files:
+  video/* | audio/*)
+    try exiftool "$path" && { dump | trim; exit 0; }
+    ;;
+  application/json)
+    try pygmentize "$path" && { dump | trim; exit 0; }
+    ;;
+  # Syntax highlight for text files:
+  text/* | */xml)
+    try pygmentize "$path" 2>/dev/null && { dump | trim; exit 0; }
+    try pistol "$path" && { dump | trim; exit 0; }
+    ;;
+esac
+
+# defualt if extension/mimetype both fail
+try pistol "$path" && { dump | trim; exit 0; }
+

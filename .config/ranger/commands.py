@@ -34,7 +34,7 @@ class fzf_select(Command):
         else:
             # match files and directories
             command = "find -L . \( -path '*/\.*' -o -fstype 'dev' -o -fstype 'proc' \) -prune \
-            -o -print 2> /dev/null | sed 1d | cut -b3- | fzf +m"
+            -o -print 2> /dev/null | sed 1d | cut -b3- | fzf +m --preview='${HOME}/.config/fzf_preview {}'"
         fzf = self.fm.execute_command(command, stdout=subprocess.PIPE)
         stdout, stderr = fzf.communicate()
         if fzf.returncode == 0:
@@ -61,7 +61,7 @@ class fzf_bring(Command):
         if self.quantifier:
             # match only directories
             command = "find -L . \( -path '*/\.*' -o -fstype 'dev' -o -fstype 'proc' \) -prune \
-            -o -type d -print 2> /dev/null | sed 1d | cut -b3- | fzf +m"
+            -o -type d -print 2> /dev/null | sed 1d | cut -b3- | fzf +m --preview='${HOME}/.config/fzf_preview {}'"
         else:
             # match files and directories
             command = "find -L . \( -path '*/\.*' -o -fstype 'dev' -o -fstype 'proc' \) -prune \
