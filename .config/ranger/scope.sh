@@ -63,14 +63,9 @@ case "$extension" in
     # PDF documents:
     pdf)
 	    try pdftoppm -jpeg -singlefile "$path" "${cached//.jpg}" && exit 6 || exit 1;;
-    json)
-      head -n "$maxln" "$path"; exit 0;;
 esac
 
 case "$mimetype" in
-    # Display JSON
-    application/json)
-      head -n "$maxln" "$path"; exit 0;;
     # Display information about media files:
     video/* | audio/*)
         exiftool "$path" && exit 5
@@ -85,6 +80,7 @@ case "$mimetype" in
             pygmentize_format=terminal
             highlight_format=ansi
         fi
+        try safepipe highlight --out-format=${highlight_format} "$path" && { dump | trim; exit 5; }
         try safepipe pistol --out-format=${highlight_format} "$path" && { dump | trim; exit 5; }
         ;;
 esac
