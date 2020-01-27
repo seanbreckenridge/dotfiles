@@ -13,15 +13,16 @@
 - [i3blocks](https://github.com/vivien/i3blocks) for status bar
 - [lightdm](https://wiki.archlinux.org/index.php/LightDM) - display manager
 - [todotxt](http://todotxt.org/) for todos
+- [ranger](https://github.com/ranger/ranger) - file manager
 
 [.config/yadm](./.config/yadm) includes lists of packages for pacman/yay, python, and npm.
 
 Packages can be added to the `.txt` files manually, and then `yadm bootstrap` can be run repeatedely to make sure everything is installed.
 
+- [.config/shortcuts.conf](.config/shortcuts.conf) - describes basic shell scripts that are created by [shortcuts](https://github.com/seanbreckenridge/shortcuts)
+- [dir-aliases](https://github.com/seanbreckenridge/dotfiles/blob/master/.scripts/bin/dir-aliases) generates aliases from `key->directory` mappings described in [./.config/directories](./.config/directories)
 - [.scripts/bin](.scripts/bin) - generic scripts
 - [.scripts/system](.scripts/system) - i3 related scripts
-- [.config/shortcuts.conf](.config/shortcuts.conf) - describes basic shell scripts that are created by [shortcuts](https://github.com/seanbreckenridge/shortcuts)
-
 ### Install
 
     yadm clone https://github.com/seanbreckenridge/dotfiles
