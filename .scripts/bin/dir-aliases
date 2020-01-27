@@ -1,0 +1,55 @@
+#! /usr/bin/env elixir
+
+defmodule DirAlias do
+  @doc """
+  True/False on whether the passed string is a comment
+  """
+  def is_comment(input_str) do
+    case input_str |> String.at(0) do
+      # empty string
+      nil ->
+        false
+
+      "#" ->
+        true
+
+      _ ->
+        false
+    end
+  end
+
+  @doc """
+  Generates the alias command for the passed info 
+  alias_info is a list, whose first element is the 
+  name of the alias, and the second the directory
+  to 'cd' to
+  """
+  def generate_alias(alias_info) do
+    [alias_name, location] = alias_info
+    full_path = location |> Path.expand()
+
+    unless File.exists?(full_path) do
+      IO.puts("Warning: No such directory: #{full_path}")
+    end
+
+    "alias #{alias_name}='cd \"#{full_path}\"'\n"
+  end
+end
+
+config_dir = System.user_home!() |> Path.join(".config")
+config_file = Path.join([config_dir, "directories"])
+alias_output_file = Path.join([config_dir, "zsh/directory_aliases"])
+
+unless File.exists?(config_file) do
+  exit("Could not find the directory alias configuration file: #{config_file}")
+end
+
+config_file
+|> File.stream!()
+|> Stream.map(&String.trim(&1))
+|> Stream.filter(fn line -> line |> String.length() > 0 end)
+|> Stream.filter(fn line -> line |> DirAlias.is_comment() |> Kernel.not() end)
+|> Stream.map(&String.split(&1, " ", parts: 2))
+|> Stream.map(&DirAlias.generate_alias(&1))
+|> Stream.into(File.stream!(alias_output_file))
+|> Stream.run()

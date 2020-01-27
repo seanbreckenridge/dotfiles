@@ -119,5 +119,8 @@ for binary in "${binaries[@]}"; do
   fi
 done
 
+echo "Creating directory shortcuts... "
+dir-aliases
+
 echo "Installing nvim packages..."
 nvim +PlugInstall +qall

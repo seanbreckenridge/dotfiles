@@ -14,6 +14,7 @@ personal_aliases
 zsh_history
 .zcompdump*
 .zshrc.zwc
+/.config/zsh/directory_aliases
 
 # Ignore README - handled by git hooks -- see .yadm/README.md
 /README.md

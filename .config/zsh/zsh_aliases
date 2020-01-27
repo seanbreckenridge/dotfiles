@@ -1,5 +1,3 @@
-#!/usr/bin/env zsh
-
 alias ls='ls -h --color=tty'
 alias ll='ls -l'
 alias la='ll -a'

@@ -83,6 +83,9 @@ source "${ZDOTDIR}/git_aliases"
 # Personal Aliases (e.g. ssh to servers)
 [[ -f "${ZDOTDIR}/personal_aliases" ]] && source "${ZDOTDIR}/personal_aliases"
 
+# Directory Aliases (shortcuts to jump to directories)
+[[ -f "${ZDOTDIR}/directory_aliases" ]] && source "${ZDOTDIR}/directory_aliases"
+
 # application environment/history configuration
 
 # XDG user dirs
