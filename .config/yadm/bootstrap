@@ -119,8 +119,12 @@ for binary in "${binaries[@]}"; do
   fi
 done
 
-echo "Creating directory aliases..."
+if [ "$(command -v shortcuts)" ]; then
+  printf "Created %d shortcuts\n" "$(shortcuts create | wc -l)"
+fi
+
 dir-aliases
+printf "Created %d directory aliases\n" "$(wc -l < "$ZDOTDIR/directory_aliases")"
 
 echo "Installing nvim packages..."
 nvim +PlugInstall +qall
