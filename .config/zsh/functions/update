@@ -12,8 +12,6 @@ function update() {
   nvim +PlugUpdate +qall
   echo -e "Updating python packages..."
   python3 -m pip list --outdated --format=freeze | cut -d"=" -f 1 | xargs -r -n1 python3 -m pip install --upgrade --user
-  echo -e "Updating antigen (zsh plugins)..."
-  antigen update
   echo -e "Updating global npm packages..."
   npm update -g
   printf "Finished updates in %d seconds\n" $(echo -e "$(date +%s) - ${START_TIME}" | bc) | boxes -d shell -p t1l2b1r2
