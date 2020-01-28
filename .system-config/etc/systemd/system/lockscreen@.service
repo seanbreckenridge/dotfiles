@@ -1,0 +1,18 @@
+# enable this like 'sudo systemctl enable lockscreen@sean.service --now'
+
+[Unit]
+Description=Lock the screen on sleep
+Before=sleep.target
+Before=suspend.target
+
+[Service]
+User=%i
+Type=simple
+Environment=DISPLAY=:0
+ExecStartPre=/usr/bin/xset dpms force suspend
+ExecStart=/home/sean/.scripts/system/lock-screen
+TimeoutSec=infinity
+
+[Install]
+WantedBy=sleep.target
+WantedBy=suspend.target
