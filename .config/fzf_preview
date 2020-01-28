@@ -43,5 +43,5 @@ case "$mimetype" in
 esac
 
 # defualt if extension/mimetype both fail
-try pistol "$path" && { dump | trim; exit 0; }
+pistol "$path" | trim; exit 0;
 
