@@ -42,6 +42,7 @@ zsh_history
 /.config/Code - OSS
 /.config/Electron
 /.config/nvim/.netrwhist
+/.config/nvim/spell/
 /.config/Thunar/
 /.config/Pinta/
 /.config/QtProject.conf
