@@ -202,6 +202,7 @@ bindsym $mod+Shift+r restart
 
 # use xprop to find class names
 assign [class="Thunderbird"] 10
+assign [class="Slack"] 9
 
 bindsym $mod+d mode "launcher"
 
