@@ -47,7 +47,13 @@ link = "ssh-keygen-good"  # so that it autocompletes from ssh-keygen
 
 # get gitignores for different languages
 [gi]
-command = 'curl -sL "https://gitignore.io/api/$*"'
+command = '''
+if [ ! "$( echo "$@" | tr -d "\n\r" )" = "" ] && [ ! "$1" = "list" ]; then
+  printf "tags*\n"
+fi
+curl -sL "https://gitignore.io/api/$*"
+printf "\n"
+'''
 
 # htop
 [ht]
