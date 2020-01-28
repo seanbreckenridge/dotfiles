@@ -147,3 +147,4 @@ zsh-autosuggestions
 zsh-completions
 zsh-you-should-use
 perl-image-exiftool
+valgrind
