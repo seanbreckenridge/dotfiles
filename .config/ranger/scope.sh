@@ -68,7 +68,8 @@ esac
 case "$mimetype" in
     # Display information about media files:
     video/* | audio/*)
-        exiftool "$path" && exit 5
+        exiftool "$path" && exit 0
+        ;;
     # Syntax highlight for text files:
     text/* | */xml)
         if [ "$(tput colors)" -ge 256 ]; then
