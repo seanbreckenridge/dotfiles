@@ -58,3 +58,4 @@ pyclip-copycat
 bandcamp-downloader
 ueberzug
 Pygments
+rotten_tomatoes_cli
