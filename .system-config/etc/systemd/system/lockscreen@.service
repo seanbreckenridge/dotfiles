@@ -10,7 +10,7 @@ User=%i
 Type=simple
 Environment=DISPLAY=:0
 ExecStartPre=/usr/bin/xset dpms force suspend
-ExecStart=/home/sean/.scripts/system/lock-screen
+ExecStart=/home/sean/.scripts/system/lock_screen
 TimeoutSec=infinity
 
 [Install]

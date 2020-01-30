@@ -120,9 +120,11 @@ zsh_history
 /.gnupg
 /.steam*
 /.npm
+/.tor-browser
 /.elvish
 /.npm-packages
 /.config/composer/.htaccess
+/.jupyter
 /.mal-id-cache
 
 /.local/lib/python*
