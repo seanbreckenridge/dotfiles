@@ -106,7 +106,12 @@ fi
 echo -en "$pw" | xclip -selection clipboard
 '''
 
-# Plays songs from my Music folder, randomly
+# play music in the current directory, recursively
+[play-music]
+command='fd --type f -E "*jpg" -E "*png" | mpv --playlist=- --no-audio-display'
+
+
+# Plays songs from this folder, recursively, randomly
 [shuffle-music]
 command='find . -type f ! -name "*jpg" ! -name "*png" | shuf | mpv --playlist=- --no-audio-display'
 
