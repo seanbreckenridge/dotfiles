@@ -55,10 +55,6 @@ curl -sL "https://gitignore.io/api/$*"
 printf "\n"
 '''
 
-# htop
-[ht]
-command = 'launch "htop -t"'
-
 # open ranger
 [rn]
 command = 'launch ranger'
