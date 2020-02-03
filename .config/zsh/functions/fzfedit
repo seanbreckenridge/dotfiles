@@ -1,0 +1,6 @@
+# fuzzy search for files/directories and open that in nvim
+
+function fzfedit() {
+  fd -L -H | fzf +m --preview='${HOME}/.config/fzf_preview {}' | xargs -r nvim
+}
+

@@ -45,15 +45,6 @@ exec --no-startup-id "discord --start-minimized"
 # command to display/run i3 key bindings
 bindsym $mod+Shift+Tab exec --no-startup-id i3binds-prompt
 
-# choose from urls found on your clipboard to launch
-bindsym $mod+u exec --no-startup-id openurl
-
-# open edit config in a new terminal
-# presents a list of config files to edit
-bindsym $mod+Shift+e exec --no-startup-id termite -e "zsh -ic \"edit-config\""
-
-# launch ranger in a new terminal window
-bindsym $mod+Shift+f exec termite -e "zsh -ic \"ranger\""
 
 # Bind brightness keys
 # This required fiddling with the /sys/class/backlight/amdgpu_b10 file permissions
@@ -211,17 +202,32 @@ bindsym $mod+Shift+r restart
 assign [class="Thunderbird"] 10
 assign [class="Slack"] 9
 
-bindsym $mod+d mode "launcher"
+# run applications
+bindsym $mod+d mode "applications"
 
-mode "launcher" {
-    bindsym f exec firefox-developer-edition
-    bindsym t exec thunderbird
-    bindsym d exec discord
-    bindsym s exec slack
-    bindsym k exec keepassxc
+mode "applications" {
+    bindsym f exec firefox-developer-edition; mode "default"
+    bindsym t exec thunderbird; mode "default"
+    bindsym d exec discord; mode "default"
+    bindsym s exec slack; mode "default"
+    bindsym k exec keepassxc; mode "default"
     bindsym Escape mode "default"
     bindsym Return mode "default"
 }
+
+# run terminal commands in a new terminal window
+bindsym $mod+w mode "term"
+
+mode "term" {
+    bindsym e exec --no-startup-id termite -e "zsh -ic edit-config"; mode "default"
+    bindsym r exec --no-startup-id termite -e "zsh -ic ranger"; mode "default"
+    bindsym h exec --no-startup-id termite -e "zsh -ic htop"; mode "default"
+    bindsym k exec --no-startup-id termite -e "zsh -ic fkill"; mode "default"
+    bindsym f exec --no-startup-id termite -e "zsh -ic fzfedit"; mode "default"
+    bindsym Escape mode "default"
+    bindsym Return mode "default"
+}
+
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
