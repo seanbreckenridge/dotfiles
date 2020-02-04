@@ -73,10 +73,10 @@ bindkey -M vicmd ' ' edit-command-line
 
 # bind zsh functions to zle keymaps
 zle -N fzffd
-bindkey '^F' fzffd
+bindkey '^X^F' fzffd
 
 zle -N fzfedit
-bindkey '^E' fzfedit
+bindkey '^X^E' fzfedit
 
 source "${ZDOTDIR}/zsh_aliases"
 
