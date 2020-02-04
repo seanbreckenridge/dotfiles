@@ -20,7 +20,7 @@
 
 Packages can be added to the `.txt` files manually, and then `yadm bootstrap` can be run repeatedely to make sure everything is installed.
 
-- [.config/shortcuts.conf](.config/shortcuts.conf) - describes basic shell scripts that are created by [shortcuts](https://github.com/seanbreckenridge/shortcuts)
+- [.config/shortcuts.toml](.config/shortcuts.toml) - describes basic shell scripts that are created by [shortcuts](https://github.com/seanbreckenridge/shortcuts)
 - [dir-aliases](https://github.com/seanbreckenridge/dotfiles/blob/master/.scripts/bin/dir-aliases) generates aliases from `key->directory` mappings described in [./.config/directories](./.config/directories)
 - [.scripts/bin](.scripts/bin) - generic scripts
     - media related, [duration](https://github.com/seanbreckenridge/dotfiles/blob/master/.scripts/bin/duration) to get media length, [gifme](https://github.com/seanbreckenridge/dotfiles/blob/master/.scripts/bin/duration) to convert video to gifs.
