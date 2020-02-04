@@ -1,36 +1,36 @@
 #!/usr/bin/env sh
-# enable/disable the touchpad
+# enable/disable the trackpad
 #
 # make sure to verify that there is output when you run:
-# xinput list --name-only | grep -i touchpad
+# xinput list --name-only | grep -i trackpad
 # See here for more: https://wiki.archlinux.org/index.php/Libinput
 #
 # Usage:
-#     touchpad [enable|disable]
-# calling without any options toggles the touchpad
+#     trackpad [enable|disable]
+# calling without any options toggles the trackpad
 
 tpad_name="$(xinput list --name-only | grep -i 'touchpad')"
-# ~/.cache/touchpad exists if the touchpad is enabled
-cache_file="$HOME/.cache/touchpad"
+# ~/.cache/trackpad exists if the trackpad is enabled
+cache_file="$HOME/.cache/trackpad"
 
-enable_touchpad() {
+enable_trackpad() {
 	xinput enable "$tpad_name"
 	touch "$cache_file"
 }
 
-disable_touchpad() {
+disable_trackpad() {
 	xinput disable "$tpad_name"
 	[ -f "$cache_file" ] && rm "$cache_file"
 }
 
 if [ "$1" = "disable" ]; then
-	disable_touchpad
+	disable_trackpad
 elif [ "$1" = "enable" ]; then
-	enable_touchpad
+	enable_trackpad
 else # toggle
 	if [ -f "$cache_file" ]; then
-		disable_touchpad
+		disable_trackpad
 	else
-		enable_touchpad
+		enable_trackpad
 	fi
 fi
