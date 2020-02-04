@@ -1,0 +1,13 @@
+#!/usr/bin/env sh
+# converts a string to a qr code and displays it full screen
+
+if [ -z "$1" ]; then
+  printf "Usage: qr <QR_STRING>\n"
+  printf "Pass an argument as QR_STRING to convert to a qr code"
+fi
+
+LOC="/tmp/qr.png"
+
+qrencode "$1" -o "$LOC"
+sxiv "$LOC" -f -s f
+
