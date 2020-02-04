@@ -2,5 +2,6 @@
 
 function fzfedit() {
   fd -L -H | fzf +m --preview='${HOME}/.config/fzf_preview {}' | xargs -r nvim
+  zle reset-prompt
 }
 

@@ -75,6 +75,9 @@ bindkey -M vicmd ' ' edit-command-line
 zle -N fzffd
 bindkey '^F' fzffd
 
+zle -N fzfedit
+bindkey '^E' fzfedit
+
 source "${ZDOTDIR}/zsh_aliases"
 
 # Git aliases (from oh-my-zsh)

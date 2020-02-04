@@ -33,8 +33,8 @@ exec --no-startup-id lock_screen -b
 # bind display key to randomize wallpaper
 bindsym XF86Display exec --no-startup-id wal -i "${HOME}/Documents/wallpapers"
 
-# Disable touchpad 
-exec --no-startup-id touchpad disable
+# Disable trackpad
+exec --no-startup-id trackpad disable
 
 # dunst, for Notifications
 exec --no-startup-id dunst
@@ -219,11 +219,11 @@ mode "applications" {
 bindsym $mod+w mode "term"
 
 mode "term" {
-    bindsym e exec --no-startup-id termite -e "zsh -ic edit-config"; mode "default"
+    bindsym c exec --no-startup-id termite -e "zsh -ic edit-config"; mode "default"
     bindsym r exec --no-startup-id termite -e "zsh -ic ranger"; mode "default"
     bindsym h exec --no-startup-id termite -e "zsh -ic htop"; mode "default"
     bindsym k exec --no-startup-id termite -e "zsh -ic fkill"; mode "default"
-    bindsym f exec --no-startup-id termite -e "zsh -ic fzfedit"; mode "default"
+    bindsym e exec --no-startup-id termite -e "zsh -ic fzfedit"; mode "default"
     bindsym Escape mode "default"
     bindsym Return mode "default"
 }
