@@ -60,6 +60,7 @@ export MANPATH
 export KEYTIMEOUT=1
 bindkey -v
 bindkey -v '^?' backward-delete-char  # allow backspace to delete items after exiting command mode
+
 # basic emacs bindings
 bindkey '^A' vi-beginning-of-line
 bindkey '^E' vi-end-of-line
@@ -71,12 +72,16 @@ autoload -z edit-command-line
 zle -N edit-command-line
 bindkey -M vicmd ' ' edit-command-line
 
-# bind zsh functions to zle keymaps
+# bind zsh functions to key bindings
+# enter vi cmd mode, then use ctrl+letter
 zle -N fzffd
-bindkey '^X^F' fzffd
+bindkey -M vicmd '^f' fzffd
 
 zle -N fzfedit
-bindkey '^X^E' fzfedit
+bindkey -M vicmd '^e' fzfedit
+
+zle -N fkill
+bindkey -M vicmd '^k' fkill
 
 source "${ZDOTDIR}/zsh_aliases"
 
