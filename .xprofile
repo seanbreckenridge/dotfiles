@@ -1,0 +1,4 @@
+#!/usr/bin/env sh
+# reverse trackpoint scroll direction
+trackpoint_name="$(xinput list --name-only | grep -i 'trackpoint')"
+xinput set-prop "$trackpoint_name" "libinput Natural Scrolling Enabled" 0
