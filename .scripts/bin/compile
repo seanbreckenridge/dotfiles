@@ -1,0 +1,25 @@
+#!/usr/bin/env sh
+# compiles formats into pdfs and opens them
+
+file=$(readlink -f "$1")
+dir=$(dirname "$file")
+base="${file%.*}"
+extension="${file##.*}"
+
+cd "$dir" || exit
+
+# sends the message (first arg) to the user and exits
+abort() {
+  if [ "$(tty)" = "not a tty" ]; then
+    notify-send "$1"; exit 1;
+  else
+    printf "%s\n" "$1"; exit 1;
+  fi
+}
+
+case "$file" in
+  *\.md) pandoc -f "gfm" -t html5 "$file" -o "$base".pdf ;;
+  *\.tex) pdflatex "$file" -output-directory -jobname="$base" "$dir" ;;
+  *) abort "Unsupported file extension ${extension}" ;;
+esac
+

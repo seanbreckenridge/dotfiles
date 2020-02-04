@@ -107,6 +107,14 @@ set path+=**
 " display all matching files for tab completion
 set wildmenu
 
+
+" Compile document (LaTeX/markdown/etc)
+map <leader>c :w! \| !compile <c-r>%<CR>
+
+" Open corresponding .pdf/.html or preview
+map <leader>p :!opout <c-r>%<CR><CR>
+
+
 " Plugins
 " Nerdtree
 map <leader>w :NERDTreeToggle<CR>
@@ -120,4 +128,4 @@ map <leader>f :Files<CR>
 map <leader>l :Lines<CR>
 " match all lines/files recursively using the_silver_searcher
 map <leader>r :Ag<CR>
-map <leader>c :Commands<CR>
+

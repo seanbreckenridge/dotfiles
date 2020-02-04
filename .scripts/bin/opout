@@ -1,0 +1,14 @@
+#!/usr/bin/env sh
+
+# From https://github.com/LukeSmithxyz/voidrice/blob/master/.local/bin/opout
+
+# opout: "open output": A general handler for opening a file's intended output,
+# usually the pdf of a compiled document.  I find this useful especially
+# running from vim.
+
+basename="$(echo "$1" | sed 's/\.[^\/.]*$//')"
+
+case "$1" in
+	*.tex|*.md|*.[rR]md|*.ms|*.me|*.mom) setsid "$READER" "$basename".pdf >/dev/null 2>&1 & ;;
+	*.[0-9]) setsid "$READER" "$basename".pdf >/dev/null 2>&1 & ;;
+esac
