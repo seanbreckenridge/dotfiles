@@ -1,6 +1,6 @@
 # dotfiles
 
-- zsh
+- [zsh](http://zsh.sourceforge.net/)
 - [i3-gaps](https://github.com/Airblader/i3) - window manager
 - [yadm](https://yadm.io) to manage dotfiles
 - [termite](https://github.com/thestinger/termite) for terminal
@@ -8,11 +8,12 @@
 - [firefox-developer-edition](https://www.archlinux.org/packages/community/x86_64/firefox-developer-edition/)
 - [rofi](https://github.com/davatorium/rofi) (launcher) with [solarized-darker](https://github.com/davatorium/rofi-themes/blob/master/User%20Themes/solarized-darker.rasi)
 - [nvim](https://neovim.io/) as editor
-- [i3lock-fancy](https://github.com/meskarune/i3lock-fancy) for screen locking
+- [i3lock](https://i3wm.org/i3lock/) for screen lock; [daemon process](https://github.com/seanbreckenridge/dotfiles/blob/master/.scripts/system/lock_screen) caches pixelated version of screen to speed up start time
 - [dunst](https://dunst-project.org/) for notificaitons
 - [i3blocks](https://github.com/vivien/i3blocks) for status bar
 - [lightdm](https://wiki.archlinux.org/index.php/LightDM) - display manager
-- [todotxt](http://todotxt.org/) for todos
+- [pywal](https://github.com/dylanaraps/pywal) to make terminal colors match wallpaper
+- [todotxt](http://todotxt.org/) for todos, with a [rofi interface](https://github.com/seanbreckenridge/dotfiles/blob/master/.config/i3blocks/blocks/todo) as GUI.
 - [ranger](https://github.com/ranger/ranger) - file manager
 
 [.config/yadm](./.config/yadm) includes lists of packages for pacman/yay, python, and npm.
@@ -22,7 +23,12 @@ Packages can be added to the `.txt` files manually, and then `yadm bootstrap` ca
 - [.config/shortcuts.conf](.config/shortcuts.conf) - describes basic shell scripts that are created by [shortcuts](https://github.com/seanbreckenridge/shortcuts)
 - [dir-aliases](https://github.com/seanbreckenridge/dotfiles/blob/master/.scripts/bin/dir-aliases) generates aliases from `key->directory` mappings described in [./.config/directories](./.config/directories)
 - [.scripts/bin](.scripts/bin) - generic scripts
+    - media related, [duration](https://github.com/seanbreckenridge/dotfiles/blob/master/.scripts/bin/duration) to get media length, [gifme](https://github.com/seanbreckenridge/dotfiles/blob/master/.scripts/bin/duration) to convert video to gifs.
+    - [openurl](https://github.com/seanbreckenridge/dotfiles/blob/master/.scripts/bin/openurl) - finds URLs on your clipboard, prompts you to open one
+    - [qr](https://github.com/seanbreckenridge/dotfiles/blob/master/.scripts/bin/qr) - create a QR code from a string and display it full screen
 - [.scripts/system](.scripts/system) - i3 related scripts
+- [fzf](https://github.com/junegunn/fzf) **everywhere** - in [ranger](https://github.com/seanbreckenridge/dotfiles/blob/f5d82fffc43ff46fbbe98a7bc3bdaa1a277ddc9e/.config/ranger/commands.py#L15-L45), to search `cwd` recursively and [jump to directories](https://github.com/seanbreckenridge/dotfiles/blob/master/.config/zsh/functions/fzffd), to [edit files](https://github.com/seanbreckenridge/dotfiles/blob/master/.config/zsh/functions/fzfedit), to [kill processes](https://github.com/seanbreckenridge/dotfiles/blob/master/.config/zsh/functions/fkill), to [edit config files](https://github.com/seanbreckenridge/dotfiles/blob/f5d82fffc43ff46fbbe98a7bc3bdaa1a277ddc9e/.config/shortcuts.toml#L7-L10), and to [search the entire system](https://github.com/seanbreckenridge/dotfiles/blob/master/.config/zsh/functions/flocate). Key bindings in `zsh` to run corresponding zsh functions, and in [`vim`](https://github.com/seanbreckenridge/dotfiles/blob/master/.config/nvim/init.vim) to match against lines/files/commands/buffers.
+
 ### Install
 
     yadm clone https://github.com/seanbreckenridge/dotfiles
@@ -35,7 +41,7 @@ Unless where attributed, any customization and scripts are licensed under the MI
 ```
 MIT License
 
-Copyright (c) 2019 Sean Breckenridge
+Copyright (c) 2019-20 Sean Breckenridge
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
