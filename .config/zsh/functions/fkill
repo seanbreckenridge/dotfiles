@@ -2,7 +2,7 @@
 # use fzf to match against a process and kill it
 fkill() {
   local pid
-  pid=$(ps -ef | sed 1d | fzf -m | awk '{print $2}')
+  pid=$(ps -ef | sed 1d | fzf -m --tac | awk '{print $2}')
 
   if [ "x$pid" != "x" ]
   then
