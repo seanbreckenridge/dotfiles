@@ -46,7 +46,6 @@ balena-etcher
 python-gobject
 go
 pacman-contrib
-termite
 cmatrix
 picom
 shellcheck-static

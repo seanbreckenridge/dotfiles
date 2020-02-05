@@ -24,7 +24,7 @@ export LC_ALL='en_US.UTF-8'
 
 export EDITOR='nvim'
 export PAGER='less'
-export TERMINAL='termite'
+export TERMINAL='st'
 export BROWSER='firefox-developer-edition'
 export READER='okular'
 
