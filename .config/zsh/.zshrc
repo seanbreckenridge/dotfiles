@@ -9,19 +9,12 @@ source "${HOME}/.profile"
 autoload -U colors && colors
 export PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%~%{$fg[red]%}]%{$reset_color%}$%b "
 
-# load zsh-completions installed with pacman to (among other things) allow menu select w/ highlight
-# load user defined zsh functions
-fpath=(
-  /usr/share/zsh/site-functions
-  "$ZDOTDIR/functions"
-  "${fpath[@]}"
-)
-
-autoload -Uz "$ZDOTDIR/functions"/*
-
+# allow menu select w/ highlight
 zmodload zsh/complist  # http://zsh.sourceforge.net/Doc/Release/Zsh-Modules.html#The-zsh_002fcomplist-Module
 zstyle ':completion:*' menu select  #  http://zsh.sourceforge.net/Guide/zshguide06.html
 zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*' # Auto complete with case insenstivity
+setopt globdots # allow autocompletion to target hidden files
+
 
 # Note: tried caching the result to compinit, using
 # zcompudmp (which calls compaudit)
@@ -29,11 +22,10 @@ zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 
 # ends up taking longer. Difference is resonable,
 # about ~0.1s. longer. This may change as zcompdump
 # size increases
-#
-autoload -Uz compinit && compinit
-# allow autocompletion to target hidden files
-setopt globdots
 
+# -U ignores alias/shell expansion
+# -z forches zsh style autoloading over ksh, if thats set for some reason
+autoload -Uz compinit && compinit
 
 # Change cursor shape for different vi modes.
 function zle-keymap-select {
@@ -80,17 +72,6 @@ autoload -z edit-command-line
 zle -N edit-command-line
 bindkey -M vicmd ' ' edit-command-line
 
-# bind zsh functions to key bindings
-# enter vi cmd mode, then use ctrl+letter
-zle -N fzffd
-bindkey -M vicmd '^f' fzffd
-
-zle -N fzfedit
-bindkey -M vicmd '^e' fzfedit
-
-zle -N fkill
-bindkey -M vicmd '^k' fkill
-
 source "${ZDOTDIR}/zsh_aliases"
 
 # Git aliases (from oh-my-zsh)
@@ -102,7 +83,19 @@ source "${ZDOTDIR}/personal_aliases"
 # Directory Aliases (shortcuts to jump to directories)
 source "${ZDOTDIR}/directory_aliases"
 
-# lazy load
+# load zsh-completions installed with pacman
+# and user defined functions
+fpath=(
+  /usr/share/zsh/site-functions
+  "$ZDOTDIR"/functions
+  "${fpath[@]}"
+)
+
+# lazy-load user defined functions
+autoload -Uz "$ZDOTDIR"/functions/*
+
+
+# lazy load thefuck
 fuck() {
   eval $(thefuck --alias)  # redefines the function
   fuck "$@"
@@ -111,15 +104,16 @@ fuck() {
 # fzf
 # ctrl t to autocomplete files from cwd
 # ctrl r to fuzzy match through command history
+# alt c to cd to fuzzy matched directory
 source /usr/share/fzf/key-bindings.zsh
 source /usr/share/fzf/completion.zsh
 export FZF_DEFAULT_OPTS="--extended"
-export FZF_DEFAULT_COMMAND="fd -L"  # ignore files in gitignore
+export FZF_DEFAULT_COMMAND="fd -H -L"  # ignore files in gitignore
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
 # zsh plugins
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /usr/share/doc/pkgfile/command-not-found.zsh
 source /usr/share/zsh/plugins/zsh-you-should-use/you-should-use.plugin.zsh
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 

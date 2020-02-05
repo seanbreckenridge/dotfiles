@@ -1,4 +1,4 @@
-# pipes stdin to the clipboard
+# pipes stdin to the X selection clipboard
 # <command> | clipcopy
 
 function clipcopy() {

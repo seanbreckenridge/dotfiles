@@ -1,0 +1,7 @@
+# pipes to stdout from the X selection clipboard
+# clippaste | <command>
+
+function clippaste() {
+  emulate -L zsh
+  xclip -out -selection clipboard
+}
