@@ -3,16 +3,6 @@
 
 # Give a battery name (e.g. BAT0) as an argument.
 
-case $BLOCK_BUTTON in
-    3) pgrep -x dunst >/dev/null && notify-send "🔋 Battery module" "🔋: discharging
-🛑: not charging
-♻: stagnant charge
-🔌: charging
-⚡: charged
-❗: battery very low!
-- Text color reflects charge left" ;;
-esac
-
 capacity=$(cat /sys/class/power_supply/"$1"/capacity) || exit
 status=$(cat /sys/class/power_supply/"$1"/status)
 
