@@ -68,10 +68,11 @@ zsh_history
 /jagex_cl_oldschool_LIVE.dat
 /random.dat
 /gdrive
-/.cookiecutter_replay/*
-/.gem/*
-/.bundle/*
-/.todo/*
+/.cookiecutter_replay
+/.gem
+/.go
+/.bundle
+/.todo
 !/.todo/config
 /.scala_history
 /.irb_history

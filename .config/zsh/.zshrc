@@ -107,6 +107,9 @@ export XDG_DATA_HOME="${HOME}/.local/share"
 export NPM_PACKAGES="${HOME}/.npm-packages"
 export NODE_PATH="${NPM_PACKAGES}/lib/node_modules:${NODE_PATH}"
 
+export GOPATH="${HOME}/.go"
+export GOBIN="${GOPATH}/bin"
+
 # Python/Venv related
 export PYENV_ROOT="${HOME}/.pyenv"
 export PIPENV_PYTHON="${PYENV_ROOT}/shims/python"

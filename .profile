@@ -8,6 +8,7 @@ ${HOME}/.npm-packages/bin:\
 ${HOME}/.scripts/system:\
 ${HOME}/.scripts/bin:\
 ${HOME}/.local/shortcuts:\
+${HOME}/.go/bin:\
 ${PATH}"
 export PATH
 
