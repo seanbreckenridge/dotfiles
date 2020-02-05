@@ -3,7 +3,7 @@
 - [zsh](http://zsh.sourceforge.net/)
 - [i3-gaps](https://github.com/Airblader/i3) - window manager
 - [yadm](https://yadm.io) to manage dotfiles
-- [My build of st](https://github.com/seanbreckenridge/st) as terminal
+- my [fork of st](https://github.com/seanbreckenridge/st) as terminal
 - [picom ](https://github.com/yshui/picom) for window compositing
 - [firefox-developer-edition](https://www.archlinux.org/packages/community/x86_64/firefox-developer-edition/)
 - [rofi](https://github.com/davatorium/rofi) (launcher) with [solarized-darker](https://github.com/davatorium/rofi-themes/blob/master/User%20Themes/solarized-darker.rasi)
