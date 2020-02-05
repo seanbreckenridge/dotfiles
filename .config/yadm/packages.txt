@@ -154,3 +154,4 @@ i3lock
 lm_sensors
 noto-fonts-emoji
 ttf-twemoji-color
+libxft-bgra
