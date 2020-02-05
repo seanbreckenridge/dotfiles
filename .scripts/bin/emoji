@@ -1,0 +1,19 @@
+#!/usr/bin/env sh
+
+chosen="$(cat "$HOME/.config/emoji" | rofi -dmenu -i -l 20)"
+
+[ "$chosen" != "" ] || exit
+
+c="$(echo "$chosen" | sed "s/ .*//")"
+# copy to both clipboards
+printf "$c" | xclip  # paste with middle click
+printf "$c" | xclip -selection clipboard  # paste with typical ctrl v
+
+msg="'$c' copied to clipboard"
+
+if [ "$(tty)" = "not a tty" ]; then
+  notify-send "'$c' copied to clipboard." &
+else
+  echo "$msg"
+fi
+
