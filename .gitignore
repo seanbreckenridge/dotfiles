@@ -82,6 +82,7 @@ zsh_history
 /.scramble_history.txt
 /.psql_history
 /.yarnrc
+/.dmrc
 /.mix
 /.hex
 /.pyenv
