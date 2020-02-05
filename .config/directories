@@ -1,6 +1,10 @@
 # shortcuts to commonly used directories
 c ~/code
+.c ~/.config
 d ~/Downloads
 b ~/gdrive/Education/Books
 m ~/Music
 n ~/Documents/Notes
+y ~/.config/yadm
+z ~/.config/zsh
+zf ~/.config/zsh/functions
