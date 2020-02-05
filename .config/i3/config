@@ -203,7 +203,9 @@ assign [class="Thunderbird"] 10
 assign [class="Slack"] 9
 
 # run applications
-bindsym $mod+d mode "applications"
+# i3-modes parses the i3 config file and sends me a notificaiton
+# to remind me keybindings in case I forget
+bindsym $mod+d mode "applications"; exec notify-send "$(i3-modes applications | grep -v 'mode \"default\"' | sed -e 's/exec //')"
 
 mode "applications" {
     bindsym f exec firefox-developer-edition; mode "default"
@@ -216,7 +218,7 @@ mode "applications" {
 }
 
 # run terminal commands in a new terminal window
-bindsym $mod+w mode "term"
+bindsym $mod+w mode "term"; exec notify-send "$(i3-modes term | tr -d '\"' | grep -v 'mode default' | sed -e 's/exec --no-startup-id termite -e zsh -ic //')"
 
 mode "term" {
     bindsym c exec --no-startup-id termite -e "zsh -ic edit-config"; mode "default"

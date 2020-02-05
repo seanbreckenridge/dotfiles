@@ -1,0 +1,156 @@
+#!/usr/bin/env elixir
+#
+# Parses the i3 config file for binding modes
+# Uses the mode passed as the first argument as the target
+# Expects a mode to be formatted "normally", with bindsyms on each line:
+# mode "modename" {
+#  bindsym key command...
+# }
+#
+# prints key | command
+# only prints the first command (before a semicolon) for the bindsym commands
+# Does not include recursive mode support
+#
+# e.g.:
+#
+# From block in i3-config:
+#
+# mode "applications" {
+#    bindsym f exec firefox-developer-edition; mode "default"
+#    bindsym t exec thunderbird; mode "default"
+#    bindsym d exec discord; mode "default"
+#    bindsym s exec slack; mode "default"
+#    bindsym k exec keepassxc; mode "default"
+#    bindsym Escape mode "default"
+#    bindsym Return mode "default"
+# }
+# prints:
+#
+# $ i3-modes applications
+# f | exec firefox-developer-edition
+# t | exec thunderbird
+# d | exec discord
+# s | exec slack
+# k | exec keepassxc
+# Escape | mode "default"
+# Return | mode "default"
+#
+# In my i3-config, I do something like:
+# bindsym $mod+d mode "applications"; exec notify-send "$(i3-modes applications | grep -v 'mode \"default\"' | sed -e 's/exec //')"
+# to send me a notification with bindings whenever I run a mode
+
+defmodule I3Modes do
+  def find_i3_file([]) do
+    exit("Could not find i3 config file")
+  end
+
+  def find_i3_file([possible_file | other_files]) do
+    if possible_file |> File.exists?() do
+      possible_file
+    else
+      find_i3_file(other_files)
+    end
+  end
+
+  def find_modes(file_contents) do
+    file_contents |> Enum.map(&String.trim(&1)) |> find_modes(false, [], nil)
+  end
+
+  # end when there are no lines left
+  def find_modes([], _, parsed_modes, _) do
+    parsed_modes
+  end
+
+  @doc """
+  leftover_file_contents is the current files left
+  in_mode is a bool, which determines if were currently parsing a mode
+  parsed_modes is a list of 'mode' objects, a KeywordList
+  current_mode_acc is a KeywordList with current info if were in a mode
+  with the mode contents
+  """
+  def find_modes([line | leftover_file_contents], in_mode, parsed_modes, current_mode_acc) do
+    cond do
+      # end of a mode
+      line |> String.starts_with?("}") && in_mode ->
+        find_modes(
+          leftover_file_contents,
+          false,
+          [
+            [name: current_mode_acc[:name], lines: Enum.reverse(current_mode_acc[:lines])]
+            | parsed_modes
+          ],
+          nil
+        )
+
+      # currently in a mode, add to lines
+      in_mode ->
+        find_modes(leftover_file_contents, true, parsed_modes,
+          name: current_mode_acc[:name],
+          lines: [line | current_mode_acc[:lines]]
+        )
+
+      # starting a mode, get name of mode
+      line |> String.starts_with?("mode") ->
+        find_modes(leftover_file_contents, true, parsed_modes,
+          name: line |> String.split() |> Enum.at(1) |> String.trim("\""),
+          lines: []
+        )
+
+      # some other line
+      true ->
+        find_modes(leftover_file_contents, false, parsed_modes, nil)
+    end
+  end
+
+  @doc """
+  gets the bound key and the first command from a mode bindsym
+  returns [key binding, command]
+  """
+  def parse_binding(binding_str) do
+    [_, binding | command] = binding_str |> String.split(";") |> Enum.at(0) |> String.split()
+    [binding, command |> Enum.join(" ")]
+  end
+end
+
+user_home = System.user_home!()
+config_dir = Path.join(user_home, ".config")
+
+possible_i3_locations = [
+  Path.join(config_dir, "i3/config"),
+  Path.join(user_home, ".i3/config"),
+  "/etc/xdg/i3/config",
+  "/etc/i3/config"
+]
+
+if System.argv() |> Enum.count() < 1 do
+  exit("Pass the name of the mode which you bindings as the first argument")
+end
+
+want_mode = System.argv() |> Enum.at(0)
+
+modes =
+  possible_i3_locations
+  |> I3Modes.find_i3_file()
+  |> File.stream!()
+  |> Enum.to_list()
+  |> I3Modes.find_modes()
+
+mode_matches =
+  modes
+  |> Enum.filter(fn m -> Keyword.get(m, :name) == want_mode end)
+
+if Enum.count(mode_matches) == 0 do
+  exit(
+    "Could not find a mode with the name #{want_mode}; found modes: #{
+      modes |> Enum.map(&Keyword.get(&1, :name)) |> Enum.join(", ")
+    }"
+  )
+end
+
+mode_matches
+|> Enum.at(0)
+|> Keyword.get(:lines)
+|> Stream.map(&I3Modes.parse_binding(&1))
+|> Stream.map(&Enum.join(&1, " | "))
+|> Stream.map(&IO.puts(&1))
+|> Stream.run()
