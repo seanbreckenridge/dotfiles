@@ -15,6 +15,9 @@ zstyle ':completion:*' menu select  #  http://zsh.sourceforge.net/Guide/zshguide
 zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*' # Auto complete with case insenstivity
 setopt globdots # allow autocompletion to target hidden files
 
+# -U ignores alias/shell expansion
+# -z forches zsh style autoloading over ksh, if thats set for some reason
+autoload -Uz compinit && compinit
 
 # Note: tried caching the result to compinit, using
 # zcompudmp (which calls compaudit)
@@ -22,10 +25,6 @@ setopt globdots # allow autocompletion to target hidden files
 # ends up taking longer. Difference is resonable,
 # about ~0.1s. longer. This may change as zcompdump
 # size increases
-
-# -U ignores alias/shell expansion
-# -z forches zsh style autoloading over ksh, if thats set for some reason
-autoload -Uz compinit && compinit
 
 # Change cursor shape for different vi modes.
 function zle-keymap-select {
@@ -47,13 +46,6 @@ zle-line-init() {
     echo -ne "\e[5 q"
 }
 zle -N zle-line-init
-
-# inherit from /etc/manpath and add npm man pages
-unset MANPATH
-MANPATH="\
-${NPM_PACKAGES}/share/man:\
-$(manpath)"
-export MANPATH
 
 # vim style bindings
 # Escape to enter command mode
