@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-chosen="$(cat "$HOME/.config/emoji" | rofi -dmenu -i -l 20)"
+chosen="$(cat "$HOME/.config/emoji" | rofi -dmenu -i -l 20 -p "pick an emoji > ")"
 
 [ "$chosen" != "" ] || exit
 
