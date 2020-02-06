@@ -1,41 +1,22 @@
-#!/usr/bin/python3
-#
-# Opens the current git repository in your browser, if you're in one
+#!/usr/bin/env sh
 
-import subprocess
-import webbrowser
-
-from giturlparse import parse
-
-
-def detach_open_webbrowser(url):
-    """
-    If no browser is open, and webbrowser.open is called,
-    the python process itself is what launches the browser.
-    `gitopen` stays running till the browser dies.
-
-    open the browser if its not already open
-    then open with webbrowser module
-    """
-    subprocess.run("open-browser")
-    webbrowser.open_new_tab(url)
+if git rev-parse --is-inside-work-tree > /dev/null 2>&1; then
+  if ! remote_url="$(git ls-remote --get-url)"; then
+    printf "%s" "$remote_url"
+    exit 1
+  fi
+  if https_url="$(echo "$remote_url" | /usr/bin/python3 -c "from giturlparse import parse; print(parse(input()).urls['https'])" 2>/dev/null)"; then
+    echo "$https_url"
+    openurl "$https_url"
+    exit 0
+  else
+    printf "Could not parse %s into a HTTP URL properly.\n" "$remote_url"
+    exit 1
+  fi
+else
+  echo "Not currently in a git repo"
+  exit 1
+fi
 
 
-result = subprocess.run(
-    ["git", "config", "--get", "remote.origin.url"], stdout=subprocess.PIPE
-)
-git_url = result.stdout.decode("utf-8").strip()
 
-if not git_url:
-    print("Not currently in a git repository.")
-else:
-    try:
-        # try to use giturlparse
-        https_url = parse(git_url).urls["https"]
-        detach_open_webbrowser(https_url)
-    except:
-        # try to directly open url
-        try:
-            detach_open_webbrowser(git_url)
-        except:
-            print("Error parsing {}, make sure its formatted properly.".format(git_url))

@@ -20,7 +20,7 @@ command = 'launch edit-config'
 
 # open the dotfiles git repository
 [dotfiles]
-command = '''yadm gitconfig --get remote.origin.url | /usr/bin/python3 -c "from giturlparse import parse; import subprocess, webbrowser; subprocess.run('open-browser'); webbrowser.open(parse(input()).urls[\"https\"])"'''
+command = '''yadm gitconfig --get remote.origin.url | /usr/bin/python3 -c "from giturlparse import parse; print(parse(input()).urls[\"https\"])" | openurl'''
 
 # print i3 bindings
 # ignore volume and brightness bindings
@@ -77,9 +77,8 @@ command = '''rofi -dmenu -theme-str 'listview {enabled: false;}' "$@"'''
 command = '''
 SEARCH_STR=$(rofi-input -p "Search for a movie > " | awk '{$1=$1; print}' | tr " " "+")  # awk removes leading/trailing spaces
 [ -z "$SEARCH_STR" ] && exit 1
-open-browser
-xdg-open "https://trakt.tv/search/movies?query=${SEARCH_STR}&utf8=%E2%9C%93"
-xdg-open "https://letterboxd.com/search/films/${SEARCH_STR}"
+openurl "https://trakt.tv/search/movies?query=${SEARCH_STR}&utf8=%E2%9C%93"
+openurl "https://letterboxd.com/search/films/${SEARCH_STR}"
 '''
 
 # searches trakt for a tv show
@@ -87,8 +86,7 @@ xdg-open "https://letterboxd.com/search/films/${SEARCH_STR}"
 command = '''
 SEARCH_STR=$(rofi-input -p "Search for a TV show > " | awk '{$1=$1; print}' | tr " " "+")
 [ -z "$SEARCH_STR" ] && exit 1
-open-browser
-xdg-open "https://trakt.tv/search/shows?query=${SEARCH_STR}&utf8=%E2%9C%93"
+openurl "https://trakt.tv/search/shows?query=${SEARCH_STR}&utf8=%E2%9C%93"
 '''
 
 # generates a password and puts it on your clipboard

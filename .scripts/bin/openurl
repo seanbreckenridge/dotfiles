@@ -1,21 +1,33 @@
-#!/usr/bin/python
+#!/usr/bin/env sh
+#
+# Opens the $BROWSER (firefox-developor-edition),
+# if its not already open
+# 
+# Opens the url passed as the first argument
+# in the $BROWSER
 
-import sys
-import subprocess
+# Used to detach browser processes so that other
+# applications that interact with the browser
+# (e.g. xdg-open or pythons webbrowser module)
+# dont own the browser process and kill the browser
+# when the script is eventually Ctrl+C'd
 
-from clipboard import paste
-from rofi import Rofi
-from urlextract import URLExtract
+# count the number of browser processes
+# this is often more than one, depending on the number of tabs
+# this includes the 'grep $BROWSER' process
 
-cb = paste()
-if cb is False:
-    subprocess.call(["notify-send", "Your clipboard is empty"])
-    sys.exit(1)
-urls = URLExtract().find_urls(cb.decode())
-if not urls:
-    subprocess.call(["notify-send", "No urls found on your clipboard"])
-    sys.exit(1)
-index, key = Rofi().select("Open which URL? > ", urls)
-if key != -1:
-    subprocess.run("open-browser")
-    subprocess.call(["xdg-open", urls[index]])
+URL="$1"
+
+if [ -z "$1" ]; then  # if no URL was passed, read from STDIN
+  URL=`cat`
+fi
+
+BROWSER_PROC_COUNT="$(ps -aux | grep -c "$BROWSER")"
+
+if [ "$BROWSER_PROC_COUNT" -lt 2 ]; then
+  # --new-tab is the firefox option
+  i3-msg "exec $BROWSER --new-tab \"$URL\"" > /dev/null
+else
+  $BROWSER --new-tab "$URL"
+fi
+
