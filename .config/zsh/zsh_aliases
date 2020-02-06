@@ -31,3 +31,5 @@ alias drive_mount='usb_mount'
 alias remove_orphans='sudo pacman -Rns $(pacman -Qtdq)'  # remove packages that arent being used for anything
 alias create_notes='touch $(date +"%m_%d_%y").md'
 alias echopath='echo $PATH | tr ":" "\n"'
+# sxiv full screen image, fit full width
+alias sxfull="sxiv -s f -f"
