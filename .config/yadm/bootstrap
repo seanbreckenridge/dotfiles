@@ -89,7 +89,6 @@ python3 -m pip install -q --user -r ~/.config/yadm/python3_packages.txt
 # ~/.npmrc defines the prefix as ~/.npm-packages
 echo "Installing global npm packages..."
 NPM_PKG_DIR="${HOME}/.npm-packages"
-echo -e "npm global package dir: ${NPM_PKG_DIR}"
 [[ ! -d "${NPM_PKG_DIR}" ]] && mkdir -p "${NPM_PKG_DIR}" && sudo chown -R "$(whoami)" "${NPM_PKG_DIR}"
 while read -r npkg; do
 	if ! ls -1 "$(npm root -g)" | grep -q "^${npkg}$"; then
