@@ -1,0 +1,17 @@
+#!/bin/sh
+#
+# Command to parse the output of a terminal screen
+# Prompts the user to pick a command run, copies
+# the command and output to your clipboard
+# removes the PS1 from the command, just leaves a '$'
+# Modified from: https://github.com/LukeSmithxyz/st/blob/master/st-copyout
+
+tmpfile=$(mktemp /tmp/st-cmd-output.XXXXXX)
+trap 'rm "$tmpfile"' 0 1 15
+sed -n "w $tmpfile"
+# match the beginning of the prompt to match prompt against output
+ps1="$(grep "\S" "$tmpfile" | tail -n 1 | sed 's/^\s*//' | cut -d' ' -f1)"
+# prompt the user; if the user chooses something, copy it to the clipboard
+if chosen_command="$(grep -F "$ps1" "$tmpfile" | sed '$ d' | tac | dmenu -p "Copy which command? " -i -l 10)"; then
+  echo "$chosen_command" | xclip -selection clipboard
+fi
