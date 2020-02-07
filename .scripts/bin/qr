@@ -1,13 +1,15 @@
 #!/usr/bin/env sh
 # converts a string to a qr code and displays it full screen
+# if no URL is passed as the first argument, reads from STDIN
 
-if [ -z "$1" ]; then
-  printf "Usage: qr <QR_STRING>\n"
-  printf "Pass an argument as QR_STRING to convert to a qr code"
+STR="$1"
+
+if [ -z "$1" ]; then  # if no URL was passed, read from STDIN
+  STR="$(cat)"
 fi
 
 LOC="/tmp/qr.png"
 
-qrencode "$1" -o "$LOC"
+qrencode "$STR" -o "$LOC"
 sxiv "$LOC" -f -s f
 
