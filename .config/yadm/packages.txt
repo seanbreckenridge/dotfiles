@@ -155,3 +155,4 @@ noto-fonts-emoji
 ttf-twemoji-color
 libxft-bgra
 ttf-roboto-mono
+ntp
