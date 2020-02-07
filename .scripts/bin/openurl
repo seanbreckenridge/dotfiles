@@ -1,20 +1,10 @@
 #!/usr/bin/env sh
-#
-# Opens the $BROWSER (firefox-developor-edition),
-# if its not already open
+# Open a URL with no side effects
+# if just using xdg-open on my system,
+# the it has to wait for that process to end
 # 
-# Opens the url passed as the first argument
-# in the $BROWSER
-
-# Used to detach browser processes so that other
-# applications that interact with the browser
-# (e.g. xdg-open or pythons webbrowser module)
-# dont own the browser process and kill the browser
-# when the script is eventually Ctrl+C'd
-
-# count the number of browser processes
-# this is often more than one, depending on the number of tabs
-# this includes the 'grep $BROWSER' process
+# A URL can be passed as the first argument
+# or piped into openurl
 
 URL="$1"
 
@@ -22,12 +12,4 @@ if [ -z "$1" ]; then  # if no URL was passed, read from STDIN
   URL=`cat`
 fi
 
-BROWSER_PROC_COUNT="$(ps -aux | grep -c "$BROWSER")"
-
-if [ "$BROWSER_PROC_COUNT" -lt 2 ]; then
-  # --new-tab is the firefox option
-  i3-msg "exec $BROWSER --new-tab \"$URL\"" > /dev/null
-else
-  $BROWSER --new-tab "$URL"
-fi
-
+xdg-open "$URL" &
