@@ -1,9 +1,9 @@
 #!/bin/sh
 #
-# Command to parse the output of a terminal screen
+# Run from st
+# Script that parses the output of a terminal screen
 # Prompts the user to pick a command run, copies
 # the command and output to your clipboard
-# removes the PS1 from the command, just leaves a '$'
 # From: https://github.com/LukeSmithxyz/st/blob/master/st-copyout
 
 tmpfile=$(mktemp /tmp/st-cmd-output.XXXXXX)
