@@ -57,7 +57,7 @@ cups-pdf
 avahi
 nss-mdns
 shfmt
-pandoc
+pandoc-bin
 ranger
 grub-customizer
 adobe-source-code-pro-fonts
