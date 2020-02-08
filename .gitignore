@@ -76,6 +76,7 @@ zsh_history
 !/.todo/config
 /.scala_history
 /.irb_history
+/.sc-iminfo
 /.scalac/
 /.swipl-dir*
 /.pythonanywhere*
