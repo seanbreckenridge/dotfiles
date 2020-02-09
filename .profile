@@ -9,6 +9,7 @@ ${HOME}/.scripts/system:\
 ${HOME}/.scripts/bin:\
 ${HOME}/.local/shortcuts:\
 ${HOME}/.go/bin:\
+${HOME}/.cabal/bin:\
 ${PATH}"
 export PATH
 
