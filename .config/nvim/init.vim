@@ -9,7 +9,6 @@ filetype off
 call plug#begin('~/.local/plugged')
 Plug 'PotatoesMaster/i3-vim-syntax'
 Plug 'junegunn/goyo.vim'
-Plug 'scrooloose/nerdtree'
 Plug 'elixir-editors/vim-elixir'
 Plug '/usr/bin/fzf'
 Plug 'junegunn/fzf.vim'
@@ -107,6 +106,11 @@ set path+=**
 " display all matching files for tab completion
 set wildmenu
 
+" swap to previous buffer
+map <leader><leader> :bprevious<CR>
+
+" Open file manager
+map <leader>e :Explore<CR>
 
 " Compile document (LaTeX/markdown/etc)
 map <leader>c :w! \| !compile <c-r>%<CR>
@@ -116,9 +120,6 @@ map <leader>p :!opout <c-r>%<CR><CR>
 
 
 " Plugins
-" Nerdtree
-map <leader>w :NERDTreeToggle<CR>
-
 " goyo
 map <leader>g :Goyo<CR>
 
