@@ -24,7 +24,7 @@ alias todo='todo.sh'
 
 # Non-standard
 alias screens='sxiv -t ~/Desktop/Screenshots/*.png'
-alias printer_server='sudo cat /etc/cups/cupsd.conf | grep -i "Listen localhost" | cut -d":" -f 2 | xargs -I {} $BROWSER "localhost:{}"' # open localhost printer console
+alias printer_server='sudo cat /etc/cups/cupsd.conf | grep -i "Listen localhost" | cut -d":" -f2 | sed -e "s/^/localhost:/" | openurl'  # open localhost printer web console
 alias speed='speedtest --simple | tail -n 2'  # shorthand speedtest
 alias usb_mount='echo -e "use lsblk -f to view disk IDs, sudo umount -l /dev/sdxx to unmount"; sudo ldm -u $(whoami)' # start the ldm (light device mounter) daemon, to mount usb/harddrives
 alias drive_mount='usb_mount'
