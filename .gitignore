@@ -69,6 +69,7 @@ zsh_history
 /random.dat
 /gdrive
 /.cookiecutter_replay
+/.cabal
 /.gem
 /.go
 /.bundle
