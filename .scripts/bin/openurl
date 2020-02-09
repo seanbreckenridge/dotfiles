@@ -9,7 +9,7 @@
 URL="$1"
 
 if [ -z "$1" ]; then  # if no URL was passed, read from STDIN
-  URL=`cat`
+  URL="$(cat)"
 fi
 
-xdg-open "$URL" & 2>&1 >/dev/null 
+xdg-open "$URL" >/dev/null 2>&1 &
