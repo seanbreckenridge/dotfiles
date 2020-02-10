@@ -64,16 +64,6 @@ autoload -z edit-command-line
 zle -N edit-command-line
 bindkey -M vicmd ' ' edit-command-line
 
-# Ctrl left arrow to move up a dir
-up-dir() {
-  cd ".."
-  zle reset-prompt
-}
-zle -N up-dir
-bindkey "^[[1;5D" up-dir
-# Ctrl right arrow to launch fzf cd
-bindkey "^[[1;5C" fzf-cd-widget
-
 source "${ZDOTDIR}/zsh_aliases"
 
 # Git aliases (from oh-my-zsh)
@@ -95,6 +85,19 @@ fpath=(
 
 # lazy-load user defined functions
 autoload -Uz "$ZDOTDIR"/functions/*
+
+zle -N fzfedit
+bindkey '^F' fzfedit
+
+# Ctrl left arrow to move up a dir
+up-dir() {
+  cd ".."
+  zle reset-prompt
+}
+zle -N up-dir
+bindkey "^[[1;5D" up-dir
+# Ctrl right arrow to launch fzf cd
+bindkey "^[[1;5C" fzf-cd-widget
 
 
 # lazy load thefuck

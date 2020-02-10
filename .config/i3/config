@@ -225,7 +225,6 @@ mode "term" {
     bindsym r exec --no-startup-id launch ranger; mode "default"
     bindsym h exec --no-startup-id launch htop; mode "default"
     bindsym k exec --no-startup-id launch fkill; mode "default"
-    bindsym e exec --no-startup-id launch fzfedit; mode "default"
     bindsym Escape mode "default"
     bindsym Return mode "default"
 }
