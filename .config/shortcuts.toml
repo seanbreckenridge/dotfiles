@@ -11,7 +11,7 @@ shebang = "#!/usr/bin/env bash"
 
 # print the previous working directory
 [prevwd]
-command = 'echo "$(cd -)"'
+command = 'echo "$OLDPWD"'
 
 # 'launch' runs normally if called on command line, else
 # launches a terminal and runs the command there
