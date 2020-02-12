@@ -6,7 +6,7 @@
 
 # fuzzy match config file names, open one to edit
 [edit-config]
-command = '''cat <(echo -e "${HOME}/.profile\n${HOME}/.gitignore") <(fd --full-path "${HOME}" ~/.config ~/.scripts ~/.todo --type f -H -E "discord" -E "google-chrome" -E "Slack" -E "repo.git" -E "Code - OSS" -E "chromium" -E "Electron" -E "Atom" -E "Pinta" -E "pulse" -E "mono.addins" -E "configstore" -E "autostart" -E "largechar" -E "gcloud" -E "Thunar" -E "cef_user_data" -E "QtProject.conf" -E "menus" -E "__pycache__") | fzf +m | xargs -r "$EDITOR"'''
+command = '''cat <(echo -e "${HOME}/.profile\n${HOME}/.gitignore") <(fd --full-path "${HOME}" ~/.config ~/.scripts ~/.todo --type f -H -E "discord" -E "google-chrome" -E "Slack" -E "repo.git" -E "Code - OSS" -E "chromium" -E "Electron" -E "Atom" -E "Pinta" -E "pulse" -E "mono.addins" -E "configstore" -E "autostart" -E "largechar" -E "gcloud" -E "Thunar" -E "cef_user_data" -E "QtProject.conf" -E "menus" -E "__pycache__") | fzf +m -q "$*" | xargs -r "$EDITOR"'''
 shebang = "#!/usr/bin/env bash"
 
 # print the previous working directory
@@ -16,7 +16,7 @@ command = 'echo "$OLDPWD"'
 # 'launch' runs normally if called on command line, else
 # launches a terminal and runs the command there
 [ec]
-command = 'launch edit-config'
+command = 'launch "edit-config $*"'
 
 # open the dotfiles git repository
 [dotfiles]
