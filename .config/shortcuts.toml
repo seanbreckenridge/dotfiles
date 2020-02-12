@@ -59,12 +59,6 @@ curl -sL "https://gitignore.io/api/$*"
 printf "\n"
 '''
 
-# shorthand to open firefox, used in i3 config
-[ff]
-command='''
-firefox-developer-edition "$@"
-'''
-
 # open ranger
 [rn]
 command = 'launch ranger'
