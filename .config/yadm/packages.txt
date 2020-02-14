@@ -126,7 +126,6 @@ python-pywal
 neovim-plug-git
 fd
 elvish
-runelite
 screenkey-git
 exfat-utils
 fuse-exfat
