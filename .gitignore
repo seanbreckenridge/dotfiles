@@ -72,6 +72,8 @@ zsh_history
 /.cabal
 /.gem
 /.go
+/.sbt
+/.ivy2
 /.bundle
 /.todo
 !/.todo/config
