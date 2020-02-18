@@ -1,0 +1,32 @@
+#!/bin/sh
+# volume <up|down|mute|micmute> [volume_step]
+
+[ -z "$1" ] && echo "No command provided. Provide one of: up|down|mute|micmute" && exit 1
+
+VOLUME_STEP=5
+# check if passed arg is number
+if [ -n "$2" ] && [ "$2" -eq "$2" ] 2>/dev/null; then
+  VOLUME_STEP="$2"
+fi
+
+case $1 in
+  up)
+    pactl set-sink-volume @DEFAULT_SINK@ +$VOLUME_STEP%
+    ;;
+  down)
+    pactl set-sink-volume @DEFAULT_SINK@ -$VOLUME_STEP%
+    ;;
+  mute)
+    pactl set-sink-mute @DEFAULT_SINK@ toggle
+    ;;
+  micmute)
+    pactl set-source-mute @DEFAULT_SOURCE@ toggle
+    ;;
+  *)
+    echo "Unknown command: $1"
+    exit 1
+    ;;
+esac
+
+# refresh 
+pkill -RTMIN+1 i3blocks

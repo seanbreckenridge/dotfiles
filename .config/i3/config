@@ -70,13 +70,10 @@ bindsym $mod+Shift+XF86MonBrightnessUp exec --no-startup-id transparent enable t
 bindsym $mod+Shift+XF86MonBrightnessDown exec --no-startup-id transparent disable target
 
 # Use pactl to adjust volume in PulseAudio.
-set $volume_step 5
-# 1 in -RTMIN+1 matches signal in ~/.config/i3blocks/config in the volume module
-set $refresh_block_volume pkill -RTMIN+1 i3blocks
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +$volume_step% && $refresh_block_volume
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -$volume_step% && $refresh_block_volume
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_block_volume
-bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_block_volume
+bindsym XF86AudioRaiseVolume exec --no-startup-id volume up
+bindsym XF86AudioLowerVolume exec --no-startup-id volume down
+bindsym XF86AudioMute exec --no-startup-id volume mute
+bindsym XF86AudioMicMute exec --no-startup-id volume micmute
 
 # Refresh todo icon when todo file changes
 exec --no-startup-id echo "${HOME}/.todo/todo.txt" | entr pkill -RTMIN+2 i3blocks
