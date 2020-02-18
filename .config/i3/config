@@ -36,6 +36,10 @@ bindsym XF86Display exec --no-startup-id wal -i "${HOME}/Documents/wallpapers"
 # Disable trackpad
 exec --no-startup-id trackpad disable
 
+# for when I plug in an external keyboard - refresh i3 to rebind keys
+# could use udev events instead, but ended up not working well with xmodmap
+exec_always --no-startup-id xmodmap ~/.Xmodmap
+
 # dunst, for Notifications
 exec --no-startup-id dunst
 
