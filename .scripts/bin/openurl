@@ -1,7 +1,8 @@
 #!/usr/bin/env sh
 # Open a URL with no side effects
 # if just using xdg-open on my system,
-# the it has to wait for that process to end
+# xdg-open hangs after opening the link,
+# its waiting for the $BROWSER process to end
 # 
 # A URL can be passed as the first argument
 # or piped into openurl
