@@ -1,9 +1,0 @@
-#!/usr/bin/env bash
-# runescape creates some cache files in the home directory
-# delete those if runelite isnt running
-# this is run with a crontab
-
-
-if [ "$(ps -ef | grep -i runelite | grep -v "grep -i runelite" | wc -l)" -eq 0 ]; then
-  rm -rf ~/jagex_cl_oldschool_LIVE.dat ~/jagexcache ~/random.dat
-fi
