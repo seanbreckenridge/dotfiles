@@ -113,11 +113,10 @@ map <leader><leader> :bprevious<CR>
 map <leader>e :Explore<CR>
 
 " Compile document (LaTeX/markdown/etc)
-map <leader>c :w! \| !compile <c-r>%<CR>
+map <leader>c :w! \| !compile <c-r>%<CR><CR>
 
 " Open corresponding .pdf/.html or preview
 map <leader>p :!opout <c-r>%<CR><CR>
-
 
 " Plugins
 " goyo
