@@ -290,7 +290,7 @@ mode "mouse" {
     bindsym Shift+$mod+Right exec xdotool mousemove_relative $fast 0
 
     # Click
-    bindsym Enter exec xdotool click 1
+    bindsym Return exec xdotool click 1
 
     bindsym Escape mode "default"
 }
