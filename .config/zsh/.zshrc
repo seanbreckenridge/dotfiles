@@ -86,19 +86,20 @@ fpath=(
 # lazy-load user defined functions
 autoload -Uz "$ZDOTDIR"/functions/*
 
+# zsh key bindings
+
 zle -N fzfedit
 bindkey '^F' fzfedit
 
 # Ctrl left arrow to move up a dir
-up-dir() {
-  cd ".."
-  zle reset-prompt
-}
-zle -N up-dir
+up-dir() { cd ".."; zle reset-prompt }; zle -N up-dir
 bindkey "^[[1;5D" up-dir
+
 # Ctrl right arrow to launch fzf cd
 bindkey "^[[1;5C" fzf-cd-widget
 
+# Alt+R to launch ranger (file manager)
+bindkey -s "^[r" "ranger\n"
 
 # lazy load thefuck
 fuck() {
