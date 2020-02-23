@@ -211,7 +211,7 @@ assign [class="Slack"] 9
 # run applications
 # i3-modes parses the i3 config file and sends me a notificaiton
 # to remind me keybindings in case I forget
-bindsym $mod+d mode "applications"; exec --no-startup-id notify-send "$(i3-modes applications | grep -v 'mode \"default\"' | sed -e 's/exec --no-startup-id //' -e 's/firefox-developer-edition/firefox/g')"
+bindsym $mod+d mode "applications"; exec --no-startup-id notify-send "$(i3-modes applications | grep -v 'mode \"default\"' | sed -e 's/exec --no-startup-id //' -e 's/firefox-developer-edition/firefox/')"
 
 mode "applications" {
     bindsym f exec --no-startup-id firefox-developer-edition; mode "default"
