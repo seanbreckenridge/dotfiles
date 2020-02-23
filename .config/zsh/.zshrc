@@ -3,7 +3,6 @@
 source "${HOME}/.profile"
 
 autoload -U colors && colors
-export PS1="[ %~ ]$ "
 
 # prompt/completion features from: https://github.com/LukeSmithxyz/voidrice/blob/master/.config/zsh/.zshrc
 
@@ -23,6 +22,14 @@ autoload -Uz compinit && compinit
 # ends up taking longer. Difference is resonable,
 # about ~0.1s. longer. This may change as zcompdump
 # size increases
+
+# setup prompt
+parse_git_branch() {
+  git symbolic-ref --short HEAD 2> /dev/null | xargs -r -I {} echo " (on {})"
+}
+
+setopt PROMPT_SUBST
+PROMPT='[ %9c%{%F{green}%}$(parse_git_branch)%{%F{none}%} ] $ '
 
 # Change cursor shape for different vi modes.
 function zle-keymap-select {
