@@ -24,14 +24,16 @@ exec --no-startup-id picom -b
 
 exec --no-startup-id unclutter --timeout 2
 
+set $randomize_wallpaper feh --randomize --bg-fill --no-fehbg "${HOME}/Documents/wallpapers"
+
 # set a random wallpaper
-exec --no-startup-id wal -i "${HOME}/Documents/wallpapers"
+exec --no-startup-id $randomize_wallpaper
 
 # run process to cache pixelated desktop for lock screen
 exec --no-startup-id lock_screen -b
 
 # bind display key to randomize wallpaper
-bindsym XF86Display exec --no-startup-id wal -i "${HOME}/Documents/wallpapers"
+bindsym XF86Display exec --no-startup-id $randomize_wallpaper
 
 # Disable trackpad
 exec --no-startup-id trackpad disable

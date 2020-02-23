@@ -3,7 +3,7 @@
 - [zsh](http://zsh.sourceforge.net/)
 - [i3-gaps](https://github.com/Airblader/i3) - window manager
 - [yadm](https://yadm.io) to manage dotfiles
-- my [fork of st](https://github.com/seanbreckenridge/st) as terminal
+- my [fork of st](https://github.com/seanbreckenridge/st) as terminal (sets colors in `config.h`)
 - [picom ](https://github.com/yshui/picom) for window compositing
 - [firefox-developer-edition](https://www.archlinux.org/packages/community/x86_64/firefox-developer-edition/)
 - [rofi](https://github.com/davatorium/rofi) (launcher) with [solarized-darker](https://github.com/davatorium/rofi-themes/blob/master/User%20Themes/solarized-darker.rasi)
@@ -12,7 +12,6 @@
 - [dunst](https://dunst-project.org/) for notificaitons
 - [i3blocks](https://github.com/vivien/i3blocks) for status bar
 - [lightdm](https://wiki.archlinux.org/index.php/LightDM) - display manager
-- [pywal](https://github.com/dylanaraps/pywal) to make terminal colors match wallpaper
 - [todotxt](http://todotxt.org/) for todos, with a [rofi interface](https://github.com/seanbreckenridge/dotfiles/blob/master/.config/i3blocks/blocks/todo) as GUI.
 - [ranger](https://github.com/ranger/ranger) - file manager
 

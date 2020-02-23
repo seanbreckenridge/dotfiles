@@ -122,7 +122,6 @@ unzip
 lftp
 xclip
 fzf
-python-pywal
 neovim-plug-git
 fd
 elvish

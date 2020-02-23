@@ -2,12 +2,10 @@
 
 source "${HOME}/.profile"
 
-# Set color scheme (pywal) in the background
-(cat ~/.cache/wal/sequences &)
+autoload -U colors && colors
+export PS1="[ %~ ]$ "
 
 # prompt/completion features from: https://github.com/LukeSmithxyz/voidrice/blob/master/.config/zsh/.zshrc
-autoload -U colors && colors
-export PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%~%{$fg[red]%}]%{$reset_color%}$%b "
 
 # allow menu select w/ highlight
 zmodload zsh/complist  # http://zsh.sourceforge.net/Doc/Release/Zsh-Modules.html#The-zsh_002fcomplist-Module
