@@ -4,8 +4,10 @@
 # display the todos using dmenu
 # allow the user to complete a todo
 prompt_todos() {
-  todo.sh -p list | head -n -2 > /tmp/todos
-  TODO_CHOICE=$(rofi -dmenu -p "Mark which todo as complete? > " < /tmp/todos)
+  tmpfile="$(mktemp /tmp/todo.XXXXX)"
+  trap 'rm "$tmpfile"' 0 1 15
+  todo.sh -p list | head -n -2 > "$tmpfile"
+  TODO_CHOICE=$(rofi -dmenu -p "Mark which todo as complete? > " < "$tmpfile")
   if [ -n "$TODO_CHOICE" ]; then
     CONFIRM="$(printf "yes\nno\n" | rofi -dmenu -p "Mark this todo as complete: $TODO_CHOICE")"
     if [ "$CONFIRM" = "yes" ]; then
