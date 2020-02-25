@@ -9,8 +9,8 @@ export fpath=( "${ZDOTDIR}/functions" ${fpath[@]} )
 ### HISTORY SETTINGS ###
 
 HISTFILE="${ZDOTDIR}/zsh_history"
-HISTSIZE=50000
-SAVEHIST=50000
+HISTSIZE=100000
+SAVEHIST=100000
 setopt appendhistory
 
 # History Control: Omit duplicate and commands that begin with a space
