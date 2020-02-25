@@ -1,13 +1,13 @@
 #!/usr/bin/env sh
 
-chosen="$(cat "$HOME/.config/emoji" | rofi -dmenu -i -l 20 -p "pick an emoji > ")"
+chosen="$(rofi -dmenu -i -l 20 -p "pick an emoji > " < "$HOME/.config/emoji")"
 
 [ "$chosen" != "" ] || exit
 
 c="$(echo "$chosen" | sed "s/ .*//")"
 # copy to both clipboards
-printf "$c" | xclip  # paste with middle click
-printf "$c" | xclip -selection clipboard  # paste with typical ctrl v
+printf "%s" "$c" | xclip  # paste with middle click
+printf "%s" "$c" | xclip -selection clipboard  # paste with typical ctrl v
 
 msg="'$c' copied to clipboard"
 
