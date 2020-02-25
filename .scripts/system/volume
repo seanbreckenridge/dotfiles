@@ -11,10 +11,10 @@ fi
 
 case $1 in
   up)
-    pactl set-sink-volume @DEFAULT_SINK@ +$VOLUME_STEP%
+    pactl set-sink-volume @DEFAULT_SINK@ +"$VOLUME_STEP"%
     ;;
   down)
-    pactl set-sink-volume @DEFAULT_SINK@ -$VOLUME_STEP%
+    pactl set-sink-volume @DEFAULT_SINK@ -"$VOLUME_STEP"%
     ;;
   mute)
     pactl set-sink-mute @DEFAULT_SINK@ toggle
