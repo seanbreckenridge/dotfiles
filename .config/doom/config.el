@@ -3,6 +3,8 @@
 ;; Place your private configuration here! Remember, you do not need to run 'doom
 ;; sync' after modifying this file!
 
+(load! "functions")
+
 (require 'ccls)
 
 ;; Some functionality uses this to identify you, e.g. GPG configuration, email
@@ -23,6 +25,11 @@
 (setq
  ccls-executable "/usr/bin/ccls"
  )
+
+;; custom bindings
+(map! :leader
+  (:prefix "f"
+    :desc "Edit global config files" "C" #'counsel-edit-config))
 
 ;; Here are some additional functions/macros that could help you configure Doom:
 ;;
