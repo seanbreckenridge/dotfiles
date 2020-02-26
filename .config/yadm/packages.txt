@@ -157,3 +157,8 @@ ntp
 sc-im
 cabal-static
 emacs
+ccls
+gocode-daemon
+ktlint-git
+python-isort
+rust-racer

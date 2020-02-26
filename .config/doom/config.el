@@ -3,6 +3,8 @@
 ;; Place your private configuration here! Remember, you do not need to run 'doom
 ;; sync' after modifying this file!
 
+(require 'ccls)
+
 ;; Some functionality uses this to identify you, e.g. GPG configuration, email
 ;; clients, file templates and snippets.
 (setq user-full-name "Sean Breckenridge"
@@ -14,6 +16,12 @@
  display-line-numbers-type 'relative
  projectile-project-search-path '("~/code/")
  org-directory "~Documents/org/"
+ )
+
+;; language configuration
+
+(setq
+ ccls-executable "/usr/bin/ccls"
  )
 
 ;; Here are some additional functions/macros that could help you configure Doom:

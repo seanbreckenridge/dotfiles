@@ -51,3 +51,11 @@
 ;(package! builtin-package :recipe (:branch "develop"))
 
 (package! xclip)
+
+;; lsp
+(package! lsp-ivy)
+(package! company-lsp)
+(package! lsp-ui)
+(package! lsp-mode)
+;; lsp cc
+(package! ccls)

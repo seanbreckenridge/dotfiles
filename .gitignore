@@ -133,8 +133,10 @@ zsh_history
 /.config/composer/.htaccess
 /.jupyter
 /.mal-id-cache
+/.gradle
 
 /.local/lib/python*
+/.local/man
 /.local/plugged/*
 /.local/lib/pkgconfig/*
 /.local/bin

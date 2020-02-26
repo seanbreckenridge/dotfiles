@@ -1,2 +1,8 @@
 npm
 moby
+vscode-html-languageserver-bin
+bash-language-server
+@elm-tooling/elm-language-server
+yaml-language-server
+stylelint
+js-beautify

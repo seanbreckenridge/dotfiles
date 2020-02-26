@@ -22,6 +22,7 @@ idna
 itsdangerous
 jikanpy
 lxml
+python-language-server
 matplotlib
 mysqlclient
 ndg-httpsclient
@@ -59,3 +60,4 @@ vimbuffer
 xlrd
 yattag
 youtube-dl
+nose

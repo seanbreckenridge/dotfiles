@@ -90,12 +90,17 @@ python3 -m pip install -q --user -r ~/.config/yadm/python3_packages.txt
 echo "Installing global npm packages..."
 NPM_PKG_DIR="${HOME}/.npm-packages"
 [[ ! -d "${NPM_PKG_DIR}" ]] && mkdir -p "${NPM_PKG_DIR}" && sudo chown -R "$(whoami)" "${NPM_PKG_DIR}"
+NPM_PACKAGE_LIST="$(npm list -g)"
 while read -r npkg; do
-	if ! ls -1 "$(npm root -g)" | grep -q "^${npkg}$"; then
+	if ! printf "%s" "$NPM_PACKAGE_LIST" | grep -q "${npkg}"; then
 		echo -e "Installing ${npkg}"
 		npm install --global "${npkg}"
 	fi
 done <"${HOME}/.config/yadm/global_node_packages.txt"
+
+echo -e "Installing global gems..."
+bundle config set system 'true'
+bundle --gemfile "${HOME}/.config/yadm/Gemfile"
 
 # Install doom emacs
 if [[ ! -d "$HOME/.emacs.d/" ]]; then
