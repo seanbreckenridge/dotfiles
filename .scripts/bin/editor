@@ -8,10 +8,10 @@
 #    editor --client file
 #    editor file
 
-if [ "$1" = "--nvim" ]; then
+if [ "$1" = "--nvim" ] || [ "$1" = "-n" ]; then
    shift; # remove first arg
    nvim "$@"
-elif [ "$1" = "--client" ]; then
+elif [ "$1" = "--client" ] || [ "$1" = "-c" ]; then
    shift;  # remove first arg
    emacsclient -c "$@"
 else
