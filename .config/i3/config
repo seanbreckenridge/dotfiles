@@ -75,7 +75,9 @@ bindsym $mod+Shift+XF86MonBrightnessDown exec --no-startup-id transparent disabl
 bindsym $mod+p exec --no-startup-id killall picom && notify-send "Killed picom!"
 bindsym $mod+Shift+p exec --no-startup-id notify-send "Restarting picom..." && picom -b
 
-# restart the emacs server
+# start the emacs server
+exec --no-startup-id systemctl --user start emacs
+# and bind a key to restart it
 bindsym $mod+Shift+e exec --no-startup-id restart_emacs
 
 
