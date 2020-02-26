@@ -227,6 +227,7 @@ mode "applications" {
     bindsym f exec --no-startup-id firefox-developer-edition; mode "default"
     bindsym t exec --no-startup-id thunderbird; mode "default"
     bindsym d exec --no-startup-id discord; mode "default"
+    bindsym e exec --no-startup-id emacs; mode "default"
     bindsym s exec --no-startup-id slack; mode "default"
     bindsym k exec --no-startup-id keepassxc; mode "default"
     bindsym Escape mode "default"
