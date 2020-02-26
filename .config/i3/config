@@ -73,7 +73,10 @@ bindsym $mod+Shift+XF86MonBrightnessDown exec --no-startup-id transparent disabl
 
 # Kill/restart picom (compositor)
 bindsym $mod+p exec --no-startup-id killall picom && notify-send "Killed picom!"
-bindsym $mod+Shift+P exec --no-startup-id notify-send "Restarting picom..." && picom -b
+bindsym $mod+Shift+p exec --no-startup-id notify-send "Restarting picom..." && picom -b
+
+# restart the emacs server
+bindsym $mod+Shift+e exec --no-startup-id restart_emacs
 
 
 # Use pactl to adjust volume in PulseAudio.

@@ -10,6 +10,8 @@ function update() {
   yadm bootstrap
   echo -e "Updating nvim packages..."
   nvim +PlugUpdate +qall
+  echo -e "Updating doom emacs"
+  doom upgrade
   echo -e "Updating python packages..."
   python3 -m pip list --outdated --format=freeze | cut -d"=" -f 1 | xargs -r -n1 python3 -m pip install --upgrade --user
   echo -e "Updating global npm packages..."

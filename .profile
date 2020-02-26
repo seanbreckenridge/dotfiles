@@ -10,6 +10,7 @@ ${HOME}/.scripts/bin:\
 ${HOME}/.local/shortcuts:\
 ${HOME}/.go/bin:\
 ${HOME}/.cabal/bin:\
+${HOME}/.emacs.d/bin:\
 ${PATH}"
 export PATH
 

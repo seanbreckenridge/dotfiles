@@ -1,0 +1,18 @@
+#!/bin/sh
+# --nvim as first arg to use nvim in currnet terminal
+# --no-bg to make the emacsclient process blocking
+# otherwise, starts emacsclient in the background
+#
+# Examples:
+#    editor --nvim file
+#    editor --no-bg file
+#    editor file
+if [ "$1" = "--nvim" ]; then
+   shift;
+   nvim "$@"
+elif [ "$1" = "--no-bg" ]; then
+   shift;  # remove first arg
+   emacsclient -c "$@"
+else
+   emacsclient -c "$@" &
+fi

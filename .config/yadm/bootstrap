@@ -97,6 +97,13 @@ while read -r npkg; do
 	fi
 done <"${HOME}/.config/yadm/global_node_packages.txt"
 
+# Install doom emacs
+if [[ ! -d "$HOME/.emacs.d/" ]]; then
+  git clone https://github.com/hlissner/doom-emacs ~/.emacs.d
+  ~/.emacs.d/bin/doom install
+  ~/.emacs.d/bin/doom refresh
+fi
+
 # Check services
 echo "Checking if default services are running..."
 # CUPS and avahi are for printing

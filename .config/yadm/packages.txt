@@ -156,3 +156,4 @@ ttf-roboto-mono
 ntp
 sc-im
 cabal-static
+emacs

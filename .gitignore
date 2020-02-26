@@ -75,6 +75,7 @@ zsh_history
 /.sbt
 /.ivy2
 /.bundle
+/.emacs.d/
 /.todo
 !/.todo/config
 /.scala_history
