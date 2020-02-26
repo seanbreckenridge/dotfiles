@@ -9,7 +9,7 @@
 - [rofi](https://github.com/davatorium/rofi) (launcher) with
   [solarized-darker](https://github.com/davatorium/rofi-themes/blob/master/User%20Themes/solarized-darker.rasi)
 - [emacs (doom)](https://github.com/koalaman/shellcheck) (primary) and
-  [nvim](https://neovim.io/) as editors - see [editor](./scripts/editor)
+  [nvim](https://neovim.io/) as editors - see [editor](./.scripts/bin/editor)
 - [i3lock](https://i3wm.org/i3lock/) for screen lock; [daemon process](https://github.com/seanbreckenridge/dotfiles/blob/master/.scripts/system/lock_screen) caches pixelated version of screen to speed up start time
 - [dunst](https://dunst-project.org/) for notificaitons
 - [i3blocks](https://github.com/vivien/i3blocks) for status bar
