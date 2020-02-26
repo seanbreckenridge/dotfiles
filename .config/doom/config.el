@@ -11,8 +11,8 @@
 (setq
  doom-font (font-spec :family "monospace" :size 15)
  doom-theme 'doom-one
- projectile-project-search-path '("~/code/")
  display-line-numbers-type 'relative
+ projectile-project-search-path '("~/code/")
  org-directory "~Documents/org/"
  )
 

@@ -1,19 +1,19 @@
 #!/bin/sh
 # --nvim as first arg to use nvim in current terminal
-# --no-bg to make the emacsclient process blocking
-# otherwise, starts emacsclient in the background
+# --client connects to the emacs daemon
+# otherwise, starts emacs
 #
 # Examples:
 #    editor --nvim file
-#    editor --no-bg file
+#    editor --client file
 #    editor file
 
 if [ "$1" = "--nvim" ]; then
-   shift;
+   shift; # remove first arg
    nvim "$@"
-elif [ "$1" = "--no-bg" ]; then
+elif [ "$1" = "--client" ]; then
    shift;  # remove first arg
    emacsclient -c "$@"
 else
-   emacsclient -c "$@" &
+   emacs "$@" &
 fi
