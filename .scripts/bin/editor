@@ -1,5 +1,5 @@
 #!/bin/sh
-# --nvim as first arg to use nvim in currnet terminal
+# --nvim as first arg to use nvim in current terminal
 # --no-bg to make the emacsclient process blocking
 # otherwise, starts emacsclient in the background
 #
