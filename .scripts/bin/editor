@@ -4,9 +4,9 @@
 # otherwise, starts emacs
 #
 # Examples:
-#    editor --nvim file
-#    editor --client file
-#    editor file
+#    editor <-n|--nvim> file
+#    editor <-c|--client> file
+#    editor <file>
 
 if [ "$1" = "--nvim" ] || [ "$1" = "-n" ]; then
    shift; # remove first arg
