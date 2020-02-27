@@ -26,13 +26,10 @@
  ccls-executable "/usr/bin/ccls"
  )
 
-(after! latex
-  (add-hook! 'LaTeX-mode-hook
-  (defun add-latex-binding ()
-    (map! :leader
-      (:prefix "c"
-        :desc "Display LaTeX preview pane" "p" #'latex-preview-pane-mode)))))
-
+(map! :after latex
+      :map LaTeX-mode-map
+      :localleader
+      :desc "Display LaTeX preivew pane" "p" #'latex-preview-pane-mode)
 
 
 ;; custom bindings
