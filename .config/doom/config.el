@@ -26,11 +26,19 @@
  ccls-executable "/usr/bin/ccls"
  )
 
+;; bind latex preview mode to spc m p
 (map! :after latex
       :map LaTeX-mode-map
       :localleader
       :desc "Display LaTeX preivew pane" "p" #'latex-preview-pane-mode)
 
+;; bind pipenv minor mode
+(use-package! pipenv
+  :hook (python-mode . pipenv-mode)
+  :init
+  (setq
+   pipenv-projectile-after-switch-function
+   #'pipenv-projectile-after-switch-extended))
 
 ;; custom bindings
 (map! :leader

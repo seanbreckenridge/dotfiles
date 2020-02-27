@@ -59,3 +59,6 @@
 (package! lsp-mode)
 ;; lsp cc
 (package! ccls)
+
+;; python
+(package! pipenv)
