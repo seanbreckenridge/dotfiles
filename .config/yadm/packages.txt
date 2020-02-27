@@ -42,7 +42,6 @@ atom
 slack-desktop
 sqlitebrowser
 docker
-balena-etcher
 python-gobject
 go
 pacman-contrib
