@@ -16,7 +16,7 @@
  doom-font (font-spec :family "monospace" :size 15)
  doom-theme 'doom-one
  display-line-numbers-type 'relative
- projectile-project-search-path '("~/code/")
+ projectile-project-search-path '("~/code/" "~/.scripts")
  org-directory "~Documents/org/"
  )
 
@@ -25,6 +25,15 @@
 (setq
  ccls-executable "/usr/bin/ccls"
  )
+
+(after! latex
+  (add-hook! 'LaTeX-mode-hook
+  (defun add-latex-binding ()
+    (map! :leader
+      (:prefix "c"
+        :desc "Display LaTeX preview pane" "p" #'latex-preview-pane-mode)))))
+
+
 
 ;; custom bindings
 (map! :leader
@@ -47,6 +56,8 @@
 ;;
 ;; You can also try 'gd' (or 'C-c g d') to jump to their definition and see how
 ;; they are implemented.
+
+;; General configuration
 
 ;; xclip
 (xclip-mode 1)
