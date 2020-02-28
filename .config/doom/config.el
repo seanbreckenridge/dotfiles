@@ -13,7 +13,7 @@
       user-mail-address "seanbrecke@gmail.com")
 
 (setq
- doom-font (font-spec :family "monospace" :size 15)
+ doom-font (font-spec :family "Source Code Pro" :size 15)
  doom-theme 'doom-one
  display-line-numbers-type 'relative
  projectile-project-search-path '("~/code/" "~/.scripts")
