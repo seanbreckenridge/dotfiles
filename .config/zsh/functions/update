@@ -3,20 +3,20 @@
 function update() {
   local START_TIME=$(date +%s)
   wait-for-internet --text "(waiting for internet)"
-  echo -e "Updating system (pacman/yay) packages..."
+  printf "Updating system (pacman/yay) packages...\n"
   yay -Syu
-  echo -e "Updating pkgfile indexes..."
+  printf "Updating pkgfile indexes...\n"
   sudo pkgfile --update
   yadm bootstrap
-  echo -e "Updating nvim packages..."
+  printf "Updating nvim packages...\n"
   nvim +PlugUpdate +qall
-  echo -e "Updating doom emacs..."
+  printf "Updating doom emacs...\n"
   doom upgrade
-  echo -e "Updating ruby packages..."
+  printf "Updating ruby packages...\n"
   bundle update --gemfile "${HOME}/.config/yadm/Gemfile"
-  echo -e "Updating python packages..."
+  printf "Updating python packages...\n"
   python3 -m pip list --outdated --format=freeze | cut -d"=" -f 1 | xargs -r -n1 python3 -m pip install --upgrade --user
-  echo -e "Updating global npm packages..."
+  printf "Updating global npm packages...\n"
   npm update -g
-  printf "Finished updates in %d seconds\n" $(echo -e "$(date +%s) - ${START_TIME}" | bc) | boxes -d shell -p t1l2b1r2
+  printf "Finished updates in %d seconds\n" $(bc <<< "$(date +%s) - ${START_TIME}") | boxes -d shell -p t1l2b1r2
 }
