@@ -1,8 +1,0 @@
-#!/usr/bin/env sh
-# restart the emacs server managed by systemd
-
-if systemctl --user restart emacs; then
-    notify-send "restarted emacs server"
-else
-    notify-send -u "critical" "couldn't restart emacs server"
-fi

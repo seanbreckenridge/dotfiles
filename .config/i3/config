@@ -78,7 +78,7 @@ bindsym $mod+Shift+p exec --no-startup-id notify-send "Restarting picom..." && p
 # start the emacs server
 exec --no-startup-id systemctl --user start emacs
 # and bind a key to restart it
-bindsym $mod+Shift+e exec --no-startup-id restart_emacs
+bindsym $mod+Shift+e exec --no-startup-id refresh-doom
 
 
 # Use pactl to adjust volume in PulseAudio.

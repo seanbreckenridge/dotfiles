@@ -15,6 +15,26 @@ shebang = "#!/usr/bin/env bash"
 command = '''list-config | sed "s#^$HOME/##g" | fzf +m -q "$*" | xargs -r -I {} "$EDITOR" --client "$HOME/{}"'''
 shebang = "#!/usr/bin/env bash"
 
+# restart the emacs server managed by systemd
+[restart-emacs]
+command = """
+#!/usr/bin/env sh
+
+if systemctl --user restart emacs; then
+    notify-send "restarted emacs server"
+else
+    notify-send -u "critical" "couldn't restart emacs server"
+fi
+"""
+
+# open a terminal, run doom refresh, and restart the emacs daemon
+[refresh-doom]
+command = '''
+# timeout after 5 seconds
+launch "doom refresh; printf \"Press enter to exit > \"; read -t 5"
+restart-emacs
+'''
+
 # print the previous working directory
 [prevwd]
 command = 'echo "$OLDPWD"'
