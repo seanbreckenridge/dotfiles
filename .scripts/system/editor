@@ -1,19 +1,67 @@
 #!/bin/sh
-# --nvim as first arg to use nvim in current terminal
-# --client connects to the emacs daemon
-# otherwise, starts emacs
-#
-# Examples:
-#    editor <-n|--nvim> file
-#    editor <-c|--client> file
-#    editor <file>
 
-if [ "$1" = "--nvim" ] || [ "$1" = "-n" ]; then
-   shift; # remove first arg
-   nvim "$@"
-elif [ "$1" = "--client" ] || [ "$1" = "-c" ]; then
-   shift;  # remove first arg
-   emacsclient -c "$@"
-else
-   emacs "$@" &
-fi
+usage="Usage: $(basename "$0") [OPTION] FILE...
+Opens an editor. If no options are provided,
+opens the file(s) with emacs as a background process
+
+Options:
+
+  -h                 Print this message and exit
+  -n                 Open nvim in the current terminal
+  -c                 Opens the emacs client
+  -b                 By default, the -c flag runs
+                       in the foreground and blocks
+                       the terminal it was launched
+                       from. This runs it in the
+                       background.
+"
+
+# define enum
+EMACS=0
+EMACS_CLIENT=1
+NVIM=2
+
+# default action
+ACTION=EMACS
+# launch in background (false)
+BG=
+
+while getopts "hncb" OPT; do
+   case "$OPT" in
+      h)
+         printf "%s" "$usage"
+         exit 0
+         ;;
+      n)
+         ACTION=NVIM
+         ;;
+      c)
+         ACTION=EMACS_CLIENT
+         ;;
+      b)
+         BG=true
+         ;;
+      -*)
+        printf "Invalid flag: %s\n" "$OPT" 1>&2
+        exit 1
+        ;;
+   esac
+done
+shift "$((OPTIND - 1))"
+
+# perform action
+case "$ACTION" in
+   NVIM)
+      nvim "$@"
+      ;;
+   EMACS)
+      emacs "$@" &
+      ;;
+   EMACS_CLIENT)
+      if [ "$BG" = true ]; then
+        emacsclient -c "$@" &
+      else
+        emacsclient -c "$@"
+      fi
+      ;;
+esac
