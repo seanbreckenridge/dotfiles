@@ -26,12 +26,6 @@
  ccls-executable "/usr/bin/ccls"
  )
 
-;; bind latex preview mode to spc m p
-(map! :after latex
-      :map LaTeX-mode-map
-      :localleader
-      :desc "Display LaTeX preivew pane" "p" #'latex-preview-pane-mode)
-
 ;; bind pipenv minor mode
 (use-package! pipenv
   :hook (python-mode . pipenv-mode)
@@ -40,10 +34,29 @@
    pipenv-projectile-after-switch-function
    #'pipenv-projectile-after-switch-extended))
 
+;; set default TERM to xterm to allow colors/scrolling
+(map! :after shell
+      :leader
+      (:prefix "o"
+        :desc "Open shell here" "T"
+        (lambda! (+shell/here "export TERM=xterm"))))
+
+;; bind latex preview mode to spc m p
+(map! :after latex
+      :map LaTeX-mode-map
+      :localleader
+      :desc "Display LaTeX preivew pane" "p" #'latex-preview-pane-mode)
+
+
 ;; custom bindings
 (map! :leader
+  ;; list my config files and let me fuzzy match to edit one
   (:prefix "f"
-    :desc "Edit global config files" "C" #'counsel-edit-config))
+    :desc "Edit global config files" "C" #'counsel-edit-config)
+  ;; open URL, defaults to URL under cursor
+  (:prefix "o"
+    :desc "Open URL" "l" #'browse-url)
+)
 
 ;; Here are some additional functions/macros that could help you configure Doom:
 ;;
