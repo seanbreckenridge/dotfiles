@@ -11,7 +11,7 @@ function update() {
   printf "Updating nvim packages...\n"
   nvim +PlugUpdate +qall
   printf "Updating doom emacs...\n"
-  doom upgrade
+  doom -y upgrade
   printf "Updating ruby packages...\n"
   bundle update --gemfile "${HOME}/.config/yadm/Gemfile"
   printf "Updating python packages...\n"
