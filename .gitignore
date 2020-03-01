@@ -21,7 +21,7 @@ zsh_history
 /.config/yadm/README.md
 
 # Top level files to ignore
-/.config/jrnl/jrnl.yaml
+/.config/yadm/Gemfile.lock
 /.config/mimeapps.list
 /.config/autostart
 /.config/cef_user_data
