@@ -62,6 +62,9 @@ export MYSQL_HISTFILE="${HOME}/.cache/mysql_history"
 # Node History File
 export NODE_REPL_HISTORY="${HOME}/.cache/node_repl_history"
 
+ # save iex (elixir) history
+export ERL_AFLAGS="-kernel shell_history enabled"
+
 # Python History File
 # set PYTHON_STARTUP python file, which runs when an
 # interactive shell is opened
