@@ -12,6 +12,8 @@
 (setq user-full-name "Sean Breckenridge"
       user-mail-address "seanbrecke@gmail.com")
 
+;; general appearance
+
 (setq
  doom-font (font-spec :family "Source Code Pro" :size 15)
  doom-theme 'doom-one
@@ -20,12 +22,29 @@
  org-directory "~Documents/org/"
  )
 
-;; language configuration
+;;;; Fontify html hex codes
+;; automatically color hex color strings
+(defvar hexcolor-keywords
+  '(("#[abcdefABCDEF[:digit:]]\\{6\\}"
+     (0 (put-text-property (match-beginning 0)
+                           (match-end 0)
+                           'face (list :background
+                                       (match-string-no-properties 0)))))))
 
+;; Aggressively indent emacslisp
+(use-package! aggressive-indent
+  :commands (aggressive-indent-mode))
+(add-hook 'emacs-lisp-mode-hook #'aggressive-indent-mode)
+
+
+;;;; language configuration
+
+;;;; C/C++
 (setq
  ccls-executable "/usr/bin/ccls"
  )
 
+;;;; python
 ;; bind pipenv minor mode
 (use-package! pipenv
   :hook (python-mode . pipenv-mode)
@@ -34,6 +53,27 @@
    pipenv-projectile-after-switch-function
    #'pipenv-projectile-after-switch-extended))
 
+(after! (python flycheck lsp-ui)
+  (defun setup-flycheck ()
+    (flycheck-add-next-checker 'lsp 'python-pylint)
+    )
+  )
+
+;; disable mypy
+(setq-default flycheck-disabled-checkers '(python-mypy))
+
+(after! lsp
+  (setq lsp-pyls-plugins-pycodestyle-enabled nil ;; Disable to ensure sanity
+        lsp-pyls-plugins-pylint-enabled nil ;; Disable to ensure performance
+        lsp-pyls-plugins-rope-completion-enabled nil ;; Disable to ensure jedi
+        lsp-pyls-configuration-sources ["flake8"]
+        lsp-print-performance nil
+        lsp-enable-indentation nil
+        lsp-enable-on-type-formatting nil
+        lsp-enable-symbol-highlighting nil
+        lsp-log-io nil))
+
+;;;; terminal
 ;; set default TERM to xterm to allow colors/scrolling
 (map! :after shell
       :leader
@@ -41,6 +81,7 @@
         :desc "Open shell here" "T"
         (lambda! (+shell/here "export TERM=xterm"))))
 
+;;;; latex
 ;; bind latex preview mode to spc m p
 (map! :after latex
       :map LaTeX-mode-map
