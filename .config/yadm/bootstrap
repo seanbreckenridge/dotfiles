@@ -78,7 +78,7 @@ fi
 # Install python packages
 
 echo "Installing global python site-packages..."
-python3 -m pip install -q --user -r ~/.config/yadm/python3_packages.txt
+python3 -m pip install -q --user -r "${HOME}/.config/yadm/python3_packages.txt"
 
 # speedtest installs 2 executable scripts
 # speedtest and speedtest-cli, which both have the same
@@ -104,9 +104,9 @@ bundle --gemfile "${HOME}/.config/yadm/Gemfile"
 
 # Install doom emacs
 if [[ ! -d "$HOME/.emacs.d/" ]]; then
-  git clone https://github.com/hlissner/doom-emacs ~/.emacs.d
-  ~/.emacs.d/bin/doom install
-  ~/.emacs.d/bin/doom refresh
+  git clone https://github.com/hlissner/doom-emacs "${HOME}/.emacs.d"
+  "${HOME}/.emacs.d/bin/doom" install
+  "${HOME}/.emacs.d/bin/doom" refresh
 fi
 
 # Check services
