@@ -2,9 +2,17 @@
 # yadm bootstrap script
 # Uses yay to install from AUR
 
-if [[ ! $(command -v yay) ]]; then
-	echo -e "Could not find yay. Install that and re-run bootstrap\nExiting..."
+function print_error () {
+	echo -e "$(tput setaf 1)$1$(tput sgr0)" 1>&2
+}
+
+function abort() {
+	print_error "$1"
 	exit 1
+}
+
+if [[ ! $(command -v yay) ]]; then
+	abort "Could not find yay. Install that and re-run bootstrap\nExiting..."
 fi
 
 echo "Checking ~/.config/yadm/packages.txt for any packages to install..."
@@ -115,12 +123,12 @@ echo "Checking if default services are running..."
 services=("NetworkManager" "avahi-daemon" "org.cups.cupsd" "cronie" "ntpd")
 for serv in "${services[@]}"; do
 	if ! systemctl show -p SubState --value "${serv}" | grep -q "running"; then
-		echo -e "${serv} is not running, you should enable it with: 'sudo systemctl enable ${serv}'"
+		print_error "${serv} is not running, you should enable it with: 'sudo systemctl enable ${serv}'"
 	fi
 done
 
 if ! systemctl show -p SubState --value "mariadb" | grep -q "running"; then
-	printf "Setup mariadb by following %s\n" "https://wiki.archlinux.org/index.php/MariaDB"
+	print_error "Setup mariadb by following: https://wiki.archlinux.org/index.php/MariaDB"
 fi
 
 # Check for manually installed binaries, installed at /usr/local/bin
@@ -128,9 +136,9 @@ fi
 echo "Checking for manually installed binaries..."
 binaries=("wait-for-internet" "genpasswd" "shortcuts" "largechar" "st" "keyvol")
 for binary in "${binaries[@]}"; do
-  if [ ! "$(command -v "$binary")" ]; then
-    echo -e "Warning: Couldn't find ${binary}. Install it from https://github.com/seanbreckenridge/${binary}\n"
-  fi
+	if [ ! "$(command -v "$binary")" ]; then
+		print_error "Warning: Couldn't find ${binary}. Install it from https://github.com/seanbreckenridge/${binary}"
+	fi
 done
 
 if [ "$(command -v shortcuts)" ]; then
