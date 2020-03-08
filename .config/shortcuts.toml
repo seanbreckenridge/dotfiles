@@ -129,12 +129,14 @@ fi
 echo -en "$pw" | xclip -selection clipboard
 '''
 
+[list-music]
+command='fd --type f -E "*jpg" -E "*png" -E "*CUE" -E "*cue" -E "*log" -E "*m3u" -E "*m3u8"'
+
 # play music in the current directory, recursively
 [play-music]
-command='fd --type f -E "*jpg" -E "*png" | mpv --playlist=- --no-audio-display'
+command='list-music | mpv --playlist=- --no-audio-display'
 
 
 # Plays songs from this folder, recursively, randomly
 [shuffle-music]
-command='find . -type f ! -name "*jpg" ! -name "*png" | shuf | mpv --playlist=- --no-audio-display'
-
+command='list-music | shuf | mpv --playlist=- --no-audio-display'
