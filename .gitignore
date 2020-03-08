@@ -72,6 +72,7 @@ zsh_history
 /.cabal
 /.gem
 /.go
+/.elm
 /.sbt
 /.ivy2
 /.bundle
@@ -88,6 +89,7 @@ zsh_history
 /.psql_history
 /.yarnrc
 /.dmrc
+/.bash_history
 /.mix
 /.hex
 /.pyenv
