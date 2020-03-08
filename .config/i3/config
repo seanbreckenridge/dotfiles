@@ -110,7 +110,7 @@ bindsym $mod+r exec --no-startup-id rofi -show run
 bindsym $mod+Tab exec --no-startup-id rofi -show window
 
 # take a screenshot
-bindsym --release Print exec --no-startup-id "maim -s | tee ~/Desktop/Screenshots/$(date '+%d-%m-%Y--%R:%S').png | xclip -t image/png -selection clipboard"
+bindsym --release Print exec --no-startup-id screenshot
 
 # gaps config
 for_window [class=".*"] border pixel 0
