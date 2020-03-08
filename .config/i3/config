@@ -235,7 +235,7 @@ mode "applications" {
 }
 
 # run terminal commands in a new terminal window
-bindsym $mod+w mode "term"; exec --no-startup-id notify-send "$(i3-modes term | tr -d '\"' | grep -v 'mode default' | sed -e 's/exec --no-startup-id launch //')"
+bindsym $mod+w mode "term"; exec --no-startup-id notify-send "$(i3-modes term | grep -v 'mode \"default\"' | sed -e 's/exec --no-startup-id launch //')"
 
 mode "term" {
     bindsym c exec --no-startup-id launch edit-config; mode "default"
