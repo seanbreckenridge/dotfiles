@@ -15,8 +15,14 @@ if [[ ! $(command -v yay) ]]; then
 	abort "Could not find yay. Install that and re-run bootstrap\nExiting..."
 fi
 
+YADM_DIR="${HOME}/.config/yadm"
+PACKAGE_LIST="${YADM_DIR}/packages.txt"
+PYTHON_PACKAGE_LIST="${YADM_DIR}/python3_packages.txt"
+GLOBAL_GEMFILE="${YADM_DIR}/Gemfile"
+NODE_PACKAGE_LIST="${YADM_DIR}/global_node_packages.txt"
+
 echo "Checking ~/.config/yadm/packages.txt for any packages to install..."
-for lib in $(cat "${HOME}/.config/yadm/packages.txt"); do
+for lib in $(cat "$PACKAGE_LIST"); do
 	if [[ ! $(yay -Q "${lib}") ]]; then # if package isn't installed
 		read -p "Do you want to install '${lib}'? [Y/n] " -n 1 -r
 		if [[ ! $REPLY =~ ^[Nn]$ ]]; then # REPLY is automatically used as read variable
@@ -86,7 +92,7 @@ fi
 # Install python packages
 
 echo "Installing global python site-packages..."
-python3 -m pip install -q --user -r "${HOME}/.config/yadm/python3_packages.txt"
+python3 -m pip install -q --user -r "$PYTHON_PACKAGE_LIST"
 
 # speedtest installs 2 executable scripts
 # speedtest and speedtest-cli, which both have the same
@@ -104,11 +110,11 @@ while read -r npkg; do
 		echo -e "Installing ${npkg}"
 		npm install --global "${npkg}"
 	fi
-done <"${HOME}/.config/yadm/global_node_packages.txt"
+done <"$NODE_PACKAGE_LIST"
 
 echo -e "Installing global gems..."
 bundle config set system 'true'
-bundle --gemfile "${HOME}/.config/yadm/Gemfile"
+bundle --gemfile "$GLOBAL_GEMFILE"
 
 # Install doom emacs
 if [[ ! -d "$HOME/.emacs.d/" ]]; then
