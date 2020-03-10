@@ -3,6 +3,7 @@ moby
 vscode-html-languageserver-bin
 bash-language-server
 @elm-tooling/elm-language-server
+elm-format
 yaml-language-server
 stylelint
 js-beautify
