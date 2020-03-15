@@ -1,6 +1,6 @@
 # dotfiles
 
-- [zsh](http://zsh.sourceforge.net/)
+- [zsh](http://zsh.sourceforge.net/), plugins/configuration handled manually in [.zshrc](./.config/zsh/.zshrc)
 - [i3-gaps](https://github.com/Airblader/i3) - window manager
 - [yadm](https://yadm.io) to manage dotfiles
 - [termite](https://github.com/thestinger/termite) and sometimes my [fork of st](https://github.com/seanbreckenridge/st) as terminal
