@@ -25,7 +25,7 @@ export LC_ALL='en_US.UTF-8'
 export VISUAL='nvim' # e.g. for edit-command-line in ~/.zshrc, to prompt in current terminal
 export EDITOR='editor' # created in ~/.config/shortcuts.toml, wrapper for nvim/emacsclient
 export PAGER='less'
-export TERMINAL='st'
+export TERMINAL='termite'
 export BROWSER='firefox-developer-edition'
 export READER='okular'
 

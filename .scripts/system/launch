@@ -7,7 +7,7 @@
 
 if [ "$(tty)" = "not a tty" ]; then
   # open a new terminal, load zsh configuration (for zsh functions/environment), then launch the passed command
-  st zsh -ic "$@"
+  termite -e "zsh -ic \"$@\""
 else
   # execute the command in the current shell
   sh -c "$@"

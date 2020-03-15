@@ -1,6 +1,7 @@
 [options]
 #allow_bold = true
 audible_bell = true
+#visible_bell = true
 #bold_is_bright = true
 #cell_height_scale = 1.0
 #cell_width_scale = 1.0
@@ -42,18 +43,16 @@ scrollback_lines = 10000
 
 [colors]
 
-foreground = #ebdbb2
-foreground_bold = #eeeeee
-background = #282828
-cursor = #c5c8c6
-
-background = rgba(63, 63, 63, 1)
+foreground = #cbcbcb
+foreground_bold = #f0f0f0
+background = #1d1f21
+cursor = #cbcbcb
 
 # If unset, will reverse foreground and background
 highlight = #2f2f2f
 
 # black
-color0  = #282a2e
+color0  = #1d1f21
 color8  = #373b41
 
 # red
@@ -61,15 +60,15 @@ color1  = #a54242
 color9  = #cc6666
 
 # green
-color2  = #8c9440
-color10 = #b5bd68
+color2  = #7cc128
+color10 = #81cb64
 
 # yellow
-color3  = #de935f
-color11 = #f0c674
+color3  = #ccbf2c
+color11 = #cfdd3f
 
 # blue
-color4  = #5f819d
+color4  = #326187
 color12 = #81a2be
 
 # magenta
@@ -77,22 +76,10 @@ color5  = #85678f
 color13 = #b294bb
 
 # cyan
-color6  = #5e8d87
-color14 = #8abeb7
+color6  = #32afa0
+color14 = #6ac2b6
 
 # white
-color7  = #707880
-color15 = #c5c8c6
+color7  = #cbcbcb
+color15 = #f0f0f0
 
-[hints]
-font = Monospace 12
-foreground = #dcdccc
-background = #3f3f3f
-active_foreground = #e68080
-active_background = #3f3f3f
-padding = 2
-border = #3f3f3f
-border_width = 0.5
-roundness = 2.0
-
-# vim: ft=dosini cms=#%s
