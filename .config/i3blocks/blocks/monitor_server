@@ -3,7 +3,7 @@
 SSH_IDENTITY="${HOME}/.ssh/scaleway"
 SSH_USER="sean"
 SSH_IP="51.158.71.26"
-EXPECTED_PROC_COUNT=6
+EXPECTED_PROC_COUNT=5
 
 wait-for-internet > /dev/null
 
