@@ -23,6 +23,7 @@ zsh_history
 # Top level files to ignore
 /.config/yadm/Gemfile.lock
 /.config/mimeapps.list
+/.config/enchant
 /.config/autostart
 /.config/cef_user_data
 /.config/sqlitebrowser/*
@@ -126,6 +127,7 @@ zsh_history
 /.vscode-oss
 /.cargo
 /.ssr
+/.surf
 /.gnupg
 /.steam*
 /.npm

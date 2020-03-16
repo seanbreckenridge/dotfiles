@@ -1,0 +1,49 @@
+#!/usr/bin/env python3
+
+"""Usage:
+    openlinks LINKS... [--help]
+    openlinks
+
+Opens URLs in your default browser.
+
+Examples:
+
+    openlinks <<< "https://"
+    openlinks "https://" "http://"
+    echo "https://..." | openlinks
+    cat file_with_links.txt | openlinks
+
+If no links are given when called, i.e.:
+$ openlinks
+
+You can input/paste links; they'll be opened when you hit enter/return
+type 'q', 'quit', or EOF (Ctrl+D), Ctrl+C to quit
+"""
+
+import sys
+import re
+import shlex
+import subprocess
+
+import docopt
+docopt.docopt(__doc__)
+
+openurl = lambda url: subprocess.run(shlex.split('openurl "{}"'.format(url)))
+
+# open anything given as a command line argument
+links = re.findall(r'(https?://\S+)', " ".join(sys.argv).strip())
+if links:
+    for link in links:
+        openurl(link)
+    sys.exit(0)
+
+# open anything piped/as input
+while True:
+    try:
+        user_input = input()
+        for line in user_input.split("\s*\n\s*"):
+            if line.strip().lower() in ['q', 'quit']:
+                sys.exit(0)
+            openurl(line)
+    except (EOFError, KeyboardInterrupt):
+        sys.exit(0)
