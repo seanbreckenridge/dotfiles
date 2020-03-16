@@ -163,3 +163,4 @@ python-isort
 rust-racer
 termite
 surf
+inotify-tools
