@@ -50,6 +50,8 @@ zsh_history
 /.config/xfce4/xfconf
 /.config/gtk-*
 /.config/configstore
+/.config/composer/.htaccess
+/.config/nextjs-nodejs
 /.config/menus/
 /.config/okularrc
 /.config/yadm/repo.git
@@ -134,7 +136,6 @@ zsh_history
 /.tor-browser
 /.elvish
 /.npm-packages
-/.config/composer/.htaccess
 /.jupyter
 /.mal-id-cache
 /.gradle
