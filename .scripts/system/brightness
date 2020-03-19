@@ -4,12 +4,15 @@
 # brightness up 5
 # brightness down 10
 
+[ -z "$1" ] && echo "No argument provided (up/down)" && exit 1
+STEP=${2:-2}  # default to 2
+
 case $1 in
 up)
-	light -A "$2"
+	light -A "$STEP"
 	;;
 down)
-	light -U "$2"
+	light -U "$STEP"
 	;;
 esac
 

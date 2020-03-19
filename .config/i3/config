@@ -55,8 +55,8 @@ bindsym $mod+Shift+Tab exec --no-startup-id i3binds-prompt
 # Bind brightness keys
 # This required fiddling with the /sys/class/backlight/amdgpu_b10 file permissions
 # and giving myself the 'video' group
-bindsym XF86MonBrightnessUp exec --no-startup-id brightness up 2
-bindsym XF86MonBrightnessDown exec --no-startup-id brightness down 2
+bindsym XF86MonBrightnessUp exec --no-startup-id brightness up
+bindsym XF86MonBrightnessDown exec --no-startup-id brightness down
 
 # Bind $mod+Brightness keys to transparency toggle
 # Uses picom-trans to set the transparency to 100/85% (same as active/inactive)
