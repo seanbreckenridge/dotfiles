@@ -1,6 +1,15 @@
 seperator_block_width=15
 markup=pango
 
+# make sure all processes on my server are running
+# see:
+# https://github.com/seanbreckenridge/foreverjs-list
+# https://github.com/seanbreckenridge/vps
+[server-forever]
+command="${HOME}/.config/i3blocks/blocks/server_forever"
+label=🖥️
+interval=300
+
 # entr in ~/.config/i3/config refreshes this when the file changes
 [todo]
 command="${HOME}/.config/i3blocks/blocks/todo"
