@@ -8,7 +8,7 @@ markup=pango
 [server-forever]
 command="${HOME}/.config/i3blocks/blocks/server_forever"
 label=🖥️
-interval=300
+interval=600
 
 # entr in ~/.config/i3/config refreshes this when the file changes
 [todo]
