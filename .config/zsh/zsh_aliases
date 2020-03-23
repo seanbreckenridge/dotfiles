@@ -36,3 +36,4 @@ alias sxfull="sxiv -s f -f"
 # helper alias for launching a new terminal window in the cwd
 alias opennewterm="termite >/dev/null 2>&1 & disown"
 alias firefox_extensions='openurls < ~/.config/firefox_addons.txt'
+alias calc='python3 -ic "from math import *"'
