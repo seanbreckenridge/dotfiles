@@ -1,0 +1,4 @@
+function _volume {
+  _arguments '1: :(up down mute micmute)'
+}
+

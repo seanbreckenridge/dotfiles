@@ -97,6 +97,7 @@ autoload -Uz "$ZDOTDIR"/completions/*
 compdef _brightness brightness
 compdef _transparent transparent
 compdef _trackpad trackpad
+compdef _volume volume
 
 zle -N fzfedit
 bindkey '^F' fzfedit
