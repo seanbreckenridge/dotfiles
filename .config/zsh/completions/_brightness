@@ -1,0 +1,4 @@
+function _brightness {
+  _arguments '1: :(up down)'
+}
+

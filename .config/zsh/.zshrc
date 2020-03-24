@@ -85,13 +85,18 @@ source "${ZDOTDIR}/directory_aliases"
 fpath=(
   /usr/share/zsh/site-functions
   "$ZDOTDIR"/functions
+  "$ZDOTDIR"/completions
   "${fpath[@]}"
 )
 
 # lazy-load user defined functions
 autoload -Uz "$ZDOTDIR"/functions/*
 
-# zsh key bindings
+# personal zsh completions
+autoload -Uz "$ZDOTDIR"/completions/*
+compdef _brightness brightness
+compdef _transparent transparent
+compdef _trackpad trackpad
 
 zle -N fzfedit
 bindkey '^F' fzfedit
