@@ -133,7 +133,7 @@ source /usr/share/fzf/completion.zsh
 export FZF_DEFAULT_OPTS="--extended"
 export FZF_DEFAULT_COMMAND="fd -H -L"  # ignore files in gitignore
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-export FZF_ALT_C_COMMAND="$FZF_DEFAULT_COMMAND -t d"
+export FZF_ALT_C_COMMAND="$FZF_DEFAULT_COMMAND -t d -E .git"
 
 # zsh plugins
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
