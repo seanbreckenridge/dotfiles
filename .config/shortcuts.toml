@@ -6,7 +6,7 @@
 
 [list-config]
 command='''
-cat <(echo -e "${HOME}/.profile\n${HOME}/.gitignore") <(fd --full-path "${HOME}" ~/.config ~/.local/scripts --type f -H -E "discord" -E "google-chrome" -E "Slack" -E "repo.git" -E "Code - OSS" -E "chromium" -E "Electron" -E "Atom" -E "Pinta" -E "pulse" -E "mono.addins" -E "configstore" -E "autostart" -E "largechar" -E "gcloud" -E "Thunar" -E "cef_user_data" -E "QtProject.conf" -E "menus" -E "__pycache__")
+cat <(echo -e "${HOME}/.profile\n${HOME}/.gitignore") <(fd --full-path "${HOME}" ~/.config ~/.local/scripts --type f -H -E "discord" -E "google-chrome" -E "Slack" -E "repo.git" -E "chromium" -E "Electron" -E "Pinta" -E "pulse" -E "mono.addins" -E "configstore" -E "autostart" -E "largechar" -E "gcloud" -E "Thunar" -E "cef_user_data" -E "QtProject.conf" -E "menus" -E "__pycache__" -E "StardewValley")
 '''
 shebang = "#!/usr/bin/env bash"
 
