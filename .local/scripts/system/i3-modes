@@ -149,6 +149,8 @@ end
 
 mode_matches
 |> Keyword.get(:lines)
+|> Stream.filter(fn line -> byte_size(String.trim(line)) != 0 end)
+|> Stream.filter(fn line -> not (String.trim(line) |> String.starts_with?("#")) end)
 |> Stream.map(&I3Modes.parse_binding(&1))
 |> Stream.map(&Enum.join(&1, " | "))
 |> Stream.map(&IO.puts(&1))
