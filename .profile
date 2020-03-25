@@ -8,7 +8,7 @@ ${HOME}/.local/npm-packages/bin:\
 ${HOME}/.local/scripts/system:\
 ${HOME}/.local/scripts/bin:\
 ${HOME}/.local/shortcuts:\
-${HOME}/.go/bin:\
+${HOME}/.local/go/bin:\
 ${HOME}/.cabal/bin:\
 ${HOME}/.emacs.d/bin:\
 ${PATH}"

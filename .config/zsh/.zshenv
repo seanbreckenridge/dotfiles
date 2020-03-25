@@ -40,13 +40,15 @@ export XDG_CONFIG_HOME="${HOME}/.config"
 export XDG_CACHE_HOME="${HOME}/.cache"
 export XDG_DATA_HOME="${HOME}/.local/share"
 
+# Set environment variables to change defualt cache/config file locations
+
 # Change npm install dir from /usr/local/bin (which requires sudo)
 export NPM_PACKAGES="${HOME}/.local/npm-packages"
 export NODE_PATH="${NPM_PACKAGES}/lib/node_modules:${NODE_PATH}"
 export NPM_CONFIG_PREFIX="$HOME/.local/npm-packages"
 
 # Go
-export GOPATH="${HOME}/.go"
+export GOPATH="${HOME}/.local/go"
 export GOBIN="${GOPATH}/bin"
 
 # Python/Venv related
@@ -82,6 +84,12 @@ export GEM_HOME="${HOME}/.gem"
 
 # shortcuts: https://github.com/seanbreckenridge/shortcuts
 export SHORTCUTS_DIR="${HOME}/.local/shortcuts"
+
+# ignore less history
+export LESSHISTFILE="-"
+
+# gnupg
+export GNUPGHOME="$XDG_DATA_HOME/gnupg"
 
 # colors for manpages
 export LESS_TERMCAP_mb=$'\e[1;32m'
