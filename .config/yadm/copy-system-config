@@ -10,22 +10,24 @@ dirs=("/etc/X11/xorg.conf.d/")
 # provide absolute paths to files
 files=("/etc/pacman.conf" "/etc/nsswitch.conf" "/etc/pacman.d/hooks/mirrorupgrade.hook" "/etc/systemd/system/lockscreen@.service")
 
+SYSTEM_CONF_TARGET="${HOME}/.local/system-config"
+
 # Remove and recreate system config directory
-if [[ -d ~/.system-config ]]; then
-	rm -rf ~/.system-config
+if [[ -d "${SYSTEM_CONF_TARGET}" ]]; then
+	rm -rf "${SYSTEM_CONF_TARGET}"
 fi
-mkdir -p ~/.system-config
-chmod 755 ~/.system-config
+mkdir -p "$SYSTEM_CONF_TARGET"
+chmod 755 "$SYSTEM_CONF_TARGET"
 
 for d in "${dirs[@]}"; do
-	sys_conf_target="${HOME}/.system-config${d}"
-	echo "Copying to ${sys_conf_target}"
-	mkdir -p "${sys_conf_target}"
-	cp -R "${d}"* "${sys_conf_target}"
+	dir_target="${SYSTEM_CONF_TARGET}${d}"
+	echo "Copying to ${dir_target}"
+	mkdir -p "${dir_target}"
+	cp -R "${d}"* "${dir_target}"
 done
 
 for f in "${files[@]}"; do
-	enclosing_dir="${HOME}/.system-config"$(dirname "${f}")
+	enclosing_dir="${SYSTEM_CONF_TARGET}"$(dirname "${f}")
 	[[ ! -d "${enclosing_dir}" ]] && mkdir -p "${enclosing_dir}"
 	echo -e "Copying to ${enclosing_dir}"
 	cp "${f}" "${enclosing_dir}"
