@@ -137,9 +137,9 @@ modes =
 
 mode_matches =
   modes
-  |> Enum.filter(fn m -> Keyword.get(m, :name) == want_mode end)
+  |> Enum.find(fn m -> Keyword.get(m, :name) == want_mode end)
 
-if Enum.count(mode_matches) == 0 do
+if mode_matches == nil do
   exit(
     "Could not find a mode with the name #{want_mode}; found modes: #{
       modes |> Enum.map(&Keyword.get(&1, :name)) |> Enum.join(", ")
@@ -148,7 +148,6 @@ if Enum.count(mode_matches) == 0 do
 end
 
 mode_matches
-|> Enum.at(0)
 |> Keyword.get(:lines)
 |> Stream.map(&I3Modes.parse_binding(&1))
 |> Stream.map(&Enum.join(&1, " | "))
