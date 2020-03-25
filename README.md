@@ -22,7 +22,7 @@
 Packages can be added to the `.txt` files manually, and then `yadm bootstrap` can be run repeatedely to make sure everything is installed.
 
 - [.config/shortcuts.toml](.config/shortcuts.toml) - describes basic shell scripts that are created by [shortcuts](https://github.com/seanbreckenridge/shortcuts)
-- [dir-aliases](https://github.com/seanbreckenridge/dotfiles/blob/master/.local/scripts/bin/dir-aliases) generates aliases from `key->directory` mappings described in [./.config/directories](./.config/directories)
+- [dir-aliases](https://github.com/seanbreckenridge/dotfiles/blob/master/.local/scripts/bin/dir-aliases) generates aliases from `key->directory` mappings described in [.config/directories](./.config/directories)
 - [.local/scripts/bin](.local/scripts/bin) - generic scripts
     - media related, [duration](https://github.com/seanbreckenridge/dotfiles/blob/master/.local/scripts/bin/duration) to get media length, [gifme](https://github.com/seanbreckenridge/dotfiles/blob/master/.local/scripts/bin/duration) to convert video to gifs.
     - [gitopen](https://github.com/seanbreckenridge/dotfiles/blob/master/.local/scripts/bin/gitopen) to open current git directory in browser
