@@ -104,10 +104,10 @@ bindsym $mod+Return exec --no-startup-id termite
 bindsym $mod+q kill
 
 # rofi run menu
-bindsym $mod+r exec --no-startup-id rofi -show run
+bindsym $mod+r exec --no-startup-id rofi -show run -display-run "run > "
 
 # rofi switch window menu
-bindsym $mod+Tab exec --no-startup-id rofi -show window
+bindsym $mod+Tab exec --no-startup-id rofi -show window -display-window "window > "
 
 # take a screenshot
 bindsym --release Print exec --no-startup-id screenshot
