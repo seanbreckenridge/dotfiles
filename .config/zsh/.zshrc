@@ -108,7 +108,8 @@ bindkey "^[[1;3D" up-dir
 bindkey "^[[1;3C" fzf-cd-widget
 
 # Alt+Shift+C to fzf into a directory in ~/code
-fzf-code() { cd "$HOME/code"; fzf-cd-widget }; zle -N fzf-code
+fzf-code() { cd "$HOME/code"; fzf-cd-widget && zle reset-prompt }; zle -N fzf-code
+
 bindkey "^[C" fzf-code
 
 # Alt+R to launch ranger (file manager)
