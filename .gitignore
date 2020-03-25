@@ -12,7 +12,7 @@ zsh_history
 .zshrc.zwc
 directory_aliases
 
-# Ignore README - handled by git hooks -- see .yadm/README.md
+# Ignore README - handled by git hooks -- see .config/yadm/yadm-with-README.md 
 /README.md
 /.config/yadm/README.md
 
