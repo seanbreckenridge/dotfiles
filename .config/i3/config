@@ -243,6 +243,7 @@ mode "term" {
     bindsym h exec --no-startup-id launch htop; mode "default"
     bindsym k exec --no-startup-id launch fkill; mode "default"
     bindsym v exec --no-startup-id launch keyvol; mode "default"
+    bindsym u exec --no-startup-id launch update; mode "default"
     bindsym Escape mode "default"
     bindsym Return mode "default"
 }
