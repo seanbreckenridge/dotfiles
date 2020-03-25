@@ -109,10 +109,9 @@ install_python_personal "pythonanywhere_3_months" "https://github.com/seanbrecke
 # tab completion nicer
 [[ $(command -v speedtest-cli) ]] && rm "$(command -v speedtest-cli)"
 
-# ~/.npmrc defines the prefix as ~/.npm-packages
+NPM_CONFIG_PREFIX="${HOME}/.local/npm-packages"
 echo "Installing global npm packages..."
-NPM_PKG_DIR="${HOME}/.local/npm-packages"
-[[ ! -d "${NPM_PKG_DIR}" ]] && mkdir -p "${NPM_PKG_DIR}" && sudo chown -R "$(whoami)" "${NPM_PKG_DIR}"
+[[ ! -d "${NPM_CONFIG_PREFIX}" ]] && mkdir -p "${NPM_CONFIG_PREFIX}" && sudo chown -R "$(whoami)" "${NPM_CONFIG_PREFIX}"
 NPM_PACKAGE_LIST="$(npm list -g)"
 while read -r npkg; do
 	if ! printf "%s" "$NPM_PACKAGE_LIST" | grep -q "${npkg}"; then
@@ -123,7 +122,7 @@ done <"$NODE_PACKAGE_LIST"
 
 echo -e "Installing global gems..."
 bundle config set system 'true'
-bundle --gemfile "$GLOBAL_GEMFILE"
+bundle install --quiet --gemfile "$GLOBAL_GEMFILE" || print_error "Could not install gems. Retry by running: bundle config set system true && bundle --gemfile $GLOBAL_GEMFILE"
 
 # Install doom emacs
 if [[ ! -d "$HOME/.emacs.d/" ]]; then
