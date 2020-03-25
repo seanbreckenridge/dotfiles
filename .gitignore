@@ -93,6 +93,7 @@ __pycache__
 /.config/autostart
 /.config/cef_user_data
 /.config/sqlitebrowser/*
+/.config/zoomus.conf
 /.config/clojure
 /.config/neofetch
 /.config/discord
