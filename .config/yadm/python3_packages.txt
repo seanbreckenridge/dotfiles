@@ -44,7 +44,6 @@ python-rofi
 PyYAML
 radon
 requests
-rotten_tomatoes_cli
 rsa
 scipy
 selenium
