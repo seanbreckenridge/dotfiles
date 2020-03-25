@@ -3,14 +3,14 @@
 # if just using xdg-open on my system,
 # xdg-open hangs after opening the link,
 # its waiting for the $BROWSER process to end
-# 
+#
 # A URL can be passed as the first argument
 # or piped into openurl
 
 URL="$1"
 
-if [ -z "$1" ]; then  # if no URL was passed, read from STDIN
-  URL="$(cat)"
+if [ -z "$1" ]; then # if no URL was passed, read from STDIN
+	URL="$(cat)"
 fi
 
 xdg-open "$URL" >/dev/null 2>&1 &

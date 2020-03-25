@@ -1,22 +1,22 @@
 # Update typically used packages
 
 function update() {
-  local START_TIME=$(date +%s)
-  wait-for-internet --text "(waiting for internet)"
-  printf "Updating system (pacman/yay) packages...\n"
-  yay -Syu
-  printf "Updating pkgfile indexes...\n"
-  sudo pkgfile --update
-  yadm bootstrap
-  printf "Updating nvim packages...\n"
-  nvim +PlugUpdate +qall
-  printf "Updating doom emacs...\n"
-  doom -y upgrade
-  printf "Updating ruby packages...\n"
-  bundle update --gemfile "${HOME}/.config/yadm/Gemfile"
-  printf "Updating python packages...\n"
-  python3 -m pip list --outdated --format=freeze | cut -d"=" -f 1 | xargs -r -n1 python3 -m pip install --upgrade --user
-  printf "Updating global npm packages...\n"
-  npm update -g
-  printf "Finished updates in %d seconds\n" $(bc <<< "$(date +%s) - ${START_TIME}") | boxes -d shell -p t1l2b1r2
+	local START_TIME=$(date +%s)
+	wait-for-internet --text "(waiting for internet)"
+	printf "Updating system (pacman/yay) packages...\n"
+	yay -Syu
+	printf "Updating pkgfile indexes...\n"
+	sudo pkgfile --update
+	yadm bootstrap
+	printf "Updating nvim packages...\n"
+	nvim +PlugUpdate +qall
+	printf "Updating doom emacs...\n"
+	doom -y upgrade
+	printf "Updating ruby packages...\n"
+	bundle update --gemfile "${HOME}/.config/yadm/Gemfile"
+	printf "Updating python packages...\n"
+	python3 -m pip list --outdated --format=freeze | cut -d"=" -f 1 | xargs -r -n1 python3 -m pip install --upgrade --user
+	printf "Updating global npm packages...\n"
+	npm update -g
+	printf "Finished updates in %d seconds\n" $(bc <<<"$(date +%s) - ${START_TIME}") | boxes -d shell -p t1l2b1r2
 }

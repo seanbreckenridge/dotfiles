@@ -4,12 +4,11 @@
 
 STR="$1"
 
-if [ -z "$1" ]; then  # if no URL was passed, read from STDIN
-  STR="$(cat)"
+if [ -z "$1" ]; then # if no URL was passed, read from STDIN
+	STR="$(cat)"
 fi
 
 LOC="/tmp/qr.png"
 
 qrencode "$STR" -o "$LOC"
 sxiv "$LOC" -f -s f
-

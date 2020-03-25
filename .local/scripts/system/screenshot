@@ -11,5 +11,5 @@ maim -s | tee "$OUTPUT_FILENAME" | xclip -t image/png -selection clipboard
 # if screenshot was cancelled, an empty png file
 # is still created on the deskop; delete it
 if [ "$(stat --printf="%s" "$OUTPUT_FILENAME")" = "0" ]; then
-    rm "$OUTPUT_FILENAME"
+	rm "$OUTPUT_FILENAME"
 fi

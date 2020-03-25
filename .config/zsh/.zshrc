@@ -94,8 +94,7 @@ autoload -Uz "$ZDOTDIR"/functions/*
 
 # personal zsh completions
 autoload -Uz "$ZDOTDIR"/completions/*
-compdef _binary_completion which-cat
-compdef _binary_completion launch
+compdef _binary_completion which-cat launch
 compdef _editor e
 
 zle -N fzfedit

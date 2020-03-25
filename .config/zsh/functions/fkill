@@ -2,11 +2,10 @@
 # use fzf to match against a process and kill it
 
 fkill() {
-  local pid
-  pid=$(ps -ef | sed 1d | fzf -m --tac | awk '{print $2}')
+	local pid
+	pid=$(ps -ef | sed 1d | fzf -m --tac | awk '{print $2}')
 
-  if [ "x$pid" != "x" ]
-  then
-    echo $pid | xargs kill -${1:-9}
-  fi
+	if [ "x$pid" != "x" ]; then
+		echo $pid | xargs kill -${1:-9}
+	fi
 }

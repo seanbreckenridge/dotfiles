@@ -5,7 +5,7 @@
 # brightness down 10
 
 [ -z "$1" ] && echo "No argument provided (up/down)" && exit 1
-STEP=${2:-10}  # default to 10%
+STEP=${2:-10} # default to 10%
 
 case $1 in
 up)

@@ -2,6 +2,6 @@
 # <command> | clipcopy
 
 function clipcopy() {
-  emulate -L zsh
-  xclip -in -selection clipboard
+	emulate -L zsh
+	xclip -in -selection clipboard
 }

@@ -6,4 +6,3 @@
 [ -z "$1" ] && echo "Pass an file to render as the first argument." && exit 1
 
 find "$1" | entr compile "$1"
-

@@ -140,3 +140,12 @@ command='list-music | mpv --playlist=- --no-audio-display'
 # Plays songs from this folder, recursively, randomly
 [shuffle-music]
 command='list-music | shuf | mpv --playlist=- --no-audio-display'
+
+# call shfmt in place
+[shfmt-in-place]
+command='''
+[ -z "$1" ] && echo "Error: must provide a file to call shfmt on." && exit 1
+for f in "$@"; do
+  shfmt "$f" > /tmp/shfmt-temp && cat /tmp/shfmt-temp > "$f"
+done
+'''

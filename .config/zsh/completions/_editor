@@ -1,10 +1,10 @@
 #compdef editor
 
 function _editor() {
-  _arguments -C \
-    "-h[Show help]" \
-    "-n[Uses nvim in the current terminal]" \
-    "-c[Uses the emacs client]" \
-    "-b[Toggles the emacs client as a background process instead of blocking.]" \
-    "*::filename:_files"
+	_arguments \
+		"-h[Show help]" \
+		"-n[Uses nvim in the current terminal]" \
+		"-c[Uses the emacs client]" \
+		"-b[Toggles the emacs client as a background process instead of blocking.]" \
+		"*::filename:_files"
 }

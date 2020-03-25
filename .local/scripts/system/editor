@@ -1,8 +1,7 @@
 #!/bin/sh
 
-set -e  # exit on non zero return code
+set -e # exit on non zero return code
 set -u # undefined variables are errors
-
 
 usage="Usage: $(basename "$0") [OPTION] FILE...
 Opens an editor. If no options are provided,
@@ -31,41 +30,41 @@ ACTION=EMACS
 BG=
 
 while getopts "hncb" OPT; do
-   case "$OPT" in
-      h)
-         printf "%s" "$usage"
-         exit 0
-         ;;
-      n)
-         ACTION=NVIM
-         ;;
-      c)
-         ACTION=EMACS_CLIENT
-         ;;
-      b)
-         BG=true
-         ;;
-      ?)
-         printf "%s" "$usage"
-         exit 1
-         ;;
-   esac
+	case "$OPT" in
+	h)
+		printf "%s" "$usage"
+		exit 0
+		;;
+	n)
+		ACTION=NVIM
+		;;
+	c)
+		ACTION=EMACS_CLIENT
+		;;
+	b)
+		BG=true
+		;;
+	?)
+		printf "%s" "$usage"
+		exit 1
+		;;
+	esac
 done
 shift "$((OPTIND - 1))"
 
 # perform action
 case "$ACTION" in
-   NVIM)
-      nvim "$@"
-      ;;
-   EMACS)
-      emacs "$@" &
-      ;;
-   EMACS_CLIENT)
-      if [ "$BG" = true ]; then
-        emacsclient -c "$@" &
-      else
-        emacsclient -c "$@"
-      fi
-      ;;
+NVIM)
+	nvim "$@"
+	;;
+EMACS)
+	emacs "$@" &
+	;;
+EMACS_CLIENT)
+	if [ "$BG" = true ]; then
+		emacsclient -c "$@" &
+	else
+		emacsclient -c "$@"
+	fi
+	;;
 esac
