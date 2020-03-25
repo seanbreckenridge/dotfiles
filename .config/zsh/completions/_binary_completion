@@ -1,0 +1,5 @@
+# complete any command that takes another command as its arguments
+
+function _binary_completion() {
+  _alternative 'commands: :_path_commands'
+}

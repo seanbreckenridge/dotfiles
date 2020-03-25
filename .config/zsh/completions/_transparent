@@ -1,3 +1,5 @@
+#compdef transparent
+
 function _transparent {
   _arguments \
     '1: :(enable disable)' \

@@ -10,17 +10,6 @@ zstyle ':completion:*' menu select  #  http://zsh.sourceforge.net/Guide/zshguide
 zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*' # Auto complete with case insenstivity
 setopt globdots # allow autocompletion to target hidden files
 
-# -U ignores alias/shell expansion
-# -z forches zsh style autoloading over ksh, if thats set for some reason
-autoload -Uz compinit && compinit
-
-# Note: tried caching the result to compinit, using
-# zcompudmp (which calls compaudit)
-# to speed up start times by caching zcompdump,
-# ends up taking longer. Difference is resonable,
-# about ~0.1s. longer. This may change as zcompdump
-# size increases
-
 # setup prompt
 parse_git_branch() {
   git symbolic-ref --short HEAD 2> /dev/null | xargs -r -I {} echo " (on {})"
@@ -78,8 +67,8 @@ source "${ZDOTDIR}/personal_aliases"
 # Directory Aliases (shortcuts to jump to directories)
 source "${ZDOTDIR}/directory_aliases"
 
-# load zsh-completions installed with pacman
-# and user defined functions
+# load zsh-completions installed with pacman,
+# user defined functions and completions
 fpath=(
   /usr/share/zsh/site-functions
   "$ZDOTDIR"/functions
@@ -87,15 +76,26 @@ fpath=(
   "${fpath[@]}"
 )
 
+# autoload must be after modifying fpath
+
+# -U ignores alias/shell expansion
+# -z forches zsh style autoloading over ksh, if thats set for some reason
+autoload -Uz compinit && compinit
+
+# Note: tried caching the result to compinit, using
+# zcompudmp (which calls compaudit)
+# to speed up start times by caching zcompdump,
+# ends up taking longer. Difference is resonable,
+# about ~0.1s. longer. This may change as zcompdump
+# size increases
+
 # lazy-load user defined functions
 autoload -Uz "$ZDOTDIR"/functions/*
 
 # personal zsh completions
 autoload -Uz "$ZDOTDIR"/completions/*
-compdef _brightness brightness
-compdef _transparent transparent
-compdef _trackpad trackpad
-compdef _volume volume
+compdef _binary_completion which-cat
+compdef _editor e
 
 zle -N fzfedit
 bindkey '^F' fzfedit
@@ -109,7 +109,6 @@ bindkey "^[[1;3C" fzf-cd-widget
 
 # Alt+Shift+C to fzf into a directory in ~/code
 fzf-code() { cd "$HOME/code"; fzf-cd-widget && zle reset-prompt }; zle -N fzf-code
-
 bindkey "^[C" fzf-code
 
 # Alt+R to launch ranger (file manager)
