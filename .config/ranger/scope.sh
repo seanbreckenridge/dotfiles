@@ -20,13 +20,13 @@
 # 7    | image      | success. display the file directly as an image
 
 # Meaningful aliases for arguments:
-path="$1"            # Full path of the selected file
+path="$1" # Full path of the selected file
 #width="$2"           # Width of the preview pane (number of fitting characters)
 #height="$3"          # Height of the preview pane (number of fitting characters)
-cached="$4"          # Path that should be used to cache image previews
-preview_images="$5"  # "True" if image previews are enabled, "False" otherwise.
+cached="$4"         # Path that should be used to cache image previews
+preview_images="$5" # "True" if image previews are enabled, "False" otherwise.
 
-maxln=100    # Stop after $maxln lines.  Can be used like ls | head -n $maxln
+maxln=100 # Stop after $maxln lines.  Can be used like ls | head -n $maxln
 
 # Find out something about the file:
 mimetype=$(file --mime-type -Lb "$path")
@@ -44,48 +44,62 @@ dump() { /bin/echo "$output"; }
 trim() { head -n "$maxln"; }
 
 # wraps highlight to treat exit code 141 (killed by SIGPIPE) as success
-safepipe() { "$@"; test $? = 0 -o $? = 141; }
+safepipe() {
+	"$@"
+	test $? = 0 -o $? = 141
+}
 
 # Image previews, if enabled in ranger.
 if [ "$preview_images" = "True" ]; then
-    case "$mimetype" in
-        image/svg+xml)
-           convert "$path" "$cached" && exit 6 || exit 1;;
-        image/*)
-            exit 7;;
-        # Image preview for video, disabled by default.:
-        ###video/*)
-        ###    ffmpegthumbnailer -i "$path" -o "$cached" -s 0 && exit 6 || exit 1;;
-    esac
+	case "$mimetype" in
+	image/svg+xml)
+		convert "$path" "$cached" && exit 6 || exit 1
+		;;
+	image/*)
+		exit 7
+		;;
+		# Image preview for video, disabled by default.:
+		###video/*)
+		###    ffmpegthumbnailer -i "$path" -o "$cached" -s 0 && exit 6 || exit 1;;
+	esac
 fi
 
 case "$extension" in
-    # PDF documents:
-    pdf)
-	    try pdftoppm -jpeg -singlefile "$path" "${cached//.jpg}" && exit 6 || exit 1;;
+# PDF documents:
+pdf)
+	try pdftoppm -jpeg -singlefile "$path" "${cached//.jpg/}" && exit 6 || exit 1
+	;;
 esac
 
 case "$mimetype" in
-    # Display information about media files:
-    video/* | audio/*)
-        exiftool "$path" && exit 0
-        ;;
-    # Syntax highlight for text files:
-    text/* | */xml)
-        if [ "$(tput colors)" -ge 256 ]; then
-            pygmentize_format=terminal256
-            highlight_format=ansi
-        else
-            pygmentize_format=terminal
-            highlight_format=ansi
-        fi
-        try safepipe highlight --out-format=${highlight_format} "$path" && { dump | trim; exit 5; }
-        try safepipe pistol --out-format=${highlight_format} "$path" && { dump | trim; exit 5; }
-        ;;
+# Display information about media files:
+video/* | audio/*)
+	exiftool "$path" && exit 0
+	;;
+# Syntax highlight for text files:
+text/* | */xml)
+	if [ "$(tput colors)" -ge 256 ]; then
+		pygmentize_format=terminal256
+		highlight_format=ansi
+	else
+		pygmentize_format=terminal
+		highlight_format=ansi
+	fi
+	try safepipe highlight --out-format=${highlight_format} "$path" && {
+		dump | trim
+		exit 5
+	}
+	try safepipe pistol --out-format=${highlight_format} "$path" && {
+		dump | trim
+		exit 5
+	}
+	;;
 esac
 
 # defualt if extension/mimetype both fail
-try safepipe pistol "$path" && { dump | trim; exit 5;}
+try safepipe pistol "$path" && {
+	dump | trim
+	exit 5
+}
 
 exit 1
-
