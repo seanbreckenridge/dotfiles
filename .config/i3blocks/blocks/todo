@@ -28,4 +28,4 @@ add_todo() {
 [ "$BLOCK_BUTTON" = "1" ] || [ "$1" = "list" ] && prompt_todos  # left click
 [ "$BLOCK_BUTTON" = "3" ] || [ "$1" = "add" ] && add_todo # right click
 
-printf "📝%d\n" "$(wc -l < "${HOME}/.todo/todo.txt")"
+printf "%d\n" "$(wc -l < "${HOME}/.config/todo/todo.txt")"

@@ -88,7 +88,7 @@ bindsym XF86AudioMute exec --no-startup-id volume mute
 bindsym XF86AudioMicMute exec --no-startup-id volume micmute
 
 # Refresh todo icon when todo file changes
-exec --no-startup-id echo "${HOME}/.todo/todo.txt" | entr pkill -RTMIN+2 i3blocks
+exec --no-startup-id echo "${HOME}/.config/todo/todo.txt" | entr pkill -RTMIN+2 i3blocks
 
 # todo list - mark as complete with rofi
 bindsym $mod+t exec --no-startup-id ~/.config/i3blocks/blocks/todo list
