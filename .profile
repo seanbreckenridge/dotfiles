@@ -1,6 +1,6 @@
 # Set PATH in ~/.profile so that
 # rofi/other utilities have access to it
-# this is sourced at the top of $ZDOTDIR/.zshrc
+# this is sourced automatically by zsh
 
 PATH="\
 ${HOME}/.local/bin:\

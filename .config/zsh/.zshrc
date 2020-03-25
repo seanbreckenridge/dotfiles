@@ -1,7 +1,5 @@
 # Additional zsh/alias/path/function/config
 
-source "${HOME}/.profile"
-
 autoload -U colors && colors
 
 # prompt/completion features from: https://github.com/LukeSmithxyz/voidrice/blob/master/.config/zsh/.zshrc
