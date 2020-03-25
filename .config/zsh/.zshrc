@@ -76,7 +76,7 @@ fpath=(
   "${fpath[@]}"
 )
 
-# autoload must be after modifying fpath
+# autoload must be after modifying fpath to auto-load completions
 
 # -U ignores alias/shell expansion
 # -z forches zsh style autoloading over ksh, if thats set for some reason
@@ -95,6 +95,7 @@ autoload -Uz "$ZDOTDIR"/functions/*
 # personal zsh completions
 autoload -Uz "$ZDOTDIR"/completions/*
 compdef _binary_completion which-cat
+compdef _binary_completion launch
 compdef _editor e
 
 zle -N fzfedit
