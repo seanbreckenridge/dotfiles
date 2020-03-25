@@ -24,6 +24,7 @@ zsh_history
 # Top level files to ignore
 /.config/yadm/Gemfile.lock
 /.config/mimeapps.list
+/.config/StardewValley
 /.config/enchant
 /.config/autostart
 /.config/cef_user_data
@@ -81,8 +82,8 @@ zsh_history
 /.ivy2
 /.bundle
 /.emacs.d/
-/.todo
-!/.todo/config
+/.config/todo
+!/.config/todo/config
 /.scala_history
 /.irb_history
 /.sc-iminfo
@@ -136,7 +137,7 @@ zsh_history
 /.npm
 /.tor-browser
 /.elvish
-/.npm-packages
+/.local/npm-packages
 /.jupyter
 /.mal-id-cache
 /.gradle

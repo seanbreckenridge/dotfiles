@@ -4,9 +4,9 @@
 
 PATH="\
 ${HOME}/.local/bin:\
-${HOME}/.npm-packages/bin:\
-${HOME}/.scripts/system:\
-${HOME}/.scripts/bin:\
+${HOME}/.local/npm-packages/bin:\
+${HOME}/.local/scripts/system:\
+${HOME}/.local/scripts/bin:\
 ${HOME}/.local/shortcuts:\
 ${HOME}/.go/bin:\
 ${HOME}/.cabal/bin:\

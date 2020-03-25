@@ -102,7 +102,7 @@ python3 -m pip install -q --user -r "$PYTHON_PACKAGE_LIST"
 
 # ~/.npmrc defines the prefix as ~/.npm-packages
 echo "Installing global npm packages..."
-NPM_PKG_DIR="${HOME}/.npm-packages"
+NPM_PKG_DIR="${HOME}/.local/npm-packages"
 [[ ! -d "${NPM_PKG_DIR}" ]] && mkdir -p "${NPM_PKG_DIR}" && sudo chown -R "$(whoami)" "${NPM_PKG_DIR}"
 NPM_PACKAGE_LIST="$(npm list -g)"
 while read -r npkg; do

@@ -41,9 +41,9 @@ export XDG_CACHE_HOME="${HOME}/.cache"
 export XDG_DATA_HOME="${HOME}/.local/share"
 
 # Change npm install dir from /usr/local/bin (which requires sudo)
-# ~/.npmrc should have the contents:  `prefix=${HOME}/.npm-packages`
-export NPM_PACKAGES="${HOME}/.npm-packages"
+export NPM_PACKAGES="${HOME}/.local/npm-packages"
 export NODE_PATH="${NPM_PACKAGES}/lib/node_modules:${NODE_PATH}"
+export NPM_CONFIG_PREFIX="$HOME/.local/npm-packages"
 
 # Go
 export GOPATH="${HOME}/.go"
