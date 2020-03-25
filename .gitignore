@@ -76,7 +76,6 @@ zsh_history
 /.cookiecutter_replay
 /.cabal
 /.gem
-/.go
 /.elm
 /.sbt
 /.ivy2
@@ -134,11 +133,12 @@ zsh_history
 /.npm
 /.tor-browser
 /.elvish
-/.local/npm-packages
 /.jupyter
 /.mal-id-cache
 /.gradle
 
+/.local/npm-packages
+/.local/go
 /.local/lib/python*
 /.local/man
 /.local/plugged/*
