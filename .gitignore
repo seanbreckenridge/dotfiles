@@ -89,7 +89,6 @@ zsh_history
 /.sc-iminfo
 /.scalac/
 /.swipl-dir*
-/.pythonanywhere*
 /.scramble_history.txt
 /.psql_history
 /.yarnrc
