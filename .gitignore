@@ -121,7 +121,6 @@ zsh_history
 /.lesshst
 /.ghc/ghci_history
 /.fehbg
-/.plus1_blacklist.txt
 /.viminfo
 /.pulse-cookie
 /.node-gyp
