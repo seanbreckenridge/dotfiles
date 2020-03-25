@@ -36,6 +36,7 @@ if ! echo "$SHELL" | grep -q zsh; then
 		sudo pacman -S zsh
 	fi
 	sudo chsh -s "$(command -v zsh)"
+	abort  "Restart shell so that zsh environment is setup. Then re-run 'yadm bootstrap'"
 else
 	echo "zsh is already set as your default shell"
 fi
@@ -50,7 +51,6 @@ for file in "${original_files[@]}"; do
 	fi
 done
 
-echo 'Symlinking zshenv/zprofile...'
 # ZDOTDIR is located at ~/.config/zsh
 if [[ ! -f "${HOME}/.zshenv" ]]; then
 	ln "${HOME}/.config/zsh/.zshenv" "${HOME}/.zshenv"
@@ -114,7 +114,7 @@ echo "Installing global npm packages..."
 [[ ! -d "${NPM_CONFIG_PREFIX}" ]] && mkdir -p "${NPM_CONFIG_PREFIX}" && sudo chown -R "$(whoami)" "${NPM_CONFIG_PREFIX}"
 NPM_PACKAGE_LIST="$(npm list -g)"
 while read -r npkg; do
-	if ! printf "%s" "$NPM_PACKAGE_LIST" | grep -q "${npkg}"; then
+	if ! grep -q "${npkg}" <<< "$NPM_PACKAGE_LIST" ; then
 		echo -e "Installing ${npkg}"
 		npm install --global "${npkg}"
 	fi
