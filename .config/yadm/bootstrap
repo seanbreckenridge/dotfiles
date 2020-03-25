@@ -2,7 +2,7 @@
 # yadm bootstrap script
 # Uses yay to install from AUR
 
-function print_error () {
+function print_error() {
 	echo -e "$(tput setaf 1)$1$(tput sgr0)" 1>&2
 }
 
@@ -53,7 +53,7 @@ done
 echo 'Symlinking zshenv/zprofile...'
 # ZDOTDIR is located at ~/.config/zsh
 if [[ ! -f "${HOME}/.zshenv" ]]; then
-  ln "${HOME}/.config/zsh/.zshenv" "${HOME}/.zshenv"
+	ln "${HOME}/.config/zsh/.zshenv" "${HOME}/.zshenv"
 fi
 
 # make sure personal aliases file exists so that zshrc souces fine
@@ -127,9 +127,9 @@ bundle --gemfile "$GLOBAL_GEMFILE"
 
 # Install doom emacs
 if [[ ! -d "$HOME/.emacs.d/" ]]; then
-  git clone https://github.com/hlissner/doom-emacs "${HOME}/.emacs.d"
-  "${HOME}/.emacs.d/bin/doom" install
-  "${HOME}/.emacs.d/bin/doom" refresh
+	git clone https://github.com/hlissner/doom-emacs "${HOME}/.emacs.d"
+	"${HOME}/.emacs.d/bin/doom" install
+	"${HOME}/.emacs.d/bin/doom" refresh
 fi
 
 # Check services
@@ -157,11 +157,11 @@ for binary in "${binaries[@]}"; do
 done
 
 if [ "$(command -v shortcuts)" ]; then
-  printf "Created %d shortcuts\n" "$(shortcuts create | wc -l)"
+	printf "Created %d shortcuts\n" "$(shortcuts create | wc -l)"
 fi
 
 dir-aliases
-printf "Created %d directory aliases\n" "$(wc -l < "$ZDOTDIR/directory_aliases")"
+printf "Created %d directory aliases\n" "$(wc -l <"$ZDOTDIR/directory_aliases")"
 
 echo "Installing nvim packages..."
 nvim +PlugInstall +qall
