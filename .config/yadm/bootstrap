@@ -94,6 +94,15 @@ fi
 echo "Installing global python site-packages..."
 python3 -m pip install -q --user -r "$PYTHON_PACKAGE_LIST"
 
+# Install personal python packages
+# If command "$1" doesn't exist, install from $2
+function install_python_personal() {
+	[ ! "$(command -v "$1")" ] && python3 -m pip install --user "git+$2"
+}
+install_python_personal "rotten" "https://github.com/seanbreckenridge/rotten_tomatoes_cli"
+install_python_personal "plus1" "https://github.com/seanbreckenridge/plus1"
+install_python_personal "pythonanywhere_3_months" "https://github.com/seanbreckenridge/pythonanywhere-3-months"
+
 # speedtest installs 2 executable scripts
 # speedtest and speedtest-cli, which both have the same
 # functionatly. This removes speedtest-cli to make

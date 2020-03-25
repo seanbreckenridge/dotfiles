@@ -17,10 +17,12 @@ flake8
 Flask
 giturlparse.py
 google-api-python-client
+greasyfork_archive
 HTMLParser
 idna
 itsdangerous
 jikanpy
+keepassxc-pwned
 lxml
 python-language-server
 matplotlib
