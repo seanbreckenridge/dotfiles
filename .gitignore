@@ -1,78 +1,25 @@
 # Emacs
-
 *~
 \#*\#
 .\#*
 
-# cache
-__pycache__
-
 # zsh
-
 /.zshenv
 personal_aliases
 secrets
 zsh_history
 .zcompdump*
 .zshrc.zwc
-/.config/zsh/directory_aliases
+directory_aliases
 
 # Ignore README - handled by git hooks -- see .yadm/README.md
 /README.md
 /.config/yadm/README.md
 
-# Top level files to ignore
-/.config/yadm/Gemfile.lock
-/.config/mimeapps.list
-/.config/StardewValley
-/.config/enchant
-/.config/autostart
-/.config/cef_user_data
-/.config/sqlitebrowser/*
-/.config/clojure
-/.config/neofetch
-/.config/discord
-/.config/largechar
-/.config/pulse
-/.config/hub
-/.config/mono.addins
-/.config/chromium
-/.config/keepassxc/keepassxc.ini
-/.config/dconf
-/.config/Atom/
-/.config/google-chrome
-/.config/Slack
-/.config/Code - OSS
-/.config/Electron
-/.config/nvim/.netrwhist
-/.config/nvim/spell/
-/.config/Thunar/
-/.config/Pinta/
-/.config/QtProject.conf
-/.config/xfce4/xfconf
-/.config/gtk-*
-/.config/configstore
-/.config/composer/.htaccess
-/.config/nextjs-nodejs
-/.config/menus/
-/.config/okularrc
-/.config/yadm/repo.git
-/.config/joplin/*
-!/.config/joplin/keymap.json
+# ignore any python cache files
+__pycache__
 
-/.atom/compile-cache
-/.atom/blob-store
-/.atom/storage
-/.atom/nohup.out
-/.atom/.apm/.apmrc
-/.atom/config.cson
-/.atom/github.cson
-/.atom/*socket*
-
-/jagexcache
-/jagex_cl_oldschool_LIVE.dat
-/random.dat
-/gdrive
+# application config filesto ignore
 /.cookiecutter_replay
 /.cabal
 /.gem
@@ -81,8 +28,6 @@ zsh_history
 /.ivy2
 /.bundle
 /.emacs.d/
-/.config/todo
-!/.config/todo/config
 /.scala_history
 /.irb_history
 /.sc-iminfo
@@ -124,7 +69,6 @@ zsh_history
 /.electron-gyp
 /.java
 /.runelite
-/.vscode-oss
 /.cargo
 /.ssr
 /.surf
@@ -136,6 +80,44 @@ zsh_history
 /.jupyter
 /.mal-id-cache
 /.gradle
+/.matlab
+
+# Top level config/local files to ignore
+/.config/todo
+!/.config/todo/config
+/.config/yadm/Gemfile.lock
+/.config/mimeapps.list
+/.config/StardewValley
+/.config/enchant
+/.config/autostart
+/.config/cef_user_data
+/.config/sqlitebrowser/*
+/.config/clojure
+/.config/neofetch
+/.config/discord
+/.config/largechar
+/.config/pulse
+/.config/hub
+/.config/mono.addins
+/.config/chromium
+/.config/keepassxc/keepassxc.ini
+/.config/dconf
+/.config/google-chrome
+/.config/Slack
+/.config/Electron
+/.config/nvim/.netrwhist
+/.config/nvim/spell/
+/.config/Thunar/
+/.config/Pinta/
+/.config/QtProject.conf
+/.config/xfce4/xfconf
+/.config/gtk-*
+/.config/configstore
+/.config/composer/.htaccess
+/.config/nextjs-nodejs
+/.config/menus/
+/.config/okularrc
+/.config/yadm/repo.git
 
 /.local/npm-packages
 /.local/go
@@ -150,8 +132,8 @@ zsh_history
 /.local/etc/fish/completions
 /.local/shortcuts/*
 /.local/MATLAB/*
-/.matlab
 
+# default user directories
 /code
 /Documents
 /Desktop
@@ -159,3 +141,4 @@ zsh_history
 /Pictures
 /Movies
 /Music
+/gdrive
