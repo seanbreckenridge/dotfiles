@@ -163,3 +163,4 @@ rust-racer
 termite
 surf
 inotify-tools
+zoom
