@@ -116,6 +116,9 @@ bindsym $mod+Tab exec --no-startup-id rofi -show window -display-window "window 
 # take a screenshot
 bindsym --release Print exec --no-startup-id screenshot
 
+# grab URL from clipboard and stream through MPV
+bindsym $mod+Shift+m exec --no-startup-id mpv "$(xclip -out -selection clipboard)" || notify-send "Failed to run mpv with \"$(xclip -out -selection clipboard)\""
+
 # gaps config
 for_window [class=".*"] border pixel 0
 smart_borders on
