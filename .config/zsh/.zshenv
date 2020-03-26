@@ -78,6 +78,9 @@ export HEX_HOME="${XDG_DATA_HOME}/hex"
 # reads from the history file in ~/.cache/python_history
 export PYTHONSTARTUP="${XDG_CONFIG_HOME}/pythonrc"
 
+# move ipython data directory
+export IPYTHONDIR="${XDG_DATA_HOME}/ipython"
+
 # SQLite history file
 export SQLITE_HISTORY="${XDG_CACHE_HOME}/sqlite_history"
 

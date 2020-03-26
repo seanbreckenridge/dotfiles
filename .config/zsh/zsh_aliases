@@ -15,6 +15,7 @@ alias yp='yadm push'
 # Corrections
 # aliases that fix the config/history path of commands
 alias irb='ruby "${XDG_CONFIG_HOME}/irbrc"'
+alias wget='wget --hsts-file "${XDG_CACHE_HOME}/wget-hsts"'
 
 # Standard
 alias reboot="sudo systemctl reboot"

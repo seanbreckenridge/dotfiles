@@ -30,21 +30,10 @@ __pycache__
 /.sc-iminfo
 /.scalac/
 /.swipl-dir*
-/.scramble_history.txt
 /.psql_history
 /.yarnrc
-/.dmrc
 /.bash_history
-/.mix
-/.hex
-/.pyenv
-/.ipython
-/.antigen
 /.pki/nssdb
-/.wget-hsts
-/.vim/.netrwhist
-/.gnome/apps
-/.gnome/apps
 /.credentials
 /.cache
 /.keras
@@ -59,8 +48,6 @@ __pycache__
 /.xsession-errors*
 /.gitconfig
 /.ghc/ghci_history
-/.fehbg
-/.viminfo
 /.pulse-cookie
 /.node-gyp
 /.electron-gyp
@@ -119,7 +106,6 @@ __pycache__
 /.config/yadm/repo.git
 
 /.local/npm-packages
-/.local/go
 /.local/lib/python*
 /.local/man
 /.local/plugged/*
