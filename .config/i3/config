@@ -18,6 +18,8 @@ bindsym $mod+Shift+Escape exec --no-startup-id lock_screen
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
 exec --no-startup-id nm-applet
+# keyboard shortcut to check if I have a remote internet connection
+bindsym $mod+Shift+w exec --no-startup-id wfi
 
 # use picom for display compositing
 exec --no-startup-id picom -b
@@ -37,7 +39,7 @@ bindsym XF86Display exec --no-startup-id $randomize_wallpaper
 
 # Disable trackpad
 exec --no-startup-id trackpad disable
-# bindsym to toggle trackpad
+# keyboard shortcut to toggle trackpad
 bindsym $mod+g exec --no-startup-id trackpad
 
 # for when I plug in an external keyboard - refresh i3 to rebind keys
