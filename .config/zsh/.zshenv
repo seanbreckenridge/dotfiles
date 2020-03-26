@@ -43,47 +43,49 @@ export XDG_DATA_HOME="${HOME}/.local/share"
 # Set environment variables to change defualt cache/config file locations
 
 # Change npm install dir from /usr/local/bin (which requires sudo)
-export NPM_PACKAGES="${HOME}/.local/npm-packages"
-export NODE_PATH="${NPM_PACKAGES}/lib/node_modules:${NODE_PATH}"
-export NPM_CONFIG_PREFIX="$HOME/.local/npm-packages"
+export NPM_CONFIG_PREFIX="${XDG_DATA_HOME}/npm-packages"
+export NODE_PATH="${NPM_CONFIG_PREFIX}/lib/node_modules:${NODE_PATH}"
 
 # Go
-export GOPATH="${HOME}/.local/go"
+export GOPATH="${XDG_DATA_HOME}/go"
 export GOBIN="${GOPATH}/bin"
 
 # Python/Venv related
-export PYENV_ROOT="${HOME}/.pyenv"
+export PYENV_ROOT="${XDG_DATA_HOME}/pyenv"
 export PIPENV_PYTHON="${PYENV_ROOT}/shims/python"
 
 # Cookiecutter - for pypi projects
-export COOKIECUTTER_CONFIG="${HOME}/.config/cookiecutterrc"
+export COOKIECUTTER_CONFIG="${XDG_CONFIG_HOME}/cookiecutterrc"
 
 # MySQL History File
-export MYSQL_HISTFILE="${HOME}/.cache/mysql_history"
+export MYSQL_HISTFILE="${XDG_CACHE_HOME}/mysql_history"
 
 # Node History File
-export NODE_REPL_HISTORY="${HOME}/.cache/node_repl_history"
+export NODE_REPL_HISTORY="${XDG_CACHE_HOME}/node_repl_history"
 
  # save iex (elixir) history
 export ERL_AFLAGS="-kernel shell_history enabled"
+
+# move hex directory
+export HEX_HOME="${XDG_DATA_HOME}/hex"
 
 # Python History File
 # set PYTHON_STARTUP python file, which runs when an
 # interactive shell is opened
 # reads from the history file in ~/.cache/python_history
-export PYTHONSTARTUP="${HOME}/.config/pythonrc"
+export PYTHONSTARTUP="${XDG_CONFIG_HOME}/pythonrc"
 
 # SQLite history file
-export SQLITE_HISTORY="${HOME}/.cache/sqlite_history"
+export SQLITE_HISTORY="${XDG_CACHE_HOME}/sqlite_history"
 
 # cube scramble cli history file
-export SCRAMBLE_HISTORY="${HOME}/.cache/scramble_history"
+export SCRAMBLE_HISTORY="${XDG_CACHE_HOME}/scramble_history"
 
 # ruby
-export GEM_HOME="${HOME}/.gem"
+export GEM_HOME="${XDG_DATA_HOME}/gem"
 
 # shortcuts: https://github.com/seanbreckenridge/shortcuts
-export SHORTCUTS_DIR="${HOME}/.local/shortcuts"
+export SHORTCUTS_DIR="${XDG_DATA_HOME}/shortcuts"
 
 # ignore less history
 export LESSHISTFILE="-"
