@@ -72,7 +72,8 @@ export NODE_REPL_HISTORY="${XDG_CACHE_HOME}/node_repl_history"
  # save iex (elixir) history
 export ERL_AFLAGS="-kernel shell_history enabled"
 
-# move hex directory
+# move elixir (mix/hex) directories
+export MIX_HOME="${XDG_DATA_HOME}/mix"
 export HEX_HOME="${XDG_DATA_HOME}/hex"
 
 # Python History File
