@@ -6,7 +6,7 @@
 
 [list-config]
 command='''
-{ yadm ls-files | sed "s#^#$HOME/#"; fd -H --full-path "${HOME}" "${XDG_CONFIG_HOME}/todo" "${ZDOTDIR}" } | grep -v "system-config" | sort -u
+{ cd && yadm ls-files | sed "s#^#$HOME/#"; fd -H --full-path "${HOME}" "${XDG_CONFIG_HOME}/todo" "${ZDOTDIR}" } | grep -v "system-config" | sort -u
 '''
 shebang = "#!/usr/bin/env zsh"
 
