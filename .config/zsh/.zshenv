@@ -50,6 +50,9 @@ export NODE_PATH="${NPM_CONFIG_PREFIX}/lib/node_modules:${NODE_PATH}"
 export GOPATH="${XDG_DATA_HOME}/go"
 export GOBIN="${GOPATH}/bin"
 
+# Elm
+export ELM_HOME="${XDG_DATA_HOME}/elm"
+
 # Python/Venv related
 export PYENV_ROOT="${XDG_DATA_HOME}/pyenv"
 export PIPENV_PYTHON="${PYENV_ROOT}/shims/python"

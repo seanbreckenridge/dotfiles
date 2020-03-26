@@ -22,7 +22,6 @@ __pycache__
 # application config filesto ignore
 /.cookiecutter_replay
 /.cabal
-/.elm
 /.sbt
 /.ivy2
 /.bundle
