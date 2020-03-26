@@ -12,6 +12,10 @@ alias ya="yadm add"
 alias yc="yadm commit"
 alias yp='yadm push'
 
+# Corrections
+# aliases that fix the config/history path of commands
+alias irb='ruby "${XDG_CONFIG_HOME}/irbrc"'
+
 # Standard
 alias reboot="sudo systemctl reboot"
 alias poweroff="sudo systemctl poweroff"

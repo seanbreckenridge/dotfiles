@@ -1,0 +1,5 @@
+# custom irbrc to change ruby history location
+require 'irb'
+IRB.conf[:SAVE_HISTORY] = 1000
+IRB.conf[:HISTORY_FILE] = "#{ENV['XDG_CACHE_HOME']}/irb_history"
+IRB.start()

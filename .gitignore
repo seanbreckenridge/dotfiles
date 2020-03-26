@@ -28,7 +28,6 @@ __pycache__
 /.bundle
 /.emacs.d/
 /.scala_history
-/.irb_history
 /.sc-iminfo
 /.scalac/
 /.swipl-dir*
