@@ -4,11 +4,11 @@
 
 (defun counsel-list-config (str)
   "Use fzf to fuzzy match 'str' against config files"
-   (progn
-     (counsel--async-command
-       (format "list-config | fzf -f \"%s\"" str))
-     nil ;; value to display while command is running (display previous results)
-     ))
+  (progn
+    (counsel--async-command
+     (format "list-config | fzf -f \"%s\" || printf \"\"" str))
+    nil ;; value to display while command is running (display previous results)
+    ))
 
 ;;;###autoload
 (defun counsel-edit-config (&optional initial-input)
