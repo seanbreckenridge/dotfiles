@@ -37,6 +37,8 @@ bindsym XF86Display exec --no-startup-id $randomize_wallpaper
 
 # Disable trackpad
 exec --no-startup-id trackpad disable
+# bindsym to toggle trackpad
+bindsym $mod+g exec --no-startup-id trackpad
 
 # for when I plug in an external keyboard - refresh i3 to rebind keys
 # could use udev events instead, but ended up not working well with xmodmap
