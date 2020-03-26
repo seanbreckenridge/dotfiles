@@ -43,7 +43,6 @@ __pycache__
 /.PyCharm*
 /.aspell*
 /.ssh
-/.m2
 /.Xauthority
 /.xsession-errors*
 /.gitconfig
@@ -52,9 +51,7 @@ __pycache__
 /.node-gyp
 /.electron-gyp
 /.java
-/.runelite
 /.zoom
-/.cargo
 /.ssr
 /.surf
 /.gnupg
@@ -105,7 +102,6 @@ __pycache__
 /.config/okularrc
 /.config/yadm/repo.git
 
-/.local/npm-packages
 /.local/lib/python*
 /.local/man
 /.local/plugged/*

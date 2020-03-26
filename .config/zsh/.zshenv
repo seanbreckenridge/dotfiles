@@ -50,6 +50,9 @@ export NODE_PATH="${NPM_CONFIG_PREFIX}/lib/node_modules:${NODE_PATH}"
 export GOPATH="${XDG_DATA_HOME}/go"
 export GOBIN="${GOPATH}/bin"
 
+# Rust
+export CARGO_HOME="${XDG_DATA_HOME}/cargo"
+
 # Elm
 export ELM_HOME="${XDG_DATA_HOME}/elm"
 
