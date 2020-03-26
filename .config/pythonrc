@@ -4,7 +4,10 @@ import atexit
 import os
 import readline
 
-history = os.path.join(os.path.expanduser("~"), ".cache", "python_history")
+history = os.path.join(
+    os.environ.get("XDG_CACHE_HOME", os.path.join(os.environ["HOME"], ".cache")),
+    "python_history",
+)
 try:
     readline.read_history_file(history)
     # default history len is -1 (infinite), which may grow unruly
