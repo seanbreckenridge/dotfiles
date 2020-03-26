@@ -11,6 +11,7 @@ zsh_history
 .zcompdump*
 .zshrc.zwc
 directory_aliases
+.zprofile
 
 # Ignore README - handled by git hooks -- see .config/yadm/yadm-with-README.md 
 /README.md

@@ -56,6 +56,9 @@ export CARGO_HOME="${XDG_DATA_HOME}/cargo"
 # Elm
 export ELM_HOME="${XDG_DATA_HOME}/elm"
 
+# Dart
+export PUB_CACHE="${XDG_DATA_HOME}/pubcache"
+
 # Python/Venv related
 export PYENV_ROOT="${XDG_DATA_HOME}/pyenv"
 export PIPENV_PYTHON="${PYENV_ROOT}/shims/python"

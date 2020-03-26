@@ -164,3 +164,4 @@ termite
 surf
 inotify-tools
 zoom
+dart

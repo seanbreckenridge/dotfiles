@@ -20,6 +20,7 @@ PACKAGE_LIST="${YADM_DIR}/packages.txt"
 PYTHON_PACKAGE_LIST="${YADM_DIR}/python3_packages.txt"
 GLOBAL_GEMFILE="${YADM_DIR}/Gemfile"
 NODE_PACKAGE_LIST="${YADM_DIR}/global_node_packages.txt"
+DART_PACKAGE_LIST="${YADM_DIR}/dart_packages.txt"
 
 echo "Checking ~/.config/yadm/packages.txt for any packages to install..."
 for lib in $(cat "$PACKAGE_LIST"); do
@@ -51,9 +52,13 @@ for file in "${original_files[@]}"; do
 	fi
 done
 
+# fix env/profile
 # ZDOTDIR is located at ~/.config/zsh
 if [[ ! -f "${HOME}/.zshenv" ]]; then
 	ln "${HOME}/.config/zsh/.zshenv" "${HOME}/.zshenv"
+fi
+if [[ ! -f "${HOME}/.config/zsh/.zprofile" ]]; then
+	ln "${HOME}/.profile" "${HOME}/.config/zsh/.zprofile"
 fi
 
 # make sure personal aliases file exists so that zshrc souces fine
@@ -123,6 +128,14 @@ done <"$NODE_PACKAGE_LIST"
 echo -e "Installing global gems..."
 bundle config set system 'true'
 bundle install --quiet --gemfile "$GLOBAL_GEMFILE" || print_error "Could not install gems. Retry by running: bundle config set system true && bundle --gemfile $GLOBAL_GEMFILE"
+
+echo -e "Installing global dart packages..."
+DART_INSTALLED_PACKAGES="$(pub global list | cut -d" " -f1)"
+while read -r dartpkg; do
+	if ! grep -q "$dartpkg" <<<"$DART_INSTALLED_PACKAGES"; then
+		pub global activate "$dartpkg"
+	fi
+done <"$DART_PACKAGE_LIST"
 
 # Install doom emacs
 if [[ ! -d "$HOME/.emacs.d/" ]]; then
