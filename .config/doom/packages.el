@@ -55,6 +55,7 @@
 
 ;; appearance
 (package! aggressive-indent)
+(package! default-text-scale)
 
 ;; lsp
 (package! lsp-ivy)
