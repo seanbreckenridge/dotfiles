@@ -155,6 +155,8 @@ done
 # stream-link URL --no-video  # for audio
 [stream-media]
 command = """
+CLIPBOARD_CONTENTS="$(xclip -out selection clipboard)"
+[ "$?" -ne 0 ] && notify-send "Failed to get clipboard contents." && exit 1
 MPV_OUTPUT="$(mpv "$(xclip -out -selection clipboard)" "$1")"
-[ "$?" -ne 0 ] && notify-send "$MPV_OUTPUT"
+[ "$?" -ne 0 ] && notify-send "$MPV_OUTPUT" && exit 1
 """
