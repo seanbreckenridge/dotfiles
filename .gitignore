@@ -102,6 +102,7 @@ __pycache__
 /.config/menus/
 /.config/okularrc
 /.config/yadm/repo.git
+/.config/obs-studio
 
 /.local/lib/python*
 /.local/man
