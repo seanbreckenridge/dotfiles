@@ -4,3 +4,4 @@ default_context:
   email: "seanbrecke@gmail.com"
   author_email: "seanbrecke@gmail.com"
   github_username: "seanbreckenridge"
+replay_dir: "/home/sean/.local/share/cookiecutter_replay"
