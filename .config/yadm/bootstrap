@@ -126,7 +126,7 @@ while read -r npkg; do
 done <"$NODE_PACKAGE_LIST"
 
 echo -e "Installing global gems..."
-bundle config set system 'true'
+bundle config set system 'true' >/dev/null
 bundle install --quiet --gemfile "$GLOBAL_GEMFILE" || print_error "Could not install gems. Retry by running: bundle config set system true && bundle --gemfile $GLOBAL_GEMFILE"
 
 echo -e "Installing global dart packages..."
