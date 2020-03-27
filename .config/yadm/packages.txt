@@ -165,3 +165,6 @@ surf
 inotify-tools
 zoom
 dart
+pulsemixer
+obs-studio
+obs-linuxbrowser-bin
