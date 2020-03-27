@@ -149,3 +149,12 @@ for f in "$@"; do
   shfmt "$f" > /tmp/shfmt-temp && cat /tmp/shfmt-temp > "$f"
 done
 '''
+
+# grab URL from clipboard and stream through MPV
+# stream-link URL  # for video
+# stream-link URL --no-video  # for audio
+[stream-media]
+command = """
+MPV_OUTPUT="$(mpv "$(xclip -out -selection clipboard)" "$1")"
+[ "$?" -ne 0 ] && notify-send "$MPV_OUTPUT"
+"""
