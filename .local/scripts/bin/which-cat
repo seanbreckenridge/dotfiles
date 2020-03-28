@@ -19,13 +19,8 @@ if [ -z "$OUT" ]; then
 	echo "$* not found"
 	exit 1
 else
-	if [ ! -f "$OUT" ]; then
-		echo "'which' returned '${OUT}', but that file doesn't exist."
-		exit 1
-	fi
 	# Source: https://unix.stackexchange.com/a/275659
 	if iconv --from-code="utf-8" --to-code="utf-8" "$OUT" >/dev/null 2>&1; then
-		printf "=== > %s < ===\n" "$OUT"
 		cat "$OUT"
 	else
 		printf "%s -- omitting contents since the file isn't human-readable\n" "$OUT"
