@@ -1,3 +1,4 @@
+;;; $DOOMDIR/config.el -*- lexical-binding: t; -*-
 ;; Here are some additional functions/macros that could help you configure Doom:
 ;;
 ;; - `load!' for loading external *.el files relative to this one
@@ -20,8 +21,6 @@
 
 (load! "functions")
 
-(require 'ccls)
-
 ;; Some functionality uses this to identify you, e.g. GPG configuration, email
 ;; clients, file templates and snippets.
 (setq user-full-name "Sean Breckenridge"
@@ -33,9 +32,19 @@
  doom-font (font-spec :family "Source Code Pro" :size 15)
  doom-theme 'doom-one
  display-line-numbers-type 'relative
- projectile-project-search-path '("~/code/" "~/.scripts")
+ projectile-project-search-path '("~/code/")
  org-directory "~/Documents/org/"
  )
+
+;; custom bindings
+(map! :leader
+      ;; list my config files and let me fuzzy match to edit one
+      (:prefix "f"
+        :desc "Edit global config files" "C" #'counsel-edit-config)
+      ;; open URL, defaults to URL under cursor
+      (:prefix "o"
+        :desc "Open URL" "l" #'browse-url)
+      )
 
 ;;;; Fontify html hex codes
 ;; automatically color hex color strings
@@ -46,18 +55,22 @@
                            'face (list :background
                                        (match-string-no-properties 0)))))))
 
-;; Aggressively indent emacslisp
-(use-package! aggressive-indent
-  :commands (aggressive-indent-mode))
-(add-hook 'emacs-lisp-mode-hook #'aggressive-indent-mode)
+;; xclip
+(xclip-mode 1)
 
+;; line wrapping
+;; (remove-hook 'text-mode-hook #'auto-fill-mode) ; disable hard wrapping
+;; (add-hook 'text-mode-hook #'visual-line-mode) ; enable soft wrapping
+(global-visual-line-mode 1)
 
 ;;;; language configuration
 
 ;;;; C/C++
+
+(require 'ccls)
+
 (setq
- ccls-executable "/usr/bin/ccls"
- )
+ ccls-executable "/usr/bin/ccls")
 
 ;;;; python
 ;; bind pipenv minor mode
@@ -103,30 +116,8 @@
       :localleader
       :desc "Display LaTeX preivew pane" "p" #'latex-preview-pane-mode)
 
-
-;; custom bindings
-(map! :leader
-      ;; list my config files and let me fuzzy match to edit one
-      (:prefix "f"
-        :desc "Edit global config files" "C" #'counsel-edit-config)
-      ;; open URL, defaults to URL under cursor
-      (:prefix "o"
-        :desc "Open URL" "l" #'browse-url)
-      )
-
-
-
-;; General configuration
-
-;; xclip
-(xclip-mode 1)
-
-;; line wrapping
-;; (remove-hook 'text-mode-hook #'auto-fill-mode) ; disable hard wrapping
-;; (add-hook 'text-mode-hook #'visual-line-mode) ; enable soft wrapping
-(global-visual-line-mode 1)
-
-;; bind global text scaling
-;; bindings are browser-like but use Ctrl+Alt
-;; instead of just Ctrl
-(default-text-scale-mode)
+;;;; elisp
+;; Aggressively indent emacslisp
+(use-package! aggressive-indent
+  :commands (aggressive-indent-mode))
+(add-hook 'emacs-lisp-mode-hook #'aggressive-indent-mode)
