@@ -100,12 +100,14 @@ compdef _editor e
 zle -N fzfedit
 bindkey '^F' fzfedit
 
-# Ctrl left arrow to move up a dir
+# Alt+left arrow/Alt+L to move up a dir
 up-dir() { cd ".."; zle reset-prompt }; zle -N up-dir
 bindkey "^[[1;3D" up-dir
+bindkey "^[h" up-dir
 
-# Ctrl right arrow to launch fzf cd
+# Alt+right arrow/Alt+H to launch fzf cd
 bindkey "^[[1;3C" fzf-cd-widget
+bindkey "^[l" fzf-cd-widget
 
 # Alt+Shift+C to fzf into a directory in ~/code
 fzf-code() { cd "$HOME/code"; fzf-cd-widget && zle reset-prompt }; zle -N fzf-code
