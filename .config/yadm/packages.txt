@@ -168,3 +168,4 @@ dart
 pulsemixer
 obs-studio
 obs-linuxbrowser-bin
+jq
