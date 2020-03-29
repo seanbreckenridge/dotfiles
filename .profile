@@ -9,6 +9,7 @@ ${HOME}/.local/scripts/system:\
 ${HOME}/.local/scripts/bin:\
 ${HOME}/.local/share/shortcuts:\
 ${HOME}/.local/share/go/bin:\
+${HOME}/.local/share/cargo/bin:\
 ${HOME}/.local/share/pubcache/bin:\
 ${HOME}/.cabal/bin:\
 ${HOME}/.emacs.d/bin:\
