@@ -111,6 +111,7 @@ __pycache__
 /.local/bin
 /.local/include
 /.local/share
+!/.local/share/emoji
 /.local/etc/bash_completion.d
 /.local/etc/fish/completions
 /.local/shortcuts/*
