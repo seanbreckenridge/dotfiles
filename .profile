@@ -11,6 +11,7 @@ ${HOME}/.local/share/shortcuts:\
 ${HOME}/.local/share/go/bin:\
 ${HOME}/.local/share/cargo/bin:\
 ${HOME}/.local/share/pubcache/bin:\
+${HOME}/.gem/ruby/2.7.0/bin:\
 ${HOME}/.cabal/bin:\
 ${HOME}/.emacs.d/bin:\
 ${PATH}"

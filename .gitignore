@@ -36,6 +36,7 @@ __pycache__
 /.bash_history
 /.pki/nssdb
 /.credentials
+/.gem
 /.cache
 /.keras
 /.mozilla
@@ -68,7 +69,6 @@ __pycache__
 # Top level config/local files to ignore
 /.config/todo
 !/.config/todo/config
-/.config/yadm/Gemfile.lock
 /.config/mimeapps.list
 /.config/StardewValley
 /.config/enchant

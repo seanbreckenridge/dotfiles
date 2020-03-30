@@ -1,4 +1,0 @@
-# system wide gems to install
-source "https://rubygems.org"
-
-gem "solargraph"  # language server

@@ -18,19 +18,19 @@ fi
 YADM_DIR="${HOME}/.config/yadm"
 PACKAGE_LIST="${YADM_DIR}/packages.txt"
 PYTHON_PACKAGE_LIST="${YADM_DIR}/python3_packages.txt"
-GLOBAL_GEMFILE="${YADM_DIR}/Gemfile"
+GLOBAL_GEM_LIST="${YADM_DIR}/ruby_packages.txt"
 NODE_PACKAGE_LIST="${YADM_DIR}/node_packages.txt"
 DART_PACKAGE_LIST="${YADM_DIR}/dart_packages.txt"
 
 echo "Checking ~/.config/yadm/packages.txt for any packages to install..."
-for lib in $(cat "$PACKAGE_LIST"); do
+while read -r lib; do
 	if [[ ! $(yay -Q "${lib}") ]]; then # if package isn't installed
 		read -p "Do you want to install '${lib}'? [Y/n] " -n 1 -r
 		if [[ ! $REPLY =~ ^[Nn]$ ]]; then # REPLY is automatically used as read variable
 			yay -S "${lib}"
 		fi
 	fi
-done
+done <"$PACKAGE_LIST"
 
 if ! echo "$SHELL" | grep -q zsh; then
 	if [[ ! "$(command -v zsh)" ]]; then
@@ -126,8 +126,13 @@ while read -r npkg; do
 done <"$NODE_PACKAGE_LIST"
 
 echo -e "Installing global gems..."
-bundle config set system 'true' >/dev/null
-bundle install --quiet --gemfile "$GLOBAL_GEMFILE" || print_error "Could not install gems. Retry by running: bundle config set system true && bundle --gemfile $GLOBAL_GEMFILE"
+RUBY_GEMS_LIST="$(gem list | cut -d' ' -f1)"
+while read -r rgem; do
+	if ! grep -q "^${rgem}$" <<<"$RUBY_GEMS_LIST"; then
+		echo -e "Installing ${rgem}"
+		gem install "${rgem}"
+	fi
+done <"$GLOBAL_GEM_LIST"
 
 echo -e "Installing global dart packages..."
 DART_INSTALLED_PACKAGES="$(pub global list | cut -d" " -f1)"

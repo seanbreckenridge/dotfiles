@@ -13,9 +13,9 @@ function update() {
 	printf "Updating doom emacs...\n"
 	doom -y upgrade
 	printf "Updating ruby packages...\n"
-	bundle update --gemfile "${HOME}/.config/yadm/Gemfile"
+ 	gem update
 	printf "Updating python packages...\n"
-	python3 -m pip list --outdated --format=freeze | cut -d"=" -f 1 | xargs -r -n1 python3 -m pip install --upgrade --user
+	python3 -m pip list --outdated --format=freeze | cut -d"=" -f1 | xargs -r -n1 python3 -m pip install --upgrade --user
 	printf "Updating global npm packages...\n"
 	npm update -g
 	printf "Finished updates in %d seconds\n" $(bc <<<"$(date +%s) - ${START_TIME}") | boxes -d shell -p t1l2b1r2
