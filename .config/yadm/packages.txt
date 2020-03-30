@@ -170,3 +170,4 @@ obs-studio
 obs-linuxbrowser-bin
 jq
 moreutils
+rsync
