@@ -118,9 +118,9 @@ bindsym --release Print exec --no-startup-id screenshot
 
 # mpv-ytdl bindings
 # grab URL from clipboard and stream through MPV using yt-dl
-bindsym $mod+s exec --no-startup-id stream-media
+bindsym $mod+m exec --no-startup-id stream-media
 # grab URL from clipboard and stream audio through MPV using
-bindsym $mod+Shift+s exec --no-startup-id stream-media --no-video
+bindsym $mod+Shift+m exec --no-startup-id stream-media --no-video
 
 # gaps config
 for_window [class=".*"] border pixel 0
@@ -184,8 +184,8 @@ bindsym $mod+Shift+space floating toggle
 # change focus between tiling / floating windows
 bindsym $mod+space focus mode_toggle
 
-#bindsym $mod+s sticky enable
-#bindsym $mod+Shift+s sticky disable
+bindsym $mod+s sticky enable
+bindsym $mod+Shift+s sticky disable
 
 # focus the parent container
 bindsym $mod+a focus parent
@@ -262,7 +262,7 @@ mode "term" {
 # mouse mode using the keyboard
 # Modified from: https://www.reddit.com/r/i3wm/comments/3btki2/use_the_mouse_cursor_from_the_keyboard/
 
-bindsym $mod+m mode "mouse"
+# bindsym $mod+m mode "mouse"
 
 mode "mouse" {
 
