@@ -5,13 +5,13 @@
 # optionally, specify target to change the moues into a target -- the next click will target that application
 # target exists because some applicaitons cant be 'moused over' (e.g. mpv)
 
-if [ "$1" = "disable" ]; then
+if [ "$1" = "enable" ]; then
 	if [ "$2" = "target" ]; then
 		picom-trans -s 85
 	else
 		picom-trans -c 85
 	fi
-elif [ "$1" = "enable" ]; then
+elif [ "$1" = "disable" ]; then
 	if [ "$2" = "target" ]; then
 		picom-trans -s 100
 	else

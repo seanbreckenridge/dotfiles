@@ -68,12 +68,12 @@ bindsym XF86MonBrightnessDown exec --no-startup-id brightness down
 # Doesn't typically affect use case as transparency for an unfocused firefox/mpv is set permanently
 
 # Highligted Window
-bindsym $mod+XF86MonBrightnessUp exec --no-startup-id transparent enable
-bindsym $mod+XF86MonBrightnessDown exec --no-startup-id transparent disable
+bindsym $mod+XF86MonBrightnessUp exec --no-startup-id transparent disable
+bindsym $mod+XF86MonBrightnessDown exec --no-startup-id transparent enable
 
 # Change mouse to target
-bindsym $mod+Shift+XF86MonBrightnessUp exec --no-startup-id transparent enable target
-bindsym $mod+Shift+XF86MonBrightnessDown exec --no-startup-id transparent disable target
+bindsym $mod+Shift+XF86MonBrightnessUp exec --no-startup-id transparent disable target
+bindsym $mod+Shift+XF86MonBrightnessDown exec --no-startup-id transparent enable target
 
 # Kill/restart picom (compositor)
 bindsym $mod+p exec --no-startup-id killall picom && notify-send "Killed picom!"
