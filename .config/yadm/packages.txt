@@ -171,3 +171,4 @@ obs-linuxbrowser-bin
 jq
 moreutils
 rsync
+dragon-drag-and-drop-git
