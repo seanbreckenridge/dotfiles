@@ -21,6 +21,7 @@ PYTHON_PACKAGE_LIST="${YADM_DIR}/python3_packages.txt"
 GLOBAL_GEM_LIST="${YADM_DIR}/ruby_packages.txt"
 NODE_PACKAGE_LIST="${YADM_DIR}/node_packages.txt"
 DART_PACKAGE_LIST="${YADM_DIR}/dart_packages.txt"
+CARGO_PACKAGE_LIST="${YADM_DIR}/cargo_packages.txt"
 
 echo "Checking ~/.config/yadm/packages.txt for any packages to install..."
 while read -r lib; do
@@ -137,10 +138,18 @@ done <"$GLOBAL_GEM_LIST"
 echo -e "Installing global dart packages..."
 DART_INSTALLED_PACKAGES="$(pub global list | cut -d" " -f1)"
 while read -r dartpkg; do
-	if ! grep -q "$dartpkg" <<<"$DART_INSTALLED_PACKAGES"; then
+	if ! grep -q "^$dartpkg$" <<<"$DART_INSTALLED_PACKAGES"; then
 		pub global activate "$dartpkg"
 	fi
 done <"$DART_PACKAGE_LIST"
+
+echo -e "Installing global cargo packages..."
+CARGO_INSTALLED_PACKAGES="$(cargo install --list | grep -v "^\s" | cut -d" " -f1)"
+while read -r cargopkg; do
+	if ! grep -q "^$cargopkg$" <<<"$CARGO_INSTALLED_PACKAGES"; then
+		cargo install "$cargopkg"
+	fi
+done <"$CARGO_PACKAGE_LIST"
 
 # Install doom emacs
 if [[ ! -d "$HOME/.emacs.d/" ]]; then

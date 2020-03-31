@@ -19,4 +19,6 @@ function update() {
 	printf "Updating global npm packages...\n"
 	npm update -g
 	printf "Finished updates in %d seconds\n" $(bc <<<"$(date +%s) - ${START_TIME}") | boxes -d shell -p t1l2b1r2
+    printf "Updating global cargo packages...\n"
+    cargo install-update -a
 }
