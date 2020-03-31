@@ -97,6 +97,8 @@ __pycache__
 /.config/xfce4/xfconf
 /.config/gtk-*
 /.config/configstore
+/.config/okularpartrc
+/.config/*/zoom.conf
 /.config/composer/.htaccess
 /.config/nextjs-nodejs
 /.config/menus/
