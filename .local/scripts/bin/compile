@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/bin/sh
 # compiles formats into pdfs and opens them
 
 file=$(readlink -f "$1")

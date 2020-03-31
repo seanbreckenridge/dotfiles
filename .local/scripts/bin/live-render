@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/bin/sh
 # whenever a format (md/latex) file is saved, re-compile it
 # this is displayed using opout (with okular), which
 # supports live-reloading from disk

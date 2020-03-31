@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/bin/sh
 
 usage="Usage:
 $(basename "$0") [-h]

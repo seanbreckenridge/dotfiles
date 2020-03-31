@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/bin/sh
 # enable/disable transparency for the currently moused over application
 # Usage:
 #     transparent <enable|disable> [target]

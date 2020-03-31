@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
 # This is a script to copy configuration files from somewhere else on the system
 # These are not symlinks or hardlinks - they're duplicates of the files
@@ -6,9 +6,9 @@
 # They are synced as reference and for completeness
 
 # provide absolute paths to directories, ending with a forward slash
-dirs=("/etc/X11/xorg.conf.d/")
+declare dirs=("/etc/X11/xorg.conf.d/")
 # provide absolute paths to files
-files=("/etc/pacman.conf" "/etc/nsswitch.conf" "/etc/pacman.d/hooks/mirrorupgrade.hook" "/etc/systemd/system/lockscreen@.service")
+declare files=("/etc/pacman.conf" "/etc/nsswitch.conf" "/etc/pacman.d/hooks/mirrorupgrade.hook" "/etc/systemd/system/lockscreen@.service")
 
 SYSTEM_CONF_TARGET="${HOME}/.local/system-config"
 

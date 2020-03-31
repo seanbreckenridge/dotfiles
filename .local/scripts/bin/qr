@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/bin/sh
 # converts a string to a qr code and displays it full screen
 # if no URL is passed as the first argument, reads from STDIN
 

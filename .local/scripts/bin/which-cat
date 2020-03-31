@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/bin/sh
 
 usage="$(basename "$0") SHELL_COMMAND [-h]
 

@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/bin/sh
 
 chosen="$(rofi -dmenu -i -l 20 -p "pick an emoji > " <"$HOME/.local/share/emoji")"
 

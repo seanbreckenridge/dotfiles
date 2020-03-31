@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/bin/sh
 # Open a URL with no side effects
 # if just using xdg-open on my system,
 # xdg-open hangs after opening the link,

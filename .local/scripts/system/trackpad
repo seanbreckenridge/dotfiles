@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/bin/sh
 # enable/disable the trackpad
 #
 # make sure to verify that there is output when you run:

@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/bin/sh
 
 if git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
 	if ! remote_url="$(git ls-remote --get-url)"; then
