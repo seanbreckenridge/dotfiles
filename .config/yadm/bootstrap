@@ -126,7 +126,7 @@ while read -r npkg; do
 	fi
 done <"$NODE_PACKAGE_LIST"
 
-echo -e "Installing global gems..."
+echo -e "Installing global ruby packages..."
 declare RUBY_GEMS_LIST="$(gem list | cut -d' ' -f1)"
 while read -r rgem; do
 	if ! grep -q "^${rgem}$" <<<"$RUBY_GEMS_LIST"; then
