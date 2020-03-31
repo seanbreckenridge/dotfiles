@@ -18,7 +18,7 @@ function update() {
 	python3 -m pip list --outdated --format=freeze | cut -d"=" -f1 | xargs -r -n1 python3 -m pip install --upgrade --user
 	printf "Updating global npm packages...\n"
 	npm update -g
-	printf "Finished updates in %d seconds\n" $(bc <<<"$(date +%s) - ${START_TIME}") | boxes -d shell -p t1l2b1r2
     printf "Updating global cargo packages...\n"
     cargo install-update -a
+	printf "Finished updates in %d seconds\n" $(bc <<<"$(date +%s) - ${START_TIME}") | boxes -d shell -p t1l2b1r2
 }
