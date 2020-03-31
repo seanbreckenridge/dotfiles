@@ -24,7 +24,7 @@ Packages can be added to the `.txt` files manually, and then `yadm bootstrap` ca
 - [.config/shortcuts.toml](.config/shortcuts.toml) - describes basic shell scripts that are created by [shortcuts](https://github.com/seanbreckenridge/shortcuts)
 - [dir-aliases](https://github.com/seanbreckenridge/dotfiles/blob/master/.local/scripts/system/dir-aliases) generates aliases from `key->directory` mappings described in [.config/directories](./.config/directories)
 - [.local/scripts/bin](.local/scripts/bin) - generic scripts
-    - media related, [duration](https://github.com/seanbreckenridge/dotfiles/blob/master/.local/scripts/bin/duration) to get media length, [gifme](https://github.com/seanbreckenridge/dotfiles/blob/master/.local/scripts/bin/duration) to convert video to gifs.
+    - media related, [duration](https://github.com/seanbreckenridge/dotfiles/blob/master/.local/scripts/bin/duration) to get media length, [gifme](https://github.com/seanbreckenridge/dotfiles/blob/master/.local/scripts/bin/gifme) to convert video to gifs.
     - [gitopen](https://github.com/seanbreckenridge/dotfiles/blob/master/.local/scripts/bin/gitopen) to open current git directory in browser
     - [qr](https://github.com/seanbreckenridge/dotfiles/blob/master/.local/scripts/bin/qr) - create a QR code from a string and display it full screen
 - [.local/scripts/system](.local/scripts/system) - i3 related scripts w/ [zsh completion](./.config/zsh/completions)
