@@ -1,22 +1,19 @@
 # i3 config file (v4)
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
-
 set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
 font pango:Source Code Pro 12
 
-# xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
-# screen before suspend. Use loginctl lock-session to lock your screen.
-#exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
-#exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock-fancy --greyscale --pixelate -t "" --nofork
-# keybind lock (does not automatically lock on lid close)
+# keybind to lock screen manually. automatically locks on screen close
 bindsym $mod+Shift+Escape exec --no-startup-id lock_screen
 
-# NetworkManager is the most popular way to manage wireless networks on Linux,
-# and nm-applet is a desktop environment-independent system tray GUI for it.
+# run process to cache pixelated desktop for lock screen
+exec --no-startup-id lock_screen -b
+
+# start network manager menu bar item
 exec --no-startup-id nm-applet
 # keyboard shortcut to check if I have a remote internet connection
 bindsym $mod+Shift+w exec --no-startup-id wfi
@@ -24,15 +21,14 @@ bindsym $mod+Shift+w exec --no-startup-id wfi
 # use picom for display compositing
 exec --no-startup-id picom -b
 
+# hide mouse after 2 seconds
 exec --no-startup-id unclutter --timeout 2
 
+# randomize wallpaper
 set $randomize_wallpaper feh --randomize --bg-fill --no-fehbg "${HOME}/Documents/wallpapers"
 
 # set a random wallpaper
 exec --no-startup-id $randomize_wallpaper
-
-# run process to cache pixelated desktop for lock screen
-exec --no-startup-id lock_screen -b
 
 # bind display key to randomize wallpaper
 bindsym XF86Display exec --no-startup-id $randomize_wallpaper
@@ -43,7 +39,7 @@ exec --no-startup-id trackpad disable
 bindsym $mod+g exec --no-startup-id trackpad
 
 # for when I plug in an external keyboard - refresh i3 to rebind keys
-# could use udev events instead, but ended up not working well with xmodmap
+# could use udev events instead, but this is easier
 exec_always --no-startup-id xmodmap ~/.Xmodmap
 
 # dunst, for Notifications
@@ -83,7 +79,6 @@ bindsym $mod+Shift+p exec --no-startup-id notify-send "Restarting picom..." && p
 exec --no-startup-id systemctl --user start emacs
 # and bind a key to restart it
 bindsym $mod+Shift+e exec --no-startup-id refresh-doom
-
 
 # Use pactl to adjust volume in PulseAudio.
 bindsym XF86AudioRaiseVolume exec --no-startup-id volume up
@@ -165,7 +160,7 @@ bindsym $mod+Shift+z split h
 # split in vertical orientation
 bindsym $mod+Shift+v split v
 
-# prefer toggle over explicit switching - switch split default orientation
+# switch split default orientation
 # bindsym $mod+s split toggle
 
 # enter fullscreen mode for the focused container
