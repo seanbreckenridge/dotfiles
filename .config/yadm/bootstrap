@@ -15,13 +15,13 @@ if [[ ! $(command -v yay) ]]; then
 	abort "Could not find yay. Install that and re-run bootstrap\nExiting..."
 fi
 
-declare YADM_DIR="${HOME}/.config/yadm"
-declare PACKAGE_LIST="${YADM_DIR}/packages.txt"
-declare PYTHON_PACKAGE_LIST="${YADM_DIR}/python3_packages.txt"
-declare GLOBAL_GEM_LIST="${YADM_DIR}/ruby_packages.txt"
-declare NODE_PACKAGE_LIST="${YADM_DIR}/node_packages.txt"
-declare DART_PACKAGE_LIST="${YADM_DIR}/dart_packages.txt"
-declare CARGO_PACKAGE_LIST="${YADM_DIR}/cargo_packages.txt"
+YADM_DIR="${HOME}/.config/yadm"
+PACKAGE_LIST="${YADM_DIR}/packages.txt"
+PYTHON_PACKAGE_LIST="${YADM_DIR}/python3_packages.txt"
+GLOBAL_GEM_LIST="${YADM_DIR}/ruby_packages.txt"
+NODE_PACKAGE_LIST="${YADM_DIR}/node_packages.txt"
+DART_PACKAGE_LIST="${YADM_DIR}/dart_packages.txt"
+CARGO_PACKAGE_LIST="${YADM_DIR}/cargo_packages.txt"
 
 echo "Checking ~/.config/yadm/packages.txt for any packages to install..."
 while read -r lib; do
@@ -45,7 +45,7 @@ fi
 
 echo 'Setting up zsh directory structure...'
 # make sure original oh-my-zsh files are removed
-declare original_files=("${HOME}/.zshenv" "${HOME}/.zshrc" "${HOME}/.zsh_history" "${HOME}/.zprofile")
+original_files=("${HOME}/.zshenv" "${HOME}/.zshrc" "${HOME}/.zsh_history" "${HOME}/.zprofile")
 
 for file in "${original_files[@]}"; do
 	if [[ -f "$file" ]]; then
@@ -66,7 +66,7 @@ fi
 [[ ! -f "${ZDOTDIR}/personal_aliases" ]] && touch "${ZDOTDIR}/personal_aliases"
 
 # Setting up default user directories
-declare default_user_dirs=("code" "Desktop" "Documents" "Documents/Notes" "Documents/wallpapers" "Downloads" "Desktop/Screenshots" "Pictures" ".local" ".cache" ".credentials" "gdrive")
+default_user_dirs=("code" "Desktop" "Documents" "Documents/Notes" "Documents/wallpapers" "Downloads" "Desktop/Screenshots" "Pictures" ".local" ".cache" ".credentials" "gdrive")
 
 for d_name in "${default_user_dirs[@]}"; do
 	if [[ ! -d "${HOME}/${d_name}" ]]; then
@@ -118,35 +118,37 @@ install_python_personal "pythonanywhere_3_months" "https://github.com/seanbrecke
 NPM_CONFIG_PREFIX="${XDG_DATA_HOME:-$HOME/.local/share}/npm-packages"
 echo "Installing global npm packages..."
 [[ ! -d "${NPM_CONFIG_PREFIX}" ]] && mkdir -p "${NPM_CONFIG_PREFIX}" && sudo chown -R "$(whoami)" "${NPM_CONFIG_PREFIX}"
-declare NPM_PACKAGE_LIST="$(npm list -g)"
+NPM_PACKAGE_LIST="$(npm list -g)"
 while read -r npkg; do
 	if ! grep -q "${npkg}" <<<"$NPM_PACKAGE_LIST"; then
-		echo -e "Installing ${npkg}"
+		printf "Installing %s\n" "$npkg"
 		npm install --global "${npkg}"
 	fi
 done <"$NODE_PACKAGE_LIST"
 
-echo -e "Installing global ruby packages..."
-declare RUBY_GEMS_LIST="$(gem list | cut -d' ' -f1)"
+echo "Installing global ruby packages..."
+RUBY_GEMS_LIST="$(gem list | cut -d' ' -f1)"
 while read -r rgem; do
 	if ! grep -q "^${rgem}$" <<<"$RUBY_GEMS_LIST"; then
-		echo -e "Installing ${rgem}"
+		printf "Installing %s\n" "$rgem"
 		gem install "${rgem}"
 	fi
 done <"$GLOBAL_GEM_LIST"
 
-echo -e "Installing global dart packages..."
-declare DART_INSTALLED_PACKAGES="$(pub global list | cut -d" " -f1)"
+echo "Installing global dart packages..."
+DART_INSTALLED_PACKAGES="$(pub global list | cut -d" " -f1)"
 while read -r dartpkg; do
 	if ! grep -q "^$dartpkg$" <<<"$DART_INSTALLED_PACKAGES"; then
+		printf "Installing %s\n" "$dartpkg"
 		pub global activate "$dartpkg"
 	fi
 done <"$DART_PACKAGE_LIST"
 
-echo -e "Installing global cargo packages..."
-declare CARGO_INSTALLED_PACKAGES="$(cargo install --list | grep -v "^\s" | cut -d" " -f1)"
+echo "Installing global cargo packages..."
+CARGO_INSTALLED_PACKAGES="$(cargo install --list | grep -v "^\s" | cut -d" " -f1)"
 while read -r cargopkg; do
 	if ! grep -q "^$cargopkg$" <<<"$CARGO_INSTALLED_PACKAGES"; then
+		printf "Installing %s\n" "$cargopkg"
 		cargo install "$cargopkg"
 	fi
 done <"$CARGO_PACKAGE_LIST"
@@ -161,7 +163,7 @@ fi
 # Check services
 echo "Checking if default services are running..."
 # CUPS and avahi are for printing
-declare services=("NetworkManager" "avahi-daemon" "org.cups.cupsd" "cronie" "ntpd")
+services=("NetworkManager" "avahi-daemon" "org.cups.cupsd" "cronie" "ntpd")
 for serv in "${services[@]}"; do
 	if ! systemctl show -p SubState --value "${serv}" | grep -q "running"; then
 		print_error "${serv} is not running, you should enable it with: 'sudo systemctl enable ${serv}'"
@@ -175,7 +177,7 @@ fi
 # Check for manually installed binaries, installed at /usr/local/bin
 
 echo "Checking for manually installed binaries..."
-declare binaries=("wait-for-internet" "genpasswd" "shortcuts" "largechar" "st" "keyvol")
+binaries=("wait-for-internet" "genpasswd" "shortcuts" "largechar" "st" "keyvol")
 for binary in "${binaries[@]}"; do
 	if [ ! "$(command -v "$binary")" ]; then
 		print_error "Warning: Couldn't find ${binary}. Install it from https://github.com/seanbreckenridge/${binary}"
