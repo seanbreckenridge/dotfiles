@@ -114,6 +114,7 @@ __pycache__
 /.local/include
 /.local/share
 !/.local/share/emoji
+!/.local/share/firefox_addons.txt
 /.local/etc/bash_completion.d
 /.local/etc/fish/completions
 /.local/shortcuts/*
