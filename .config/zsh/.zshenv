@@ -94,7 +94,9 @@ export SQLITE_HISTORY="${XDG_CACHE_HOME}/sqlite_history"
 # cube scramble cli history file
 export SCRAMBLE_HISTORY="${XDG_CACHE_HOME}/scramble_history"
 
-# ruby
+# ruby: only seems to work for bundle-installed gems
+# the rest of the typically installed 'gem install <gem>'
+# go to ~/.gem
 export GEM_HOME="${XDG_DATA_HOME}/gem"
 
 # shortcuts: https://github.com/seanbreckenridge/shortcuts
