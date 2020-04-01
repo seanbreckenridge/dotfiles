@@ -155,8 +155,17 @@ done
 # stream-link URL --no-video  # for audio
 [stream-media]
 command = """
-CLIPBOARD_CONTENTS="$(xclip -out selection clipboard)"
+CLIPBOARD_CONTENTS="$(xclip -out -selection clipboard)"
 [ "$?" -ne 0 ] && notify-send "Failed to get clipboard contents." && exit 1
 MPV_OUTPUT="$(mpv "$CLIPBOARD_CONTENTS" "$1")"
 [ "$?" -ne 0 ] && notify-send "$MPV_OUTPUT" && exit 1
 """
+
+[screenshot-to-imgur]
+command='''
+FILENAME="$(ls -t ~/Desktop/Screenshots/*.png | head -n1)"
+imgur-uploader "$FILENAME"
+IMGUR_URL="$(xclip -out -selection clipboard)"
+printf "%s\n" "$IMGUR_URL" >> /tmp/imgur_urls.log
+notify-send "$IMGUR_URL"
+'''

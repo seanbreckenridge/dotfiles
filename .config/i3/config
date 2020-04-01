@@ -110,6 +110,8 @@ bindsym $mod+Tab exec --no-startup-id rofi -show window -display-window "window 
 
 # take a screenshot
 bindsym --release Print exec --no-startup-id screenshot
+# upload the most recent screenshot to imgur, copy result to clipboard
+bindsym $mod+Print exec --no-startup-id screenshot-to-imgur
 
 # mpv-ytdl bindings
 # grab URL from clipboard and stream through MPV using yt-dl

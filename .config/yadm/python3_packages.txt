@@ -62,3 +62,4 @@ xlrd
 yattag
 youtube-dl
 nose
+imgur-uploader

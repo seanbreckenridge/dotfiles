@@ -3,7 +3,7 @@
 # and puts it on clipboard
 
 SCREENSHOT_DIR="${HOME}/Desktop/Screenshots"
-OUTPUT_FILENAME="$SCREENSHOT_DIR/$(date '+%d-%m-%Y--%R:%S').png"
+OUTPUT_FILENAME="$SCREENSHOT_DIR/$(date '+%Y-%m-%d--%R:%S').png"
 
 # take screenshot, save it and put it on clipboard
 maim -s | tee "$OUTPUT_FILENAME" | xclip -t image/png -selection clipboard
