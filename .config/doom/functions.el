@@ -2,6 +2,9 @@
 
 ;; Refrence: https://oremacs.com/swiper/#example---counsel-locate
 
+;;;; edit config files
+
+;;;###autoload
 (defun my/counsel-list-config (str)
   "Use fzf to fuzzy match 'str' against config files"
   (progn
@@ -27,6 +30,7 @@ INITIAL-INPUT can be given as the initial minibuffer input."
             :caller 'counsel-edit-config))
 
 
+;; utilities
 (defun my/current-buffer-file-name ()
   "Gets the name of the file the current buffer is based on."
   (interactive)
@@ -39,6 +43,14 @@ INITIAL-INPUT can be given as the initial minibuffer input."
 
 ;;;; markdown
 
+;; uses my compile script to compile an .md to a .pdf
+;; https://github.com/seanbreckenridge/dotfiles/blob/e731c35eebd3041fa984d6599eaa9a454d5901aa/.local/scripts/bin/compile
+;;;###autoload
+(defun my/compile-markdown ()
+  (interactive)
+  (start-process "compile-markdown" "compile-markdown-buffer"
+                 "compile" (my/current-buffer-file-name))
+  )
 
 ;;;###autoload
 (defun my/markdown-open-pdf ()

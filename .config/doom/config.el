@@ -123,19 +123,12 @@
 (add-hook 'emacs-lisp-mode-hook #'aggressive-indent-mode)
 
 ;;;; markdown
+;; open pdf that corresponds to current buffer in okular
 (map! :after markdown-mode
-      :map markdown-mode-map
+      :map (markdown-mode-map gfm-mode-map)
       :localleader
-      :desc "Open compiled markdown in okular" "p"
-      (lambda! (start-process "okular-output" "okular-buffer"
-                              "okular" (my/replace-file-extension (my/current-buffer-file-name) ".pdf"))))
+      :desc "Open compiled markdown in okular" "p" #'my/markdown-open-pdf)
 
-;; uses my compile script to compile the md to a pdf
-;; https://github.com/seanbreckenridge/dotfiles/blob/e731c35eebd3041fa984d6599eaa9a454d5901aa/.local/scripts/bin/compile
-(add-hook! 'markdown-mode-hook
-  (add-hook 'after-save-hook
-            (lambda!
-             (when (eq major-mode 'markdown-mode)
-               (start-process "compile-markdown" "compile-markdown-buffer"
-                              "compile" (my/current-buffer-file-name))
-               ))))
+;; run compile on markdown files after saving
+(add-hook! '(markdown-mode-hook gfm-mode-hook)
+  (add-hook 'after-save-hook #'my/compile-markdown nil 'local))
