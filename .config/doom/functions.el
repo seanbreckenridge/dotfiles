@@ -38,7 +38,7 @@ INITIAL-INPUT can be given as the initial minibuffer input."
 
 (defun my/replace-file-extension (filename new-extension)
   "Replaces the extension of filename with new-extension"
-  (concat (file-name-sans-extension filename) new-extension)
+  (concat (file-name-sans-extension filename) "." new-extension)
   )
 
 ;;;; markdown
@@ -60,5 +60,5 @@ INITIAL-INPUT can be given as the initial minibuffer input."
    "
   (interactive)
   (start-process "okular-output" "okular-buffer"
-                 "okular" (my/replace-file-extension (my/current-buffer-file-name) ".pdf"))
+                 "okular" (my/replace-file-extension (my/current-buffer-file-name) "pdf"))
   )
