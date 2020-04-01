@@ -16,7 +16,8 @@ parse_git_branch() {
 }
 
 setopt PROMPT_SUBST
-PROMPT='[ %9c%{%F{green}%}$(parse_git_branch)%{%F{none}%} ] $ '
+# displays [ location (on git branch (if in a git dir)) ] <(exit code (if unsucessful))> $
+PROMPT='[ %9c%{%F{green}%}$(parse_git_branch)%{%F{none}%} ] %(?..%{%F{red}%}<%?>%{%F{none}%} )$ '
 
 # Change cursor shape for different vi modes.
 function zle-keymap-select {
