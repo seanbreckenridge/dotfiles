@@ -136,6 +136,6 @@
   (add-hook 'after-save-hook
             (lambda!
              (when (eq major-mode 'markdown-mode)
-               (start-process "compile-readme" "compile-buffer"
+               (start-process "compile-markdown" "compile-markdown-buffer"
                               "compile" (my/current-buffer-file-name))
                ))))
