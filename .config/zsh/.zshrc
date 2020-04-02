@@ -12,11 +12,11 @@ setopt globdots # allow autocompletion to target hidden files
 
 # setup prompt
 parse_git_branch() {
-  git symbolic-ref --short HEAD 2> /dev/null | xargs -r -I {} echo " (on {})"
+  git symbolic-ref --short HEAD 2> /dev/null | xargs -r -I {} echo " | %{%F{green}%}{}%{%F{none}%}"
 }
 
 setopt PROMPT_SUBST
-PROMPT='[ %9c%{%F{green}%}$(parse_git_branch)%{%F{none}%} ] $ '
+PROMPT='[ %9c$(parse_git_branch) ] $ '
 
 # Change cursor shape for different vi modes.
 function zle-keymap-select {
