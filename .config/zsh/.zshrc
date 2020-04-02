@@ -11,13 +11,38 @@ zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 
 setopt globdots # allow autocompletion to target hidden files
 
 # setup prompt
-parse_git_branch() {
-  git symbolic-ref --short HEAD 2> /dev/null | xargs -r -I {} echo " (on {})"
+function git_info() {
+  local branch
+  BRANCH="$(git symbolic-ref --short HEAD 2> /dev/null)" || return
+
+  # Modified from: https://joshdick.net/2017/06/08/my_git_prompt_for_zsh_revisited.html
+  local UNTRACKED="%{$fg[red]%}●%{$reset_color%}"
+  local MODIFIED="%{$fg[yellow]%}●%{$reset_color%}"
+  local STAGED="%{$fg[green]%}●%{$reset_color%}"
+
+  local -a FLAGS
+  if [[ -n $(git ls-files --other --exclude-standard 2>/dev/null) ]]; then
+    FLAGS+=( "$UNTRACKED" )
+  fi
+  if ! git diff --quiet 2>/dev/null; then
+    FLAGS+=( "$MODIFIED" )
+  fi
+  if ! git diff --cached --quiet 2>/dev/null; then
+    FLAGS+=( "$STAGED" )
+  fi
+
+  local -a GIT_INFO
+  GIT_INFO+=()
+  [ -n "$GIT_STATUS" ] && GIT_INFO+=( "$GIT_STATUS" )
+  [[ ${#FLAGS[@]} -ne 0 ]] && GIT_INFO+=( "${(j::)FLAGS}" )
+  GIT_INFO+=( "$BRANCH%{$reset_color%}" )
+  echo " | ${(j: :)GIT_INFO}"
 }
 
+
 setopt PROMPT_SUBST
-# displays [ location (on git branch (if in a git dir)) ] <(exit code (if unsucessful))> $
-PROMPT='[ %9c%{%F{green}%}$(parse_git_branch)%{%F{none}%} ] %(?..%{%F{red}%}<%?>%{%F{none}%} )$ '
+# displays: [ cwd (if git | branch [untracked/modified/staged files]) ] (if error <error code>)
+PROMPT='[ %9c%{$(git_info) ] %(?..%{%F{red}%}<%?>%{%F{none}%} )$ '
 
 # Change cursor shape for different vi modes.
 function zle-keymap-select {
