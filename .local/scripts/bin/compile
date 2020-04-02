@@ -1,5 +1,5 @@
 #!/bin/sh
-# compiles formats into pdfs and opens them
+# compiles latex/md into pdfs
 
 file=$(readlink -f "$1")
 dir=$(dirname "$file")
