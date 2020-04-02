@@ -7,3 +7,4 @@ elm-format
 yaml-language-server
 stylelint
 js-beautify
+vtop
