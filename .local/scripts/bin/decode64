@@ -1,8 +1,8 @@
 #!/usr/bin/python3
 
 """Usage:
-	decode64 SUBSTR HASH
-	decode64 --help
+decode64 SUBSTR HASH
+decode64 --help
 
 Will repetitvely base64 decode HASH till SUBSTR is in decoded string
 If SUBSTR is a number, will decode HASH that many times
@@ -17,7 +17,7 @@ hash = args["HASH"]
 try:
     for _ in range(int(args["SUBSTR"])):
         hash = base64.b64decode(hash)
-except:
+except ValueError:
     while args["SUBSTR"].lower() not in str(hash.lower()):
         hash = base64.b64decode(hash)
 

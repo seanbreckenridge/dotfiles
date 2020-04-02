@@ -1,4 +1,3 @@
-
 import os
 import subprocess
 from ranger.api.commands import Command

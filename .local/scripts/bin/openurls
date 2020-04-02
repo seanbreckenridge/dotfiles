@@ -26,12 +26,13 @@ import shlex
 import subprocess
 
 import docopt
+
 docopt.docopt(__doc__)
 
 openurl = lambda url: subprocess.run(shlex.split('openurl "{}"'.format(url)))
 
 # open anything given as a command line argument
-links = re.findall(r'(https?://\S+)', " ".join(sys.argv).strip())
+links = re.findall(r"(https?://\S+)", " ".join(sys.argv).strip())
 if links:
     for link in links:
         openurl(link)
@@ -41,8 +42,8 @@ if links:
 while True:
     try:
         user_input = input()
-        for line in user_input.split("\s*\n\s*"):
-            if line.strip().lower() in ['q', 'quit']:
+        for line in user_input.split(r"\s*\n\s*"):
+            if line.strip().lower() in ["q", "quit"]:
                 sys.exit(0)
             openurl(line)
     except (EOFError, KeyboardInterrupt):
