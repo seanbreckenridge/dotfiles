@@ -44,7 +44,6 @@ pyperclip
 pytest
 python-rofi
 PyYAML
-radon
 requests
 rsa
 scipy
