@@ -36,7 +36,7 @@ function git_info() {
   [ -n "$GIT_STATUS" ] && GIT_INFO+=( "$GIT_STATUS" )
   [[ ${#FLAGS[@]} -ne 0 ]] && GIT_INFO+=( "${(j::)FLAGS}" )
   GIT_INFO+=( "$BRANCH%{$reset_color%}" )
-  echo " | ${(j: :)GIT_INFO}"
+  echo -en " | ${(j: :)GIT_INFO}"
 }
 
 
