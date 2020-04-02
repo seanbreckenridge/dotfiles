@@ -17,8 +17,6 @@ command = '''list-config | sed "s#^$HOME/##g" | fzf +m -q "$*" | xargs -r -I {} 
 # restart the emacs server managed by systemd
 [restart-emacs]
 command = """
-#!/usr/bin/env sh
-
 if systemctl --user restart emacs; then
     notify-send "restarted emacs server"
 else
