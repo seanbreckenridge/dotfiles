@@ -46,6 +46,7 @@
 ;; (add-hook 'text-mode-hook #'visual-line-mode) ; enable soft wrapping
 (global-visual-line-mode 1)
 
+;; use ranger instead of dired
 (global-set-key [remap dired] #'ranger)
 
 ;;;; language configuration
