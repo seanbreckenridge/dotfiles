@@ -32,7 +32,7 @@
 
 (setq
  doom-font (font-spec :family "Source Code Pro" :size 15)
- doom-theme 'doom-one
+ doom-theme 'doom-horizon
  display-line-numbers-type 'relative
  projectile-project-search-path '("~/code/")
  org-directory "~/Documents/org/"
