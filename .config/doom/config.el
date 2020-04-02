@@ -73,14 +73,6 @@
  ccls-executable "/usr/bin/ccls")
 
 ;;;; python
-;; bind pipenv minor mode
-(use-package! pipenv
-  :hook (python-mode . pipenv-mode)
-  :init
-  (setq
-   pipenv-projectile-after-switch-function
-   #'pipenv-projectile-after-switch-extended))
-
 (after! (python flycheck lsp-ui)
   (defun setup-flycheck ()
     (flycheck-add-next-checker 'lsp 'python-pylint)
