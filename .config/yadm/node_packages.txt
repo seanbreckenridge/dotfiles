@@ -8,3 +8,4 @@ yaml-language-server
 stylelint
 js-beautify
 vtop
+jsonlint

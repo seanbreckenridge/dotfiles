@@ -41,6 +41,16 @@ INITIAL-INPUT can be given as the initial minibuffer input."
   (concat (file-name-sans-extension filename) "." new-extension)
   )
 
+(defun seanbr/joindirs (root &rest paths)
+  "Joins a variable amount of directories together
+   Returns a single path, which ends with a '/'"
+  (if (not paths)
+      (file-name-as-directory root)
+    (apply #'seanbr/joindirs
+           (concat (file-name-as-directory root) (car paths))
+           (cdr paths)))
+  )
+
 ;;;; markdown
 
 ;; uses my compile script to compile an .md to a .pdf
@@ -61,4 +71,16 @@ INITIAL-INPUT can be given as the initial minibuffer input."
   (interactive)
   (start-process "okular-output" "okular-buffer"
                  "okular" (seanbr/replace-file-extension (seanbr/current-buffer-file-path) "pdf"))
+  )
+
+;;;; npm
+(defun seanbr/npm-bin-path ()
+  "Get the global NPM bin directory
+Tries to use NPM_CONFIG_PREFIX, else
+defaults to ~/.npm"
+  (seanbr/joindirs
+   (or (getenv "NPM_CONFIG_PREFIX")
+       (seanbr/joindirs (getenv "HOME") ".npm"))
+   "bin"
+   )
   )

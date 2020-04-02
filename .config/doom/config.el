@@ -19,6 +19,10 @@
 ;; Place your private configuration here! Remember, you do not need to run 'doom
 ;; sync' after modifying this file!
 
+;; load personal functions/bindings
+(load! "functions")
+(load! "bindings")
+
 ;; Some functionality uses this to identify you, e.g. GPG configuration, email
 ;; clients, file templates and snippets.
 (setq user-full-name "Sean Breckenridge"
@@ -41,6 +45,8 @@
 ;; (remove-hook 'text-mode-hook #'auto-fill-mode) ; disable hard wrapping
 ;; (add-hook 'text-mode-hook #'visual-line-mode) ; enable soft wrapping
 (global-visual-line-mode 1)
+
+(global-set-key [remap dired] #'ranger)
 
 ;;;; language configuration
 
@@ -81,12 +87,16 @@
         lsp-log-io nil))
 
 
+;;;; json
+;; there are two jsonlint binaries installed on my system, one for
+;; an unrelated python package and the javascript one (the one that flycheck expects)
+;; specify binary location so that flycheck can find it
+(after! (flycheck json)
+  (setq flycheck-json-jsonlint-executable (concat (seanbr/npm-bin-path) "jsonlint")))
+
 ;;;; elisp
 ;; Aggressively indent emacslisp
 (use-package! aggressive-indent
   :commands (aggressive-indent-mode))
 (add-hook 'emacs-lisp-mode-hook #'aggressive-indent-mode)
 
-;; load personal functions/bindings
-(load! "+functions")
-(load! "+bindings")
