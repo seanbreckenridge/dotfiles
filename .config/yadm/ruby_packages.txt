@@ -1,3 +1,4 @@
 solargraph
 haste
 rdoc
+rufo
