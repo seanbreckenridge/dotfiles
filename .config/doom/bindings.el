@@ -21,6 +21,10 @@
         (lambda! (call-process (getenv "TERMINAL") nil 0 nil ">/dev/null 2&1 & disown"))
         ))
 
+;;;; ranger
+;; bind . to toggle hidden files
+(map! :map ranger-mode-map
+      :m "." #'ranger-toggle-dotfiles)
 
 ;;;; lang confguration
 

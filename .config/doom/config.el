@@ -38,7 +38,7 @@
  org-directory "~/Documents/org/"
  )
 
-;; xclip
+;;;; xclip
 (xclip-mode 1)
 
 ;; line wrapping
@@ -46,8 +46,15 @@
 ;; (add-hook 'text-mode-hook #'visual-line-mode) ; enable soft wrapping
 (global-visual-line-mode 1)
 
+;;;; ranger
 ;; use ranger instead of dired
 (global-set-key [remap dired] #'ranger)
+(ranger-override-dired-mode t)
+(setq
+ ranger-clean-up-disable t
+ ranger-parent-depth 1
+ ranger-width-parents 0.3
+ ranger-preview-file nil)
 
 ;;;; language configuration
 
