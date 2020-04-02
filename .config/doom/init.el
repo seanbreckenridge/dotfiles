@@ -14,6 +14,8 @@
 ;;      Alternatively, press 'gd' (or 'C-c g d') on a module to browse its
 ;;      directory (for easy access to its source code).
 
+;; list of modules/
+;; https://github.com/hlissner/doom-emacs/blob/develop/docs/modules.org
 (doom! :input
        ;;chinese
        ;;japanese
@@ -43,7 +45,7 @@
        ;;pretty-code       ; replace bits of code with pretty symbols
        ;;tabs              ; an tab bar for Emacs
        treemacs            ; a project drawer, like neotree but cooler
-       unicode             ; extended unicode support for various languages
+       ;;unicode           ; extended unicode support for various languages
        vc-gutter           ; vcs diff in the fringe
        vi-tilde-fringe     ; fringe tildes to mark beyond EOB
        window-select       ; visually switch windows
@@ -65,7 +67,7 @@
        ;;word-wrap         ; soft wrapping with language-aware indent
 
        :emacs
-       dired               ; making dired pretty [functional]
+       (dired +ranger)     ; making dired pretty [functional]
        electric            ; smarter, keyword-based electric-indent
        ibuffer             ; interactive buffer management
        vc                  ; version-control and Emacs, sitting in a tree
@@ -117,7 +119,7 @@
        (elixir +lsp)       ; erlang done right
        (elm +lsp)          ; care for a cup of TEA?
        emacs-lisp          ; drown in parentheses
-       ;;erlang            ; an elegant language for a more civilized age
+       erlang              ; an elegant language for a more civilized age
        ;;ess               ; emacs speaks statistics
        ;;faust             ; dsp, but you get to keep your soul
        ;;fsharp            ; ML stands for Microsoft's Language
