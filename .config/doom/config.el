@@ -46,6 +46,13 @@
 ;; (add-hook 'text-mode-hook #'visual-line-mode) ; enable soft wrapping
 (global-visual-line-mode 1)
 
+;;;; which-key/company
+;; decrease popup time
+(setq which-key-idle-delay 0.2)
+
+(after! company
+  (setq company-idle-delay 0.2))
+
 ;;;; ranger
 ;; use ranger instead of dired
 (global-set-key [remap dired] #'ranger)
