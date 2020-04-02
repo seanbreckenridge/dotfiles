@@ -172,3 +172,5 @@ jq
 moreutils
 rsync
 dragon-drag-and-drop-git
+tidy
+prettier

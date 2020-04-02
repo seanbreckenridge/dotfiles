@@ -19,8 +19,6 @@
 ;; Place your private configuration here! Remember, you do not need to run 'doom
 ;; sync' after modifying this file!
 
-(load! "functions")
-
 ;; Some functionality uses this to identify you, e.g. GPG configuration, email
 ;; clients, file templates and snippets.
 (setq user-full-name "Sean Breckenridge"
@@ -35,25 +33,6 @@
  projectile-project-search-path '("~/code/")
  org-directory "~/Documents/org/"
  )
-
-;; custom bindings
-(map! :leader
-      ;; list my config files and let me fuzzy match to edit one
-      (:prefix "f"
-        :desc "Edit global config files" "C" #'my/counsel-edit-config)
-      ;; open URL, defaults to URL under cursor
-      (:prefix "o"
-        :desc "Open URL" "l" #'browse-url)
-      )
-
-;;;; Fontify html hex codes
-;; automatically color hex color strings
-(defvar hexcolor-keywords
-  '(("#[abcdefABCDEF[:digit:]]\\{6\\}"
-     (0 (put-text-property (match-beginning 0)
-                           (match-end 0)
-                           'face (list :background
-                                       (match-string-no-properties 0)))))))
 
 ;; xclip
 (xclip-mode 1)
@@ -101,20 +80,6 @@
         lsp-enable-symbol-highlighting nil
         lsp-log-io nil))
 
-;;;; terminal
-;; set default TERM to xterm to allow colors/scrolling
-(map! :after shell
-      :leader
-      (:prefix "o"
-        :desc "Open shell here" "T"
-        (lambda! (+shell/here "export TERM=xterm"))))
-
-;;;; latex
-;; bind latex preview mode to spc m p
-(map! :after latex
-      :map LaTeX-mode-map
-      :localleader
-      :desc "Display LaTeX preivew pane" "p" #'latex-preview-pane-mode)
 
 ;;;; elisp
 ;; Aggressively indent emacslisp
@@ -122,13 +87,6 @@
   :commands (aggressive-indent-mode))
 (add-hook 'emacs-lisp-mode-hook #'aggressive-indent-mode)
 
-;;;; markdown
-;; open pdf that corresponds to current buffer in okular
-(map! :after markdown-mode
-      :map (markdown-mode-map gfm-mode-map)
-      :localleader
-      :desc "Open compiled markdown in okular" "p" #'my/markdown-open-pdf)
-
-;; run compile on markdown files after saving
-(add-hook! '(markdown-mode-hook gfm-mode-hook)
-  (add-hook 'after-save-hook #'my/compile-markdown nil 'local))
+;; load personal functions/bindings
+(load! "+functions")
+(load! "+bindings")

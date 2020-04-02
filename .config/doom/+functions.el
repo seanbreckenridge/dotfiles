@@ -5,7 +5,7 @@
 ;;;; edit config files
 
 ;;;###autoload
-(defun my/counsel-list-config (str)
+(defun seanbr/counsel-list-config (str)
   "Use fzf to fuzzy match 'str' against config files"
   (progn
     (counsel--async-command
@@ -14,11 +14,11 @@
     ))
 
 ;;;###autoload
-(defun my/counsel-edit-config (&optional initial-input)
+(defun seanbr/counsel-edit-config (&optional initial-input)
   "Fuzzy match against the \"list-config\" shell command.
 INITIAL-INPUT can be given as the initial minibuffer input."
   (interactive)
-  (ivy-read "Edit Config File: " #'my/counsel-list-config
+  (ivy-read "Edit Config File: " #'seanbr/counsel-list-config
             :initial-input initial-input
             :dynamic-collection t
             :history 'counsel-edit-config-history
@@ -30,13 +30,13 @@ INITIAL-INPUT can be given as the initial minibuffer input."
             :caller 'counsel-edit-config))
 
 
-;; utilities
-(defun my/current-buffer-file-name ()
-  "Gets the name of the file the current buffer is based on."
-  (interactive)
+;;;; file utilities
+
+(defun seanbr/current-buffer-file-path ()
+  "Gets the absolute path of the current buffers assosiated file"
   (buffer-file-name (window-buffer (minibuffer-selected-window))))
 
-(defun my/replace-file-extension (filename new-extension)
+(defun seanbr/replace-file-extension (filename new-extension)
   "Replaces the extension of filename with new-extension"
   (concat (file-name-sans-extension filename) "." new-extension)
   )
@@ -46,19 +46,19 @@ INITIAL-INPUT can be given as the initial minibuffer input."
 ;; uses my compile script to compile an .md to a .pdf
 ;; https://github.com/seanbreckenridge/dotfiles/blob/e731c35eebd3041fa984d6599eaa9a454d5901aa/.local/scripts/bin/compile
 ;;;###autoload
-(defun my/compile-markdown ()
+(defun seanbr/compile-markdown ()
   (interactive)
   (start-process "compile-markdown" "compile-markdown-buffer"
-                 "compile" (my/current-buffer-file-name))
+                 "compile" (seanbr/current-buffer-file-path))
   )
 
 ;;;###autoload
-(defun my/markdown-open-pdf ()
+(defun seanbr/markdown-open-pdf ()
   "Requires okular to be installed, opens the current buffer
    (with the extension replaced with .pdf)
    Save any markdown file (while in markdown-mode) to generate the assosiated pdf
    "
   (interactive)
   (start-process "okular-output" "okular-buffer"
-                 "okular" (my/replace-file-extension (my/current-buffer-file-name) "pdf"))
+                 "okular" (seanbr/replace-file-extension (seanbr/current-buffer-file-path) "pdf"))
   )
