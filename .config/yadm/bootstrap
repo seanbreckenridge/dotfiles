@@ -119,9 +119,10 @@ install_python_personal "pythonanywhere_3_months" "https://github.com/seanbrecke
 NPM_CONFIG_PREFIX="${XDG_DATA_HOME:-$HOME/.local/share}/npm-packages"
 echo "Installing global npm packages..."
 [[ ! -d "${NPM_CONFIG_PREFIX}" ]] && mkdir -p "${NPM_CONFIG_PREFIX}" && sudo chown -R "$(whoami)" "${NPM_CONFIG_PREFIX}"
-NPM_PACKAGE_LIST="$(npm list -g)"
+# get a list of installed packages
+NPM_PACKAGE_LIST="$(npm ls -g --json | jq '.dependencies | keys[]' -r)"
 while read -r npkg; do
-	if ! grep -q "${npkg}" <<<"$NPM_PACKAGE_LIST"; then
+	if ! grep -q "^${npkg}$" <<<"$NPM_PACKAGE_LIST"; then
 		printf "Installing %s\n" "$npkg"
 		npm install --global "${npkg}"
 	fi
