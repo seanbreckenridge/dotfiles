@@ -15,8 +15,11 @@
 (map! :after shell
       :leader
       (:prefix "o"
-        :desc "Open shell here" "T"
-        (lambda! (+shell/here "export TERM=xterm"))))
+        :desc "open shell here" "t"
+        (lambda! (+shell/here "export TERM=xterm"))
+        :desc "open external terminal here" "T"
+        (lambda! (call-process (getenv "TERMINAL") nil 0 nil ">/dev/null 2&1 & disown"))
+        ))
 
 
 ;;;; lang confguration
