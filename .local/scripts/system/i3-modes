@@ -1,4 +1,4 @@
-#!/usr/bin/env elixir
+#! /usr/bin/env elixir
 #
 # Parses the i3 config file for binding modes
 # Uses the mode passed as the first argument as the target
@@ -149,8 +149,10 @@ end
 
 mode_matches
 |> Keyword.get(:lines)
-|> Stream.filter(fn line -> byte_size(line) != 0 end) # ignore empty lines
-|> Stream.filter(fn line -> not String.starts_with?(line, "#") end)  # ignore comments
+# ignore empty lines
+|> Stream.filter(fn line -> byte_size(line) != 0 end)
+# ignore comments
+|> Stream.filter(fn line -> not String.starts_with?(line, "#") end)
 |> Stream.map(&I3Modes.parse_binding(&1))
 |> Stream.map(&Enum.join(&1, " | "))
 |> Stream.map(&IO.puts(&1))

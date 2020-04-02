@@ -1,4 +1,4 @@
-#!/usr/bin/env elixir
+#! /usr/bin/env elixir
 #
 # Converts a mapping of alias keywords to directories
 # to an alias file that cd's to those directories
@@ -44,9 +44,11 @@ end
 config_dir = System.get_env("XDG_CONFIG_HOME") || System.user_home!() |> Path.join(".config")
 config_file = Path.join([config_dir, "directories"])
 zdotdir = System.get_env("ZDOTDIR")
+
 if zdotdir == nil do
   exit("Could not find the $ZDOTDIR environment variable")
 end
+
 alias_output_file = Path.join([zdotdir, "directory_aliases"])
 
 unless File.exists?(config_file) do
