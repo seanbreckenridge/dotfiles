@@ -108,3 +108,6 @@
   :commands (aggressive-indent-mode))
 (add-hook 'emacs-lisp-mode-hook #'aggressive-indent-mode)
 
+;;;; elixir
+(add-to-list 'interpreter-mode-alist
+             '("elixir" . elixir-mode))
