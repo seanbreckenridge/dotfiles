@@ -2,12 +2,9 @@
 (map! :leader
       ;; list my config files and let me fuzzy match to edit one
       ;; this rebinds "open project editorconfig", but I don't use that
-      (:prefix "f"
-        :desc "Edit global config files" "c" #'seanbr/counsel-edit-config)
+      :desc "Edit global config files" "fc" #'seanbr/counsel-edit-config
       ;; open URL, defaults to URL under cursor
-      (:prefix "o"
-        :desc "Open URL" "l" #'browse-url)
-      )
+      :desc "Open URL" "ol" #'browse-url)
 
 
 ;;;; terminal
