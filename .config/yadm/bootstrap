@@ -106,7 +106,6 @@ python3 -m pip install -q --user -r "$PYTHON_PACKAGE_LIST"
 function install_python_personal() {
 	[ ! "$(command -v "$1")" ] && python3 -m pip install --user "git+$2"
 }
-install_python_personal "rotten" "https://github.com/seanbreckenridge/rotten_tomatoes_cli"
 install_python_personal "plus1" "https://github.com/seanbreckenridge/plus1"
 install_python_personal "pythonanywhere_3_months" "https://github.com/seanbreckenridge/pythonanywhere-3-months"
 
