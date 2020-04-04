@@ -9,6 +9,9 @@
 #
 # anything passed as additional flags are forwarded onto rsync. e.g.:
 # local_backup --exclude steam
+#
+# setting BACKUP_DRY to anything as an environment variable
+# makes this run a dry run instead
 
 # locations to back up
 # these cant have the same basename
