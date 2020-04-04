@@ -17,3 +17,5 @@ ${HOME}/.emacs.d/bin:\
 ${PATH}"
 export PATH
 
+# dark theme QT applications
+export QT_QPA_PLATFORMTHEME="qt5ct"

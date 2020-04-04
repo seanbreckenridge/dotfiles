@@ -175,3 +175,4 @@ dragon-drag-and-drop-git
 tidy
 prettier
 mupdf
+qt5ct
