@@ -62,3 +62,5 @@ yattag
 youtube-dl
 nose
 imgur-uploader
+isort
+pipenv

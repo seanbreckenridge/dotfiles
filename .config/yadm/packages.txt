@@ -29,7 +29,6 @@ reflector
 neovim
 mpv
 chromium
-python-selenium
 pinta
 npm
 imagemagick
@@ -96,7 +95,6 @@ ldm
 rxvt-unicode
 redis
 simplescreenrecorder
-python-pipenv
 elixir
 mariadb
 rust
@@ -158,7 +156,6 @@ emacs
 ccls
 gocode-daemon
 ktlint-git
-python-isort
 rust-racer
 termite
 surf
