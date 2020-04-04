@@ -64,13 +64,14 @@ INITIAL-INPUT can be given as the initial minibuffer input."
 
 ;;;###autoload
 (defun seanbr/markdown-open-pdf ()
-  "Requires okular to be installed, opens the current buffer
+  "Requires mupdf to be installed, opens the current buffer
    (with the extension replaced with .pdf)
    Save any markdown file (while in markdown-mode) to generate the assosiated pdf
+   'compile' will refresh mupdf if its running
    "
   (interactive)
-  (start-process "okular-output" "okular-buffer"
-                 "okular" (seanbr/replace-file-extension (seanbr/current-buffer-file-path) "pdf"))
+  (start-process "mupdf-output" "mupdf-buffer"
+                 "mupdf" (seanbr/replace-file-extension (seanbr/current-buffer-file-path) "pdf"))
   )
 
 ;;;; npm

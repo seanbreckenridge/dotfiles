@@ -24,3 +24,8 @@ case "$file" in
 *\.tex) pdflatex "$file" -output-directory -jobname="$base" "$dir" ;;
 *) abort "Unsupported file extension ${extension}" ;;
 esac
+
+# if mupdf is active, refresh it
+# used for live-previewing latex/md
+# while Im writing it
+pgrep -x mupdf && pkill -HUP mupdf
