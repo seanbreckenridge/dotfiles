@@ -1,0 +1,45 @@
+#!/bin/bash
+# prompts the user to pick a local drive to backup this system to.
+# uses rsync to sync, ldm to mount the drive
+# the array below (BACKUP_DIRS) specifies which directories
+# to sync
+#
+# Uses ldm to mount drives:
+# sudo ldm -u $(whoami)
+#
+# anything passed as additional flags are forwarded onto rsync. e.g.:
+# local_backup --exclude steam
+
+# locations to back up
+# these cant have the same basename
+BACKUP_DIRS=("/home/data/" "$HOME/code/" "$HOME/Documents/" "$HOME/Desktop/")
+
+# make sure ldm is running
+if ! pgrep -x ldm >/dev/null; then
+	echo "Error: Make sure ldm is running so that the external drive is mounted"
+	exit 1
+fi
+
+# pick drive to backup to
+DRIVE_INFO="$(df -h | grep -v "home" | awk 'NR > 1' |
+	rofi -dmenu -i -p "Backup to which drive? ")"
+
+# user didn't provide input/exited rofi prompt
+if [ -z "$DRIVE_INFO" ]; then
+	echo "Error: Did not get a drive from user."
+	exit 1
+fi
+
+DRIVE_LOCATION="$(echo "$DRIVE_INFO" | awk '{print $6}')"
+#DRIVE_DEVICE="$(echo "$DRIVE_INFO" | awk '{print $1}')"
+
+echo "$DRIVE_LOCATION"
+
+for backup_dir in "${BACKUP_DIRS[@]}"; do
+	backup_dir_basename="$(basename "$backup_dir")"
+	backup_to="${DRIVE_LOCATION}/${backup_dir_basename}"
+	#echo "$backup_dir"
+	#echo "$backup_to"
+	[ -n "$BACKUP_DRY" ] && FLAGS=n
+	rsync -apvhP$FLAGS --ignore-errors --delete "$@" "$backup_dir" "$backup_to"
+done
