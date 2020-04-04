@@ -13,12 +13,14 @@ function update() {
 	printf "Updating doom emacs...\n"
 	doom -y upgrade
 	printf "Updating ruby packages...\n"
- 	gem update
- 	printf "Updating python packages...\n"
- 	python3 -m pip list --no-cache-dir --outdated --format=freeze | cut -d"=" -f 1 | xargs -r -n1 python3 -m pip install --upgrade --user --no-deps
+	gem update
+	printf "Updating python packages...\n"
+	python3 -m pip list --no-cache-dir --outdated --format=freeze | cut -d"=" -f 1 | xargs -r -n1 python3 -m pip install --upgrade --user --no-deps
 	printf "Updating global npm packages...\n"
 	npm update -g
-    printf "Updating global cargo packages...\n"
-    cargo install-update -a
+	printf "Updating global cargo packages...\n"
+	cargo install-update -a
+	printf "Updating global go packages...\n"
+	go get -u $(cut -d" " -f2 "$HOME/.config/yadm/go_packages.txt")
 	printf "Finished updates in %d seconds\n" $(bc <<<"$(date +%s) - ${START_TIME}") | boxes -d shell -p t1l2b1r2
 }

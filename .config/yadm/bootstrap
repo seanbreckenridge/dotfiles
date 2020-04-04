@@ -22,6 +22,7 @@ GLOBAL_GEM_LIST="${YADM_DIR}/ruby_packages.txt"
 NODE_PACKAGE_LIST="${YADM_DIR}/node_packages.txt"
 DART_PACKAGE_LIST="${YADM_DIR}/dart_packages.txt"
 CARGO_PACKAGE_LIST="${YADM_DIR}/cargo_packages.txt"
+GO_PACKAGE_LIST="${YADM_DIR}/go_packages.txt"
 
 echo "Checking ~/.config/yadm/packages.txt for any packages to install..."
 # have to use for loop, while loop times out instantly
@@ -154,6 +155,18 @@ while read -r cargopkg; do
 	fi
 done <"$CARGO_PACKAGE_LIST"
 
+# takes a line from "$GO_PACKAGE_LIST"
+# binary -> package source
+# and installs it if the binary isn't already on your path
+function install_go_package() {
+	[ ! "$(command -v "$1")" ] && go get -u "$2"
+}
+
+echo "Installing go packages..."
+while IFS= read -r go_line; do
+  install_go_package $go_line
+done <"$GO_PACKAGE_LIST"
+
 # Install doom emacs
 if [[ ! -d "$HOME/.emacs.d/" ]]; then
 	git clone https://github.com/hlissner/doom-emacs "${HOME}/.emacs.d"
@@ -178,7 +191,7 @@ fi
 # Check for manually installed binaries, installed at /usr/local/bin
 
 echo "Checking for manually installed binaries..."
-binaries=("wait-for-internet" "genpasswd" "shortcuts" "largechar" "st" "keyvol")
+binaries=("wait-for-internet" "genpasswd" "shortcuts" "largechar" "st")
 for binary in "${binaries[@]}"; do
 	if [ ! "$(command -v "$binary")" ]; then
 		print_error "Warning: Couldn't find ${binary}. Install it from https://github.com/seanbreckenridge/${binary}"
