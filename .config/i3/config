@@ -245,7 +245,6 @@ mode "applications" {
 bindsym $mod+w mode "term"; exec --no-startup-id notify-send "$(i3-modes term | grep -v 'mode \"default\"' | sed -e 's/exec --no-startup-id launch //' | sort)"
 
 mode "term" {
-    bindsym e exec --no-startup-id launch edit-config; mode "default"
     bindsym r exec --no-startup-id launch ranger; mode "default"
     bindsym h exec --no-startup-id launch htop; mode "default"
     bindsym k exec --no-startup-id launch fkill; mode "default"
