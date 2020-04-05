@@ -104,6 +104,7 @@ __pycache__
 /.config/composer/.htaccess
 /.config/nextjs-nodejs
 /.config/menus/
+/.config/wireshark
 /.config/okularrc
 /.config/yadm/repo.git
 /.config/obs-studio
