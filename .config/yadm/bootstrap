@@ -179,12 +179,12 @@ echo "Checking if default services are running..."
 # CUPS and avahi are for printing
 services=("NetworkManager" "avahi-daemon" "org.cups.cupsd" "cronie" "ntpd")
 for serv in "${services[@]}"; do
-	if ! systemctl show -p SubState --value "${serv}" | grep -q "running"; then
+	if [[ "$(systemctl show -p SubState --value "${serv}")" != "running" ]]; then
 		print_error "${serv} is not running, you should enable it with: 'sudo systemctl enable ${serv}'"
 	fi
 done
 
-if ! systemctl show -p SubState --value "mariadb" | grep -q "running"; then
+if [[ "$(systemctl show -p SubState --value "mariadb")" != "running" ]]; then
 	print_error "Setup mariadb by following: https://wiki.archlinux.org/index.php/MariaDB"
 fi
 
