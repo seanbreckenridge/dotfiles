@@ -41,6 +41,7 @@ slack-desktop
 sqlitebrowser
 docker
 python-gobject
+perl-test-perltidy
 go
 pacman-contrib
 cmatrix
@@ -173,3 +174,6 @@ tidy
 prettier
 mupdf
 qt5ct
+scalafmt
+julia
+fslint
