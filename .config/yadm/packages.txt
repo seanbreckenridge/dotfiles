@@ -177,3 +177,4 @@ qt5ct
 scalafmt
 julia
 fslint
+sbcl
