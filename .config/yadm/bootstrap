@@ -164,7 +164,7 @@ function install_go_package() {
 
 echo "Installing go packages..."
 while IFS= read -r go_line; do
-  install_go_package $go_line
+	install_go_package $go_line
 done <"$GO_PACKAGE_LIST"
 
 # Install doom emacs
