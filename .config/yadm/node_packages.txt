@@ -9,3 +9,4 @@ stylelint
 js-beautify
 vtop
 jsonlint
+coffeescript
