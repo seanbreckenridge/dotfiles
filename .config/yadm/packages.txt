@@ -178,3 +178,4 @@ scalafmt
 julia
 fslint
 sbcl
+chatterino2-git
