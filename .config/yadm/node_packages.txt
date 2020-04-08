@@ -10,3 +10,4 @@ js-beautify
 vtop
 jsonlint
 coffeescript
+node-cljfmt

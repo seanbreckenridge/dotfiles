@@ -60,6 +60,7 @@ __pycache__
 /.steam*
 /.npm
 /.tor-browser
+/.m2
 /.gore
 /.elvish
 /.jupyter
