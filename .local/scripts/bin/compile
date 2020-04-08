@@ -1,6 +1,8 @@
 #!/bin/sh
 # compiles latex/md into pdfs
 
+unset QT_QPA_PLATFORMTHEME
+
 file=$(readlink -f "$1")
 dir=$(dirname "$file")
 base="${file%.*}"
