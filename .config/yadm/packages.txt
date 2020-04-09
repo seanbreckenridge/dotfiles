@@ -152,7 +152,7 @@ libxft-bgra
 ttf-roboto-mono
 ntp
 sc-im
-cabal-static
+stack-static
 emacs
 ccls
 gocode-daemon

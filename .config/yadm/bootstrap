@@ -23,6 +23,7 @@ NODE_PACKAGE_LIST="${YADM_DIR}/node_packages.txt"
 DART_PACKAGE_LIST="${YADM_DIR}/dart_packages.txt"
 CARGO_PACKAGE_LIST="${YADM_DIR}/cargo_packages.txt"
 GO_PACKAGE_LIST="${YADM_DIR}/go_packages.txt"
+HASKELL_PACKAGE_LIST="${YADM_DIR}/haskell_packages.txt"
 
 echo "Checking ~/.config/yadm/packages.txt for any packages to install..."
 # have to use for loop, while loop times out instantly
@@ -166,6 +167,13 @@ echo "Installing go packages..."
 while IFS= read -r go_line; do
 	install_go_package $go_line
 done <"$GO_PACKAGE_LIST"
+
+echo "Installing haskell binaries..."
+while read -r haskell_pkg; do
+	if [ ! "$(command -v "$haskell_pkg")" ]; then
+		stack install "$haskell_pkg"
+	fi
+done <"$HASKELL_PACKAGE_LIST"
 
 # Install doom emacs
 if [[ ! -d "$HOME/.emacs.d/" ]]; then

@@ -17,7 +17,7 @@
 - [todotxt](http://todotxt.org/) for todos, with a [rofi interface](.config/i3blocks/blocks/todo) as GUI.
 - [ranger](https://github.com/ranger/ranger) - file manager
 
-[.config/yadm](.config/yadm) includes lists of global packages for pacman/yay, python, ruby, npm, dart, rust and go; the zsh [update](.config/zsh/functions/update) function updates all the corresponding packages.
+[.config/yadm](.config/yadm) includes lists of global packages for pacman/yay, python, ruby, npm, dart, rust, go, and haskell; the zsh [update](.config/zsh/functions/update) function updates all the corresponding packages.
 
 Packages can be added to the `.txt` files manually, and then `yadm bootstrap` can be run repeatedely to make sure everything is installed.
 

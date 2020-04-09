@@ -22,7 +22,7 @@ __pycache__
 
 # application config filesto ignore
 /.cookiecutter_replay
-/.cabal
+/.stack
 /.sbt
 /.ivy2
 /.bundle
@@ -76,8 +76,9 @@ __pycache__
 /.config/StardewValley
 /.config/enchant
 /.config/autostart
+/.config/brittany
 /.config/cef_user_data
-/.config/sqlitebrowser/*
+/.config/sqlitebrowser
 /.config/zoomus.conf
 /.config/clojure
 /.config/neofetch
@@ -93,9 +94,9 @@ __pycache__
 /.config/Slack
 /.config/Electron
 /.config/nvim/.netrwhist
-/.config/nvim/spell/
-/.config/Thunar/
-/.config/Pinta/
+/.config/nvim/spell
+/.config/Thunar
+/.config/Pinta
 /.config/QtProject.conf
 /.config/xfce4/xfconf
 /.config/gtk-*
@@ -104,7 +105,7 @@ __pycache__
 /.config/*/zoom.conf
 /.config/composer/.htaccess
 /.config/nextjs-nodejs
-/.config/menus/
+/.config/menus
 /.config/wireshark
 /.config/okularrc
 /.config/yadm/repo.git
