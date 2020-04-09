@@ -60,8 +60,8 @@
 (setq
  ranger-clean-up-disable t
  ranger-parent-depth 1
- ranger-width-parents 0.3
- ranger-preview-file nil)
+ ranger-width-parents 0.2
+ ranger-width-preview 0.36)
 
 ;;;; language configuration
 
