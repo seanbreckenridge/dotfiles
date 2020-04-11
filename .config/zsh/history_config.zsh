@@ -6,7 +6,7 @@
 # for applications to closer
 # adhere to the XDG standard
 
-HISTFILE="${ZDOTDIR}/zsh_history"
+HISTFILE="${ZDOTDIR}/.zsh_history"
 HISTSIZE=100000
 SAVEHIST=100000
 setopt APPEND_HISTORY       # append to history file instead of replacing
