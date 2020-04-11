@@ -1,3 +1,5 @@
+#!/usr/bin/env zsh
+
 alias ls='ls -h --color=tty'
 alias ll='ls -l'
 alias la='ll -a'
@@ -16,11 +18,6 @@ alias yl="yadm pull"
 # editor aliases
 alias en='e -n' # editor with nvim
 alias ecl='e -cb' # editor with client in background
-
-# Corrections
-# aliases that fix the config/history path of commands
-alias irb='ruby "${XDG_CONFIG_HOME}/irbrc"'
-alias wget='wget --hsts-file "${XDG_CACHE_HOME}/wget-hsts"'
 
 # Standard
 alias reboot="sudo systemctl reboot"
