@@ -8,7 +8,7 @@ source "${ZDOTDIR}/functions.zsh"      # functions, bindings, completions
 source "${ZDOTDIR}/lazy.zsh"           # lazy load shell tools
 
 # source aliases
-ALIAS_DIR="${ZDOTDIR}/aliases}"
+ALIAS_DIR="${ZDOTDIR}/aliases"
 source "${ALIAS_DIR}/zsh_aliases"       # General aliases
 source "${ALIAS_DIR}/git_aliases"       # Git aliases (from oh-my-zsh)
 source "${ALIAS_DIR}/personal_aliases"  # Personal Aliases (e.g. ssh to servers)
