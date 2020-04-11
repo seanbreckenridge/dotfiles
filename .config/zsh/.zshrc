@@ -116,10 +116,6 @@ bindkey "^[C" fzf-code
 # Alt+R to launch ranger (file manager)
 bindkey -s "^[r" "ranger\n"
 
-# Alt+N to launch a new terminal in the cwd
-# This uses an alias defined in $ZDOTDIR/zsh_aliases
-bindkey -s "^[n" "opennewterm\n"
-
 # lazy load thefuck
 fuck() {
   eval $(thefuck --alias)  # redefines the function
