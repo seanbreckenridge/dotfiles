@@ -1,0 +1,195 @@
+# Appearance
+decorations: none
+gtk_theme_variant: None
+
+# Scrollback
+scrolling:
+  history: 10000
+  multiplier: 3 # Number of lines viewport will each line scrolled
+
+# Font
+font:
+  normal:
+    family: Source Code Pro
+    style: Medium
+  size: 11.0
+
+# Colors (Dracula)
+colors:
+  # Default colors
+  primary:
+    background: "0x282a36"
+    foreground: "0xf8f8f2"
+
+  cursor:
+    text: "0x44475a"
+    cursor: "0xf8f8f2"
+
+  normal:
+    black: "0x000000"
+    red: "0xff5555"
+    green: "0x50fa7b"
+    yellow: "0xf1fa8c"
+    blue: "0xbd93f9"
+    magenta: "0xff79c6"
+    cyan: "0x8be9fd"
+    white: "0xbfbfbf"
+
+  bright:
+    black: "0x4d4d4d"
+    red: "0xff6e67"
+    green: "0x5af78e"
+    yellow: "0xf4f99d"
+    blue: "0xcaa9fa"
+    magenta: "0xff92d0"
+    cyan: "0x9aedfe"
+    white: "0xe6e6e6"
+
+  dim:
+    black: "0x14151b"
+    red: "0xff2222"
+    green: "0x1ef956"
+    yellow: "0xebf85b"
+    blue: "0x4d5b86"
+    magenta: "0xff46b0"
+    cyan: "0x59dffc"
+    white: "0xe6e6d1"
+
+  indexed_colors: []
+
+# use visual bell instead of sound
+visual_bell:
+  animation: EaseOutExpo
+  duration: 20
+  color: "#eeeeee"
+
+# Allow terminal applications to change Alacritty's window title.
+dynamic_title: true
+
+# default shell
+shell:
+  program: /usr/bin/zsh
+
+# Send ESC (\x1b) before characters when alt is pressed.
+alt_send_esc: true
+
+# hide cursor while typing
+hide_when_typing: true
+
+# url launcher
+launcher:
+  program: openurl
+
+mouse_bindings:
+  - { mouse: Middle, action: PasteSelection }
+
+# Key bindings
+#
+# Key bindings are specified as a list of objects. For example, this is the
+# default paste binding:
+#
+# `- { key: V, mods: Control|Shift, action: Paste }`
+#
+# Each key binding will specify a:
+#
+# - `key`: Identifier of the key pressed
+#
+#    - A-Z
+#    - F1-F24
+#    - Key0-Key9
+#
+#    A full list with available key codes can be found here:
+#    https://docs.rs/glutin/*/glutin/event/enum.VirtualKeyCode.html#variants
+#
+#    Instead of using the name of the keys, the `key` field also supports using
+#    the scancode of the desired key. Scancodes have to be specified as a
+#    decimal number. This command will allow you to display the hex scancodes
+#    for certain keys:
+#
+#       `showkey --scancodes`.
+#
+# Then exactly one of:
+#
+# - `chars`: Send a byte sequence to the running application
+#
+#    The `chars` field writes the specified string to the terminal. This makes
+#    it possible to pass escape sequences. To find escape codes for bindings
+#    like `PageUp` (`"\x1b[5~"`), you can run the command `showkey -a` outside
+#    of tmux. Note that applications use terminfo to map escape sequences back
+#    to keys. It is therefore required to update the terminfo when changing an
+#    escape sequence.
+#
+# - `action`: Execute a predefined action
+#
+#   - Copy
+#   - Paste
+#   - PasteSelection
+#   - IncreaseFontSize
+#   - DecreaseFontSize
+#   - ResetFontSize
+#   - ScrollPageUp
+#   - ScrollPageDown
+#   - ScrollLineUp
+#   - ScrollLineDown
+#   - ScrollToTop
+#   - ScrollToBottom
+#   - ClearHistory
+#   - Hide
+#   - Minimize
+#   - Quit
+#   - ToggleFullscreen
+#   - SpawnNewInstance
+#   - ClearLogNotice
+#   - ReceiveChar
+#   - None
+#
+# And optionally:
+#
+# - `mods`: Key modifiers to filter binding actions
+#
+#    - Command
+#    - Control
+#    - Option
+#    - Super
+#    - Shift
+#    - Alt
+#
+#    Multiple `mods` can be combined using `|` like this:
+#       `mods: Control|Shift`.
+#    Whitespace and capitalization are relevant and must match the example.
+#
+# - `mode`: Indicate a binding for only specific terminal reported modes
+#
+#    This is mainly used to send applications the correct escape sequences
+#    when in different modes.
+#
+#    - AppCursor
+#    - AppKeypad
+#    - Alt
+#
+#    A `~` operator can be used before a mode to apply the binding whenever
+#    the mode is *not* active, e.g. `~Alt`.
+#
+# Bindings are always filled by default, but will be replaced when a new
+# binding with the same triggers is defined. To unset a default binding, it can
+# be mapped to the `ReceiveChar` action. Alternatively, you can use `None` for
+# a no-op if you do not wish to receive input characters for that binding.
+#
+# If the same trigger is assigned to multiple actions, all of them are executed
+# at once.
+key_bindings:
+  - { key: V, mods: Control|Shift, action: Paste }
+  - { key: C, mods: Control|Shift, action: Copy }
+  - { key: Insert, mods: Shift, action: PasteSelection }
+  - { key: Key0, mods: Control, action: ResetFontSize }
+  - { key: Equals, mods: Control, action: IncreaseFontSize }
+  - { key: Add, mods: Control, action: IncreaseFontSize }
+  - { key: Subtract, mods: Control, action: DecreaseFontSize }
+  - { key: Minus, mods: Control, action: DecreaseFontSize }
+  - { key: N, mods: Control, action: SpawnNewInstance }
+  - { key: Up, mods: Shift, action: ScrollLineUp }
+  - { key: Down, mods: Shift, action: ScrollLineDown }
+  - { key: K, mods: Control, action: ScrollLineUp }
+  - { key: J, mods: Control, action: ScrollLineDown }
+  - { key: PageUp, mods: Shift, action: ScrollPageUp }
+  - { key: PageDown, mods: Shift, action: ScrollPageDown }

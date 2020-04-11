@@ -97,7 +97,7 @@ bindsym $mod+Shift+t exec --no-startup-id ~/.config/i3blocks/blocks/todo add
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec --no-startup-id termite
+bindsym $mod+Return exec --no-startup-id alacritty
 
 # kill focused window
 bindsym $mod+q kill

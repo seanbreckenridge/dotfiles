@@ -43,7 +43,6 @@ alias echopath='echo $PATH | tr ":" "\n"'
 # sxiv full screen image, fit full width
 alias sxfull="sxiv -s f -f"
 # helper alias for launching a new terminal window in the cwd
-alias opennewterm="termite >/dev/null 2>&1 & disown"
 alias firefox_addons='openurls < ~/.local/share/firefox_addons.txt'
 alias calc='python3 -i ~/.config/pythonrc -c "from math import *"'
 alias stripcolors="sed 's/\x1B\[[0-9;]\+[A-Za-z]//g'"
