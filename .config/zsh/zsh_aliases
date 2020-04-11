@@ -2,8 +2,8 @@
 
 alias ls='ls -h --color=tty'
 alias ll='ls -l'
-alias la='ll -a'
-alias l.='ls -a'
+alias la='ll -A'
+alias l.='ls -A'
 
 # yadm
 alias yds="yadm diff --staged"
