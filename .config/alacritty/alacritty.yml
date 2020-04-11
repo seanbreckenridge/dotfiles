@@ -186,7 +186,7 @@ key_bindings:
   - { key: Add, mods: Control, action: IncreaseFontSize }
   - { key: Subtract, mods: Control, action: DecreaseFontSize }
   - { key: Minus, mods: Control, action: DecreaseFontSize }
-  - { key: N, mods: Control, action: SpawnNewInstance }
+  - { key: N, mods: Alt, action: SpawnNewInstance }
   - { key: Up, mods: Shift, action: ScrollLineUp }
   - { key: Down, mods: Shift, action: ScrollLineDown }
   - { key: K, mods: Control, action: ScrollLineUp }
