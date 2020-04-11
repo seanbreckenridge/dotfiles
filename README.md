@@ -1,6 +1,6 @@
 # dotfiles
 
-- [zsh](http://zsh.sourceforge.net/), plugins/configuration handled manually in [.zshrc](.config/zsh/.zshrc)
+- [zsh](http://zsh.sourceforge.net/), plugins/configuration handled manually in [.config/zsh](.config/zsh) (split across multiple files)
 - [i3-gaps](https://github.com/Airblader/i3) - window manager
 - [yadm](https://yadm.io) to manage dotfiles
 - [alacritty](https://github.com/alacritty/alacritty) as terminal 

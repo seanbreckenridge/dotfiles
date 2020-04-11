@@ -3,7 +3,7 @@
 # Converts a mapping of alias keywords to directories
 # to an alias file that cd's to those directories
 # see ~/.config/directories
-# writes to $ZDOTDIR/directory_aliases
+# writes to $ZDOTDIR/aliases/directory_aliases
 
 defmodule DirAlias do
   @doc """
@@ -49,7 +49,7 @@ if zdotdir == nil do
   exit("Could not find the $ZDOTDIR environment variable")
 end
 
-alias_output_file = Path.join([zdotdir, "directory_aliases"])
+alias_output_file = Path.join([zdotdir, "aliases", "directory_aliases"])
 
 unless File.exists?(config_file) do
   exit("Could not find the directory alias configuration file: #{config_file}")
