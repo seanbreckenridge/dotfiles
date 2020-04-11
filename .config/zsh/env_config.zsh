@@ -5,6 +5,10 @@
 # which move config/data files
 # for applications to closer
 # adhere to the XDG standard
+# also sets any environment variables
+# for shell tools/applications
+
+# zsh history configuration
 
 HISTFILE="${ZDOTDIR}/.zsh_history"
 HISTSIZE=100000
@@ -92,3 +96,6 @@ export GNUPGHOME="$XDG_DATA_HOME/gnupg"
 # aliases that fix the config/history path of commands
 alias irb='ruby "${XDG_CONFIG_HOME}/irbrc"'
 alias wget='wget --hsts-file "${XDG_CACHE_HOME}/wget-hsts"'
+
+# general environment variable configuration
+export FAST_ALIAS_TIPS_PREFIX="$(tput bold)>>> $(tput setaf 1)"

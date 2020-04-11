@@ -56,6 +56,18 @@ for file in "${original_files[@]}"; do
 	fi
 done
 
+# install zsh fast alias tips if it isn't already installed
+ZSH_FAST_ALIAS_TIPS="${HOME}/.local/share/zsh-fast-alias-tips"
+if [ ! -d "$ZSH_FAST_ALIAS_TIPS" ]; then
+	git clone "https://github.com/sei40kr/zsh-fast-alias-tips" "$ZSH_FAST_ALIAS_TIPS"
+	if ! cd "$ZSH_FAST_ALIAS_TIPS"; then
+		echo "Could not cd to $ZSH_FAST_ALIAS_TIPS"
+		exit 1
+	fi
+	make
+	cp "./build/def-matcher" "${HOME}/.local/bin"
+fi
+
 # fix env/profile
 # ZDOTDIR is located at ~/.config/zsh
 if [[ ! -f "${HOME}/.zshenv" ]]; then
@@ -211,7 +223,7 @@ if [ "$(command -v shortcuts)" ]; then
 fi
 
 dir-aliases
-printf "Created %d directory aliases\n" "$(wc -l <"$ZDOTDIR/directory_aliases")"
+printf "Created %d directory aliases\n" "$(wc -l <"$ZDOTDIR/aliases/directory_aliases")"
 
 echo "Installing nvim packages..."
 nvim +PlugInstall +qall
