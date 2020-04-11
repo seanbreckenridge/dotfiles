@@ -46,10 +46,6 @@ application/json)
 	;;
 # Syntax highlight for text files:
 text/* | */xml)
-	try pygmentize "$path" 2>/dev/null && {
-		dump | trim
-		exit 0
-	}
 	try pistol "$path" && {
 		dump | trim
 		exit 0
