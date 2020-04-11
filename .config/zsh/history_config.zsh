@@ -1,10 +1,10 @@
 #!/usr/bin/env zsh
 
-# This file sets zsh configuration
+# This file sets zsh history configuration
 # and environment variables/aliases
 # which move config/data files
-# to closer respect the XDG
-# standard
+# for applications to closer
+# adhere to the XDG standard
 
 HISTFILE="${ZDOTDIR}/zsh_history"
 HISTSIZE=100000
