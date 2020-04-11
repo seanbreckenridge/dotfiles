@@ -7,7 +7,7 @@
 /.zshenv
 personal_aliases
 secrets
-zsh_history
+.zsh_history
 .zcompdump*
 .zshrc.zwc
 directory_aliases
