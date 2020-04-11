@@ -56,18 +56,6 @@ for file in "${original_files[@]}"; do
 	fi
 done
 
-# install zsh fast alias tips if it isn't already installed
-ZSH_FAST_ALIAS_TIPS="${HOME}/.local/share/zsh-fast-alias-tips"
-if [ ! -d "$ZSH_FAST_ALIAS_TIPS" ]; then
-	git clone "https://github.com/sei40kr/zsh-fast-alias-tips" "$ZSH_FAST_ALIAS_TIPS"
-	if ! cd "$ZSH_FAST_ALIAS_TIPS"; then
-		echo "Could not cd to $ZSH_FAST_ALIAS_TIPS"
-		exit 1
-	fi
-	make
-	cp "./build/def-matcher" "${HOME}/.local/bin"
-fi
-
 # fix env/profile
 # ZDOTDIR is located at ~/.config/zsh
 if [[ ! -f "${HOME}/.zshenv" ]]; then
@@ -179,6 +167,11 @@ echo "Installing go packages..."
 while IFS= read -r go_line; do
 	install_go_package $go_line
 done <"$GO_PACKAGE_LIST"
+
+# fix zsh-fast-alias-tips installed binary name
+# rename the built binary to def-matcher as its expected to be
+# named for the zsh function
+[ "$(command -v zsh-fast-alias-tips)" ] && cp "$(command -v zsh-fast-alias-tips)" "${HOME}/.local/bin/def-matcher"
 
 echo "Installing haskell binaries..."
 while read -r haskell_pkg; do
