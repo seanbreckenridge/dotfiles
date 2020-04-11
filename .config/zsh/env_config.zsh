@@ -99,3 +99,12 @@ alias wget='wget --hsts-file "${XDG_CACHE_HOME}/wget-hsts"'
 
 # general environment variable configuration
 export FAST_ALIAS_TIPS_PREFIX="$(tput bold)>>> $(tput setaf 1)"
+
+# colors for manpages
+export LESS_TERMCAP_mb=$'\e[1;32m'
+export LESS_TERMCAP_md=$'\e[1;32m'
+export LESS_TERMCAP_me=$'\e[0m'
+export LESS_TERMCAP_se=$'\e[0m'
+export LESS_TERMCAP_so=$'\e[01;33m'
+export LESS_TERMCAP_ue=$'\e[0m'
+export LESS_TERMCAP_us=$'\e[1;4;31m'
