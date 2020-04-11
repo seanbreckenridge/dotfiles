@@ -189,7 +189,5 @@ key_bindings:
   - { key: N, mods: Alt, action: SpawnNewInstance }
   - { key: Up, mods: Shift, action: ScrollLineUp }
   - { key: Down, mods: Shift, action: ScrollLineDown }
-  - { key: K, mods: Control, action: ScrollLineUp }
-  - { key: J, mods: Control, action: ScrollLineDown }
   - { key: PageUp, mods: Shift, action: ScrollPageUp }
   - { key: PageDown, mods: Shift, action: ScrollPageDown }
