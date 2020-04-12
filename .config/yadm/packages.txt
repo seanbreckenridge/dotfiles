@@ -16,7 +16,7 @@ feh
 firefox-developer-edition
 gnome-keyring
 i3-gaps
-htop
+htop-vim-git
 rxvt-unicode
 xclip
 tree
