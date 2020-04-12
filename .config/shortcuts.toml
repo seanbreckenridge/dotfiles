@@ -27,9 +27,7 @@ fi
 # open a terminal, run doom refresh, and restart the emacs daemon
 [refresh-doom]
 command = '''
-# timeout after 5 seconds
-launch "doom refresh; printf \"Press enter to exit > \"; read -t 5"
-restart-emacs
+launch "doom refresh && restart-emacs"
 '''
 
 # print the previous working directory
