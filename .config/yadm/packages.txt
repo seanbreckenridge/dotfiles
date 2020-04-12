@@ -168,3 +168,4 @@ clojure
 moc-pulse
 exa
 all-repository-fonts
+dust
