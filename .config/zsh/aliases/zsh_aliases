@@ -1,9 +1,11 @@
 #!/usr/bin/env zsh
 
-alias ls='ls -h --color=tty'
-alias ll='ls -l'
+# save ls so it can be used elsewhere if I want
+alias l="$(command -v ls)"
+# alias ls to exa
+alias ls='exa --icons'
+alias ll='ls -hl'
 alias la='ll -A'
-alias l.='ls -A'
 
 # yadm
 alias yds="yadm diff --staged"
@@ -16,7 +18,7 @@ alias yp="yadm push"
 alias yl="yadm pull"
 
 # editor aliases
-alias en='e -n' # editor with nvim
+alias en='e -n'   # editor with nvim
 alias ecl='e -cb' # editor with client in background
 
 # Standard
