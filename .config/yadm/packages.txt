@@ -69,7 +69,6 @@ tk
 toilet
 megasync
 unarchiver
-pycharm-community-edition
 aspell
 aspell-en
 pamixer
