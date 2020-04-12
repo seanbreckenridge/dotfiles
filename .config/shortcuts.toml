@@ -167,6 +167,6 @@ notify-send "$IMGUR_URL"
 [twitch]
 command = '''
 [ -z "$1" ] && echo "Pass the twitch user to stream from as the first argument." && exit 1
-chatterino &
-mpv "https://www.twitch.tv/$1"
+pgrep -x chatterino >/dev/null || chatterino &
+mpvf "https://www.twitch.tv/${1}"
 '''
