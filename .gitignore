@@ -20,7 +20,10 @@ directory_aliases
 # ignore any python cache files
 __pycache__
 
-# application config filesto ignore
+# application config files to ignore
+.moc/*
+!.moc/config
+!.moc/keymap
 /.cookiecutter_replay
 /.stack
 /.sbt
@@ -69,8 +72,8 @@ __pycache__
 /.matlab
 
 # Top level config/local files to ignore
-/.config/todo
-!/.config/todo/config
+.config/todo/*
+!.config/todo/config
 /.config/imgur_uploader
 /.config/mimeapps.list
 /.config/StardewValley
@@ -117,9 +120,9 @@ __pycache__
 /.local/lib/pkgconfig/*
 /.local/bin
 /.local/include
-/.local/share
-!/.local/share/emoji
-!/.local/share/firefox_addons.txt
+.local/share/*
+!.local/share/emoji
+!.local/share/firefox_addons.txt
 /.local/etc/bash_completion.d
 /.local/etc/fish/completions
 /.local/shortcuts/*

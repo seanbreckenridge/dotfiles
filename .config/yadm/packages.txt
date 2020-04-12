@@ -180,3 +180,4 @@ sbcl
 chatterino2-git
 erlang
 clojure
+moc-pulse

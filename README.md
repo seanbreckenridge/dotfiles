@@ -6,8 +6,7 @@
 - [alacritty](https://github.com/alacritty/alacritty) as terminal 
 - [picom ](https://github.com/yshui/picom) for window compositing
 - [firefox-developer-edition](https://www.archlinux.org/packages/community/x86_64/firefox-developer-edition/)
-- [rofi](https://github.com/davatorium/rofi) (launcher) with
-  [solarized-darker](https://github.com/davatorium/rofi-themes/blob/master/User%20Themes/solarized-darker.rasi)
+- [rofi](https://github.com/davatorium/rofi)
 - [emacs (doom)](https://github.com/hlissner/doom-emacs) (primary) and
   [nvim](https://neovim.io/) as editors - see [editor](.local/scripts/system/editor)
 - [i3lock](https://i3wm.org/i3lock/) for screen lock; [daemon process](.local/scripts/system/lock_screen) caches pixelated version of screen to speed up start time
@@ -16,6 +15,8 @@
 - [lightdm](https://wiki.archlinux.org/index.php/LightDM) - display manager
 - [todotxt](http://todotxt.org/) for todos, with a [rofi interface](.config/i3blocks/blocks/todo) as GUI.
 - [ranger](https://github.com/ranger/ranger) - file manager
+
+I typically default to dracula-like color schemes to keep things consistent. Currently in use for `alacritty` (terminal) `mocp`, `rofi`, and `emacs`.
 
 [.config/yadm](.config/yadm) includes lists of global packages for pacman/yay, python, ruby, npm, dart, rust, go, and haskell; the zsh [update](.config/zsh/functions/update) function updates all the corresponding packages.
 
