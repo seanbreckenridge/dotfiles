@@ -168,3 +168,4 @@ moc-pulse
 exa
 all-repository-fonts
 dust
+lynx
