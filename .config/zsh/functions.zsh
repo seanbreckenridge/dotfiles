@@ -59,5 +59,5 @@ export FZF_ALT_C_COMMAND="$FZF_DEFAULT_COMMAND -t d -E .git"
 # zsh plugins
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /usr/share/doc/pkgfile/command-not-found.zsh
-source "${GOPATH}/src/github.com/sei40kr/zsh-fast-alias-tips/fast-alias-tips.plugin.zsh"
+source /usr/share/zsh/plugins/zsh-you-should-use/you-should-use.plugin.zsh
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh

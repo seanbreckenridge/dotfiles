@@ -98,7 +98,8 @@ alias irb='ruby "${XDG_CONFIG_HOME}/irbrc"'
 alias wget='wget --hsts-file "${XDG_CACHE_HOME}/wget-hsts"'
 
 # general environment variable configuration
-export FAST_ALIAS_TIPS_PREFIX="$(tput bold)>>> $(tput setaf 1)"
+export YSU_MESSAGE_POSITION="after"
+export YSU_MESSAGE_FORMAT="$(tput setaf 1)>>> ALIAS || %alias_type: %alias $(tput sgr0)"
 
 # colors for manpages
 export LESS_TERMCAP_mb=$'\e[1;32m'
