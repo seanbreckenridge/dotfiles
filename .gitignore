@@ -69,7 +69,6 @@ __pycache__
 /.jupyter
 /.mal-id-cache
 /.gradle
-/.matlab
 
 # Top level config/local files to ignore
 .config/todo/*
@@ -126,7 +125,6 @@ __pycache__
 /.local/etc/bash_completion.d
 /.local/etc/fish/completions
 /.local/shortcuts/*
-/.local/MATLAB/*
 
 # default user directories
 /code

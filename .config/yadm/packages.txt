@@ -60,6 +60,7 @@ tidy
 prettier
 scala
 scalafmt
+sbt
 julia
 fslint
 sbcl
