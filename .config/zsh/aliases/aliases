@@ -15,7 +15,7 @@ alias ysu="yadm status -u"
 alias ya="yadm add"
 alias yc="yadm commit"
 alias yp="yadm push"
-alias yl="yadm pull"
+alias yl="yadm pull --recurse-submodules"
 
 # editor aliases
 alias en='e -n'   # editor with nvim
