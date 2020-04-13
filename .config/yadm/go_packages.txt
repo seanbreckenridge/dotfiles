@@ -1,5 +1,5 @@
-keyvol github.com/seanbreckenridge/keyvol
 gomodifytags github.com/fatih/gomodifytags
-gotests github.com/cweill/gotests/...
 gore github.com/motemen/gore/cmd/gore
+gotests github.com/cweill/gotests/...
 guru golang.org/x/tools/cmd/guru
+keyvol github.com/seanbreckenridge/keyvol

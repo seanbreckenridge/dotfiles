@@ -1,4 +1,4 @@
-solargraph
 haste
 rdoc
 rufo
+solargraph
