@@ -22,6 +22,7 @@ __pycache__
 
 # application config files to ignore
 .moc/*
+!.moc/themes
 !.moc/config
 !.moc/keymap
 /.cookiecutter_replay
