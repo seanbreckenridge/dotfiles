@@ -26,8 +26,10 @@ compdef _binary_completion which-cat launch
 compdef _editor e
 
 # bind fzfedit (fuzzy match everything and open/cd to dir)
-zle -N fzfedit
-bindkey '^F' fzfedit
+zle -N fzfedit; bindkey '^F' fzfedit
+# fuzzy match everything (including hidden files)
+fzfhiddenedit() { fzfedit -H }
+zle -N fzfhiddenedit; bindkey '^H' fzfhiddenedit
 
 # Alt+left arrow/Alt+L to move up a dir
 up-dir() { cd ".."; zle reset-prompt }; zle -N up-dir
