@@ -15,14 +15,12 @@ class fzf_select(Command):
     Modified from: https://github.com/junegunn/fzf
     """
 
-    def find_command(self):
-        """To support nicer polymorphism"""
-        return "fd -L"
+    fd_command = "fd -L"
 
     @property
     def command(self):
         """Command to run to run the find/fzf command"""
-        return "{} | fzf +m".format(self.find_command())
+        return "{} | fzf +m".format(self.__class__.fd_command)
 
     def execute(self):
         fzf = self.fm.execute_command(self.command, stdout=subprocess.PIPE)
@@ -40,5 +38,4 @@ class fzf_select_hidden(fzf_select):
     same as fzf_select but shows hidden files
     """
 
-    def find_command(self):
-        return "fd -L -H"
+    fd_command = "fd -L -H"
