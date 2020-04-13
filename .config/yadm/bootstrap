@@ -185,10 +185,10 @@ fi
 # Check services
 echo "Checking if default services are running..."
 # CUPS and avahi are for printing
-services=("NetworkManager" "avahi-daemon" "org.cups.cupsd" "cronie" "ntpd")
+services=("NetworkManager" "avahi-daemon" "org.cups.cupsd" "cronie" "ntpd" "paccache.timer")
 for serv in "${services[@]}"; do
-	if [[ "$(systemctl show -p SubState --value "${serv}")" != "running" ]]; then
-		print_error "${serv} is not running, you should enable it with: 'sudo systemctl enable ${serv}'"
+	if [[ "$(systemctl show -p SubState --value "${serv}")" == "dead" ]]; then
+		print_error "${serv} is not running, you should enable it with: 'sudo systemctl enable ${serv} --now'"
 	fi
 done
 
