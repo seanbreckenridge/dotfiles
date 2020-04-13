@@ -172,11 +172,9 @@ simplescreenrecorder
 
 # fonts
 
-adobe-source-han-sans-otc-fonts
 all-repository-fonts
 ttf-ms-fonts
 ttf-oxygen
 xorg-fonts-alias
-xorg-fonts-cyrillic
 xorg-fonts-encodings
 xorg-font-util

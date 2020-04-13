@@ -6,7 +6,7 @@
 - [alacritty](https://github.com/alacritty/alacritty) as terminal 
 - [picom ](https://github.com/yshui/picom) for window compositing
 - [firefox-developer-edition](https://www.archlinux.org/packages/community/x86_64/firefox-developer-edition/)
-- [rofi](https://github.com/davatorium/rofi)
+- [rofi](https://github.com/davatorium/rofi) - application launcher
 - [emacs (doom)](https://github.com/hlissner/doom-emacs) (primary) and
   [nvim](https://neovim.io/) as editors - see [editor](.local/scripts/system/editor)
 - [i3lock](https://i3wm.org/i3lock/) for screen lock; [daemon process](.local/scripts/system/lock_screen) caches pixelated version of screen to speed up start time
