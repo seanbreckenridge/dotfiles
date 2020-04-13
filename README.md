@@ -2,7 +2,7 @@
 
 - [zsh](http://zsh.sourceforge.net/), plugins/configuration handled manually in [.config/zsh](.config/zsh) (split across multiple files)
 - [i3-gaps](https://github.com/Airblader/i3) - window manager
-- [yadm](https://yadm.io) to manage dotfiles
+- [yadm](https://yadm.io) to manage dotfiles, see [yadm-with-README.md](.config/yadm/yadm-with-README.md)
 - [alacritty](https://github.com/alacritty/alacritty) as terminal 
 - [picom ](https://github.com/yshui/picom) for window compositing
 - [firefox-developer-edition](https://www.archlinux.org/packages/community/x86_64/firefox-developer-edition/)
