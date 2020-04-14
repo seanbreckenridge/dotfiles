@@ -1,4 +1,10 @@
 #!/usr/bin/env sh
+# run at the beginning of X session, before the window manager has started
+
+# source profile
+[ -f "${HOME}/.profile" ] && source "${HOME}/.profile"
+
+# other misc fixes
 # reverse trackpoint scroll direction
 trackpoint_name="$(xinput list --name-only | grep -i 'trackpoint')"
 xinput set-prop "$trackpoint_name" "libinput Natural Scrolling Enabled" 0

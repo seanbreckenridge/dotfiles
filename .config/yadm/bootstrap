@@ -56,14 +56,9 @@ for file in "${original_files[@]}"; do
 	fi
 done
 
-# fix env/profile
-# ZDOTDIR is located at ~/.config/zsh
-if [[ ! -f "${HOME}/.zshenv" ]]; then
-	ln "${HOME}/.config/zsh/.zshenv" "${HOME}/.zshenv"
-fi
-if [[ ! -f "${HOME}/.config/zsh/.zprofile" ]]; then
-	ln "${HOME}/.profile" "${HOME}/.config/zsh/.zprofile"
-fi
+# so that zsh thinks its setup
+# rest of my setup is done is ~/.xprofile
+[ ! -f "${HOME}/.zshenv" ] && touch "${HOME}/.zshenv"
 
 # make sure personal aliases file exists so that zshrc souces fine
 [[ ! -f "${ZDOTDIR}/aliases/personal_aliases" ]] && touch "${ZDOTDIR}/aliases/personal_aliases"
