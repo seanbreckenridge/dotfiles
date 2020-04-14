@@ -29,7 +29,7 @@ compdef _editor e
 zle -N fzfedit; bindkey '^F' fzfedit
 # fuzzy match everything (including hidden files)
 fzfhiddenedit() { fzfedit -H }
-zle -N fzfhiddenedit; bindkey '^H' fzfhiddenedit
+zle -N fzfhiddenedit; bindkey '^G' fzfhiddenedit
 
 # Alt+left arrow/Alt+L to move up a dir
 up-dir() { cd ".."; zle reset-prompt }; zle -N up-dir
