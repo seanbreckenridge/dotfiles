@@ -170,3 +170,10 @@ command = '''
 pgrep -x chatterino >/dev/null || chatterino &
 mpvf "https://www.twitch.tv/${1}"
 '''
+
+[clipedit]
+command = '''
+# edit your clipboard in vim
+xclip -out -selection clipboard | vipe | xclip -in -selection clipboard
+'''
+link = 'edit-clipboard'
