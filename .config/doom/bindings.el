@@ -4,7 +4,10 @@
       ;; this rebinds "open project editorconfig", but I don't use that
       :desc "Edit global config files" "fc" #'seanbr/counsel-edit-config
       ;; open URL, defaults to URL under cursor
-      :desc "Open URL" "ol" #'browse-url)
+      :desc "Open URL" "ol" #'browse-url
+      ;; bind ispell to spc $
+      :desc "Run ispell on current buffer" "$" #'ispell
+      )
 
 
 ;;;; terminal
