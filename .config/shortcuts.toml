@@ -6,7 +6,7 @@
 
 [list-config]
 command='''
-{ cd && yadm ls-files | sed "s#^#$HOME/#"; fd -H --full-path "${HOME}" "${XDG_CONFIG_HOME}/todo" "${ZDOTDIR}" } | grep -v "system-config" | sort -u
+{ cd && yadm ls-files | sed "s#^#$HOME/#"; fd --type=file -H --full-path "${HOME}" "${XDG_CONFIG_HOME}/todo" "${ZDOTDIR}" } | grep -v "system-config" | sort -u
 '''
 shebang = "#!/usr/bin/env zsh"
 
@@ -177,3 +177,21 @@ command = '''
 xclip -out -selection clipboard | vipe | xclip -in -selection clipboard
 '''
 link = 'edit-clipboard'
+
+[symlink]
+command="""
+# from https://gitlab.com/rwxrob/configgroup/mint/-/tree/master/bin
+symlink () {
+  from="$1"
+  to="$2"
+  if [ -z "$from" -o -z "$to" ]; then
+    echo 'symlink <from> <to>'
+    return 1
+  fi
+  echo Linking $from'` -> `'$to
+  ln -fs $to $from
+}
+
+symlink $*
+"""
+shebang = '#!/bin/bash'
