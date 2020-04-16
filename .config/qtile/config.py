@@ -91,8 +91,8 @@ keys = [
     Key("M-<Print>", lazy.spawn("screenshot-to-imgur")),
     # general qtile commands
     Key("M-S-<Tab>", lazy.next_layout()),
-    Key("M-S-q", lazy.window.kill()),
-    Key("M-C-r", lazy.restart()),
+    Key("M-q", lazy.window.kill()),
+    Key("M-S-r", lazy.restart()),
 ]
 
 
@@ -118,7 +118,7 @@ applications = [
     "slack",
     "keepassxc",
     "discord",
-    "firefox",
+    "firefox-developer-edition",
 ]
 terminal_applications = [
     "ranger",
@@ -210,19 +210,7 @@ main = None
 follow_mouse_focus = True
 bring_front_click = True
 cursor_warp = False
-floating_layout = layout.Floating(
-    float_rules=[
-        # Run the utility of `xprop` to see the wm class and name of an X client.
-        {"wmclass": "confirm"},
-        {"wmclass": "dialog"},
-        {"wmclass": "download"},
-        {"wmclass": "error"},
-        {"wmclass": "file_progress"},
-        {"wmclass": "notification"},
-        {"wmclass": "splash"},
-        {"wmclass": "toolbar"},
-    ]
-)
+floating_layout = layout.Floating(float_rules=[])
 auto_fullscreen = True
 focus_on_window_activation = "smart"
 
