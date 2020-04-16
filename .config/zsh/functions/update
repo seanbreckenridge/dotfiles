@@ -3,24 +3,24 @@
 function update() {
 	local START_TIME=$(date +%s)
 	wait-for-internet --text "(waiting for internet)"
-	printf "Updating system (pacman/yay) packages...\n"
+	echo "Updating system (pacman/yay) packages..."
 	yay -Syu
-	printf "Updating pkgfile indexes...\n"
+	echo "Updating pkgfile indexes..."
 	sudo pkgfile --update
 	yadm bootstrap
-	printf "Updating nvim packages...\n"
+	echo "Updating nvim packages..."
 	nvim +PlugUpdate +qall
-	printf "Updating doom emacs...\n"
+	echo "Updating doom emacs..."
 	doom -y upgrade
-	printf "Updating ruby packages...\n"
+	echo "Updating ruby packages..."
 	gem update
-	printf "Updating python packages...\n"
+	echo "Updating python packages..."
 	python3 -m pip list --no-cache-dir --outdated --format=freeze | cut -d"=" -f 1 | xargs -r -n1 python3 -m pip install --upgrade --user --no-deps
-	printf "Updating global npm packages...\n"
+	echo "Updating global npm packages..."
 	npm update -g
-	printf "Updating global cargo packages...\n"
+	echo "Updating global cargo packages..."
 	cargo install-update -a
-	printf "Updating global go packages...\n"
+	echo "Updating global go packages..."
 	go get -u $(cut -d" " -f2 "$HOME/.config/yadm/go_packages.txt")
-	printf "Finished updates in %d seconds\n" $(bc <<<"$(date +%s) - ${START_TIME}") | boxes -d shell -p t1l2b1r2
+	echo "Finished updates in %d seconds" $(bc <<<"$(date +%s) - ${START_TIME}") | boxes -d shell -p t1l2b1r2
 }
