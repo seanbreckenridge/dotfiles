@@ -57,6 +57,8 @@ colors:
 
   indexed_colors: []
 
+background_opacity: 1.0
+
 # use visual bell instead of sound
 visual_bell:
   animation: EaseOutExpo
