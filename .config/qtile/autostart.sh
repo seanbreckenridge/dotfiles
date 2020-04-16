@@ -1,6 +1,8 @@
 #!/bin/sh
 # processes to run in the background
 
+# network manager applet
+nm-applet &
 # notifications
 dunst &
 # cache lock screen pixelated image
