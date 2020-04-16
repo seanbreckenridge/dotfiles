@@ -16,4 +16,3 @@ down)
 	;;
 esac
 
-pkill -RTMIN+10 -x i3blocks

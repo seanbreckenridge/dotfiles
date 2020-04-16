@@ -1,24 +1,31 @@
 # os
 
+amd-ucode
 avahi
 cups
 cups-pdf
+dunst
+exfat-utils
+fuse-exfat
 gnome-keyring
 grub-customizer
-i3-gaps
 i3lock
 libxft-bgra
 light
 lightdm
 lightdm-gtk-greeter
 lightdm-gtk-greeter-settings
+network-manager-applet
+networkmanager
 nss-mdns
 pacman-contrib
 picom
 pulseaudio
 qt5ct
+qtile
 reflector
 unclutter
+wpa_supplicant
 xorg-server
 
 # language support
@@ -26,24 +33,35 @@ xorg-server
 ccls
 checkbashisms
 clojure
+cmake
 composer
 dart
 dash
 dashbinsh
 docker
+docker-compose
 elixir
+elm-bin
 erlang
 fslint
+ghc
 go
 gocode-daemon
 inotify-tools
+java-environment-common
+java-runtime-common
+jdk-openjdk
 julia
+jupyter
 ktlint-git
 mariadb
 mypy
 npm
+ocaml
+perl
 perl-test-perltidy
 php
+postgresql
 prettier
 pyenv
 python-gobject
@@ -64,15 +82,19 @@ shellcheck-static
 shfmt
 stack-static
 tidy
+valgrind
 wasm-pack
 yarn
 
 # utils
 
+alacritty
 aspell
 aspell-en
 boxes
+bzip2
 cmatrix
+coreutils
 cronie
 ctags
 dragon-drag-and-drop-git
@@ -81,12 +103,10 @@ dust
 emacs
 entr
 exa
-exfat-utils
 fd
 feh
 ffmpeg
 figlet
-fuse-exfat
 fzf
 git
 htop-vim-git
@@ -95,6 +115,7 @@ imagemagick
 jq
 ldm
 lftp
+lm_sensors
 lynx
 maim
 mlocate
@@ -115,12 +136,15 @@ qrencode
 ranger
 rofi
 rofi-dmenu
+ripgrep
 rsync
 sc-im
 screenkey-git
 scrot
+strace
 sxiv
 terminalimageviewer-git
+texlive-bin
 texlive-core
 the_silver_searcher
 tk
@@ -129,15 +153,19 @@ toilet
 unarchiver
 unrar
 unzip
-valgrind
+util-linux
+vi
+vim
 wget
 wkhtmltopdf
 xclip
 xdotool
 yadm-git
+zip
 
 # shell
 
+bash
 zsh
 zsh-autosuggestions
 zsh-completions
@@ -150,6 +178,7 @@ chatterino2-git
 chromium
 discord
 firefox-developer-edition
+google-chrome
 gparted
 keepassxc
 megasync

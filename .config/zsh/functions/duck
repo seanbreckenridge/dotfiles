@@ -1,0 +1,6 @@
+# searches duckduckgo on the command line using lynx
+# duck "TERMS TO SEARCH FOR"
+
+function duck() {
+	lynx "duckduckgo.com/lite?q=$*"
+}

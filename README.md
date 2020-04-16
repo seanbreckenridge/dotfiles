@@ -1,7 +1,7 @@
 # dotfiles
 
 - [zsh](http://zsh.sourceforge.net/), plugins/configuration handled manually in [.config/zsh](.config/zsh) (split across multiple files)
-- [i3-gaps](https://github.com/Airblader/i3) - window manager
+- [qtile](https://github.com/qtile?type=source) (primary) and [i3-gaps](https://github.com/Airblader/i3) - window manager
 - [yadm](https://yadm.io) to manage dotfiles, see [yadm-with-README.md](.config/yadm/yadm-with-README.md)
 - [alacritty](https://github.com/alacritty/alacritty) as terminal 
 - [picom ](https://github.com/yshui/picom) for window compositing

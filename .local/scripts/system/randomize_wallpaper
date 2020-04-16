@@ -1,0 +1,3 @@
+#!/bin/sh
+# Randomize the wallpaper using feh
+feh --randomize --bg-fill --no-fehbg "${HOME}/Documents/wallpapers"

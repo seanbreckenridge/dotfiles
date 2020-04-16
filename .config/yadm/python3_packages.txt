@@ -64,3 +64,5 @@ vimbuffer
 xlrd
 yattag
 youtube-dl
+iwlib
+psutil

@@ -12,7 +12,7 @@ shebang = "#!/usr/bin/env zsh"
 
 # fuzzy match list-config names, open one to edit (Edit Config)
 [ec]
-command = '''list-config | sed "s#^$HOME/##g" | fzf +m -q "$*" | xargs -r -I {} editor -cb "$HOME/{}"'''
+command = '''list-config | sed "s#^$HOME/##g" | fzf +m -q "$*" | xargs -r -I {} editor -n "$HOME/{}"'''
 
 # restart the emacs server managed by systemd
 [restart-emacs]
