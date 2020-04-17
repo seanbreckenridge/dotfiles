@@ -1,6 +1,8 @@
 #!/bin/sh
 # processes to run in the background
 
+# randomize the wallpaper
+randomize_wallpaper
 # network manager applet
 nm-applet &
 # notifications
@@ -16,5 +18,3 @@ unclutter --timeout 2 &
 discord --start-minimized &
 # start emacs server
 systemctl --user start emacs
-# randomize the wallpaper
-randomize_wallpaper
