@@ -195,3 +195,10 @@ symlink () {
 symlink $*
 """
 shebang = '#!/bin/bash'
+
+# override the lynx binary by
+# placing the lynx shortcut
+# on $PATH first
+[lynx]
+command = '/usr/bin/lynx -accept_all_cookies -cfg="${XDG_CONFIG_HOME}/lynx/lynx.cfg" "$@"'
+

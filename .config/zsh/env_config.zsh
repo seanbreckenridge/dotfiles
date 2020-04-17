@@ -96,10 +96,8 @@ export GNUPGHOME="$XDG_DATA_HOME/gnupg"
 # aliases that fix the config/history path of commands
 alias irb='ruby "${XDG_CONFIG_HOME}/irbrc"'
 alias wget='wget --hsts-file "${XDG_CACHE_HOME}/wget-hsts"'
-alias lynx='lynx -accept_all_cookies -cfg="${XDG_CONFIG_HOME}/lynx/lynx.cfg"'
 
 # general environment variable configuration
-export YSU_MESSAGE_POSITION="after"
 export YSU_MESSAGE_FORMAT="$(tput setaf 1)>>> ALIAS || %alias_type: %alias $(tput sgr0)"
 
 # colors for manpages
