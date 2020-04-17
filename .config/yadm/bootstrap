@@ -158,12 +158,12 @@ function install_go_package() {
 	[ ! "$(command -v "$1")" ] && go get -u "$2"
 }
 
-echo "Installing go packages..."
+echo "Installing global go packages..."
 while IFS= read -r go_line; do
 	install_go_package $go_line
 done <"$GO_PACKAGE_LIST"
 
-echo "Installing haskell binaries..."
+echo "Installing global haskell binaries..."
 while read -r haskell_pkg; do
 	if [ ! "$(command -v "$haskell_pkg")" ]; then
 		stack install "$haskell_pkg"
