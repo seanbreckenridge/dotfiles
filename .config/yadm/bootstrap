@@ -12,7 +12,10 @@ function abort() {
 }
 
 if [[ ! $(command -v yay) ]]; then
-	abort "Could not find yay. Install that and re-run bootstrap\nExiting..."
+	cd /tmp
+	git clone https://aur.archlinux.org/yay.git
+	cd yay
+	makepkg -si
 fi
 
 YADM_DIR="${HOME}/.config/yadm"
@@ -47,7 +50,7 @@ else
 fi
 
 echo 'Setting up zsh directory structure...'
-# make sure original oh-my-zsh files are removed
+# make sure original zsh files are removed
 original_files=("${HOME}/.zshenv" "${HOME}/.zshrc" "${HOME}/.zsh_history" "${HOME}/.zprofile")
 
 for file in "${original_files[@]}"; do
