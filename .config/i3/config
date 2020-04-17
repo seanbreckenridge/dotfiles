@@ -24,14 +24,11 @@ exec --no-startup-id picom -b
 # hide mouse after 2 seconds
 exec --no-startup-id unclutter --timeout 2
 
-# randomize wallpaper
-set $randomize_wallpaper feh --randomize --bg-fill --no-fehbg "${HOME}/Documents/wallpapers"
-
 # set a random wallpaper
-exec --no-startup-id $randomize_wallpaper
+exec --no-startup-id randomize_wallpaper
 
 # bind display key to randomize wallpaper
-bindsym XF86Display exec --no-startup-id $randomize_wallpaper
+bindsym XF86Display exec --no-startup-id randomize_wallpaper
 
 # Disable trackpad
 exec --no-startup-id trackpad disable
