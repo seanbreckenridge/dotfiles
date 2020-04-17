@@ -29,7 +29,7 @@ Packages can be added to the `.txt` files manually, and then `yadm bootstrap` ca
     - [gitopen](.local/scripts/bin/gitopen) to open current git directory in browser
     - [qr](.local/scripts/bin/qr) - create a QR code from a string and display it full screen
 - [.local/scripts/system](.local/scripts/system) - system related scripts (modifying brightness, volume etc.) w/ [zsh completion](.config/zsh/completions)
-- [fzf](https://github.com/junegunn/fzf) **everywhere** - in [ranger](https://github.com/seanbreckenridge/dotfiles/blob/f5d82fffc43ff46fbbe98a7bc3bdaa1a277ddc9e/.config/ranger/commands.py#L15-L45), to search `cwd` recursively and jump to directories (`Alt+C`), to [edit config files](https://github.com/seanbreckenridge/dotfiles/blob/f5d82fffc43ff46fbbe98a7bc3bdaa1a277ddc9e/.config/shortcuts.toml#L7-L15), to kill processes, and to [search the entire system](https://github.com/seanbreckenridge/dotfiles/blob/master/.config/zsh/functions/flocate). Integration with vim [`vim`](.config/nvim/init.vim) to match against lines/files/commands/buffers.
+- [fzf](https://github.com/junegunn/fzf) **everywhere** - in [ranger](https://github.com/seanbreckenridge/dotfiles/blob/f5d82fffc43ff46fbbe98a7bc3bdaa1a277ddc9e/.config/ranger/commands.py#L15-L45), to search `cwd` recursively and jump to directories (`Alt+C`), to [edit config files](https://github.com/seanbreckenridge/dotfiles/blob/f5d82fffc43ff46fbbe98a7bc3bdaa1a277ddc9e/.config/shortcuts.toml#L7-L15), to kill processes, and to [search the entire system](https://github.com/seanbreckenridge/dotfiles/blob/master/.config/zsh/functions/flocate). Integration with [`nvim`](.config/nvim/init.vim) to match against lines/files/commands/buffers.
 
 ### Install
 
