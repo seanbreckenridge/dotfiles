@@ -163,7 +163,7 @@ while IFS= read -r go_line; do
 	install_go_package $go_line
 done <"$GO_PACKAGE_LIST"
 
-echo "Installing global haskell binaries..."
+echo "Installing global haskell packages..."
 while read -r haskell_pkg; do
 	if [ ! "$(command -v "$haskell_pkg")" ]; then
 		stack install "$haskell_pkg"
