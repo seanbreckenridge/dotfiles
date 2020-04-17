@@ -155,7 +155,7 @@ done <"$CARGO_PACKAGE_LIST"
 # binary -> package source
 # and installs it if the binary isn't already on your path
 function install_go_package() {
-	[ ! "$(command -v "$1")" ] && go get -u "$2"
+	[ ! "$(command -v "$1")" ] && go get -u -v "$2"
 }
 
 echo "Installing global go packages..."
