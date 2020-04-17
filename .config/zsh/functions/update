@@ -21,6 +21,6 @@ function update() {
 	echo "Updating global cargo packages..."
 	cargo install-update -a
 	echo "Updating global go packages..."
-	go get -u $(cut -d" " -f2 "$HOME/.config/yadm/go_packages.txt")
+  go get -u -v $(cut -d" " -f2 "$HOME/.config/yadm/go_packages.txt") 2>&1 | grep "(download)$"
 	echo "Finished updates in %d seconds" $(bc <<<"$(date +%s) - ${START_TIME}") | boxes -d shell -p t1l2b1r2
 }
