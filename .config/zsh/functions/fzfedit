@@ -6,10 +6,7 @@
 function fzfedit() {
 	local chosen_file
 	local enclosing_dir
-	chosen_file="$(fd --full-path -L $@ | fzf +m --preview='${HOME}/.config/fzf_preview {}')"
-	if [ ! $? -eq 0 ]; then # if user didnt select file, exit
-		return
-	fi
+	chosen_file="$(fd --full-path -L $@ | fzf +m --preview='${HOME}/.config/fzf_preview {}')" || return
 	if [ -d "$chosen_file" ]; then
 		cd "$chosen_file"
 		zle && { zle reset-prompt; } # change prompt to update PS1 with new CWD

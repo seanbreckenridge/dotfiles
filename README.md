@@ -4,7 +4,7 @@
 - [qtile](https://github.com/qtile?type=source) (primary) and [i3-gaps](https://github.com/Airblader/i3) - window manager
 - [yadm](https://yadm.io) to manage dotfiles, see [yadm-with-README.md](.config/yadm/yadm-with-README.md)
 - [alacritty](https://github.com/alacritty/alacritty) as terminal 
-- [firefox-developer-edition](https://www.archlinux.org/packages/community/x86_64/firefox-developer-edition/) - browser, addons listed in [firefox_addons.txt](./local/share/firefox_addons.txt)
+- [firefox-developer-edition](https://www.archlinux.org/packages/community/x86_64/firefox-developer-edition/) - browser, addons listed in [firefox_addons.txt](./.local/share/firefox_addons.txt)
 - [rofi](https://github.com/davatorium/rofi) - application launcher
 - [emacs (doom)](https://github.com/hlissner/doom-emacs) (primary) and
   [nvim](https://neovim.io/) as editors - see [editor](.local/scripts/system/editor)
