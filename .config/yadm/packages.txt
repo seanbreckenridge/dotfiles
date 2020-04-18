@@ -9,6 +9,8 @@ exfat-utils
 fuse-exfat
 gnome-keyring
 grub-customizer
+i3-gaps
+i3blocks
 i3lock
 libxft-bgra
 light
