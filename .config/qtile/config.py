@@ -34,7 +34,7 @@ SOFTWARE.
 
 import os
 import subprocess
-from typing import List, Union, Mapping
+from typing import List
 
 from libqtile.config import (
     Screen,
@@ -48,7 +48,8 @@ from libqtile.config import (
 from libqtile.lazy import lazy
 from libqtile import layout, bar, widget, hook
 
-from rofi import Rofi
+from server_monitor_widget import monitor_widget
+
 
 mod = "mod4"  # windows key
 terminal = os.environ.get("TERMINAL", "urxvt")
@@ -96,21 +97,6 @@ keys = [
 ]
 
 
-def application_launcher(apps, terminal_apps):
-    def f(qtile):
-        choices = apps + terminal_apps
-        index, key = Rofi().select("run > ", choices)
-        if index == -1 or key == -1:
-            return
-        application = choices[index]
-        if application in terminal_apps:
-            qtile.cmd_spawn(f"{terminal} -e {application}")
-        else:
-            qtile.cmd_spawn(application)
-
-    return f
-
-
 # application launcher
 applications = [
     "thunderbird",
@@ -124,14 +110,7 @@ terminal_applications = [
     "ranger",
     "keyvol",
 ]
-keys.extend(
-    [
-        Key(
-            "M-d",
-            lazy.function(application_launcher(applications, terminal_applications)),
-        )
-    ]
-)
+keys.extend([])
 
 groups = [
     Group("1"),
@@ -141,25 +120,18 @@ groups = [
     Group("5"),
     Group("6"),
     Group("7"),
-    Group(
-        "8", persist=False, layout="max", matches=[Match(wm_class=["slack", "Slack"])]
-    ),
-    Group(
-        "9",
-        persist=False,
-        layout="max",
-        matches=[Match(wm_class=["Thunderbird", "Mail"])],
-    ),
+    Group("8", layout="max", matches=[Match(wm_class=["slack", "Slack"])]),
+    Group("9", layout="max", matches=[Match(wm_class=["Thunderbird", "Mail"])],),
 ]
 
-for g in groups:
+for i, g in enumerate(groups, 1):
     keys.extend(
         [
             # mod1 + group number = switch to group
-            BasicKey([mod], g.name, lazy.group[g.name].toscreen()),
+            BasicKey([mod], str(i), lazy.group[g.name].toscreen()),
             # mod1 + shift + group number = move focused window to group
             BasicKey(
-                [mod, "shift"], g.name, lazy.window.togroup(g.name, switch_group=False)
+                [mod, "shift"], str(i), lazy.window.togroup(g.name, switch_group=False)
             ),
         ]
     )
@@ -174,18 +146,31 @@ extension_defaults = widget_defaults.copy()
 
 screens = [
     Screen(
-        bottom=bar.Bar(
+        top=bar.Bar(
             [
-                widget.CurrentLayout(),
                 widget.GroupBox(),
                 widget.Prompt(),
                 widget.WindowName(),
-                widget.TextBox("default config", name="default"),
+                widget.GenPollText(func=monitor_widget, update_interval=600),
+                widget.sep.Sep(padding=5),
+                widget.CurrentLayoutIcon(scale=0.6),
+                widget.CurrentLayout(),
+                widget.sep.Sep(padding=5),
+                widget.TextBox("CPU:"),
+                widget.CPUGraph(update_interval=3),
+                widget.ThermalSensor(update_interval=3),
+                widget.sep.Sep(padding=5),
+                widget.Wlan(
+                    interface="wlp4s0",
+                    update_interval=5,
+                    format="{essid}",
+                ),
+                widget.sep.Sep(padding=5),
+                widget.Clock(format="%b %d (%a) %I:%M%p", update_interval=5.0),
+                widget.sep.Sep(padding=5),
                 widget.Systray(),
-                widget.Clock(format="%Y-%m-%d %a %I:%M %p"),
-                widget.QuickExit(),
             ],
-            24,
+            30,
         ),
     ),
 ]
@@ -210,7 +195,7 @@ main = None
 follow_mouse_focus = True
 bring_front_click = True
 cursor_warp = False
-floating_layout = layout.Floating(float_rules=[])
+floating_layout = layout.Floating(float_rules=[{"wmclass": "dragon-drag-and-drop"}])
 auto_fullscreen = True
 focus_on_window_activation = "smart"
 
