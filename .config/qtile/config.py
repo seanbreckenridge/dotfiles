@@ -160,6 +160,9 @@ screens = [
                 widget.CPUGraph(update_interval=3),
                 widget.ThermalSensor(update_interval=3),
                 widget.sep.Sep(padding=5),
+                widget.TextBox("BAT:"),
+                widget.Battery(),
+                widget.sep.Sep(padding=5),
                 widget.Wlan(
                     interface="wlp4s0",
                     update_interval=5,
