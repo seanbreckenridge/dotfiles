@@ -32,12 +32,12 @@ import toml
 
 from util import notify_send
 
-# for https://github.com/seanbreckenridge/foreverjs-list
+# modified from https://github.com/seanbreckenridge/foreverjs-list
 
 conf = toml.load(open(os.path.join(os.environ["HOME"], ".config/zsh/secrets"), "r"))
 
 
-def monitor_server() -> Tuple[str, str]:
+def monitor_server() -> Tuple[int, str]:
 
     #  does what it sounds like
     os.system("wait-for-internet >/dev/null")
@@ -53,42 +53,44 @@ def monitor_server() -> Tuple[str, str]:
     try:
         resp.raise_for_status()
     except httpx._exceptions.HTTPError as http_error:
-        return ("❌", str(http_error))
+        return (None, str(http_error))
 
     try:
         resp_json = resp.json()
     except json.decoder.JSONDecodeError:
-        return ("❌", "Issue parsing response as JSON")
+        return (None, "Issue parsing response as JSON")
+
+    actual_process_count = len(resp_json)
 
     # make sure the expected number of forever processes are running
-    if len(resp_json) != conf["FOREVER_LIST_COUNT"]:
+    if actual_process_count != conf["FOREVER_LIST_COUNT"]:
         return (
-            "❌",
-            f"Expected to find {conf['FOREVER_LIST_COUNT']} processes, found {len(resp_json)}",
+            actual_process_count,
+            f"Expected to find {conf['FOREVER_LIST_COUNT']} processes, found {actual_process_count}",
         )
 
     # make sure all returned processes are running
     for proc in resp_json:
         # explicity not running
         if not proc["running"]:
-            return ("❌", "{} is not running".format(proc["uid"]))
+            return (actual_process_count, "{} is not running".format(proc["uid"]))
         # if it was started recently and has more than one restart, warn me
         if (time.time() - (proc["ctime"] / 1000) < 60 * 10) and proc["restarts"] > 0:
             return (
-                "❌",
+                actual_process_count,
                 "Warning: {} was restarted in the last few minutes and has restarted {} times, could signify crashed process".format(
                     proc["uid"], proc["restarts"]
                 ),
             )
 
-    return ("✅", None)
+    return (str(conf["FOREVER_LIST_COUNT"]), None)
 
 
 def monitor_widget() -> str:
-    icon, error_message = monitor_server()
+    proc_count, error_message = monitor_server()
     if error_message is not None:
-        notify_send(error_message)
-    return "🖵" + icon
+        notify_send("VPS\n" + error_message)
+    return f"VPS: {proc_count or ''}"
 
 
 if __name__ == "__main__":
