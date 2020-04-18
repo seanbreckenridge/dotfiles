@@ -13,7 +13,7 @@ function update() {
 	echo "Updating doom emacs..."
 	doom -y upgrade
 	echo "Updating ruby packages..."
-	gem update -V
+	gem update
 	echo "Updating python packages..."
 	python3 -m pip list --no-cache-dir --outdated --format=freeze | cut -d"=" -f 1 | xargs -r -n1 python3 -m pip install --upgrade --user --no-deps
 	echo "Updating global npm packages..."
