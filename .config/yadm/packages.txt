@@ -162,6 +162,7 @@ wget
 wkhtmltopdf
 xclip
 xdotool
+xterm
 yadm-git
 zip
 
