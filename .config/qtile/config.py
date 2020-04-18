@@ -108,9 +108,16 @@ applications = [
 ]
 terminal_applications = [
     "ranger",
-    "keyvol",
 ]
-keys.extend([])
+
+# launch applications with Mod+Ctrl+<>
+keys.extend([Key(f"M-C-{app[0]}", lazy.spawn(app)) for app in applications])
+keys.extend(
+    [
+        Key(f"M-C-{termapp[0]}", lazy.spawn(f"launch {termapp}"))
+        for termapp in terminal_applications
+    ]
+)
 
 groups = [
     Group("1"),
@@ -163,11 +170,7 @@ screens = [
                 widget.TextBox("BAT:"),
                 widget.Battery(),
                 widget.sep.Sep(padding=5),
-                widget.Wlan(
-                    interface="wlp4s0",
-                    update_interval=5,
-                    format="{essid}",
-                ),
+                widget.Wlan(interface="wlp4s0", update_interval=5, format="{essid}",),
                 widget.sep.Sep(padding=5),
                 widget.Clock(format="%b %d (%a) %I:%M%p", update_interval=5.0),
                 widget.sep.Sep(padding=5),
