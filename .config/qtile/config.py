@@ -58,42 +58,88 @@ terminal = os.environ.get("TERMINAL", "urxvt")
 # https://github.com/qtile/qtile/blob/master/libqtile/xkeysyms.py
 keys = [
     # layout specific (MonadTall)
-    Key("M-h", lazy.layout.left()),
-    Key("M-l", lazy.layout.right()),
-    Key("M-j", lazy.layout.down()),
-    Key("M-k", lazy.layout.up()),
-    Key("M-S-h", lazy.layout.swap_left()),
-    Key("M-S-l", lazy.layout.swap_right()),
-    Key("M-S-j", lazy.layout.shuffle_down()),
-    Key("M-S-k", lazy.layout.shuffle_up()),
-    Key("M-i", lazy.layout.grow()),
-    Key("M-m", lazy.layout.shrink()),
-    Key("M-n", lazy.layout.normalize()),
-    Key("M-o", lazy.layout.maximize()),
-    Key("M-S-<space>", lazy.layout.flip()),
+    Key("M-h", lazy.layout.left(), desc="move focus to left window"),
+    Key("M-l", lazy.layout.right(), desc="move focus to right window"),
+    Key("M-j", lazy.layout.down(), desc="cycle down focus on window stack"),
+    Key("M-k", lazy.layout.up(), desc="cycle up focus on window stack"),
+    Key("M-S-h", lazy.layout.swap_left(), desc="swap window to left"),
+    Key("M-S-l", lazy.layout.swap_right(), desc="swap window to right"),
+    Key("M-S-j", lazy.layout.shuffle_down(), desc="swap window down on stack"),
+    Key("M-S-k", lazy.layout.shuffle_up(), desc="swap window up on stack"),
+    Key("M-i", lazy.layout.grow(), desc="increase size of window"),
+    Key("M-m", lazy.layout.shrink(), desc="decrease size of window"),
+    Key("M-n", lazy.layout.normalize(), desc="reset size of windows"),
+    Key(
+        "M-o",
+        lazy.layout.maximize(),
+        desc="increase currently focused window to close to max",
+    ),
+    Key("M-S-<space>", lazy.layout.flip(), desc="flip layout stacks"),
     # window
-    Key("M-S-f", lazy.window.toggle_floating()),
-    Key("M-f", lazy.window.toggle_fullscreen()),
+    Key(
+        "M-S-f",
+        lazy.window.toggle_floating(),
+        desc="toggle currently focused window as floating",
+    ),
+    Key(
+        "M-f",
+        lazy.window.toggle_fullscreen(),
+        desc="toggle fullscreen on currently focused window",
+    ),
     # run commands
-    Key("M-<Return>", lazy.spawn(terminal)),
-    Key("M-r", lazy.spawn('rofi -show run -display-run "run > "')),
-    Key("M-<Tab>", lazy.spawn('rofi -show window -display-window "window > "')),
-    Key("<XF86Display>", lazy.spawn("randomize_wallpaper")),
-    Key("M-S-<Escape>", lazy.spawn("lock_screen")),
-    Key("M-S-w", lazy.spawn("wfi")),
-    Key("<XF86MonBrightnessUp>", lazy.spawn("brightness up")),
-    Key("<XF86MonBrightnessDown>", lazy.spawn("brightness down")),
-    Key("<XF86AudioRaiseVolume>", lazy.spawn("volume up")),
-    Key("<XF86AudioLowerVolume>", lazy.spawn("volume down")),
-    Key("<XF86AudioMute>", lazy.spawn("volume mute")),
-    Key("<XF86AudioMicMute>", lazy.spawn("volume micmute")),
-    Key("M-S-e", lazy.spawn(f"{terminal} -e refresh-doom")),
-    Key("<Print>", lazy.spawn("screenshot")),
-    Key("M-<Print>", lazy.spawn("screenshot-to-imgur")),
+    Key("M-<Return>", lazy.spawn(terminal), desc="open a terminal"),
+    Key("M-r", lazy.spawn('rofi -show run -display-run "run > "'), desc="run prompt"),
+    Key(
+        "M-<Tab>",
+        lazy.spawn('rofi -show window -display-window "window > "'),
+        desc="swap to window prompt",
+    ),
+    Key(
+        "<XF86Display>",
+        lazy.spawn("randomize_wallpaper"),
+        desc="randomize current wallpaper",
+    ),
+    Key("M-S-<Escape>", lazy.spawn("lock_screen"), desc="lock the screen"),
+    Key("M-S-w", lazy.spawn("wfi"), desc="wait till I have internet and notify me"),
+    Key(
+        "<XF86MonBrightnessUp>",
+        lazy.spawn("brightness up"),
+        desc="increase screen brightness",
+    ),
+    Key(
+        "<XF86MonBrightnessDown>",
+        lazy.spawn("brightness down"),
+        desc="decrease screen brightness",
+    ),
+    Key(
+        "<XF86AudioRaiseVolume>", lazy.spawn("volume up"), desc="increase system volume"
+    ),
+    Key(
+        "<XF86AudioLowerVolume>",
+        lazy.spawn("volume down"),
+        desc="decrease system volume",
+    ),
+    Key("<XF86AudioMute>", lazy.spawn("volume mute"), desc="mute system volume"),
+    Key("<XF86AudioMicMute>", lazy.spawn("volume micmute"), desc="mute the mic"),
+    Key(
+        "M-S-e",
+        lazy.spawn(f"{terminal} -e refresh-doom"),
+        desc="refresh doom bindings/packages and the emacs daemon",
+    ),
+    Key(
+        "<Print>",
+        lazy.spawn("screenshot"),
+        desc="changes cursor to select a region to take a screenshot",
+    ),
+    Key(
+        "M-<Print>",
+        lazy.spawn("screenshot-to-imgur"),
+        desc="uploads most recent recent screenshot to imgur",
+    ),
     # general qtile commands
-    Key("M-S-<Tab>", lazy.next_layout()),
-    Key("M-q", lazy.window.kill()),
-    Key("M-S-r", lazy.restart()),
+    Key("M-S-<Tab>", lazy.next_layout(), desc="swap to next qtile layout"),
+    Key("M-q", lazy.window.kill(), desc="kill the current window"),
+    Key("M-S-r", lazy.restart(), desc="restart qtile in place"),
 ]
 
 
@@ -111,10 +157,19 @@ terminal_applications = [
 ]
 
 # launch applications with Mod+Ctrl+<>
-keys.extend([Key(f"M-C-{app[0]}", lazy.spawn(app)) for app in applications])
 keys.extend(
     [
-        Key(f"M-C-{termapp[0]}", lazy.spawn(f"launch {termapp}"))
+        Key(f"M-C-{app[0]}", lazy.spawn(app), desc=f"launch {app}")
+        for app in applications
+    ]
+)
+keys.extend(
+    [
+        Key(
+            f"M-C-{termapp[0]}",
+            lazy.spawn(f"launch {termapp}"),
+            desc=f"launch a terminal with {termapp}",
+        )
         for termapp in terminal_applications
     ]
 )
@@ -135,10 +190,18 @@ for i, g in enumerate(groups, 1):
     keys.extend(
         [
             # mod1 + group number = switch to group
-            BasicKey([mod], str(i), lazy.group[g.name].toscreen()),
+            BasicKey(
+                [mod],
+                str(i),
+                lazy.group[g.name].toscreen(),
+                desc=f"switch to group {i}",
+            ),
             # mod1 + shift + group number = move focused window to group
             BasicKey(
-                [mod, "shift"], str(i), lazy.window.togroup(g.name, switch_group=False)
+                [mod, "shift"],
+                str(i),
+                lazy.window.togroup(g.name, switch_group=False),
+                desc=f"move focused window to group {i}",
             ),
         ]
     )
