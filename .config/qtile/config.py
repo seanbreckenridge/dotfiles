@@ -27,7 +27,6 @@ SOFTWARE.
 """
 
 # refrences
-# https://github.com/qtile/qtile-examples/blob/master/tych0/config.py
 # https://github.com/qtile/qtile-examples/blob/master/sweenu/keys.py
 # https://github.com/qtile/qtile/wiki/app-launchers
 # https://github.com/qtile/qtile-examples/blob/master/rxcomm/config.py.eee
@@ -177,7 +176,7 @@ keys.extend(
 groups = [
     Group("1"),
     Group("2"),
-    Group("3"),
+    Group("3", matches=[Match(wm_class=["discord"])]),
     Group("4"),
     Group("5"),
     Group("6"),
