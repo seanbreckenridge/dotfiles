@@ -204,9 +204,13 @@ for i, g in enumerate(groups, 1):
             ),
         ]
     )
-
+layout_theme = {"border_width": 2,
+                "margin": 3,
+                "border_focus": "e1acff",
+                "border_normal": "282a36"
+                }
 layouts = [
-    layout.MonadTall(),
+    layout.MonadTall(**layout_theme),
     layout.Max(),
 ]
 
@@ -263,7 +267,7 @@ main = None
 follow_mouse_focus = True
 bring_front_click = True
 cursor_warp = False
-floating_layout = layout.Floating(float_rules=[{"wmclass": "dragon-drag-and-drop"}])
+floating_layout = layout.Floating(float_rules=[{"wmclass": "dragon-drag-and-drop"}, {"wmclass": "megasync"}])
 auto_fullscreen = True
 focus_on_window_activation = "smart"
 
