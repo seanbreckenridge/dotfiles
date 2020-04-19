@@ -146,7 +146,6 @@ for i, g in enumerate(groups, 1):
 layouts = [
     layout.MonadTall(),
     layout.Max(),
-    layout.Stack(),
 ]
 
 widget_defaults = dict(font="Source Code Pro", fontsize=12, padding=3,)
