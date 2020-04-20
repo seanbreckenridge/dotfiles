@@ -127,6 +127,7 @@ ncdu
 neofetch
 neovim
 neovim-plug-git
+nmap
 ntp
 pamixer
 pandoc-bin
