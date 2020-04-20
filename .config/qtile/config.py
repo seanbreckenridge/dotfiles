@@ -131,6 +131,11 @@ keys = [
         desc="changes cursor to select a region to take a screenshot",
     ),
     Key(
+        "S-<Print>",
+        lazy.spawn("screenshot -f"),
+        desc="take a screenshot of the entire screen"
+    ),
+    Key(
         "M-<Print>",
         lazy.spawn("screenshot-to-imgur"),
         desc="uploads most recent recent screenshot to imgur",

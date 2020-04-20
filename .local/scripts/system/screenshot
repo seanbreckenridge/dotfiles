@@ -6,10 +6,16 @@ SCREENSHOT_DIR="${HOME}/Desktop/Screenshots"
 OUTPUT_FILENAME="$SCREENSHOT_DIR/$(date '+%Y-%m-%d--%R:%S').png"
 
 # take screenshot, save it and put it on clipboard
-maim -s | tee "$OUTPUT_FILENAME" | xclip -t image/png -selection clipboard
-
-# if screenshot was cancelled, an empty png file
-# is still created on the deskop; delete it
-if [ "$(stat --printf="%s" "$OUTPUT_FILENAME")" = "0" ]; then
-	rm "$OUTPUT_FILENAME"
+if [ "$1" = "-f" ] || [ "$1" = "--full" ]; then
+	# fullscreen
+	scrot -z "$OUTPUT_FILENAME"
+	xclip -t image/png -selection clipboard <"$OUTPUT_FILENAME"
+else
+	# selection
+	maim -s | tee "$OUTPUT_FILENAME" | xclip -t image/png -selection clipboard
+	# if screenshot was cancelled, an empty png file
+	# is still created on the deskop; delete it
+	if [ "$(stat --printf="%s" "$OUTPUT_FILENAME")" = "0" ]; then
+		rm "$OUTPUT_FILENAME"
+	fi
 fi
