@@ -3,7 +3,6 @@
 # Modified from: https://github.com/ohmyzsh/ohmyzsh/blob/master/plugins/git/git.plugin.zsh
 
 alias g='git'
-alias gopen='gitopen'
 
 alias ga='git add'
 alias gaa='git add --all'
