@@ -158,6 +158,7 @@ applications = [
 ]
 terminal_applications = [
     "ranger",
+    "update",
 ]
 
 # launch applications with Mod+Ctrl+<>
