@@ -61,6 +61,7 @@ __pycache__
 /.surf
 /.gnupg
 /.steam*
+/.dmrc
 /.npm
 /.tor-browser
 /.m2
