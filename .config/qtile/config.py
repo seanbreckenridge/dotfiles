@@ -140,6 +140,7 @@ keys = [
         lazy.spawn("screenshot-to-imgur"),
         desc="uploads most recent recent screenshot to imgur",
     ),
+    Key("M-g", lazy.spawn("trackpad toggle"), desc="turns the trackpad on/off"),
     # general qtile commands
     Key("M-S-<Tab>", lazy.next_layout(), desc="swap to next qtile layout"),
     Key("M-q", lazy.window.kill(), desc="kill the current window"),
