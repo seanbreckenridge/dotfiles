@@ -47,6 +47,9 @@ bindkey "^[C" fzf-code
 # Alt+R to launch ranger (file manager)
 bindkey -s "^[r" "ranger\n"
 
+# Alt+X to run xmodmap (to rebind keys on external keyboards)
+bindkey -s "^[x" "xmodmap ~/.Xmodmap 2>/dev/null\n"
+
 # fzf
 # ctrl t to autocomplete files from cwd
 # ctrl r to fuzzy match through command history
