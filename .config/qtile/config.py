@@ -133,7 +133,7 @@ keys = [
     Key(
         "S-<Print>",
         lazy.spawn("screenshot -f"),
-        desc="take a screenshot of the entire screen"
+        desc="take a screenshot of the entire screen",
     ),
     Key(
         "M-<Print>",
@@ -210,11 +210,12 @@ for i, g in enumerate(groups, 1):
             ),
         ]
     )
-layout_theme = {"border_width": 2,
-                "margin": 3,
-                "border_focus": "e1acff",
-                "border_normal": "282a36"
-                }
+layout_theme = {
+    "border_width": 2,
+    "margin": 3,
+    "border_focus": "e1acff",
+    "border_normal": "282a36",
+}
 layouts = [
     layout.MonadTall(**layout_theme),
     layout.Max(),
@@ -273,7 +274,9 @@ main = None
 follow_mouse_focus = True
 bring_front_click = True
 cursor_warp = False
-floating_layout = layout.Floating(float_rules=[{"wmclass": "dragon-drag-and-drop"}, {"wmclass": "megasync"}])
+floating_layout = layout.Floating(
+    float_rules=[{"wmclass": "dragon-drag-and-drop"}, {"wmclass": "megasync"}]
+)
 auto_fullscreen = True
 focus_on_window_activation = "smart"
 
