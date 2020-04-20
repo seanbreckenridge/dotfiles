@@ -99,6 +99,7 @@ alias wget='wget --hsts-file "${XDG_CACHE_HOME}/wget-hsts"'
 
 # general environment variable configuration
 export YSU_MESSAGE_FORMAT="$(tput setaf 1)>>> ALIAS || %alias_type: %alias $(tput sgr0)"
+export MPVF_PICKER="rofi"
 
 # colors for manpages
 export LESS_TERMCAP_mb=$'\e[1;32m'

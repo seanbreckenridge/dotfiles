@@ -16,7 +16,7 @@
 - (in i3) [picom](https://github.com/yshui/picom) for window compositing
 - (in i3) [i3blocks](https://github.com/vivien/i3blocks) for status bar
 
-I typically default to dracula-like color schemes to keep things consistent. Currently in use for `alacritty` (terminal) `mocp`, `rofi`, and `emacs`.
+I typically default to dracula-like color schemes to keep things consistent. Currently in use for `qtile`, `alacritty` (terminal) `mocp`, `rofi`, and `emacs`.
 
 [.config/yadm](.config/yadm) includes lists of global packages for pacman/yay, python, ruby, npm, dart, rust, go, and haskell; the zsh [update](.config/zsh/functions/update) function updates all the corresponding packages.
 
