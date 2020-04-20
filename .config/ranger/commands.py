@@ -8,8 +8,6 @@ class fzf_select(Command):
     :fzf_select
 
     Find a file using fzf.
-    With a prefix argument select only directories.
-
     Use fd instead of find
 
     Modified from: https://github.com/junegunn/fzf
