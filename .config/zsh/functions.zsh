@@ -31,17 +31,28 @@ zle -N fzfedit; bindkey '^F' fzfedit
 fzfhiddenedit() { fzfedit -H }
 zle -N fzfhiddenedit; bindkey '^G' fzfhiddenedit
 
-# Alt+left arrow/Alt+L to move up a dir
+# Alt+left arrow/Alt+H to move up a dir
 up-dir() { cd ".."; zle reset-prompt }; zle -N up-dir
 bindkey "^[[1;3D" up-dir
 bindkey "^[h" up-dir
 
-# Alt+right arrow/Alt+H to launch fzf cd
+# Alt+right arrow/Alt+L to launch fzf cd (move into dir)
 bindkey "^[[1;3C" fzf-cd-widget
 bindkey "^[l" fzf-cd-widget
 
 # Alt+Shift+C to fzf into a directory in ~/code
-fzf-code() { cd "$HOME/code"; fzf-cd-widget && zle reset-prompt }; zle -N fzf-code
+fzf-code() {
+  cd "$HOME/code"
+  fzf-cd-widget
+  # if user didnt select a dir to cd into
+  # and is still in ~/code, go back to
+  # the dir they were in previosuly
+  if [ "$PWD" = "$HOME/code" ]; then
+    cd "$OLDPWD"
+  fi
+  zle reset-prompt
+}
+zle -N fzf-code
 bindkey "^[C" fzf-code
 
 # Alt+R to launch ranger (file manager)
