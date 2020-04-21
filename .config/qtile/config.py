@@ -156,6 +156,7 @@ applications = [
     "keepassxc",
     "discord",
     "firefox-developer-edition",
+    "alacritty",
 ]
 terminal_applications = [
     "ranger",
