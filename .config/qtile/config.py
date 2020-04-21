@@ -32,8 +32,10 @@ SOFTWARE.
 # https://github.com/qtile/qtile-examples/blob/master/rxcomm/config.py.eee
 
 import os
+import sys
 import subprocess
 from typing import List
+from collections import Counter
 
 from libqtile.config import (
     Screen,
@@ -162,6 +164,20 @@ terminal_applications = [
     "ranger",
     "update",
 ]
+
+# check if keybindings conflict
+keybind_map = Counter([a[0] for a in applications + terminal_applications])
+if keybind_map.most_common(1)[0][1] > 1:
+    starts_char = keybind_map.most_common(1)[0][0]
+    conflicted_applications = list(
+        filter(
+            lambda s: s.startswith(starts_char), applications + terminal_applications
+        )
+    )
+    print(
+        "Keybind conflict: {}".format(", ".join(conflicted_applications)),
+        file=sys.stderr,
+    )
 
 # launch applications with Mod+Ctrl+<>
 keys.extend(
