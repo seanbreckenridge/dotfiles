@@ -19,6 +19,7 @@ directory_aliases
 
 # ignore any python cache files
 __pycache__
+.mypy_cache
 
 # application config files to ignore
 .moc/*
