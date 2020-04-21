@@ -25,7 +25,7 @@ import os
 import time
 import json
 
-from typing import Tuple
+from typing import Tuple, Optional
 
 import httpx
 import toml
@@ -37,7 +37,7 @@ from util import notify_send
 conf = toml.load(open(os.path.join(os.environ["HOME"], ".config/zsh/secrets"), "r"))
 
 
-def monitor_server() -> Tuple[int, str]:
+def monitor_server() -> Tuple[Optional[int], Optional[str]]:
 
     #  does what it sounds like
     os.system("wait-for-internet >/dev/null")
@@ -83,7 +83,7 @@ def monitor_server() -> Tuple[int, str]:
                 ),
             )
 
-    return (str(conf["FOREVER_LIST_COUNT"]), None)
+    return (int(conf["FOREVER_LIST_COUNT"]), None)
 
 
 def monitor_widget() -> str:
