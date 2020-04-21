@@ -137,9 +137,9 @@ pkgfile
 pulsemixer
 qrencode
 ranger
+ripgrep
 rofi
 rofi-dmenu
-ripgrep
 rsync
 sc-im
 screenkey-git
