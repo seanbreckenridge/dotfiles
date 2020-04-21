@@ -5,12 +5,7 @@ from ranger.api.commands import Command
 
 class fzf_select(Command):
     """
-    :fzf_select
-
-    Find a file using fzf.
-    Use fd instead of find
-
-    Modified from: https://github.com/junegunn/fzf
+    Find a file using fzf. Use fd instead of find.
     """
 
     fd_command = "fd -L"
