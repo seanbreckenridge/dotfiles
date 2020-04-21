@@ -87,10 +87,6 @@
         lsp-pyls-plugins-pylint-enabled nil ;; Disable to ensure performance
         lsp-pyls-plugins-rope-completion-enabled nil ;; Disable to ensure jedi
         lsp-pyls-configuration-sources ["flake8"]
-        lsp-print-performance nil
-        lsp-enable-indentation nil
-        lsp-enable-on-type-formatting nil
-        lsp-enable-symbol-highlighting nil
         lsp-log-io nil))
 
 
