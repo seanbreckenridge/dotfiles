@@ -1,4 +1,3 @@
-haste
 rdoc
 rufo
 solargraph
