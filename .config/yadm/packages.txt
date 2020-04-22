@@ -1,6 +1,7 @@
 # os
 
 amd-ucode
+autorandr
 avahi
 cups
 cups-pdf

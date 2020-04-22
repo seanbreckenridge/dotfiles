@@ -77,16 +77,16 @@ keys: List[Key] = [
     ),
     Key("M-S-<space>", lazy.layout.flip(), desc="flip layout stacks"),
     # bindings for Column layout - i3 like
-    Key(
-        "M-S-z",
+    Key("M-S-z",
         lazy.layout.toggle_split(),
-        desc="toggle between splitting and stacking"
-    ),
+        desc="toggle between splitting and stacking"),
     # control size of windows in column mode
     Key("M-S-u", lazy.layout.grow_down(), desc="grow window downwards"),
     Key("M-S-i", lazy.layout.grow_up(), desc="grow window upwards"),
     Key("M-S-y", lazy.layout.grow_left(), desc="grow window left-wards"),
-    Key("M-S-o", lazy.layout.grow_right(), desc="grow window towards right-wards"),
+    Key("M-S-o",
+        lazy.layout.grow_right(),
+        desc="grow window towards right-wards"),
     # window (floating/fullscreen)
     Key(
         "M-S-f",
@@ -327,3 +327,9 @@ focus_on_window_activation = "smart"
 def autostart():
     autostart_script = os.path.join(os.path.dirname(__file__), "autostart.sh")
     subprocess.call([autostart_script])
+
+
+@hook.subscribe.screen_change
+def restart_on_randr(qtile, ev):
+    subprocess.call(["autorandr", "-c"])
+    qtile.cmd_restart()
