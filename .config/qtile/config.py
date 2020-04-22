@@ -57,13 +57,14 @@ terminal: str = os.environ.get("TERMINAL", "urxvt")
 # Keysym List:
 # https://github.com/qtile/qtile/blob/master/libqtile/xkeysyms.py
 keys: List[Key] = [
-    # layout specific (MonadTall)
+    # layout specific
+    # for MonadTall
     Key("M-h", lazy.layout.left(), desc="move focus to left window"),
     Key("M-l", lazy.layout.right(), desc="move focus to right window"),
     Key("M-j", lazy.layout.down(), desc="cycle down focus on window stack"),
     Key("M-k", lazy.layout.up(), desc="cycle up focus on window stack"),
-    Key("M-S-h", lazy.layout.swap_left(), desc="swap window to left"),
-    Key("M-S-l", lazy.layout.swap_right(), desc="swap window to right"),
+    Key("M-S-h", lazy.layout.shuffle_left(), desc="swap window to left"),
+    Key("M-S-l", lazy.layout.shuffle_right(), desc="swap window to right"),
     Key("M-S-j", lazy.layout.shuffle_down(), desc="swap window down on stack"),
     Key("M-S-k", lazy.layout.shuffle_up(), desc="swap window up on stack"),
     Key("M-i", lazy.layout.grow(), desc="increase size of window"),
@@ -75,7 +76,18 @@ keys: List[Key] = [
         desc="increase currently focused window to close to max",
     ),
     Key("M-S-<space>", lazy.layout.flip(), desc="flip layout stacks"),
-    # window
+    # bindings for Column layout - i3 like
+    Key(
+        "M-S-z",
+        lazy.layout.toggle_split(),
+        desc="toggle between splitting and stacking"
+    ),
+    # control size of windows in column mode
+    Key("M-S-u", lazy.layout.grow_down(), desc="grow window downwards"),
+    Key("M-S-i", lazy.layout.grow_up(), desc="grow window upwards"),
+    Key("M-S-y", lazy.layout.grow_left(), desc="grow window left-wards"),
+    Key("M-S-o", lazy.layout.grow_right(), desc="grow window towards right-wards"),
+    # window (floating/fullscreen)
     Key(
         "M-S-f",
         lazy.window.toggle_floating(),
@@ -198,7 +210,7 @@ keys.extend([
 groups: List[Group] = [
     Group("1"),
     Group("2"),
-    Group("3", matches=[Match(wm_class=["discord"])]),
+    Group("3"),
     Group("4"),
     Group("5"),
     Group("6"),
@@ -237,6 +249,7 @@ layout_theme: Mapping[str, Any] = {
 }
 layouts = [
     layout.MonadTall(**layout_theme),
+    layout.Columns(**layout_theme, num_columns=2),
     layout.Max(),
 ]
 
