@@ -236,7 +236,7 @@ for i, g in enumerate(groups, 1):
         BasicKey(
             [mod, "shift"],
             str(i),
-            lazy.window.togroup(g.name, switch_group=False),
+            lazy.window.togroup(g.name),
             desc=f"move focused window to group {i}",
         ),
     ])
