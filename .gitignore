@@ -22,10 +22,6 @@ __pycache__
 .mypy_cache
 
 # application config files to ignore
-.moc/*
-!.moc/themes
-!.moc/config
-!.moc/keymap
 /.cookiecutter_replay
 /.stack
 /.sbt

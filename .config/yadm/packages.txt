@@ -122,7 +122,6 @@ lm_sensors
 lynx
 maim
 mlocate
-moc-pulse
 moreutils
 ncdu
 neofetch
