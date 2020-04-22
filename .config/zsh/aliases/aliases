@@ -37,9 +37,8 @@ alias todo='todo.sh'
 alias screens='sxiv -t ~/Desktop/Screenshots/*.png'
 # open the printer interface in the browser
 alias printer_server='sudo cat /etc/cups/cupsd.conf | grep -i "Listen localhost" | cut -d":" -f2 | sed -e "s/^/localhost:/" | openurl' # open localhost printer web console
-# start the ldm (light device mounter) daemon, to mount usb/harddrives
-alias usb_mount='echo -e "use lsblk -f to view disk IDs, sudo umount -l /dev/sdxx to unmount"; sudo ldm -u $(whoami)'
-alias drive_mount='usb_mount'
+# start the ldm (light device mounter) daemon, to mount devices
+alias drive_mount='echo -e "use lsblk -f to view disk IDs"; sudo ldm -u $(whoami)'
 # remove packages that arent being used for anything
 alias remove_orphans='sudo pacman -Rns $(pacman -Qtdq)'
 # clear yay tar.gz cache
