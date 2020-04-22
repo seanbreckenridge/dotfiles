@@ -247,6 +247,7 @@ layout_theme: Mapping[str, Any] = {
     "border_focus": "e1acff",
     "border_normal": "282a36",
 }
+
 layouts = [
     layout.MonadTall(**layout_theme),
     layout.Columns(**layout_theme, num_columns=2),
