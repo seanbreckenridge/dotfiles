@@ -34,8 +34,7 @@ SOFTWARE.
 import os
 import sys
 import subprocess
-from typing import List, Tuple, Any, Mapping
-from collections import Counter
+from typing import List, Tuple, Any, Mapping, Union
 
 from libqtile.config import (
     Screen,
@@ -169,8 +168,36 @@ keys: List[Key] = [
     Key("M-S-r", lazy.restart(), desc="restart qtile in place"),
 ]
 
+
+def generate_keybind(binding: Union[str, Tuple[str, str]],
+                     launch_terminal: bool = False) -> Key:
+    """
+    Given an application name or a binding ('h', 'htop') describing how to launch an application,
+    returns the corresponding qtile Keybind
+    """
+    # binding like, ('v', 'keyvol'), to bind keyvol to Mod+Ctrl+v
+    if isinstance(binding, tuple):
+        launch_key, application = binding
+    # application name, uses the first letter as the launch binding
+    elif isinstance(binding, str):
+        launch_key = binding[0]
+        application = binding
+    else:
+        return print(
+            f"Expected a binding (an application 'str' or a 'tuple' describing a binding, found {type(binding)}",
+            file=sys.stderr)
+
+    # use 'launch' to launch a terminal if this has a TUI
+    if launch_terminal:
+        application = f"launch {application}"
+
+    return Key(f"M-C-{launch_key}",
+               lazy.spawn(application),
+               desc="launch {app}")
+
+
 # application launcher
-applications: List[str] = [
+applications: List[Union[str, Tuple[str, str]]] = [
     "thunderbird",
     "emacs",
     "slack",
@@ -179,32 +206,17 @@ applications: List[str] = [
     "firefox-developer-edition",
     "alacritty",
 ]
-terminal_applications: List[str] = [
+terminal_applications: List[Union[str, Tuple[str, str]]] = [
     "ranger",
     "update",
+    ('v', "keyvol"),
 ]
 
-# check if keybindings conflict
-keybind_most_common: Tuple[str, int] = Counter(
-    [a[0] for a in applications + terminal_applications]).most_common(1)[0]
-if keybind_most_common[1] > 1:
-    conflicted_applications: List[str] = list(
-        filter(lambda s: s.startswith(keybind_most_common[0]),
-               applications + terminal_applications))
-    print("Keybind conflict: {}".format(", ".join(conflicted_applications)),
-          file=sys.stderr)
-
 # launch applications with Mod+Ctrl+<>
+keys.extend([generate_keybind(app) for app in applications])
 keys.extend([
-    Key(f"M-C-{app[0]}", lazy.spawn(app), desc=f"launch {app}")
-    for app in applications
-])
-keys.extend([
-    Key(
-        f"M-C-{termapp[0]}",
-        lazy.spawn(f"launch {termapp}"),
-        desc=f"launch a terminal with {termapp}",
-    ) for termapp in terminal_applications
+    generate_keybind(termapp, launch_terminal=True)
+    for termapp in terminal_applications
 ])
 
 groups: List[Group] = [
