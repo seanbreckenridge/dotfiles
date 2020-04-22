@@ -79,6 +79,8 @@
     )
   )
 
+(set-formatter! 'black "yapf")
+
 ;; disable mypy
 (setq-default flycheck-disabled-checkers '(python-mypy))
 
