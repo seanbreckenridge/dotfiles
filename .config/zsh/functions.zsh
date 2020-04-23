@@ -25,11 +25,11 @@ autoload -Uz "$ZDOTDIR"/completions/*
 compdef _binary_completion which-cat launch
 compdef _editor e
 
-# bind fzfedit (fuzzy match everything and open/cd to dir)
-zle -N fzfedit; bindkey '^F' fzfedit
+# bind fzf-edit (fuzzy match everything and open/cd to dir)
+zle -N fzf-edit; bindkey '^F' fzf-edit
 # fuzzy match everything (including hidden files)
-fzfhiddenedit() { fzfedit -H }
-zle -N fzfhiddenedit; bindkey '^G' fzfhiddenedit
+fzf-edit-hidden() { fzf-edit -H }
+zle -N fzf-edit-hidden; bindkey '^G' fzf-edit-hidden
 
 # Alt+left arrow/Alt+H to move up a dir
 up-dir() { cd ".."; zle reset-prompt }; zle -N up-dir

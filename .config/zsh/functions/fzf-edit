@@ -3,7 +3,7 @@
 # If a dir is chosen, cd's there
 # Additional args are forwarded to fd
 
-function fzfedit() {
+function fzf-edit() {
 	local chosen_file
 	local enclosing_dir
 	chosen_file="$(fd --full-path -L $@ | fzf +m --preview='${HOME}/.config/fzf_preview {}')" || return
