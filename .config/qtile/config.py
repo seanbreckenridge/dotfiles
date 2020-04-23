@@ -189,11 +189,14 @@ def generate_keybind(binding: Union[str, Tuple[str, str]],
 
     # use 'launch' to launch a terminal if this has a TUI
     if launch_terminal:
+        description = f"launch {application} in a new terminal"
         application = f"launch {application}"
+    else:
+        description = f"launch {application}"
 
     return Key(f"M-C-{launch_key}",
                lazy.spawn(application),
-               desc="launch {app}")
+               desc=description)
 
 
 # application launcher
