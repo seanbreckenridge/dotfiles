@@ -194,4 +194,24 @@ shebang = '#!/bin/bash'
 [lynx]
 command = '/usr/bin/lynx -accept_all_cookies -cfg="${XDG_CONFIG_HOME}/lynx/lynx.cfg" "$@"'
 
+# open the printer interface in the browser
+[printer-server]
+command = '''
+# open the printer interface in the browser
+PRINTER_PORT=$(sudo cat /etc/cups/cupsd.conf | grep -i "Listen localhost" | cut -d":" -f2)
+printf "localhost:%d" "$PRINTER_PORT" | openurl
+'''
+
+[drive-mount]
+command= '''
+# start the ldm (light device mounter) daemon, to mount devices
+echo "use lsblk -f to view disk IDs"
+exec sudo ldm -u $(whoami)
+'''
+
+[ipinfo]
+# get my ip information
+command='''
+curl --silent ipinfo.io | sed -e "s/^[{}]//" -e "s/^\s*//" -e "s/,$//" -e "s/\"//g" -e "/^\s*$/d"
+'''
 

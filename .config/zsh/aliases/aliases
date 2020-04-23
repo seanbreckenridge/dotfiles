@@ -35,10 +35,6 @@ alias todo='todo.sh'
 
 # open screenshots folder
 alias screens='sxiv -t ~/Desktop/Screenshots/*.png'
-# open the printer interface in the browser
-alias printer_server='sudo cat /etc/cups/cupsd.conf | grep -i "Listen localhost" | cut -d":" -f2 | sed -e "s/^/localhost:/" | openurl' # open localhost printer web console
-# start the ldm (light device mounter) daemon, to mount devices
-alias drive_mount='echo -e "use lsblk -f to view disk IDs"; sudo ldm -u $(whoami)'
 # remove packages that arent being used for anything
 alias remove_orphans='sudo pacman -Rns $(pacman -Qtdq)'
 # clear yay tar.gz cache
@@ -55,7 +51,5 @@ alias firefox_addons='openurls < ~/.local/share/firefox_addons.txt'
 alias calc='python3 -i ~/.config/pythonrc -c "from math import *"'
 # pipe some command into stripcolors, removes any ANSI color codes
 alias stripcolors="sed 's/\x1B\[[0-9;]\+[A-Za-z]//g'"
-# get my ip information
-alias ipinfo='curl --silent ipinfo.io | sed -e "s/^[{}]//" -e "s/^\s*//" -e "s/,$//" -e "s/\"//g" -e "/^\s*$/d"'
 # alias ? to duck, searches duckduckgo in lynx
 alias "?=duck"
