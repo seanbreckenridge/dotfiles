@@ -49,6 +49,7 @@ pyperclip
 pytest
 python-language-server
 python-rofi
+python-xlib
 PyYAML
 requests
 rsa

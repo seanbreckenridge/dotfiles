@@ -49,8 +49,10 @@ from libqtile.lazy import lazy
 from libqtile import layout, bar, widget, hook
 
 from server_monitor_widget import monitor_widget
+from util import get_num_monitors
 
 mod: str = "mod4"  # windows key
+alt: str = "mod1"  # alt key
 terminal: str = os.environ.get("TERMINAL", "urxvt")
 
 # Keysym List:
@@ -162,6 +164,9 @@ keys: List[Key] = [
     ),
     Key("M-g", lazy.spawn("trackpad toggle"),
         desc="turns the trackpad on/off"),
+    # for switching to different monitors
+    BasicKey(["control", alt], "1", lazy.to_screen(0), desc="Keyboard focus to monitor 1"),
+    BasicKey(["control", alt], "2", lazy.to_screen(1), desc="Keyboard focus to monitor 2"),
     # general qtile commands
     Key("M-S-<Tab>", lazy.next_layout(), desc="swap to next qtile layout"),
     Key("M-q", lazy.window.kill(), desc="kill the current window"),
@@ -275,37 +280,34 @@ widget_defaults = dict(
 )
 extension_defaults = widget_defaults.copy()
 
-screens = [
-    Screen(top=bar.Bar(
-        [
-            widget.GroupBox(),
-            widget.Prompt(),
-            widget.WindowName(),
-            widget.GenPollText(func=monitor_widget, update_interval=600),
-            widget.sep.Sep(padding=5),
-            widget.CurrentLayoutIcon(scale=0.6),
-            widget.CurrentLayout(),
-            widget.sep.Sep(padding=5),
-            widget.TextBox("CPU:"),
-            widget.CPUGraph(update_interval=3),
-            widget.ThermalSensor(update_interval=3),
-            widget.sep.Sep(padding=5),
-            widget.TextBox("BAT:"),
-            widget.Battery(),
-            widget.sep.Sep(padding=5),
-            widget.Wlan(
-                interface="wlp4s0",
-                update_interval=5,
-                format="{essid}",
-            ),
-            widget.sep.Sep(padding=5),
-            widget.Clock(format="%b %d (%a) %I:%M%p", update_interval=5.0),
-            widget.sep.Sep(padding=5),
-            widget.Systray(),
-        ],
-        30,
-    ), ),
-]
+
+# shared bar for all screens
+def init_bar():
+    return bar.Bar([
+        widget.GroupBox(),
+        widget.Prompt(),
+        widget.WindowName(),
+        widget.GenPollText(func=monitor_widget, update_interval=600),
+        widget.sep.Sep(padding=5),
+        widget.CurrentLayoutIcon(scale=0.6),
+        widget.CurrentLayout(),
+        widget.sep.Sep(padding=5),
+        widget.TextBox("CPU:"),
+        widget.CPUGraph(update_interval=3),
+        widget.ThermalSensor(update_interval=3),
+        widget.sep.Sep(padding=5),
+        widget.TextBox("BAT:"),
+        widget.Battery(),
+        widget.sep.Sep(padding=5),
+        widget.Wlan(interface="wlp4s0", update_interval=5, format="{essid}"),
+        widget.sep.Sep(padding=5),
+        widget.Clock(format="%b %d (%a) %I:%M%p", update_interval=5.0),
+        widget.sep.Sep(padding=5),
+        widget.Systray(),
+    ], 30)
+
+
+screens = [Screen(top=init_bar()) for _ in range(get_num_monitors())]
 
 # Drag floating layouts.
 mouse = [
