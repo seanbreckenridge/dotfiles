@@ -218,6 +218,7 @@ keys.extend([
     generate_keybind(termapp, launch_terminal=True)
     for termapp in terminal_applications
 ])
+keys.append(Key("M-b", lazy.spawn('qtile-notify-bindings'), desc="Send a notification with bindings for launching applications"))
 
 groups: List[Group] = [
     Group("1"),
