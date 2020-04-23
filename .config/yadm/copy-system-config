@@ -8,7 +8,7 @@
 # provide absolute paths to directories, ending with a forward slash
 declare dirs=("/etc/X11/xorg.conf.d/")
 # provide absolute paths to files
-declare files=("/etc/pacman.conf" "/etc/nsswitch.conf" "/etc/pacman.d/hooks/mirrorupgrade.hook" "/etc/systemd/system/lockscreen@.service")
+declare files=("/etc/pacman.conf" "/etc/nsswitch.conf" "/etc/pacman.d/hooks/mirrorupgrade.hook" "/etc/systemd/system/lockscreen@.service" "/etc/pulse/client.conf")
 
 SYSTEM_CONF_TARGET="${HOME}/.local/system-config"
 
