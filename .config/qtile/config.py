@@ -194,9 +194,7 @@ def generate_keybind(binding: Union[str, Tuple[str, str]],
     else:
         description = f"launch {application}"
 
-    return Key(f"M-C-{launch_key}",
-               lazy.spawn(application),
-               desc=description)
+    return Key(f"M-C-{launch_key}", lazy.spawn(application), desc=description)
 
 
 # application launcher
@@ -221,7 +219,10 @@ keys.extend([
     generate_keybind(termapp, launch_terminal=True)
     for termapp in terminal_applications
 ])
-keys.append(Key("M-b", lazy.spawn('qtile-notify-bindings'), desc="Send a notification with bindings for launching applications"))
+keys.append(
+    Key("M-b",
+        lazy.spawn('qtile-notify-bindings'),
+        desc="Send a notification with bindings for launching applications"))
 
 groups: List[Group] = [
     Group("1"),

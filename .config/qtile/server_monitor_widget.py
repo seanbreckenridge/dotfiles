@@ -1,5 +1,4 @@
 #!/usr/bin/python3
-
 """
 This is a pretty personal script, it uses my dev environment
 requires:
@@ -34,7 +33,8 @@ from util import notify_send
 
 # modified from https://github.com/seanbreckenridge/foreverjs-list
 
-conf = toml.load(open(os.path.join(os.environ["HOME"], ".config/zsh/secrets"), "r"))
+conf = toml.load(
+    open(os.path.join(os.environ["HOME"], ".config/zsh/secrets"), "r"))
 
 
 def monitor_server() -> Tuple[Optional[int], Optional[str]]:
@@ -73,14 +73,15 @@ def monitor_server() -> Tuple[Optional[int], Optional[str]]:
     for proc in resp_json:
         # explicity not running
         if not proc["running"]:
-            return (actual_process_count, "{} is not running".format(proc["uid"]))
+            return (actual_process_count,
+                    "{} is not running".format(proc["uid"]))
         # if it was started recently and has more than one restart, warn me
-        if (time.time() - (proc["ctime"] / 1000) < 60 * 10) and proc["restarts"] > 0:
+        if (time.time() -
+            (proc["ctime"] / 1000) < 60 * 10) and proc["restarts"] > 0:
             return (
                 actual_process_count,
-                "Warning: {} was restarted in the last few minutes and has restarted {} times, could signify crashed process".format(
-                    proc["uid"], proc["restarts"]
-                ),
+                "Warning: {} was restarted in the last few minutes and has restarted {} times, could signify crashed process"
+                .format(proc["uid"], proc["restarts"]),
             )
 
     return (int(conf["FOREVER_LIST_COUNT"]), None)

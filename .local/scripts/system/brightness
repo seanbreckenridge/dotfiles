@@ -15,4 +15,3 @@ down)
 	light -U "$STEP"
 	;;
 esac
-
