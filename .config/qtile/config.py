@@ -221,7 +221,7 @@ keys.extend([
     for termapp in terminal_applications
 ])
 keys.append(
-    Key("M-b",
+    Key("M-C-<Tab>",
         lazy.spawn('qtile-notify-bindings'),
         desc="Send a notification with bindings for launching applications"))
 
