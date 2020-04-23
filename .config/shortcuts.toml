@@ -73,7 +73,7 @@ printf "\n"
 
 # wait for internet connection and ping me
 [wfi]
-command='wait-for-internet && notify-send "INTERNET" && mpv /usr/share/sounds/freedesktop/stereo/message.oga > /dev/null 2>&1'
+command='wait-for-internet && notify-send "INTERNET" && paplay /usr/share/sounds/freedesktop/stereo/message.oga'
 
 # prompts the user for input with a basic rofi input prompt
 # additional options can be given after rofi-input
