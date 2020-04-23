@@ -7,6 +7,7 @@ b ~/gdrive/Education/Books
 m ~/Music
 M ~/Movies
 n ~/Documents/Notes
+q ~/.config/qtile
 y ~/.config/yadm
 z ~/.config/zsh
 zf ~/.config/zsh/functions
