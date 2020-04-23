@@ -30,10 +30,6 @@ command = '''
 launch "doom refresh && restart-emacs"
 '''
 
-# print the previous working directory
-[prevwd]
-command = 'echo "$OLDPWD"'
-
 # open the dotfiles git repository
 [dotfiles]
 command = '''yadm gitconfig --get remote.origin.url | /usr/bin/python3 -c "from giturlparse import parse; print(parse(input()).urls[\"https\"])" | openurl'''
@@ -74,10 +70,6 @@ fi
 curl -sL "https://gitignore.io/api/$*"
 printf "\n"
 '''
-
-# open ranger
-[rn]
-command = 'launch ranger'
 
 # wait for internet connection and ping me
 [wfi]
@@ -201,4 +193,5 @@ shebang = '#!/bin/bash'
 # on $PATH first
 [lynx]
 command = '/usr/bin/lynx -accept_all_cookies -cfg="${XDG_CONFIG_HOME}/lynx/lynx.cfg" "$@"'
+
 
