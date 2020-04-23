@@ -19,16 +19,11 @@ def parse_table(table_str):
     # the delimiters for the table
     dash_lines: List[str] = table_str.strip().splitlines()
     dash_row: str = table_str.splitlines()[1].strip()
-    indices = [0] + [i for i, c in enumerate(dash_row) if c == ' ']
+    indices = [i for i, c in enumerate(dash_row) if c == ' ']
+    # find local max indices to find separations between table rows
+    indices = [0] + [i for i in indices if i == max(filter(lambda x: x in indices, range(i - 3, i + 3))) ]
     # split on indices
-    # bindings with lots of empty spaces
-    messy_bindings = [[b[i:j] for i, j in zip(indices, indices[1:] + [None])]
-                      for b in dash_lines[2:]]
-    # fix bindings by removing empty items
-    fixed_bindings = [[i.strip() for i in b if i.strip()]
-                      for b in messy_bindings]
-    # add empty items into list if description didnt exist
-    return [b + ([''] * (4 - len(b))) for b in fixed_bindings]
+    return [[b[i:j].strip() for i, j in zip(indices, indices[1:] + [None])] for b in dash_lines[2:]]
 
 
 def argparser() -> bool:
