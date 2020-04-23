@@ -211,7 +211,7 @@ terminal_applications: List[Union[str, Tuple[str, str]]] = [
     "ranger",
     "update",
     ('v', "keyvol"),
-    "htop"
+    "htop",
 ]
 
 # launch applications with Mod+Ctrl+<>
@@ -233,12 +233,8 @@ groups: List[Group] = [
     Group("5"),
     Group("6"),
     Group("7"),
-    Group("8", layout="max", matches=[Match(wm_class=["slack", "Slack"])]),
-    Group(
-        "9",
-        layout="max",
-        matches=[Match(wm_class=["Thunderbird", "Mail"])],
-    ),
+    Group("8", matches=[Match(wm_class=["slack", "Slack"])]),
+    Group("9", matches=[Match(wm_class=["Thunderbird", "Mail"])]),
 ]
 
 for i, g in enumerate(groups, 1):
