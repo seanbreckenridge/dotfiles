@@ -211,6 +211,7 @@ terminal_applications: List[Union[str, Tuple[str, str]]] = [
     "ranger",
     "update",
     ('v', "keyvol"),
+    "htop"
 ]
 
 # launch applications with Mod+Ctrl+<>
