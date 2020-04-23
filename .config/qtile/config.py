@@ -206,7 +206,6 @@ def generate_keybind(binding: Union[str, Tuple[str, str]],
 applications: List[Union[str, Tuple[str, str]]] = [
     "thunderbird",
     "emacs",
-    "slack",
     "keepassxc",
     "discord",
     "firefox-developer-edition",
@@ -215,6 +214,7 @@ applications: List[Union[str, Tuple[str, str]]] = [
 terminal_applications: List[Union[str, Tuple[str, str]]] = [
     "ranger",
     "update",
+    "slack-term",
     ('v', "keyvol"),
     "htop",
 ]
