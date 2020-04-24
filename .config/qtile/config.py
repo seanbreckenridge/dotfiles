@@ -294,7 +294,6 @@ def init_bar():
         widget.sep.Sep(padding=5),
         widget.TextBox("CPU:"),
         widget.CPUGraph(update_interval=3),
-        widget.ThermalSensor(update_interval=3),
         widget.sep.Sep(padding=5),
         widget.TextBox("BAT:"),
         widget.Battery(),
