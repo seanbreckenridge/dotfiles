@@ -190,9 +190,7 @@ for serv in "${services[@]}"; do
 	fi
 done
 
-if [[ "$(systemctl show -p SubState --value "mariadb")" != "running" ]]; then
-	print_error "Setup mariadb by following: https://wiki.archlinux.org/index.php/MariaDB"
-fi
+# Setup mariadb by following: https://wiki.archlinux.org/index.php/MariaDB
 
 # Check for manually installed binaries, installed at /usr/local/bin
 
