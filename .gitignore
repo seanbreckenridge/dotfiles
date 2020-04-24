@@ -71,6 +71,7 @@ __pycache__
 # Top level config/local files to ignore
 .config/todo/*
 !.config/todo/config
+/.config/slack-term/
 /.config/imgur_uploader
 /.config/mimeapps.list
 /.config/StardewValley
