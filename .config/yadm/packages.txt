@@ -114,6 +114,7 @@ fzf
 git
 htop-vim-git
 hub
+hyperfine
 imagemagick
 jq
 ldm
