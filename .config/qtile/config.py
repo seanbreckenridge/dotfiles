@@ -269,7 +269,7 @@ layout_theme: Mapping[str, Any] = {
 
 layouts = [
     layout.MonadTall(**layout_theme),
-    layout.Columns(**layout_theme, num_columns=2),
+    layout.Columns(**layout_theme, num_columns=2, insert_position=1),
     layout.Max(),
 ]
 
