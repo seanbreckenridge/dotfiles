@@ -30,6 +30,7 @@ alias du="dust"
 alias df="df -h"
 alias history='history 0'
 alias todo='todo.sh'
+alias twitchlive-table='twitchlive --output-format="table"'
 
 # Non-standard
 
