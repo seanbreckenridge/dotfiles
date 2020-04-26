@@ -3,3 +3,4 @@ gore github.com/motemen/gore/cmd/gore
 gotests github.com/cweill/gotests/...
 guru golang.org/x/tools/cmd/guru
 keyvol github.com/seanbreckenridge/keyvol
+twitchlive github.com/seanbreckenridge/twitchlive
