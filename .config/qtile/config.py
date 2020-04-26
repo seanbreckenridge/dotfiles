@@ -165,8 +165,14 @@ keys: List[Key] = [
     Key("M-g", lazy.spawn("trackpad toggle"),
         desc="turns the trackpad on/off"),
     # for switching to different monitors
-    BasicKey(["control", alt], "1", lazy.to_screen(0), desc="Keyboard focus to monitor 1"),
-    BasicKey(["control", alt], "2", lazy.to_screen(1), desc="Keyboard focus to monitor 2"),
+    BasicKey(["control", alt],
+             "1",
+             lazy.to_screen(0),
+             desc="Keyboard focus to monitor 1"),
+    BasicKey(["control", alt],
+             "2",
+             lazy.to_screen(1),
+             desc="Keyboard focus to monitor 2"),
     # general qtile commands
     Key("M-S-<Tab>", lazy.next_layout(), desc="swap to next qtile layout"),
     Key("M-q", lazy.window.kill(), desc="kill the current window"),
@@ -216,6 +222,7 @@ terminal_applications: List[Union[str, Tuple[str, str]]] = [
     "update",
     "slack-term",
     ('v', "keyvol"),
+    ('m', "stream-media"),
     "htop",
 ]
 
