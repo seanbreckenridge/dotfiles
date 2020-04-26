@@ -67,7 +67,7 @@ bindkey -s "^[x" "xmodmap ~/.Xmodmap 2>/dev/null\n"
 # alt c to cd to fuzzy matched directory
 source /usr/share/fzf/key-bindings.zsh
 source /usr/share/fzf/completion.zsh
-export FZF_DEFAULT_OPTS="--extended"
+export FZF_DEFAULT_OPTS=""
 export FZF_DEFAULT_COMMAND="fd -H -L"  # ignore files in gitignore
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_ALT_C_COMMAND="$FZF_DEFAULT_COMMAND -t d -E .git"
