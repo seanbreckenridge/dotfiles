@@ -31,7 +31,7 @@ HASKELL_PACKAGE_LIST="${YADM_DIR}/haskell_packages.txt"
 echo "Checking ~/.config/yadm/packages.txt for any packages to install..."
 # have to use for loop, while loop times out instantly
 for lib in $(sed -e '/^\s*$/d' -e '/^#.*$/d' "${PACKAGE_LIST}"); do
-	if [[ ! $(yay -Q "${lib}") ]]; then # if package isn't installed
+	if [[ ! $(yay -Q "${lib}" 2>/dev/null) ]]; then # if package isn't installed
 		read -p "Do you want to install '${lib}'? [Y/n] " -n 1 -r
 		if [[ ! $REPLY =~ ^[Nn]$ ]]; then # REPLY is automatically used as read variable
 			yay -S "${lib}"
