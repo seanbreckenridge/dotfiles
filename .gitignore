@@ -72,7 +72,7 @@ __pycache__
 .config/todo/*
 !.config/todo/config
 /.config/slack-term/
-/.config/twitch-live
+/.config/twitchlive
 /.config/imgur_uploader
 /.config/mimeapps.list
 /.config/StardewValley

@@ -1,19 +1,7 @@
 #!/bin/sh
 
-if git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
-	if ! remote_url="$(git ls-remote --get-url)"; then
-		printf "%s" "$remote_url"
-		exit 1
-	fi
-	if https_url="$(echo "$remote_url" | /usr/bin/python3 -c "from giturlparse import parse; print(parse(input()).urls['https'])" 2>/dev/null)"; then
-		echo "$https_url"
-		openurl "$https_url"
-		exit 0
-	else
-		printf "Could not parse %s into a HTTP URL properly.\n" "$remote_url"
-		exit 1
-	fi
+if GIT_URL=$(giturl); then
+	openurl "$GIT_URL"
 else
-	echo "Not currently in a git repo"
-	exit 1
+	echo "$GIT_URL"
 fi
