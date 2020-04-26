@@ -133,7 +133,7 @@ for f in "$@"; do
 done
 '''
 
-[stream-media]
+[stream-link]
 command = """
 # grab URL from clipboard and play in a new terminal with mpvf
 if ! CLIPBOARD_CONTENTS="$(xclip -out -selection clipboard)"; then

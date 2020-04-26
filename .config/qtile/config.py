@@ -222,7 +222,7 @@ terminal_applications: List[Union[str, Tuple[str, str]]] = [
     "update",
     "slack-term",
     ('v', "keyvol"),
-    ('m', "stream-media"),
+    ('m', "stream-link"),
     "htop",
 ]
 
