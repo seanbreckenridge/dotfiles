@@ -22,7 +22,7 @@ autoload -Uz "$ZDOTDIR"/functions/*
 
 # personal zsh completions
 autoload -Uz "$ZDOTDIR"/completions/*
-compdef _gnu_generic exists youtube-dl
+compdef _gnu_generic exists youtube-dl wait-for-internet genpasswd genpass shortcuts
 compdef _binary_completion which-cat launch
 compdef _editor e
 
