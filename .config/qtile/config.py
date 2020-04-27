@@ -164,6 +164,9 @@ keys: List[Key] = [
     ),
     Key("M-g", lazy.spawn("trackpad toggle"),
         desc="turns the trackpad on/off"),
+    Key("M-x",
+        lazy.spawn('''alacritty -e sh -c "xmodmap ~/.Xmodmap; sleep 1"'''),
+        desc="fix keybinds, for when I plug in my external keyboard"),
     # for switching to different monitors
     BasicKey(["control", alt],
              "1",
