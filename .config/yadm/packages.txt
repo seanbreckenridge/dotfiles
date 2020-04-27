@@ -195,7 +195,7 @@ okular
 pinta
 rxvt-unicode
 simplescreenrecorder
-slack
+slack-desktop
 slack-term
 sqlitebrowser
 steam
