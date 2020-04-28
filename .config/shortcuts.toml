@@ -219,3 +219,12 @@ notify-send -t 10000 "$(qtile-bindings --json | jq -r '[.[]|select(.modifier=="c
 
 [webcam-test]
 command='''mpv /dev/video0'''
+
+[geolocate]
+command='''
+if [ -z "$1" ]; then
+  echo "provide ip address to geolocate as the first argument" 2>&1
+  exit 1
+fi
+curl --silent "https://ipvigilante.com/$1" | jq '.data | "\(.country_name), \(.subdivision_1_name), \(.subdivision_2_name) (\(.latitude), \(.longitude))"'
+'''
