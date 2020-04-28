@@ -74,6 +74,7 @@ __pycache__
 /.config/slack-term/
 /.config/twitchlive
 /.config/imgur_uploader
+/.config/bashtop/themes
 /.config/mimeapps.list
 /.config/StardewValley
 /.config/enchant
