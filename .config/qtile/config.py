@@ -297,7 +297,7 @@ def init_bar():
         widget.GroupBox(),
         widget.Prompt(),
         widget.WindowName(),
-        widget.GenPollText(func=monitor_widget, update_interval=600),
+        widget.GenPollText(func=monitor_widget, update_interval=900),
         widget.sep.Sep(padding=5),
         widget.CurrentLayoutIcon(scale=0.6),
         widget.CurrentLayout(),
