@@ -94,7 +94,6 @@ yarn
 alacritty
 aspell
 aspell-en
-bashtop
 boxes
 bzip2
 cmatrix
