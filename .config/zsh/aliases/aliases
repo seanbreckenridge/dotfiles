@@ -6,6 +6,7 @@ alias l="$(command -v ls) --color=auto"
 alias ls='exa --icons'
 alias ll='ls -hl'
 alias la='ll -a'
+alias sl='ls | rev'
 
 # yadm
 alias yds="yadm diff --staged"
