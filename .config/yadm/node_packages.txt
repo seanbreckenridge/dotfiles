@@ -13,3 +13,4 @@ vtop
 yaml-language-server
 html-minifier
 uglifycss
+browser-sync

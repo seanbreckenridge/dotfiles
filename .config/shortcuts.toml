@@ -228,3 +228,11 @@ if [ -z "$1" ]; then
 fi
 curl --silent "https://ipvigilante.com/$1" | jq '.data | "\(.country_name), \(.subdivision_1_name), \(.subdivision_2_name) (\(.latitude), \(.longitude))"'
 '''
+
+[preview]
+command='''
+browser-sync start \
+  --no-notify --no-ui \
+  --ignore '**/.*' \
+  -sw
+'''
