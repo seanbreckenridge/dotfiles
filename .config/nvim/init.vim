@@ -112,6 +112,9 @@ map <leader><leader> :bprevious<CR>
 " Open file manager
 map <leader>e :Explore<CR>
 
+" shortcut to write and quit
+map <leader>q :wq<CR>
+
 " Compile document (LaTeX/markdown/etc)
 map <leader>c :w! \| !compile <c-r>%<CR><CR>
 
