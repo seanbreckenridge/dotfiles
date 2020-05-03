@@ -94,6 +94,7 @@ yarn
 alacritty
 aspell
 aspell-en
+at
 boxes
 bzip2
 cmatrix
@@ -130,9 +131,9 @@ neovim
 neovim-plug-git
 nmap
 ntp
-pastel
 pamixer
 pandoc-bin
+pastel
 perl-image-exiftool
 pistol-git
 pkgfile
@@ -164,6 +165,7 @@ vim
 wget
 wkhtmltopdf
 xclip
+xcolor
 xdotool
 xterm
 yadm-git
