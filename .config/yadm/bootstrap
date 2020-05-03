@@ -11,6 +11,7 @@ function abort() {
 	exit 1
 }
 
+# Install yay if it isn't already installed
 if [[ ! $(command -v yay) ]]; then
 	cd /tmp
 	git clone https://aur.archlinux.org/yay.git
@@ -28,17 +29,16 @@ CARGO_PACKAGE_LIST="${YADM_DIR}/cargo_packages.txt"
 GO_PACKAGE_LIST="${YADM_DIR}/go_packages.txt"
 HASKELL_PACKAGE_LIST="${YADM_DIR}/haskell_packages.txt"
 
+# yay/pacman to install packages from arch repos
 echo "Checking ~/.config/yadm/packages.txt for any packages to install..."
 # have to use for loop, while loop times out instantly
 for lib in $(sed -e '/^\s*$/d' -e '/^#.*$/d' "${PACKAGE_LIST}"); do
 	if [[ ! $(yay -Q "${lib}" 2>/dev/null) ]]; then # if package isn't installed
-		read -p "Do you want to install '${lib}'? [Y/n] " -n 1 -r
-		if [[ ! $REPLY =~ ^[Nn]$ ]]; then # REPLY is automatically used as read variable
-			yay -S "${lib}"
-		fi
+		yay -S "${lib}"
 	fi
 done
 
+# set zsh as shell
 if ! echo "$SHELL" | grep -q zsh; then
 	if [[ ! "$(command -v zsh)" ]]; then
 		sudo pacman -S zsh
@@ -49,6 +49,7 @@ else
 	echo "zsh is already set as your default shell"
 fi
 
+# setup zsh files
 echo 'Setting up zsh directory structure...'
 # make sure original zsh files are removed
 original_files=("${HOME}/.zshenv" "${HOME}/.zshrc" "${HOME}/.zsh_history" "${HOME}/.zprofile")
@@ -66,9 +67,8 @@ done
 # make sure personal aliases file exists so that zshrc souces fine
 [[ ! -f "${ZDOTDIR}/aliases/personal_aliases" ]] && touch "${ZDOTDIR}/aliases/personal_aliases"
 
-# Setting up default user directories
+# create default user directories
 default_user_dirs=("code" "Desktop" "Documents" "Documents/Notes" "Documents/wallpapers" "Downloads" "Desktop/Screenshots" "Pictures" ".local" ".cache" ".credentials" "gdrive")
-
 for d_name in "${default_user_dirs[@]}"; do
 	if [[ ! -d "${HOME}/${d_name}" ]]; then
 		mkdir -p "${HOME}/${d_name}"
@@ -82,22 +82,16 @@ if [[ -z $(git config --global user.name) ]]; then
 	read -r githubusername
 	git config --global user.name "$githubusername"
 fi
-
 # check for global email config
 if [[ -z $(git config --global user.email) ]]; then
 	printf "No global email set. Enter email connected to your GitHub account: "
 	read -r githubemail
 	git config --global user.email "$githubemail"
 fi
-
-if [[ -z "$EDITOR" ]]; then
-	git config --global core.editor nano
-else
-	git config --global core.editor nvim
-fi
+# set editor to use as nvim
+git config --global core.editor nvim
 
 # Install python packages
-
 echo "Installing global python site-packages..."
 python3 -m pip install -q --user -r "$PYTHON_PACKAGE_LIST"
 
@@ -115,8 +109,10 @@ install_python_personal "pythonanywhere_3_months" "https://github.com/seanbrecke
 # tab completion nicer
 [[ $(command -v speedtest-cli) ]] && rm "$(command -v speedtest-cli)"
 
+# install npm packages
 NPM_CONFIG_PREFIX="${XDG_DATA_HOME:-$HOME/.local/share}/npm-packages"
 echo "Installing global npm packages..."
+# create the npm directory and make sure we own the directory to fix permission issues
 [[ ! -d "${NPM_CONFIG_PREFIX}" ]] && mkdir -p "${NPM_CONFIG_PREFIX}" && sudo chown -R "$(whoami)" "${NPM_CONFIG_PREFIX}"
 # get a list of installed packages
 NPM_PACKAGE_LIST="$(npm ls -g --json | jq '.dependencies | keys[]' -r)"
@@ -163,6 +159,8 @@ function install_go_package() {
 
 echo "Installing global go packages..."
 while IFS= read -r go_line; do
+  # purposefully dont use "$go_line", to split the line into two arguments
+  # the name of the binary on the $PATH and the URL to install it from
 	install_go_package $go_line
 done <"$GO_PACKAGE_LIST"
 
