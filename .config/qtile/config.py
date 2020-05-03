@@ -48,7 +48,6 @@ from libqtile.config import (
 from libqtile.lazy import lazy
 from libqtile import layout, bar, widget, hook
 
-from server_monitor_widget import monitor_widget
 from util import get_num_monitors
 
 mod: str = "mod4"  # windows key
@@ -297,8 +296,6 @@ def init_bar():
         widget.GroupBox(),
         widget.Prompt(),
         widget.WindowName(),
-        widget.GenPollText(func=monitor_widget, update_interval=900),
-        widget.sep.Sep(padding=5),
         widget.CurrentLayoutIcon(scale=0.6),
         widget.CurrentLayout(),
         widget.sep.Sep(padding=5),

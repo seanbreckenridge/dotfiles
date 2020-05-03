@@ -130,6 +130,7 @@ neovim
 neovim-plug-git
 nmap
 ntp
+pastel
 pamixer
 pandoc-bin
 perl-image-exiftool
