@@ -49,6 +49,7 @@ __pycache__
 /.xsession-errors*
 /.gitconfig
 /.ghc/ghci_history
+/.ipynb_checkpoints
 /.pulse-cookie
 /.node-gyp
 /.electron-gyp
