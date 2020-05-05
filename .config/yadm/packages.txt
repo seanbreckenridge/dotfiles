@@ -200,6 +200,7 @@ rxvt-unicode
 simplescreenrecorder
 slack-desktop
 slack-term
+snes9x-gtk
 sqlitebrowser
 steam
 surf
