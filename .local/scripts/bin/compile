@@ -14,11 +14,10 @@ cd "$dir" || exit
 abort() {
 	if [ "$(tty)" = "not a tty" ]; then
 		notify-send "$1"
-		exit 1
 	else
 		printf "%s\n" "$1"
-		exit 1
 	fi
+	exit 1
 }
 
 case "$file" in
