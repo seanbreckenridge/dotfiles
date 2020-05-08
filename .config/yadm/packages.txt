@@ -186,6 +186,7 @@ chatterino2-git
 chromium
 discord
 firefox-developer-edition
+gimp
 google-chrome
 gparted
 keepassxc
