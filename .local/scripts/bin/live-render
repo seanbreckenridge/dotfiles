@@ -1,7 +1,6 @@
 #!/bin/sh
 # whenever a format (md/latex) file is saved, re-compile it
-# this is displayed using opout (with okular), which
-# supports live-reloading from disk
+# compile refreshes mupdf if its active
 
 [ -z "$1" ] && echo "Pass an file to render as the first argument." && exit 1
 
