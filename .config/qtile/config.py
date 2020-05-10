@@ -159,7 +159,7 @@ keys: List[Key] = [
     Key(
         "M-<Print>",
         lazy.spawn("screenshot-to-imgur"),
-        desc="uploads most recent recent screenshot to imgur",
+        desc="uploads most recent screenshot to imgur",
     ),
     Key("M-g", lazy.spawn("trackpad toggle"),
         desc="turns the trackpad on/off"),
