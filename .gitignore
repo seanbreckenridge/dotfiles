@@ -72,7 +72,11 @@ __pycache__
 # Top level config/local files to ignore
 .config/todo/*
 !.config/todo/config
+/.config/GIMP
 /.config/slack-term/
+/.config/snes9x
+/.config/vlc
+/.config/snes9x
 /.config/bashtop
 /.config/twitchlive
 /.config/imgur_uploader
