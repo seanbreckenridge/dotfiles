@@ -233,3 +233,10 @@ fi
 curl --silent "https://ipvigilante.com/$1" | jq '.data | "\(.country_name), \(.subdivision_1_name), \(.subdivision_2_name) (\(.latitude), \(.longitude))"'
 '''
 
+[image-dimensions]
+command='''
+for f in "$@"; do
+    img_size="$(exiftool "$f" | grep "Image Size" | cut -d":" -f2)"
+    printf "%s:%s\n" "$f" "$img_size"
+done
+'''
