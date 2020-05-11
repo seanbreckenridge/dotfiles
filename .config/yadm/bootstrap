@@ -193,7 +193,7 @@ done
 # Check for manually installed binaries, installed at /usr/local/bin
 
 echo "Checking for manually installed binaries..."
-binaries=("wait-for-internet" "genpasswd" "shortcuts" "largechar" "st" "mpvf" "exists")
+binaries=("wait-for-internet" "genpasswd" "shortcuts" "largechar" "mpvf" "exists")
 for binary in "${binaries[@]}"; do
 	if [ ! "$(command -v "$binary")" ]; then
 		print_error "Warning: Couldn't find ${binary}. Install it from https://github.com/seanbreckenridge/${binary}"
