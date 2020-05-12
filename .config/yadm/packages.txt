@@ -81,7 +81,6 @@ sbcl
 sbt
 scala
 scalafmt
-shellcheck-static
 shfmt
 stack-static
 tidy
