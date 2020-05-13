@@ -15,12 +15,12 @@ function update() {
 	echo "Updating ruby packages..."
 	gem update
 	echo "Updating python packages..."
-	python3 -m pip list --no-cache-dir --outdated --format=freeze | cut -d"=" -f 1 | xargs -r -n1 python3 -m pip install --upgrade --user --no-deps
+	update_python_packages
 	echo "Updating global npm packages..."
 	npm update -g
 	echo "Updating global cargo packages..."
 	cargo install-update -a
 	echo "Updating global go packages..."
-  go get -u -v $(cut -d" " -f2 "$HOME/.config/yadm/go_packages.txt") 2>&1 | grep "(download)$"
+	go get -u -v $(cut -d" " -f2 "$HOME/.config/yadm/go_packages.txt") 2>&1 | grep "(download)$"
 	printf "Finished updates in %d seconds\n" $(bc <<<"$(date +%s) - ${START_TIME}") | boxes -d shell -p t1l2b1r2
 }
