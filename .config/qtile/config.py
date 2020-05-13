@@ -222,6 +222,7 @@ applications: List[Union[str, Tuple[str, str]]] = [
 terminal_applications: List[Union[str, Tuple[str, str]]] = [
     "ranger",
     "slack-term",
+    "speedtest",
     ('v', "keyvol"),
     ('m', "stream-link"),
     "htop",
