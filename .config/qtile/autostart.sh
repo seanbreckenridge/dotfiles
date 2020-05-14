@@ -16,5 +16,7 @@ lock_screen -b &
 unclutter --timeout 2 &
 # start discord
 discord --start-minimized &
+# sync todo.txt up to server whenever it changes
+bash "${HOME}/code/todotxt_deadline_notify/copy_todotxt_to_server.sh" &
 # start emacs server
 systemctl --user start emacs
