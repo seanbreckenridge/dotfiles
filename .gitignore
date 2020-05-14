@@ -106,7 +106,7 @@ __pycache__
 /.config/Thunar
 /.config/Pinta
 /.config/QtProject.conf
-/.config/xfce4/xfconf
+/.config/xfce4/
 /.config/gtk-*
 /.config/configstore
 /.config/okularpartrc
