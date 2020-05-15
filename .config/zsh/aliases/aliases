@@ -30,9 +30,9 @@ alias shutdown="poweroff"
 alias du="du -h"
 alias df="df -h"
 alias history='history 0'
-alias todo='todo.sh'
 alias twitchlive-table='twitchlive --output-format="table"'
 alias preview='serve .'
+alias ft="full_todotxt ~/.config/todo/todo.txt"
 
 # Non-standard
 
