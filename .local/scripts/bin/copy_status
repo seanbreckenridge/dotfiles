@@ -20,7 +20,7 @@ while true; do
 	clear
 	SOURCE_SIZE=$(dir_size "$1")
 	DEST_SIZE=$(dir_size "$2")
-	PERCENTAGE="$(bc -l <<<$(printf "scale=4; %d/%d*100" "$DEST_SIZE" "$SOURCE_SIZE"))"
+	PERCENTAGE="$(echo "$(bc -l <<<$(printf "scale=6; %d/%d*100" "$DEST_SIZE" "$SOURCE_SIZE"))" | rev | cut -c 3- | rev)"
 	center_text "$PERCENTAGE"
 	sleep 5
 done
