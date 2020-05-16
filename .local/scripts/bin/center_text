@@ -1,5 +1,5 @@
 #!/bin/bash
-# Accepts a stringa as the first argument
+# Accepts a string as the first argument
 # Centers the text vertically on the screen
 
 if [ -z "$1" ]; then
