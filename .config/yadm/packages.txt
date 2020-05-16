@@ -146,6 +146,7 @@ rsync
 sc-im
 screenkey-git
 scrot
+shellcheck-bin
 strace
 sxiv
 terminalimageviewer-git
