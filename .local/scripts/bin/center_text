@@ -10,13 +10,13 @@ fi
 clear
 LINES="$(($(tput lines) / 2))"
 # center text vertically
-for i in $(seq $LINES); do
+for _ in $(seq $LINES); do
 	echo
 done
 # center text horizontally
 COLUMNS=$(tput cols)
-printf "%*s\n" $(((${#1} + $COLUMNS) / 2)) "$1"
+printf "%*s\n" $(((${#1} + COLUMNS) / 2)) "$1"
 # move prompt to bottom of screen
-for i in $(seq $((LINES - 1))); do
+for _ in $(seq $((LINES - 1))); do
 	echo
 done
