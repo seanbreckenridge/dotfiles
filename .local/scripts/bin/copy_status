@@ -8,7 +8,7 @@
 # is currently being  run in another window.
 
 if [ -z "$2" ] || [ ! -d "$1" ] || [ ! -d "$2" ]; then
-	echo -e "Provide <source> <dest> as arguments to copy_status\nPrints the current status of the copy; what %% has been transferred"
+	echo -e "Provide <source> <dest> as arguments to copy_status\nPrints the current status of the copy; what %% has been transferred" 1>&2
 	exit 1
 fi
 
