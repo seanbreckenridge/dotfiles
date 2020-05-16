@@ -70,7 +70,8 @@ __pycache__
 /.gradle
 
 # Top level config/local files to ignore
-.config/todo/*
+/.config/todo/*
+/.todo
 !.config/todo/config
 /.config/GIMP
 /.config/slack-term/
