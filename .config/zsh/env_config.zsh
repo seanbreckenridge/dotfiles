@@ -11,15 +11,13 @@
 # zsh history configuration
 
 HISTFILE="${ZDOTDIR}/.zsh_history"
-HISTSIZE=100000
-SAVEHIST=100000
+HISTSIZE=1000000
+SAVEHIST=1000000
 setopt APPEND_HISTORY       # append to history file instead of replacing
-setopt HIST_IGNORE_ALL_DUPS # ignore repeated commands
-setopt HIST_FIND_NO_DUPS    # dont display if found earlier in history
-setopt HIST_IGNORE_DUPS     # ignore rows if they are duplicates
 setopt HIST_REDUCE_BLANKS   # delete empty lines from history file
 setopt HIST_IGNORE_SPACE    # ignore lines that start with space
-setopt HIST_NO_STORE        ## Do not add history and fc commands to the history
+setopt HIST_NO_STORE        # Do not add history and fc commands to the history
+setopt EXTENDED_HISTORY     # save time/duration to history file
 
 # Set environment variables to change defualt cache/config file locations
 
