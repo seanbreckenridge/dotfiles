@@ -110,7 +110,7 @@ install_python_personal "pythonanywhere_3_months" "https://github.com/seanbrecke
 [[ $(command -v speedtest-cli) ]] && rm "$(command -v speedtest-cli)"
 
 # install npm packages
-NPM_CONFIG_PREFIX="${XDG_DATA_HOME:-$HOME/.local/share}/npm-packages"
+NPM_CONFIG_PREFIX="${XDG_DATA_HOME}/npm-packages"
 echo "Installing global npm packages..."
 # create the npm directory and make sure we own the directory to fix permission issues
 [[ ! -d "${NPM_CONFIG_PREFIX}" ]] && mkdir -p "${NPM_CONFIG_PREFIX}" && sudo chown -R "$(whoami)" "${NPM_CONFIG_PREFIX}"
