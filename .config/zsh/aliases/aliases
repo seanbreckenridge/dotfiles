@@ -33,6 +33,7 @@ alias history='history 0'
 alias twitchlive-table='twitchlive --output-format="table"'
 alias preview='serve .'
 alias ft="full_todotxt ~/.config/todo/todo.txt"
+alias rr="rifle"
 
 # Non-standard
 
