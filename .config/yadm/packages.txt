@@ -90,6 +90,7 @@ yarn
 
 # utils
 
+atool
 alacritty
 aspell
 aspell-en
