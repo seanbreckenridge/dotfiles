@@ -15,10 +15,8 @@ function fzf-edit() {
 		chosen_file=$(basename "$chosen_file")
 		cd "$enclosing_dir"
 		zle && { zle reset-prompt; } # reset prompt to update PS1
-		# if the file is readable, open it in $EDITOR
-		if iconv --from-code="utf-8" --to-code="utf-8" "$chosen_file" >/dev/null 2>&1; then
-			$EDITOR -cb "$chosen_file"
-		fi
+		# use rifle to open file
+		rifle "$chosen_file"
 		zle-keymap-select # check vi mode to update cursor shape
 	fi
 }
