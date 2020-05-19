@@ -39,7 +39,7 @@ video/* | audio/*)
 	}
 	;;
 application/json)
-	try pygmentize -l json "$path" && {
+	try jq <"$path" && {
 		dump | trim
 		exit 0
 	}

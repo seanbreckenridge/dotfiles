@@ -76,6 +76,10 @@ case "$mimetype" in
 video/* | audio/*)
 	exiftool "$path" && exit 0
 	;;
+# json
+application/json)
+	jq <"$path" && exit 0
+	;;
 # Syntax highlight for text files:
 text/* | */xml)
 	if [ "$(tput colors)" -ge 256 ]; then
