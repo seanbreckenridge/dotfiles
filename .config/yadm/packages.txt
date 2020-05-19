@@ -90,11 +90,11 @@ yarn
 
 # utils
 
-atool
 alacritty
 aspell
 aspell-en
 at
+atool
 boxes
 bzip2
 cmatrix
