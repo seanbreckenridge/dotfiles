@@ -11,7 +11,7 @@
 - [i3lock](https://i3wm.org/i3lock/) for screen lock; [daemon process](.local/scripts/system/lock_screen) caches pixelated version of screen to speed up start time
 - [dunst](https://dunst-project.org/) for notificaitons
 - [lightdm](https://wiki.archlinux.org/index.php/LightDM) - display manager
-- [todotxt](http://todotxt.org/) for todos, with a [rofi interface](.local/scripts/bin/todo_prompt) as GUI.
+- [todotxt](http://todotxt.org/) for todos, with a [rofi interface](.local/scripts/bin/todo_prompt) as GUI, and [tui](https://github.com/seanbreckenridge/full_todotxt) for adding todos.
 - [ranger](https://github.com/ranger/ranger) - file manager
 - (in i3) [picom](https://github.com/yshui/picom) for window compositing
 - (in i3) [i3blocks](https://github.com/vivien/i3blocks) for status bar
