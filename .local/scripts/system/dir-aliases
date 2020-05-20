@@ -54,8 +54,8 @@ end
 config_file
 |> File.stream!()
 |> Stream.map(&String.trim(&1))
-|> Stream.filter(fn line -> line |> String.length() > 0 end)
-|> Stream.filter(fn line -> line |> DirAlias.is_comment() |> Kernel.not() end)
+|> Stream.filter(&(&1 |> String.length() > 0))
+|> Stream.filter(&(&1 |> DirAlias.is_comment() |> Kernel.not()))
 |> Stream.map(&String.split(&1, " ", parts: 2))
 |> Stream.map(&DirAlias.generate_alias(&1))
 |> Stream.into(File.stream!(alias_output_file))
