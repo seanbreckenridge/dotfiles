@@ -7,7 +7,7 @@
 # This assumes a cp -r ../data/media/moves /mnt/drive/movies
 # is currently being  run in another window.
 
-if [ -z "$2" ] || [ ! -d "$1" ] || [ ! -d "$2" ]; then
+if [ -z "$2" ] || [ ! -e "$1" ] || [ ! -e "$2" ]; then
 	echo -e "Provide <source> <dest> as arguments to copy_status\nPrints the current status of the copy; what %% has been transferred" 1>&2
 	exit 1
 fi
@@ -20,6 +20,8 @@ while true; do
 	clear
 	SOURCE_SIZE=$(dir_size "$1")
 	DEST_SIZE=$(dir_size "$2")
+	#echo "$SOURCE_SIZE"
+	#echo "$DEST_SIZE"
 	PERCENTAGE="$(bc -l <<<$(printf "scale=6; %d/%d*100" "$DEST_SIZE" "$SOURCE_SIZE") | rev | cut -c 3- | rev)"
 	center_text "$PERCENTAGE%"
 	sleep 5
