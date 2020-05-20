@@ -193,7 +193,7 @@ gparted
 keepassxc
 megasync
 mpv
-mupdf
+mupdf-gl
 obs-linuxbrowser-bin
 obs-studio
 okular
