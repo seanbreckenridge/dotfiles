@@ -29,6 +29,7 @@ __pycache__
 /.bundle
 /.emacs.d/
 /.scala_history
+/.mupdf.history
 /.sc-iminfo
 /.scalac/
 /.swipl-dir*
@@ -66,6 +67,7 @@ __pycache__
 /.gore
 /.elvish
 /.jupyter
+/.3T
 /.mal-id-cache
 /.gradle
 
@@ -78,6 +80,8 @@ __pycache__
 /.config/snes9x
 /.config/vlc
 /.config/snes9x
+/.config/filezilla
+/.config/3T
 /.config/bashtop
 /.config/twitchlive
 /.config/imgur_uploader
