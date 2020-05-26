@@ -24,10 +24,10 @@ else
 fi
 """
 
-# open a terminal, run doom refresh, and restart the emacs daemon
+# open a terminal, run doom sync, and restart the emacs daemon
 [refresh-doom]
 command = '''
-launch "doom refresh && restart-emacs"
+launch "doom sync && restart-emacs"
 '''
 
 # open the dotfiles git repository
