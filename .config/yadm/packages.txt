@@ -198,6 +198,7 @@ obs-linuxbrowser-bin
 obs-studio
 okular
 pinta
+robo3t-bin
 rxvt-unicode
 simplescreenrecorder
 slack-desktop
