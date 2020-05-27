@@ -1,13 +1,14 @@
 # shortcuts to commonly used directories
-c ~/code
 .c ~/.config
-d ~/Downloads
 D ~/Documents
-b ~/gdrive/Education/Books
-m ~/Music
 M ~/Movies
+b ~/gdrive/Education/Books
+c ~/code
+d ~/Downloads
+m ~/Music
 n ~/Documents/Notes
 q ~/.config/qtile
+s ~/.local/scripts
 y ~/.config/yadm
 z ~/.config/zsh
 zf ~/.config/zsh/functions
