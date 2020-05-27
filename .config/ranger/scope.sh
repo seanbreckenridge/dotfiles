@@ -52,6 +52,10 @@ safepipe() {
 # Image previews, if enabled in ranger.
 if [ "$preview_images" = "True" ]; then
 	case "$mimetype" in
+	image/gif)
+		# my script to get the middle frame of a gif
+		cp "$(gifpreview "$path")" "$cached" && exit 6 || exit 1
+		;;
 	image/svg+xml)
 		convert "$path" "$cached" && exit 6 || exit 1
 		;;
@@ -59,8 +63,9 @@ if [ "$preview_images" = "True" ]; then
 		exit 7
 		;;
 		# Image preview for video, disabled by default.:
-		###video/*)
-		###    ffmpegthumbnailer -i "$path" -o "$cached" -s 0 && exit 6 || exit 1;;
+	video/*)
+		ffmpegthumbnailer -i "$path" -o "$cached" -s 0 && exit 6 || exit 1
+		;;
 	esac
 fi
 

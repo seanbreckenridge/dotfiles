@@ -110,6 +110,7 @@ exa
 fd
 feh
 ffmpeg
+ffmpegthumbnailer
 figlet
 fzf
 git

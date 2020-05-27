@@ -1,0 +1,23 @@
+#!/bin/sh
+# accepts a gif as the first argument,
+# converts and prints the path to the
+# middle frame of the gif
+
+path="${1:?"No file given to convert to a gif"}"
+# validate input
+case "$path" in
+*.gif) ;;
+
+*)
+	echo "Must provide a .gif file as the argument" 1>&2
+	exit 1
+	;;
+esac
+[ -e /tmp/previewgif ] && rm -rf /tmp/previewgif
+mkdir /tmp/previewgif
+# convert gif to images
+convert -coalesce "$path" /tmp/previewgif/preview.png || exit 1
+# get the middle image
+find /tmp/previewgif >/tmp/previewgif/images.log
+middleline="$(($(wc -l </tmp/previewgif/images.log) / 2))"
+[ -f /tmp/previewgif/images.log ] && sed -n "${middleline}p" </tmp/previewgif/images.log || exit 1
