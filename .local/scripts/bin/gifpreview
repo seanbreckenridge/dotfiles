@@ -13,11 +13,11 @@ case "$path" in
 	exit 1
 	;;
 esac
-[ -e /tmp/previewgif ] && rm -rf /tmp/previewgif
-mkdir /tmp/previewgif
+[ -e /tmp/gifpreview ] && rm -rf /tmp/gifpreview
+mkdir /tmp/gifpreview
 # convert gif to images
-convert -coalesce "$path" /tmp/previewgif/preview.png || exit 1
+convert -coalesce "$path" /tmp/gifpreview/preview.png || exit 1
 # get the middle image
-find /tmp/previewgif >/tmp/previewgif/images.log
-middleline="$(($(wc -l </tmp/previewgif/images.log) / 2))"
-[ -f /tmp/previewgif/images.log ] && sed -n "${middleline}p" </tmp/previewgif/images.log || exit 1
+find /tmp/gifpreview >/tmp/gifpreview/images.log
+middleline="$(($(wc -l </tmp/gifpreview/images.log) / 2))"
+[ -f /tmp/gifpreview/images.log ] && sed -n "${middleline}p" </tmp/gifpreview/images.log || exit 1
