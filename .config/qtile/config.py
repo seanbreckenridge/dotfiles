@@ -220,12 +220,12 @@ applications: List[Union[str, Tuple[str, str]]] = [
     "emacs",
     "keepassxc",
     "discord",
+    "slack",
     "firefox-developer-edition",
     "alacritty",
 ]
 terminal_applications: List[Union[str, Tuple[str, str]]] = [
     "ranger",
-    "slack-term",
     ("v", "keyvol"),
     ("m", "stream-link"),
     "htop",
