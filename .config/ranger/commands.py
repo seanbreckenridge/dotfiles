@@ -2,7 +2,6 @@ import os
 import subprocess
 from ranger.api.commands import Command
 
-
 class fzf_select(Command):
     """
     Find a file using fzf. Use fd instead of find.
@@ -24,7 +23,6 @@ class fzf_select(Command):
                 self.fm.cd(fzf_file)
             else:
                 self.fm.select_file(fzf_file)
-
 
 class fzf_select_hidden(fzf_select):
     """

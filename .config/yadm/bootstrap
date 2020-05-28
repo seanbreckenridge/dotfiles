@@ -207,5 +207,7 @@ fi
 dir-aliases
 printf "Created %d directory aliases\n" "$(wc -l <"$ZDOTDIR/aliases/directory_aliases")"
 
+dir-aliases-ranger
+
 echo "Installing nvim packages..."
 nvim +PlugInstall +qall

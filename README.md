@@ -23,7 +23,7 @@ I typically default to dracula-like color schemes to keep things consistent. Cur
 Packages can be added to the `.txt` files manually, and then `yadm bootstrap` can be run repeatedely to make sure everything is installed.
 
 - [.config/shortcuts.toml](.config/shortcuts.toml) - describes basic shell scripts that are created by [shortcuts](https://github.com/seanbreckenridge/shortcuts)
-- [dir-aliases](.local/scripts/system/dir-aliases) generates aliases from `key->directory` mappings described in [.config/directories](.config/directories)
+- [dir-aliases](.local/scripts/system/dir-aliases) generates aliases from `key->directory` mappings described in [.config/directories](.config/directories). `dir-aliases-ranger` creates bookmarks in ranger using the same keys.
 - [.local/scripts/bin](.local/scripts/bin) - generic scripts
     - media related, [duration](.local/scripts/bin/duration) to get media length, [gifme](.local/scripts/bin/gifme) to convert video to gifs.
     - [gitopen](.local/scripts/bin/gitopen) to open current git directory in browser
