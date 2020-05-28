@@ -41,6 +41,10 @@ bindkey "^[h" up-dir
 bindkey "^[[1;3C" fzf-cd-widget
 bindkey "^[l" fzf-cd-widget
 
+# Ctrl+P to plainplay (playlist manager/music player)
+# https://github.com/seanbreckenridge/plaintext-playlist
+bindkey -s '^P' "plainplay\n"
+
 # Alt+Shift+C to fzf into a directory in ~/code
 fzf-code() {
   cd "$HOME/code"

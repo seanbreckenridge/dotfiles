@@ -84,6 +84,9 @@ export JULIA_DEPOT_PATH="${XDG_DATA_HOME}/julia"
 # shortcuts: https://github.com/seanbreckenridge/shortcuts
 export SHORTCUTS_DIR="${XDG_DATA_HOME}/shortcuts"
 
+# playlist manager: https://github.com/seanbreckenridge/plaintext-playlist
+export PLAINTEXT_PLAYLIST_MUSIC_DIR="${HOME}/Music"
+
 # ignore less history
 export LESSHISTFILE="-"
 
