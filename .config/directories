@@ -11,4 +11,5 @@ q ~/.config/qtile
 s ~/.local/scripts
 y ~/.config/yadm
 z ~/.config/zsh
+za ~/.config/zsh/aliases
 zf ~/.config/zsh/functions
