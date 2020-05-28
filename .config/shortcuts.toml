@@ -158,9 +158,9 @@ notify-send "$IMGUR_URL"
 # open chatterino and use mpv to stream from twitch
 [twitch]
 command = '''
-[ -z "$1" ] && echo "Pass the twitch user to stream from as the first argument." && exit 1
+STREAMER="${1:?'Pass the twitch user to stream from as the first argument.'}"
 pgrep -x chatterino >/dev/null || chatterino &
-mpvf "https://www.twitch.tv/${1}"
+mpvf "https://www.twitch.tv/${STREAMER}"
 '''
 
 [clipedit]
@@ -226,11 +226,8 @@ command='''mpv /dev/video0'''
 
 [geolocate]
 command='''
-if [ -z "$1" ]; then
-  echo "provide ip address to geolocate as the first argument" 2>&1
-  exit 1
-fi
-curl --silent "https://ipvigilante.com/$1" | jq '.data | "\(.country_name), \(.subdivision_1_name), \(.subdivision_2_name) (\(.latitude), \(.longitude))"'
+IP_ADDR="${1:?'provide ip address to geolocate as the first argument'}"
+curl --silent "https://ipvigilante.com/${IP_ADDR}" | jq '.data | "\(.country_name), \(.subdivision_1_name), \(.subdivision_2_name) (\(.latitude), \(.longitude))"'
 '''
 
 [image-dimensions]
