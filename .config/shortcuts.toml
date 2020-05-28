@@ -240,3 +240,29 @@ for f in "$@"; do
     printf "%s:%s\n" "$f" "$img_size"
 done
 '''
+
+[remove-extension]
+command='''
+FILEPATH="${1:?'You must provide a filepath to remove the extension for.'}"
+echo "${FILEPATH%%.*}"
+'''
+
+[replace-extension]
+command='''
+FILEPATH="${1:?'Have to provide a filepath to replace the extension for'}"
+REPLACE_EXTENSION="${2:?'Must provide extension to replace extension with'}"
+echo "${FILEPATH%%.*}.${REPLACE_EXTENSION#.}"
+'''
+
+[to-png]
+command='''
+FILEPATH=${1:?'Must provide image to convert'}
+convert "$FILEPATH" "$(replace-extension "$FILEPATH" png)"
+'''
+
+[to-icon]
+command='''
+FILEPATH=${1:?'Must provide image to convert'}
+NEW_FILEPATH="$(remove-extension $FILEPATH)-icon.png"
+convert -resize x16 -gravity center -crop 16x16+0+0 -flatten -colors 256 "$FILEPATH" "$NEW_FILEPATH"
+'''
