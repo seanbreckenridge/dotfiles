@@ -170,24 +170,6 @@ xclip -out -selection clipboard | vipe | xclip -in -selection clipboard
 '''
 link = 'edit-clipboard'
 
-[symlink]
-command="""
-# from https://gitlab.com/rwxrob/configgroup/mint/-/tree/master/bin
-symlink () {
-  from="$1"
-  to="$2"
-  if [ -z "$from" -o -z "$to" ]; then
-    echo 'symlink <from> <to>'
-    return 1
-  fi
-  echo Linking $from'` -> `'$to
-  ln -fs $to $from
-}
-
-symlink $*
-"""
-shebang = '#!/bin/bash'
-
 # override the lynx binary by
 # placing the lynx shortcut
 # on $PATH first
