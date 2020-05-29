@@ -16,7 +16,7 @@ docopt
 flake8
 full-todotxt
 Flask
-giturlparse.py
+giturlparse
 google-api-python-client
 greasyfork_archive
 HTMLParser
