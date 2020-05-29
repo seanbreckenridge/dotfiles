@@ -11,7 +11,7 @@
 - [i3lock](https://i3wm.org/i3lock/) for screen lock; [daemon process](.local/scripts/system/lock_screen) caches pixelated version of screen to speed up start time
 - [dunst](https://dunst-project.org/) for notificaitons
 - [lightdm](https://wiki.archlinux.org/index.php/LightDM) - display manager
-- [todotxt](http://todotxt.org/) for todos, with a [rofi interface](.local/scripts/bin/todo_prompt) as GUI, and [tui](https://github.com/seanbreckenridge/full_todotxt) for adding todos.
+- [todotxt](http://todotxt.org/) for todos, with a [rofi interface](.local/scripts/bin/todo_prompt) as GUI, and [tui](https://gitlab.com/seanbreckenridge/full_todotxt) for adding todos.
 - [ranger](https://github.com/ranger/ranger) - file manager
 - (in i3) [picom](https://github.com/yshui/picom) for window compositing
 - (in i3) [i3blocks](https://github.com/vivien/i3blocks) for status bar
@@ -22,7 +22,7 @@ I typically default to dracula-like color schemes to keep things consistent. Cur
 
 Packages can be added to the `.txt` files manually, and then `yadm bootstrap` can be run repeatedely to make sure everything is installed.
 
-- [.config/shortcuts.toml](.config/shortcuts.toml) - describes basic shell scripts that are created by [shortcuts](https://github.com/seanbreckenridge/shortcuts)
+- [.config/shortcuts.toml](.config/shortcuts.toml) - describes basic shell scripts that are created by [shortcuts](https://gitlab.com/seanbreckenridge/shortcuts)
 - [dir-aliases](.local/scripts/system/dir-aliases) generates aliases from `key->directory` mappings described in [.config/directories](.config/directories). `dir-aliases-ranger` creates bookmarks in ranger using the same keys.
 - [.local/scripts/bin](.local/scripts/bin) - generic scripts
     - media related, [duration](.local/scripts/bin/duration) to get media length, [gifme](.local/scripts/bin/gifme) to convert video to gifs.
@@ -33,7 +33,7 @@ Packages can be added to the `.txt` files manually, and then `yadm bootstrap` ca
 
 ### Install
 
-    yadm clone https://github.com/seanbreckenridge/dotfiles
+    yadm clone https://gitlab.com/seanbreckenridge/dotfiles
     yadm bootstrap
 
 #### LICENSE
