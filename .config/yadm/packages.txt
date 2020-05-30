@@ -91,6 +91,7 @@ yarn
 # utils
 
 alacritty
+asciiquarium
 aspell
 aspell-en
 at
@@ -122,6 +123,7 @@ jq
 ldm
 lftp
 lm_sensors
+lolcat
 lynx
 maim
 mlocate
