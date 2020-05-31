@@ -112,7 +112,8 @@ keys: List[Key] = [
         desc="randomize current wallpaper",
     ),
     Key("M-S-<Escape>", lazy.spawn("lock_screen"), desc="lock the screen"),
-    Key("M-S-w", lazy.spawn("wfi"), desc="wait till I have internet and notify me"),
+    Key("M-S-w", lazy.spawn("wfi"), desc="wait till I have internet connection and notify me"),
+    Key("M-S-b", lazy.spawn("wfib"), desc="wait till I have internet connection and reload focused firefox browser"),
     Key(
         "<XF86MonBrightnessUp>",
         lazy.spawn("brightness up"),
