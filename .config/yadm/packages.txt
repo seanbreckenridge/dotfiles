@@ -96,6 +96,7 @@ aspell
 aspell-en
 at
 atool
+bat
 boxes
 bzip2
 cmatrix
