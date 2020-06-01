@@ -16,6 +16,7 @@ alias ysu="yadm status -u"
 alias ya="yadm add"
 alias yc="yadm commit"
 alias yp="yadm push"
+alias ycp="yc && yp"
 alias yl="yadm pull --recurse-submodules"
 
 # editor aliases
