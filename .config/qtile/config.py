@@ -224,11 +224,11 @@ applications: List[Union[str, Tuple[str, str]]] = [
     "slack",
     "firefox-developer-edition",
     "alacritty",
+    ("m", "stream-link")
 ]
 terminal_applications: List[Union[str, Tuple[str, str]]] = [
     "ranger",
     ("v", "keyvol"),
-    ("m", "stream-link"),
     "htop",
 ]
 
