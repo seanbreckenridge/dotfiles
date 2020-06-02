@@ -15,7 +15,7 @@ function update() {
 	echo "Updating ruby packages..."
 	gem update
 	echo "Updating python packages..."
-	update_python_packages
+	update-python-packages
 	echo "Updating global npm packages..."
 	npm update -g
 	echo "Updating global cargo packages..."

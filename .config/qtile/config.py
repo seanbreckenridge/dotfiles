@@ -108,7 +108,7 @@ keys: List[Key] = [
     ),
     Key(
         "<XF86Display>",
-        lazy.spawn("randomize_wallpaper"),
+        lazy.spawn("randomize-wallpaper"),
         desc="randomize current wallpaper",
     ),
     Key("M-S-<Escape>", lazy.spawn("lock_screen"), desc="lock the screen"),
