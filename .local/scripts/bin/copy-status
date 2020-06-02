@@ -1,11 +1,11 @@
 #!/bin/bash
 # While copying files to a drive, print what %
 # the copy is at right now.
-# copy_status <source> <dest>
+# copy-status <source> <dest>
 # e.g.
-# copy_status ../data/media/movies /mnt/drive/movies
+# copy-status ../data/media/movies /mnt/drive/movies
 # This assumes a cp -r ../data/media/moves /mnt/drive/movies
-# is currently being  run in another window.
+# is currently being run in another window.
 
 if [ -z "$2" ] || [ ! -e "$1" ] || [ ! -e "$2" ]; then
 	echo -e "Provide <source> <dest> as arguments to copy_status\nPrints the current status of the copy; what %% has been transferred" 1>&2
