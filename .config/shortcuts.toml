@@ -105,16 +105,16 @@ openurl "https://trakt.tv/search/shows?query=${SEARCH_STR}&utf8=%E2%9C%93"
 # uses https://github.com/seanbreckenridge/genpasswd
 [genpass]
 shebang = "#!/usr/bin/env bash"  # to make sure echo flags work
-command = '''
+command ='''
 if ! pw=$(genpasswd "$@"); then
-  echo "$pw"
-  exit 0
+	echo "$pw"
+	exit 0
 fi
 pw=$(head -n 1 <<<"$pw")
 if [ "$(tty)" = "not a tty" ]; then
-  notify-send "${pw}"
+	notify-send "${pw}"
 else
- echo -e "$pw"
+	echo -e "$pw"
 fi
 # copy to clipboard
 echo -en "$pw" | xclip -selection clipboard -r
