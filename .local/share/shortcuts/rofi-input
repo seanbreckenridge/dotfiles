@@ -1,0 +1,2 @@
+#!/bin/sh
+rofi -dmenu -theme-str 'listview {enabled: false;}' "$@"

@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+if ! pw=$(genpasswd "$@"); then
+	echo "$pw"
+	exit 0
+fi
+pw=$(head -n 1 <<<"$pw")
+if [ "$(tty)" = "not a tty" ]; then
+	notify-send "${pw}"
+else
+	echo -e "$pw"
+fi
+# copy to clipboard
+echo -en "$pw" | xclip -selection clipboard -r

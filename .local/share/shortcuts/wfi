@@ -1,0 +1,2 @@
+#!/bin/sh
+wait-for-internet && notify-send "INTERNET" && paplay /usr/share/sounds/freedesktop/stereo/message.oga

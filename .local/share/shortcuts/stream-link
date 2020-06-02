@@ -1,0 +1,9 @@
+#!/bin/sh
+# grab URL from clipboard and play in a new terminal with mpvf
+if ! CLIPBOARD_CONTENTS="$(xclip -out -selection clipboard)"; then
+	notify-send "Failed to get clipboard contents." && exit 1
+fi
+export MPVF_PICKER=rofi
+if ! mpvf "${CLIPBOARD_CONTENTS}"; then
+	notify-send "Error streaming ${CLIPBOARD_CONTENTS}" && exit 1
+fi

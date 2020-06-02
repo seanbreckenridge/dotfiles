@@ -1,0 +1,2 @@
+#!/bin/sh
+/usr/bin/lynx -accept_all_cookies -cfg="${XDG_CONFIG_HOME}/lynx/lynx.cfg" "$@"

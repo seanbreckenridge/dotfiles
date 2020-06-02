@@ -1,0 +1,2 @@
+#!/bin/sh
+list-config | sed "s#^$HOME/##g" | fzf +m -q "$*" | xargs -r -I {} editor -n "$HOME/{}"

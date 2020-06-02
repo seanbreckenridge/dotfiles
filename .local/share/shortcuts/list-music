@@ -1,0 +1,2 @@
+#!/bin/sh
+fd --type f -E "*jpg" -E "*png" -E "*CUE" -E "*cue" -E "*log" -E "*m3u" -E "*m3u8"

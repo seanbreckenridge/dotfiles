@@ -1,0 +1,5 @@
+#!/bin/sh
+for f in "$@"; do
+	img_size="$(exiftool "$f" | grep "Image Size" | cut -d":" -f2)"
+	printf "%s:%s\n" "$f" "$img_size"
+done

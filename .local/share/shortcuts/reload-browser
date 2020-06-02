@@ -1,0 +1,2 @@
+#!/bin/sh
+xdotool search --class "Firefox" key --window %@ "ctrl+r"

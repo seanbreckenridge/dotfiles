@@ -133,9 +133,9 @@ __pycache__
 .local/share/*
 !.local/share/emoji
 !.local/share/firefox_addons.txt
+!.local/share/shortcuts/
 /.local/etc/bash_completion.d
 /.local/etc/fish/completions
-/.local/shortcuts/*
 
 # default user directories
 /code

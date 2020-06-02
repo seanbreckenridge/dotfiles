@@ -1,0 +1,2 @@
+#!/bin/sh
+list-music | shuf | mpv --playlist=- --no-audio-display

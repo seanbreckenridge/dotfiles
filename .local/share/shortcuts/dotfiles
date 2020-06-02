@@ -1,0 +1,2 @@
+#!/bin/sh
+yadm gitconfig --get remote.origin.url | /usr/bin/python3 -c "from giturlparse import parse; print(parse(input()).urls[\"https\"])" | openurl

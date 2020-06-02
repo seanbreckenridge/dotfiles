@@ -1,0 +1,2 @@
+#!/bin/sh
+curl --silent ipinfo.io | sed -e "s/^[{}]//" -e "s/^\s*//" -e "s/,$//" -e "s/\"//g" -e "/^\s*$/d"

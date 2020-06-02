@@ -1,0 +1,6 @@
+#!/bin/sh
+FILENAME="$(ls -t ~/Desktop/Screenshots/*.png | head -n1)"
+imgur-uploader "$FILENAME"
+IMGUR_URL="$(xclip -out -selection clipboard)"
+printf "%s\n" "$IMGUR_URL" >>/tmp/imgur_urls.log
+notify-send "$IMGUR_URL"

@@ -1,0 +1,2 @@
+#!/bin/sh
+git config --list | cat

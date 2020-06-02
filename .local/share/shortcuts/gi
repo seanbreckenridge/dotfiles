@@ -1,0 +1,6 @@
+#!/bin/sh
+if [ ! "$(echo "$@" | tr -d "\n\r")" = "" ] && [ ! "$1" = "list" ]; then
+	printf "tags*\n"
+fi
+curl -sL "https://gitignore.io/api/$*"
+printf "\n"
