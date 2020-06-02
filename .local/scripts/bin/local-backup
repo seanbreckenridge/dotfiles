@@ -19,7 +19,7 @@ BACKUP_DIRS=("/home/data/" "$HOME/code/" "$HOME/Documents/" "$HOME/Desktop/" "$H
 
 # make sure ldm is running
 if ! pgrep -x ldm >/dev/null; then
-	echo "Error: Make sure ldm is running so that the external drive is mounted"
+	echo "Error: Make sure ldm is running so that the external drive is mounted" 1>&2
 	exit 1
 fi
 
@@ -29,7 +29,7 @@ DRIVE_INFO="$(df -h | grep -v "home" | awk 'NR > 1' |
 
 # user didn't provide input/exited rofi prompt
 if [ -z "$DRIVE_INFO" ]; then
-	echo "Error: Did not get a drive from user."
+	echo "Error: Did not get a drive from user." 1>&2
 	exit 1
 fi
 

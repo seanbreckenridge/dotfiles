@@ -23,7 +23,7 @@ fi
 if [ -z "$1" ]; then
 	echo "You must provide at least one file on command line.
 Ex: duration filename.mp4 otherfile.mkv song.mp3
-Run 'duration -h' to get more information"
+Run 'duration -h' to get more information" 1>&2
 	exit 1
 fi
 

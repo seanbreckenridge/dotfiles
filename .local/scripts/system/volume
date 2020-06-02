@@ -18,7 +18,7 @@ micmute)
 	pactl set-source-mute @DEFAULT_SOURCE@ toggle
 	;;
 *)
-	echo "Unknown command: ${CMD}"
+	echo "Unknown command: ${CMD}" 1>&2
 	exit 1
 	;;
 esac

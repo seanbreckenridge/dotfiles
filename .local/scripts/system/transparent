@@ -18,5 +18,5 @@ elif [ "$1" = "disable" ]; then
 		picom-trans -c 100
 	fi
 else
-	printf "You must specify either enable or disable\n"
+	printf "You must specify either enable or disable\n" 1>&2
 fi
