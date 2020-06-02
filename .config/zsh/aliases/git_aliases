@@ -127,6 +127,9 @@ alias gsps='git show --pretty=short --show-signature'
 alias gsr='git svn rebase'
 alias gss='git status -s'
 alias gst='git status'
+# override gs (ghostscript) incase I mistype
+# can always do 'command gs' to access ghostscript
+alias gs='gst'
 alias gstu='git status -u'
 
 alias gstaa='git stash apply'
