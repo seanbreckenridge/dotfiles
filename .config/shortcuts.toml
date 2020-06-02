@@ -8,7 +8,7 @@
 command='''
 { cd && yadm ls-files | sed "s#^#$HOME/#"; fd --type=file -H --full-path "${HOME}" "${XDG_CONFIG_HOME}/todo" "${ZDOTDIR}" } | grep -v "system-config" | exists | sort -u
 '''
-shebang = "#!/usr/bin/env zsh"
+shebang = "#!/bin/zsh"
 
 # fuzzy match list-config names, open one to edit (Edit Config)
 [ec]
@@ -18,9 +18,9 @@ command = '''list-config | sed "s#^$HOME/##g" | fzf +m -q "$*" | xargs -r -I {} 
 [restart-emacs]
 command = """
 if systemctl --user restart emacs; then
-    notify-send "restarted emacs server"
+	notify-send "restarted emacs server"
 else
-    notify-send -u "critical" "couldn't restart emacs server"
+	notify-send -u "critical" "couldn't restart emacs server"
 fi
 """
 
@@ -64,8 +64,8 @@ link = "ssh-keygen-good"  # so that it autocompletes from ssh-keygen
 # get gitignores for different languages
 [gi]
 command = '''
-if [ ! "$( echo "$@" | tr -d "\n\r" )" = "" ] && [ ! "$1" = "list" ]; then
-  printf "tags*\n"
+if [ ! "$(echo "$@" | tr -d "\n\r")" = "" ] && [ ! "$1" = "list" ]; then
+	printf "tags*\n"
 fi
 curl -sL "https://gitignore.io/api/$*"
 printf "\n"
@@ -87,7 +87,7 @@ command = '''rofi -dmenu -theme-str 'listview {enabled: false;}' "$@"'''
 # searches trakt/letterboxd for a movie
 [moviesearch]
 command = '''
-SEARCH_STR=$(rofi-input -location 2 -p "Search for a movie > " | awk '{$1=$1; print}' | tr " " "+")  # awk removes leading/trailing spaces
+SEARCH_STR=$(rofi-input -location 2 -p "Search for a movie > " | awk '{$1=$1; print}' | tr " " "+") # awk removes leading/trailing spaces
 [ -z "$SEARCH_STR" ] && exit 1
 openurl "https://trakt.tv/search/movies?query=${SEARCH_STR}&utf8=%E2%9C%93"
 openurl "https://letterboxd.com/search/films/${SEARCH_STR}"
@@ -104,7 +104,7 @@ openurl "https://trakt.tv/search/shows?query=${SEARCH_STR}&utf8=%E2%9C%93"
 # generates a password and puts it on your clipboard
 # uses https://github.com/seanbreckenridge/genpasswd
 [genpass]
-shebang = "#!/usr/bin/env bash"  # to make sure echo flags work
+shebang = "#!/bin/bash"  # to make sure echo flags work
 command ='''
 if ! pw=$(genpasswd "$@"); then
 	echo "$pw"
@@ -137,21 +137,19 @@ command='list-music | shuf | mpv --playlist=- --no-audio-display'
 command='''
 [ -z "$1" ] && echo "Error: must provide a file to call shfmt on." && exit 1
 for f in "$@"; do
-  shfmt "$f" > /tmp/shfmt-temp && cat /tmp/shfmt-temp > "$f"
+    shfmt "$f" > /tmp/shfmt-temp && cat /tmp/shfmt-temp > "$f"
 done
 '''
 
 [stream-link]
 command = """
 # grab URL from clipboard and play in a new terminal with mpvf
-if ! CLIPBOARD_CONTENTS="$(xclip -out -selection clipboard)"
-then
-  notify-send "Failed to get clipboard contents." && exit 1
+if ! CLIPBOARD_CONTENTS="$(xclip -out -selection clipboard)"; then
+	notify-send "Failed to get clipboard contents." && exit 1
 fi
 export MPVF_PICKER=rofi
-if ! mpvf "${CLIPBOARD_CONTENTS}"
-then
-  notify-send "Error streaming ${CLIPBOARD_CONTENTS}" && exit 1
+if ! mpvf "${CLIPBOARD_CONTENTS}"; then
+	notify-send "Error streaming ${CLIPBOARD_CONTENTS}" && exit 1
 fi
 """
 
@@ -160,7 +158,7 @@ command='''
 FILENAME="$(ls -t ~/Desktop/Screenshots/*.png | head -n1)"
 imgur-uploader "$FILENAME"
 IMGUR_URL="$(xclip -out -selection clipboard)"
-printf "%s\n" "$IMGUR_URL" >> /tmp/imgur_urls.log
+printf "%s\n" "$IMGUR_URL" >>/tmp/imgur_urls.log
 notify-send "$IMGUR_URL"
 '''
 
@@ -225,8 +223,8 @@ curl --silent "https://ipvigilante.com/${IP_ADDR}" | jq '.data | "\(.country_nam
 [image-dimensions]
 command='''
 for f in "$@"; do
-    img_size="$(exiftool "$f" | grep "Image Size" | cut -d":" -f2)"
-    printf "%s:%s\n" "$f" "$img_size"
+	img_size="$(exiftool "$f" | grep "Image Size" | cut -d":" -f2)"
+	printf "%s:%s\n" "$f" "$img_size"
 done
 '''
 

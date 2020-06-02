@@ -1,5 +1,5 @@
 #!/bin/sh
 [ -z "$1" ] && echo "Error: must provide a file to call shfmt on." && exit 1
 for f in "$@"; do
-	shfmt "$f" >/tmp/shfmt-temp && cat /tmp/shfmt-temp >"$f"
+    shfmt "$f" > /tmp/shfmt-temp && cat /tmp/shfmt-temp > "$f"
 done

@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 if ! pw=$(genpasswd "$@"); then
 	echo "$pw"
 	exit 0
