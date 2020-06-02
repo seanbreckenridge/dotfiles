@@ -2,6 +2,5 @@
 # whenever a format (md/latex) file is saved, re-compile it
 # compile refreshes mupdf if its active
 
-[ -z "$1" ] && echo "Pass an file to render as the first argument." && exit 1
-
-find "$1" | entr compile "$1"
+FILE="${1:?'Pass an file to render as the first argument.'}"
+find "$FILE" | entr compile "$FILE"

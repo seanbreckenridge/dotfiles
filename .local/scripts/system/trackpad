@@ -23,14 +23,18 @@ disable_trackpad() {
 	[ -f "$cache_file" ] && rm "$cache_file"
 }
 
-if [ "$1" = "disable" ]; then
+case "$1" in
+disable)
 	disable_trackpad
-elif [ "$1" = "enable" ]; then
+	;;
+enable)
 	enable_trackpad
-else # toggle
+	;;
+*)
 	if [ -f "$cache_file" ]; then
 		disable_trackpad
 	else
 		enable_trackpad
 	fi
-fi
+	;;
+esac

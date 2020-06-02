@@ -3,7 +3,7 @@
 
 unset QT_QPA_PLATFORMTHEME
 
-file=$(readlink -f "$1")
+file=$(readlink -f "${1:?'Must specify a filename to compile as the first argument.'}")
 dir=$(dirname "$file")
 base="${file%.*}"
 extension="${file##.*}"

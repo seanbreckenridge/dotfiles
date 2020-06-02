@@ -1,15 +1,10 @@
 #!/bin/sh
 # volume <up|down|mute|micmute> [volume_step]
 
-[ -z "$1" ] && echo "No command provided. Provide one of: up|down|mute|micmute" && exit 1
+CMD="${1:?'No command provided. Provide one of: up|down|mute|micmute'}"
+VOLUME_STEP="${2:-5}"
 
-VOLUME_STEP=5
-# check if passed arg is number
-if [ -n "$2" ] && [ "$2" -eq "$2" ] 2>/dev/null; then
-	VOLUME_STEP="$2"
-fi
-
-case $1 in
+case "$CMD" in
 up)
 	pactl set-sink-volume @DEFAULT_SINK@ +"$VOLUME_STEP"%
 	;;
@@ -23,7 +18,7 @@ micmute)
 	pactl set-source-mute @DEFAULT_SOURCE@ toggle
 	;;
 *)
-	echo "Unknown command: $1"
+	echo "Unknown command: ${CMD}"
 	exit 1
 	;;
 esac

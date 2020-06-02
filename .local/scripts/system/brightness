@@ -4,10 +4,10 @@
 # brightness up 5
 # brightness down 10
 
-[ -z "$1" ] && echo "No argument provided (up/down)" && exit 1
+CMD="${1:?'No argument provided (up/down)'}"
 STEP=${2:-5} # default to 5%
 
-case $1 in
+case "$CMD" in
 up)
 	light -A "$STEP"
 	;;
