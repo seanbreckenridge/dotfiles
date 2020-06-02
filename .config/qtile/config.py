@@ -107,6 +107,16 @@ keys: List[Key] = [
         desc="swap to window prompt",
     ),
     Key(
+            "M-d",
+            lazy.spawn("moviesearch"),
+            desc="search for a movie on trakt/letterboxd"
+    ),
+    Key(
+            "M-S-d",
+            lazy.spawn("tvsearch"),
+            desc="search for a tv show on trakt"
+    ),
+    Key(
         "<XF86Display>",
         lazy.spawn("randomize-wallpaper"),
         desc="randomize current wallpaper",
