@@ -253,5 +253,3 @@ FILEPATH=${1:?'Must provide image to convert'}
 NEW_FILEPATH="$(remove-extension $FILEPATH)-icon.png"
 convert -resize x16 -gravity center -crop 16x16+0+0 -flatten -colors 256 "$FILEPATH" "$NEW_FILEPATH"
 '''
-
-
