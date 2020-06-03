@@ -1,4 +1,5 @@
 #!/bin/sh
+# get gitignores for different languages
 if [ ! "$(echo "$@" | tr -d "\n\r")" = "" ] && [ ! "$1" = "list" ]; then
 	printf "tags*\n"
 fi

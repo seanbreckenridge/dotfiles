@@ -1,4 +1,6 @@
 #!/bin/bash
+# generates a password and puts it on your clipboard
+# uses https://github.com/seanbreckenridge/genpasswd
 if ! pw=$(genpasswd "$@"); then
 	echo "$pw"
 	exit 0

@@ -1,2 +1,3 @@
 #!/bin/sh
+# reload firefox
 xdotool search --class "Firefox" key --window %@ "ctrl+r"

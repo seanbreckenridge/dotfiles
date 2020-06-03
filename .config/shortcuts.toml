@@ -6,17 +6,20 @@
 
 [list-config]
 command='''
+# list all of my configuration files, by matching combining
+# yadm ls-files and a couple search commands
 { cd && yadm ls-files | sed "s#^#$HOME/#"; fd --type=file -H --full-path "${HOME}" "${XDG_CONFIG_HOME}/todo" "${ZDOTDIR}" } | grep -v "system-config" | exists | sort -u
 '''
 shebang = "#!/bin/zsh"
 
-# fuzzy match list-config names, open one to edit (Edit Config)
 [ec]
-command = '''list-config | sed "s#^$HOME/##g" | fzf +m -q "$*" | xargs -r -I {} editor -n "$HOME/{}"'''
+command = '''
+# fuzzy match list-config names, open one to edit (Edit Config)
+list-config | sed "s#^$HOME/##g" | fzf +m -q "$*" | xargs -r -I {} editor -n "$HOME/{}"'''
 
-# restart the emacs server managed by systemd
 [restart-emacs]
 command = """
+# restart the emacs server managed by systemd
 if systemctl --user restart emacs; then
 	notify-send "restarted emacs server"
 else
@@ -24,46 +27,49 @@ else
 fi
 """
 
-# open a terminal, run doom sync, and restart the emacs daemon
 [refresh-doom]
 command = '''
+# open a terminal, run doom sync, and restart the emacs daemon
 launch "doom sync && restart-emacs"
 '''
 
-# open the dotfiles git repository
 [dotfiles]
-command = '''yadm gitconfig --get remote.origin.url | /usr/bin/python3 -c "from giturlparse import parse; print(parse(input()).urls[\"https\"])" | openurl'''
+command = '''
+# open the dotfiles git repository
+yadm gitconfig --get remote.origin.url | /usr/bin/python3 -c "from giturlparse import parse; print(parse(input()).urls[\"https\"])" | openurl'''
 
+[i3binds]
+command='''
 # print i3 bindings
 # ignore volume and brightness bindings
-[i3binds]
-command='''sed 's/^bindsym --release/bindsym/g' "${HOME}/.config/i3/config" | awk '/^bindsym/ {$1=""; print substr($0, 2, 9999)}' | grep -Ev "pactl|brightness"'''
+sed 's/^bindsym --release/bindsym/g' "${HOME}/.config/i3/config" | awk '/^bindsym/ {$1=""; print substr($0, 2, 9999)}' | grep -Ev "pactl|brightness"'''
 
-# prompt i3 bindings w/ rofi and run one of the commands
 [i3binds-prompt]
-command='''i3-msg "$(i3binds | rofi -dmenu -width 50 -lines 30 -location 5 -p "Pick a command to run > " | sed 's/--no-startup-id //g' | cut -d" " -f 2-)"'''
+command='''
+# prompt i3 bindings w/ rofi and run one of the commands
+i3-msg "$(i3binds | rofi -dmenu -width 50 -lines 30 -location 5 -p "Pick a command to run > " | sed 's/--no-startup-id //g' | cut -d" " -f 2-)"'''
 
-# reload firefox
 [reload-browser]
-command='xdotool search --class "Firefox" key --window %@ "ctrl+r"'
+command='''
+# reload firefox
+xdotool search --class "Firefox" key --window %@ "ctrl+r"
+'''
 
-# print the date in the us format
 [usdate]
-command = 'date "+%m/%d/%y"'
+command = '''
+# print the date in the us format
+date "+%m/%d/%y"
+'''
 
-# print current git configuration
-[gitcfg]
-command = "git config --list | cat"
-link = "gitconfig"
+[gitconfigj]
+command = '''
+# print the current git configuration
+git config --list | cat
+'''
 
-# generate a good ssh key
-[good-ssh-keygen]
-command = 'ssh-keygen -t rsa -b 4096 -o -a 100'
-link = "ssh-keygen-good"  # so that it autocompletes from ssh-keygen
-
-# get gitignores for different languages
 [gi]
 command = '''
+# get gitignores for different languages
 if [ ! "$(echo "$@" | tr -d "\n\r")" = "" ] && [ ! "$1" = "list" ]; then
 	printf "tags*\n"
 fi
@@ -71,41 +77,47 @@ curl -sL "https://gitignore.io/api/$*"
 printf "\n"
 '''
 
-# wait for internet connection and ping me
 [wfi]
-command='wait-for-internet && notify-send "INTERNET" && paplay /usr/share/sounds/freedesktop/stereo/message.oga'
+command='''
+# wait for internet connection and ping me
+wait-for-internet && notify-send "INTERNET" && paplay /usr/share/sounds/freedesktop/stereo/message.oga
+'''
 
-# wfi, and then reload the browser
 [wfib]
-command='wfi && reload-browser'
+command='''
+# wfi, and then reload the browser
+wfi && reload-browser
+'''
 
+[rofi-input]
+command = '''
 # prompts the user for input with a basic rofi input prompt
 # additional options can be given after rofi-input
-[rofi-input]
-command = '''rofi -dmenu -theme-str 'listview {enabled: false;}' "$@"'''
+rofi -dmenu -theme-str 'listview {enabled: false;}' "$@"
+'''
 
-# searches trakt/letterboxd for a movie
 [moviesearch]
 command = '''
+# searches trakt/letterboxd for a movie
 SEARCH_STR=$(rofi-input -location 2 -p "Search for a movie > " | awk '{$1=$1; print}' | tr " " "+") # awk removes leading/trailing spaces
 [ -z "$SEARCH_STR" ] && exit 1
 openurl "https://trakt.tv/search/movies?query=${SEARCH_STR}&utf8=%E2%9C%93"
 openurl "https://letterboxd.com/search/films/${SEARCH_STR}"
 '''
 
-# searches trakt for a tv show
 [tvsearch]
 command = '''
+# searches trakt for a tv show
 SEARCH_STR=$(rofi-input -location 2 -p "Search for a TV show > " | awk '{$1=$1; print}' | tr " " "+")
 [ -z "$SEARCH_STR" ] && exit 1
 openurl "https://trakt.tv/search/shows?query=${SEARCH_STR}&utf8=%E2%9C%93"
 '''
 
-# generates a password and puts it on your clipboard
-# uses https://github.com/seanbreckenridge/genpasswd
 [genpass]
 shebang = "#!/bin/bash"  # to make sure echo flags work
 command ='''
+# generates a password and puts it on your clipboard
+# uses https://github.com/seanbreckenridge/genpasswd
 if ! pw=$(genpasswd "$@"); then
 	echo "$pw"
 	exit 0
@@ -123,16 +135,19 @@ echo -en "$pw" | xclip -selection clipboard -r
 [list-music]
 command='fd --type f -E "*jpg" -E "*png" -E "*CUE" -E "*cue" -E "*log" -E "*m3u" -E "*m3u8"'
 
-# play music in the current directory, recursively
 [play-music]
-command='list-music | mpv --playlist=- --no-audio-display'
+command='''
+# play music in the current directory, recursively
+list-music | mpv --playlist=- --no-audio-display
+'''
 
 
-# Plays songs from this folder, recursively, randomly
 [shuffle-music]
-command='list-music | shuf | mpv --playlist=- --no-audio-display'
+command='''
+# Plays songs from this folder, recursively, randomly
+list-music | shuf | mpv --playlist=- --no-audio-display
+'''
 
-# call shfmt in place
 [shfmt-in-place]
 command='''
 [ -z "$1" ] && echo "Error: must provide a file to call shfmt on." && exit 1
@@ -162,9 +177,9 @@ printf "%s\n" "$IMGUR_URL" >>/tmp/imgur_urls.log
 notify-send "$IMGUR_URL"
 '''
 
-# open chatterino and use mpv to stream from twitch
 [twitch]
 command = '''
+# open chatterino and use mpv to stream from twitch
 STREAMER="${1:?'Pass the twitch user to stream from as the first argument.'}"
 export MPVF_PICKER=rofi
 pgrep -x chatterino >/dev/null || chatterino &
@@ -178,13 +193,14 @@ xclip -out -selection clipboard | vipe | xclip -in -selection clipboard
 '''
 link = 'edit-clipboard'
 
+[lynx]
+command = '''
 # override the lynx binary by
 # placing the lynx shortcut
 # on $PATH first
-[lynx]
-command = '/usr/bin/lynx -accept_all_cookies -cfg="${XDG_CONFIG_HOME}/lynx/lynx.cfg" "$@"'
+/usr/bin/lynx -accept_all_cookies -cfg="${XDG_CONFIG_HOME}/lynx/lynx.cfg" "$@"
+'''
 
-# open the printer interface in the browser
 [printer-server]
 command = '''
 # open the printer interface in the browser
@@ -200,14 +216,14 @@ exec sudo ldm -u $(whoami)
 '''
 
 [ipinfo]
-# get my ip information
 command='''
+# get my ip information
 curl --silent ipinfo.io | sed -e "s/^[{}]//" -e "s/^\s*//" -e "s/,$//" -e "s/\"//g" -e "/^\s*$/d"
 '''
 
-# send a notification with qtile launcher keybindings
 [qtile-notify-bindings]
 command='''
+# send a notification with qtile launcher keybindings
 notify-send -t 10000 "$(qtile-bindings --json | jq -r '[.[]|select(.modifier=="control, mod4")] | .[] | "\(.keysym) | \(.command)"' | sed -e "s/spawn('//" -e "s/')$//" -e "s/launch //" -e "s/-developer-edition//" -e "/qtile-notify-bindings/d")"
 '''
 

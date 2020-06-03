@@ -1,2 +1,3 @@
 #!/bin/sh
+# open a terminal, run doom sync, and restart the emacs daemon
 launch "doom sync && restart-emacs"

@@ -1,2 +1,4 @@
 #!/bin/sh
+# print i3 bindings
+# ignore volume and brightness bindings
 sed 's/^bindsym --release/bindsym/g' "${HOME}/.config/i3/config" | awk '/^bindsym/ {$1=""; print substr($0, 2, 9999)}' | grep -Ev "pactl|brightness"

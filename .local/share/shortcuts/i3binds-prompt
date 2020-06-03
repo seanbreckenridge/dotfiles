@@ -1,2 +1,3 @@
 #!/bin/sh
+# prompt i3 bindings w/ rofi and run one of the commands
 i3-msg "$(i3binds | rofi -dmenu -width 50 -lines 30 -location 5 -p "Pick a command to run > " | sed 's/--no-startup-id //g' | cut -d" " -f 2-)"

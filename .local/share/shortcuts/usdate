@@ -1,2 +1,3 @@
 #!/bin/sh
+# print the date in the us format
 date "+%m/%d/%y"

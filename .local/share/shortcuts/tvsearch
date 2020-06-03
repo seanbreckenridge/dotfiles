@@ -1,4 +1,5 @@
 #!/bin/sh
+# searches trakt for a tv show
 SEARCH_STR=$(rofi-input -location 2 -p "Search for a TV show > " | awk '{$1=$1; print}' | tr " " "+")
 [ -z "$SEARCH_STR" ] && exit 1
 openurl "https://trakt.tv/search/shows?query=${SEARCH_STR}&utf8=%E2%9C%93"
