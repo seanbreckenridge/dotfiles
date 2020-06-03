@@ -61,7 +61,7 @@ command = '''
 date "+%m/%d/%y"
 '''
 
-[gitconfigj]
+[gitconfig]
 command = '''
 # print the current git configuration
 git config --list | cat
