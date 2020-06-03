@@ -1,0 +1,12 @@
+#!/bin/sh
+# prompts me to select a dotfile from
+# https://gitlab.com/seanbreckenridge/subpath-serve.git
+# and copies a link to that file to the clipboard
+
+
+BASE_URL="https://sean.fish/d/"
+SCRIPT_CHOICE="$(curl -s "$BASE_URL" | fzf)" || exit 1
+echo "$SCRIPT_CHOICE"
+GIVE_URL="${BASE_URL}${SCRIPT_CHOICE}"
+echo "$GIVE_URL"
+echo -n "$GIVE_URL" | xclip -selection clipboard
