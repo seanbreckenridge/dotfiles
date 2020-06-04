@@ -15,7 +15,7 @@
 
 # locations to back up
 # these cant have the same basename
-BACKUP_DIRS=("/home/data/" "$HOME/code/" "$HOME/Documents/" "$HOME/Desktop/" "$HOME/.config/zsh/" "${XDG_DATA_HOME:-$HOME/.local/share}/plaintext_playlist")
+BACKUP_DIRS=("/home/data/" "$HOME/code/" "$HOME/Documents/" "$HOME/Desktop/" "$HOME/.config/zsh/" "${XDG_DATA_HOME:-$HOME/.local/share}/plaintext_playlist" "/usr/local/bin")
 
 # make sure ldm is running
 if ! pgrep -x ldm >/dev/null; then
