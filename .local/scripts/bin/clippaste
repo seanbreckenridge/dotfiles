@@ -1,0 +1,4 @@
+#!/bin/sh
+# paste from X clipboard buffer
+
+xclip -out -selection clipboard

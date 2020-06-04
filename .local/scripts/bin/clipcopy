@@ -1,0 +1,7 @@
+#!/bin/sh
+# copy from STDIN to both clipboards
+
+STDIN="$(cat)"
+
+echo "$STDIN" | xclip -in
+echo "$STDIN" | xclip -in -selection clipboard
