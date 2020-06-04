@@ -167,7 +167,7 @@ keys: List[Key] = [
     # todo management
     Key(
         "M-t",
-        lazy.spawn("todo_prompt"),
+        lazy.spawn("todo-prompt"),
         desc="rofi interface to mark todos as complete",
     ),
     Key(
