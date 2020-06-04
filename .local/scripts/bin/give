@@ -14,6 +14,6 @@ if [ "$(echo "$BASE_FILEPATHS" | grep -c "$SCRIPT_BASE_CHOICE")" = "1" ]; then
 	SCRIPT_CHOICE="$SCRIPT_BASE_CHOICE"
 fi
 
-GIVE_URL="${BASE_URL}${SCRIPT_CHOICE}"
+GIVE_URL="${BASE_URL}${SCRIPT_CHOICE}?dark"
 echo "$GIVE_URL"
-echo -n "$GIVE_URL" | xclip -selection clipboard
+echo -n "$GIVE_URL" | clipcopy
