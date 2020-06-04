@@ -1,4 +1,5 @@
 #!/bin/sh
+# prompts me to select an emoji and copies it to my clipboard
 
 chosen="$(rofi -dmenu -i -l 20 -p "pick an emoji > " <"${XDG_DATA_HOME}/emoji")"
 

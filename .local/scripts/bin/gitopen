@@ -1,7 +1,9 @@
 #!/bin/sh
+# if you're in a git directory, open
+# it in your browser
 
 if GIT_URL=$(giturl); then
 	openurl "$GIT_URL"
 else
-	echo "$GIT_URL"
+	echo "$GIT_URL" # print error
 fi

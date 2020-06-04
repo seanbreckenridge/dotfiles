@@ -1,4 +1,5 @@
 #!/bin/sh
+# if youre in a git directory, print the HTTPS git URL
 
 if in-gitdir; then
 	if ! remote_url="$(git ls-remote --get-url)"; then
