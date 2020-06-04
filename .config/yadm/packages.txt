@@ -190,6 +190,7 @@ zsh-you-should-use
 chatterino2-git
 chromium
 discord
+filezilla
 firefox-developer-edition
 gimp
 google-chrome
