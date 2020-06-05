@@ -1,4 +1,6 @@
 #!/bin/sh
+# uploads the most recent screenshot from
+# ~/Desktops/Screenshots to imgur
 FILENAME="$(ls -t ~/Desktop/Screenshots/*.png | head -n1)"
 imgur-uploader "$FILENAME"
 IMGUR_URL="$(xclip -out -selection clipboard)"

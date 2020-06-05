@@ -1,4 +1,5 @@
 #!/bin/sh
+# replace the extension for a filename
 FILEPATH="${1:?'Have to provide a filepath to replace the extension for'}"
 REPLACE_EXTENSION="${2:?'Must provide extension to replace extension with'}"
 echo "${FILEPATH%%.*}.${REPLACE_EXTENSION#.}"

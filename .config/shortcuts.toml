@@ -133,7 +133,10 @@ echo -en "$pw" | xclip -selection clipboard -r
 '''
 
 [list-music]
-command='fd --type f -E "*jpg" -E "*png" -E "*CUE" -E "*cue" -E "*log" -E "*m3u" -E "*m3u8"'
+command='''
+# list music files (try to ignore cue/log/album artwork files) in the current directory
+fd --type f -E "*jpg" -E "*png" -E "*CUE" -E "*cue" -E "*log" -E "*m3u" -E "*m3u8"
+'''
 
 [play-music]
 command='''
@@ -150,6 +153,7 @@ list-music | shuf | mpv --playlist=- --no-audio-display
 
 [shfmt-in-place]
 command='''
+# call shfmt on multiple files
 [ -z "$1" ] && echo "Error: must provide a file to call shfmt on." && exit 1
 for f in "$@"; do
 	shfmt "$f" >/tmp/shfmt-temp && cat /tmp/shfmt-temp >"$f"
@@ -170,6 +174,8 @@ fi
 
 [screenshot-to-imgur]
 command='''
+# uploads the most recent screenshot from
+# ~/Desktops/Screenshots to imgur
 FILENAME="$(ls -t ~/Desktop/Screenshots/*.png | head -n1)"
 imgur-uploader "$FILENAME"
 IMGUR_URL="$(xclip -out -selection clipboard)"
@@ -238,20 +244,23 @@ curl --silent "https://ipvigilante.com/${IP_ADDR}" | jq '.data | "\(.country_nam
 
 [image-dimensions]
 command='''
+# print the image dimensions for one or more images
 for f in "$@"; do
-	img_size="$(exiftool "$f" | grep "Image Size" | cut -d":" -f2)"
-	printf "%s:%s\n" "$f" "$img_size"
+	img_size="$(exiftool "$f" | grep "Image Size")"
+  [ -z "$img_size" ] && printf "Could not get 'Image Size' for %s" "$f" 1>&2 || printf "%s %s\n" "${img_size#*: }" "$f"
 done
 '''
 
 [remove-extension]
 command='''
+# remove the extension from a filename
 FILEPATH="${1:?'You must provide a filepath to remove the extension for.'}"
 echo "${FILEPATH%%.*}"
 '''
 
 [replace-extension]
 command='''
+# replace the extension for a filename
 FILEPATH="${1:?'Have to provide a filepath to replace the extension for'}"
 REPLACE_EXTENSION="${2:?'Must provide extension to replace extension with'}"
 echo "${FILEPATH%%.*}.${REPLACE_EXTENSION#.}"
@@ -259,12 +268,14 @@ echo "${FILEPATH%%.*}.${REPLACE_EXTENSION#.}"
 
 [to-png]
 command='''
+# convert an image to png
 FILEPATH=${1:?'Must provide image to convert'}
 convert "$FILEPATH" "$(replace-extension "$FILEPATH" png)"
 '''
 
 [to-icon]
 command='''
+# convert an image to a 16x16 icon - to favicon size
 FILEPATH=${1:?'Must provide image to convert'}
 NEW_FILEPATH="$(remove-extension $FILEPATH)-icon.png"
 convert -resize x16 -gravity center -crop 16x16+0+0 -flatten -colors 256 "$FILEPATH" "$NEW_FILEPATH"
