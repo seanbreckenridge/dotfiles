@@ -4,7 +4,7 @@
 # of wanted to emulate mac's behaviour:
 #
 # Warn me once, when battery goes under 10%
-# and then wait till battery goes above 10%
+# and then wait till battery goes above 15%
 # before warning again
 
 get_battery_percentage() {
