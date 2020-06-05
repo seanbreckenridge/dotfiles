@@ -18,5 +18,7 @@ unclutter --timeout 2 &
 discord --start-minimized &
 # sync todo.txt up to server whenever it changes
 bash "${HOME}/code/todotxt_deadline_notify/copy_todotxt_to_server.sh" &
+# warn me if battery goes low
+warn-battery BAT0 &
 # start emacs server
 systemctl --user start emacs
