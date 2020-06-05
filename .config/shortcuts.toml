@@ -224,7 +224,7 @@ exec sudo ldm -u $(whoami)
 [ipinfo]
 command='''
 # get my ip information
-curl --silent ipinfo.io | sed -e "s/^[{}]//" -e "s/^\s*//" -e "s/,$//" -e "s/\"//g" -e "/^\s*$/d"
+curl -s ipinfo.io | jq -r 'to_entries[] | "\(.key): \(.value)"'
 '''
 
 [qtile-notify-bindings]
@@ -248,8 +248,7 @@ command='''
 # print the image dimensions for one or more images
 for f in "$@"; do
 	img_size="$(exiftool "$f" | grep "Image Size")"
-	[ -z "$img_size" ] && printf "Could not get 'Image Size' for %s" "$f" 1>&2 || printf "%s %s
-" "${img_size#*: }" "$f"
+	[ -z "$img_size" ] && printf "Could not get 'Image Size' for %s" "$f" 1>&2 || printf "%s %s\n" "${img_size#*: }" "$f"
 done
 '''
 
