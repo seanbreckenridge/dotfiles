@@ -189,7 +189,7 @@ setsid mpvf "https://www.twitch.tv/${STREAMER}" &
 [clipedit]
 command = '''
 # edit your clipboard in vim
-xclip -out -selection clipboard | vipe | xclip -in -selection clipboard
+clippaste | vipe | clipcopy
 '''
 link = 'edit-clipboard'
 
