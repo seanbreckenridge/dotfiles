@@ -1,0 +1,3 @@
+#!/bin/sh
+# get mime type for one or more files
+file --mime-type "$@"
