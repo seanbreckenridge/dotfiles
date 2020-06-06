@@ -8,7 +8,8 @@ drg="$(command -v dragon-drag-and-drop)" || drg="$(command -v dragon)" || {
 	echo "couldnt find the dragon-drag-and-drop or dragon command"
 	exit 1
 }
-files=$("$drg" --target --and-exit) || exit 1
+files=$("$drg" --target --and-exit)
+[ -z "$files" ] && exit 1
 while IFS= read -r f; do
 	path=${f#file://}
 	$cmd -v "$path" "$(pwd)/$(basename "$path")"
