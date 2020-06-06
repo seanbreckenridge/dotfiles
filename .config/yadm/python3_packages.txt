@@ -6,6 +6,7 @@ bandcamp-downloader
 black
 bpython
 bs4
+cbeams
 cget
 colorama
 cookiecutter
