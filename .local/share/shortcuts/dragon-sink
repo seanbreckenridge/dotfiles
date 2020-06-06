@@ -1,5 +1,4 @@
 #!/bin/bash
-#!/bin/bash
 # brings up a prompt to drag files into.
 # If no flags are provided, copies any files
 # dragged into the prompt into the current directory.
