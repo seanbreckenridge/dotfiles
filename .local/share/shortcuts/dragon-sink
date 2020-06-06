@@ -1,0 +1,16 @@
+#!/bin/bash
+#!/bin/bash
+# brings up a prompt to drag files into.
+# If no flags are provided, copies any files
+# into the current directory dragged into the prompt,
+# if the --mv flag is provided, moves files instead
+[ "$1" = "--mv" ] && cmd="mv" || cmd="cp"
+drg="$(command -v dragon-drag-and-drop)" || drg="$(command -v dragon)" || {
+	echo "couldnt find the dragon-drag-and-drop or dragon command"
+	exit 1
+}
+files=$("$drg" --target --and-exit) || exit 1
+while IFS= read -r f; do
+	path=${f#file://}
+	$cmd -v "$path" "$(pwd)/$(basename "$path")"
+done <<<"$files"
