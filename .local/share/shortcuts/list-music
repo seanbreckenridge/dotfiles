@@ -1,3 +1,3 @@
 #!/bin/sh
 # list music files (try to ignore cue/log/album artwork files) in the current directory
-fd --type f -E "*jpg" -E "*png" -E "*CUE" -E "*cue" -E "*log" -E "*m3u" -E "*m3u8"
+fd --type f | grep -iEv "\.(jpg|png|cue|log|m3u|m3u8|nfo|md5|txt|jpeg|sfv|pdf)$"
