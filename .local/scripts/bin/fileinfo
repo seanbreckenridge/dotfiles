@@ -1,0 +1,20 @@
+#!/bin/sh
+
+
+FILE="${1?Must provide a file as the first argument to dump info about}"
+if [ ! -e "$FILE" ]; then
+  printf "%s does not exist\n" "$FILE"
+  exit 1
+fi
+if [ -d "$FILE" ]; then
+  printf "Path must be a file, %s is a directory\n" "$FILE"
+  exit 1
+fi
+
+# Use exiftool to get data, but don't use
+# its mime type - doesn't match anything
+# I can figure out.
+{
+exiftool "$FILE" | grep -v "^MIME Type"
+printf "MIME Type                       : %s" "$(file --mime-type -Lb "$FILE")"
+} | sort

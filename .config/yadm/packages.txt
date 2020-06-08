@@ -103,6 +103,7 @@ cmatrix
 coreutils
 cronie
 ctags
+dex
 dragon-drag-and-drop-git
 drive-git
 dust
@@ -138,6 +139,7 @@ ntp
 pamixer
 pandoc-bin
 pastel
+perl-file-mimeinfo
 perl-image-exiftool
 pistol-git
 pkgfile

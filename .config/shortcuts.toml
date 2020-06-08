@@ -284,10 +284,11 @@ NEW_FILEPATH="$(remove-extension $FILEPATH)-icon.png"
 convert -resize x16 -gravity center -crop 16x16+0+0 -flatten -colors 256 "$FILEPATH" "$NEW_FILEPATH"
 '''
 
-[mime-type]
+[file-mime]
 command='''
 # get mime type for one or more files
-file --mime-type "$@"
+# this is the same as what rifle (ranger) does
+file --mime-type -Lb "$@"
 '''
 
 [dragon-sink]
