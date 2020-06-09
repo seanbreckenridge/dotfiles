@@ -5,10 +5,11 @@
 
 
 BASE_URL="https://sean.fish/d/"
-SCRIPT_CHOICE="$(curl -s "$BASE_URL" | fzf)" || exit 1
+SCRIPT_INDEX="$(curl -s "$BASE_URL")"
+SCRIPT_CHOICE="$(echo "$SCRIPT_INDEX" | fzf)" || exit 1
 
 # if the URL can be reduced to just the base path, do that
-BASE_FILEPATHS="$(list-config | rev | cut -d"/" -f1 | rev)"
+BASE_FILEPATHS="$(echo "$SCRIPT_INDEX" | rev | cut -d"/" -f1 | rev)"
 SCRIPT_BASE_CHOICE="$(echo "$SCRIPT_CHOICE" | rev | cut -d"/" -f1 | rev)"
 if [ "$(echo "$BASE_FILEPATHS" | grep -c "$SCRIPT_BASE_CHOICE")" = "1" ]; then
 	SCRIPT_CHOICE="$SCRIPT_BASE_CHOICE"
