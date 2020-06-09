@@ -12,3 +12,4 @@ https://addons.mozilla.org/en-US/firefox/addon/vimium-ff/
 https://addons.mozilla.org/en-US/firefox/addon/xkcd-enhancements/
 https://www.frankerfacez.com/
 https://addons.mozilla.org/en-US/firefox/addon/react-devtools/
+https://addons.mozilla.org/en-US/firefox/addon/duckduckgo-for-firefox/
