@@ -38,10 +38,7 @@ extension=$(/bin/echo "${path##*.}" | awk '{print tolower($0)}')
 try() { output=$(eval '"$@"'); }
 
 # writes the output of the previously used "try" command
-dump() { /bin/echo "$output"; }
-
-# a common post-processing function used after most commands
-trim() { head -n "$maxln"; }
+dump() { head -n "$maxln" <<<"$output"; }
 
 # wraps highlight to treat exit code 141 (killed by SIGPIPE) as success
 safepipe() {
@@ -99,11 +96,11 @@ text/* | */xml)
 		highlight_format=ansi
 	fi
 	try safepipe highlight --out-format=${highlight_format} "$path" && {
-		dump | trim
+		dump
 		exit 5
 	}
 	try safepipe pistol --out-format=${highlight_format} "$path" && {
-		dump | trim
+		dump
 		exit 5
 	}
 	;;
@@ -111,7 +108,7 @@ esac
 
 # defualt if extension/mimetype both fail
 try safepipe pistol "$path" && {
-	dump | trim
+	dump
 	exit 5
 }
 
