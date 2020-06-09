@@ -50,7 +50,7 @@ video/* | audio/*)
 	}
 	;;
 application/json)
-	try jq <"$path" && {
+	try print-json "$path" && {
 		dump
 		exit 0
 	}

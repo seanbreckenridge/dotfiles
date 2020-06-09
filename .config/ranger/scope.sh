@@ -71,8 +71,10 @@ video/* | audio/*)
 	fileinfo "$path" && exit 0
 	;;
 # Syntax highlight for text files:
+# For json files that dont end with *.json
+# (wouldnt be recognized by highlight or pistol)
 application/json)
-	try safepipe jq <"$path" && {
+	try safepipe print-json "$path" && {
 		dump
 		exit 5
 	}
@@ -99,16 +101,11 @@ application/csv)
 		}
 		;;
 	esac
-	if [ "$(tput colors)" -ge 256 ]; then
-		highlight_format=ansi
-	else
-		highlight_format=ansi
-	fi
-	try safepipe highlight --out-format=${highlight_format} "$path" && {
+	try safepipe highlight --out-format=ansi "$path" && {
 		dump
 		exit 5
 	}
-	try safepipe pistol --out-format=${highlight_format} "$path" && {
+	try safepipe pistol --out-format=ansi "$path" && {
 		dump
 		exit 5
 	}
