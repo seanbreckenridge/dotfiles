@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 # ranger supports enhanced previews.  If the option "use_preview_script"
 # is set to True and this file exists, this script will be called and its
 # output is displayed in ranger.  ANSI color codes are supported.
@@ -26,11 +26,10 @@ path="$1" # Full path of the selected file
 cached="$4"         # Path that should be used to cache image previews
 preview_images="$5" # "True" if image previews are enabled, "False" otherwise.
 
-maxln=100 # Stop after $maxln lines.  Can be used like ls | head -n $maxln
+maxln=$(($(tput lines) - 2))
 
 # Find out something about the file:
 mimetype=$(file --mime-type -Lb "$path")
-extension=$(/bin/echo "${path##*.}" | awk '{print tolower($0)}')
 
 # Functions:
 # runs a command and saves its output into $output.  Useful if you need
@@ -78,17 +77,26 @@ application/json)
 		exit 5
 	}
 	;;
+application/csv)
+	exit 2 # display as plain text
+	;;
 *)
-	case "$extension" in
+	case "$path" in
 	# Python pickled objects
-	pickle)
+	*.pickle)
 		echo "Pickled Python Data"
 		fileinfo "$path"
 		exit 5
 		;;
 	# PDF documents:
-	pdf)
+	*.pdf)
 		try pdftoppm -jpeg -singlefile "$path" "${cached//.jpg/}" && exit 6 || exit 1
+		;;
+	*.1)
+		try safepipe man -P cat "$path" && {
+			dump
+			exit 0
+		}
 		;;
 	esac
 	if [ "$(tput colors)" -ge 256 ]; then
