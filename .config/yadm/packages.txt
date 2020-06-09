@@ -117,6 +117,7 @@ ffmpegthumbnailer
 figlet
 fzf
 git
+highlight
 htop-vim-git
 hub
 hyperfine
@@ -139,7 +140,6 @@ ntp
 pamixer
 pandoc-bin
 pastel
-perl-file-mimeinfo
 perl-image-exiftool
 pistol-git
 pkgfile
