@@ -18,6 +18,15 @@ dump() { /bin/echo "$output"; }
 # a common post-processing function used after most commands
 trim() { head -n "$maxln"; }
 
+case "$path" in
+*.pickle)
+	try show-pickle "$path" && {
+		dump | trim
+		exit 0
+	}
+	;;
+esac
+
 case "$mimetype" in
 inode/directory)
 	printf "==> %s Contents <==\n" "$path"
@@ -33,7 +42,7 @@ image/*)
 	;;
 # Display information about media files:
 video/* | audio/*)
-	try exiftool "$path" && {
+	try fileinfo "$path" && {
 		dump | trim
 		exit 0
 	}

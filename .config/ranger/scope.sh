@@ -70,6 +70,12 @@ if [ "$preview_images" = "True" ]; then
 fi
 
 case "$extension" in
+# Python pickled objects
+pickle)
+	echo "Pickled Python Data"
+	fileinfo "$path"
+	exit 5
+	;;
 # PDF documents:
 pdf)
 	try pdftoppm -jpeg -singlefile "$path" "${cached//.jpg/}" && exit 6 || exit 1
@@ -79,7 +85,7 @@ esac
 case "$mimetype" in
 # Display information about media files:
 video/* | audio/*)
-	exiftool "$path" && exit 0
+	fileinfo "$path" && exit 0
 	;;
 # json
 application/json)
