@@ -12,7 +12,7 @@ prompt_todos() {
 		CONFIRM="$(printf "yes\nno\n" | rofi -dmenu -location 2 -i -p "Mark this todo as complete: $TODO_CHOICE")"
 		if [ "$CONFIRM" = "yes" ]; then
 			TODO_NUM=$(echo "$TODO_CHOICE" | cut -d" " -f1)
-			notify-send "$(todo.sh -p do "$TODO_NUM")"
+			notify-send "Completed Todo:" "$(todo.sh -p do "$TODO_NUM")"
 		fi
 	fi
 }
@@ -23,7 +23,7 @@ prompt_todos() {
 add_todo() {
 	NEW_TODO="$(rofi-input -location 2 -p "Add todo > ")"
 	if [ -n "$NEW_TODO" ]; then
-		notify-send "$(todo.sh -p add "$NEW_TODO")"
+		notify-send "Added todo:" "$(todo.sh -p add "$NEW_TODO")"
 	fi
 }
 

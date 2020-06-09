@@ -13,7 +13,7 @@ cd "$dir" || exit
 # sends the message (first arg) to the user and exits
 abort() {
 	if [ "$(tty)" = "not a tty" ]; then
-		notify-send "$1"
+		notify-send "Error" "$1"
 	else
 		printf "%s\n" "$1"
 	fi
