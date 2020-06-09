@@ -1,4 +1,6 @@
 # shortcuts to commonly used directories
+# creates aliases prepended with C
+# e.g. C.c -> cd ~/.config
 .c ~/.config
 D ~/Documents
 M ~/Movies

@@ -33,7 +33,7 @@ defmodule DirAlias do
     [alias_name, location] = alias_info
     relative_path = location |> Path.expand() |> Path.relative_to(System.get_env("HOME"))
 
-    "alias #{alias_name}='cd ~/#{relative_path}'\n"
+    "alias C#{alias_name}='cd ~/#{relative_path}'\n"
   end
 end
 
