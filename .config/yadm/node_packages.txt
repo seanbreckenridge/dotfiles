@@ -9,7 +9,6 @@ node-cljfmt
 npm
 stylelint
 vscode-html-languageserver-bin
-vtop
 yaml-language-server
 html-minifier
 uglifycss
