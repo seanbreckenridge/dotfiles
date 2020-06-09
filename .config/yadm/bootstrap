@@ -157,11 +157,13 @@ done <"$CARGO_PACKAGE_LIST"
 function install_go_package() {
 	[ ! "$(command -v "$1")" ] && go get -u -v "$2"
 }
+# install pistol manually
+[ ! $(command -v pistol) ] && env GO111MODULE=on go get -v -u github.com/doronbehar/pistol/cmd/pistol
 
 echo "Installing global go packages..."
 while IFS= read -r go_line; do
-  # purposefully dont use "$go_line", to split the line into two arguments
-  # the name of the binary on the $PATH and the URL to install it from
+	# purposefully dont use "$go_line", to split the line into two arguments
+	# the name of the binary on the $PATH and the URL to install it from
 	install_go_package $go_line
 done <"$GO_PACKAGE_LIST"
 

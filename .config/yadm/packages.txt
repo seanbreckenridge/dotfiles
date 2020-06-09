@@ -141,7 +141,6 @@ pamixer
 pandoc-bin
 pastel
 perl-image-exiftool
-pistol-git
 pkgfile
 pulsemixer
 qrencode
