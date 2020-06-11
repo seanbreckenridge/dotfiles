@@ -55,6 +55,7 @@ __pycache__
 /.node-gyp
 /.electron-gyp
 /.java
+/.viminfo
 /.zoom
 /.ssr
 /.surf
@@ -78,6 +79,7 @@ __pycache__
 /.config/GIMP
 /.config/slack-term/
 /.config/snes9x
+/.config/fontforge
 /.config/vlc
 /.config/snes9x
 /.config/filezilla
