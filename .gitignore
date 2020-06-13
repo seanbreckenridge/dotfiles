@@ -129,6 +129,7 @@ __pycache__
 /.local/lib/python*
 /.local/man
 /.local/plugged/*
+/.local/state
 /.local/lib/pkgconfig/*
 /.local/bin
 /.local/include
