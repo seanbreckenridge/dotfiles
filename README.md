@@ -6,8 +6,8 @@
 - [alacritty](https://github.com/alacritty/alacritty) as terminal 
 - [firefox-developer-edition](https://www.archlinux.org/packages/community/x86_64/firefox-developer-edition/) - browser, addons listed in [firefox_addons.txt](./.local/share/firefox_addons.txt)
 - [rofi](https://github.com/davatorium/rofi) - application launcher
-- [emacs (doom)](https://github.com/hlissner/doom-emacs) (as a sort of IDE) and
-  [nvim](https://neovim.io/) (for lots of quick edits, scripting) as editors - see [editor](.local/scripts/system/editor)
+- [emacs (doom)](https://github.com/hlissner/doom-emacs) (primary) and
+  [nvim](https://neovim.io/) as editors - see [editor](.local/scripts/system/editor)
 - [i3lock](https://i3wm.org/i3lock/) for screen lock; [daemon process](.local/scripts/system/lock_screen) caches pixelated version of screen to speed up start time
 - [dunst](https://dunst-project.org/) for notificaitons
 - [lightdm](https://wiki.archlinux.org/index.php/LightDM) - display manager
