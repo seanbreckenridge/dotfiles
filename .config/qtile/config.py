@@ -17,7 +17,7 @@ from libqtile.config import (
     Match,
 )
 from libqtile.lazy import lazy
-from libqtile import layout, bar, widget, hook
+from libqtile import layout, bar, widget, hook, extension
 
 from util import get_num_monitors
 
@@ -79,13 +79,13 @@ keys: List[Key] = [
     ),
     Key(
             "M-d",
-            lazy.spawn("moviesearch"),
-            desc="search for a movie on trakt/letterboxd"
+            lazy.spawn("datenow"),
+            desc="prompt to select a date format and copy to clipboard"
     ),
     Key(
             "M-S-d",
-            lazy.spawn("tvsearch"),
-            desc="search for a tv show on trakt"
+            lazy.spawn("mediasearch"),
+            desc="search for media on letterboxd/trakt",
     ),
     Key(
         "<XF86Display>",

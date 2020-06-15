@@ -1,0 +1,15 @@
+#!/bin/bash
+# prompt current date in lots of formats
+# and copy that to your command line
+
+print_dates() {
+    date "+%m/%d/%y # us date"
+    date "+%d/%m/%y # standard date"
+    date "+%F # YYYY-MM-DD"
+    date "+%F %T # YYYY-MM-DD HH:MM:SS"
+    date "+%c # full date"
+}
+
+print_dates | rofi -location 2 -dmenu -p "Pick Date > " | \
+  # use xargs to make sure something was selected from rofi
+  cut -d "#" -f1 | xargs -r echo -n | clipcopy
