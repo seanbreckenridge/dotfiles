@@ -13,3 +13,4 @@ yaml-language-server
 html-minifier
 uglifycss
 serve
+mapscii
