@@ -13,19 +13,19 @@ echo "processing..."
 from=$(date "+%s" -d "UTC 01/01/1970 $2")
 to=$(date "+%s" -d "UTC 01/01/1970 $3")
 
-from_pre=$(($from - 30))
+from_pre=$((from - 30))
 
 if [ $from_pre -lt 0 ]; then
 	from_pre=0
 fi
 
 from_pre_command_print=$(date -u "+%T" -d @$from_pre)
-from_command_print=$(date -u "+%T" -d @$(($from - $from_pre)))$(grep -o "\..*" <<<$2)
-to_command_print=$(date -u "+%T" -d @$(($to - $from_pre)))$(grep -o "\..*" <<<$3)
+from_command_print="$(date -u "+%T" -d @$((from - from_pre)))$(grep -o "\..*" <<<"$2")"
+to_command_print="$(date -u "+%T" -d @$((to - from_pre)))$(grep -o "\..*" <<<"$3")"
 
 command="ffmpeg "
 
-for uri in $(youtube-dl -g $1); do
+for uri in $(youtube-dl -g "$1"); do
 	command+="-ss $from_pre_command_print -i $uri "
 done
 

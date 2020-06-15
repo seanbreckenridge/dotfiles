@@ -13,4 +13,4 @@ if [ -z "$1" ]; then # if no URL was passed, read from STDIN
 	URL="$(cat)"
 fi
 
-setsid $BROWSER "$URL" >/dev/null 2>&1 &
+setsid "$BROWSER" "$URL" >/dev/null 2>&1 &

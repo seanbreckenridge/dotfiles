@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 # The world's best pastebin terminal replacement.
 
 # receives input from STDIN

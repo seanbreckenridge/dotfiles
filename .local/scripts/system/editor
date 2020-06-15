@@ -58,11 +58,11 @@ NVIM)
 	nvim "$@"
 	;;
 EMACS)
-	setsid emacs "$@" & 2>&1
+	setsid emacs "$@" &
 	;;
 EMACS_CLIENT)
 	if [ "$BG" = true ]; then
-		setsid emacsclient -c "$@" & 2>&1
+		setsid emacsclient -c "$@" &
 	else
 		emacsclient -c "$@"
 	fi

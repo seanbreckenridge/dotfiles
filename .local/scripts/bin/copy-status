@@ -22,7 +22,7 @@ while true; do
 	DEST_SIZE=$(dir_size "$2")
 	#echo "$SOURCE_SIZE"
 	#echo "$DEST_SIZE"
-	PERCENTAGE="$(bc -l <<<$(printf "scale=6; %d/%d*100" "$DEST_SIZE" "$SOURCE_SIZE") | rev | cut -c 3- | rev)"
-	center_text "$PERCENTAGE%"
+	PERCENTAGE="$(bc -l <<<"$(printf "scale=6; %d/%d*100" "$DEST_SIZE" "$SOURCE_SIZE")" | rev | cut -c 3- | rev)"
+	center-text "$PERCENTAGE%"
 	sleep 5
 done
