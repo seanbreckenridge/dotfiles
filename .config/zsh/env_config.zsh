@@ -101,6 +101,9 @@ alias wget='wget --hsts-file "${XDG_CACHE_HOME}/wget-hsts"'
 # general environment variable configuration
 export YSU_MESSAGE_FORMAT="$(tput setaf 1)>>> %alias_type: %alias $(tput sgr0)"
 
+# directories that can be cd'd into
+CDPATH="${HOME}:${HOME}/code:${HOME}/.config"
+
 # colors for manpages
 export LESS_TERMCAP_mb=$'\e[1;32m'
 export LESS_TERMCAP_md=$'\e[1;32m'
