@@ -3,10 +3,7 @@ import subprocess
 import shutil
 from typing import List, Union, Optional
 from ranger.api.commands import Command
-
-
-def abspath(path: str):
-    return os.path.abspath(path)
+from os.path import abspath
 
 
 class fzf_select(Command):
@@ -16,12 +13,17 @@ class fzf_select(Command):
 
     fd_command = "fd -L"
     multi_select = False
+    preview = True
 
     @property
     def command(self):
         """Command to run to run the find/fzf command"""
-        return "{} | fzf {}".format(
-            self.__class__.fd_command, "-m" if self.__class__.multi_select else "+m"
+        return "{} | fzf {} {}".format(
+            self.__class__.fd_command,
+            "-m" if self.__class__.multi_select else "+m",
+            "--preview='${HOME}/.config/fzf_preview {}'"
+            if self.__class__.preview
+            else "",
         )
 
     # helper function to run fzf in with self.command
