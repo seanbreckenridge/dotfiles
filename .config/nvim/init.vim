@@ -144,3 +144,6 @@ vnoremap <Down> <Nop>
 vnoremap <Left> <Nop>
 vnoremap <Right> <Nop>
 vnoremap <Up> <Nop>
+
+" run set spell when editing markdown
+autocmd VimEnter * if expand("%:e") == 'md' | set spell
