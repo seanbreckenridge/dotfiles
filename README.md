@@ -9,7 +9,7 @@
 - [emacs (doom)](https://github.com/hlissner/doom-emacs) (primary) and
   [nvim](https://neovim.io/) as editors - see [editor](.local/scripts/system/editor)
 - [i3lock](https://i3wm.org/i3lock/) for screen lock; [daemon process](.local/scripts/system/lock_screen) caches pixelated version of screen to speed up start time
-- [dunst](https://dunst-project.org/) for notificaitons
+- [dunst](https://dunst-project.org/) for notifications
 - [lightdm](https://wiki.archlinux.org/index.php/LightDM) - display manager
 - [todotxt](http://todotxt.org/) for todos, with a [rofi interface](.local/scripts/bin/todo_prompt) as GUI, and [tui](https://gitlab.com/seanbreckenridge/full_todotxt) for adding todos.
 - [ranger](https://github.com/ranger/ranger) - file manager
@@ -20,7 +20,7 @@ I typically default to dracula-like color schemes to keep things consistent. Cur
 
 [.config/yadm](.config/yadm) includes lists of global packages for pacman/yay, python, ruby, npm, dart, rust, go, and haskell; the zsh [update](.config/zsh/functions/update) function updates all the corresponding packages.
 
-Packages can be added to the `.txt` files manually, and then `yadm bootstrap` can be run repeatedely to make sure everything is installed.
+Packages can be added to the `.txt` files manually, and then `yadm bootstrap` can be run repeatedly to make sure everything is installed.
 
 - [.config/shortcuts.toml](.config/shortcuts.toml) - describes basic shell scripts that are created by [shortcuts](https://gitlab.com/seanbreckenridge/shortcuts)
 - [dir-aliases](.local/scripts/system/dir-aliases) generates aliases from `key->directory` mappings described in [.config/directories](.config/directories). `dir-aliases-ranger` creates bookmarks in ranger using the same keys.
