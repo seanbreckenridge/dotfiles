@@ -12,7 +12,7 @@ mimetype=$(file --mime-type -Lb "$path")
 try() { output=$(eval '"$@"'); }
 
 # writes the output of the previously used "try" command
-dump() { head -n "$maxln"<<<"$output"; }
+dump() { head -n "$maxln" <<<"$output"; }
 
 case "$path" in
 *.pickle)
