@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 # warns me when battery goes under 10 percent
 # there are other battery modules but I sort
 # of wanted to emulate mac's behaviour:
@@ -7,22 +7,26 @@
 # and then wait till battery goes above 15%
 # before warning again
 
-get_battery_percentage() {
-	BATTERY_PERC=$(cat /sys/class/power_supply/"$1"/capacity) || exit
+readonly BATTERY_NAME="${1:?Must provide battery name (e.g. BAT0) as first argument}"
+declare BATTERY_PERC
+declare WARNED=0
+
+battery_perc() {
+	BATTERY_PERC=$(cat /sys/class/power_supply/"$1"/capacity) || return 1
 }
 
-get_battery_percentage "${1:?'Must provide battery name (e.g. BAT0) as first argument'}" || exit 1
+# make sure that we can get the battery percentage
+battery_perc "${BATTERY_NAME}" || exit $?
 
-WARNED=0
 while true; do
-	get_battery_percentage "$1"
-	if [ "$WARNED" = "0" ]; then
+	battery_perc "${BATTERY_NAME}"
+	if ((WARNED == 0)); then
 		# hasnt been warned, check if battery is under 10%
-		if [ "$BATTERY_PERC" -lt 10 ]; then
+		if ((BATTERY_PERC < 10)); then
 			notify-send -u critical 'Battery low!' && WARNED=1
 		fi
 	else # WARNED = 1
-		if [ "$BATTERY_PERC" -gt 15 ]; then
+		if ((BATTERY_PERC > 15)); then
 			WARNED=0
 		fi
 	fi
