@@ -86,6 +86,9 @@ application/csv)
 	case "$path" in
 	# Python pickled objects
 	*.pickle)
+    # printing pickled data in preview
+    # window doesn't look good. can use
+    # rifle to preview it by running the file
 		echo "Pickled Python Data"
 		fileinfo "$path"
 		exit 5
