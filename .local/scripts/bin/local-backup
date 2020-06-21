@@ -13,6 +13,8 @@
 # setting BACKUP_DRY to anything as an environment variable
 # makes this run a dry run instead
 
+readonly BACKUP_DRY="${BACKUP_DRY}"
+
 # locations to back up
 # these cant have the same basename
 BACKUP_DIRS=("/home/data/" "$HOME/code/" "$HOME/Documents/" "$HOME/Desktop/" "$HOME/.config/zsh/" "${XDG_DATA_HOME:-$HOME/.local/share}/plaintext_playlist" "/usr/local/bin")
