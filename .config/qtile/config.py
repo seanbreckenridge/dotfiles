@@ -19,11 +19,14 @@ from libqtile.config import (
 from libqtile.lazy import lazy
 from libqtile import layout, bar, widget, hook, extension
 
-from util import get_num_monitors
+from util import get_num_monitors, get_default_terminal
+
 
 mod: str = "mod4"  # windows key
 alt: str = "mod1"  # alt key
-terminal: str = os.environ.get("TERMINAL", "urxvt")
+terminal: str = os.environ.get(
+    "TERMINAL", get_default_terminal(["alacritty", "termite", "st", "urxvt"])
+)
 
 # Keysym List:
 # https://github.com/qtile/qtile/blob/master/libqtile/xkeysyms.py
@@ -78,14 +81,12 @@ keys: List[Key] = [
         desc="swap to window prompt",
     ),
     Key(
-            "M-d",
-            lazy.spawn("datenow"),
-            desc="prompt to select a date format and copy to clipboard"
+        "M-d",
+        lazy.spawn("datenow"),
+        desc="prompt to select a date format and copy to clipboard",
     ),
     Key(
-            "M-S-d",
-            lazy.spawn("mediasearch"),
-            desc="search for media on letterboxd/trakt",
+        "M-S-d", lazy.spawn("mediasearch"), desc="search for media on letterboxd/trakt",
     ),
     Key(
         "<XF86Display>",
@@ -93,8 +94,16 @@ keys: List[Key] = [
         desc="randomize current wallpaper",
     ),
     Key("M-S-<Escape>", lazy.spawn("lock-screen"), desc="lock the screen"),
-    Key("M-S-w", lazy.spawn("wfi"), desc="wait till I have internet connection and notify me"),
-    Key("M-S-b", lazy.spawn("wfib"), desc="wait till I have internet connection and reload focused firefox browser"),
+    Key(
+        "M-S-w",
+        lazy.spawn("wfi"),
+        desc="wait till I have internet connection and notify me",
+    ),
+    Key(
+        "M-S-b",
+        lazy.spawn("wfib"),
+        desc="wait till I have internet connection and reload focused firefox browser",
+    ),
     Key(
         "<XF86MonBrightnessUp>",
         lazy.spawn("brightness up"),
@@ -205,7 +214,7 @@ applications: List[Union[str, Tuple[str, str]]] = [
     "slack",
     "firefox-developer-edition",
     "alacritty",
-    ("m", "stream-link")
+    ("m", "stream-link"),
 ]
 terminal_applications: List[Union[str, Tuple[str, str]]] = [
     "ranger",
@@ -343,6 +352,7 @@ def autostart():
 def restart_on_randr(qtile, ev):
     subprocess.call(["autorandr", "-c"])
     qtile.cmd_restart()
+
 
 # Copyright (c) 2010 Aldo Cortesi
 # Copyright (c) 2010, 2014 dequis

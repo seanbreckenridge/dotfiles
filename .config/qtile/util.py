@@ -2,7 +2,9 @@
 
 import sys
 import shlex
+import shutil
 import subprocess
+from typing import List
 
 from Xlib import display as xdisplay
 
@@ -10,8 +12,7 @@ from Xlib import display as xdisplay
 def notify_send(message: str, critical: bool = False) -> None:
     """Helper message to send notifications with notify-send"""
     critical_str = "-u critical" if critical else ""
-    subprocess.run(
-        shlex.split('notify-send {} "{}"'.format(critical_str, message)))
+    subprocess.run(shlex.split('notify-send {} "{}"'.format(critical_str, message)))
 
 
 def get_num_monitors() -> int:
@@ -22,8 +23,7 @@ def get_num_monitors() -> int:
         resources = screen.root.xrandr_get_screen_resources()
 
         for output in resources.outputs:
-            monitor = display.xrandr_get_output_info(
-                output, resources.config_timestamp)
+            monitor = display.xrandr_get_output_info(output, resources.config_timestamp)
             preferred = False
             if hasattr(monitor, "preferred"):
                 preferred = monitor.preferred
@@ -37,3 +37,13 @@ def get_num_monitors() -> int:
         return 1
     else:
         return num_monitors
+
+
+def get_default_terminal(terminals: List[str]):
+    trm, *trx_s = terminals
+    if shutil.which(trm) is not None:
+        return trm
+    if trx_s:  # recursive call
+        return get_default_terminal(trx_s)
+    else:
+        return trm  # return the last element in the list as the default
