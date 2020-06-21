@@ -3,5 +3,7 @@
 
 STDIN="$(cat)"
 
-echo "$STDIN" | xclip -in
-echo "$STDIN" | xclip -in -selection clipboard
+[ -z "${STDIN}" ] && exit
+
+printf "%s" "${STDIN}" | xclip -in
+printf "%s" "${STDIN}" | xclip -in -selection clipboard
