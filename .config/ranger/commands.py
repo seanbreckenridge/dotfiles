@@ -19,7 +19,7 @@ class fzf_select(Command):
     def command(self):
         """Command to run to run the find/fzf command"""
         return "{} | fzf {} {}".format(
-            self.__class__.fd_command,
+            os.environ.get("RANGER_FZF_COMMAND", self.__class__.fd_command),
             "-m" if self.__class__.multi_select else "+m",
             "--preview='${HOME}/.config/fzf_preview {}'"
             if self.__class__.preview
