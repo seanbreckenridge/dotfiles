@@ -1,6 +1,6 @@
-#!/bin/sh
+#!/bin/bash
 
-usage="Usage:
+readonly usage="Usage:
 $(basename "$0") [-h]
 $(basename "$0") <FILE> <START_TIME> <DURATION> [FPS]
 
@@ -26,8 +26,9 @@ requires 'imagemagick' and 'ffmpeg'
 Modified from: https://github.com/holman/dotfiles/blob/master/bin/movieme
 "
 
-if [ "$1" = "-h" ] || [ "$1" = "-help" ] || [ "$1" = "--help" ]; then
-	echo "$usage"
+# print help if user asked for it
+if [[ "$1" =~ ^[-]{1,2}?h(elp)?$ ]]; then
+	echo "${usage}"
 	exit 0
 fi
 
@@ -39,7 +40,7 @@ rm -rf /tmp/gifme
 mkdir -p /tmp/gifme
 
 # check for command line arguments
-if [ -z "$3" ]; then
+if [[ -z "$3" ]]; then
 	printf "You didn't provide enough arguments.
 Type 'gifme -h' for additional help.
 
@@ -54,15 +55,12 @@ For best output, it should be a factor of 100; e.g. 10, 20, 25, 50
 fi
 
 # process fps arg
-fps=10
-if [ -n "$4" ]; then
-	fps=$4
-fi
-convert_delay=$((100 / fps))
+readonly fps="${4:-10}"
+readonly convert_delay="$((100 / fps))"
 
 # generate output filename based on input file
-current_time=$(date +%H.%M.%S)
-output_filename=$(basename "$1")
+readonly current_time="$(date +%H.%M.%S)"
+declare output_filename="$(basename "$1")"
 output_filename="${output_filename%.*}" # remove extension
 output_filename="${output_filename}-gifme-${current_time}.gif"
 
@@ -77,5 +75,5 @@ printf "Converting %d frames to a gif...\n" "$(find /tmp/gifme | wc -l)"
 # convert to gif
 # delay - speed, determined by fps above
 # loop 0 - make gif repeat itself
-convert -delay $convert_delay -loop 0 -limit memory 2GB -limit map 2GB /tmp/gifme/*.png "$output_filename"
-printf "Created %s successfully\n" "$output_filename"
+convert -delay "${convert_delay}" -loop 0 -limit memory 2GB -limit map 2GB /tmp/gifme/*.png "${output_filename}"
+printf "Created %s successfully\n" "${output_filename}"
