@@ -227,7 +227,7 @@ printf "localhost:%d" "$PRINTER_PORT" | openurl
 command= '''
 # start the ldm (light device mounter) daemon, to mount devices
 echo "use lsblk -f to view disk IDs"
-exec sudo ldm -u $(whoami)
+exec sudo ldm -u "$(whoami)"
 '''
 
 [ipinfo]
