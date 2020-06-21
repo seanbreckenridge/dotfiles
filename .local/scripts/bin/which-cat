@@ -1,6 +1,6 @@
-#!/bin/sh
+#!/bin/bash
 
-usage="$(basename "$0") SHELL_COMMAND [-h]
+readonly usage="$(basename "$0") SHELL_COMMAND [-h]
 
 calls 'which' to locate an executable
 prints the contents of the file if it exists, and is readable
@@ -9,20 +9,24 @@ Arguments:
   -h  show help message
 "
 
-if [ "$1" = "-h" ] || [ "$1" = "-help" ] || [ "$1" = "--help" ]; then
+# if user asked for help
+if [[ "$1" =~ ^[-]{1,2}?h(elp)?$ ]]; then
 	echo "$usage"
 	exit 0
 fi
 
-OUT=$(command -v "$@")
-if [ -z "$OUT" ]; then
-	echo "$* not found"
+declare BIN_LOC
+BIN_LOC="$(command -v "$@")"
+
+if [[ -z "$BIN_LOC" ]]; then
+	echo "Could not find $* on your \$PATH"
 	exit 1
 else
 	# Source: https://unix.stackexchange.com/a/275659
-	if iconv --from-code="utf-8" --to-code="utf-8" "$OUT" >/dev/null 2>&1; then
-		cat "$OUT"
+	# if the contents are human-readable
+	if iconv --from-code="utf-8" --to-code="utf-8" "$BIN_LOC" >/dev/null 2>&1; then
+		cat "$BIN_LOC"
 	else
-		printf "%s -- omitting contents since the file isn't human-readable\n" "$OUT"
+		printf "%s -- omitting contents since the file isn't human-readable\n" "${BIN_LOC}"
 	fi
 fi
