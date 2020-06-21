@@ -1,4 +1,4 @@
-#!/usr/bin/env zsh
+#!/usr/bin/zsh
 
 # load zsh-completions installed with pacman,
 # user defined functions and completions

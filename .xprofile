@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/bin/sh
 # run at the beginning of X session, before the window manager has started
 
 # source profile

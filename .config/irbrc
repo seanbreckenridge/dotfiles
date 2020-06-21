@@ -1,4 +1,4 @@
-#!/usr/bin/env ruby
+#!/usr/bin/ruby
 
 # custom irbrc to change ruby history location
 # frozen_string_literal: true

@@ -1,4 +1,4 @@
-#!/usr/bin/env zsh
+#!/usr/bin/zsh
 
 # save ls so it can be used elsewhere if I want
 alias l="$(command -v ls) --color=auto"

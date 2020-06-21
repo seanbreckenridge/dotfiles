@@ -1,4 +1,4 @@
-#!/usr/bin/env zsh
+#!/usr/bin/zsh
 
 # This file sets zsh history configuration
 # and environment variables/aliases

@@ -1,4 +1,4 @@
-#!/usr/bin/env zsh
+#!/usr/bin/zsh
 
 # lazy load shell tools that otherwise
 # cause a bunch of lag on start up
