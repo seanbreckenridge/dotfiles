@@ -318,3 +318,7 @@ while IFS= read -r f; do
 done <<<"$files"
 '''
 shebang="#!/bin/bash"
+
+# shorthand for sending lines from vim to pastebin
+[vix]
+command='ix -v'

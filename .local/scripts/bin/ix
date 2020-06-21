@@ -1,7 +1,17 @@
 #!/bin/bash
 # The world's best pastebin terminal replacement.
+# If -v is given as the first argument, prints what
+# it received as STDIN back to STDOUT
+# Used to send lines from vim to ix like:
+# <number of lines>!!ix -v
 
-# receives input from STDIN
-url="$(curl -s -F 'f:1=<-' http://ix.io)"
-echo "$url"
+readonly STDIN="$(cat)"
+[[ "$1" == "-v" ]] && cat <<<"${STDIN}"
+
+declare url
+url="$(curl -s -F 'f:1=<-' http://ix.io <<<"${STDIN}")" || {
+	notify-send "Failed to make request to http://ix.io"
+	exit 1
+}
 echo -n "$url" | clipcopy
+notify-send "Copied link to clipboard" "${url}"
