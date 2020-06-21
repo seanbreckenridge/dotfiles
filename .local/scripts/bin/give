@@ -3,7 +3,7 @@
 # https://gitlab.com/seanbreckenridge/subpath-serve.git
 # and copies a link to that file to the clipboard
 
- BASE_URL="https://sean.fish/d/"
+readonly BASE_URL="https://sean.fish/d/"
 declare SCRIPT_INDEX="$(curl -s "$BASE_URL")"
 readonly SCRIPT_INDEX  # convert to constant
 declare SCRIPT_CHOICE  # define separately to not squash exit code
