@@ -78,4 +78,4 @@ printf "Converting %d frames to a gif...\n" "$(find /tmp/gifme | wc -l)"
 # delay - speed, determined by fps above
 # loop 0 - make gif repeat itself
 convert -delay $convert_delay -loop 0 -limit memory 2GB -limit map 2GB /tmp/gifme/*.png "$output_filename"
-printf "Created %s successfully" "$output_filename"
+printf "Created %s successfully\n" "$output_filename"
