@@ -7,18 +7,20 @@
 # be used to jump to those directories
 # while in ranger
 
-DirAliasFile="${XDG_CONFIG_DIR:-$HOME/.config}/directories"
-[ ! -f "$DirAliasFile" ] && {
-	echo "$DirAliasFile doesn't exist, exiting..." 1>&2
-	exit 1
-}
-RangerDataDir="${XDG_DATA_HOME:-$HOME/.local/share}/ranger"
-[ ! -d "$RangerDataDir" ] && {
-	echo "Couldnt find ranger data directory at ${RangerDataDir}" 1>&2
+readonly DirAliasFile="${XDG_CONFIG_DIR:-$HOME/.config}/directories"
+readonly RangerDataDir="${XDG_DATA_HOME:-$HOME/.local/share}/ranger"
+
+[[ ! -f "$DirAliasFile" ]] && {
+	echo -e "${DirAliasFile} doesn't exist, exiting..." 1>&2
 	exit 1
 }
 
-BookmarksFile="${RangerDataDir}/bookmarks"
+[ ! -d "${RangerDataDir}" ] && {
+	echo -e "Couldnt find ranger data directory at ${RangerDataDir}" 1>&2
+	exit 1
+}
+
+readonly BookmarksFile="${RangerDataDir}/bookmarks"
 [ ! -f "${BookmarksFile}" ] && {
 	echo "No ranger bookmarks file exists, creating one..."
 	touch "${BookmarksFile}"

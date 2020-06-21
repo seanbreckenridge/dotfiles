@@ -2,7 +2,7 @@
 # Accepts a string as the first argument
 # Centers the text vertically on the screen
 
-MESSAGE="${1:?'Specify the message to print as the first argument'}"
+MESSAGE="${1:?Specify the message to print as the first argument}"
 
 clear
 LINES="$(($(tput lines) / 2))"

@@ -4,8 +4,8 @@
 # brightness up 5
 # brightness down 10
 
-CMD="${1:?'No argument provided (up/down)'}"
-STEP=${2:-5} # default to 5%
+CMD="${1:?No argument provided (up/down)}"
+STEP="${2:-5}" # default to 5%
 
 case "$CMD" in
 up)

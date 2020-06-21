@@ -22,15 +22,15 @@ abort() {
 
 case "$file" in
 *\.md)
-  # if the user is editing a README.md file at the same level as a .git dir
-  # render with gfm (Github Flavored Markdown)
-  # else, render with pandoc markdown
-  if in-gitdir && [ -d "$dir/.git" ]; then
-    pandoc -f "gfm" -t html5 "$file" -o "$base".pdf
-  else
-    pandoc -t html5 "$file" -o "$base".pdf
-  fi
-  ;;
+	# if the user is editing a README.md file at the same level as a .git dir
+	# render with gfm (Github Flavored Markdown)
+	# else, render with pandoc markdown
+	if in-gitdir && [ -d "$dir/.git" ]; then
+		pandoc -f "gfm" -t html5 "$file" -o "$base".pdf
+	else
+		pandoc -t html5 "$file" -o "$base".pdf
+	fi
+	;;
 *\.tex) pdflatex "$file" -output-directory -jobname="$base" "$dir" ;;
 *) abort "Unsupported file extension ${extension}" ;;
 esac

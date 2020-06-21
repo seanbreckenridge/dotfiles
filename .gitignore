@@ -78,6 +78,7 @@ __pycache__
 !.config/todo/config
 /.config/GIMP
 /.config/slack-term/
+/.config/VirtualBox/
 /.config/snes9x
 /.config/fontforge
 /.config/vlc

@@ -7,10 +7,18 @@
 # This assumes a cp -r ../data/media/moves /mnt/drive/movies
 # is currently being run in another window.
 
-if [ -z "$2" ] || [ ! -e "$1" ] || [ ! -e "$2" ]; then
+if [[ -z "$2" ]]; then
 	echo -e "Provide <source> <dest> as arguments to copy_status\nPrints the current status of the copy; what %% has been transferred" 1>&2
 	exit 1
 fi
+
+# make sure files that are being copied to exist
+for dir in "$@"; do
+	if [[ ! -e "${dir}" ]]; then
+		echo -e "${dir} does not exist..."
+		exit 1
+	fi
+done
 
 function dir_size() {
 	command du "$1" | awk '{print $1}'
