@@ -195,7 +195,7 @@ notify-send "Uploaded Image to Imgur:" "$IMGUR_URL"
 [twitch]
 command = '''
 # open chatterino and use mpv to stream from twitch
-STREAMER="${1:?'Pass the twitch user to stream from as the first argument.'}"
+STREAMER="${1:?Pass the twitch user to stream from as the first argument.}"
 export MPVF_PICKER=rofi
 pgrep -x chatterino >/dev/null || chatterino &
 setsid mpvf "https://www.twitch.tv/${STREAMER}" &
@@ -247,7 +247,7 @@ command='''mpv /dev/video0'''
 
 [geolocate]
 command='''
-IP_ADDR="${1:?'provide ip address to geolocate as the first argument'}"
+IP_ADDR="${1:?provide ip address to geolocate as the first argument}"
 curl --silent "https://ipvigilante.com/${IP_ADDR}" | jq '.data | "\(.country_name), \(.subdivision_1_name), \(.subdivision_2_name) (\(.latitude), \(.longitude))"'
 '''
 
@@ -264,29 +264,29 @@ done
 [remove-extension]
 command='''
 # remove the extension from a filename
-FILEPATH="${1:?'You must provide a filepath to remove the extension for.'}"
+FILEPATH="${1:?You must provide a filepath to remove the extension for.}"
 echo "${FILEPATH%%.*}"
 '''
 
 [replace-extension]
 command='''
 # replace the extension for a filename
-FILEPATH="${1:?'Have to provide a filepath to replace the extension for'}"
-REPLACE_EXTENSION="${2:?'Must provide extension to replace extension with'}"
+FILEPATH="${1:?Have to provide a filepath to replace the extension for}"
+REPLACE_EXTENSION="${2:?Must provide extension to replace extension with}"
 echo "${FILEPATH%%.*}.${REPLACE_EXTENSION#.}"
 '''
 
 [to-png]
 command='''
 # convert an image to png
-FILEPATH=${1:?'Must provide image to convert'}
+FILEPATH=${1:?Must provide image to convert}
 convert "$FILEPATH" "$(replace-extension "$FILEPATH" png)"
 '''
 
 [to-icon]
 command='''
 # convert an image to a 16x16 icon - to favicon size
-FILEPATH=${1:?'Must provide image to convert'}
+FILEPATH=${1:?Must provide image to convert}
 NEW_FILEPATH="$(remove-extension "$FILEPATH")-icon.png"
 convert -resize x16 -gravity center -crop 16x16+0+0 -flatten -colors 256 "$FILEPATH" "$NEW_FILEPATH"
 '''

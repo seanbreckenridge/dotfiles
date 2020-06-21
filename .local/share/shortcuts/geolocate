@@ -1,3 +1,3 @@
 #!/bin/sh
-IP_ADDR="${1:?'provide ip address to geolocate as the first argument'}"
+IP_ADDR="${1:?provide ip address to geolocate as the first argument}"
 curl --silent "https://ipvigilante.com/${IP_ADDR}" | jq '.data | "\(.country_name), \(.subdivision_1_name), \(.subdivision_2_name) (\(.latitude), \(.longitude))"'
