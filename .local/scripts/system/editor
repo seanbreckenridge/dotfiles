@@ -5,18 +5,13 @@ set -u # undefined variables are errors
 
 usage="Usage: $(basename "$0") [OPTION] FILE...
 Opens an editor. If no options are provided,
-opens the file(s) with emacs as a background process
+opens the file(s) with nvim
 
 Options:
 
   -h                 Print this message and exit
-  -n                 Open nvim in the current terminal
+  -e                 Opens with emacs
   -c                 Opens the emacs client
-  -b                 By default, the -c flag runs
-                       in the foreground and blocks
-                       the terminal it was launched
-                       from. This runs it in the
-                       background.
 "
 
 # define enum
@@ -25,24 +20,19 @@ EMACS_CLIENT=1
 NVIM=2
 
 # default action
-ACTION=EMACS
-# launch in background (false)
-BG=
+ACTION=NVIM
 
-while getopts "hncb" OPT; do
+while getopts "hec" OPT; do
 	case "$OPT" in
 	h)
 		printf "%s" "$usage"
 		exit 0
 		;;
-	n)
-		ACTION=NVIM
+	e)
+		ACTION=EMACS
 		;;
 	c)
 		ACTION=EMACS_CLIENT
-		;;
-	b)
-		BG=true
 		;;
 	?)
 		printf "%s" "$usage"
@@ -61,10 +51,6 @@ EMACS)
 	setsid emacs "$@" &
 	;;
 EMACS_CLIENT)
-	if [ "$BG" = true ]; then
-		setsid emacsclient -c "$@" &
-	else
-		emacsclient -c "$@"
-	fi
+	setsid emacsclient -c "$@" &
 	;;
 esac

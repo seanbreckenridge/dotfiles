@@ -20,8 +20,8 @@ alias ycp="yc && yp"
 alias yl="yadm pull --recurse-submodules"
 
 # editor aliases
-alias en='e -n'   # editor with nvim
-alias ecl='e -cb' # editor with client in background
+alias ee='e -e'  # edit with emacs
+alias ecl='e -c' # editor with client in background
 
 # Standard
 alias reboot="sudo systemctl reboot"
