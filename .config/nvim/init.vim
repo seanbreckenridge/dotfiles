@@ -82,6 +82,11 @@ set smartcase
 set showmatch
 map <leader><space> :let @/=''<cr> " clear search
 
+" prevents truncated yanks, deletes, etc.
+" makes sure that you can lots of lines across
+" files/vim instances without truncating the buffer
+set viminfo='20,<1000,s1000
+
 " Remap help key.
 inoremap <F1> <ESC>:set invfullscreen<CR>a
 nnoremap <F1> :set invfullscreen<CR>
