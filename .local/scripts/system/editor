@@ -1,9 +1,9 @@
-#!/bin/sh
+#!/bin/bash
 
 set -e # exit on non zero return code
 set -u # undefined variables are errors
 
-usage="Usage: $(basename "$0") [OPTION] FILE...
+readonly usage="Usage: $(basename "$0") [OPTION] FILE...
 Opens an editor. If no options are provided,
 opens the file(s) with nvim
 
@@ -15,12 +15,12 @@ Options:
 "
 
 # define enum
-EMACS=0
-EMACS_CLIENT=1
-NVIM=2
+readonly EMACS=0
+readonly EMACS_CLIENT=1
+readonly NVIM=2
 
 # default action
-ACTION=NVIM
+declare ACTION=$NVIM
 
 while getopts "hec" OPT; do
 	case "$OPT" in
@@ -29,10 +29,10 @@ while getopts "hec" OPT; do
 		exit 0
 		;;
 	e)
-		ACTION=EMACS
+		ACTION="$EMACS"
 		;;
 	c)
-		ACTION=EMACS_CLIENT
+		ACTION="$EMACS_CLIENT"
 		;;
 	?)
 		printf "%s" "$usage"
@@ -44,13 +44,13 @@ shift "$((OPTIND - 1))"
 
 # perform action
 case "$ACTION" in
-NVIM)
+"$NVIM")
 	nvim "$@"
 	;;
-EMACS)
+"$EMACS")
 	setsid emacs "$@" &
 	;;
-EMACS_CLIENT)
+"$EMACS_CLIENT")
 	setsid emacsclient -c "$@" &
 	;;
 esac
