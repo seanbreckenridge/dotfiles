@@ -4,6 +4,7 @@
 # it received as STDIN back to STDOUT
 # Used to send lines from vim to ix like:
 # <number of lines>!!ix -v
+# See https://exobrain.sean.fish/vim/magic_wands/
 
 readonly STDIN="$(cat)"
 [[ "$1" == "-v" ]] && cat <<<"${STDIN}"
