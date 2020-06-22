@@ -5,6 +5,6 @@ if ! CLIPBOARD_CONTENTS="$(xclip -out -selection clipboard)"; then
 fi
 export MPVF_PICKER=rofi
 notify-send "Starting stream..." "${CLIPBOARD_CONTENTS}"
-if ! ERROR="$(mpvf "${CLIPBOARD_CONTENTS}")"; then
+if ! mpvf "${CLIPBOARD_CONTENTS}"; then
 	notify-send "Streaming Error:" "Couldn't stream from ${CLIPBOARD_CONTENTS}" && exit 1
 fi
