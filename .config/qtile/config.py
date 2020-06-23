@@ -17,7 +17,7 @@ from libqtile.config import (
     Match,
 )
 from libqtile.lazy import lazy
-from libqtile import layout, bar, widget, hook, extension
+from libqtile import layout, bar, widget, hook
 
 from util import get_num_monitors, get_default_terminal
 
@@ -62,11 +62,11 @@ keys: List[Key] = [
     Key("M-S-y", lazy.layout.grow_left(), desc="grow window left-wards"),
     Key("M-S-o", lazy.layout.grow_right(), desc="grow window towards right-wards"),
     # window (floating/fullscreen)
-    #Key(
-        #"M-S-f",
-        #lazy.window.toggle_floating(),
-        #desc="toggle currently focused window as floating",
-    #),
+    # Key(
+    #   "M-S-f",
+    #    lazy.window.toggle_floating(),
+    #    desc="toggle currently focused window as floating",
+    # ),
     Key(
         "M-f",
         lazy.window.toggle_fullscreen(),
