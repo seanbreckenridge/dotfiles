@@ -217,6 +217,7 @@ thunar
 thunderbird
 tor-browser
 tree
+ungoogled-chromium
 zoom
 
 # fonts
