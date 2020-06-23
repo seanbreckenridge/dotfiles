@@ -27,4 +27,4 @@ add_todo() {
 	fi
 }
 
-prompt_todos
+[ "$1" = "add" ] && add_todo || prompt_todos

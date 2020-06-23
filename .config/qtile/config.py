@@ -62,11 +62,11 @@ keys: List[Key] = [
     Key("M-S-y", lazy.layout.grow_left(), desc="grow window left-wards"),
     Key("M-S-o", lazy.layout.grow_right(), desc="grow window towards right-wards"),
     # window (floating/fullscreen)
-    Key(
-        "M-S-f",
-        lazy.window.toggle_floating(),
-        desc="toggle currently focused window as floating",
-    ),
+    #Key(
+        #"M-S-f",
+        #lazy.window.toggle_floating(),
+        #desc="toggle currently focused window as floating",
+    #),
     Key(
         "M-f",
         lazy.window.toggle_fullscreen(),
@@ -152,8 +152,13 @@ keys: List[Key] = [
     ),
     Key(
         "M-S-t",
+        lazy.spawn("todo-prompt add"),
+        desc="rofi interface to add a basic todo",
+    ),
+    Key(
+        "M-S-f",
         lazy.spawn('alacritty -e sh -c "full_todotxt $HOME/.config/todo/todo.txt"'),
-        desc="Interactive terminal interface to create todos",
+        desc="Interactive terminal interface to create todos with reminders",
     ),
     Key("M-g", lazy.spawn("trackpad toggle"), desc="turns the trackpad on/off"),
     Key(
