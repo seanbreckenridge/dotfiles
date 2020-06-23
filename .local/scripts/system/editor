@@ -45,7 +45,11 @@ shift "$((OPTIND - 1))"
 # perform action
 case "$ACTION" in
 "$NVIM")
-	nvim "$@"
+	if (($# == 0)); then
+		nvim +Explore
+	else
+		nvim "$@"
+	fi
 	;;
 "$EMACS")
 	setsid emacs "$@" &
