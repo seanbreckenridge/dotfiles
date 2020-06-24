@@ -1,7 +1,7 @@
 #!/usr/bin/zsh
 
 # save ls so it can be used elsewhere if I want
-alias l="$(command -v ls) --color=auto"
+alias lsplain="\ls --color=never"
 # alias ls to exa
 alias ls='exa --icons'
 alias ll='ls -hl'
