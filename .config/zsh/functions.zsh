@@ -22,7 +22,7 @@ autoload -Uz "$ZDOTDIR"/functions/*
 
 # personal zsh completions
 autoload -Uz "$ZDOTDIR"/completions/*
-compdef _gnu_generic exists youtube-dl wait-for-internet genpasswd genpass shortcuts dragon-drag-and-drop tiv dust highlight ranger rifle scrot keepassxc
+compdef _gnu_generic exists youtube-dl wait-for-internet genpasswd genpass shortcuts dragon-drag-and-drop tiv dust highlight ranger rifle scrot keepassxc vic
 compdef _binary_completion which-cat launch
 compdef _editor e
 

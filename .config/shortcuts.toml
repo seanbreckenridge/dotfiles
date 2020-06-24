@@ -323,3 +323,68 @@ shebang="#!/bin/bash"
 # shorthand for sending lines from vim to pastebin
 [vix]
 command='ix -v'
+
+# lots of date shorthands
+
+[tstamp]
+command="date +'%Y%m%d%H%M%S'"
+
+[now]
+command='date +"%A, %B %e, %Y, %l:%M:%S%p"'
+
+[epoch]
+command='date +"%s"'
+
+[weekday]
+command='date +"%A" | lower'
+
+[month]
+command='date +"%B" | lower'
+
+[year]
+command='date +"%Y"'
+
+[lower]
+command="tr '[:upper:]' '[:lower:]'"
+
+[upper]
+command="tr '[:lower:]' '[:upper:]'"
+
+[capitalize]
+command="""
+# capitalizes the first character of a word from STDIN
+s="$(lower)"
+echo "$(upper<<<"${s:0:1}")${s:1}"
+"""
+shebang="#!/bin/bash"
+
+[newest]
+command='''
+# gets the most recently modified file
+# from a directory
+IFS=$'\n'
+f=($(ls -1 --color=never -trd ${1:-.}/*))
+echo "${f[-1]}"
+'''
+shebang="#!/bin/bash"
+
+[lastpic]
+command='newest "${HOME}/Desktop/Screenshots"'
+
+[lastdown]
+command='newest "${HOME}/Downloads"'
+
+[mvlast]
+command='mv -v "$(lastdown)" "./$1"'
+
+[mvlastpic]
+command='mv -v "$(lastpic)" "./$1"'
+
+[rbg]
+command="echo -n $'\033[38;2;'$1';'$2';'$3'm'"
+
+[rbgb]
+command="echo -n $'\033[48;2;'$1';'$2';'$3'm'"
+
+[vic]
+command='nvim "$(which "${1:?No Executable provided}")"'

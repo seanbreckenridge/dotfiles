@@ -36,7 +36,9 @@ alias twitchlive-table='twitchlive --output-format="table"'
 alias preview='serve .'
 alias ft="full_todotxt"
 alias rr="rifle"
-
+alias free='free -h'
+alias syserrors="sudo journalctl -p 3 -xb"
+alias sysderrors="sudo systemctl --failed"
 # Non-standard
 
 # open screenshots folder

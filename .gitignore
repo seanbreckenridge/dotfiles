@@ -128,6 +128,7 @@ __pycache__
 
 /.local/lib/python*
 /.local/man
+/.local/pipx
 /.local/plugged/*
 /.local/state
 /.local/lib/pkgconfig/*
