@@ -1,2 +1,2 @@
 #!/bin/sh
-newest "${HOME}/Downloads"
+newest "${DOWNLOADS:?No DOWNLOADS environment variable set}"

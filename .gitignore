@@ -67,6 +67,7 @@ __pycache__
 /.m2
 /.gore
 /.elvish
+/.wget-hsts
 /.jupyter
 /.3T
 /.mal-id-cache

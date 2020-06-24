@@ -1,2 +1,2 @@
 #!/bin/sh
-newest "${HOME}/Pictures/Screenshots"
+newest "${SCREENSHOTS:?No SCREENSHOTS environment variable set}"
