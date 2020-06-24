@@ -1,2 +1,2 @@
 #!/bin/sh
-newest "${DOWNLOADS:?No DOWNLOADS environment variable set}"
+newest "${DOWNLOADS:?No DOWNLOADS environment variable set}" || exit 1

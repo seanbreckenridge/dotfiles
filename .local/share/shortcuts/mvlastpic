@@ -1,2 +1,3 @@
 #!/bin/sh
-mv -v "$(lastpic)" "./$1"
+FILE="$(lastpic)" || exit 1
+mv -v "${FILE}" "./$1"

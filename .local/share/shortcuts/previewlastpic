@@ -1,2 +1,2 @@
 #!/bin/sh
-lastpic | sxiv -
+lastpic | sxiv - || exit 1

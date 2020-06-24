@@ -1,2 +1,2 @@
 #!/bin/sh
-newest "${SCREENSHOTS:?No SCREENSHOTS environment variable set}"
+newest "${SCREENSHOTS:?No SCREENSHOTS environment variable set}" || exit 1

@@ -186,7 +186,7 @@ fi
 command='''
 # uploads the most recent screenshot from
 # ~/Pictures/Screenshots to imgur
-FILENAME="$(newest "${SCREENSHOTS:?No SCREENSHOTS environment variable set}")"
+FILENAME="$(newest "${SCREENSHOTS:?No SCREENSHOTS environment variable set}")" || exit 1
 imgur-uploader "$FILENAME"
 IMGUR_URL="$(xclip -out -selection clipboard)"
 printf "%s\n" "$IMGUR_URL" >>/tmp/imgur_urls.log
@@ -363,16 +363,16 @@ command='''
 # gets the most recently modified file
 # from a directory
 IFS=$'\n'
-f=($(ls -1 --color=never -trd ${1:-.}/*))
+f=($(ls -1 --color=never -trd ${1:-.}/*)) || exit 1
 echo "${f[-1]}"
 '''
 shebang="#!/bin/bash"
 
 [lastpic]
-command='newest "${SCREENSHOTS:?No SCREENSHOTS environment variable set}"'
+command='newest "${SCREENSHOTS:?No SCREENSHOTS environment variable set}" || exit 1'
 
 [previewlastpic]
-command='lastpic | sxiv -'
+command='lastpic | sxiv - || exit 1'
 link="lastpicpreview"
 
 [urlpic]
@@ -381,18 +381,24 @@ command='''
 rm -rf /tmp/urlpic
 mkdir -p /tmp/urlpic && cd /tmp/urlpic || exit 1
 wget -q "${1:?Must provide a image URL to preview}"
-newest | sxiv -
+newest | sxiv - || exit 1
 '''
 link="preivewurlpic"
 
 [lastdown]
-command='newest "${DOWNLOADS:?No DOWNLOADS environment variable set}"'
+command='newest "${DOWNLOADS:?No DOWNLOADS environment variable set}" || exit 1'
 
 [mvlast]
-command='mv -v "$(lastdown)" "./$1"'
+command='''
+FILE="$(lastdown)" || exit 1
+mv -v "${FILE}" "./$1"
+'''
 
 [mvlastpic]
-command='mv -v "$(lastpic)" "./$1"'
+command='''
+FILE="$(lastpic)" || exit 1
+mv -v "${FILE}" "./$1"
+'''
 
 [rbg]
 command="echo -n $'\033[38;2;'$1';'$2';'$3'm'"
