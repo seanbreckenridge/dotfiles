@@ -8,8 +8,8 @@ print_dates() {
 	date "+%F # YYYY-MM-DD"
 	date "+%F %T # YYYY-MM-DD HH:MM:SS"
 	date "+%c # full date"
-  date "+%A, %B %e, %Y, %l:%M:%S%p # now"
-  date "+%s # epoch"
+	date "+%A, %B %e, %Y, %l:%M:%S%p # now"
+	date "+%s # epoch"
 }
 
 print_dates | rofi -location 2 -dmenu -p "Pick Date > " |
