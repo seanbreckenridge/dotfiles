@@ -86,7 +86,7 @@ wait-for-internet && notify-send "INTERNET" && paplay /usr/share/sounds/freedesk
 [wfib]
 command='''
 # wfi, and then reload the browser
-wfi && reload-browser
+wfi; reload-browser
 '''
 
 [rofi-input]
