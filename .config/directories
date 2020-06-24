@@ -12,7 +12,7 @@ n ~/Documents/Notes
 P ~/.local/share/plaintext_playlist
 q ~/.config/qtile
 s ~/.local/scripts
-S ~/Desktop/Screenshots
+S ~/Pictures/Screenshots
 y ~/.config/yadm
 z ~/.config/zsh
 za ~/.config/zsh/aliases

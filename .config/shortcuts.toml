@@ -185,8 +185,8 @@ fi
 [screenshot-to-imgur]
 command='''
 # uploads the most recent screenshot from
-# ~/Desktops/Screenshots to imgur
-FILENAME="$(ls -t ~/Desktop/Screenshots/*.png | head -n1)"
+# ~/Pictures/Screenshots to imgur
+FILENAME="$(newest "${HOME}/Pictures/Screenshots")"
 imgur-uploader "$FILENAME"
 IMGUR_URL="$(xclip -out -selection clipboard)"
 printf "%s\n" "$IMGUR_URL" >>/tmp/imgur_urls.log
@@ -369,7 +369,11 @@ echo "${f[-1]}"
 shebang="#!/bin/bash"
 
 [lastpic]
-command='newest "${HOME}/Desktop/Screenshots"'
+command='newest "${HOME}/Pictures/Screenshots"'
+
+[previewlastpic]
+command='lastpic | sxiv -'
+link="lastpicpreview"
 
 [lastdown]
 command='newest "${HOME}/Downloads"'

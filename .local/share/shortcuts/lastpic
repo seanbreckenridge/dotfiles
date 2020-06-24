@@ -1,2 +1,2 @@
 #!/bin/sh
-newest "${HOME}/Desktop/Screenshots"
+newest "${HOME}/Pictures/Screenshots"

@@ -2,7 +2,7 @@
 # Takes a screenshot, saves it in ~/Desktop/Screenshots/
 # and puts it on clipboard
 
-SCREENSHOT_DIR="${HOME}/Desktop/Screenshots"
+SCREENSHOT_DIR="${HOME}/Pictures/Screenshots"
 OUTPUT_FILENAME="$SCREENSHOT_DIR/$(date '+%Y-%m-%d--%R:%S').png"
 
 # take screenshot, save it and put it on clipboard
