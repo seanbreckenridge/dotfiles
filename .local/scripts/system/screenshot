@@ -1,8 +1,8 @@
 #!/bin/sh
-# Takes a screenshot, saves it in ~/Desktop/Screenshots/
+# Takes a screenshot, saves it in ~/Pictures/Screenshots/
 # and puts it on clipboard
 
-SCREENSHOT_DIR="${HOME}/Pictures/Screenshots"
+SCREENSHOT_DIR="${SCREENSHOTS:?No SCREENSHOTS environment variable set}"
 OUTPUT_FILENAME="$SCREENSHOT_DIR/$(date '+%Y-%m-%d--%R:%S').png"
 
 # take screenshot, save it and put it on clipboard

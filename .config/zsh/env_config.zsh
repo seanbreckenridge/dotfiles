@@ -8,6 +8,15 @@
 # also sets any environment variables
 # for shell tools/applications
 
+# Directories
+export REPOS="${HOME}/code"
+export PICTURES="${HOME}/Pictures"
+export SCREENSHOTS="${PICTURES}/Screenshots"
+export DOWNLOADS="${HOME}/Downloads"
+export DOCUMENTS="${HOME}/Documents"
+export MOVIES="${HOME}/Movies"
+export MUSIC="${HOME}/Music"
+
 # zsh history configuration
 
 HISTFILE="${ZDOTDIR}/.zsh_history"
@@ -85,7 +94,7 @@ export JULIA_DEPOT_PATH="${XDG_DATA_HOME}/julia"
 export SHORTCUTS_DIR="${XDG_DATA_HOME}/shortcuts"
 
 # playlist manager: https://github.com/seanbreckenridge/plaintext-playlist
-export PLAINTEXT_PLAYLIST_MUSIC_DIR="${HOME}/Music"
+export PLAINTEXT_PLAYLIST_MUSIC_DIR="${MUSIC}"
 
 # ignore less history
 export LESSHISTFILE="-"

@@ -186,7 +186,7 @@ fi
 command='''
 # uploads the most recent screenshot from
 # ~/Pictures/Screenshots to imgur
-FILENAME="$(newest "${HOME}/Pictures/Screenshots")"
+FILENAME="$(newest "${SCREENSHOTS:?No SCREENSHOTS environment variable set}")"
 imgur-uploader "$FILENAME"
 IMGUR_URL="$(xclip -out -selection clipboard)"
 printf "%s\n" "$IMGUR_URL" >>/tmp/imgur_urls.log
@@ -369,7 +369,7 @@ echo "${f[-1]}"
 shebang="#!/bin/bash"
 
 [lastpic]
-command='newest "${HOME}/Pictures/Screenshots"'
+command='newest "${SCREENSHOTS:?No SCREENSHOTS environment variable set}"'
 
 [previewlastpic]
 command='lastpic | sxiv -'
@@ -386,7 +386,7 @@ newest | sxiv -
 link="preivewurlpic"
 
 [lastdown]
-command='newest "${HOME}/Downloads"'
+command='newest "${DOWNLOADS:?No DOWNLOADS environment variable set}"'
 
 [mvlast]
 command='mv -v "$(lastdown)" "./$1"'
