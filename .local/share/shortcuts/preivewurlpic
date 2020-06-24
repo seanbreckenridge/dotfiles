@@ -1,0 +1,6 @@
+#!/bin/sh
+# preview a picture from a URL
+mkdir -p /tmp/urlpic
+cd /tmp/urlpic
+wget -q "${1:?Must provide a image URL to preview}"
+newest | sxiv -

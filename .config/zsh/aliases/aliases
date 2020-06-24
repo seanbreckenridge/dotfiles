@@ -33,7 +33,6 @@ alias du="du -h"
 alias df="df -h"
 alias history='history 0'
 alias twitchlive-table='twitchlive --output-format="table"'
-alias preview='serve .'
 alias ft="full_todotxt"
 alias rr="rifle"
 alias free='free -h'
