@@ -1,5 +1,9 @@
 #!/usr/bin/zsh
 
+# automatically open certain file types by just
+# typing the name as a command
+alias -s {md,html,txt}=nvim
+
 # save ls so it can be used elsewhere if I want
 alias lsplain="\ls --color=never"
 # alias ls to exa
