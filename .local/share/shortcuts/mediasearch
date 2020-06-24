@@ -1,4 +1,4 @@
 #!/bin/sh
 if SELECTED=$(printf "moviesearch\ntvsearch" | rofi -dmenu -location 2 -lines 2 -p "Search Media Type > "); then
-	$SELECTED
+	"$SELECTED"
 fi
