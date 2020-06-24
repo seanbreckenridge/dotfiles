@@ -94,9 +94,6 @@ vnoremap <F1> :set invfullscreen<CR>
 
 " Textmate holdouts
 
-" Formatting
-map <leader>q gqip
-
 " Visualize tabs and newlines
 set listchars=tab:▸\ ,eol:¬
 " Uncomment this to enable by default:
@@ -118,6 +115,9 @@ map <leader>e :Explore<CR>
 
 " shortcut to write and quit
 map <leader>q :wq<CR>
+
+" shortcut to quit without saving
+map <leader>Q :q!<CR>
 
 " Compile document (LaTeX/markdown/etc)
 map <leader>c :w! \| !compile <c-r>%<CR><CR>
