@@ -12,12 +12,12 @@ function abort() {
 }
 
 # Install yay if it isn't already installed
-if [[ ! $(command -v yay) ]]; then
+havecmd yay || {
 	cd /tmp
 	git clone https://aur.archlinux.org/yay.git
 	cd yay
 	makepkg -si
-fi
+}
 
 readonly YADM_DIR="${HOME}/.config/yadm"
 readonly PACKAGE_LIST="${YADM_DIR}/packages.txt"
@@ -40,9 +40,7 @@ done
 
 # set zsh as shell
 if ! echo "$SHELL" | grep -q zsh; then
-	if [[ ! "$(command -v zsh)" ]]; then
-		sudo pacman -S zsh
-	fi
+	havecmd zsh || sudo pacman -S zsh
 	sudo chsh -s "$(command -v zsh)"
 	abort "Restart shell so that zsh environment is setup. Then re-run 'yadm bootstrap'"
 else
@@ -98,7 +96,7 @@ python3 -m pip install -q --user -r "$PYTHON_PACKAGE_LIST"
 # Install personal python packages
 # If command "$1" doesn't exist, install from $2
 function install_python_personal() {
-	[ ! "$(command -v "$1")" ] && python3 -m pip install --user "git+$2"
+	havecmd "$1" || python3 -m pip install --user "git+$2"
 }
 install_python_personal "plus1" "https://gitlab.com/seanbreckenridge/plus1"
 install_python_personal "pythonanywhere_3_months" "https://gitlab.com/seanbreckenridge/pythonanywhere-3-months"
@@ -108,7 +106,7 @@ install_python_personal "rotten" "https://gitlab.com/seanbreckenridge/rotten_tom
 # speedtest and speedtest-cli, which both have the same
 # functionatly. This removes speedtest-cli to make
 # tab completion nicer
-[[ $(command -v speedtest-cli) ]] && rm "$(command -v speedtest-cli)"
+havecmd speedtest-cli && rm "$(command -v speedtest-cli)"
 
 # install npm packages
 NPM_CONFIG_PREFIX="${XDG_DATA_HOME}/npm-packages"
@@ -157,10 +155,10 @@ done <"$CARGO_PACKAGE_LIST"
 function install_go_package() {
 	local -a packageinfo
 	read -ra packageinfo <<<"$1"
-	[[ ! "$(command -v "${packageinfo[0]}")" ]] && go get -u -v "${packageinfo[1]}"
+	havecmd "${packageinfo[0]}" || go get -u -v "${packageinfo[1]}"
 }
 # install pistol manually
-[ ! $(command -v pistol) ] && env GO111MODULE=on go get -v -u github.com/doronbehar/pistol/cmd/pistol
+havecmd pistol || env GO111MODULE=on go get -v -u github.com/doronbehar/pistol/cmd/pistol
 
 echo "Installing global go packages..."
 while IFS= read -r go_line; do
@@ -169,9 +167,7 @@ done <"$GO_PACKAGE_LIST"
 
 echo "Installing global haskell packages..."
 while read -r haskell_pkg; do
-	if [ ! "$(command -v "$haskell_pkg")" ]; then
-		stack install "$haskell_pkg"
-	fi
+	havecmd "$haskell_pkg" || stack install "$haskell_pkg"
 done <"$HASKELL_PACKAGE_LIST"
 
 # Install doom emacs
@@ -198,14 +194,10 @@ done
 echo "Checking for manually installed binaries..."
 binaries=("wait-for-internet" "genpasswd" "shortcuts" "largechar" "mpvf" "exists")
 for binary in "${binaries[@]}"; do
-	if [ ! "$(command -v "$binary")" ]; then
-		print_error "Warning: Couldn't find ${binary}. Install it from https://github.com/seanbreckenridge/${binary}"
-	fi
+	havecmd "$binary" || print_error "Warning: Couldn't find ${binary}. Install it from https://github.com/seanbreckenridge/${binary}"
 done
 
-if [ "$(command -v shortcuts)" ]; then
-	printf "Created %d shortcuts\n" "$(shortcuts create | wc -l)"
-fi
+havecmd shortcuts && printf "Created %d shortcuts\n" "$(shortcuts create | wc -l)"
 
 dir-aliases
 printf "Created %d directory aliases\n" "$(wc -l <"$ZDOTDIR/aliases/directory_aliases")"
