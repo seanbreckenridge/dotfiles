@@ -154,6 +154,7 @@ sc-im
 screenkey-git
 scrot
 shellcheck-bin
+socat
 strace
 sxiv
 terminalimageviewer-git
