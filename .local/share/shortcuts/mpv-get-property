@@ -1,7 +1,7 @@
 #!/bin/sh
 # See https://stackoverflow.com/a/62582595/9348376
 PROPERTY="${1:?Pass property to get from currently running mpv instance. Run mpv --list-properties to get a list}"
-MPV_RESP="$(printf '{ "command": ["get_property", "%s"] }\n' "$PROPERTY" | socat - "${MPV_SOCKET:-/tmp/mpvsocket}")" || exit 1
+MPV_RESP="$(printf '{ "command": ["get_property", "%s"] }\n' "$PROPERTY" | socat - "${MPV_SOCKET:-/tmp/mpvsocket}")" || exit $?
 err="$(echo "$MPV_RESP" | jq -r '.error')"
 [ "$err" = "success" ] || {
   echo "Error: ${err}" 1>&2
