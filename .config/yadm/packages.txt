@@ -104,6 +104,7 @@ cmatrix
 coreutils
 cronie
 ctags
+datamash
 dex
 dragon-drag-and-drop-git
 drive-git
