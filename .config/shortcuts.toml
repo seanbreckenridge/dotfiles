@@ -402,9 +402,11 @@ mv -v "${FILE}" "./$1"
 
 [rbg]
 command="echo -n $'\033[38;2;'$1';'$2';'$3'm'"
+shebang="#!/bin/bash"
 
 [rbgb]
 command="echo -n $'\033[48;2;'$1';'$2';'$3'm'"
+shebang="#!/bin/bash"
 
 [vic]
 command='nvim "$(which "${1:?No Executable provided}")"'
