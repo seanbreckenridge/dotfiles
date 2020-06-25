@@ -110,6 +110,9 @@ set wildmenu
 " swap to previous buffer
 map <leader><leader> :bprevious<CR>
 
+" nicer binding for window management
+map <leader>w <C-W>
+
 " Open file manager
 map <leader>e :Explore<CR>
 
