@@ -8,15 +8,6 @@
 # also sets any environment variables
 # for shell tools/applications
 
-# Directories
-export REPOS="${HOME}/code"
-export PICTURES="${HOME}/Pictures"
-export SCREENSHOTS="${PICTURES}/Screenshots"
-export DOWNLOADS="${HOME}/Downloads"
-export DOCUMENTS="${HOME}/Documents"
-export MOVIES="${HOME}/Movies"
-export MUSIC="${HOME}/Music"
-
 # zsh history configuration
 
 HISTFILE="${ZDOTDIR}/.zsh_history"
