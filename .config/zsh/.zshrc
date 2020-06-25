@@ -4,6 +4,7 @@
 # source zsh config
 source "${ZDOTDIR}/env_config.zsh" # History/Application configuration
 source "${ZDOTDIR}/prompt.zsh"     # prompt configuration
+source "${ZDOTDIR}/completion.zsh" # completion
 source "${ZDOTDIR}/functions.zsh"  # functions, bindings, completions
 source "${ZDOTDIR}/lazy.zsh"       # lazy load shell tools
 

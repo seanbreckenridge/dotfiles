@@ -1,5 +1,3 @@
-#!/usr/bin/zsh
-
 # load zsh-completions installed with pacman,
 # user defined functions and completions
 fpath=(/usr/share/zsh/site-functions "$ZDOTDIR"/functions "$ZDOTDIR"/completions "${fpath[@]}")

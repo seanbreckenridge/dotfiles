@@ -1,5 +1,3 @@
-#!/usr/bin/zsh
-
 # This file sets zsh history configuration
 # and environment variables/aliases
 # which move config/data files
