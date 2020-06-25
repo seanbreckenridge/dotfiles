@@ -38,6 +38,7 @@ __pycache__
 /.bash_history
 /.pki/nssdb
 /.credentials
+/.mapscii
 /.gem
 /.cache
 /.keras
