@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+# AUTHOR: gotbletu (@gmail|twitter|youtube|github|lbry)
+
+DIR=AUDIO_WMA
+helpmsg() {
+  printf "%s\n" "desc: convert to wma audio"
+  printf "%s\n" "depend: ffmpeg"
+  printf "\n"
+  printf "%s\n" "usage: ${0##*/} [file]"
+  printf "\n"
+  printf "%s\n" "  $ ${0##*/} file.m4a"
+  printf "%s\n" "  $ ${0##*/} file1.m4a file2.m4a file3.m4a"
+  printf "%s\n" "  $ ${0##*/} *.m4a"
+}
+if [ $# -lt 1 ]; then
+  helpmsg
+  exit 1
+elif [ "$1" = -h ] || [ "$1" = --help ]; then
+  helpmsg
+  exit 0
+else
+  mkdir -p "$DIR"
+  myArray=("$@")
+  for arg in "${myArray[@]}"; do
+    if [[ -f "$arg" && ! -f "$DIR/${arg%.*}.wma" ]]; then
+      ffmpeg -i "$arg" -codec:a wmav2 -b:a 128k "$DIR/${arg%.*}.wma"
+    else
+      printf "%s\n" "$arg is invalid or output file already exist"
+      exit 1
+    fi
+  done
+fi
