@@ -92,6 +92,7 @@ yarn
 # utils
 
 alacritty
+ascii-rain-git
 asciiquarium
 aspell
 aspell-en
