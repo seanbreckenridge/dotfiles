@@ -24,6 +24,6 @@ zstyle ':completion::*:(rm|nvim|e|ls):*' ignore-line true
 # assign completions from $ZDOTDIR/completions
 
 autoload -Uz "$ZDOTDIR"/completions/*
-compdef _gnu_generic exists youtube-dl wait-for-internet genpasswd genpass shortcuts dragon-drag-and-drop tiv dust highlight ranger rifle scrot keepassxc
+compdef _gnu_generic exists youtube-dl wait-for-internet genpasswd genpass shortcuts dragon-drag-and-drop chafa dust highlight ranger rifle scrot keepassxc
 compdef _binary_completion which-cat launch vic
 compdef _editor e

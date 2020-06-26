@@ -35,9 +35,9 @@ inode/directory)
 	ls -1 "$path" | head -n "$((maxln - 1))" && exit 0
 	;;
 image/*)
-	column_width=$((COLUMNS / 2 - 4))
+	column_width=$(((COLUMNS / 2) - 4))
 	column_height=$((maxln - 5))
-	try tiv -h ${column_height} -w "${column_width}" "$path" 2>/dev/null && {
+	try chafa --size "${column_height}x${column_width}" "$path" 2>/dev/null && {
 		dump
 		exit 0
 	}

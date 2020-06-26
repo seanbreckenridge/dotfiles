@@ -101,6 +101,7 @@ atool
 bat
 boxes
 bzip2
+chafa
 cmatrix
 coreutils
 cronie
@@ -159,7 +160,6 @@ shellcheck-bin
 socat
 strace
 sxiv
-terminalimageviewer-git
 texlive-bin
 texlive-core
 the_silver_searcher
