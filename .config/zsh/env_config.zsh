@@ -102,6 +102,12 @@ export YSU_MESSAGE_FORMAT="$(tput setaf 1)>>> %alias_type: %alias $(tput sgr0)"
 # directories that can be cd'd into
 CDPATH="${HOME}:${HOME}/code:${HOME}/.config:${HOME}/.local/scripts"
 
+# fzf configuration
+export FZF_DEFAULT_OPTS=""
+export FZF_DEFAULT_COMMAND="fd -H -L"  # ignore files in gitignore
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_ALT_C_COMMAND="$FZF_DEFAULT_COMMAND -t d -E .git"
+
 # colors for manpages
 export LESS_TERMCAP_mb=$'\e[1;32m'
 export LESS_TERMCAP_md=$'\e[1;32m'

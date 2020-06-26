@@ -1,3 +1,5 @@
+### zsh completion
+
 # allow menu select w/ highlight
 zmodload zsh/complist  # http://zsh.sourceforge.net/Doc/Release/Zsh-Modules.html#The-zsh_002fcomplist-Module
 zstyle ':completion:*' menu select  #  http://zsh.sourceforge.net/Guide/zshguide06.html
@@ -15,3 +17,13 @@ zstyle ':completion:*:killall:*' command 'ps -u $USER -o cmd'
 zstyle ':completion:*' rehash true
 # Don't complete stuff already on the line
 zstyle ':completion::*:(rm|nvim|e|ls):*' ignore-line true
+
+### command completion
+# note: this file has to be loaded after functions.zsh
+# because else compinit hasnt been loaded to automatically
+# assign completions from $ZDOTDIR/completions
+
+autoload -Uz "$ZDOTDIR"/completions/*
+compdef _gnu_generic exists youtube-dl wait-for-internet genpasswd genpass shortcuts dragon-drag-and-drop tiv dust highlight ranger rifle scrot keepassxc
+compdef _binary_completion which-cat launch vic
+compdef _editor e

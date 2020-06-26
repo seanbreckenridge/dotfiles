@@ -18,12 +18,6 @@ autoload -Uz compinit && compinit
 # lazy-load user defined functions
 autoload -Uz "$ZDOTDIR"/functions/*
 
-# personal zsh completions
-autoload -Uz "$ZDOTDIR"/completions/*
-compdef _gnu_generic exists youtube-dl wait-for-internet genpasswd genpass shortcuts dragon-drag-and-drop tiv dust highlight ranger rifle scrot keepassxc
-compdef _binary_completion which-cat launch vic
-compdef _editor e
-
 # bind fzf-edit (fuzzy match everything and open/cd to dir)
 zle -N fzf-edit; bindkey '^F' fzf-edit
 # fuzzy match everything (including hidden files)
@@ -61,22 +55,8 @@ bindkey "^[C" fzf-code
 # Alt+R to launch ranger (file manager)
 bindkey -s "^[r" "ranger\n"
 
+# Alt+Shift+R to launch ranger and fzf_select
+bindkey -s "^[R" "ranger --cmd=fzf_select\n"
+
 # Alt+X to run xmodmap (to rebind keys on external keyboards)
 bindkey -s "^[x" "xmodmap ~/.Xmodmap 2>/dev/null\n"
-
-# fzf
-# ctrl t to autocomplete files from cwd
-# ctrl r to fuzzy match through command history
-# alt c to cd to fuzzy matched directory
-source /usr/share/fzf/key-bindings.zsh
-source /usr/share/fzf/completion.zsh
-export FZF_DEFAULT_OPTS=""
-export FZF_DEFAULT_COMMAND="fd -H -L"  # ignore files in gitignore
-export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-export FZF_ALT_C_COMMAND="$FZF_DEFAULT_COMMAND -t d -E .git"
-
-# zsh plugins
-source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-source /usr/share/doc/pkgfile/command-not-found.zsh
-source /usr/share/zsh/plugins/zsh-you-should-use/you-should-use.plugin.zsh
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
