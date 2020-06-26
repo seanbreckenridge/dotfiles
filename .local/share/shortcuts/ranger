@@ -1,0 +1,8 @@
+#!/bin/sh
+# override the ranger binary by
+# placing the ranger shortcut
+# on $PATH first
+# this is to ignore Pillow image
+# warnings like:
+# https://i.imgur.com/Ky6NhKm.png
+PYTHONWARNINGS="ignore" /usr/bin/ranger
