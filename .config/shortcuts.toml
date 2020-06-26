@@ -225,7 +225,7 @@ command='''
 # this is to ignore Pillow image
 # warnings like:
 # https://i.imgur.com/Ky6NhKm.png
-PYTHONWARNINGS="ignore" /usr/bin/ranger
+PYTHONWARNINGS="ignore" /usr/bin/ranger "$@"
 '''
 
 [printer-server]
