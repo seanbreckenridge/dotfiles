@@ -48,11 +48,19 @@ fzf-code() {
 zle -N fzf-code
 bindkey "^[C" fzf-code
 
+# ^u is Ctrl+U, which is bound to
+# to kill-whole-line
+# this means that Alt+R deletes everything at
+# the current prompt, types ranger, and then sends a newline
+# this is done since ranger requires it to be run
+# from the terminal and can't be done from a function or (zle -N)
+# See <https://unix.stackexchange.com/a/595281/282432>
+
 # Alt+R to launch ranger (file manager)
-bindkey -s "^[r" "ranger\n"
+bindkey -s "^[r" "^uranger^M"
 
 # Alt+Shift+R to launch ranger and fzf_select
-bindkey -s "^[R" "ranger --cmd=fzf_select\n"
+bindkey -s "^[R" "^uranger --cmd=fzf_select^M"
 
 # Alt+X to run xmodmap (to rebind keys on external keyboards)
-bindkey -s "^[x" "xmodmap ~/.Xmodmap 2>/dev/null\n"
+bindkey -s "^[x" "^uxmodmap ~/.Xmodmap 2>/dev/null^M"

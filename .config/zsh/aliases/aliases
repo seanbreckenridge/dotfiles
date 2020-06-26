@@ -72,4 +72,4 @@ alias play='plainplay'
 alias pplay='plainplay play'
 alias splay='plainplay shuffle'
 alias splayall='plainplay shuffleall "$(plainplay playlistdir)"/*'
-bindkey -s '^P' "plainplay\n"
+bindkey -s '^P' "^uplay^M"
