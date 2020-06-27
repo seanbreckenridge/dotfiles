@@ -1,5 +1,11 @@
 #!/bin/sh
-# run at the beginning of X session, before the window manager has started
+
+# This runs at the beginning of the xsession (linux), before the window manager has loaded
+
+# export ONLINUX variable, the presence of this variable means we're running
+# in an xsession, so use linux specific applications. If this is unset,
+# that means we're on Mac. ~/.profile is sourced in zshrc if ONLINUX is unset
+export ONLINUX=1
 
 # source profile
 [ -f "${HOME}/.profile" ] && source "${HOME}/.profile"

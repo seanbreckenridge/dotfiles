@@ -1,3 +1,11 @@
+# in migration; temp
+
+bspwm
+libxcb
+xcb-util
+xcb-util-wm
+xcb-util-keysyms
+
 # os
 
 amd-ucode

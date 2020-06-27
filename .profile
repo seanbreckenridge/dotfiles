@@ -5,8 +5,10 @@
 PATH="\
 ${HOME}/.local/bin:\
 ${HOME}/.local/share/npm-packages/bin:\
-${HOME}/.local/scripts/system:\
-${HOME}/.local/scripts/bin:\
+${HOME}/.local/scripts/mac:\
+${HOME}/.local/scripts/linux:\
+${HOME}/.local/scripts/cross-platform:\
+${HOME}/.local/scripts/generic:\
 ${HOME}/.local/share/shortcuts:\
 ${HOME}/.local/share/go/bin:\
 ${HOME}/.local/share/cargo/bin:\
@@ -27,7 +29,7 @@ export LC_ALL='en_US.UTF-8'
 
 # Set default applicaitons
 export VISUAL='nvim'   # e.g. for edit-command-line in ~/.zshrc, to prompt in current terminal
-export EDITOR='editor' # ~/.local/scripts/system/editor, wrapper for picking emacs/nvim for editor
+export EDITOR='editor' # ~/.local/scripts/cross-platform/editor, wrapper for picking emacs/nvim for editor
 export PAGER='less'
 export TERMINAL='alacritty'
 export BROWSER='firefox-developer-edition'

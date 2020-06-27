@@ -8,10 +8,10 @@ set $mod Mod4
 font pango:Source Code Pro 12
 
 # keybind to lock screen manually. automatically locks on screen close
-bindsym $mod+Shift+Escape exec --no-startup-id lock_screen
+bindsym $mod+Shift+Escape exec --no-startup-id lock-screen
 
 # run process to cache pixelated desktop for lock screen
-exec --no-startup-id lock_screen -b
+exec --no-startup-id lock-screen -b
 
 # start network manager menu bar item
 exec --no-startup-id nm-applet
@@ -21,14 +21,19 @@ bindsym $mod+Shift+w exec --no-startup-id wfi
 # use picom for display compositing
 exec --no-startup-id picom -b
 
+# warn battery daemon
+exec --no-startup-id warn-battery BAT0
+
 # hide mouse after 2 seconds
 exec --no-startup-id unclutter --timeout 2
 
 # set a random wallpaper
-exec --no-startup-id randomize_wallpaper
+exec --no-startup-id randomize-wallpaper
+
+exec --no-startup-id bash "${HOME}/code/todotxt_deadline_notify/copy_todotxt_to_server"
 
 # bind display key to randomize wallpaper
-bindsym XF86Display exec --no-startup-id randomize_wallpaper
+bindsym XF86Display exec --no-startup-id randomize-wallpaper
 
 # Disable trackpad
 exec --no-startup-id trackpad disable
@@ -251,66 +256,6 @@ mode "term" {
     bindsym Return mode "default"
 }
 
-
-# mouse mode using the keyboard
-# Modified from: https://www.reddit.com/r/i3wm/comments/3btki2/use_the_mouse_cursor_from_the_keyboard/
-
-# bindsym $mod+m mode "mouse"
-
-mode "mouse" {
-
-    # mouse speeds
-    set $slow 2
-    set $quick 10
-    set $fast 50
-
-    # Mouse movement (slow/fine-tuned) -- vim keybindings
-
-    bindsym h exec xdotool mousemove_relative -- -$slow 0
-    bindsym j exec xdotool mousemove_relative 0 $slow
-    bindsym k exec xdotool mousemove_relative -- 0 -$slow
-    bindsym l exec xdotool mousemove_relative $slow 0
-
-    # Mouse movement (slow/fine-tuned) -- arrow keys
-
-    bindsym Left exec xdotool mousemove_relative -- -$slow 0
-    bindsym Down exec xdotool mousemove_relative 0 $slow
-    bindsym Up exec xdotool mousemove_relative -- 0 -$slow
-    bindsym Right exec xdotool mousemove_relative $slow 0
-
-    # Mouse movement (quicker) -- vim keybindings
-
-    bindsym $mod+h exec xdotool mousemove_relative -- -$quick 0
-    bindsym $mod+j exec xdotool mousemove_relative 0 $quick
-    bindsym $mod+k exec xdotool mousemove_relative -- 0 -$quick
-    bindsym $mod+l exec xdotool mousemove_relative $quick 0
-
-    # Mouse movement (quicker) -- arrow keys
-
-    bindsym $mod+Left exec xdotool mousemove_relative -- -$quick 0
-    bindsym $mod+Down exec xdotool mousemove_relative 0 $quick
-    bindsym $mod+Up exec xdotool mousemove_relative -- 0 -$quick
-    bindsym $mod+Right exec xdotool mousemove_relative $quick 0
-
-    # Mouse movement (fast) -- vim keybindings
-
-    bindsym Shift+$mod+h exec xdotool mousemove_relative -- -$fast 0
-    bindsym Shift+$mod+j exec xdotool mousemove_relative 0 $fast
-    bindsym Shift+$mod+k exec xdotool mousemove_relative -- 0 -$fast
-    bindsym Shift+$mod+l exec xdotool mousemove_relative $fast 0
-
-    # Mouse movement (fast) -- arrow keys
-
-    bindsym Shift+$mod+Left exec xdotool mousemove_relative -- -$fast 0
-    bindsym Shift+$mod+Down exec xdotool mousemove_relative 0 $fast
-    bindsym Shift+$mod+Up exec xdotool mousemove_relative -- 0 -$fast
-    bindsym Shift+$mod+Right exec xdotool mousemove_relative $fast 0
-
-    # Click
-    bindsym Return exec xdotool click 1
-
-    bindsym Escape mode "default"
-}
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)

@@ -1,32 +1,12 @@
 seperator_block_width=15
 markup=pango
 
-# make sure all processes on my server are running
-# see:
-# https://github.com/seanbreckenridge/foreverjs-list
-# https://github.com/seanbreckenridge/vps
-[server-forever]
-command="${HOME}/.config/i3blocks/blocks/server_forever"
-label=🖥️
-interval=600
-
 # entr in ~/.config/i3/config refreshes this when the file changes
 [todo]
 command="${HOME}/.config/i3blocks/blocks/todo"
 interval=once
 label=📝
 signal=2
-
-[volume]
-command="${HOME}/.config/i3blocks/blocks/volume"
-signal=1
-interval=30 # incase headphones are plugged in
-
-[brightness]
-command=echo "$(light | cut -d"." -f1)%"
-interval=once
-signal=10
-label=🔆
 
 [battery]
 command="${HOME}/.config/i3blocks/blocks/battery" BAT0
