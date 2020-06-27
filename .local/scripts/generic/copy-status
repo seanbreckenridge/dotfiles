@@ -21,16 +21,17 @@ for dir in "$@"; do
 done
 
 function dir_size() {
-	command du "$1" | awk '{print $1}'
+  echo "Getting size of ${1}..." 1>&2
+	command du -s "$1" | awk '{print $1}'
 }
 
 while true; do
-	clear
-	SOURCE_SIZE=$(dir_size "$1")
+	#clear
+	[ -z "$SOURCE_SIZE" ] && SOURCE_SIZE=$(dir_size "$1")
 	DEST_SIZE=$(dir_size "$2")
 	#echo "$SOURCE_SIZE"
 	#echo "$DEST_SIZE"
 	PERCENTAGE="$(bc -l <<<"$(printf "scale=6; %d/%d*100" "$DEST_SIZE" "$SOURCE_SIZE")" | rev | cut -c 3- | rev)"
-	center-text "$PERCENTAGE%"
+  printf "%f%%" "$PERCENTAGE"
 	sleep 5
 done

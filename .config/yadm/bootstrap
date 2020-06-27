@@ -66,7 +66,7 @@ done
 [[ ! -f "${ZDOTDIR}/aliases/personal_aliases" ]] && touch "${ZDOTDIR}/aliases/personal_aliases"
 
 # create default user directories
-default_user_dirs=("code" "Documents" "Documents/Notes" "Documents/wallpapers" "Downloads" "Pictures/Screenshots" "Pictures" ".local" ".cache" ".credentials" "gdrive")
+default_user_dirs=("code" "Documents" "Documents/Notes" "Documents/wallpapers" "Downloads" "Pictures/Screenshots" "Pictures" ".local" ".cache" ".credentials")
 for d_name in "${default_user_dirs[@]}"; do
 	if [[ ! -d "${HOME}/${d_name}" ]]; then
 		mkdir -p "${HOME}/${d_name}"
