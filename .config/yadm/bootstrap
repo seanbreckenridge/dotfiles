@@ -41,7 +41,7 @@ done
 # set zsh as shell
 if ! echo "$SHELL" | grep -q zsh; then
 	havecmd zsh || sudo pacman -S zsh
-	sudo chsh -s "$(command -v zsh)" "$USER"
+  sudo chsh -s "$(command -v zsh)" "$(whoami)"
 	abort "Restart shell so that zsh environment is setup. Then re-run 'yadm bootstrap'"
 else
 	echo "zsh is already set as your default shell"
