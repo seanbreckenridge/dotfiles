@@ -85,3 +85,4 @@ defaults to ~/.npm"
    "bin"
    )
   )
+

@@ -41,7 +41,7 @@ done
 # set zsh as shell
 if ! echo "$SHELL" | grep -q zsh; then
 	havecmd zsh || sudo pacman -S zsh
-	sudo chsh -s "$(command -v zsh)"
+	sudo chsh -s "$(command -v zsh)" "$USER"
 	abort "Restart shell so that zsh environment is setup. Then re-run 'yadm bootstrap'"
 else
 	echo "zsh is already set as your default shell"
@@ -66,7 +66,7 @@ done
 [[ ! -f "${ZDOTDIR}/aliases/personal_aliases" ]] && touch "${ZDOTDIR}/aliases/personal_aliases"
 
 # create default user directories
-default_user_dirs=("code" "Documents" "Documents/Notes" "Documents/wallpapers" "Downloads" "Pictures/Screenshots" "Pictures" ".local" ".cache" ".credentials")
+default_user_dirs=("Repos" "Documents" "Documents/Notes" "Documents/wallpapers" "Downloads" "Pictures/Screenshots" "Pictures" ".local" ".cache" ".credentials")
 for d_name in "${default_user_dirs[@]}"; do
 	if [[ ! -d "${HOME}/${d_name}" ]]; then
 		mkdir -p "${HOME}/${d_name}"
@@ -91,6 +91,7 @@ git config --global core.editor nvim
 
 # Install python packages
 echo "Installing global python site-packages..."
+python3 -m pip list --format=freeze | cut -d "=" -f1 | grep -q "^wheel$" || python3 -m pip install wheel
 python3 -m pip install -q --user -r "$PYTHON_PACKAGE_LIST"
 
 # Install personal python packages
@@ -167,14 +168,14 @@ done <"$GO_PACKAGE_LIST"
 
 echo "Installing global haskell packages..."
 while read -r haskell_pkg; do
-	havecmd "$haskell_pkg" || stack install "$haskell_pkg"
+	havecmd "$haskell_pkg" || # stack install "$haskell_pkg"
 done <"$HASKELL_PACKAGE_LIST"
 
 # Install doom emacs
 if [[ ! -d "$HOME/.emacs.d/" ]]; then
 	git clone https://github.com/hlissner/doom-emacs "${HOME}/.emacs.d"
 	"${HOME}/.emacs.d/bin/doom" install
-	"${HOME}/.emacs.d/bin/doom" refresh
+	"${HOME}/.emacs.d/bin/doom" sync
 fi
 
 # Check services

@@ -34,9 +34,11 @@
  doom-font (font-spec :family "Source Code Pro" :size 15)
  doom-theme 'doom-dracula
  display-line-numbers-type 'relative
- projectile-project-search-path '("~/code/")
  org-directory "~/Documents/org/"
  )
+
+;; note: run SPC p D to discover projects
+(setq projectile-project-search-path (list (getenv "REPOS")))
 
 ;;;; xclip
 (xclip-mode 1)

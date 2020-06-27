@@ -47,7 +47,7 @@ export XDG_DATA_HOME="${HOME}/.local/share"
 export ZDOTDIR="${XDG_CONFIG_HOME}/zsh"
 
 # Directories
-export REPOS="${HOME}/code"
+export REPOS="${HOME}/Repos"
 export PICTURES="${HOME}/Pictures"
 export SCREENSHOTS="${PICTURES}/Screenshots"
 export DOWNLOADS="${HOME}/Downloads"

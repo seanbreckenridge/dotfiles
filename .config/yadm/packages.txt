@@ -8,7 +8,6 @@ xcb-util-keysyms
 
 # os
 
-amd-ucode
 autorandr
 avahi
 cups
@@ -17,15 +16,10 @@ dunst
 exfat-utils
 fuse-exfat
 gnome-keyring
-grub-customizer
 i3-gaps
 i3blocks
 i3lock
-libxft-bgra
 light
-lightdm
-lightdm-gtk-greeter
-lightdm-gtk-greeter-settings
 network-manager-applet
 networkmanager
 nss-mdns
@@ -33,11 +27,11 @@ pacman-contrib
 picom
 pulseaudio
 qt5ct
-qtile
 reflector
 unclutter
 wpa_supplicant
 xorg-server
+xorg-xmodmap
 
 # language support
 
@@ -78,8 +72,8 @@ pyenv
 python-gobject
 python-pip
 python3
-rebar3
-rebar3-zsh
+rebar3-git
+#rebar3-zsh
 redis
 ruby
 ruby-bundler
@@ -99,6 +93,7 @@ yarn
 
 # utils
 
+man-db
 alacritty
 ascii-rain-git
 asciiquarium
@@ -117,7 +112,6 @@ ctags
 datamash
 dex
 dragon-drag-and-drop-git
-drive-git
 dust
 emacs
 entr
@@ -217,10 +211,8 @@ obs-studio
 okular
 pinta
 robo3t-bin
-rxvt-unicode
 simplescreenrecorder
 slack-desktop
-slack-term
 snes9x-gtk
 sqlitebrowser
 steam

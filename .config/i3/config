@@ -30,7 +30,7 @@ exec --no-startup-id unclutter --timeout 2
 # set a random wallpaper
 exec --no-startup-id randomize-wallpaper
 
-exec --no-startup-id bash "${HOME}/code/todotxt_deadline_notify/copy_todotxt_to_server"
+exec --no-startup-id bash "${REPOS}/todotxt_deadline_notify/copy_todotxt_to_server"
 
 # bind display key to randomize wallpaper
 bindsym XF86Display exec --no-startup-id randomize-wallpaper
@@ -55,8 +55,9 @@ bindsym $mod+Shift+Tab exec --no-startup-id i3binds-prompt
 
 
 # Bind brightness keys
-# This required fiddling with the /sys/class/backlight/amdgpu_b10 file permissions
-# and giving myself the 'video' group
+# sudo usermod -aG video sean
+# to allow my user to modify files in /sys/class/backlight
+# symlinked to the /sys/devices/pcie...
 bindsym XF86MonBrightnessUp exec --no-startup-id brightness up
 bindsym XF86MonBrightnessDown exec --no-startup-id brightness down
 

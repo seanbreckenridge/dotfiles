@@ -13,6 +13,12 @@ secrets
 directory_aliases
 .zprofile
 
+# bash
+.bash_logout
+.bash_profile
+.bashrc
+
+
 # Ignore README - handled by git hooks -- see .config/yadm/yadm-with-README.md 
 /README.md
 /.config/yadm/README.md
@@ -79,6 +85,8 @@ __pycache__
 /.todo
 !.config/todo/config
 /.config/GIMP
+/.config/light
+/.config/xbuild
 /.config/slack-term/
 /.config/VirtualBox/
 /.config/snes9x
@@ -144,7 +152,7 @@ __pycache__
 /.local/etc/fish/completions
 
 # default user directories
-/code
+/Repos
 /Documents
 /Desktop
 /Downloads
