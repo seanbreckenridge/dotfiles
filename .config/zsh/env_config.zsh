@@ -121,6 +121,7 @@ export LESS_TERMCAP_us=$'\e[1;4;31m'
 if [[ -z "$ONLINUX" ]]; then
   PATH="\
 /usr/local/bin:\
+/usr/local/opt/ruby/bin:\
 /Users/sean/Library/Python/3.7/bin:\
 /usr/local/opt/coreutils/libexec/gnubin:\
 /usr/local/opt/diffutils/bin:\
