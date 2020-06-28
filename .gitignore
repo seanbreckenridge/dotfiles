@@ -49,6 +49,7 @@ __pycache__
 /.yarnrc
 /.bash_history
 /.pki/nssdb
+/.rbenv
 /.credentials
 /.mapscii
 /.gem

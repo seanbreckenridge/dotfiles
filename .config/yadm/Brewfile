@@ -48,6 +48,7 @@ brew 'imagemagick'
 brew 'figlet'
 brew 'libcaca'
 brew 'openssl'
+brew 'libmagic'  # for pistol
 brew 'readline'
 brew 'trash'
 brew 'mas'
