@@ -13,7 +13,7 @@ printf "%s" "$c" | xclip -selection clipboard # paste with typical ctrl v
 msg="'$c' copied to clipboard"
 
 if [ "$(tty)" = "not a tty" ]; then
-	notify-send "Emoji" "'$c' copied to clipboard." &
+	notify "Emoji" "'$c' copied to clipboard." &
 else
 	echo "$msg"
 fi

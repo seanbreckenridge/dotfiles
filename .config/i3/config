@@ -75,8 +75,8 @@ bindsym $mod+Shift+XF86MonBrightnessUp exec --no-startup-id transparent disable 
 bindsym $mod+Shift+XF86MonBrightnessDown exec --no-startup-id transparent enable target
 
 # Kill/restart picom (compositor)
-bindsym $mod+p exec --no-startup-id killall picom && notify-send "Killed picom!"
-bindsym $mod+Shift+p exec --no-startup-id notify-send "Restarting picom..." && picom -b
+bindsym $mod+p exec --no-startup-id killall picom && notify "Killed picom!"
+bindsym $mod+Shift+p exec --no-startup-id notify "Restarting picom..." && picom -b
 
 # start the emacs server
 exec --no-startup-id systemctl --user start emacs
@@ -231,7 +231,7 @@ assign [class="Slack"] 9
 # run applications
 # i3-modes parses the i3 config file and sends me a notificaiton
 # to remind me keybindings in case I forget
-bindsym $mod+d mode "applications"; exec --no-startup-id notify-send "$(i3-modes applications | grep -v 'mode \"default\"' | sed -e 's/exec --no-startup-id //' -e 's/firefox-developer-edition/firefox/' | sort)"
+bindsym $mod+d mode "applications"; exec --no-startup-id notify "$(i3-modes applications | grep -v 'mode \"default\"' | sed -e 's/exec --no-startup-id //' -e 's/firefox-developer-edition/firefox/' | sort)"
 
 mode "applications" {
     bindsym f exec --no-startup-id firefox-developer-edition; mode "default"
@@ -245,7 +245,7 @@ mode "applications" {
 }
 
 # run terminal commands in a new terminal window
-bindsym $mod+w mode "term"; exec --no-startup-id notify-send "$(i3-modes term | grep -v 'mode \"default\"' | sed -e 's/exec --no-startup-id launch //' | sort)"
+bindsym $mod+w mode "term"; exec --no-startup-id notify "$(i3-modes term | grep -v 'mode \"default\"' | sed -e 's/exec --no-startup-id launch //' | sort)"
 
 mode "term" {
     bindsym r exec --no-startup-id launch ranger; mode "default"

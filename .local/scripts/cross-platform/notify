@@ -1,0 +1,10 @@
+#!/bin/sh
+# wrapper script for sending notificaitons on mac/linux
+
+[ -n "$ONLINUX" ] && {
+    notify-send "$@"
+    exit 0
+}
+
+# else run mac-notification
+

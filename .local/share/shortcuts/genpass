@@ -7,7 +7,7 @@ if ! pw=$(genpasswd "$@"); then
 fi
 pw=$(head -n 1 <<<"$pw")
 if [[ "$(tty)" == "not a tty" ]]; then
-	notify-send "Copied password to clipboard:" "${pw}"
+	notify "Copied password to clipboard:" "${pw}"
 else
 	echo -e "$pw"
 fi

@@ -5,4 +5,4 @@ FILENAME="$(newest "${SCREENSHOTS:?No SCREENSHOTS environment variable set}")" |
 imgur-uploader "$FILENAME"
 IMGUR_URL="$(xclip -out -selection clipboard)"
 printf "%s\n" "$IMGUR_URL" >>/tmp/imgur_urls.log
-notify-send "Uploaded Image to Imgur:" "$IMGUR_URL"
+notify "Uploaded Image to Imgur:" "$IMGUR_URL"

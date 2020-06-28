@@ -11,8 +11,8 @@ readonly STDIN="$(cat)"
 
 declare url
 url="$(curl -s -F 'f:1=<-' http://ix.io <<<"${STDIN}")" || {
-	notify-send "Failed to make request to http://ix.io"
+	notify "Failed to make request to http://ix.io"
 	exit 1
 }
 echo -n "$url" | clipcopy
-notify-send "Copied link to clipboard" "${url}"
+notify "Copied link to clipboard" "${url}"

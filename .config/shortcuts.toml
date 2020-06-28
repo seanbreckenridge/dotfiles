@@ -21,9 +21,9 @@ list-config | sed "s#^$HOME/##g" | fzf +m -q "$*" | xargs -r -I {} editor "$HOME
 command = """
 # restart the emacs server managed by systemd
 if systemctl --user restart emacs; then
-	notify-send "restarted emacs server"
+	notify "restarted emacs server"
 else
-	notify-send -u "critical" "couldn't restart emacs server"
+	notify "couldn't restart emacs server"
 fi
 """
 
@@ -80,7 +80,7 @@ printf "\n"
 [wfi]
 command='''
 # wait for internet connection and ping me
-wait-for-internet && notify-send "INTERNET" && paplay /usr/share/sounds/freedesktop/stereo/message.oga
+wait-for-internet && notify "INTERNET" && paplay /usr/share/sounds/freedesktop/stereo/message.oga
 '''
 
 [wfib]
@@ -131,7 +131,7 @@ if ! pw=$(genpasswd "$@"); then
 fi
 pw=$(head -n 1 <<<"$pw")
 if [[ "$(tty)" == "not a tty" ]]; then
-	notify-send "Copied password to clipboard:" "${pw}"
+	notify "Copied password to clipboard:" "${pw}"
 else
 	echo -e "$pw"
 fi
@@ -173,12 +173,12 @@ done
 command = """
 # grab URL from clipboard and play in a new terminal with mpvf
 if ! CLIPBOARD_CONTENTS="$(xclip -out -selection clipboard)"; then
-	notify-send "Failed to get clipboard contents." && exit 1
+	notify "Failed to get clipboard contents." && exit 1
 fi
 export MPVF_PICKER=rofi
-notify-send "Starting stream..." "${CLIPBOARD_CONTENTS}"
+notify "Starting stream..." "${CLIPBOARD_CONTENTS}"
 if ! mpvf "${CLIPBOARD_CONTENTS}"; then
-	notify-send "Streaming Error:" "Couldn't stream from ${CLIPBOARD_CONTENTS}" && exit 1
+	notify "Streaming Error:" "Couldn't stream from ${CLIPBOARD_CONTENTS}" && exit 1
 fi
 """
 
@@ -190,7 +190,7 @@ FILENAME="$(newest "${SCREENSHOTS:?No SCREENSHOTS environment variable set}")" |
 imgur-uploader "$FILENAME"
 IMGUR_URL="$(xclip -out -selection clipboard)"
 printf "%s\n" "$IMGUR_URL" >>/tmp/imgur_urls.log
-notify-send "Uploaded Image to Imgur:" "$IMGUR_URL"
+notify "Uploaded Image to Imgur:" "$IMGUR_URL"
 '''
 
 [twitch]
