@@ -25,7 +25,6 @@ idna
 imgur-uploader
 isort
 itsdangerous
-iwlib
 jikanpy
 keepassxc-pwned
 lxml
@@ -52,7 +51,6 @@ pyperclip
 pytest
 python-language-server
 python-rofi
-python-xlib
 requests
 rsa
 scipy
@@ -63,7 +61,6 @@ termcolor
 thefuck
 toml
 twine
-ueberzug
 urlextract
 vimbuffer
 xlrd

@@ -7,6 +7,8 @@
 # that means we're on Mac. ~/.profile is sourced in zshrc if ONLINUX is unset
 export ONLINUX=1
 
-# source profile
-[ -f "${HOME}/.profile" ] && source "${HOME}/.profile"
+# source common_paths for shared (mac/linux) path modifications
+source "${HOME}/.common_paths"
+# source profile for common environment variables
+source "${HOME}/.profile"
 

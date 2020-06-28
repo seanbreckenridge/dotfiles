@@ -2,7 +2,9 @@
 
 # setup prompt
 parse_git_branch() {
-  git symbolic-ref --short HEAD 2> /dev/null | xargs -r -I {} echo " | %{%F{green}%}{}%{%F{none}%}"
+  local BRANCH_NAME
+  BRANCH_NAME="$(git symbolic-ref --short HEAD 2> /dev/null)"
+  (( $? == 0 )) && echo -n " | %{%F{green}%}${BRANCH_NAME}%{%F{none}%}\n"
 }
 
 setopt PROMPT_SUBST

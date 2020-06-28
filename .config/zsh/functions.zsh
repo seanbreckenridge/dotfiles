@@ -1,6 +1,17 @@
 # load zsh-completions installed with pacman,
 # user defined functions and completions
-fpath=(/usr/share/zsh/site-functions "$ZDOTDIR"/functions "$ZDOTDIR"/completions "${fpath[@]}")
+fpath=("$ZDOTDIR"/functions "$ZDOTDIR"/completions "${fpath[@]}")
+
+# if on linux
+if [[ -n "$ONLINUX" ]]; then
+  fpath+=(/usr/share/zsh/site-functions) 
+else
+  # on mac
+  # if compaudit complains:
+  # run:
+  # sudo chown -R $(whoami) <folders>...
+  fpath+=(/usr/local/share/zsh/site-functions)
+fi
 
 # autoload must be after modifying fpath to auto-load completions
 

@@ -1,0 +1,21 @@
+#!/bin/bash
+# use like:
+# findbinary ranger || exit $?
+# Searches typical install locations on linux/macos
+# without searching the $PATH explicity as to not
+# find shortcuts: https://github.com/seanbreckenridge/shortcuts
+# that require the absolute path of the binary
+
+readonly binaryname="${1:?must pass binary to search for as first argument}"
+declare -a prefixes
+# can add more to these if something is found elsewhere
+prefixes=(/usr/local/bin /usr/bin)
+
+# search for binaries
+for prefix in "${prefixes[@]}"; do
+  if [[ -r "${prefix}/${binaryname}" ]]; then
+    printf "%s/%s" "$prefix" "$binaryname"
+    exit 0
+  fi
+done
+exit 1

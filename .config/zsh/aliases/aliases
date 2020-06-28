@@ -7,7 +7,7 @@ alias -s {md,html,txt}=nvim
 # save ls so it can be used elsewhere if I want
 alias lsplain="\ls --color=never"
 # alias ls to exa
-alias ls='exa --icons'
+[[ -n "$ONLINUX" ]] && alias ls='exa --icons' || alias ls='exa'
 alias ll='ls -hl'
 alias la='ll -a'
 alias sl='ls | rev'

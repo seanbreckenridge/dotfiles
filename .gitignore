@@ -3,6 +3,11 @@
 \#*\#
 .\#*
 
+# Mac
+.DS_Store
+.CFUserTextEncoding
+Brewfile.lock.json
+
 # zsh
 /.zshenv
 personal_aliases
@@ -34,6 +39,7 @@ __pycache__
 /.ivy2
 /.bundle
 /.emacs.d/
+/.vim
 /.scala_history
 /.mupdf.history
 /.sc-iminfo
@@ -155,6 +161,9 @@ __pycache__
 /Repos
 /Documents
 /Desktop
+/.Trash
+/Library
+/Public
 /Downloads
 /Pictures
 /Movies

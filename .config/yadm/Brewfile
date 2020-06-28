@@ -1,0 +1,147 @@
+cask_args appdir: '/Applications'
+
+# packages that other installs depend on
+cask 'xquartz'
+
+# use GNU coreutils
+# $PATH is modified in $ZDOTDIR/env_config.zsh to make linux/mac consistent
+brew 'coreutils'
+brew 'diffutils'
+brew 'findutils'
+brew 'gawk'
+brew 'gnu-indent'
+brew 'gnu-sed'
+brew 'gnu-tar'
+brew 'gnu-which'
+brew 'grep'
+brew 'gnu-getopt'
+
+# install newer version of otherwise ancient software
+brew 'bash'
+brew 'gpatch'
+brew 'git'
+brew 'less'
+brew 'openssh'
+brew 'python'
+brew 'rsync'
+brew 'vim'
+brew 'zsh'
+
+# generic installs
+brew 'gnutls'
+brew 'gzip'
+brew 'watch'
+brew 'wdiff'
+brew 'wget'
+brew 'automake'
+brew 'yadm'
+brew 'bash-completion'
+brew 'cask'
+brew 'htop'
+brew 'quazip'
+brew 'nmap'
+brew 'npm'
+brew 'node'
+brew 'ack'
+brew 'grc'
+brew 'imagemagick'
+brew 'figlet'
+brew 'libcaca'
+brew 'openssl'
+brew 'readline'
+brew 'trash'
+brew 'mas'
+brew 'tree'
+brew 'unrar'
+brew 'wget'
+brew 'yarn'
+brew 'python3'
+brew 'ffmpeg'
+brew 'ffmpegthumbnailer'
+brew 'hub'
+brew 'thefuck'
+brew 'php'
+brew 'mysql'
+brew 'p7zip' # 7zip
+brew 'duti'
+brew 'pyenv'
+brew 'rdfind'
+brew 'ruby'
+brew 'rbenv'
+brew 'ruby-build'
+brew 'shfmt'
+brew 'composer'
+brew 'dart'
+brew 'rust'
+brew 'shellcheck'
+brew 'neovim'
+brew 'fzf'
+brew 'exa'
+brew 'ccls'
+brew 'checkbashisms'
+brew 'cmake'
+brew 'docker-compose'
+brew 'docker-compose-completion'
+brew 'golang'
+brew 'xonsh'
+brew 'bat'
+brew 'boxes'
+brew 'chafa'
+# Crontab on MAC? needed?
+brew 'datamash'
+brew 'ctags'
+brew 'entr'
+brew 'fd'
+brew 'highlight'
+brew 'hyperfine'
+brew 'jq'
+brew 'lolcat'
+brew 'lynx'
+brew 'ncdu'
+brew 'neofetch'
+brew 'pandoc'
+brew 'pastel'
+brew 'exiftool'
+brew 'qrencode'
+brew 'ranger'
+brew 'ripgrep'
+# Find rofi/dmenu replacement?
+brew 'sc-im'
+brew 'socat'
+brew 'the_silver_searcher'
+brew 'unar'
+brew 'haskell-stack'
+
+# fonts
+cask 'font-source-code-pro'
+cask 'font-hack-nerd-font'
+
+# Applications
+cask 'alacritty'  # fastest terminal on the block
+cask 'chromedriver'  # for webscraping
+cask 'mysqlworkbench'  # easy mysql interface
+cask 'adoptopenjdk8' # java
+cask 'discord' # for the memes
+cask 'slack'  # for people who dont know the memes
+cask 'zoomus'  # for stupid video confrencing
+cask 'steam'  # video games
+cask 'gimp' # image editing
+cask 'mpv' # media player
+#cask 'alfred' # alternative to spotlight
+cask 'docker' # for the docker daemon
+cask 'daisydisk' # visualizes volumes
+cask 'balenaetcher' # for USB boot drive creation
+cask 'keepassxc' # password manager
+cask 'db-browser-for-sqlite' # sqlite3 GUI
+cask 'megasync' # mega.nz
+cask 'soundflower' # audio redirection
+cask 'cyberduck' # file transfers
+
+## Browsers
+cask 'google-chrome'
+cask 'firefox-developer-edition'
+cask 'tor-browser'
+
+## Games
+cask 'minecraft'
+cask 'openemu'

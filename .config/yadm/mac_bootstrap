@@ -1,0 +1,65 @@
+#!/bin/bash
+# Mac-Specific setup
+
+# Reminders:
+# * Go to System Preferences -> Keyboard -> Modifier Keys and rebind Caps Lock to Escape
+# *
+
+set -e
+
+declare -rx HOMEBREW_BREWFILE="${YADM_DIR}/Brewfile"
+
+# setup zsh
+# zsh is default on mac
+
+# delete default files if they exist
+original_files=("${HOME}/.zshenv" "${HOME}/.zshrc" "${HOME}/.zsh_history")
+for file in "${original_files[@]}"; do
+	[[ -f "$file" ]] && rm "$file"
+done
+
+# use ~/.zshenv to configure mac specific behavior
+# on linux, ~/.profile is sourced at the beginning of the X session
+# using ~/.xprofile. Modifying environment variables at a system
+# level isn't as feasible on mac, so this just makes sure
+# that the terminal environment has the correct $PATH/environment
+
+cat <<EOF >"${HOME}/.zshenv"
+# if we're not on linux, source the ~/.profile when shell starts
+[[ -z "\$ONLINUX" ]] && { 
+  # should set XDG_CONFIG_HOME and ZDOTDIR
+  source "\${HOME}/.profile"
+}
+EOF
+
+# check if we have access to the my directories
+# on my $PATH, to see if zsh has been properly configured
+if [[ ! "$(command -v havecmd)" ]]; then
+	printf "Issue finding 'havecmd', environment is not setup properly\n"
+	printf "Try restarting the shell and making sure ~/.profile is getting sourced\n"
+	exit 1
+fi
+
+havecmd brew || /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+
+# sanity check to make sure brew is configured
+havecmd brew || exit 1
+
+set +e
+
+havecmd curl && [[ ! -r "${HOME}/.local/share/nvim/site/autoload" ]] && {
+	printf "Installing vim-plug..."
+	curl -fLo "${HOME}/.local/share/nvim/site/autoload/plug.vim" --create-dirs "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
+}
+
+brew tap 'homebrew/bundle'
+brew tap 'homebrew/homebrew-cask'
+brew tap 'homebrew/cask-fonts'
+brew tap 'homebrew/cask-versions'
+brew tap 'AdoptOpenJDK/openjdk'
+brew tap 'dart-lang/dart'
+brew update && brew upgrade
+brew cask upgrade
+brew bundle --file="${HOMEBREW_BREWFILE}"
+
+mkdir -p "${HOME}/.local/bin"

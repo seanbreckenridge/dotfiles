@@ -1,0 +1,58 @@
+#!/bin/bash
+# called from yadm bootstrap when linux is detected
+
+declare -rx PACKAGE_LIST="${YADM_DIR}/packages.txt"
+
+# Install yay if it isn't already installed
+havecmd yay || {
+	cd /tmp || exit 1
+	git clone https://aur.archlinux.org/yay.git || exit 1
+	cd yay || exit 1
+	makepkg -si
+}
+
+# set zsh as shell
+if ! echo "$SHELL" | grep -q zsh; then
+	havecmd zsh || sudo pacman -S zsh
+	sudo chsh -s "$(command -v zsh)" "$(whoami)"
+	abort "Restart shell so that zsh environment is setup. Then re-run 'yadm bootstrap'"
+else
+	echo "zsh is already set as your default shell"
+fi
+
+# setup zsh files
+echo 'Setting up zsh directory structure...'
+# make sure original zsh files are removed
+original_files=("${HOME}/.zshenv" "${HOME}/.zshrc" "${HOME}/.zsh_history" "${HOME}/.zprofile")
+
+for file in "${original_files[@]}"; do
+	if [[ -f "$file" ]]; then
+		rm "$file"
+	fi
+done
+
+# so that zsh thinks its setup
+# rest of my setup is done is ~/.xprofile
+[ ! -f "${HOME}/.zshenv" ] && touch "${HOME}/.zshenv"
+
+# yay/pacman to install packages from arch repos
+echo "Checking ~/.config/yadm/packages.txt for any packages to install..."
+# have to use for loop, while loop times out instantly
+for lib in $(sed -e '/^\s*$/d' -e '/^#.*$/d' "${PACKAGE_LIST}"); do
+	if [[ ! $(yay -Q "${lib}" 2>/dev/null) ]]; then # if package isn't installed
+		yay -S "${lib}"
+	fi
+done
+
+# Check services
+echo "Checking if default services are running..."
+# CUPS and avahi are for printing
+services=("NetworkManager" "avahi-daemon" "org.cups.cupsd" "cronie" "ntpd" "paccache.timer" "atd")
+for serv in "${services[@]}"; do
+	if [[ "$(systemctl show -p SubState --value "${serv}")" == "dead" ]]; then
+		print_error "${serv} is not running, you should enable it with: 'sudo systemctl enable ${serv} --now'"
+	fi
+done
+
+# Setup mariadb by following: https://wiki.archlinux.org/index.php/MariaDB
+# Check for manually installed binaries, installed at /usr/local/bin

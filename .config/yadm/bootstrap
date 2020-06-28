@@ -4,63 +4,37 @@
 
 function print_error() {
 	echo -e "$(tput setaf 1)$1$(tput sgr0)" 1>&2
-}
+} && export -f print_error
 
 function abort() {
 	print_error "$1"
 	exit 1
-}
+} && export -f abort
 
-# Install yay if it isn't already installed
-havecmd yay || {
-	cd /tmp
-	git clone https://aur.archlinux.org/yay.git
-	cd yay
-	makepkg -si
-}
+function require() {
+	havecmd "$1" || {
+		printf "Could not find '%s' on your \$PATH\n" "$1"
+		exit 1
+	}
+} && export -f require
 
-readonly YADM_DIR="${HOME}/.config/yadm"
-readonly PACKAGE_LIST="${YADM_DIR}/packages.txt"
-readonly PYTHON_PACKAGE_LIST="${YADM_DIR}/python3_packages.txt"
-readonly GLOBAL_GEM_LIST="${YADM_DIR}/ruby_packages.txt"
-readonly NODE_PACKAGE_LIST="${YADM_DIR}/node_packages.txt"
-readonly DART_PACKAGE_LIST="${YADM_DIR}/dart_packages.txt"
-readonly CARGO_PACKAGE_LIST="${YADM_DIR}/cargo_packages.txt"
-readonly GO_PACKAGE_LIST="${YADM_DIR}/go_packages.txt"
-readonly HASKELL_PACKAGE_LIST="${YADM_DIR}/haskell_packages.txt"
+declare -rx YADM_DIR="${HOME}/.config/yadm"
 
-# yay/pacman to install packages from arch repos
-echo "Checking ~/.config/yadm/packages.txt for any packages to install..."
-# have to use for loop, while loop times out instantly
-for lib in $(sed -e '/^\s*$/d' -e '/^#.*$/d' "${PACKAGE_LIST}"); do
-	if [[ ! $(yay -Q "${lib}" 2>/dev/null) ]]; then # if package isn't installed
-		yay -S "${lib}"
-	fi
-done
-
-# set zsh as shell
-if ! echo "$SHELL" | grep -q zsh; then
-	havecmd zsh || sudo pacman -S zsh
-  sudo chsh -s "$(command -v zsh)" "$(whoami)"
-	abort "Restart shell so that zsh environment is setup. Then re-run 'yadm bootstrap'"
+# dispatch on os type
+if [[ -z "$ONLINUX" ]]; then
+	bash "${YADM_DIR}/mac_bootstrap" || exit $?
 else
-	echo "zsh is already set as your default shell"
+	bash "${YADM_DIR}/linux_bootstrap" || exit $?
 fi
 
-# setup zsh files
-echo 'Setting up zsh directory structure...'
-# make sure original zsh files are removed
-original_files=("${HOME}/.zshenv" "${HOME}/.zshrc" "${HOME}/.zsh_history" "${HOME}/.zprofile")
-
-for file in "${original_files[@]}"; do
-	if [[ -f "$file" ]]; then
-		rm "$file"
-	fi
-done
-
-# so that zsh thinks its setup
-# rest of my setup is done is ~/.xprofile
-[ ! -f "${HOME}/.zshenv" ] && touch "${HOME}/.zshenv"
+declare -rx PYTHON_PACKAGE_LIST="${YADM_DIR}/python3_packages.txt"
+declare -rx LINUX_PYTHON_PACKAGE_LIST="${YADM_DIR}/linux_python3_packages.txt"
+declare -rx GLOBAL_GEM_LIST="${YADM_DIR}/ruby_packages.txt"
+declare -rx NODE_PACKAGE_LIST="${YADM_DIR}/node_packages.txt"
+declare -rx DART_PACKAGE_LIST="${YADM_DIR}/dart_packages.txt"
+declare -rx CARGO_PACKAGE_LIST="${YADM_DIR}/cargo_packages.txt"
+declare -rx GO_PACKAGE_LIST="${YADM_DIR}/go_packages.txt"
+declare -rx HASKELL_PACKAGE_LIST="${YADM_DIR}/haskell_packages.txt"
 
 # make sure personal aliases file exists so that zshrc souces fine
 [[ ! -f "${ZDOTDIR}/aliases/personal_aliases" ]] && touch "${ZDOTDIR}/aliases/personal_aliases"
@@ -73,6 +47,12 @@ for d_name in "${default_user_dirs[@]}"; do
 	fi
 done
 
+# make sure $PATH is set up properly
+set -e
+havecmd havecmd
+set +e
+
+require git || exit $?
 echo 'Checking git config...'
 # check for global name config
 if [[ -z $(git config --global user.name) ]]; then
@@ -89,10 +69,13 @@ fi
 # set editor to use as nvim
 git config --global core.editor nvim
 
+require python3 || exit $?
 # Install python packages
 echo "Installing global python site-packages..."
-python3 -m pip list --format=freeze | cut -d "=" -f1 | grep -q "^wheel$" || python3 -m pip install wheel
+python3 -m pip list --format=freeze | cut -d "=" -f1 | grep -q "^wheel$" || python3 -m pip install --user wheel
 python3 -m pip install -q --user -r "$PYTHON_PACKAGE_LIST"
+# install linux related python packages
+[[ -n "$ONLINUX" ]] && python3 -m pip install -q --user -r "$LINUX_PYTHON_PACKAGE_LIST"
 
 # Install personal python packages
 # If command "$1" doesn't exist, install from $2
@@ -109,6 +92,7 @@ install_python_personal "rotten" "https://gitlab.com/seanbreckenridge/rotten_tom
 # tab completion nicer
 havecmd speedtest-cli && rm "$(command -v speedtest-cli)"
 
+require npm || exit $?
 # install npm packages
 NPM_CONFIG_PREFIX="${XDG_DATA_HOME}/npm-packages"
 echo "Installing global npm packages..."
@@ -123,6 +107,7 @@ while read -r npkg; do
 	fi
 done <"$NODE_PACKAGE_LIST"
 
+require gem || exit $?
 echo "Installing global ruby packages..."
 RUBY_GEMS_LIST="$(gem list | cut -d' ' -f1)"
 while read -r rgem; do
@@ -132,6 +117,7 @@ while read -r rgem; do
 	fi
 done <"$GLOBAL_GEM_LIST"
 
+require pub || exit $?
 echo "Installing global dart packages..."
 DART_INSTALLED_PACKAGES="$(pub global list | cut -d" " -f1)"
 while read -r dartpkg; do
@@ -141,6 +127,7 @@ while read -r dartpkg; do
 	fi
 done <"$DART_PACKAGE_LIST"
 
+require cargo || exit $?
 echo "Installing global cargo packages..."
 CARGO_INSTALLED_PACKAGES="$(cargo install --list | grep -v "^\s" | cut -d" " -f1)"
 while read -r cargopkg; do
@@ -150,6 +137,7 @@ while read -r cargopkg; do
 	fi
 done <"$CARGO_PACKAGE_LIST"
 
+require go || exit $?
 # takes a line from "$GO_PACKAGE_LIST"
 # binary -> package source
 # and installs it if the binary isn't already on your path
@@ -166,11 +154,13 @@ while IFS= read -r go_line; do
 	install_go_package "$go_line"
 done <"$GO_PACKAGE_LIST"
 
+require stack || exit $?
 echo "Installing global haskell packages..."
 while read -r haskell_pkg; do
-	havecmd "$haskell_pkg" || # stack install "$haskell_pkg"
+	havecmd "$haskell_pkg" || stack install "$haskell_pkg"
 done <"$HASKELL_PACKAGE_LIST"
 
+require emacs || exit $?
 # Install doom emacs
 if [[ ! -d "$HOME/.emacs.d/" ]]; then
 	git clone https://github.com/hlissner/doom-emacs "${HOME}/.emacs.d"
@@ -178,32 +168,19 @@ if [[ ! -d "$HOME/.emacs.d/" ]]; then
 	"${HOME}/.emacs.d/bin/doom" sync
 fi
 
-# Check services
-echo "Checking if default services are running..."
-# CUPS and avahi are for printing
-services=("NetworkManager" "avahi-daemon" "org.cups.cupsd" "cronie" "ntpd" "paccache.timer" "atd")
-for serv in "${services[@]}"; do
-	if [[ "$(systemctl show -p SubState --value "${serv}")" == "dead" ]]; then
-		print_error "${serv} is not running, you should enable it with: 'sudo systemctl enable ${serv} --now'"
-	fi
-done
-
-# Setup mariadb by following: https://wiki.archlinux.org/index.php/MariaDB
-
-# Check for manually installed binaries, installed at /usr/local/bin
-
 echo "Checking for manually installed binaries..."
 binaries=("wait-for-internet" "genpasswd" "shortcuts" "largechar" "mpvf" "exists")
 for binary in "${binaries[@]}"; do
 	havecmd "$binary" || print_error "Warning: Couldn't find ${binary}. Install it from https://github.com/seanbreckenridge/${binary}"
 done
 
+require shortcuts
 havecmd shortcuts && printf "Created %d shortcuts\n" "$(shortcuts create | wc -l)"
-
-dir-aliases
-printf "Created %d directory aliases\n" "$(wc -l <"$ZDOTDIR/aliases/directory_aliases")"
 
 dir-aliases-ranger
 
+require nvim || exit $?
 echo "Installing nvim packages..."
 nvim +PlugInstall +qall
+
+echo "Finishing bootstrapping!" | boxes -d shell -p t1l2b1r2
