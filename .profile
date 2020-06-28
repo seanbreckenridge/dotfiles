@@ -1,6 +1,6 @@
-# Set PATH in ~/.profile so that
-# rofi/other utilities have access to it
-# this is sourced automatically by zsh
+# global configuration/environment
+# this is sourced from ~/.xprofile and
+# from ~/.zshenv on mac (see ~/.config/yadm/mac_bootstrap)
 
 # dark theme QT applications
 export QT_QPA_PLATFORMTHEME="qt5ct"
