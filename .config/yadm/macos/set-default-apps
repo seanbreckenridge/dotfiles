@@ -7,11 +7,11 @@
 # or 'brew install duti'
 
 # if we're not on mac, exit
-if [[ $(uname -s) == "Darwin" ]]; then
-    if [[ ! $(command -v duti) ]]; then
-        echo -e "'duti' isn't installed. Install it with:\\n\\tbrew install duti"
-        exit 1
-    fi
+if [[ "$(uname -s)" == "Darwin" ]]; then
+  havecmd duti || {
+    echo -e "'duti' is not installed. Install it with:\nbrew install duti"
+    exit 1
+  }
 else
     echo "Not on Mac, exiting..."
     exit 1
@@ -59,14 +59,9 @@ video=(
 )
 
 for i in "${!audio[@]}"; do
-    duti -s $(osascript -e 'id of app "VLC"') "${audio[$i]}" all
+    duti -s $(osascript -e 'id of app "mpv"') "${audio[$i]}" all
 done
 
 for i in "${!video[@]}"; do
-    duti -s $(osascript -e 'id of app "VLC"') "${video[$i]}" all
+    duti -s $(osascript -e 'id of app "mpv"') "${video[$i]}" all
 done
-
-# use an extension in chrome/firefox to preview markdown files
-# https://addons.mozilla.org/en-US/firefox/addon/markdown-viewer-webext/
-# https://chrome.google.com/webstore/detail/markdown-preview-plus/febilkbfcbhebfnokafefeacimjdckgl
-duti -s $(osascript -e 'id of app "Firefox"') ".md" all
