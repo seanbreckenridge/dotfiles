@@ -13,9 +13,9 @@ prefixes=(/usr/local/bin /usr/bin)
 
 # search for binaries
 for prefix in "${prefixes[@]}"; do
-  if [[ -r "${prefix}/${binaryname}" ]]; then
-    printf "%s/%s" "$prefix" "$binaryname"
-    exit 0
-  fi
+	if [[ -r "${prefix}/${binaryname}" ]]; then
+		printf "%s/%s" "$prefix" "$binaryname"
+		exit 0
+	fi
 done
 exit 1

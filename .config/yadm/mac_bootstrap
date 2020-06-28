@@ -72,9 +72,9 @@ brew bundle --file="${HOMEBREW_BREWFILE}"
 # setup ruby with rbenv
 require rbenv || exit $?
 if [[ "$(rbenv global)" != 2.7.1 ]]; then
-  printf "Building global ruby version..."
-  rbenv install 2.7.1
-  rbenv global 2.7.1
+	printf "Building global ruby version..."
+	rbenv install 2.7.1
+	rbenv global 2.7.1
 fi
 
 mkdir -p "${HOME}/.local/bin"

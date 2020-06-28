@@ -8,60 +8,60 @@
 
 # if we're not on mac, exit
 if [[ "$(uname -s)" == "Darwin" ]]; then
-  havecmd duti || {
-    echo -e "'duti' is not installed. Install it with:\nbrew install duti"
-    exit 1
-  }
+	havecmd duti || {
+		echo -e "'duti' is not installed. Install it with:\nbrew install duti"
+		exit 1
+	}
 else
-    echo "Not on Mac, exiting..."
-    exit 1
+	echo "Not on Mac, exiting..."
+	exit 1
 fi
 
 audio=(
-    ".aac"
-    ".mp3"
-    ".opus"
-    ".aiff"
-    ".wav"
-    ".ogg"
-    ".ac3"
-    ".flac"
-    ".alac"
-    ".wma"
-    ".m4a"
-    ".ape"
-    ".mka"
+	".aac"
+	".mp3"
+	".opus"
+	".aiff"
+	".wav"
+	".ogg"
+	".ac3"
+	".flac"
+	".alac"
+	".wma"
+	".m4a"
+	".ape"
+	".mka"
 )
 
 video=(
-    ".webm"
-    ".mpg"
-    ".mp2"
-    ".mpeg"
-    ".mpe"
-    ".mpv"
-    ".mp4"
-    ".m4p"
-    ".m4v"
-    ".mkv"
-    ".flv"
-    ".f4v"
-    ".gif"
-    ".ogv"
-    ".gifv"
-    ".avi"
-    ".qt"
-    ".wmv"
-    ".m2v"
-    ".3gp"
-    ".3g2"
-    ".f4p"
+	".webm"
+	".mpg"
+	".mp2"
+	".mpeg"
+	".mpe"
+	".mpv"
+	".mp4"
+	".m4p"
+	".m4v"
+	".mkv"
+	".flv"
+	".f4v"
+	".gif"
+	".ogv"
+	".gifv"
+	".avi"
+	".qt"
+	".wmv"
+	".m2v"
+	".3gp"
+	".3g2"
+	".f4p"
 )
 
 for i in "${!audio[@]}"; do
-    duti -s $(osascript -e 'id of app "mpv"') "${audio[$i]}" all
+	duti -s $(osascript -e 'id of app "mpv"') "${audio[$i]}" all
 done
 
 for i in "${!video[@]}"; do
-    duti -s $(osascript -e 'id of app "mpv"') "${video[$i]}" all
+	duti -s $(osascript -e 'id of app "mpv"') "${video[$i]}" all
 done

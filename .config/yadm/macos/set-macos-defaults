@@ -6,7 +6,6 @@
 # https://github.com/holman/dotfiles/blob/master/macos/set-defaults.sh
 # https://github.com/mathiasbynens/dotfiles/blob/master/.macos
 
-
 # Close any open System Preferences panes, to prevent them from overriding
 # settings we’re about to change
 osascript -e 'tell application "System Preferences" to quit'
@@ -86,7 +85,7 @@ defaults write NSGlobalDomain AppleMeasurementUnits -string "Centimeters"
 defaults write NSGlobalDomain AppleMetricUnits -bool true
 
 # Set the timezone; see `sudo systemsetup -listtimezones` for other values
-sudo systemsetup -settimezone "America/Los_Angeles" > /dev/null
+sudo systemsetup -settimezone "America/Los_Angeles" >/dev/null
 
 # Require password immediately after sleep or screen saver begins
 defaults write com.apple.screensaver askForPassword -int 1
@@ -180,5 +179,5 @@ for app in "Dock" \
 	"Terminal" \
 	"Transmission" \
 	"Calendar"; do
-	killall "${app}" &> /dev/null
+	killall "${app}" &>/dev/null
 done
