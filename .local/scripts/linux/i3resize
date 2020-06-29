@@ -2,7 +2,7 @@
 # From: https://github.com/LukeSmithxyz/voidrice/blob/archi3/.local/bin/i3cmds/i3resize
 
 [ -z "$1" ] && echo "No direction provided" && exit 1
-distanceStr="15 px or 2 ppt"
+distanceStr="15 px or 5 ppt"
 
 moveChoice() {
 	i3-msg resize "$1" "$2" "$distanceStr" | grep '"success":true' ||
