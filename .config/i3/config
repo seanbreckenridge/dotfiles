@@ -118,9 +118,9 @@ bindsym $mod+Print exec --no-startup-id screenshot-to-imgur
 
 # mpv-ytdl bindings
 # grab URL from clipboard and stream through MPV using yt-dl
-bindsym $mod+m exec --no-startup-id stream-media
+bindsym $mod+m exec --no-startup-id stream-link
 # grab URL from clipboard and stream audio through MPV using
-bindsym $mod+Shift+m exec --no-startup-id stream-media --no-video
+bindsym $mod+Shift+m exec --no-startup-id stream-link --no-video
 
 # gaps config
 for_window [class=".*"] border pixel 0
