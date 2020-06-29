@@ -1,19 +1,16 @@
 # shortcuts to commonly used directories
-# creates aliases prepended with C
-# e.g. C.c -> cd ~/.config
-.c ~/.config
+# used in dir-aliases-ranger
+# to create bookmarks
 D ~/Documents
 M ~/Movies
-P ~/.local/share/plaintext_playlist
 S ~/Pictures/Screenshots
 b ~/gdrive/Education/Books
 d ~/Downloads
 m ~/Music
 n ~/Documents/Notes
+p ~/.local/share/plaintext_playlist
 q ~/.config/qtile
 r ~/Repos
 s ~/.local/scripts
 y ~/.config/yadm
 z ~/.config/zsh
-za ~/.config/zsh/aliases
-zf ~/.config/zsh/functions
