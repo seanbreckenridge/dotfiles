@@ -28,7 +28,6 @@ else
 fi
 
 declare -rx PYTHON_PACKAGE_LIST="${YADM_DIR}/python3_packages.txt"
-declare -rx LINUX_PYTHON_PACKAGE_LIST="${YADM_DIR}/linux_python3_packages.txt"
 declare -rx GLOBAL_GEM_LIST="${YADM_DIR}/ruby_packages.txt"
 declare -rx NODE_PACKAGE_LIST="${YADM_DIR}/node_packages.txt"
 declare -rx DART_PACKAGE_LIST="${YADM_DIR}/dart_packages.txt"
@@ -76,8 +75,6 @@ require python3 || exit $?
 echo "Installing global python site-packages..."
 python3 -m pip list --format=freeze | cut -d "=" -f1 | grep -q "^wheel$" || python3 -m pip install --user wheel
 python3 -m pip install -q --user -r "$PYTHON_PACKAGE_LIST"
-# install linux related python packages
-[[ -n "$ONLINUX" ]] && python3 -m pip install -q --user -r "$LINUX_PYTHON_PACKAGE_LIST"
 
 # Install personal python packages
 # If command "$1" doesn't exist, install from $2

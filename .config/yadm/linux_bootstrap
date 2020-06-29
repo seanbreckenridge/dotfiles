@@ -2,6 +2,7 @@
 # called from yadm bootstrap when linux is detected
 
 declare -rx PACKAGE_LIST="${YADM_DIR}/packages.txt"
+declare -rx LINUX_PYTHON_PACKAGE_LIST="${YADM_DIR}/linux_python3_packages.txt"
 
 # Install yay if it isn't already installed
 havecmd yay || {
@@ -45,6 +46,10 @@ for lib in $(sed -e '/^\s*$/d' -e '/^#.*$/d' "${PACKAGE_LIST}"); do
 		yay -S "${lib}"
 	fi
 done
+
+# install linux related python packages
+require python3 || exit $?
+python3 -m pip install -q --user -r "$LINUX_PYTHON_PACKAGE_LIST"
 
 # Check services
 echo "Checking if default services are running..."
