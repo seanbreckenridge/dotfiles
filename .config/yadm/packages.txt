@@ -31,6 +31,7 @@ reflector
 unclutter
 wpa_supplicant
 xorg-server
+xorg-xwininfo
 xorg-xmodmap
 
 # language support
