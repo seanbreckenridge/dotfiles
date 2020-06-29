@@ -36,6 +36,8 @@ __pycache__
 /.cookiecutter_replay
 /.stack
 /.sbt
+/.lftp
+!/.lftp/rc
 /.ivy2
 /.bundle
 /.emacs.d/
