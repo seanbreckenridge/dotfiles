@@ -1,13 +1,13 @@
 ### zsh completion
 
 # allow menu select w/ highlight
-zmodload zsh/complist  # http://zsh.sourceforge.net/Doc/Release/Zsh-Modules.html#The-zsh_002fcomplist-Module
-zstyle ':completion:*' menu select  #  http://zsh.sourceforge.net/Guide/zshguide06.html
+zmodload zsh/complist                                                                         # http://zsh.sourceforge.net/Doc/Release/Zsh-Modules.html#The-zsh_002fcomplist-Module
+zstyle ':completion:*' menu select                                                            #  http://zsh.sourceforge.net/Guide/zshguide06.html
 zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*' # Auto complete with case insenstivity
-setopt globdots # allow autocompletion to target hidden files
-setopt glob_complete  # wildcard completion, e.g. *.png
-setopt completealiases # expand aliases before completing
-setopt autocd  # automatically cd into directories
+setopt globdots                                                                               # allow autocompletion to target hidden files
+setopt glob_complete                                                                          # wildcard completion, e.g. *.png
+setopt completealiases                                                                        # expand aliases before completing
+setopt autocd                                                                                 # automatically cd into directories
 
 # from gotbletu
 # https://github.com/gotbletu/dotfiles_v2/blob/master/normal_user/zshrc/.zshrc

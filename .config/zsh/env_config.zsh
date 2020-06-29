@@ -11,11 +11,11 @@
 HISTFILE="${ZDOTDIR}/.zsh_history"
 HISTSIZE=1000000
 SAVEHIST=1000000
-setopt APPEND_HISTORY       # append to history file instead of replacing
-setopt HIST_REDUCE_BLANKS   # delete empty lines from history file
-setopt HIST_IGNORE_SPACE    # ignore lines that start with space
-setopt HIST_NO_STORE        # Do not add history and fc commands to the history
-setopt EXTENDED_HISTORY     # save time/duration to history file
+setopt APPEND_HISTORY     # append to history file instead of replacing
+setopt HIST_REDUCE_BLANKS # delete empty lines from history file
+setopt HIST_IGNORE_SPACE  # ignore lines that start with space
+setopt HIST_NO_STORE      # Do not add history and fc commands to the history
+setopt EXTENDED_HISTORY   # save time/duration to history file
 
 # Set environment variables to change defualt cache/config file locations
 
@@ -104,7 +104,7 @@ CDPATH="${HOME}:${HOME}/code:${HOME}/.config:${HOME}/.local/scripts"
 
 # fzf configuration
 export FZF_DEFAULT_OPTS=""
-export FZF_DEFAULT_COMMAND="fd -H -L"  # ignore files in gitignore
+export FZF_DEFAULT_COMMAND="fd -H -L" # ignore files in gitignore
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_ALT_C_COMMAND="$FZF_DEFAULT_COMMAND -t d -E .git"
 
@@ -119,7 +119,7 @@ export LESS_TERMCAP_us=$'\e[1;4;31m'
 
 # If on mac, put gnu utils on path before others:
 if [[ -z "$ONLINUX" ]]; then
-  PATH="\
+	PATH="\
 /usr/local/bin:\
 ${HOME}/.rbenv/versions/2.7.1/bin:\
 ${HOME}/Library/Python/3.7/bin:\
@@ -135,7 +135,7 @@ ${HOME}/Library/Python/3.7/bin:\
 /usr/local/opt/gnu-getopt/bin:\
 ${PATH}\
 "
-  source "${HOME}/.common_paths"
-  export PATH
-  # TODO: check if MANPATH needs to be affected as well?
+	source "${HOME}/.common_paths"
+	export PATH
+	# TODO: check if MANPATH needs to be affected as well?
 fi
