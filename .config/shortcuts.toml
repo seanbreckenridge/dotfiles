@@ -86,7 +86,8 @@ wait-for-internet && notify "INTERNET" && paplay /usr/share/sounds/freedesktop/s
 [wfib]
 command='''
 # wfi, and then reload the browser
-wfi; reload-browser
+wfi
+reload-browser
 '''
 
 [rofi-input]
@@ -441,8 +442,8 @@ PROPERTY="${1:?Pass property to get from currently running mpv instance. Run mpv
 MPV_RESP="$(printf '{ "command": ["get_property", "%s"] }\n' "$PROPERTY" | socat - "${MPV_SOCKET:-/tmp/mpvsocket}")" || exit $?
 err="$(echo "$MPV_RESP" | jq -r '.error')"
 [ "$err" = "success" ] || {
-  echo "Error: ${err}" 1>&2
-  exit 1
+	echo "Error: ${err}" 1>&2
+	exit 1
 }
 echo "$MPV_RESP" | jq -r '.data'
 '''
