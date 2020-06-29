@@ -2,7 +2,7 @@
 
 TODO:
 
-Currently in the process of making these work cross platform (macos/arch).
+Currently in the process of making these work seamlessly across platforms (macos/arch).
 
 There are corresponding bootstrap files in `~/.config/yadm` that check whether I'm on mac/linux, to decide what sort of install to do.
 

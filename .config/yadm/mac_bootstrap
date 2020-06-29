@@ -3,7 +3,6 @@
 
 # Reminders:
 # * Go to System Preferences -> Keyboard -> Modifier Keys and rebind Caps Lock to Escape
-# *
 
 set -e
 
