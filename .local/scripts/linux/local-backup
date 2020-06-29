@@ -18,32 +18,20 @@ readonly BACKUP_DRY="${BACKUP_DRY}"
 # locations to back up
 # these cant have the same basename
 BACKUP_DIRS=("/home/data/" "$HOME/code/" "$HOME/Documents/" "$HOME/Desktop/" "$HOME/.config/zsh/" "${XDG_DATA_HOME:-$HOME/.local/share}/plaintext_playlist" "/usr/local/bin")
-#BACKUP_DIRS=("/home/data/" "$HOME" /usr/local/bin)
+DRIVE_LOCATION='/mnt/backup1'
 
-# make sure ldm is running
-if ! pgrep -x ldm >/dev/null; then
-	echo "Error: Make sure ldm is running so that the external drive is mounted" 1>&2
-	exit 1
+if [[ ! -d "$DRIVE_LOCATION" ]]; then
+  if ! pgrep -x ldm >/dev/null; then
+    echo "Error: Make sure ldm is running so that external drive is mounted" 1>&2
+    exit 1
+  fi
 fi
 
-# pick drive to backup to
-DRIVE_INFO="$(df -h | grep -v "home" | awk 'NR > 1' |
-	rofi -dmenu -i -p "Backup to which drive? ")"
-
-# user didn't provide input/exited rofi prompt
-if [ -z "$DRIVE_INFO" ]; then
-	echo "Error: Did not get a drive from user." 1>&2
-	exit 1
-fi
-
-DRIVE_LOCATION="$(echo "$DRIVE_INFO" | awk '{print $6}')"
-#DRIVE_DEVICE="$(echo "$DRIVE_INFO" | awk '{print $1}')"
-
-echo "$DRIVE_LOCATION"
+mkdir -p "${DRIVE_LOCATION}/backup"
 
 for backup_dir in "${BACKUP_DIRS[@]}"; do
 	backup_dir_basename="$(basename "$backup_dir")"
-	backup_to="${DRIVE_LOCATION}/${backup_dir_basename}"
+	backup_to="${DRIVE_LOCATION}/backup/${backup_dir_basename}"
 	#echo "$backup_dir"
 	#echo "$backup_to"
 	[ -n "$BACKUP_DRY" ] && FLAGS=n
