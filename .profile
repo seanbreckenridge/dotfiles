@@ -3,14 +3,13 @@
 # this is sourced by the lightdm on Linux and
 # from ~/.zshenv on mac (see ~/.config/yadm/mac_bootstrap)
 
-[ "$(uname -s)" = "Linux" ] && export ONLINUX=1
-# ~/.profile is sourced before ~/.xprofile, so use uname to determine if we're on Mac/Linux
 # see /etc/lightdm/Xsession
-if [ -n "$ONLINUX" ]; then
-  # source common_paths for shared (mac/linux) path modifications
-  . "${HOME}/.common_paths"
-  export PATH
-fi
+[ "$(uname -s)" = "Linux" ] && export ONLINUX=1 && {
+	# source common_paths for shared (mac/linux) path modifications
+	. "${HOME}/.common_paths"
+	PATH="${HOME}/.gem/ruby/2.7.0/bin:${PATH}"
+	export PATH
+}
 
 # dark theme QT applications
 export QT_QPA_PLATFORMTHEME="qt5ct"
@@ -48,4 +47,3 @@ export DOWNLOADS="${HOME}/Downloads"
 export DOCUMENTS="${HOME}/Documents"
 export MOVIES="${HOME}/Movies"
 export MUSIC="${HOME}/Music"
-

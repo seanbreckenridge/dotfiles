@@ -27,7 +27,4 @@ ${HOME}/.local/share/cargo/bin:\
 ${HOME}/.local/share/pubcache/bin:\
 ${HOME}/.emacs.d/bin:\
 ${PATH}"
-[ -n "$ONLINUX" ] && {
-  PATH="${HOME}/.gem/ruby/2.7.0/bin:${PATH}"
-}
 export PATH
