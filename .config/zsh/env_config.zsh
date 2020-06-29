@@ -100,7 +100,7 @@ alias wget='wget --hsts-file "${XDG_CACHE_HOME}/wget-hsts"'
 export YSU_MESSAGE_FORMAT="$(tput setaf 1)>>> %alias_type: %alias $(tput sgr0)"
 
 # directories that can be cd'd into
-CDPATH="${HOME}:${HOME}/code:${HOME}/.config:${HOME}/.local/scripts"
+CDPATH="${HOME}:${REPOS}:${HOME}/.config:${HOME}/.local/scripts"
 
 # fzf configuration
 export FZF_DEFAULT_OPTS=""
