@@ -32,7 +32,9 @@ for file in "${original_files[@]}"; do
 done
 
 # so that zsh thinks its setup
-# rest of my setup is done is ~/.xprofile
+# rest of my setup is done is ~/.profile
+# which is sourced in lightdm
+# see /etc/lightdm/Xsession
 [ ! -f "${HOME}/.zshenv" ] && touch "${HOME}/.zshenv"
 
 # yay/pacman to install packages from arch repos

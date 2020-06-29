@@ -3,7 +3,8 @@
 # on mac and linux to put onto the $PATH
 
 # On Linux, this is sourced at the beginning
-# of the X session, so it is available to all
+# of the X session, from /etc/lightdm/Xsession,
+# so it is available to all
 # applications. To update after modifying,
 # the xsession has to be restarted:
 # sudo systemctl restart lightdm

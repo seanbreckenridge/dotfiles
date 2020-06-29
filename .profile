@@ -1,6 +1,16 @@
+#!/bin/sh
 # global configuration/environment
-# this is sourced from ~/.xprofile and
+# this is sourced by the lightdm on Linux and
 # from ~/.zshenv on mac (see ~/.config/yadm/mac_bootstrap)
+
+[ "$(uname -s)" = "Linux" ] && export ONLINUX=1
+# ~/.profile is sourced before ~/.xprofile, so use uname to determine if we're on Mac/Linux
+# see /etc/lightdm/Xsession
+if [ -n "$ONLINUX" ]; then
+  # source common_paths for shared (mac/linux) path modifications
+  . "${HOME}/.common_paths"
+  export PATH
+fi
 
 # dark theme QT applications
 export QT_QPA_PLATFORMTHEME="qt5ct"
