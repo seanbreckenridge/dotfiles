@@ -69,7 +69,7 @@ fi
 # set editor to use as nvim
 git config --global core.editor nvim
 # specify how to handle divergent branches
-git config pull.rebase false
+git config --global pull.rebase false
 
 require python3 || exit $?
 # Install python packages
