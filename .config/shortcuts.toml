@@ -347,6 +347,15 @@ command='date +"%A, %B %e, %Y, %l:%M:%S%p"'
 [epoch]
 command='date +"%s"'
 
+[epochdisplay]
+command='''
+import sys, time
+if len(sys.argv) <= 1:
+    raise RuntimeError("Must pass epoch time to display as first argument")
+print(time.strftime('%y-%m-%d %H:%M:%S', time.localtime(int(sys.argv[1]))))
+'''
+shebang='#!/usr/bin/env python3'
+
 [weekday]
 command='date +"%A" | lower'
 

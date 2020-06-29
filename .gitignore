@@ -41,6 +41,7 @@ __pycache__
 /.emacs.d/
 /.vim
 /.scala_history
+/.python_history
 /.mupdf.history
 /.sc-iminfo
 /.scalac/
