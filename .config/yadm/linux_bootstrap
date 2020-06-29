@@ -49,6 +49,7 @@ done
 
 # install linux related python packages
 require python3 || exit $?
+echo "Installing linux-specific python packages..."
 python3 -m pip install -q --user -r "$LINUX_PYTHON_PACKAGE_LIST"
 
 # Check services
