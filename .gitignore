@@ -37,7 +37,6 @@ __pycache__
 /.stack
 /.sbt
 /.lftp
-!/.lftp/rc
 /.ivy2
 /.bundle
 /.emacs.d/
