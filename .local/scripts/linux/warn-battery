@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # warns me when battery goes under 10 percent
 # there are other battery modules but I sort
 # of wanted to emulate mac's behaviour:

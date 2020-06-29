@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # prompt current date in lots of formats
 # and copy that to your command line
 

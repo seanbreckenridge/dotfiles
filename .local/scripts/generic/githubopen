@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # if you're in a git directory, open
 # it in your browser
 # most of my remote's are set to gitlab,

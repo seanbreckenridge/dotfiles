@@ -1,16 +1,16 @@
 # This file is converted by https://github.com/seanbreckenridge/shortcuts
 # into standalone shell scripts
 
-# default_shebang = "#!/bin/sh"
+default_shebang = "#!/bin/sh"
 # default_mode = "0755"
 
 [list-config]
+shebang = "#!/usr/bin/env zsh"
 command='''
 # list all of my configuration files, by matching combining
 # yadm ls-files and a couple search commands
 { cd && yadm ls-files | sed "s#^#$HOME/#"; fd --type=file -H --full-path "${HOME}" "${XDG_CONFIG_HOME}/todo" "${ZDOTDIR}" } | grep -v "system-config" | exists | sort -u
 '''
-shebang = "#!/bin/zsh"
 
 [ec]
 command = '''
@@ -122,7 +122,7 @@ fi
 '''
 
 [genpass]
-shebang = "#!/bin/bash"  # to make sure echo flags work
+shebang = "#!/usr/bin/env bash"  # to make sure echo flags work
 command ='''
 # generates a password and puts it on your clipboard
 # uses https://github.com/seanbreckenridge/genpasswd
@@ -315,6 +315,7 @@ file --mime-type -Lb "$@"
 '''
 
 [dragon-sink]
+shebang="#!/usr/bin/env bash"
 command='''
 # brings up a prompt to drag files into.
 # If no flags are provided, copies any files
@@ -333,7 +334,6 @@ while IFS= read -r f; do
 	$cmd -v "${path}" "$(pwd)/$(basename "${path}")"
 done <<<"$files"
 '''
-shebang="#!/bin/bash"
 
 # shorthand for sending lines from vim to pastebin
 [vix]
@@ -351,13 +351,13 @@ command='date +"%A, %B %e, %Y, %l:%M:%S%p"'
 command='date +"%s"'
 
 [epochdisplay]
+shebang='#!/usr/bin/env python3'
 command='''
 import sys, time
 if len(sys.argv) <= 1:
     raise RuntimeError("Must pass epoch time to display as first argument")
 print(time.strftime('%y-%m-%d %H:%M:%S', time.localtime(int(sys.argv[1]))))
 '''
-shebang='#!/usr/bin/env python3'
 
 [weekday]
 command='date +"%A" | lower'
@@ -375,14 +375,15 @@ command="tr '[:upper:]' '[:lower:]'"
 command="tr '[:lower:]' '[:upper:]'"
 
 [capitalize]
+shebang="#!/usr/bin/env bash"
 command="""
 # capitalizes the first character of a word from STDIN
 s="$(lower)"
 echo "$(upper <<<"${s:0:1}")${s:1}"
 """
-shebang="#!/bin/bash"
 
 [newest]
+shebang="#!/usr/bin/env bash"
 command='''
 # gets the most recently modified file
 # from a directory
@@ -390,7 +391,6 @@ IFS=$'\n'
 f=($(ls -1 --color=never -trd ${1:-.}/*)) || exit 1
 echo "${f[-1]}"
 '''
-shebang="#!/bin/bash"
 
 [lastpic]
 command='newest "${SCREENSHOTS:?No SCREENSHOTS environment variable set}" || exit 1'
@@ -425,12 +425,12 @@ mv -v "${FILE}" "./$1"
 '''
 
 [rbg]
+shebang="#!/usr/bin/env bash"
 command="echo -n $'\033[38;2;'$1';'$2';'$3'm'"
-shebang="#!/bin/bash"
 
 [rbgb]
+shebang="#!/usr/bin/env bash"
 command="echo -n $'\033[48;2;'$1';'$2';'$3'm'"
-shebang="#!/bin/bash"
 
 [vic]
 command='nvim "$(which "${1:?No Executable provided}")"'

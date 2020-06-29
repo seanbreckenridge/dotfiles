@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 readonly usage="$(basename "$0") SHELL_COMMAND [-h]
 

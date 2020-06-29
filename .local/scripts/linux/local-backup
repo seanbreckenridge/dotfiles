@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # prompts the user to pick a local drive to backup this system to.
 # uses rsync to sync, ldm to mount the drive
 # the array below (BACKUP_DIRS) specifies which directories

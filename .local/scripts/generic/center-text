@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # Accepts a string as the first argument
 # Centers the text vertically on the screen
 

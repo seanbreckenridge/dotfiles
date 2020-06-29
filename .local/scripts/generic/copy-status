@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # While copying files to a drive, print what %
 # the copy is at right now.
 # copy-status <source> <dest>

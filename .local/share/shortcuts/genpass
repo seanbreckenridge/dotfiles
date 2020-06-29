@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # generates a password and puts it on your clipboard
 # uses https://github.com/seanbreckenridge/genpasswd
 if ! pw=$(genpasswd "$@"); then

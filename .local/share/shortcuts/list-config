@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/usr/bin/env zsh
 # list all of my configuration files, by matching combining
 # yadm ls-files and a couple search commands
 { cd && yadm ls-files | sed "s#^#$HOME/#"; fd --type=file -H --full-path "${HOME}" "${XDG_CONFIG_HOME}/todo" "${ZDOTDIR}" } | grep -v "system-config" | exists | sort -u

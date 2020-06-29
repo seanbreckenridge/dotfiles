@@ -1,4 +1,4 @@
-#! /usr/bin/elixir
+#!/usr/bin/env elixir
 #
 # Parses the i3 config file for binding modes
 # Uses the mode passed as the first argument as the target

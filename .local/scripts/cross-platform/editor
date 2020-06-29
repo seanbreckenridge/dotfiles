@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 set -e # exit on non zero return code
 set -u # undefined variables are errors

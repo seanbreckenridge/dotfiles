@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # use like:
 # findbinary ranger || exit $?
 # Searches typical install locations on linux/macos

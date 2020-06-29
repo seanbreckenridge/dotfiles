@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # prompts me to select a dotfile from
 # https://gitlab.com/seanbreckenridge/subpath-serve.git
 # and copies a link to that file to the clipboard
