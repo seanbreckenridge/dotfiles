@@ -144,7 +144,7 @@ echo -en "$pw" | xclip -selection clipboard -r
 [list-music]
 command='''
 # list music files (try to ignore cue/log/album artwork files) in the current directory
-fd --type f | grep -iEv "\.(jpg|png|cue|log|m3u|m3u8|nfo|md5|txt|jpeg|sfv|pdf)$"
+fd --type f | grep -iEv "\.(gif|accurip|jpg|png|cue|log|m3u|m3u8|nfo|md5|txt|jpeg|sfv|pdf)$"
 '''
 
 [play-music]
@@ -214,7 +214,8 @@ command = '''
 # override the lynx binary by
 # placing the lynx shortcut
 # on $PATH first
-"$(findbinary lynx)" -accept_all_cookies -cfg="${XDG_CONFIG_HOME}/lynx/lynx.cfg" "$@"
+LYNX_PATH="$(findbinary lynx)" || exit $?
+"$LYNX_PATH" -accept_all_cookies -cfg="${XDG_CONFIG_HOME}/lynx/lynx.cfg" "$@"
 '''
 
 [ranger]
@@ -226,7 +227,8 @@ command='''
 # warnings like:
 # https://i.imgur.com/Ky6NhKm.png
 export PYTHONWARNINGS="ignore"
-python3 "$(findbinary ranger)" "$@"
+RANGER_PATH="$(findbinary ranger)" || exit $?
+python3 "$RANGER_PATH" "$@"
 '''
 
 [printer-server]

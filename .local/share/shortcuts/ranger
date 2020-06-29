@@ -6,4 +6,5 @@
 # warnings like:
 # https://i.imgur.com/Ky6NhKm.png
 export PYTHONWARNINGS="ignore"
-python3 "$(findbinary ranger)" "$@"
+RANGER_PATH="$(findbinary ranger)" || exit $?
+python3 "$RANGER_PATH" "$@"

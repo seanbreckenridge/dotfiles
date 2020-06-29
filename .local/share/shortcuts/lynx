@@ -2,4 +2,5 @@
 # override the lynx binary by
 # placing the lynx shortcut
 # on $PATH first
-"$(findbinary lynx)" -accept_all_cookies -cfg="${XDG_CONFIG_HOME}/lynx/lynx.cfg" "$@"
+LYNX_PATH="$(findbinary lynx)" || exit $?
+"$LYNX_PATH" -accept_all_cookies -cfg="${XDG_CONFIG_HOME}/lynx/lynx.cfg" "$@"
