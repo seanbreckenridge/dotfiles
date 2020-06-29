@@ -14,3 +14,4 @@ html-minifier
 uglifycss
 serve
 mapscii
+jikan-node
