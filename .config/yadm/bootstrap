@@ -69,6 +69,9 @@ fi
 git config --global core.editor nvim
 # specify how to handle divergent branches
 git config --global pull.rebase false
+# set similar configuration for yadm itself
+yadm gitconfig core.editor nvim
+yadm gitconfig pull.rebase false
 
 require python3 || exit $?
 # Install python packages

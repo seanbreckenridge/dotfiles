@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# Reads a generic text file which describes a list of packages
+# Removes empty lines, and lines that start with '#'
+# Doesnt allow comments after lines which contain content
+# Prints the filtered file to STDOUT
+
+readonly PACKAGE_FILE="${1:?Must pass package file as first argument}"
+sed -e '/^\s*$/d' -e '/^#.*$/d' "$PACKAGE_FILE"

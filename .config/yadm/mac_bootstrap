@@ -49,9 +49,9 @@ set +e
 # set mac defaults
 echo "Setting application/mac os defaults..."
 bash "${YADM_DIR}/macos/set-default-apps" || exit $?
-printf "macos/set-macos-defaults changes a bunch of settings to make macOS more usable and restarts affected applications Run? > "
+printf "macos/set-macos-defaults changes a bunch of settings to make macOS more usable and restarts affected applications\nRun? > "
 # timeout after 10 seconds
-read -t 10 resp && bash "${YADM_DIR}/macos/set-macos-defaults"
+read -t 5 && bash "${YADM_DIR}/macos/set-macos-defaults"
 
 havecmd curl && [[ ! -r "${HOME}/.local/share/nvim/site/autoload/plug.vim" ]] && {
 	printf "Installing vim-plug..."
