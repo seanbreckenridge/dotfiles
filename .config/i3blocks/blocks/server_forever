@@ -1,5 +1,0 @@
-#!/bin/sh
-
-MONITOR_OUTPUT="$("${HOME}/code/foreverjs-list/monitor.py")"
-echo "$MONITOR_OUTPUT"
-exit 0
