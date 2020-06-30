@@ -6,14 +6,15 @@ I use mac less so I have yet to configure it to all of my likings; I primarily u
 
 * window management/keyboard shortcuts
   * Uses [`skhd`](https://github.com/koekeishiya/skhd) as a hot-key daemon to run applications (e.g. `cmd + opt + enter` launches terminal)
-  * [amethyst](https://github.com/ianyh/Amethyst)to auto-tile windows a la xmonad
-* There are corresponding bootstrap files in `~/.config/yadm` that check whether I'm on mac/linux, to decide what sort of install to do.
-* `$PATH` is set properly in `zsh`/`X server` startup, update (`zsh` function) respects the OS and updates packages properly,
+  * [amethyst](https://github.com/ianyh/Amethyst) to auto-tile windows a la xmonad
+  * `alfred` as a application launcher
+* OS-specific bootstrap files in `~/.config/yadm` that check whether I'm on mac/linux, to decide what sort of install/which packages to install.
+* `$PATH` is set properly in `zsh`/`X server` startup, update (`zsh` function) respects the OS and updates packages properly.
 * Wrapper scripts in `~/.local/scripts/cross-platform` detect platform to send notifications, interact with clipboard etc.
 
 TODO:
   * Write a script to auto-generate keybinds for `i3` (or some other WM) and `skhd`
-  * Find a good mac rofi-clone and write a wrapper to picking from user input
+  * Find a good mac rofi-clone and write a wrapper to pick from user input
   * make these scripts cross-platform:
     * `randomize-wallpaper`
     * `lock-screen`
