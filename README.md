@@ -8,7 +8,7 @@ I use mac less so I have yet to configure it to all of my likings; I primarily u
   * Uses [`skhd`](https://github.com/koekeishiya/skhd) as a hot-key daemon to run applications (e.g. `cmd + opt + enter` launches terminal)
   * [amethyst](https://github.com/ianyh/Amethyst) to auto-tile windows a la xmonad
   * `alfred` as a application launcher
-* OS-specific bootstrap files in `~/.config/yadm` that check whether I'm on mac/linux, to decide what sort of install/which packages to install.
+* OS-specific bootstrap files in `~/.config/yadm` that check whether I'm on mac/linux, to decide what sort of install(`yay`/`brew`)/which packages to install.
 * `$PATH` is set properly in `zsh`/`X server` startup, update (`zsh` function) respects the OS and updates packages properly.
 * Wrapper scripts in `~/.local/scripts/cross-platform` detect platform to send notifications, interact with clipboard etc.
 
