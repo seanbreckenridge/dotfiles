@@ -21,10 +21,10 @@ BACKUP_DIRS=("/home/data/" "$HOME/code/" "$HOME/Documents/" "$HOME/.config/" "${
 DRIVE_LOCATION='/mnt/backup1'
 
 if [[ ! -d "$DRIVE_LOCATION" ]]; then
-  if ! pgrep -x ldm >/dev/null; then
-    echo "Error: Make sure ldm is running so that external drive is mounted" 1>&2
-    exit 1
-  fi
+	if ! pgrep -x ldm >/dev/null; then
+		echo "Error: Make sure ldm is running so that external drive is mounted" 1>&2
+		exit 1
+	fi
 fi
 
 mkdir -p "${DRIVE_LOCATION}/backup"

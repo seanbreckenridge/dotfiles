@@ -19,19 +19,28 @@ def parse_table(table_str):
     # the delimiters for the table
     dash_lines: List[str] = table_str.strip().splitlines()
     dash_row: str = table_str.splitlines()[1].strip()
-    indices = [i for i, c in enumerate(dash_row) if c == ' ']
+    indices = [i for i, c in enumerate(dash_row) if c == " "]
     # find local max indices to find separations between table rows
-    indices = [0] + [i for i in indices if i == max(filter(lambda x: x in indices, range(i - 3, i + 3))) ]
+    indices = [0] + [
+        i
+        for i in indices
+        if i == max(filter(lambda x: x in indices, range(i - 3, i + 3)))
+    ]
     # split on indices
-    return [[b[i:j].strip() for i, j in zip(indices, indices[1:] + [None])] for b in dash_lines[2:]]
+    return [
+        [b[i:j].strip() for i, j in zip(indices, indices[1:] + [None])]
+        for b in dash_lines[2:]
+    ]
 
 
 def argparser() -> bool:
     parser = argparse.ArgumentParser("qtile-launch-bindings")
-    parser.add_argument("-j",
-                        "--json",
-                        action="store_true",
-                        help="print as json instead of separated by '|'")
+    parser.add_argument(
+        "-j",
+        "--json",
+        action="store_true",
+        help="print as json instead of separated by '|'",
+    )
     return parser.parse_args().json
 
 
@@ -46,12 +55,18 @@ def main():
     bindings: List[List[str]] = parse_table(keybinding_table_str)
     if print_json:
         print(
-            json.dumps([{
-                "keysym": b[0],
-                "modifier": b[1],
-                "command": b[2],
-                "description": b[3]
-            } for b in bindings]))
+            json.dumps(
+                [
+                    {
+                        "keysym": b[0],
+                        "modifier": b[1],
+                        "command": b[2],
+                        "description": b[3],
+                    }
+                    for b in bindings
+                ]
+            )
+        )
     else:
         for b in bindings:
             print("|".join(b))
