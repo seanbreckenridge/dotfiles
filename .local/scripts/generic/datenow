@@ -12,5 +12,5 @@ print_dates() {
 	date "+%s # epoch"
 }
 
-PICKED="$(print_dates | picker "Pick Date > ")" || exit $?
+PICKED="$(print_dates | picker -p "Pick Date > ")" || exit $?
 cut -d "#" -f1 <<<"$PICKED" | xargs echo | clipcopy
