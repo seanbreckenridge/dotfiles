@@ -44,6 +44,7 @@ alias syserrors="sudo journalctl -p 3 -xb"
 alias sysderrors="sudo systemctl --failed"
 # Non-standard
 
+alias todo='todo.sh'
 # open screenshots folder
 alias screens='sxiv -t ~/Desktop/Screenshots/*.png'
 # remove packages that arent being used for anything

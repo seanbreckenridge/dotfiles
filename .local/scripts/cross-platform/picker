@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+# Wrapper to prompt user to select an item from a list.
+# Uses rofi on linux, and choose-gui on mac
+# https://github.com/davatorium/rofi
+# https://github.com/chipsenkbeil/choose
+
+# get user input from STDIN
+readonly STDIN="$(cat)"
+
+declare -a linux_options
+linux_options=()
+
+usage() {
+	echo "Accepts [-p PROMPT] to pass to rofi. Ignored on mac.
+Reads lines from STDIN and uses rofi/choose-gui to pick one"
+	exit 1
+}
+
+## read options
+while getopts "p:" OPT; do
+	case "$OPT" in
+	p)
+		linux_options+=("-${OPT}" "$OPTARG")
+		;;
+	*)
+		usage
+		;;
+	esac
+done
+shift $((OPTIND - 1))
+
+if [[ -n "$ONLINUX" ]]; then
+	printf "%s" "$STDIN" | rofi -i -dmenu "${linux_options[@]}" || exit $?
+else
+	printf "%s" "$STDIN" | choose -c 9400D3 -b 1C1C1C -u || exit $?
+fi

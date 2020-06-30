@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+# prompts the user with a basic dialog
+
+[[ -z "$1" ]] && {
+	echo "Pass the prompt string as the first argument" 2>&1
+	exit 1
+}
+
+if [[ -n "$ONLINUX" ]]; then
+	# use rofi with no list on linux
+	rofi -dmenu -theme-str 'listview {enabled: false;}' -p "$1" || exit $?
+else
+	# use applescript on mac
+	OSASCRIPT="$(printf 'set T to text returned of (display dialog "%s" buttons {"Cancel", "OK"} default button "OK" default answer "")' "$1")"
+	RESP="$(osascript -e "$OSASCRIPT")" || exit $?
+	[[ -z "$RESP" ]] && exit $?
+	printf '%s' "$RESP"
+fi

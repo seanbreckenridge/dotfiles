@@ -14,7 +14,6 @@ I use mac less so I have yet to configure it to all of my likings; I primarily u
 
 TODO:
   * Write a script to auto-generate keybinds for `i3` (or some other WM) and `skhd`
-  * Find a good mac rofi-clone and write a wrapper to pick from user input
   * make these scripts cross-platform:
     * `randomize-wallpaper`
     * `lock-screen`

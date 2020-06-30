@@ -1,15 +1,17 @@
 #!/bin/sh
-# requires dunst (notify-send), rofi, todo.sh (todo.txt)
+# requires dunst (notify-send), todo.sh (todo.txt)
+# Uses my picker wrapper script:
+# https://sean.fish/d/picker?dark
 
-# display the todos using rofi
+# display the todos using rofi/choose
 # allow the user to complete a todo
 prompt_todos() {
 	tmpfile="$(mktemp /tmp/todo.XXXXX)"
 	trap 'rm "$tmpfile"' 0 1 15
 	todo.sh -p list | head -n -2 >"$tmpfile"
-	TODO_CHOICE=$(rofi -dmenu -i -p "Mark which todo as complete? > " <"$tmpfile")
+	TODO_CHOICE=$(picker -p "Mark which todo as complete? > " <"$tmpfile")
 	if [ -n "$TODO_CHOICE" ]; then
-		CONFIRM="$(printf "yes\nno\n" | rofi -dmenu -i -p "Mark this todo as complete: $TODO_CHOICE")"
+		CONFIRM="$(printf "yes\nno\n" | picker -p "Mark this todo as complete: $TODO_CHOICE")"
 		if [ "$CONFIRM" = "yes" ]; then
 			TODO_NUM=$(echo "$TODO_CHOICE" | cut -d" " -f1)
 			notify "Completed Todo:" "$(todo.sh -p do "$TODO_NUM")"

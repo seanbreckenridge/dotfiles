@@ -1,4 +1,0 @@
-#!/bin/sh
-# prompts the user for input with a basic rofi input prompt
-# additional options can be given after rofi-input
-rofi -dmenu -theme-str 'listview {enabled: false;}' "$@"

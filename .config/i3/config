@@ -89,8 +89,8 @@ bindsym XF86AudioMicMute exec --no-startup-id volume micmute
 exec --no-startup-id echo "${HOME}/.config/todo/todo.txt" | entr pkill -RTMIN+2 i3blocks
 
 # todo list - mark as complete with rofi
-bindsym $mod+t exec --no-startup-id ~/.config/i3blocks/blocks/todo list
-bindsym $mod+Shift+t exec --no-startup-id ~/.config/i3blocks/blocks/todo add
+bindsym $mod+t exec --no-startup-id todo-prompt list
+bindsym $mod+Shift+t exec --no-startup-id todo-prompt add
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod

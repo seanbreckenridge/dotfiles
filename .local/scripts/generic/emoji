@@ -1,14 +1,13 @@
 #!/bin/sh
 # prompts me to select an emoji and copies it to my clipboard
 
-chosen="$(rofi -dmenu -i -l 20 -p "pick an emoji > " <"${XDG_DATA_HOME}/emoji")"
+chosen="$(picker -p "pick an emoji > " <"${XDG_DATA_HOME}/emoji")"
 
 [ "$chosen" != "" ] || exit
 
 c="$(echo "$chosen" | sed "s/ .*//")"
 # copy to both clipboards
-printf "%s" "$c" | xclip                      # paste with middle click
-printf "%s" "$c" | xclip -selection clipboard # paste with typical ctrl v
+printf '%s' "$c" | clipcopy
 
 msg="'$c' copied to clipboard"
 
