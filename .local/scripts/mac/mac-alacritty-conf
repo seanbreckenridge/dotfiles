@@ -1,0 +1,29 @@
+#!/usr/bin/env python3
+
+"""
+Creates a new alacritty config file, which incases
+the Font for alacritty on Mac.
+"""
+
+import os
+
+import yaml
+
+alacritty_config_file = os.path.join(
+    os.environ["HOME"], ".config/alacritty/alacritty.yml"
+)
+assert os.path.exists(alacritty_config_file)
+
+with open(alacritty_config_file, "r") as yf:
+    config = yaml.load(yf, Loader=yaml.FullLoader)
+
+# increase font size
+config["font"]["size"] = float(int(config["font"]["size"] * 1.5))
+
+local_alacritty_file = os.path.join(os.environ["HOME"], ".local/share/alacritty.yml")
+with open(local_alacritty_file, "w") as yf:
+    yaml.dump(config, yf)
+
+print("Dumped modified alacritty config to {}".format(local_alacritty_file))
+print("Use the --config-file flag on mac")
+# --config-file set in ~/.skhd/skhdrc file

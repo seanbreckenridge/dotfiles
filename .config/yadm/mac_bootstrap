@@ -48,6 +48,9 @@ havecmd brew || exit 1
 
 set +e
 
+# generate alacritty config file for mac
+mac-alacritty-conf || exit $?
+
 # set mac defaults
 echo "Setting application/mac os defaults..."
 bash "${YADM_DIR}/mac/set-default-apps" || exit $?
