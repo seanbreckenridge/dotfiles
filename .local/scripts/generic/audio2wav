@@ -3,30 +3,30 @@
 
 DIR=AUDIO_WAV
 helpmsg() {
-  printf "%s\n" "desc: convert to wav audio (stereo)"
-  printf "%s\n" "depend: ffmpeg wavpack"
-  printf "\n"
-  printf "%s\n" "usage: ${0##*/} [file]"
-  printf "\n"
-  printf "%s\n" "  $ ${0##*/} file.m4a"
-  printf "%s\n" "  $ ${0##*/} file1.m4a file2.m4a file3.m4a"
-  printf "%s\n" "  $ ${0##*/} *.m4a"
+	printf "%s\n" "desc: convert to wav audio (stereo)"
+	printf "%s\n" "depend: ffmpeg wavpack"
+	printf "\n"
+	printf "%s\n" "usage: ${0##*/} [file]"
+	printf "\n"
+	printf "%s\n" "  $ ${0##*/} file.m4a"
+	printf "%s\n" "  $ ${0##*/} file1.m4a file2.m4a file3.m4a"
+	printf "%s\n" "  $ ${0##*/} *.m4a"
 }
 if [ $# -lt 1 ]; then
-  helpmsg
-  exit 1
+	helpmsg
+	exit 1
 elif [ "$1" = -h ] || [ "$1" = --help ]; then
-  helpmsg
-  exit 0
+	helpmsg
+	exit 0
 else
-  mkdir -p "$DIR"
-  myArray=("$@")
-  for arg in "${myArray[@]}"; do
-    if [[ -f "$arg" && ! -f "$DIR/${arg%.*}.wav" ]]; then
-      ffmpeg -i "$arg" "$DIR/${arg%.*}.wav"
-    else
-      printf "%s\n" "$arg is invalid or output file already exist"
-      exit 1
-    fi
-  done
+	mkdir -p "$DIR"
+	myArray=("$@")
+	for arg in "${myArray[@]}"; do
+		if [[ -f "$arg" && ! -f "$DIR/${arg%.*}.wav" ]]; then
+			ffmpeg -i "$arg" "$DIR/${arg%.*}.wav"
+		else
+			printf "%s\n" "$arg is invalid or output file already exist"
+			exit 1
+		fi
+	done
 fi

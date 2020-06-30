@@ -1,10 +1,8 @@
 #!/bin/sh
-# requires dunst (notify-send), todo.sh (todo.txt)
-# Uses my picker wrapper script:
-# https://sean.fish/d/picker?dark
+# requires todo.sh (todo.txt)
+# Uses my OS-agnostic wrapper scripts:
+# https://github.com/seanbreckenridge/dotfiles/tree/master/.local/scripts/cross-platform
 
-# display the todos using rofi/choose
-# allow the user to complete a todo
 prompt_todos() {
 	tmpfile="$(mktemp /tmp/todo.XXXXX)"
 	trap 'rm "$tmpfile"' 0 1 15
@@ -21,7 +19,7 @@ prompt_todos() {
 
 # give the user a dialog to add a new todo
 add_todo() {
-	NEW_TODO="$(rofi-input -location 2 -p "Add todo > ")"
+	NEW_TODO="$(input-dialog "Add todo > ")"
 	if [ -n "$NEW_TODO" ]; then
 		notify "Added todo:" "$(todo.sh -p add "$NEW_TODO")"
 	fi
