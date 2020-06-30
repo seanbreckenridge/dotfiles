@@ -1,0 +1,13 @@
+#!/bin/sh
+# copy from STDIN to both clipboards
+
+STDIN="$(cat)"
+
+[ -z "${STDIN}" ] && exit
+
+if [ -n "$ONLINUX" ]; then
+	printf "%s" "${STDIN}" | xclip -in
+	printf "%s" "${STDIN}" | xclip -in -selection clipboard
+else
+	printf "%s" "${STDIN}" | pbcopy
+fi

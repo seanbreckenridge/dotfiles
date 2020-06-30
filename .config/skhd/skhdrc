@@ -1,0 +1,8 @@
+# Mac keyboard hotkey daemon
+# See https://github.com/koekeishiya/skhd/blob/master/examples/skhdrc for more examples
+# Use shkd to bind applications to cmd + alt
+# This shouldn't interfere with window manager commands (https://github.com/ianyh/Amethyst)
+# since those are prefixed with option + shift or ctrl + option + shift
+
+cmd + alt - return : /Applications/Alacritty.app/Contents/MacOS/alacritty
+#cmd + alt - f : /Applications/Firefox\ Developer\ Edition.app/Contents/MacOS/firefox

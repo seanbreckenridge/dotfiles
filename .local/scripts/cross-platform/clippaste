@@ -1,0 +1,8 @@
+#!/bin/sh
+# paste from X clipboard buffer
+
+if [ -n "$ONLINUX" ]; then
+	xclip -out -selection clipboard
+else
+	pbpaste
+fi

@@ -3,6 +3,8 @@
 
 # Reminders:
 # * Go to System Preferences -> Keyboard -> Modifier Keys and rebind Caps Lock to Escape
+# * Use alfred instead of Spotlight as the default
+# * skhd/amethyst require accessibility access to do their magic
 
 set -e
 
@@ -48,10 +50,10 @@ set +e
 
 # set mac defaults
 echo "Setting application/mac os defaults..."
-bash "${YADM_DIR}/macos/set-default-apps" || exit $?
-printf "macos/set-macos-defaults changes a bunch of settings to make macOS more usable and restarts affected applications\nRun? > "
+bash "${YADM_DIR}/mac/set-default-apps" || exit $?
+printf "mac/set-macos-defaults changes a bunch of settings to make macOS more usable and restarts affected applications\nRun? > "
 # timeout after 10 seconds
-read -t 5 && bash "${YADM_DIR}/macos/set-macos-defaults"
+read -t 5 && bash "${YADM_DIR}/mac/set-macos-defaults"
 
 havecmd curl && [[ ! -r "${HOME}/.local/share/nvim/site/autoload/plug.vim" ]] && {
 	printf "Installing vim-plug..."
@@ -78,3 +80,7 @@ if [[ "$(rbenv global)" != 2.7.1 ]]; then
 fi
 
 mkdir -p "${HOME}/.local/bin"
+
+# setup skhd for generic keybinds
+brew install koekeishiya/formulae/skhd
+brew services restart skhd

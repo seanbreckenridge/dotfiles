@@ -1,14 +1,22 @@
 # dotfiles
 
+This README is is need of a rewrite. Cross platform is *essentially* done.
+
+I use mac less so I have yet to configure it to all of my likings; I primarily use linux, and run a couple apps as a compatability layer on mac:
+
+* window management/keyboard shortcuts
+  * Uses [`skhd`](https://github.com/koekeishiya/skhd) as a hot-key daemon to run applications (e.g. `cmd + opt + enter` launches terminal)
+  * [amethyst](https://github.com/ianyh/Amethyst)to auto-tile windows a la xmonad
+* There are corresponding bootstrap files in `~/.config/yadm` that check whether I'm on mac/linux, to decide what sort of install to do.
+* `$PATH` is set properly in `zsh`/`X server` startup, update (`zsh` function) respects the OS and updates packages properly,
+* Wrapper scripts in `~/.local/scripts/cross-platform` detect platform to send notifications, interact with clipboard etc.
+
 TODO:
-
-Currently in the process of making these work seamlessly across platforms (macos/arch).
-
-There are corresponding bootstrap files in `~/.config/yadm` that check whether I'm on mac/linux, to decide what sort of install to do.
-
-update (zsh function) respects the OS and updates packages properly, `$PATH` is set properly in `zsh`/`X server` startup.
-
-Still lots to be done, plan to use [`yabai`](https://github.com/koekeishiya/yabai) to make mac tile, write a PEG to auto generate my keybindings from a shared configuration file, and use wrapper scripts to check OS type to do notifications/user input (using rofi/mac rofi clones)
+  * Write a script to auto-generate keybinds for `i3` (or some other WM) and `skhd`
+  * Find a good mac rofi-clone and write a wrapper to picking from user input
+  * make these scripts cross-platform:
+    * `randomize-wallpaper`
+    * `lock-screen`
 
 The rest of the README is for what I used on arch, will be updated into a larger (perhaps wiki) once I have everything setup properly.
 
