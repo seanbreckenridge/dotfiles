@@ -42,8 +42,14 @@ export ZDOTDIR="${XDG_CONFIG_HOME}/zsh"
 # Directories
 export REPOS="${HOME}/Repos"
 export PICTURES="${HOME}/Pictures"
-export SCREENSHOTS="${PICTURES}/Screenshots"
 export DOWNLOADS="${HOME}/Downloads"
 export DOCUMENTS="${HOME}/Documents"
 export MOVIES="${HOME}/Movies"
 export MUSIC="${HOME}/Music"
+
+# Screenshots on Mac are saved on the Desktop
+if [[ -n "$ONLINUX" ]]; then
+	export SCREENSHOTS="${PICTURES}/Screenshots"
+else
+	export SCREENSHOTS="${HOME}/Desktop"
+fi

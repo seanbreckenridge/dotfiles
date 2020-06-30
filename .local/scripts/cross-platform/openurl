@@ -1,5 +1,7 @@
 #!/bin/sh
 # Open a URL with no side effects
+
+# On linux:
 # if just using xdg-open on my system,
 # xdg-open hangs after opening the link,
 # its waiting for the $BROWSER process to end
@@ -10,7 +12,13 @@
 URL="$1"
 
 if [ -z "$1" ]; then # if no URL was passed, read from STDIN
-	URL="$(cat)"
+	URL="$(head -n 1)"
 fi
 
-setsid "$BROWSER" "$URL" >/dev/null 2>&1 &
+echo "$URL"
+
+if [[ -n "$ONLINUX" ]]; then
+	setsid "$BROWSER" "$URL" >/dev/null 2>&1 &
+else
+	open -n -a "Firefox Developer Edition" --args "--new-tab" "$URL"
+fi
