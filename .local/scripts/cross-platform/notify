@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # wrapper script for sending notificaitons on mac/linux
 
 declare -a linux_options

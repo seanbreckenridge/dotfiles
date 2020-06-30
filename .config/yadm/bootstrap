@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # yadm bootstrap script
 # Installs all my packages/sets up my environment.
 #

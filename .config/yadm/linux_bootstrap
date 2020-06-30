@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # called from yadm bootstrap when linux is detected
 # uses yay to install from the AUR
 
