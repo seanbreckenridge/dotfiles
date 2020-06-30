@@ -5,4 +5,3 @@ guru golang.org/x/tools/cmd/guru
 keyvol gitlab.com/seanbreckenridge/keyvol
 twitchlive gitlab.com/seanbreckenridge/twitchlive
 wuzz github.com/asciimoo/wuzz
-gotop github.com/cjbassi/gotop
