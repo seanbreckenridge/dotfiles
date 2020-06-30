@@ -1,5 +1,6 @@
 #!/bin/bash
 # called from yadm bootstrap when linux is detected
+# uses yay to install from the AUR
 
 declare -rx PACKAGE_LIST="${YADM_DIR}/packages.txt"
 declare -rx LINUX_PYTHON_PACKAGE_LIST="${YADM_DIR}/linux_python3_packages.txt"

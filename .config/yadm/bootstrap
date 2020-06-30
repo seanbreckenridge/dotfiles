@@ -1,6 +1,14 @@
 #!/bin/bash
 # yadm bootstrap script
-# Uses yay to install from AUR
+# Installs all my packages/sets up my environment.
+#
+# Checks for the presence of the $ONLINUX variable,
+# which is set in ~/.profile by checking `uname`
+# on linux. Since the ~/.profile is sourced at the
+# beginning of the Xsession and not when opening
+# a shell, it can be assumed that its always set
+# once `yadm clone` has been run and the computer
+# has been restarted.
 
 function print_error() {
 	echo -e "$(tput setaf 1)$1$(tput sgr0)" 1>&2

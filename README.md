@@ -45,6 +45,8 @@ Packages can be added to the `.txt` files manually, and then `yadm bootstrap` ca
 ### Install
 
     yadm clone https://gitlab.com/seanbreckenridge/dotfiles
+    # restart the computer so that ~/.profile is sourced by /etc/lightdm/Xsession
+    # so OS detection can be done to install the correct packages
     yadm bootstrap
 
 #### LICENSE
