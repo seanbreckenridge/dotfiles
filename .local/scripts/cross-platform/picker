@@ -31,12 +31,9 @@ shift $((OPTIND - 1))
 
 if [[ -n "$ONLINUX" ]]; then
 	declare LINES="$(wc -l <<<"$STDIN")"
-	if ((LINES < 15)); then
-
-		printf "%s" "$STDIN" | rofi -i -dmenu "${linux_options[@]}" -lines "$LINES" || exit $?
-	else
-		printf "%s" "$STDIN" | rofi -i -dmenu "${linux_options[@]}" || exit $?
-	fi
+	# if STDIN is less than 15 lines, limit the list view to that number
+	((LINES < 15)) && linux_options+=(-lines "$LINES")
+	printf "%s" "$STDIN" | rofi -i -dmenu "${linux_options[@]}" || exit $?
 else
 	printf "%s" "$STDIN" | choose -c 9400D3 -b 1C1C1C -u || exit $?
 fi
