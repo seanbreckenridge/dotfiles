@@ -44,6 +44,8 @@ else
 	[[ $- == *i* ]] && source "/usr/local/opt/fzf/shell/completion.zsh" 2>/dev/null
 	# Key bindings
 	source "/usr/local/opt/fzf/shell/key-bindings.zsh"
-# other plugins
-# TODO: add more plugins
+	# Other plugins
+	source_if_exists /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+	source_if_exists /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+	# TODO: add zsh-you-should-use somehow
 fi
