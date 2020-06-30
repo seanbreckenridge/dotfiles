@@ -9,7 +9,7 @@ filetype off
 call plug#begin('~/.local/plugged')
 Plug 'junegunn/goyo.vim'
 Plug 'sheerun/vim-polyglot'
-Plug '/usr/bin/fzf'
+Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'ludovicchabant/vim-gutentags'
