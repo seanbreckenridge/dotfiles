@@ -4,5 +4,5 @@
 if [ -n "$ONLINUX" ]; then
 	paplay /usr/share/sounds/freedesktop/stereo/message.oga
 else
-	afplay /System/Library/Sounds/Hero.aiff
+	afplay /System/Library/Sounds/Ping.aiff
 fi
