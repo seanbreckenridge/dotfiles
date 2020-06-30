@@ -444,6 +444,8 @@ echo "$MPV_RESP" | jq -r '.data'
 [grep-dotfiles]
 shebang="#!/usr/bin/env bash"
 command='''
+# searches all my configuration for a string
+# passes arguments received to grep
 while read filename; do
 	grep -Hrin "$@" "$filename"
 done < <(list-config | grep -v "zsh_history")
