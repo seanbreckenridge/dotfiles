@@ -1,6 +1,6 @@
 #!/bin/sh
 # grab URL from clipboard and play in a new terminal with mpvf
-if ! CLIPBOARD_CONTENTS="$(xclip -out -selection clipboard)"; then
+if ! CLIPBOARD_CONTENTS="$(clippaste)"; then
 	notify "Failed to get clipboard contents." && exit 1
 fi
 export MPVF_PICKER=rofi

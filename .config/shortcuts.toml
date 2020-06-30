@@ -137,7 +137,7 @@ else
 	echo -e "$pw"
 fi
 # copy to clipboard
-echo -en "$pw" | xclip -selection clipboard -r
+echo -en "$pw" | clipcopy
 '''
 
 # confirm this is ignoring the correct files by running:
@@ -173,7 +173,7 @@ done
 [stream-link]
 command = """
 # grab URL from clipboard and play in a new terminal with mpvf
-if ! CLIPBOARD_CONTENTS="$(xclip -out -selection clipboard)"; then
+if ! CLIPBOARD_CONTENTS="$(clippaste)"; then
 	notify "Failed to get clipboard contents." && exit 1
 fi
 export MPVF_PICKER=rofi
@@ -189,7 +189,7 @@ command='''
 # ~/Pictures/Screenshots to imgur
 FILENAME="$(newest "${SCREENSHOTS:?No SCREENSHOTS environment variable set}")" || exit 1
 imgur-uploader "$FILENAME"
-IMGUR_URL="$(xclip -out -selection clipboard)"
+IMGUR_URL="$(clippaste)"
 printf "%s\n" "$IMGUR_URL" >>/tmp/imgur_urls.log
 notify "Uploaded Image to Imgur:" "$IMGUR_URL"
 '''

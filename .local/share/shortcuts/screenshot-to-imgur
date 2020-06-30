@@ -3,6 +3,6 @@
 # ~/Pictures/Screenshots to imgur
 FILENAME="$(newest "${SCREENSHOTS:?No SCREENSHOTS environment variable set}")" || exit 1
 imgur-uploader "$FILENAME"
-IMGUR_URL="$(xclip -out -selection clipboard)"
+IMGUR_URL="$(clippaste)"
 printf "%s\n" "$IMGUR_URL" >>/tmp/imgur_urls.log
 notify "Uploaded Image to Imgur:" "$IMGUR_URL"

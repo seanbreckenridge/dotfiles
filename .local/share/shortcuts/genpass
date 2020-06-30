@@ -12,4 +12,4 @@ else
 	echo -e "$pw"
 fi
 # copy to clipboard
-echo -en "$pw" | xclip -selection clipboard -r
+echo -en "$pw" | clipcopy
