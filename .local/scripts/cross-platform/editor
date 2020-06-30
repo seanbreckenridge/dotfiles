@@ -52,9 +52,17 @@ case "$ACTION" in
 	fi
 	;;
 "$EMACS")
-	setsid emacs "$@" &
+	if [ -n "$ONLINUX" ]; then
+		setsid emacs "$@" &
+	else
+		emacs "$@" # alacritty can handle this in terminal
+	fi
 	;;
 "$EMACS_CLIENT")
-	setsid emacsclient -c "$@" &
+	if [ -n "$ONLINUX" ]; then
+		setsid emacsclient -c "$@" &
+	else
+		emacs "$@" # dont use emacsclient on mac
+	fi
 	;;
 esac
