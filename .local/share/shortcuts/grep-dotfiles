@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+while read filename; do
+	grep -Hrin "$@" "$filename"
+done < <(list-config | grep -v "zsh_history")
