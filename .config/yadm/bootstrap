@@ -73,6 +73,9 @@ git config --global pull.rebase false
 yadm gitconfig core.editor nvim
 yadm gitconfig pull.rebase false
 
+# set the hooks directory
+yadm gitconfig core.hooksPath ~/.config/yadm/hooks
+
 require python3 || exit $?
 # Install python packages
 echo "Installing global python site-packages..."
