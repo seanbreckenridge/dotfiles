@@ -17,7 +17,7 @@ fi
 
 echo "$URL"
 
-if [[ -n "$ONLINUX" ]]; then
+if [ -n "$ONLINUX" ]; then
 	setsid "$BROWSER" "$URL" >/dev/null 2>&1 &
 else
 	open -n -a "Firefox Developer Edition" --args "--new-tab" "$URL"

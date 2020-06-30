@@ -1,8 +1,6 @@
 # dotfiles
 
-This README is is need of a rewrite. Cross platform is *essentially* done.
-
-I use mac less so I have yet to configure it to all of my likings; I primarily use linux, and run a couple apps as a compatability layer on mac:
+This README is is need of a rewrite. Majority of cross platform functionality is done, keep finding small improvements/mac alternatives to improve scripts. I use mac less so I have yet to configure it to all of my likings; I primarily use linux, and run a couple apps as a compatability layer on mac:
 
 * window management/keyboard shortcuts
   * Uses [`skhd`](https://github.com/koekeishiya/skhd) as a hot-key daemon to run applications (e.g. `cmd + opt + enter` launches terminal)
