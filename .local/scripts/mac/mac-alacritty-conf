@@ -26,4 +26,4 @@ with open(local_alacritty_file, "w") as yf:
 
 print("Dumped modified alacritty config to {}".format(local_alacritty_file))
 print("Use the --config-file flag on mac")
-# --config-file set in ~/.skhd/skhdrc file
+# --config-file set in ~/.config/skhd/skhdrc file
