@@ -80,7 +80,7 @@ printf "\n"
 [wfi]
 command='''
 # wait for internet connection and ping me
-wait-for-internet && notify "INTERNET" && paplay /usr/share/sounds/freedesktop/stereo/message.oga
+wait-for-internet && notify "INTERNET" && playping
 '''
 
 [wfib]

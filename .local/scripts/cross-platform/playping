@@ -1,0 +1,8 @@
+#!/bin/sh
+# Sends a notification-like ping
+
+if [ -n "$ONLINUX" ]; then
+	paplay /usr/share/sounds/freedesktop/stereo/message.oga
+else
+	afplay /System/Library/Sounds/Hero.aiff
+fi
