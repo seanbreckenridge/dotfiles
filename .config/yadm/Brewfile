@@ -62,6 +62,7 @@ brew 'ffmpegthumbnailer'
 brew 'hub'
 brew 'thefuck'
 brew 'php'
+brew 'ytop'
 brew 'mysql'
 brew 'p7zip' # 7zip
 brew 'duti'

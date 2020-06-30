@@ -64,6 +64,7 @@ brew tap 'homebrew/cask-fonts'
 brew tap 'homebrew/cask-versions'
 brew tap 'AdoptOpenJDK/openjdk'
 brew tap 'dart-lang/dart'
+brew tap 'cjbassi/ytop'
 brew update && brew upgrade
 brew cask upgrade
 brew bundle --file="${HOMEBREW_BREWFILE}"
