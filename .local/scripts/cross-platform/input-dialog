@@ -13,6 +13,6 @@ else
 	# use applescript on mac
 	OSASCRIPT="$(printf 'set T to text returned of (display dialog "%s" buttons {"Cancel", "OK"} default button "OK" default answer "")' "$1")"
 	RESP="$(osascript -e "$OSASCRIPT" 2>/dev/null)" || exit $?
-	[[ -z "$RESP" ]] && exit $?
+	[[ -z "$RESP" ]] && exit 1
 	printf '%s' "$RESP"
 fi
