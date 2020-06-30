@@ -5,6 +5,7 @@
 # * Go to System Preferences -> Keyboard -> Modifier Keys and rebind Caps Lock to Escape
 # * Use alfred instead of Spotlight as the default
 # * skhd/amethyst require accessibility access to do their magic
+# * require password 5 seconds after sleep or screensaver begins
 
 set -e
 
