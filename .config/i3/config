@@ -15,8 +15,6 @@ exec --no-startup-id lock-screen -b
 
 # start network manager menu bar item
 exec --no-startup-id nm-applet
-# keyboard shortcut to check if I have a remote internet connection
-bindsym $mod+Shift+w exec --no-startup-id wfi
 
 # use picom for display compositing
 exec --no-startup-id picom -b
@@ -80,8 +78,6 @@ bindsym $mod+Shift+p exec --no-startup-id notify "Restarting picom..." && picom 
 
 # start the emacs server
 exec --no-startup-id systemctl --user start emacs
-# and bind a key to restart it
-bindsym $mod+Shift+e exec --no-startup-id refresh-doom
 
 # Use pactl to adjust volume in PulseAudio.
 bindsym XF86AudioRaiseVolume exec --no-startup-id volume up
@@ -99,8 +95,6 @@ bindsym $mod+Shift+t exec --no-startup-id ~/.config/i3blocks/blocks/todo add
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
-# start a terminal
-bindsym $mod+Return exec --no-startup-id alacritty
 
 # kill focused window
 bindsym $mod+q kill
@@ -116,11 +110,6 @@ bindsym --release Print exec --no-startup-id screenshot
 # upload the most recent screenshot to imgur, copy result to clipboard
 bindsym $mod+Print exec --no-startup-id screenshot-to-imgur
 
-# mpv-ytdl bindings
-# grab URL from clipboard and stream through MPV using yt-dl
-bindsym $mod+m exec --no-startup-id stream-link
-# grab URL from clipboard and stream audio through MPV using
-bindsym $mod+Shift+m exec --no-startup-id stream-link --no-video
 
 # gaps config
 for_window [class=".*"] border pixel 0
@@ -228,6 +217,13 @@ bindsym $mod+Shift+r restart
 assign [class="Thunderbird"] 10
 assign [class="Slack"] 9
 
+# Start i3bar to display a workspace bar (plus the system information i3status
+# finds out, if available)
+bar {
+    position top
+    status_command i3blocks
+}
+
 # run applications
 # i3-modes parses the i3 config file and sends me a notificaiton
 # to remind me keybindings in case I forget
@@ -257,10 +253,14 @@ mode "term" {
     bindsym Return mode "default"
 }
 
+# keyboard shortcut to check if I have a remote internet connection
+bindsym $mod+Shift+w exec --no-startup-id wfi
 
-# Start i3bar to display a workspace bar (plus the system information i3status
-# finds out, if available)
-bar {
-    position top
-    status_command i3blocks
-}
+# start a terminal
+bindsym $mod+Return exec --no-startup-id alacritty
+
+# mpv-ytdl bindings
+# grab URL from clipboard and stream through MPV using yt-dl
+bindsym $mod+m exec --no-startup-id stream-link
+# grab URL from clipboard and stream audio through MPV using
+bindsym $mod+Shift+m exec --no-startup-id stream-link --no-video

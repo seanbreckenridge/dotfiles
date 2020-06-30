@@ -18,6 +18,7 @@ TODO:
   * make these scripts cross-platform:
     * `randomize-wallpaper`
     * `lock-screen`
+    * `screenshot-to-imgur`
 
 The rest of the README is for what I used on arch, will be updated into a larger (perhaps wiki) once I have everything setup properly.
 
