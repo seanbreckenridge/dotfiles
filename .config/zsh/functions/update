@@ -6,6 +6,7 @@ function update() {
 	echo "Updating system (pacman/yay/brew) packages..."
   if [[ -z "$ONLINUX" ]]; then
     brew update && brew upgrade
+    brew cask upgrade
   else
 	  yay -Syu
 	  echo "Updating pkgfile indexes..."
