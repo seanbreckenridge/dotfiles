@@ -223,5 +223,4 @@ all-repository-fonts
 ttf-ms-fonts
 ttf-oxygen
 xorg-font-util
-xorg-fonts-alias
 xorg-fonts-encodings
