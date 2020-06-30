@@ -1,5 +1,6 @@
 #!/bin/sh
-# paste from X clipboard buffer
+# on X, pastes from the clipboard buffer
+# on mac, uses pbpaste (cmd+v clipboard)
 
 if [ -n "$ONLINUX" ]; then
 	xclip -out -selection clipboard

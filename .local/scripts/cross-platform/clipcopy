@@ -1,5 +1,7 @@
 #!/bin/sh
-# copy from STDIN to both clipboards
+# copy from STDIN
+# on X, puts text on both clipboards
+# on mac, uses pbcopy (cmd+c/v clipboard)
 
 STDIN="$(cat)"
 
