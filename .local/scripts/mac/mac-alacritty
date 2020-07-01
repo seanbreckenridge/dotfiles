@@ -1,0 +1,3 @@
+#!/bin/sh
+# Runs alacritty with the config file for mac
+/Applications/Alacritty.app/Contents/MacOS/alacritty --config-file ~/.local/share/alacritty.yml "$@"

@@ -4,5 +4,6 @@
 # This shouldn't interfere with window manager commands (https://github.com/ianyh/Amethyst)
 # since those are prefixed with option + shift or ctrl + option + shift
 
-cmd + alt - return : /Applications/Alacritty.app/Contents/MacOS/alacritty --config-file ~/.local/share/alacritty.yml
+cmd + alt - return : ~/.local/scripts/mac/mac-alacritty
+#cmd + alt - h : ~/.local/scripts/mac/mac-alacritty -e htop
 #cmd + alt - f : /Applications/Firefox\ Developer\ Edition.app/Contents/MacOS/firefox
