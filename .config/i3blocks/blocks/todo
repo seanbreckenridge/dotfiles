@@ -1,2 +1,0 @@
-#!/bin/sh
-wc -l <"${HOME}/.config/todo/todo.txt"
