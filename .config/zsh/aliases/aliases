@@ -10,7 +10,7 @@ alias lsplain="\ls --color=never"
 [[ -n "$ONLINUX" ]] && alias ls='exa --icons' || alias ls='exa'
 alias ll='ls -hl'
 alias la='ll -a'
-alias sl='ls | rev'
+alias sl='ls'
 
 # yadm
 alias yds="yadm diff --staged"
