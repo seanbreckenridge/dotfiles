@@ -145,10 +145,10 @@ bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
 # resize windows - keys above "vim arrow" keys
-bindsym $mod+Shift+y exec --no-startup-id i3resize left
-bindsym $mod+Shift+u exec --no-startup-id i3resize down
-bindsym $mod+Shift+i exec --no-startup-id i3resize up
-bindsym $mod+Shift+o exec --no-startup-id i3resize right
+bindsym $mod+Shift+y exec --no-startup-id i3-resize left
+bindsym $mod+Shift+u exec --no-startup-id i3-resize down
+bindsym $mod+Shift+i exec --no-startup-id i3-resize up
+bindsym $mod+Shift+o exec --no-startup-id i3-resize right
 
 # split in horizontal orientation
 bindsym $mod+Shift+z split h
