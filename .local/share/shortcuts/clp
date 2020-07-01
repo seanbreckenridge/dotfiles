@@ -1,0 +1,9 @@
+#!/bin/sh
+# accepts input from STDIN, sends text back to STDOUT
+# copies what it recieved to the clipboard
+# used in vim:
+# see https://exobrain.sean.fish/vim/magic_wands/
+STDIN="$(cat)"
+printf '%s' "$STDIN"
+printf '%s' "$STDIN" | clipcopy
+notify "clp" "$(printf 'Copied %d lines to clipboard' "$(echo "$STDIN" | wc -l)")"

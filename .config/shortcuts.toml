@@ -332,6 +332,18 @@ done <<<"$files"
 [vix]
 command='ix -v'
 
+[clp]
+command='''
+# accepts input from STDIN, sends text back to STDOUT
+# copies what it recieved to the clipboard
+# used in vim:
+# see https://exobrain.sean.fish/vim/magic_wands/
+STDIN="$(cat)"
+printf '%s' "$STDIN"
+printf '%s' "$STDIN" | clipcopy
+notify "clp" "$(printf 'Copied %d lines to clipboard' "$(echo "$STDIN" | wc -l)")"
+'''
+
 # lots of date shorthands
 
 [tstamp]
@@ -426,7 +438,11 @@ shebang="#!/usr/bin/env bash"
 command="echo -n $'\033[48;2;'$1';'$2';'$3'm'"
 
 [vic]
-command='nvim "$(which "${1:?No Executable provided}")"'
+command='''
+EXECUTABLE="${1:?No Executable provided}"
+LOCATION="$(which "$EXECUTABLE")" || exit $?
+nvim "$LOCATION"
+'''
 
 [mpv-get-property]
 command='''
@@ -446,7 +462,7 @@ shebang="#!/usr/bin/env bash"
 command='''
 # searches all my configuration for a string
 # passes arguments received to grep
-while read filename; do
+while read -r filename; do
 	grep -Hrin "$@" "$filename"
 done < <(list-config | grep -v "zsh_history")
 '''

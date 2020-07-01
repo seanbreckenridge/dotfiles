@@ -1,2 +1,4 @@
 #!/bin/sh
-nvim "$(which "${1:?No Executable provided}")"
+EXECUTABLE="${1:?No Executable provided}"
+LOCATION="$(which "$EXECUTABLE")" || exit $?
+nvim "$LOCATION"
