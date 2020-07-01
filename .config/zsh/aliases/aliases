@@ -54,7 +54,7 @@ alias yay_clear_cache='yay -Syu && yay -Sc'
 # create a notes file in the current directory
 alias create_notes='touch $(date +"%y_%m_%d").md'
 # print a readable $PATH
-alias echopath='echo $PATH | tr ":" "\n"'
+alias path='echo $PATH | tr ":" "\n"'
 # sxiv full screen image, fit full width
 alias sxfull="sxiv -s f -f"
 # open all the firefox addons in the browser
