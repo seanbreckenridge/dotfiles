@@ -1,0 +1,33 @@
+#!/bin/bash
+# Runs 'brew cask upgrade --greedy' if it hasn't
+# been run in the last month
+
+[[ ! -d "${XDG_CACHE_HOME}" ]] && mkdir -p "${XDG_CACHE_HOME}"
+readonly CACHE_FILE="${XDG_CACHE_HOME}/greedy_upgrade"
+
+# returns 0 if the cache file doesn't exist or
+# if 'brew cask upgrade --greedy' hasn't been run in a month
+out_of_date() {
+  local EPOCH LAST_RUN DIFF
+	EPOCH="$(date +%s)"
+	# if file doesn't exist, run.
+	[[ ! -f "$CACHE_FILE" ]] && {
+		printf '%d' "$EPOCH" >"$CACHE_FILE"
+		return 0
+	}
+	# If file exists, read when it was last run
+	LAST_RUN="$(cat "$CACHE_FILE")"
+	# calculate number of seconds since 'brew cask --greedy' was last run
+	DIFF="$((EPOCH - LAST_RUN))"
+	# If its been more than a month
+	if ((DIFF > 2592000)); then
+		printf '%d' "$EPOCH" >"$CACHE_FILE"
+		return 0
+	else
+		printf 'brew cask upgrade --greedy was run %f (<30) days ago...\n' "$(echo "$DIFF/86400" | bc -l)"
+		return 1
+	fi
+}
+
+out_of_date || exit 0
+brew cask upgrade --greedy

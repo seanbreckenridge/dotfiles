@@ -4,14 +4,15 @@ function update() {
 	local START_TIME=$(date +%s)
 	wait-for-internet --text "(waiting for internet)"
 	echo "Updating system (pacman/yay/brew) packages..."
-  if [[ -z "$ONLINUX" ]]; then
-    brew update && brew upgrade
-    brew cask upgrade
-  else
-	  yay -Syu
-	  echo "Updating pkgfile indexes..."
-	  sudo pkgfile --update
-  fi
+	if [[ -z "$ONLINUX" ]]; then
+		brew update && brew upgrade
+		brew cask upgrade
+		mac-greedy-upgrade
+	else
+		yay -Syu
+		echo "Updating pkgfile indexes..."
+		sudo pkgfile --update
+	fi
 	yadm bootstrap
 	echo "Updating nvim packages..."
 	nvim +PlugUpdate +qall
