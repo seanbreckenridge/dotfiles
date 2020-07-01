@@ -225,12 +225,12 @@ bar {
     status_command i3blocks
 }
 
-# run applications
+# launcher binding
 # i3-modes parses the i3 config file and sends me a notificaiton
 # to remind me keybindings in case I forget
-bindsym $mod+d mode "applications"; exec --no-startup-id notify "$(i3-modes applications | grep -v 'mode \"default\"' | sed -e 's/exec --no-startup-id //' -e 's/firefox-developer-edition/firefox/' | sort)"
+bindsym $mod+d mode "launcher"; exec --no-startup-id notify "$(i3-modes launcher | grep -v 'mode \"default\"' | sed -e 's/exec --no-startup-id //' -e 's/firefox-developer-edition/firefox/' -e 's/launch //'| sort)"
 
-mode "applications" {
+mode "launcher" {
     bindsym a exec --no-startup-id alacritty; mode "default"
     bindsym f exec --no-startup-id firefox-developer-edition; mode "default"
     bindsym t exec --no-startup-id thunderbird; mode "default"
@@ -238,17 +238,8 @@ mode "applications" {
     bindsym e exec --no-startup-id emacs; mode "default"
     bindsym s exec --no-startup-id slack; mode "default"
     bindsym k exec --no-startup-id keepassxc; mode "default"
-    bindsym Escape mode "default"
-    bindsym Return mode "default"
-}
-
-# run terminal commands in a new terminal window
-bindsym $mod+w mode "term"; exec --no-startup-id notify "$(i3-modes term | grep -v 'mode \"default\"' | sed -e 's/exec --no-startup-id launch //' | sort)"
-
-mode "term" {
     bindsym r exec --no-startup-id launch ranger; mode "default"
     bindsym h exec --no-startup-id launch htop; mode "default"
-    bindsym k exec --no-startup-id launch fkill; mode "default"
     bindsym v exec --no-startup-id launch keyvol; mode "default"
     bindsym u exec --no-startup-id launch update; mode "default"
     bindsym Escape mode "default"
