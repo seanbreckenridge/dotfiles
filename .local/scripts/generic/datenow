@@ -13,4 +13,7 @@ print_dates() {
 }
 
 PICKED="$(print_dates | picker -p "Pick Date > ")" || exit $?
-cut -d "#" -f1 <<<"$PICKED" | xargs echo | clipcopy
+DATESTR="$(cut -d "#" -f1 <<<"$PICKED" | xargs echo)"
+printf '%s\n' "$DATESTR"
+printf '%s' "$DATESTR" | clipcopy
+notify "datenow" "Copied '${DATESTR}' to clipboard"
