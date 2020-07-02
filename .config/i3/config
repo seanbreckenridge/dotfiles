@@ -63,15 +63,12 @@ bindsym XF86MonBrightnessDown exec --no-startup-id brightness down
 # Bind $mod+Brightness keys to transparency toggle
 # Uses picom-trans to set the transparency to 100/85% (same as active/inactive)
 # This "breaks" inactive transparency for that tile, but that can be fixed by reloading i3 ($mod+Shift+R)
-# Doesn't typically affect use case as transparency for an unfocused firefox/mpv is set permanently
+# Doesn't typically affect use case as transparency for an unfocused window is set permanently
 
-# Highligted Window
-bindsym $mod+XF86MonBrightnessUp exec --no-startup-id transparent disable
-bindsym $mod+XF86MonBrightnessDown exec --no-startup-id transparent enable
-
+# Disable Transparency for window
 # Change mouse to target
-bindsym $mod+Shift+XF86MonBrightnessUp exec --no-startup-id transparent disable target
-bindsym $mod+Shift+XF86MonBrightnessDown exec --no-startup-id transparent enable target
+bindsym $mod+XF86MonBrightnessUp exec --no-startup-id transparent disable target
+bindsym $mod+XF86MonBrightnessDown exec --no-startup-id transparent enable target
 
 # Kill/restart picom (compositor)
 bindsym $mod+p exec --no-startup-id killall picom && notify "Killed picom!"
