@@ -10,7 +10,7 @@ This README is is need of a rewrite. Majority of cross platform functionality is
 * `$PATH` is set properly in `zsh`/`X server` startup, update (`zsh` function) respects the OS and updates packages properly.
 * Wrapper scripts in `~/.local/scripts/cross-platform` detect platform to send notifications, interact with clipboard, prompt user for input etc...
 
-The rest of the README is for what I used on arch, will be updated into a larger (perhaps wiki) once I have everything setup properly.
+The rest of the README is for what I used on arch, will be updated into a larger (perhaps wiki) eventually.
 
 - [zsh](http://zsh.sourceforge.net/), plugins/configuration handled manually in [.config/zsh](.config/zsh) (split across multiple files)
 - [qtile](https://github.com/qtile?type=source) (primary) and [i3-gaps](https://github.com/Airblader/i3) - window manager
