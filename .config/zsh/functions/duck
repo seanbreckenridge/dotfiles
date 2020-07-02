@@ -2,5 +2,5 @@
 # duck "TERMS TO SEARCH FOR"
 
 function duck() {
-	lynx "duckduckgo.com/lite?q=$*"
+	lynx "duckduckgo.com/lite?kd=-1&kp=-1&q=$*"
 }
