@@ -182,8 +182,16 @@ if [[ ! -d "$HOME/.emacs.d/" ]]; then
 fi
 
 echo "Checking for manually installed binaries..."
-binaries=("wait-for-internet" "genpasswd" "shortcuts" "largechar" "mpvf" "exists")
-for binary in "${binaries[@]}"; do
+declare -a required_binaries optional_binaries
+required_binaries=("wait-for-internet" "shortcuts" "exists")
+optional_binaries=("genpasswd" "largechar" "mpvf")
+for binary in "${required_binaries[@]}"; do
+	havecmd "$binary" || {
+    print_error "Warning: Couldn't find ${binary}. Install it from https://github.com/seanbreckenridge/${binary}"
+    require "$binary"
+  }
+done
+for binary in "${optional_binaries[@]}"; do
 	havecmd "$binary" || print_error "Warning: Couldn't find ${binary}. Install it from https://github.com/seanbreckenridge/${binary}"
 done
 
