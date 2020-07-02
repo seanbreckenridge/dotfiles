@@ -163,7 +163,7 @@ for f in "$@"; do
 done
 '''
 
-[stream-link]
+[stream-media]
 command = """
 # grab URL from clipboard and play in a new terminal with mpvf
 if ! CLIPBOARD_CONTENTS="$(clippaste)"; then

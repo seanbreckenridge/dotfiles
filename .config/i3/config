@@ -242,6 +242,9 @@ mode "launcher" {
     bindsym h exec --no-startup-id launch htop; mode "default"
     bindsym v exec --no-startup-id launch keyvol; mode "default"
     bindsym u exec --no-startup-id launch update; mode "default"
+    # mpv-ytdl bindings
+    bindsym m exec --no-startup-id stream-media; mode "default";
+    bindsym Shift+m exec --no-startup-id stream-media --no-video; mode "default";
     bindsym Escape mode "default"
     bindsym Return mode "default"
 }
@@ -252,8 +255,3 @@ bindsym $mod+Shift+w exec --no-startup-id wfi
 # start a terminal
 bindsym $mod+Return exec --no-startup-id alacritty
 
-# mpv-ytdl bindings
-# grab URL from clipboard and stream through MPV using yt-dl
-bindsym $mod+m exec --no-startup-id stream-link
-# grab URL from clipboard and stream audio through MPV using
-bindsym $mod+Shift+m exec --no-startup-id stream-link --no-video
