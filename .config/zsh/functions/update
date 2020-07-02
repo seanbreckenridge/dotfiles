@@ -10,8 +10,6 @@ function update() {
 		mac-greedy-upgrade
 	else
 		yay -Syu
-		echo "Updating pkgfile indexes..."
-		sudo pkgfile --update
 	fi
 	yadm bootstrap
 	echo "Updating nvim packages..."
