@@ -53,6 +53,12 @@ require python3 || exit $?
 echo "Installing linux-specific python packages..."
 python3 -m pip install -q --user -r "$LINUX_PYTHON_PACKAGE_LIST"
 
+# Install default rust toolchain and rust-clippy
+echo "Instaling rust toolchain..."
+rustup toolchain install stable
+rustup component add clippy
+rustup component add rustfmt
+
 # Check services
 echo "Checking if default services are running..."
 # CUPS and avahi are for printing

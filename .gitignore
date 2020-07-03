@@ -54,6 +54,7 @@ __pycache__
 /.rbenv
 /.credentials
 /.mapscii
+/.rustup
 /.gem
 /.cache
 /.keras

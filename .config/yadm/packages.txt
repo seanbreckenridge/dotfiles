@@ -70,7 +70,7 @@ rebar3-git
 redis
 ruby
 ruby-bundler
-rust
+rustup
 rust-racer
 sbcl
 sbt
