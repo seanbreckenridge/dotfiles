@@ -4,12 +4,14 @@
 # from ~/.zshenv on mac (see ~/.config/yadm/mac_bootstrap)
 
 # see /etc/lightdm/Xsession
-[ "$(uname -s)" = "Linux" ] && export ONLINUX=1 && {
+[ "$(uname -s)" = "Linux" ] && export ONLINUX=1
+
+if [ -n "$ONLINUX" ]; then
 	# source common_paths for shared (mac/linux) path modifications
 	. "${HOME}/.common_paths"
 	PATH="${HOME}/.gem/ruby/2.7.0/bin:${PATH}"
 	export PATH
-}
+fi
 
 # dark theme QT applications
 export QT_QPA_PLATFORMTHEME="qt5ct"
@@ -48,7 +50,7 @@ export MOVIES="${HOME}/Movies"
 export MUSIC="${HOME}/Music"
 
 # Screenshots on Mac are saved on the Desktop
-if [[ -n "$ONLINUX" ]]; then
+if [ -n "$ONLINUX" ]; then
 	export SCREENSHOTS="${PICTURES}/Screenshots"
 else
 	export SCREENSHOTS="${HOME}/Desktop"
