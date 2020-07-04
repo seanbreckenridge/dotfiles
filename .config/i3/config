@@ -103,8 +103,10 @@ bindsym $mod+r exec --no-startup-id rofi -show run -display-run "run > "
 # rofi switch window menu
 bindsym $mod+Tab exec --no-startup-id rofi -show window -display-window "window > "
 
-# take a screenshot
+# take a screenshot (select rectangle with cursor)
 bindsym --release Print exec --no-startup-id screenshot
+# take a screenshot of the entire screen
+bindsym Shift+Print exec --no-startup-id screenshot --full
 # upload the most recent screenshot to imgur, copy result to clipboard
 bindsym $mod+Print exec --no-startup-id screenshot-to-imgur
 
