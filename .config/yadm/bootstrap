@@ -19,14 +19,15 @@ function abort() {
 	exit 1
 } && export -f abort
 
-function require() {
-	havecmd "$1" || {
-		printf "Could not find '%s' on your \$PATH\n" "$1"
-		exit 1
-	}
-} && export -f require
-
 declare -rx YADM_DIR="${HOME}/.config/yadm"
+
+# report errors if user doesn't have a command
+declare -rx HAVECMD_REPORT=1
+
+# make sure $PATH is set up properly
+set -e
+havecmd havecmd
+set +e
 
 # dispatch on os type
 if [[ -z "$ONLINUX" ]]; then
@@ -43,6 +44,7 @@ declare -rx CARGO_PACKAGE_LIST="${YADM_DIR}/cargo_packages.txt"
 declare -rx GO_PACKAGE_LIST="${YADM_DIR}/go_packages.txt"
 declare -rx HASKELL_PACKAGE_LIST="${YADM_DIR}/haskell_packages.txt"
 
+
 # make sure personal aliases file exists so that zshrc souces fine
 [[ ! -f "${ZDOTDIR}/aliases/personal_aliases" ]] && touch "${ZDOTDIR}/aliases/personal_aliases"
 
@@ -54,12 +56,8 @@ for d_name in "${default_user_dirs[@]}"; do
 	fi
 done
 
-# make sure $PATH is set up properly
-set -e
-havecmd havecmd
-set +e
 
-require git || exit $?
+havecmd git || exit $?
 echo 'Checking git config...'
 # check for global name config
 if [[ -z $(git config --global user.name) ]]; then
@@ -84,7 +82,7 @@ yadm gitconfig pull.rebase false
 # set the hooks directory
 yadm gitconfig core.hooksPath ~/.config/yadm/hooks
 
-require python3 || exit $?
+havecmd python3 || exit $?
 # Install python packages
 echo "Installing global python site-packages..."
 python3 -m pip list --format=freeze | cut -d "=" -f1 | grep -q "^wheel$" || python3 -m pip install --user wheel
@@ -105,7 +103,7 @@ install_python_personal "rotten" "https://gitlab.com/seanbreckenridge/rotten_tom
 # tab completion nicer
 havecmd speedtest-cli && rm "$(command -v speedtest-cli)"
 
-require npm || exit $?
+havecmd npm || exit $?
 # install npm packages
 NPM_CONFIG_PREFIX="${XDG_DATA_HOME}/npm-packages"
 echo "Installing global npm packages..."
@@ -120,7 +118,7 @@ while read -r npkg; do
 	fi
 done <"$NODE_PACKAGE_LIST"
 
-require gem || exit $?
+havecmd gem || exit $?
 echo "Installing global ruby packages..."
 RUBY_GEMS_LIST="$(gem list | cut -d' ' -f1)"
 while read -r rgem; do
@@ -130,7 +128,7 @@ while read -r rgem; do
 	fi
 done <"$GLOBAL_GEM_LIST"
 
-require pub || exit $?
+havecmd pub || exit $?
 echo "Installing global dart packages..."
 DART_INSTALLED_PACKAGES="$(pub global list | cut -d" " -f1)"
 while read -r dartpkg; do
@@ -140,7 +138,7 @@ while read -r dartpkg; do
 	fi
 done <"$DART_PACKAGE_LIST"
 
-require cargo || exit $?
+havecmd cargo || exit $?
 echo "Installing global cargo packages..."
 CARGO_INSTALLED_PACKAGES="$(cargo install --list | grep -v "^\s" | cut -d" " -f1)"
 while read -r cargopkg; do
@@ -150,7 +148,7 @@ while read -r cargopkg; do
 	fi
 done <"$CARGO_PACKAGE_LIST"
 
-require go || exit $?
+havecmd go || exit $?
 # takes a line from "$GO_PACKAGE_LIST"
 # binary -> package source
 # and installs it if the binary isn't already on your path
@@ -167,13 +165,13 @@ while IFS= read -r go_line; do
 	install_go_package "$go_line"
 done <"$GO_PACKAGE_LIST"
 
-require stack || exit $?
+havecmd stack || exit $?
 echo "Installing global haskell packages..."
 while read -r haskell_pkg; do
 	havecmd "$haskell_pkg" || stack install "$haskell_pkg"
 done <"$HASKELL_PACKAGE_LIST"
 
-require emacs || exit $?
+havecmd emacs || exit $?
 # Install doom emacs
 if [[ ! -d "$HOME/.emacs.d/" ]]; then
 	git clone https://github.com/hlissner/doom-emacs "${HOME}/.emacs.d"
@@ -188,19 +186,19 @@ optional_binaries=("genpasswd" "largechar" "mpvf")
 for binary in "${required_binaries[@]}"; do
 	havecmd "$binary" || {
     print_error "Warning: Couldn't find ${binary}. Install it from https://github.com/seanbreckenridge/${binary}"
-    require "$binary"
+    exit 1
   }
 done
 for binary in "${optional_binaries[@]}"; do
 	havecmd "$binary" || print_error "Warning: Couldn't find ${binary}. Install it from https://github.com/seanbreckenridge/${binary}"
 done
 
-require shortcuts
+havecmd shortcuts
 havecmd shortcuts && printf "Created %d shortcuts\n" "$(shortcuts create | wc -l)"
 
 dir-aliases-ranger
 
-require nvim || exit $?
+havecmd nvim || exit $?
 echo "Installing nvim packages..."
 nvim +PlugInstall +qall
 

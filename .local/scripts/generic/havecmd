@@ -8,6 +8,6 @@ BINARY="${1:?Must provide command to check}"
 if command -v "$BINARY" 2>&1 >/dev/null; then
   exit 0
 else
-  [ -n "$HAVECMD_REPORT" ] && printf "Could not find '%s'\n" "$BINARY"
+  [ -n "$HAVECMD_REPORT" ] && printf "Could not find '%s' on your \$PATH\n" "$BINARY"
   exit 1
 fi
