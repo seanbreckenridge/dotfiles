@@ -44,7 +44,6 @@ declare -rx CARGO_PACKAGE_LIST="${YADM_DIR}/cargo_packages.txt"
 declare -rx GO_PACKAGE_LIST="${YADM_DIR}/go_packages.txt"
 declare -rx HASKELL_PACKAGE_LIST="${YADM_DIR}/haskell_packages.txt"
 
-
 # make sure personal aliases file exists so that zshrc souces fine
 [[ ! -f "${ZDOTDIR}/aliases/personal_aliases" ]] && touch "${ZDOTDIR}/aliases/personal_aliases"
 
@@ -55,7 +54,6 @@ for d_name in "${default_user_dirs[@]}"; do
 		mkdir -p "${HOME}/${d_name}"
 	fi
 done
-
 
 havecmd git || exit $?
 echo 'Checking git config...'
@@ -185,9 +183,9 @@ required_binaries=("wait-for-internet" "shortcuts" "exists" "evry")
 optional_binaries=("genpasswd" "largechar" "mpvf")
 for binary in "${required_binaries[@]}"; do
 	havecmd "$binary" || {
-    print_error "Warning: Couldn't find ${binary}. Install it from https://github.com/seanbreckenridge/${binary}"
-    exit 1
-  }
+		print_error "Warning: Couldn't find ${binary}. Install it from https://github.com/seanbreckenridge/${binary}"
+		exit 1
+	}
 done
 for binary in "${optional_binaries[@]}"; do
 	havecmd "$binary" || print_error "Warning: Couldn't find ${binary}. Install it from https://github.com/seanbreckenridge/${binary}"

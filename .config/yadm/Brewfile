@@ -49,7 +49,7 @@ brew 'imagemagick'
 brew 'figlet'
 brew 'libcaca'
 brew 'openssl'
-brew 'libmagic'  # for pistol
+brew 'libmagic' # for pistol
 brew 'choose-gui'
 brew 'readline'
 brew 'trash'
@@ -126,27 +126,27 @@ cask 'font-source-code-pro'
 cask 'font-hack-nerd-font'
 
 # Applications
-cask 'alfred'  # spotlight replacement
-cask 'alacritty'  # fastest terminal on the block
-cask 'chromedriver'  # for webscraping
-cask 'mysqlworkbench'  # easy mysql interface
-cask 'adoptopenjdk8' # java
-cask 'discord' # for the memes
-cask 'slack'  # for people who dont know the memes
-cask 'zoomus'  # for stupid video confrencing
-cask 'steam'  # video games
-cask 'gimp' # image editing
-cask 'mpv' # media player
+cask 'alfred'         # spotlight replacement
+cask 'alacritty'      # fastest terminal on the block
+cask 'chromedriver'   # for webscraping
+cask 'mysqlworkbench' # easy mysql interface
+cask 'adoptopenjdk8'  # java
+cask 'discord'        # for the memes
+cask 'slack'          # for people who dont know the memes
+cask 'zoomus'         # for stupid video confrencing
+cask 'steam'          # video games
+cask 'gimp'           # image editing
+cask 'mpv'            # media player
 #cask 'alfred' # alternative to spotlight
-cask 'docker' # for the docker daemon
-cask 'daisydisk' # visualizes volumes
-cask 'balenaetcher' # for USB boot drive creation
-cask 'keepassxc' # password manager
+cask 'docker'                # for the docker daemon
+cask 'daisydisk'             # visualizes volumes
+cask 'balenaetcher'          # for USB boot drive creation
+cask 'keepassxc'             # password manager
 cask 'db-browser-for-sqlite' # sqlite3 GUI
-cask 'megasync' # mega.nz
-cask 'soundflower' # audio redirection
-cask 'cyberduck' # file transfers
-cask 'amethyst' # tiling
+cask 'megasync'              # mega.nz
+cask 'soundflower'           # audio redirection
+cask 'cyberduck'             # file transfers
+cask 'amethyst'              # tiling
 
 ## Browsers
 cask 'google-chrome'

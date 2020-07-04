@@ -4,18 +4,18 @@
 # or not (e.g. from dmenu/rofi - an application launcher)
 # If its being launched from a tty, run it as normal,
 # else open a new terminal window and run it there
-# 
+#
 # Check if we're on mac/linux to use mac-alacritty
 # (wrapper with differnt --config-file
 # or just alacritty
 
 if [ "$(tty)" = "not a tty" ]; then
 	# open a new terminal, load zsh configuration (for zsh functions/environment), then launch the passed command
-  if [ -n "$ONLINUX" ]; then
-	  alacritty -e zsh -ic "$@"
-  else
-    mac-alacritty -e zsh -ic "$@"
-  fi
+	if [ -n "$ONLINUX" ]; then
+		alacritty -e zsh -ic "$@"
+	else
+		mac-alacritty -e zsh -ic "$@"
+	fi
 else
 	# execute the command in the current shell
 	sh -c "$@"
