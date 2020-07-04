@@ -1,0 +1,19 @@
+#!/bin/bash
+# A script for unrelated tasks I want to run every so often
+# Uses my 'evry' tool to handle how often to run tasks:
+# https://github.com/seanbreckenridge/evry
+
+wait-for-internet --text "Running 'housekeeping'..."
+
+# make sure commands exist
+export HAVECMD_REPORT=1
+
+declare -a required_binaries
+required_binaries=(backup_server pythonanywhere_3_months ajflkdsaf)
+for binary in "${required_binaries[@]}"; do
+  havecmd "$binary" || exit $?
+done
+
+evry 1 day -backup_fish_server && backup_server
+evry 2 months -pythonanywhere && pythonanywhere_3_months -Hc "$(which chromedriver)"
+
