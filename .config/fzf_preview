@@ -34,9 +34,19 @@ inode/directory)
 	printf "==> %s Contents <==\n" "$path"
 	ls -1 "$path" | head -n "$((maxln - 1))" && exit 0
 	;;
+# cant display gifs in fzf preview using chafa, so extract the middle image
+# from the gif to preview instead
+image/gif)
+	column_width=$(((COLUMNS / 2) - 2))
+	column_height=$((maxln - 2))
+	try chafa --size "${column_height}x${column_width}" "$(gifpreview "$path")" 2>/dev/null && {
+		dump
+		exit 0
+	}
+	;;
 image/*)
-	column_width=$(((COLUMNS / 2) - 4))
-	column_height=$((maxln - 5))
+	column_width=$(((COLUMNS / 2) - 2))
+	column_height=$((maxln - 2))
 	try chafa --size "${column_height}x${column_width}" "$path" 2>/dev/null && {
 		dump
 		exit 0
