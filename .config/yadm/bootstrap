@@ -183,7 +183,7 @@ fi
 
 echo "Checking for manually installed binaries..."
 declare -a required_binaries optional_binaries
-required_binaries=("wait-for-internet" "shortcuts" "exists")
+required_binaries=("wait-for-internet" "shortcuts" "exists" "evry")
 optional_binaries=("genpasswd" "largechar" "mpvf")
 for binary in "${required_binaries[@]}"; do
 	havecmd "$binary" || {
