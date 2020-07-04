@@ -9,7 +9,7 @@ wait-for-internet --text "Running 'housekeeping'..."
 export HAVECMD_REPORT=1
 
 declare -a required_binaries
-required_binaries=(backup_server pythonanywhere_3_months)
+required_binaries=(evry backup_server pythonanywhere_3_months)
 for binary in "${required_binaries[@]}"; do
 	havecmd "$binary" || exit $?
 done
