@@ -7,7 +7,8 @@ function update() {
 	if [[ -z "$ONLINUX" ]]; then
 		brew update && brew upgrade
 		brew cask upgrade
-		mac-greedy-upgrade
+		# run brew cask upgrade --greedy once per month
+		evry 1 month -brewgreedy && brew cask upgrade --greedy
 	else
 		yay -Syu
 	fi

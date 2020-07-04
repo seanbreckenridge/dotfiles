@@ -7,6 +7,7 @@ cask 'xquartz'
 # $PATH is modified in $ZDOTDIR/env_config.zsh to make linux/mac consistent
 brew 'coreutils'
 brew 'diffutils'
+brew 'moreutils'
 brew 'findutils'
 brew 'gawk'
 brew 'gnu-indent'
