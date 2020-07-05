@@ -23,6 +23,7 @@ reflector
 unclutter
 wpa_supplicant
 xorg-server
+xorg-xinput
 xorg-xwininfo
 xorg-xmodmap
 
