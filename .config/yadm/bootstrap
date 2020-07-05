@@ -191,6 +191,10 @@ for binary in "${optional_binaries[@]}"; do
 	havecmd "$binary" || print_error "Warning: Couldn't find ${binary}. Install it from https://github.com/seanbreckenridge/${binary}"
 done
 
+# install pheonix archive
+echo "Installing mix archives..."
+havecmd mix && mix archive.install --force hex phx_new
+
 havecmd shortcuts
 havecmd shortcuts && printf "Created %d shortcuts\n" "$(shortcuts create | wc -l)"
 
