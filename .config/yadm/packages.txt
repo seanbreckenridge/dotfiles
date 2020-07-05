@@ -87,7 +87,6 @@ yarn
 
 # utils
 
-man-db
 alacritty
 ascii-rain-git
 asciiquarium
@@ -129,6 +128,7 @@ lm_sensors
 lolcat
 lynx
 maim
+man-db
 mlocate
 moreutils
 ncdu
@@ -168,6 +168,7 @@ unzip
 util-linux
 vi
 vim
+weechat
 wget
 wkhtmltopdf
 xclip
