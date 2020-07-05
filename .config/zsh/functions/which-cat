@@ -1,0 +1,16 @@
+function which-cat() {
+	local COMMAND_OUTPUT USER_INPUT
+	USER_INPUT="${1:?Must provide a command to lookup}"
+	if COMMAND_OUTPUT="$(which "$USER_INPUT")"; then
+		# if the file is readable
+		if [[ -r "$COMMAND_OUTPUT" ]]; then
+			if iconv --from-code="utf-8" --to-code="utf-8" "$COMMAND_OUTPUT" >/dev/null 2>&1; then
+				cat "$COMMAND_OUTPUT"
+			else
+				file "$COMMAND_OUTPUT"
+			fi
+		else # error finding command
+			printf '%s\n' "$COMMAND_OUTPUT" >&2
+		fi
+	fi
+}
