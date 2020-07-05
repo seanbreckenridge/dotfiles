@@ -11,7 +11,7 @@ function update() {
 		evry 1 month -brewgreedy && brew cask upgrade --greedy
 	else
 		yay -Syu
-    housekeeping
+		housekeeping
 	fi
 	yadm bootstrap
 	echo "Updating nvim packages..."
