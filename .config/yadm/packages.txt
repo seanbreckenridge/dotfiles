@@ -139,6 +139,7 @@ nmap
 ntp
 pamixer
 pandoc-bin
+parallel
 pastel
 perl-image-exiftool
 pkgfile

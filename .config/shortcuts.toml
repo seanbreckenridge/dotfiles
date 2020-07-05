@@ -470,3 +470,8 @@ done < <(list-config | grep -v "zsh_history")
 [cheat]
 shebang="#!/bin/sh"
 command='curl "https://cheat.sh/$*"'
+
+# runs git pull in all my repos in parallel (in 3 seconds). reports errors
+[repos-pull-all]
+shebang="#!/usr/bin/env zsh"
+command='''fd -H --absolute-path --type d --regex "${REPOS}/[^/]+/\.git$" --full-path "$REPOS" | parallel -j 500% "cd {}/.. && has-git-remote && { git pull --quiet && printf '.' || { echo; pwd} }"; echo'''

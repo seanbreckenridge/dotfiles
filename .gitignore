@@ -75,6 +75,7 @@ __pycache__
 /.java
 /.viminfo
 /.zoom
+/.parallel
 /.ssr
 /.surf
 /.gnupg
