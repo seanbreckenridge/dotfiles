@@ -404,6 +404,9 @@ command='newest "${SCREENSHOTS:?No SCREENSHOTS environment variable set}" || exi
 command='lastpic | sxiv - || exit 1'
 link="lastpicpreview"
 
+[lastpicdrag]
+command='dragon-drag-and-drop -x "$(lastpic)"'
+
 [urlpic]
 command='''
 # preview a picture from a URL
