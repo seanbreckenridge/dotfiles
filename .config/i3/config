@@ -8,7 +8,7 @@ set $alt Mod1
 # is used in the bar {} block below.
 font pango:Source Code Pro 12
 
-# keybind to lock screen manually. automatically locks on screen close
+# keybind to lock screen manually; automatically locks on screen close
 bindsym $mod+Shift+Escape exec --no-startup-id lock-screen
 
 # run process to cache pixelated desktop for lock screen
@@ -157,7 +157,7 @@ bindsym $mod+Shift+v split v
 # switch split default orientation
 # bindsym $mod+s split toggle
 
-# enter fullscreen mode for the focused container
+# enter full screen mode for the focused container
 bindsym $mod+f fullscreen toggle
 
 # toggle between tabbed and tiling
