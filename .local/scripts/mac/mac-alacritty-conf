@@ -6,8 +6,13 @@ the Font for alacritty on Mac.
 """
 
 import os
+import sys
 
-import yaml
+try:
+    import yaml
+except ImportError:
+    print("mac-alacritty-conf: Couldn't import yaml package", file=sys.stderr)
+    sys.exit(1)
 
 alacritty_config_file = os.path.join(
     os.environ["HOME"], ".config/alacritty/alacritty.yml"
