@@ -1,8 +1,5 @@
 #!/usr/bin/env bash
 
-set -e # exit on non zero return code
-set -u # undefined variables are errors
-
 readonly usage="Usage: $(basename "$0") [OPTION] FILE...
 Opens an editor. If no options are provided,
 opens the file(s) with nvim
@@ -52,14 +49,14 @@ case "$ACTION" in
 	fi
 	;;
 "$EMACS")
-	if [ -n "$ONLINUX" ]; then
+	if [[ -n "$ONLINUX" ]]; then
 		setsid emacs "$@" &
 	else
 		emacs "$@" # alacritty can handle this in terminal
 	fi
 	;;
 "$EMACS_CLIENT")
-	if [ -n "$ONLINUX" ]; then
+	if [[ -n "$ONLINUX" ]]; then
 		setsid emacsclient -c "$@" &
 	else
 		emacs "$@" # dont use emacsclient on mac
