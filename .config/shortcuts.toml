@@ -138,7 +138,7 @@ echo -en "$pw" | clipcopy
 [list-music]
 command='''
 # list music files (try to ignore cue/log/album artwork files) in the current directory
-fd --type f | grep -iEv "\.(gif|accurip|jpg|png|cue|log|m3u|m3u8|nfo|md5|txt|jpeg|sfv|pdf)$"
+fd --type f | grep -iEv "\.(gif|accurip|jpg|png|cue|log|m3u|m3u8|nfo|md5|txt|jpeg|sfv|pdf)$ | sort -n"
 '''
 
 [play-music]
