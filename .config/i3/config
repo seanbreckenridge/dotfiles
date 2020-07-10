@@ -225,9 +225,9 @@ bar {
 }
 
 # launcher binding
-# i3-modes parses the i3 config file and sends me a notificaiton
-# to remind me keybindings in case I forget
-bindsym $mod+d mode "launcher"; exec --no-startup-id notify "$(i3-modes launcher | grep -v 'mode \"default\"' | sed -e 's/exec --no-startup-id //' -e 's/firefox-developer-edition/firefox/' -e 's/launch //'| sort)"
+# also parse the i3 config file and extrac the bindsyms
+# to send me a notification
+bindsym $mod+d mode "launcher"; exec --no-startup-id i3-notify-launcher
 
 mode "launcher" {
     bindsym a exec --no-startup-id alacritty; mode "default"
@@ -242,8 +242,8 @@ mode "launcher" {
     bindsym v exec --no-startup-id launch keyvol; mode "default"
     bindsym u exec --no-startup-id launch update; mode "default"
     # mpv-ytdl bindings
-    bindsym m exec --no-startup-id stream-media; mode "default";
-    bindsym Shift+m exec --no-startup-id stream-media --no-video; mode "default";
+    bindsym m exec --no-startup-id stream-media; mode "default"
+    bindsym Shift+m exec --no-startup-id stream-media --no-video; mode "default"
     bindsym Escape mode "default"
     bindsym Return mode "default"
 }
