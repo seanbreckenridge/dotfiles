@@ -1,18 +1,6 @@
 #!/bin/bash
 
 # Parses the i3 config file for binding modes
-# Uses the mode passed as the first argument as the target
-# Expects a mode to be formatted "normally", with bindsyms on each line:
-# mode "modename" {
-#  bindsym key command...
-# }
-#
-# prints key | command
-# only prints the first command (before a semicolon) for the bindsym commands
-# Does not include recursive mode support
-#
-# e.g.:
-#
 # From block in i3-config:
 #
 # mode "launcher" {
@@ -25,6 +13,7 @@
 #    bindsym Escape mode "default"
 #    bindsym Return mode "default"
 # }
+#
 # sends a notification to the user:
 #
 # $ i3-notify-launcher
