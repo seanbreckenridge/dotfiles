@@ -176,6 +176,9 @@ if ! mpvf "${CLIPBOARD_CONTENTS}"; then
 fi
 """
 
+[stream-audio]
+command='stream-media --no-video'
+
 [screenshot-to-imgur]
 command='''
 # uploads the most recent screenshot from

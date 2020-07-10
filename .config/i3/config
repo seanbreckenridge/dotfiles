@@ -243,7 +243,7 @@ mode "launcher" {
     bindsym u exec --no-startup-id launch update; mode "default"
     # mpv-ytdl bindings
     bindsym m exec --no-startup-id stream-media; mode "default"
-    bindsym Shift+m exec --no-startup-id stream-media --no-video; mode "default"
+    bindsym Shift+m exec --no-startup-id stream-audio; mode "default"
     bindsym Escape mode "default"
     bindsym Return mode "default"
 }
