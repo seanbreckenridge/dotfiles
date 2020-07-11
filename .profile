@@ -13,9 +13,6 @@ if [ -n "$ONLINUX" ]; then
 	export PATH
 fi
 
-# dark theme QT applications
-export QT_QPA_PLATFORMTHEME="qt5ct"
-
 # some system wide defaults
 
 # manually set language environment

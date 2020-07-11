@@ -18,7 +18,6 @@ nss-mdns
 pacman-contrib
 picom
 pulseaudio
-qt5ct
 reflector
 unclutter
 wpa_supplicant
