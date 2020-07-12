@@ -125,7 +125,6 @@ __pycache__
 /.config/hub
 /.config/mono.addins
 /.config/chromium
-/.config/keepassxc/keepassxc.ini
 /.config/dconf
 /.config/google-chrome
 /.config/Slack
