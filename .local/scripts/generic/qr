@@ -11,4 +11,4 @@ fi
 LOC='/tmp/qr.png'
 
 qrencode "$STR" -o "$LOC"
-sxiv "$LOC" -f -s f
+feh -Z "$LOC"
