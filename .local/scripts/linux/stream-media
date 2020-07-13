@@ -1,0 +1,25 @@
+#!/bin/bash
+# grab URL from clipboard and stream using mpv
+# additional arguments are passed onto mpvf, which passes them to mpv
+# e.g. doing stream-media --no-video streams audio from a link
+# on your clipboard
+#
+# If you don't want to put it on the clipboard, you can also use
+# the CLIPBOARD_CONTENTS envvar to send a link. e.g.:
+# CLIPBOARD_CONTENTS="http://...." mpvf --no-video
+# to stream audio from some link
+
+# use rofi to pick a resolution to stream at
+export MPVF_PICKER=rofi
+
+if [[ -z "$CLIPBOARD_CONTENTS" ]]; then
+	if ! CLIPBOARD_CONTENTS="$(clippaste)"; then
+		notify "Failed to get clipboard contents." && exit 1
+	fi
+fi
+
+notify "Starting stream..." "${CLIPBOARD_CONTENTS}"
+
+if ! mpvf "${CLIPBOARD_CONTENTS}" "$@"; then
+	notify "Streaming Error:" "Couldn't stream from ${CLIPBOARD_CONTENTS}" && exit 1
+fi

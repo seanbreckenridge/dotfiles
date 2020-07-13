@@ -168,13 +168,16 @@ bindsym $mod+f fullscreen toggle
 bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
-bindsym $mod+Shift+space floating toggle
+bindsym $mod+space floating toggle
+
+# toggle picture in picture
+bindsym $mod+Shift+space exec --no-startup-id i3-picture-in-picture
 
 # change focus between tiling / floating windows
-bindsym $mod+space focus mode_toggle
+# bindsym $mod+space focus mode_toggle
 
-bindsym $mod+s sticky enable
-bindsym $mod+Shift+s sticky disable
+# toggle a window to be sticky and float
+bindsym $mod+s exec --no-startup-id i3-sticky
 
 # focus the parent container
 bindsym $mod+a focus parent
@@ -217,6 +220,15 @@ bindsym $mod+Shift+r restart
 assign [class="Thunderbird"] 10
 assign [class="Slack"] 9
 
+# if a mpv window with --x11-name=mpv_stream_media is launched,
+# resize it into the bottom right of the screen
+# (picture-in-picture style).
+# see my stream-media script: https://sean.fish/d/stream-media
+# binding for this below (stream-corner)
+# when a new window is launched, its focused automatically, so we
+# dont have to do xdotool trickery
+for_window [instance="mpv_stream_media"] exec --no-startup-id i3-picture-in-picture
+
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
@@ -242,7 +254,7 @@ mode "launcher" {
     bindsym v exec --no-startup-id launch keyvol; mode "default"
     bindsym u exec --no-startup-id launch update; mode "default"
     # mpv-ytdl bindings
-    bindsym m exec --no-startup-id stream-media; mode "default"
+    bindsym m exec --no-startup-id stream-corner; mode "default"
     bindsym Shift+m exec --no-startup-id stream-audio; mode "default"
     bindsym Escape mode "default"
     bindsym Return mode "default"

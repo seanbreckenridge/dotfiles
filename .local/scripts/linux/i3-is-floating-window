@@ -1,0 +1,13 @@
+#!/bin/bash
+# exit code 0 if the window is floating, 1 if its tiling
+# accepts a window ID as the first argument, else
+# uses the currently focused window
+# requires xprop
+
+if [ -z "$1" ]; then
+	WINDOW_ID="$(xprop -root _NET_ACTIVE_WINDOW | awk '{print $NF}')"
+else
+	WINDOW_ID="$1"
+fi
+
+xprop -id "$WINDOW_ID" | grep -q "I3_FLOATING_WINDOW" || exit $?

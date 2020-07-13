@@ -1,0 +1,8 @@
+#!/bin/bash
+# uses focused-screen-index to get the currently
+# focused monitor, and prints the resolution
+# using xrandr
+
+declare screen_index screen_info
+screen_index="$(focused-screen-index)" || exit $?
+xrandr | grep -w connected | sed -e "$((screen_index + 1))q;d" | grep -oP "(\d+x\d+)"

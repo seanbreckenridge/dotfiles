@@ -1,0 +1,27 @@
+#!/bin/bash
+# i3-sticky [enable|disable]
+# if no argument is provided, toggles sticky
+
+enable_sticky() {
+	i3-msg "floating enable; sticky enable"
+}
+
+disable_sticky() {
+	i3-msg "floating disable; sticky disable"
+}
+
+case "$1" in
+enable)
+	enable_sticky
+	;;
+disable)
+	disable_sticky
+	;;
+*)
+	if i3-is-floating-window; then
+		disable_sticky
+	else
+		enable_sticky
+	fi
+	;;
+esac

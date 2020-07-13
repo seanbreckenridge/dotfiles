@@ -1,0 +1,12 @@
+#!/bin/bash
+# gets the first screen from xrandr and prints
+# the resolution. I use this sometimes instead
+# of the focused-screen-resolution because it
+# gets very complicated determine pixel location
+# based on monitor output. xwininfo/xdotool return
+# pixel info by adding pixel widths of previous screens,
+# so scripts like i3-picture-in-picture just use
+# the main monitor instead of trying to  figure out
+# where to place windows
+
+xrandr | grep -w connected | head -n 1 | grep -oP "(\d+x\d+)"
