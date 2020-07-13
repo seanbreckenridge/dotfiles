@@ -2,5 +2,5 @@
 # open chatterino and use mpv to stream from twitch
 STREAMER="${1:?Pass the twitch user to stream from as the first argument.}"
 export MPVF_PICKER=rofi
-pgrep -x chatterino >/dev/null || setsid chatterino  >/dev/null 2>&1 &
+pgrep -x chatterino >/dev/null || setsid chatterino >/dev/null 2>&1 &
 setsid mpvf "https://www.twitch.tv/${STREAMER}" >/dev/null &
