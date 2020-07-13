@@ -1,0 +1,35 @@
+#!/bin/bash
+# floats and stickies a window,
+# moves it to the bottom right, taking up the bottom right corner (50% of width and height)
+# does this on the first screen from xrandr
+# requires xdotool/xrandr
+
+declare -a screen_resolution
+screen_resolution_str="$(main-screen-resolution)"
+# read resolution into array, (width, height)
+IFS='x' read -r -a screen_resolution <<<"$screen_resolution_str"
+
+# calculate target height/width
+target_width="$((screen_resolution[0] / 2))"
+target_height="$((screen_resolution[1] / 2))"
+
+# subtract window width from screen resolution to get x coordinate
+top_right_x_coord="$((screen_resolution[0] - target_width))"
+
+# enable sticky on this window so that it lasts on all workspaces
+i3-sticky enable
+
+# resize height and then width so that if the width constrains
+# the window, the width is what is applied. E.g. When watching things
+# with mpv, the width is what really matters. resizing based
+# on height might lead to larger windows that expected
+
+i3-msg "resize set height ${target_height}px; resize set width ${target_width}px"
+
+# get the current window height, so we can
+# find calculate window height to position y coordinate properly
+eval "$(xdotool getwindowfocus getwindowgeometry --shell)"
+top_right_y_coord="$((screen_resolution[1] - HEIGHT))"
+
+# move the window to the bottom right
+xdotool getactivewindow windowmove "$top_right_x_coord" "$top_right_y_coord"

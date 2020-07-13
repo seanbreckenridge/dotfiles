@@ -1,2 +1,2 @@
 #!/bin/sh
-stream-media --no-video
+stream-media --no-video "$@"
