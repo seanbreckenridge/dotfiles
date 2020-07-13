@@ -3,6 +3,13 @@
 # moves it to the bottom right, taking up the bottom right corner (50% of width and height)
 # does this on the first screen from xrandr
 # requires xdotool/xrandr
+#
+# if a window is already floating, toggles it to tiling
+
+i3-is-floating-window && {
+	i3-sticky disable
+	exit 0
+}
 
 declare -a screen_resolution
 screen_resolution_str="$(main-screen-resolution)"
