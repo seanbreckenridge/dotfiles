@@ -52,7 +52,6 @@ exec --no-startup-id "discord --start-minimized"
 # command to display/run i3 key bindings
 bindsym $mod+Shift+Tab exec --no-startup-id i3binds-prompt
 
-
 # Bind brightness keys
 # sudo usermod -aG video sean
 # to allow my user to modify files in /sys/class/backlight
@@ -93,7 +92,6 @@ bindsym $mod+Shift+t exec --no-startup-id todo-prompt add
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
-
 # kill focused window
 bindsym $mod+q kill
 
@@ -109,7 +107,6 @@ bindsym --release Print exec --no-startup-id screenshot
 bindsym Shift+Print exec --no-startup-id screenshot --full
 # upload the most recent screenshot to imgur, copy result to clipboard
 bindsym $mod+Print exec --no-startup-id screenshot-to-imgur
-
 
 # gaps config
 for_window [class=".*"] border pixel 0
