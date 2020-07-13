@@ -223,6 +223,6 @@ zoom
 
 all-repository-fonts
 ttf-ms-fonts
-ttf-oxygen
+#ttf-oxygen
 xorg-font-util
 xorg-fonts-encodings
