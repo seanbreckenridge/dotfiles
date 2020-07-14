@@ -15,3 +15,4 @@ uglifycss
 serve
 mapscii
 jikan-node
+sqleton

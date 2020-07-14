@@ -44,6 +44,7 @@ elm-bin
 erlang
 fslint
 ghc
+graphviz
 go
 gocode-daemon
 inotify-tools
