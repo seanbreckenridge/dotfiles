@@ -34,3 +34,4 @@ manual=$(apropos -s ${SECTION:-''} ${@:-.} |
 
 [ -z "$manual" ] && exit 0
 man $manual
+printf '\r'  # fix cursor location
