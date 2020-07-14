@@ -66,6 +66,7 @@ alias stripcolors="sed 's/\x1B\[[0-9;]\+[A-Za-z]//g'"
 # alias ? to duck, searches duckduckgo in lynx
 alias "?=duck"
 alias watchtwitch="twitchlive -output-format json | jq -r '.channels | .[] | .username' | fzf | xargs twitch"
+alias tetris='autoload -Uz tetriscurses; tetriscurses'
 
 # plainplay aliases
 # https://gitlab.com/seanbreckenridge/plaintext-playlist.git
