@@ -62,6 +62,7 @@ brew 'python3'
 brew 'ffmpeg'
 brew 'ffmpegthumbnailer'
 brew 'hub'
+brew 'graphviz'  # for sqleton
 brew 'thefuck'
 brew 'php'
 brew 'ytop'
