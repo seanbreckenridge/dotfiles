@@ -192,6 +192,7 @@ zsh-you-should-use
 
 # applications
 
+balena-etcher
 chatterino2-git
 chromium
 discord
