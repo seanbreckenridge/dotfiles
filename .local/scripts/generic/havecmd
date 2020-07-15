@@ -5,7 +5,7 @@
 # To exit in my shell scripts if a required command isn't found
 
 BINARY="${1:?Must provide command to check}"
-if command -v "$BINARY" 2>&1 >/dev/null; then
+if command -v "$BINARY" >/dev/null 2>&1 ; then
 	exit 0
 else
 	[ -n "$HAVECMD_REPORT" ] && printf "Could not find '%s' on your \$PATH\n" "$BINARY"
