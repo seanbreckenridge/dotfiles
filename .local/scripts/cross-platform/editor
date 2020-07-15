@@ -45,7 +45,15 @@ case "$ACTION" in
 	if (($# == 0)); then
 		nvim +Explore
 	else
-		nvim "$@"
+		if [[ -e "$1" ]]; then
+			if [[ -d "$1" ]]; then
+				nvim +Explore "$@"
+			else
+				nvim "$@"
+			fi
+		else
+			nvim "$@"
+		fi
 	fi
 	;;
 "$EMACS")
