@@ -29,7 +29,9 @@ exec --no-startup-id unclutter --timeout 2
 # set a random wallpaper
 exec --no-startup-id randomize-wallpaper
 
+# unlreated to i3 background processes
 exec --no-startup-id bash "${REPOS}/todotxt_deadline_notify/copy_todotxt_to_server"
+exec --no-startup-id bash "${REPOS}/bgproc/bgproc"
 
 # bind display key to randomize wallpaper
 bindsym XF86Display exec --no-startup-id randomize-wallpaper
