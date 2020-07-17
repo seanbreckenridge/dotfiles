@@ -239,7 +239,7 @@ exec sudo ldm -u "$(whoami)"
 [ipinfo]
 command='''
 # get my ip information
-curl -s ipinfo.io | jq -r 'to_entries[] | "\(.key): \(.value)"'
+curl -s ipinfo.io | gron | grep -v 'json.readme' | gron -u | jq -r 'to_entries[] | "\(.key): \(.value)"'
 '''
 
 [qtile-notify-bindings]
