@@ -74,6 +74,7 @@ __pycache__
 /.electron-gyp
 /.java
 /.viminfo
+/.putty
 /.zoom
 /.parallel
 /.ssr
@@ -120,6 +121,7 @@ __pycache__
 /.config/clojure
 /.config/neofetch
 /.config/discord
+/.config/balena-etcher
 /.config/largechar
 /.config/pulse
 /.config/hub

@@ -125,6 +125,7 @@ imagemagick
 jq
 ldm
 lftp
+librsync
 lm_sensors
 lolcat
 lynx
@@ -136,6 +137,7 @@ ncdu
 neofetch
 neovim
 neovim-plug-git
+net-tools
 nmap
 ntp
 pamixer
@@ -147,6 +149,7 @@ pkgfile
 pulsemixer
 qrencode
 ranger
+rdiff-backup
 ripgrep
 rofi
 rofi-dmenu
