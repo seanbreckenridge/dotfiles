@@ -205,6 +205,7 @@ havecmd nvim || exit $?
 echo "Installing nvim packages..."
 nvim +PlugInstall +qall
 
-pgrep -x bgproc >/dev/null || print_error "bgproc isn't running!"
+# make sure https://github.com/seanbreckenridge/bgproc is running
+ps -ef | grep "bgproc" | grep -q bash || print_error "bgproc isn't running!"
 
 echo "Finished bootstrapping!" | boxes -d shell -p t1l2b1r2
