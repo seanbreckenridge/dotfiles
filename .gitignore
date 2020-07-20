@@ -58,6 +58,7 @@ __pycache__
 /.rustup
 /.gem
 /.cache
+/.oracle_jre_usage/
 /.keras
 /.mozilla
 /.minecraft
