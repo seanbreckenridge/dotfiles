@@ -61,12 +61,6 @@ command = '''
 date "+%m/%d/%y"
 '''
 
-[gitconfig]
-command = '''
-# print the current git configuration
-git config --list | cat
-'''
-
 [gi]
 command = '''
 # get gitignores for different languages

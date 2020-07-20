@@ -1,3 +1,0 @@
-#!/bin/sh
-# print the current git configuration
-git config --list | cat
