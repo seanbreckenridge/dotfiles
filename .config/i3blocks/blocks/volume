@@ -1,7 +1,7 @@
 #!/bin/sh
 # https://github.com/LukeSmithxyz/voidrice/blob/archi3/.local/bin/statusbar/volume
 
-[ $(pamixer --get-mute) = "true" ] && printf "🔇\\n" && exit
+[ "$(pamixer --get-mute)" = "true" ] && printf "🔇\\n" && exit
 
 vol=$(pamixer --get-volume | tr -d "\n")
 

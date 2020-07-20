@@ -59,9 +59,9 @@ video=(
 )
 
 for i in "${!audio[@]}"; do
-	duti -s $(osascript -e 'id of app "mpv"') "${audio[$i]}" all
+	duti -s "$(osascript -e 'id of app "mpv"')" "${audio[$i]}" all
 done
 
 for i in "${!video[@]}"; do
-	duti -s $(osascript -e 'id of app "mpv"') "${video[$i]}" all
+	duti -s "$(osascript -e 'id of app "mpv"')" "${video[$i]}" all
 done

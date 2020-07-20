@@ -60,7 +60,8 @@ readonly convert_delay="$((100 / fps))"
 
 # generate output filename based on input file
 readonly current_time="$(date +%H.%M.%S)"
-declare output_filename="$(basename "$1")"
+declare output_filename
+output_filename="$(basename "$1")"
 output_filename="${output_filename%.*}" # remove extension
 output_filename="${output_filename}-gifme-${current_time}.gif"
 

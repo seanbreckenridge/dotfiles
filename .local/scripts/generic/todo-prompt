@@ -25,4 +25,8 @@ add_todo() {
 	fi
 }
 
-[ "$1" = "add" ] && add_todo || prompt_todos
+if [ "$1" = "add" ]; then
+	add_todo
+else
+	prompt_todos
+fi
