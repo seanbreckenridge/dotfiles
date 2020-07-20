@@ -16,3 +16,10 @@ done
 
 evry 1 day -backup_fish_server && backup_server
 evry 2 months -pythonanywhere && pythonanywhere_3_months -Hc "$(which chromedriver)"
+
+# has the possibility to fail, if I'm not home and it tries to
+# find the raspberry pi on my home network
+evry 3 days -raspibackupdelete && {
+  # if this fails, rollback and try next time I run update
+  "${REPOS}"/raspi-backup/backup -d || evry rollback -raspibackupdelete
+}
