@@ -21,7 +21,7 @@ readonly RangerDataDir="${XDG_DATA_HOME:-$HOME/.local/share}/ranger"
 }
 
 readonly BookmarksFile="${RangerDataDir}/bookmarks"
-[ ! -f "${BookmarksFile}" ] && {
+[[ ! -f "${BookmarksFile}" ]] && {
 	echo "No ranger bookmarks file exists, creating one..."
 	touch "${BookmarksFile}"
 }
