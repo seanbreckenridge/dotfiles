@@ -40,5 +40,5 @@ manual="$(apropos "${APROPROS_ARGS[@]}" |
 	sort |
 	fzf)" || exit $?
 
-man "${manual[@]}"
+man "$manual"
 printf '\r'  # fix cursor location
