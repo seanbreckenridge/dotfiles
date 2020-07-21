@@ -224,6 +224,7 @@ thunar
 thunderbird
 tor-browser
 tree
+vbam-wx
 zoom
 
 # fonts
