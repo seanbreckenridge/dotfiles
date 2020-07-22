@@ -99,6 +99,8 @@ __pycache__
 /.todo
 !.config/todo/config
 /.config/GIMP
+/.config/BraveSoftware/
+/.config/visualboyadvance-m/
 /.config/light
 /.config/xbuild
 /.config/slack-term/
