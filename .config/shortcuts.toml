@@ -475,3 +475,9 @@ echo
 
 [speedtest]
 command='wait-for-internet --text "Waiting for internet..." && exec python3 -m speedtest'
+
+[rcut]
+command='''
+# cut, but indexing from the right
+rev | cut "$@" | rev
+'''
