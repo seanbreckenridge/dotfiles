@@ -1,6 +1,8 @@
 # dotfiles
 
-This README is is need of a rewrite. Majority of cross platform functionality is done, keep finding small improvements/mac alternatives to improve scripts. I use mac less so I have yet to configure it to all of my likings; I primarily use linux, and run a couple apps as a compatability layer on mac:
+See [this](https://exobrain.sean.fish/tools/) page for a summary of how I use this.
+
+Majority of cross platform functionality is done, keep finding small improvements/mac alternatives to improve scripts. I use mac less so I have yet to configure it to all of my likings; I primarily use linux, and run a couple apps as a compatability layer on mac:
 
 * window management/keyboard shortcuts
   * Uses [`skhd`](https://github.com/koekeishiya/skhd) as a hot-key daemon to run applications (e.g. `cmd + opt + enter` launches terminal)
@@ -10,10 +12,10 @@ This README is is need of a rewrite. Majority of cross platform functionality is
 * `$PATH` is set properly in `zsh`/`X server` startup, update (`zsh` function) respects the OS and updates packages properly.
 * Wrapper scripts in `~/.local/scripts/cross-platform` detect platform to send notifications, interact with clipboard, prompt user for input etc...
 
-The rest of the README is for what I used on arch, will be updated into a larger (perhaps wiki) eventually.
+The rest of the README is for what I used on arch:
 
 - [zsh](http://zsh.sourceforge.net/), plugins/configuration handled manually in [.config/zsh](.config/zsh) (split across multiple files)
-- [qtile](https://github.com/qtile?type=source) (primary) and [i3-gaps](https://github.com/Airblader/i3) - window manager
+- [i3-gaps](https://github.com/Airblader/i3) - window manager
 - [yadm](https://yadm.io) to manage dotfiles, see [yadm-with-README.md](.config/yadm/yadm-with-README.md)
 - [alacritty](https://github.com/alacritty/alacritty) as terminal 
 - [firefox-developer-edition](https://www.archlinux.org/packages/community/x86_64/firefox-developer-edition/) - browser, addons listed in [firefox_addons.txt](./.local/share/firefox_addons.txt)
@@ -24,8 +26,8 @@ The rest of the README is for what I used on arch, will be updated into a larger
 - [lightdm](https://wiki.archlinux.org/index.php/LightDM) - display manager
 - [todotxt](http://todotxt.org/) for todos, with a [rofi interface](.local/scripts/bin/todo_prompt) as GUI, and [tui](https://gitlab.com/seanbreckenridge/full_todotxt) for adding todos.
 - [ranger](https://github.com/ranger/ranger) - file manager
-- (in i3) [picom](https://github.com/yshui/picom) for window compositing
-- (in i3) [i3blocks](https://github.com/vivien/i3blocks) for status bar
+- [picom](https://github.com/yshui/picom) for window compositing
+- [i3blocks](https://github.com/vivien/i3blocks) for status bar
 
 I typically default to dracula-like color schemes to keep things consistent. Currently in use for `qtile`, `alacritty` (terminal), `rofi`, and `emacs`.
 
