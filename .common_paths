@@ -15,13 +15,13 @@
 # before the GNU-libexec dirs, and before the system PATH
 
 PATH="\
+${HOME}/.local/share/shortcuts:\
 ${HOME}/.local/bin:\
 ${HOME}/.local/share/npm-packages/bin:\
 ${HOME}/.local/scripts/mac:\
 ${HOME}/.local/scripts/linux:\
 ${HOME}/.local/scripts/cross-platform:\
 ${HOME}/.local/scripts/generic:\
-${HOME}/.local/share/shortcuts:\
 ${HOME}/.local/share/go/bin:\
 ${HOME}/.local/share/cargo/bin:\
 ${HOME}/.local/share/pubcache/bin:\
