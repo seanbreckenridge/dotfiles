@@ -1,0 +1,15 @@
+#!/bin/sh
+# puts a random emoji onto my clipboard
+
+# pick a random emoji
+remoji_line="$(shuf -n1 <"${XDG_DATA_HOME}/emoji")"
+remoji="$(echo "$remoji_line" | sed "s/ .*//")"
+
+# notify user
+printf '%s' "$remoji" | clipcopy
+msg="'$remoji' copied to clipboard"
+if [ "$(tty)" = "not a tty" ]; then
+	notify "Emoji" "$msg" &
+else
+	printf '%s\n' "$msg"
+fi

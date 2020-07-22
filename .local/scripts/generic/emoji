@@ -4,15 +4,13 @@
 chosen="$(picker -p "pick an emoji > " <"${XDG_DATA_HOME}/emoji")"
 
 [ "$chosen" != "" ] || exit
-
 c="$(echo "$chosen" | sed "s/ .*//")"
+
 # copy to both clipboards
 printf '%s' "$c" | clipcopy
-
 msg="'$c' copied to clipboard"
-
 if [ "$(tty)" = "not a tty" ]; then
 	notify "Emoji" "'$c' copied to clipboard." &
 else
-	echo "$msg"
+	printf '%s\n' "$msg"
 fi
