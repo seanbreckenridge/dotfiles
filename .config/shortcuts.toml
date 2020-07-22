@@ -472,3 +472,6 @@ command='''
 fd -H --absolute-path --type d --regex "${REPOS}/[^/]+/\.git$" --full-path "$REPOS" | parallel -j 500% "cd {}/.. && has-git-remote && { git pull --quiet && printf '.' || { echo; pwd} }"
 echo
 '''
+
+[speedtest]
+command='wait-for-internet --text "Waiting for internet..." && exec python3 -m speedtest'
