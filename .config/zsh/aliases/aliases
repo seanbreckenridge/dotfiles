@@ -48,17 +48,17 @@ alias todo='todo.sh'
 # open screenshots folder
 alias screens='sxiv -t ~/Desktop/Screenshots/*.png'
 # remove packages that arent being used for anything
-alias remove_orphans='sudo pacman -Rns $(pacman -Qtdq)'
+alias remove-orphans='sudo pacman -Rns $(pacman -Qtdq)'
 # clear yay tar.gz cache
-alias yay_clear_cache='yay -Syu && yay -Sc'
+alias yay-clear-cache='yay -Syu && yay -Sc'
 # create a notes file in the current directory
-alias create_notes='touch $(date +"%y_%m_%d").md'
+alias create-notes='touch $(date +"%y_%m_%d").md'
 # print a readable $PATH
 alias path='tr ":" "\n" <<<"$PATH"'
 # sxiv full screen image, fit full width
 alias sxfull="sxiv -s f -f"
 # open all the firefox addons in the browser
-alias firefox_addons='openurls < ~/.local/share/firefox_addons.txt'
+alias firefox-addons='openurls < ~/.local/share/firefox_addons.txt'
 # run python with the math module imported to use as my calculator
 alias calc='python3 -i ~/.config/pythonrc -c "from math import *"'
 # pipe some command into stripcolors, removes any ANSI color codes
