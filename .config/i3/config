@@ -258,7 +258,7 @@ mode "launcher" {
     # n so that its close to m, not mnemonic
     # see mediaproxy scripts here https://github.com/seanbreckenridge/vps
     bindsym n exec --no-startup-id mediaproxyvideo; mode "default"
-    bindsym Shift+n exec --no-bindsym-id mediaproxyaudio; mode "default"
+    bindsym Shift+n exec --no-startup-id mediaproxyaudio; mode "default"
     bindsym Escape mode "default"
     bindsym Return mode "default"
 }
