@@ -255,6 +255,10 @@ mode "launcher" {
     # mpv-ytdl bindings
     bindsym m exec --no-startup-id stream-corner; mode "default"
     bindsym Shift+m exec --no-startup-id stream-audio; mode "default"
+    # n so that its close to m, not mnemonic
+    # see mediaproxy scripts here https://github.com/seanbreckenridge/vps
+    bindsym n exec --no-startup-id mediaproxyvideo; mode "default"
+    bindsym Shift+n exec --no-bindsym-id mediaproxyaudio; mode "default"
     bindsym Escape mode "default"
     bindsym Return mode "default"
 }
