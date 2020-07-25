@@ -80,3 +80,6 @@ for script in "${proxyscripts[@]}"; do
 		ln -s "${REPOS}/vps/${script}" ~/.local/bin
 	}
 done
+
+# make sure https://github.com/seanbreckenridge/bgproc is running
+ps -ef | grep "bgproc" | grep -q bash || print_error "bgproc isn't running!"
