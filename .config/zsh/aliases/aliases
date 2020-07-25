@@ -49,6 +49,8 @@ alias todo='todo.sh'
 alias screens='sxiv -t ~/Desktop/Screenshots/*.png'
 # remove packages that arent being used for anything
 alias remove-orphans='sudo pacman -Rns $(pacman -Qtdq)'
+# restart networkmanager
+alias rnm='sudo systemctl restart NetworkManager'
 # clear yay tar.gz cache
 alias yay-clear-cache='yay -Syu && yay -Sc'
 # create a notes file in the current directory
