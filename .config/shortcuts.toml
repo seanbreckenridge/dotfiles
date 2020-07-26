@@ -248,7 +248,7 @@ command='''mpv /dev/video0'''
 [geolocate]
 command='''
 IP_ADDR="${1:?provide ip address to geolocate as the first argument}"
-curl --silent "https://ipvigilante.com/${IP_ADDR}" | jq '.data | "\(.country_name), \(.subdivision_1_name), \(.subdivision_2_name) (\(.latitude), \(.longitude))"'
+curl --silent "https://ipvigilante.com/${IP_ADDR}" | gron | grep -vE 'ipv4|null|status' | gron -u | jq -r '.data | to_entries[] | "\(.key): \(.value)"'
 '''
 
 [image-dimensions]

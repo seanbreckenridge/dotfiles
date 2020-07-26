@@ -8,9 +8,9 @@ Majority of cross platform functionality is done, keep finding small improvement
   * Uses [`skhd`](https://github.com/koekeishiya/skhd) as a hot-key daemon to run applications (e.g. `cmd + opt + enter` launches terminal)
   * [amethyst](https://github.com/ianyh/Amethyst) to auto-tile windows a la xmonad
   * `alfred` as a application launcher
-* OS-specific bootstrap files in `~/.config/yadm` that check whether I'm on mac/linux, to decide what sort of install(`yay`/`brew`)/which packages to install.
+* OS-specific bootstrap files in [`~/.config/yadm`](.config/yadm) that check whether I'm on mac/linux, to decide what sort of install(`yay`/`brew`)/which packages to install.
 * `$PATH` is set properly in `zsh`/`X server` startup, update (`zsh` function) respects the OS and updates packages properly.
-* Wrapper scripts in `~/.local/scripts/cross-platform` detect platform to send notifications, interact with clipboard, prompt user for input etc...
+* Wrapper scripts in [`~/.local/scripts/cross-platform`](.local/scripts/cross-platform) detect platform to send notifications, interact with clipboard, prompt user for input etc...
 
 The rest of the README is for what I used on arch:
 
@@ -20,7 +20,7 @@ The rest of the README is for what I used on arch:
 - [alacritty](https://github.com/alacritty/alacritty) as terminal 
 - [firefox-developer-edition](https://www.archlinux.org/packages/community/x86_64/firefox-developer-edition/) - browser, addons listed in [firefox_addons.txt](./.local/share/firefox_addons.txt)
 - [rofi](https://github.com/davatorium/rofi) - application launcher
-- [nvim](https://neovim.io/) as sometimes [(doom) emacs](https://github.com/hlissner/doom-emacs) as editors - see [editor](.local/scripts/system/editor)
+- [nvim](https://neovim.io/) as sometimes [(doom) emacs](https://github.com/hlissner/doom-emacs) (when I want IDE-like support) as editors - see [editor](.local/scripts/system/editor)
 - [i3lock](https://i3wm.org/i3lock/) for screen lock; [daemon process](.local/scripts/system/lock_screen) caches pixelated version of screen to speed up start time
 - [dunst](https://dunst-project.org/) for notifications
 - [lightdm](https://wiki.archlinux.org/index.php/LightDM) - display manager
