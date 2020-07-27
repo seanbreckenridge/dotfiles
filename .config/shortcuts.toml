@@ -166,7 +166,7 @@ stream-media --x11-name=mpv_stream_media "$@"
 '''
 
 [stream-audio]
-command='stream-media --no-video "$@"'
+command='STREAM_MEDIA_CMD=mpv stream-media --no-video "$@"'
 
 [screenshot-to-imgur]
 command='''

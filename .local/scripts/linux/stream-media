@@ -20,6 +20,6 @@ fi
 
 notify "Starting stream..." "${CLIPBOARD_CONTENTS}"
 
-if ! mpvf "${CLIPBOARD_CONTENTS}" "$@"; then
+if ! "${STREAM_MEDIA_CMD:-mpvf}" "${CLIPBOARD_CONTENTS}" "$@"; then
 	notify "Streaming Error:" "Couldn't stream from ${CLIPBOARD_CONTENTS}" && exit 1
 fi
