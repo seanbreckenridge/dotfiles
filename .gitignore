@@ -100,6 +100,7 @@ __pycache__
 !.config/todo/config
 /.config/GIMP
 /.config/BraveSoftware/
+/.config/so/config.yml
 /.config/visualboyadvance-m/
 /.config/light
 /.config/xbuild
