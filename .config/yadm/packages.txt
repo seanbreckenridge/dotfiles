@@ -159,6 +159,7 @@ sc-im
 screenkey-git
 scrot
 shellcheck-bin
+so-git
 socat
 strace
 sxiv
