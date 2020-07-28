@@ -398,6 +398,7 @@ link="lastpicpreview"
 
 [lastpicdrag]
 command='dragon-drag-and-drop -x "$(lastpic)"'
+link="draglastpic"
 
 [urlpic]
 command='''
