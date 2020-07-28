@@ -15,7 +15,7 @@ if [ -z "$1" ]; then # if no URL was passed, read from STDIN
 	URL="$(head -n 1)"
 fi
 
-echo "$URL"
+printf '%s\n' "$URL"
 
 if [ -n "$ONLINUX" ]; then
 	setsid "$BROWSER" "$URL" >/dev/null 2>&1 &
