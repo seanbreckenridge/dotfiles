@@ -406,7 +406,7 @@ command='''
 rm -rf /tmp/urlpic
 mkdir -p /tmp/urlpic && cd /tmp/urlpic || exit 1
 wget -q "${1:?Must provide a image URL to preview}"
-newest | sxiv - || exit 1
+mpv --loop "$(newest)" || exit 1
 '''
 link="preivewurlpic"
 
