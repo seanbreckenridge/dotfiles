@@ -137,5 +137,4 @@ ${PATH}\
 "
 	source "${HOME}/.common_paths"
 	export PATH
-	# TODO: check if MANPATH needs to be affected as well?
 fi
