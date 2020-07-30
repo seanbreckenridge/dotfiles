@@ -72,6 +72,7 @@ alias tetris='autoload -Uz tetriscurses; tetriscurses'
 alias dotfiles-github='sh -c "cd ~/.config/yadm/repo.git && githubopen"'
 # make youtube-dl filenames less complicated
 alias "youtube-dl=youtube-dl -o '%(title)s.%(ext)s' -ci"
+alias countdown='termdown'
 
 # plainplay aliases
 # https://gitlab.com/seanbreckenridge/plaintext-playlist.git

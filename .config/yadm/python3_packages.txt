@@ -58,6 +58,7 @@ selenium
 setuptools
 speedtest-cli
 termcolor
+termdown
 thefuck
 toml
 twine
