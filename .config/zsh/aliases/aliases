@@ -46,7 +46,7 @@ alias sysderrors="sudo systemctl --failed"
 
 alias todo='todo.sh'
 # open screenshots folder
-alias screens='sxiv -t ~/Desktop/Screenshots/*.png'
+alias screens='sxiv -t "${SCREENSHOTS}"'
 # remove packages that arent being used for anything
 alias remove-orphans='sudo pacman -Rns $(pacman -Qtdq)'
 # restart networkmanager
