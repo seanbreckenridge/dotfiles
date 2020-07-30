@@ -14,9 +14,6 @@ bindsym $mod+Shift+Escape exec --no-startup-id lock-screen
 # run process to cache pixelated desktop for lock screen
 exec --no-startup-id lock-screen -b
 
-# start network manager menu bar item
-exec --no-startup-id nm-applet
-
 # use picom for display compositing
 exec --no-startup-id picom -b
 
@@ -102,6 +99,9 @@ bindsym $mod+r exec --no-startup-id rofi -show run -display-run "run > "
 
 # rofi switch window menu
 bindsym $mod+Tab exec --no-startup-id rofi -show window -display-window "window > "
+
+# network manager interface
+bindsym $mod+n exec --no-startup-id networkmanager_dmenu
 
 # take a screenshot (select rectangle with cursor)
 bindsym --release Print exec --no-startup-id screenshot

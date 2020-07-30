@@ -154,6 +154,7 @@ rdiff-backup
 ripgrep
 rofi
 rofi-dmenu
+networkmanager-dmenu-git
 rsync
 sc-im
 screenkey-git
