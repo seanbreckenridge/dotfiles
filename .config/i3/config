@@ -26,8 +26,13 @@ exec --no-startup-id unclutter --timeout 2
 # set a random wallpaper
 exec --no-startup-id randomize-wallpaper
 
-# unlreated to i3 background processes
+# background processes unrelated to i3 unlreated to i3/basic interaction with operating system
+
+# copy my todo.txt to my server when it changes, so I can be sent reminders
+# https://github.com/seanbreckenridge/todotxt_deadline_notify
 exec --no-startup-id bash "${REPOS}/todotxt_deadline_notify/copy_todotxt_to_server"
+# loop that runs in the background, running random tasks periodically (cron-like)
+# https://github.com/seanbreckenridge/bgproc
 exec --no-startup-id bash "${REPOS}/bgproc/bgproc"
 
 # bind display key to randomize wallpaper
@@ -81,12 +86,12 @@ bindsym XF86AudioLowerVolume exec --no-startup-id volume down
 bindsym XF86AudioMute exec --no-startup-id volume mute
 bindsym XF86AudioMicMute exec --no-startup-id volume micmute
 
-# Refresh todo icon when todo file changes
-exec --no-startup-id echo "${HOME}/.config/todo/todo.txt" | entr pkill -RTMIN+2 i3blocks
-
 # todo list - mark as complete with rofi
 bindsym $mod+t exec --no-startup-id todo-prompt list
 bindsym $mod+Shift+t exec --no-startup-id todo-prompt add
+
+# Refresh todo icon when todo file changes
+exec --no-startup-id echo "${HOME}/.config/todo/todo.txt" | entr pkill -RTMIN+2 i3blocks
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -218,6 +223,7 @@ bindsym $mod+Shift+r restart
 # use xprop to find class names
 assign [class="Thunderbird"] 10
 assign [class="Slack"] 9
+assign [class="discord"] 8
 
 # if a mpv window with --x11-name=mpv_stream_media is launched,
 # resize it into the bottom right of the screen
