@@ -10,7 +10,7 @@ signal=2
 
 [battery]
 command="${HOME}/.config/i3blocks/blocks/battery" BAT0
-interval=10
+interval=30
 
 [clock]
 command="${HOME}/.config/i3blocks/blocks/date"
@@ -18,7 +18,7 @@ interval=5
 
 [ssid]
 command="${HOME}/.config/i3blocks/blocks/network"
-interval=10
+interval=5
 
 [help]
 interval=once
