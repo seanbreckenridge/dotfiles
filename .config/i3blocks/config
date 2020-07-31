@@ -17,7 +17,7 @@ command="${HOME}/.config/i3blocks/blocks/date"
 interval=5
 
 [ssid]
-command=iwgetid -r
+command="${HOME}/.config/i3blocks/blocks/network"
 interval=10
 
 [help]
