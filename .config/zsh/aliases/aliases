@@ -67,7 +67,7 @@ alias calc='python3 -i ~/.config/pythonrc -c "from math import *"'
 alias stripcolors="sed 's/\x1B\[[0-9;]\+[A-Za-z]//g'"
 # alias ? to duck, searches duckduckgo in lynx
 alias "?=duck"
-alias watchtwitch="twitchlive -output-format json | jq -r '.channels | .[] | .username' | fzf | xargs twitch"
+alias watchtwitch="twitchlive -output-format json | jq -r '.[] | .username' | fzf | xargs twitch"
 alias tetris='autoload -Uz tetriscurses; tetriscurses'
 alias dotfiles-github='sh -c "cd ~/.config/yadm/repo.git && githubopen"'
 # make youtube-dl filenames less complicated
