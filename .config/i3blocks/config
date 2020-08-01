@@ -19,6 +19,3 @@ interval=5
 [ssid]
 command="${HOME}/.config/i3blocks/blocks/network"
 interval=5
-
-[help]
-interval=once
