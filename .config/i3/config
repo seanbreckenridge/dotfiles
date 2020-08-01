@@ -239,6 +239,7 @@ for_window [instance="mpv_stream_media"] exec --no-startup-id i3-picture-in-pict
 bar {
     position top
     status_command i3blocks
+    tray_output none
 }
 
 # launcher binding
