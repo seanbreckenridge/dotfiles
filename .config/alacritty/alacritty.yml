@@ -60,13 +60,14 @@ colors:
 background_opacity: 1.0
 
 # use visual bell instead of sound
-visual_bell:
+bell:
   animation: EaseOutExpo
   duration: 1
   color: "#eeeeee"
 
 # Allow terminal applications to change Alacritty's window title.
-dynamic_title: true
+window:
+  dynamic_title: true
 
 # default shell
 shell:
