@@ -116,6 +116,7 @@ ffmpeg
 ffmpegthumbnailer
 figlet
 fzf
+gifsicle
 git
 gron
 highlight
@@ -139,6 +140,7 @@ neofetch
 neovim
 neovim-plug-git
 net-tools
+networkmanager-dmenu-git
 nmap
 ntp
 pamixer
@@ -154,7 +156,6 @@ rdiff-backup
 ripgrep
 rofi
 rofi-dmenu
-networkmanager-dmenu-git
 rsync
 sc-im
 screenkey-git
