@@ -470,3 +470,6 @@ command='''
 # cut, but indexing from the right
 rev | cut "$@" | rev
 '''
+
+[youtube-dl]
+command='''python3 -m youtube_dl -o '%(title)s.%(ext)s' -ci "$@"'''
