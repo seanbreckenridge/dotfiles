@@ -36,7 +36,15 @@ launch "doom sync && restart-emacs"
 [dotfiles]
 command = '''
 # open the dotfiles git repository
-yadm gitconfig --get remote.origin.url | /usr/bin/python3 -c "from giturlparse import parse; print(parse(input()).urls[\"https\"])" | openurl'''
+cd "${HOME}/.config/yadm/repo.git"
+gitopen
+'''
+
+[dotfiles-github]
+command='''
+cd "${HOME}/.config/yadm/repo.git"
+githubopen
+'''
 
 [i3binds]
 command='''
