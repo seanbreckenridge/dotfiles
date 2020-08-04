@@ -16,3 +16,4 @@ serve
 mapscii
 jikan-node
 sqleton
+@jamen/lorem
