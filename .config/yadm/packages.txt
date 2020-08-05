@@ -154,6 +154,7 @@ qrencode
 ranger
 rdiff-backup
 ripgrep
+rlwrap
 rofi
 rofi-dmenu
 rsync
