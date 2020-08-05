@@ -202,6 +202,10 @@ clippaste | vipe | clipcopy
 '''
 link = 'edit-clipboard'
 
+# shorthand for clipcopy
+[cl]
+command='clipcopy'
+
 [lynx]
 command = '''
 # override the lynx binary by

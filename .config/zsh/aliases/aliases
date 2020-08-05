@@ -70,6 +70,7 @@ alias "?=duck"
 alias watchtwitch="twitchlive -output-format json | jq -r '.[] | .username' | fzf | xargs twitch"
 alias tetris='autoload -Uz tetriscurses; tetriscurses'
 alias countdown='termdown'
+alias cl='clipcopy'
 
 # plainplay aliases
 # https://gitlab.com/seanbreckenridge/plaintext-playlist.git
