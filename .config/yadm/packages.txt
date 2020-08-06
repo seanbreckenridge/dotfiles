@@ -203,7 +203,6 @@ zsh-you-should-use
 balena-etcher
 chatterino2-git
 chromium
-discord
 filezilla
 firefox-developer-edition
 gimp

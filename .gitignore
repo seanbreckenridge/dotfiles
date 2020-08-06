@@ -125,7 +125,6 @@ __pycache__
 /.config/zoomus.conf
 /.config/clojure
 /.config/neofetch
-/.config/discord
 /.config/balena-etcher
 /.config/largechar
 /.config/pulse
