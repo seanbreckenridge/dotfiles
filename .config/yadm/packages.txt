@@ -218,7 +218,6 @@ okular
 pinta
 robo3t-bin
 simplescreenrecorder
-slack-desktop
 snes9x-gtk
 sqlitebrowser
 surf

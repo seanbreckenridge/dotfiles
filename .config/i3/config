@@ -219,7 +219,6 @@ bindsym $mod+Shift+r restart
 
 # use xprop to find class names
 assign [class="Thunderbird"] 10
-assign [class="Slack"] 9
 
 # if a mpv window with --x11-name=mpv_stream_media is launched,
 # resize it into the bottom right of the screen
@@ -248,7 +247,8 @@ mode "launcher" {
     bindsym f exec --no-startup-id firefox-developer-edition; mode "default"
     bindsym t exec --no-startup-id thunderbird; mode "default"
     bindsym e exec --no-startup-id emacs; mode "default"
-    bindsym s exec --no-startup-id slack; mode "default"
+    bindsym d exec --no-startup-id discord; mode "default" # wrapper to open in browser
+    bindsym s exec --no-startup-id slack; mode "default" # wrapper to open in browser
     bindsym k exec --no-startup-id keepassxc; mode "default"
     bindsym r exec --no-startup-id launch ranger; mode "default"
     bindsym h exec --no-startup-id launch htop; mode "default"

@@ -1,0 +1,2 @@
+#!/bin/sh
+openurl 'https://discord.com/login'

@@ -485,3 +485,9 @@ rev | cut "$@" | rev
 
 [youtube-dl]
 command='''python3 -m youtube_dl -o '%(title)s.%(ext)s' -ci "$@"'''
+
+[discord]
+command="openurl 'https://discord.com/login'"
+
+[slack]
+command="openurl 'https://app.slack.com/'"
