@@ -3,7 +3,7 @@ markup=pango
 
 # entr in ~/.config/i3/config refreshes this when the file changes
 [todo]
-command=sed '/^\s*#/d;/^\s*$/d' "${HOME}/.config/todo/todo.txt" | wc -l
+command=sed '/^\s*$/d' "${HOME}/.config/todo/todo.txt" | wc -l
 interval=once
 label=📝
 signal=2
