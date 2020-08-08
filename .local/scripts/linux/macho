@@ -41,4 +41,4 @@ manual="$(apropos "${APROPROS_ARGS[@]}" |
 	fzf)" || exit $?
 
 man "$manual"
-printf '\r'  # fix cursor location
+printf '\r' # fix cursor location
