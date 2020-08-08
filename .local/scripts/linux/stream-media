@@ -20,6 +20,9 @@ fi
 
 notify "Starting stream..." "${CLIPBOARD_CONTENTS}"
 
-if ! "${STREAM_MEDIA_CMD:-mpvf}" "${CLIPBOARD_CONTENTS}" "$@"; then
+# run behind tsp (task spooler) so that streams dont overlap
+# can add lots of things to stream and one only starts
+# after the previous one has exited
+if ! tsp "${STREAM_MEDIA_CMD:-mpvf}" "${CLIPBOARD_CONTENTS}" "$@"; then
 	notify "Streaming Error:" "Couldn't stream from ${CLIPBOARD_CONTENTS}" && exit 1
 fi

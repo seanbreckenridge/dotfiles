@@ -166,6 +166,7 @@ so-git
 socat
 strace
 sxiv
+task-spooler
 texlive-bin
 texlive-core
 the_silver_searcher
