@@ -39,7 +39,7 @@ exec --no-startup-id bash "${REPOS}/bgproc/bgproc"
 bindsym XF86Display exec --no-startup-id randomize-wallpaper
 
 # Disable trackpad
-exec --no-startup-id trackpad disable
+#exec --no-startup-id trackpad disable
 # keyboard shortcut to toggle trackpad
 bindsym $mod+g exec --no-startup-id trackpad
 
