@@ -251,17 +251,15 @@ mode "launcher" {
     bindsym d exec --no-startup-id discord; mode "default"
     bindsym s exec --no-startup-id slack; mode "default"
     bindsym k exec --no-startup-id keepassxc; mode "default"
-    bindsym r exec --no-startup-id launch ranger; mode "default"
+    bindsym n exec --no-startup-id launch newsboat; mode "default"
     bindsym h exec --no-startup-id launch htop; mode "default"
     bindsym v exec --no-startup-id launch keyvol; mode "default"
-    bindsym u exec --no-startup-id launch update; mode "default"
     # mpv-ytdl bindings
     bindsym m exec --no-startup-id stream-corner; mode "default"
     bindsym Shift+m exec --no-startup-id stream-audio; mode "default"
-    # n so that its close to m, not mnemonic
     # see mediaproxy scripts here https://github.com/seanbreckenridge/vps
-    bindsym n exec --no-startup-id mediaproxyvideo; mode "default"
-    bindsym Shift+n exec --no-startup-id mediaproxyaudio; mode "default"
+    bindsym x exec --no-startup-id mediaproxyvideo; mode "default"
+    bindsym Shift+x exec --no-startup-id mediaproxyaudio; mode "default"
     bindsym Escape mode "default"
     bindsym Return mode "default"
 }
