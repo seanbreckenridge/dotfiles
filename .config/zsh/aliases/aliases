@@ -71,6 +71,7 @@ alias watchtwitch="twitchlive -output-format json | jq -r '.[] | .username' | fz
 alias tetris='autoload -Uz tetriscurses; tetriscurses'
 alias countdown='termdown'
 alias cl='clipcopy'
+alias rss='e ~/.config/newsboat/urls'
 
 # plainplay aliases
 # https://gitlab.com/seanbreckenridge/plaintext-playlist.git
