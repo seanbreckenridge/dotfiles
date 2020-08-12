@@ -6,6 +6,6 @@ from subprocess import call
 
 packages = [dist.project_name for dist in pkg_resources.working_set]
 call(
-    "python3 -m pip install --upgrade {} | sed 's/^Requirement already up-to-date/Up to date/'"
+    "python3 -m pip install --use-feature=2020-resolver --upgrade {} | sed 's/^Requirement already up-to-date/Up to date/'"
     .format(' '.join(packages)),
     shell=True)
