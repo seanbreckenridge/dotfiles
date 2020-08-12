@@ -2,7 +2,7 @@ seperator_block_width=15
 markup=pango
 
 [rss]
-command=cat "${HOME}/.cache/rss-unread"
+command="${HOME}/.config/i3blocks/blocks/rss"
 interval=once
 label=RSS:
 signal=3
