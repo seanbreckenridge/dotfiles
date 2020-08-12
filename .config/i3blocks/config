@@ -1,6 +1,12 @@
 seperator_block_width=15
 markup=pango
 
+[rss]
+command=cat "${HOME}/.cache/rss-unread"
+interval=once
+label=RSS:
+signal=3
+
 # entr in ~/.config/i3/config refreshes this when the file changes
 [todo]
 command=sed '/^\s*$/d' "${HOME}/.config/todo/todo.txt" | wc -l

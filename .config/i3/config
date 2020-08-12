@@ -87,8 +87,9 @@ bindsym XF86AudioMicMute exec --no-startup-id volume micmute
 bindsym $mod+t exec --no-startup-id todo-prompt list
 bindsym $mod+Shift+t exec --no-startup-id todo-prompt add
 
-# Refresh todo icon when todo file changes
+# Refresh i3blocks icons when certain files change
 exec --no-startup-id echo "${HOME}/.config/todo/todo.txt" | entr pkill -RTMIN+2 i3blocks
+exec --no-startup-id echo "${HOME}/.cache/rss-unread" | entr pkill -RTMIN+3 i3blocks
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod

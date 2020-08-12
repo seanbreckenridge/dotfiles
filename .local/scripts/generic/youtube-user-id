@@ -1,0 +1,15 @@
+#!/bin/bash
+# Gets the youtube ID for a user from a link
+# Could be a link to their channel or a video
+# Searches the <meta> tags for a channelId value
+
+declare URL MATCHES
+
+readonly URL="${1:?Pass the URL as the first argument}"
+MATCHES="$(curl -s "$URL" | grep -P -m1 '\s*<meta.*channelId.*>')"
+if [[ -z "$MATCHES" ]]; then
+	echo "Could not find a meta tag with the channelId" >&2
+	exit 1
+fi
+
+perl -lne 'print $1 if /content="([^"]+)"/' <<<"$MATCHES"
