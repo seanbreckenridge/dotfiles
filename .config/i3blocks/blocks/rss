@@ -3,14 +3,17 @@
 # Else, prints the number of unread RSS items from
 # the cached info in ~/.cache/rss-unread
 
-[ "$BLOCK_BUTTON" = "1" ] && {
+case "$BLOCK_BUTTON" in
+1)
 	notify "Updating RSS feeds..."
-	wait-for-internet
+	wait-for-internet >/dev/null 2>&1
 	if update-rss; then
 		notify "Updated RSS feeds"
 	else
 		notify -u critical "Couldn't update RSS feeds..."
 	fi
-}
+	;;
+*) ;; # any other click would just update the blocklet, not the RSS feeds
+esac
 
 cat "${HOME}/.cache/rss-unread"
