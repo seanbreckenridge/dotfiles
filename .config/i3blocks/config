@@ -4,7 +4,7 @@ markup=pango
 [rss]
 command="${HOME}/.config/i3blocks/blocks/rss"
 interval=once
-label=RSS:
+label=📰
 signal=3
 
 # entr in ~/.config/i3/config refreshes this when the file changes

@@ -1,2 +1,2 @@
 #!/bin/sh
-ix -v
+exec ix -v

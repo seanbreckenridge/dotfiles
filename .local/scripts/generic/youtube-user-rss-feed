@@ -1,4 +1,4 @@
 #!/bin/sh
 # users the youtube-user-id script to get the channel ID, and print the corresponding youtube RSS feed
 YOUTUBE_USER_ID="$(youtube-user-id "$1")" || exit $?
-echo "https://www.youtube.com/feeds/videos.xml?channel_id=${YOUTUBE_USER_ID}"
+printf "https://www.youtube.com/feeds/videos.xml?channel_id=%s\n" "${YOUTUBE_USER_ID}"

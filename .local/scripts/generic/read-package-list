@@ -5,4 +5,4 @@
 # Prints the filtered file to STDOUT
 
 readonly PACKAGE_FILE="${1:?Must pass package file as first argument}"
-sed -e '/^\s*$/d' -e '/^#.*$/d' "$PACKAGE_FILE"
+exec sed -e '/^\s*$/d' -e '/^#.*$/d' "$PACKAGE_FILE"

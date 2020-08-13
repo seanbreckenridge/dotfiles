@@ -14,6 +14,5 @@ if [ $# -lt 1 ]; then
 elif [ "$1" = -h ] || [ "$1" = --help ]; then
 	helpmsg
 	exit 0
-else
-	curl -s dict://dict.org/d:"$1" | less
 fi
+exec curl -s dict://dict.org/d:"$1" | less

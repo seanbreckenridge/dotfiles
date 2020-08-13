@@ -1,4 +1,4 @@
 #!/bin/sh
 # wfi, and then reload the browser
 wfi
-reload-browser
+exec reload-browser

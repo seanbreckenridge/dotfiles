@@ -6,4 +6,4 @@ in-gitdir || {
 	exit 1
 }
 git remote add origin "git@gitlab.com:seanbreckenridge/$(basename "$(pwd)").git"
-git push --set-upstream origin master
+exec git push --set-upstream origin master

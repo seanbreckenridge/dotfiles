@@ -6,4 +6,4 @@
 STDIN="$(cat)"
 printf '%s' "$STDIN"
 printf '%s' "$STDIN" | clipcopy
-notify "clp" "$(printf 'Copied %d lines to clipboard' "$(echo "$STDIN" | wc -l)")"
+exec notify "clp" "$(printf 'Copied %d lines to clipboard' "$(echo "$STDIN" | wc -l)")"

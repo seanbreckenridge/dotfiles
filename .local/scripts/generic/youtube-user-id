@@ -12,4 +12,4 @@ if [[ -z "$MATCHES" ]]; then
 	exit 1
 fi
 
-perl -lne 'print $1 if /content="([^"]+)"/' <<<"$MATCHES"
+exec perl -lne 'print $1 if /content="([^"]+)"/' <<<"$MATCHES"

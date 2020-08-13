@@ -43,7 +43,7 @@ gitopen
 [dotfiles-github]
 command='''
 cd "${HOME}/.config/yadm/repo.git"
-githubopen
+exec githubopen
 '''
 
 [i3binds]
@@ -60,7 +60,7 @@ i3-msg "$(i3binds | rofi -dmenu -width 50 -lines 30 -location 5 -p "Pick a comma
 [reload-browser]
 command='''
 # reload firefox
-xdotool search --class "Firefox" key --window %@ "ctrl+r"
+exec xdotool search --class "Firefox" key --window %@ "ctrl+r"
 '''
 
 [usdate]
@@ -89,7 +89,7 @@ wait-for-internet "$@" && notify "INTERNET" && playping
 command='''
 # wfi, and then reload the browser
 wfi
-reload-browser
+exec reload-browser
 '''
 
 [moviesearch]
@@ -300,14 +300,14 @@ command='''
 # convert an image to a 16x16 icon - to favicon size
 FILEPATH=${1:?Must provide image to convert}
 NEW_FILEPATH="$(remove-extension "$FILEPATH")-icon.png"
-convert -resize x16 -gravity center -crop 16x16+0+0 -flatten -colors 256 "$FILEPATH" "$NEW_FILEPATH"
+exec convert -resize x16 -gravity center -crop 16x16+0+0 -flatten -colors 256 "$FILEPATH" "$NEW_FILEPATH"
 '''
 
 [file-mime]
 command='''
 # get mime type for one or more files
 # this is the same as what rifle (ranger) does
-file --mime-type -Lb "$@"
+exec file --mime-type -Lb "$@"
 '''
 
 [dragon-sink]
@@ -333,7 +333,7 @@ done <<<"$files"
 
 # shorthand for sending lines from vim to pastebin
 [vix]
-command='ix -v'
+command='exec ix -v'
 
 [clp]
 command='''
@@ -344,7 +344,7 @@ command='''
 STDIN="$(cat)"
 printf '%s' "$STDIN"
 printf '%s' "$STDIN" | clipcopy
-notify "clp" "$(printf 'Copied %d lines to clipboard' "$(echo "$STDIN" | wc -l)")"
+exec notify "clp" "$(printf 'Copied %d lines to clipboard' "$(echo "$STDIN" | wc -l)")"
 '''
 
 # lots of date shorthands
@@ -402,7 +402,7 @@ echo "${f[-1]}"
 '''
 
 [lastpic]
-command='newest "${SCREENSHOTS:?No SCREENSHOTS environment variable set}" || exit 1'
+command='exec newest "${SCREENSHOTS:?No SCREENSHOTS environment variable set}"'
 
 [previewlastpic]
 command='lastpic | sxiv - || exit 1'
@@ -418,23 +418,23 @@ command='''
 rm -rf /tmp/urlpic
 mkdir -p /tmp/urlpic && cd /tmp/urlpic || exit 1
 wget -q "${1:?Must provide a image URL to preview}"
-mpv --loop "$(newest)" || exit 1
+exec mpv --loop "$(newest)"
 '''
 link="preivewurlpic"
 
 [lastdown]
-command='newest "${DOWNLOADS:?No DOWNLOADS environment variable set}" || exit 1'
+command='exec newest "${DOWNLOADS:?No DOWNLOADS environment variable set}"'
 
 [mvlast]
 command='''
 FILE="$(lastdown)" || exit 1
-mv -v "${FILE}" "./$1"
+exec mv -v "${FILE}" "./$1"
 '''
 
 [mvlastpic]
 command='''
 FILE="$(lastpic)" || exit 1
-mv -v "${FILE}" "./$1"
+exec mv -v "${FILE}" "./$1"
 '''
 
 [rbg]

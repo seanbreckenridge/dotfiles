@@ -32,4 +32,4 @@ done
 command+="-ss $from_command_print -to $to_command_print $4"
 echo "downloading with the following command:"
 echo "$command"
-$command
+exec $command
