@@ -12,9 +12,14 @@
 	exit
 }
 
+# mp4/mp3 uses stream-* (my stream-link) wrapper scripts, so
+# it runs behind `tsp`, meaning lots of podcasts can be
+# queued in the task spooler, waits till the previous video
+# stops playing before to start new ones
+
 case "$1" in
 *mkv | *webm | *mp4 | *youtube.com/watch* | *youtube.com/playlist* | *youtu.be*)
-	# a mpv, tsp wrapper that plays videos picture-in-picture
+	# a mpv, wrapper that plays videos picture-in-picture
 	# set the CLIPBOARD_CONTENTS envvar, else stream-corner grabs it from my clipboard
 	export CLIPBOARD_CONTENTS="$1"
 	shift # remove url, pass any additional arguments to stream-corner
@@ -25,8 +30,10 @@ case "$1" in
 	curl -sL "$1" >"/tmp/${fname}" && sxiv -a "/tmp/${fname}" >/dev/null 2>&1 &
 	;;
 *mp3 | *flac | *opus | *mp3?source*)
-	# download audio to a file
-	setsid -f tsp curl -LO "$1" >/dev/null 2>&1
+	# stream with stream-audio (wraps stream-link, like stream-corner)
+	export CLIPBOARD_CONTENTS="$1"
+	shift
+	setsid -f stream-audio "$@" >/dev/null 2>&1
 	;;
 *)
 	if [ -f "$1" ]; then
