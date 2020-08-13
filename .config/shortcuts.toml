@@ -173,6 +173,13 @@ command='''
 stream-media --x11-name=mpv_stream_media "$@"
 '''
 
+[stream-corner-480p]
+command='''
+# stream videos at around 480p. doesnt prompt for format in rofi since
+# the command is overriden with mpv
+STREAM_MEDIA_CMD=mpv stream-corner --ytdl-format='bestvideo[height<=480]+bestaudio/best[height<=480]' "$@"
+'''
+
 [stream-audio]
 command='STREAM_MEDIA_CMD=mpv stream-media --no-video "$@"'
 
