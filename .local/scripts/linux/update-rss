@@ -8,6 +8,7 @@ readonly CACHE_FILE="${XDG_CACHE_HOME:-${HOME}/.cache}/rss-unread"
 
 if pgrep -x newsboat >/dev/null; then
 	echo "Newsboat is active, skipping update..." >&2
+	exit 1
 else
 	newsboat -x reload
 	unread="$(newsboat -x print-unread)" || exit $?
