@@ -210,7 +210,6 @@ gimp
 google-chrome
 gparted
 keepassxc
-megasync
 mpv
 mupdf-gl
 obs-linuxbrowser-bin
