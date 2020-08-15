@@ -1,0 +1,5 @@
+#!/bin/sh
+# searches letterboxd for a movie
+[ -z "$SEARCH_STR" ] && SEARCH_STR=$(input-dialog "Search for a movie > " | awk '{$1=$1; print}' | tr " " "+") # awk removes leading/trailing spaces
+[ -z "$SEARCH_STR" ] && exit 1
+openurl "https://letterboxd.com/search/films/${SEARCH_STR}"

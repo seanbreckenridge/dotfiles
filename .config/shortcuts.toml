@@ -92,13 +92,31 @@ wfi
 exec reload-browser
 '''
 
+[moviesearch-trakt]
+command = '''
+# searches trakt for a movie
+[ -z "$SEARCH_STR" ] && SEARCH_STR=$(input-dialog "Search for a movie > " | awk '{$1=$1; print}' | tr " " "+") # awk removes leading/trailing spaces
+[ -z "$SEARCH_STR" ] && exit 1
+openurl "https://trakt.tv/search/movies?query=${SEARCH_STR}&utf8=%E2%9C%93"
+'''
+
+[moviesearch-letterboxd]
+command = '''
+# searches letterboxd for a movie
+[ -z "$SEARCH_STR" ] && SEARCH_STR=$(input-dialog "Search for a movie > " | awk '{$1=$1; print}' | tr " " "+") # awk removes leading/trailing spaces
+[ -z "$SEARCH_STR" ] && exit 1
+openurl "https://letterboxd.com/search/films/${SEARCH_STR}"
+'''
+
 [moviesearch]
 command = '''
 # searches trakt/letterboxd for a movie
 SEARCH_STR=$(input-dialog "Search for a movie > " | awk '{$1=$1; print}' | tr " " "+") # awk removes leading/trailing spaces
 [ -z "$SEARCH_STR" ] && exit 1
-openurl "https://trakt.tv/search/movies?query=${SEARCH_STR}&utf8=%E2%9C%93"
-openurl "https://letterboxd.com/search/films/${SEARCH_STR}"
+export SEARCH_STR
+moviesearch-trakt &
+moviesearch-letterboxd &
+wait
 '''
 
 [tvsearch]
