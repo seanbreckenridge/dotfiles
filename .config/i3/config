@@ -251,6 +251,7 @@ mode "launcher" {
     bindsym d exec --no-startup-id discord; mode "default"
     bindsym s exec --no-startup-id slack; mode "default"
     bindsym k exec --no-startup-id keepassxc; mode "default"
+    bindsym r exec --no-startup-id launch ranger; mode "default"
     bindsym n exec --no-startup-id launch newsboat; mode "default"
     bindsym h exec --no-startup-id launch htop; mode "default"
     bindsym v exec --no-startup-id launch keyvol; mode "default"
