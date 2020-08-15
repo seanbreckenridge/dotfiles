@@ -6,6 +6,7 @@ reload-time 30
 reload-threads 4
 show-read-articles yes
 show-read-feeds yes
+download-path "~/Downloads"
 
 # navigation bindings
 bind-key j down
@@ -29,6 +30,9 @@ bind-key U show-urls
 # browser/openers
 # linkhandler is a wrapper script for mpv/curl/firefox depending on the link
 browser linkhandler
+macro , open-in-browser
+macro l set browser "lynx" ; open-in-browser ; set browser linkhandler
+macro y set browser "cd ~/Downloads; youtube-dl" ; open-in-browser ; set browser linkhandler
 
 highlight all "---.*---" yellow
 highlight feedlist ".*(0/0))" black
