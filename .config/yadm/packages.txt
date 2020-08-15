@@ -150,6 +150,7 @@ pastel
 perl-image-exiftool
 pkgfile
 pulsemixer
+pup
 qrencode
 ranger
 rdiff-backup
