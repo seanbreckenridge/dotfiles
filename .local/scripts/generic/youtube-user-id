@@ -6,10 +6,9 @@
 declare URL MATCHES
 
 readonly URL="${1:?Pass the URL as the first argument}"
-MATCHES="$(curl -s "$URL" | grep -P -m1 '\s*<meta.*channelId.*>')"
+MATCHES="$(curl -s "$URL" | pup 'meta[itemprop="channelId"] attr{content}')" || exit $?
 if [[ -z "$MATCHES" ]]; then
 	echo "Could not find a meta tag with the channelId" >&2
 	exit 1
 fi
-
-exec perl -lne 'print $1 if /content="([^"]+)"/' <<<"$MATCHES"
+printf '%s\n' "$MATCHES"
