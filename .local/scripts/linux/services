@@ -1,0 +1,51 @@
+#!/bin/bash
+# starts/stops services that are used sometimes
+# e.g. for testing webservers I have postgres/mariadb/docker,
+# but those are used infrequently
+# running them all the time isn't needed
+#
+# Usage:
+#     services [start|stop]
+# calling without any options toggles services
+
+# using /tmp/ is fine since these services are disabled by default
+# starting them only matters while the computer is active; service
+# status gets reset on reboot
+readonly service_toggle_file='/tmp/services_enabled'
+
+declare -a service_list
+service_list=('mariadb.service' 'postgresql.service' 'docker.service')
+
+start_services() {
+	echo "Starting services..."
+	for serv in "${service_list[@]}"; do
+		echo "Starting ${serv}..."
+		sudo systemctl start "$serv"
+	done
+	touch "$service_toggle_file"
+}
+
+stop_services() {
+	echo "Stopping services..."
+	for serv in "${service_list[@]}"; do
+		echo "Stopping ${serv}..."
+		sudo systemctl stop "$serv"
+	done
+	[[ -f "$service_toggle_file" ]] && rm "$service_toggle_file"
+}
+
+case "$1" in
+stop)
+	stop_services
+	;;
+start)
+	start_services
+	;;
+*)
+	if [[ -f "$service_toggle_file" ]]; then
+		stop_services
+	else
+		start_services
+	fi
+	;;
+esac
