@@ -1,0 +1,5 @@
+#compdef services
+
+function _services() {
+	_arguments '1: :(start stop)'
+}

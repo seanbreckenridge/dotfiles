@@ -14,7 +14,12 @@
 readonly service_toggle_file='/tmp/services_enabled'
 
 declare -a service_list
-service_list=('mariadb.service' 'postgresql.service' 'docker.service')
+service_list=(
+	'mariadb.service'
+	'postgresql.service'
+	'docker.service'
+	'containerd.service'
+)
 
 start_services() {
 	echo "Starting services..."
