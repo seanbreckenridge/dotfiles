@@ -30,5 +30,5 @@ function update() {
 	cd
 	go get -u -v $(cut -d" " -f2 "$HOME/.config/yadm/go_packages.txt") 2>&1 | grep "(download)$"
 	cd "$OLDPWD"
-	printf "Finished updates in %d seconds\n" $(bc <<<"$(date +%s) - ${START_TIME}") | boxes -d shell -p t1l2b1r2
+	printf "Finished updates in %d seconds\n" $(bc <<<"$(date +%s) - ${START_TIME}") | boxes -dshell -pv1h2
 }
