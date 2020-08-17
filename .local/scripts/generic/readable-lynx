@@ -1,0 +1,5 @@
+#!/bin/sh
+# parses a URL with readable (firefox's readability lib) and
+# opens it in lynx
+URL="${1:?Must pass a URL to process with readable}"
+readable "$URL" | lynx -stdin

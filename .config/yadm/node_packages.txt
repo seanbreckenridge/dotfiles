@@ -17,3 +17,4 @@ mapscii
 jikan-node
 sqleton
 @jamen/lorem
+@gardenapple/readability-cli
