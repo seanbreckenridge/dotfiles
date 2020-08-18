@@ -231,6 +231,12 @@ link = 'edit-clipboard'
 [cl]
 command='clipcopy'
 
+[clipreset]
+command='''
+# reset the clipboard formatting
+clippaste | clipcopy
+'''
+
 [lynx]
 command = '''
 # override the lynx binary by

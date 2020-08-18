@@ -112,6 +112,8 @@ bindsym --release Print exec --no-startup-id screenshot
 bindsym Shift+Print exec --no-startup-id screenshot --full
 # upload the most recent screenshot to imgur, copy result to clipboard
 bindsym $mod+Print exec --no-startup-id screenshot-to-imgur
+# reset clipboard formatting
+bindsym $mod+Shift+c exec --no-startup-id clipreset
 
 # gaps config
 for_window [class=".*"] border pixel 0
