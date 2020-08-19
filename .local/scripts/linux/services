@@ -5,7 +5,7 @@
 # running them all the time isn't needed
 #
 # Usage:
-#     services [start|stop]
+#     services [start|stop|status]
 # calling without any options toggles services
 
 # using /tmp/ is fine since these services are disabled by default
@@ -39,12 +39,21 @@ stop_services() {
 	[[ -f "$service_toggle_file" ]] && rm "$service_toggle_file"
 }
 
+status_services() {
+	for serv in "${service_list[@]}"; do
+		printf '%s: %s\n' "${serv%.service}" "$(systemctl show -p SubState --value "$serv")"
+	done
+}
+
 case "$1" in
 stop)
 	stop_services
 	;;
 start)
 	start_services
+	;;
+status)
+	status_services
 	;;
 *)
 	if [[ -f "$service_toggle_file" ]]; then
