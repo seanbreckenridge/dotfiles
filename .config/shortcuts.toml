@@ -491,7 +491,7 @@ command='''
 # passes arguments received to grep
 while read -r filename; do
 	grep -Hrin "$@" "$filename"
-done < <(list-config | grep -v "zsh_history")
+done < <(list-config | grep -vE "zsh_history|compdump")
 '''
 
 [cheat]
