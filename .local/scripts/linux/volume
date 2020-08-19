@@ -23,5 +23,3 @@ micmute)
 	;;
 esac
 
-# refresh
-# pkill -RTMIN+1 -x i3blocks
