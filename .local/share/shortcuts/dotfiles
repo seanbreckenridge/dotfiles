@@ -1,4 +1,4 @@
 #!/bin/sh
 # open the dotfiles git repository
 cd "${HOME}/.config/yadm/repo.git"
-gitopen
+exec gitopen

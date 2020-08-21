@@ -37,7 +37,7 @@ launch "doom sync && restart-emacs"
 command = '''
 # open the dotfiles git repository
 cd "${HOME}/.config/yadm/repo.git"
-gitopen
+exec gitopen
 '''
 
 [dotfiles-github]
