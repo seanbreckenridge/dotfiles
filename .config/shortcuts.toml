@@ -184,6 +184,12 @@ for f in "$@"; do
 done
 '''
 
+[mpv-corner]
+command='''
+# mpv wrapper to open a video with mpv and put it in the bottom right corner
+setsid -f mpv --x11-name=mpv_stream_media "$@" >/dev/null 2>&1
+'''
+
 [stream-corner]
 command='''
 # streams and sets the instance name on the mpv window
