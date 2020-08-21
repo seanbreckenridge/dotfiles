@@ -1,3 +1,4 @@
 #!/bin/sh
+# format and print colored json output
 JSON_FILE="${1:?No JSON file provided}"
 jq <"$JSON_FILE" | highlight --out-format=ansi -S json || exit 1

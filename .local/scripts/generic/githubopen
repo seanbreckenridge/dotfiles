@@ -10,4 +10,5 @@ if GIT_URL=$(giturl); then
 	openurl "${GIT_URL/gitlab.com/github.com}"
 else
 	echo "$GIT_URL" >&2 # print error
+	exit 1
 fi
