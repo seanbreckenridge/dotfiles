@@ -1,4 +1,4 @@
 #!/bin/sh
-# pass the resultion to stream as the first argument
+# set the FORMAT environment variable to specify maximum height/width
 # defaults to about 480p
 STREAM_MEDIA_CMD=mpv stream-corner --ytdl-format="$(create-youtube-dl-resolution-str)" "$@"
