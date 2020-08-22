@@ -1,8 +1,6 @@
 #!/bin/sh
 # defaults to about 480p
-# otherwise, grabs the format from the FORMAT
-# environment variable
-# prints the format string for a particular
-# resolution
+# otherwise, grabs the format from the FORMAT environment variable
+# prints the format string for a particular resolution
 FORMAT="${FORMAT:-550}"
 exec printf 'bestvideo[height<=%d]+bestaudio/best[height<=%d]' "$FORMAT" "$FORMAT"
