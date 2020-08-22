@@ -4,5 +4,5 @@
 # environment variable
 # prints the format string for a particular
 # resolution
-FORMAT=${FORMAT:-550}
+FORMAT="${FORMAT:-550}"
 exec printf 'bestvideo[height<=%d]+bestaudio/best[height<=%d]' "$FORMAT" "$FORMAT"
