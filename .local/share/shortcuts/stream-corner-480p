@@ -1,4 +1,0 @@
-#!/bin/sh
-# stream videos at around 480p. doesnt prompt for format in rofi since
-# the command is overriden with mpv
-STREAM_MEDIA_CMD=mpv stream-corner --ytdl-format='bestvideo[height<=480]+bestaudio/best[height<=480]' "$@"

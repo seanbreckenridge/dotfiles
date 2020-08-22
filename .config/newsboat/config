@@ -34,7 +34,7 @@ macro , open-in-browser
 macro o set browser "openurl" ; open-in-browser ; set browser linkhandler
 macro l set browser "lynx" ; open-in-browser ; set browser linkhandler
 macro r set browser "readable-lynx" ; open-in-browser ; set browser linkhandler
-macro y set browser "cd ~/Downloads; youtube-dl -f 'bestvideo[height<=480]+bestaudio/best[height<=480]'" ; open-in-browser ; set browser linkhandler
+macro y set browser "cd ~/Downloads; youtube-dl-480; open-in-browser ; set browser linkhandler
 
 highlight all "---.*---" yellow
 highlight feedlist ".*(0/0))" black

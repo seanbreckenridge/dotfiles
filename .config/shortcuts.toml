@@ -184,30 +184,6 @@ for f in "$@"; do
 done
 '''
 
-[mpv-corner]
-command='''
-# mpv wrapper to open a video with mpv and put it in the bottom right corner
-setsid -f mpv --x11-name=mpv_stream_media "$@" >/dev/null 2>&1
-'''
-
-[stream-corner]
-command='''
-# streams and sets the instance name on the mpv window
-# this is used with a for_window hook in i3 to put the
-# window in the bottom right
-stream-media --x11-name=mpv_stream_media "$@"
-'''
-
-[stream-corner-480p]
-command='''
-# stream videos at around 480p. doesnt prompt for format in rofi since
-# the command is overriden with mpv
-STREAM_MEDIA_CMD=mpv stream-corner --ytdl-format='bestvideo[height<=480]+bestaudio/best[height<=480]' "$@"
-'''
-
-[stream-audio]
-command='STREAM_MEDIA_CMD=mpv stream-media --no-video "$@"'
-
 [screenshot-to-imgur]
 command='''
 # uploads the most recent screenshot from
@@ -521,8 +497,71 @@ command='''
 rev | cut "$@" | rev
 '''
 
+[mpv-corner]
+command='''
+# mpv wrapper to open a video with mpv and put it in the bottom right corner
+setsid -f mpv --x11-name=mpv_stream_media "$@" >/dev/null 2>&1
+'''
+
 [youtube-dl]
 command='''python3 -m youtube_dl -o '%(title)s.%(ext)s' -ci "$@"'''
+
+[create-youtube-dl-resolution-str]
+command='''
+# defaults to about 480p
+# otherwise, grabs the format from the FORMAT
+# environment variable
+# prints the format string for a particular
+# resolution
+FORMAT=${FORMAT:-550}
+exec printf 'bestvideo[height<=%d]+bestaudio/best[height<=%d]' "$FORMAT" "$FORMAT"
+'''
+
+[stream-corner]
+command='''
+# streams and sets the instance name on the mpv window
+# this is used with a for_window hook in i3 to put the
+# window in the bottom right
+stream-media --x11-name=mpv_stream_media "$@"
+'''
+
+[stream-corner-at]
+command='''
+# pass the resultion to stream as the first argument
+# defaults to about 480p
+STREAM_MEDIA_CMD=mpv stream-corner --ytdl-format="$(create-youtube-dl-resolution-str)" "$@"
+'''
+
+[stream-corner-480]
+command='stream-corner-at "$@"'
+
+[stream-corner-720]
+command='''
+export FORMAT=850
+stream-corner-at "$@"
+'''
+
+[stream-audio]
+command='STREAM_MEDIA_CMD=mpv stream-media --no-video "$@"'
+
+[youtube-dl-at]
+command='''
+# set the FORMAT environment variable to control resolution
+youtube-dl -f "$(create-youtube-dl-resolution-str)" "$@"
+'''
+
+[youtube-dl-480]
+command='''
+# download at about 480p
+youtube-dl-at "$@"
+'''
+
+[youtube-dl-720]
+command='''
+# download at about 720p
+export FORMAT=850
+youtube-dl-at "$@"
+'''
 
 [discord]
 command="openurl 'https://discord.com/login'"
