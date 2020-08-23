@@ -1,6 +1,6 @@
 #!/bin/bash
 # floats and stickies a window,
-# moves it to the bottom right, taking up the bottom right corner (33% of width and height)
+# moves it to the bottom right, taking up the bottom right corner
 # does this on the first screen from xrandr
 # requires xdotool/xrandr
 #
@@ -16,9 +16,9 @@ screen_resolution_str="$(main-screen-resolution)"
 # read resolution into array, (width, height)
 IFS='x' read -r -a screen_resolution <<<"$screen_resolution_str"
 
-# calculate target height/width
-target_width="$((screen_resolution[0] / 3))"
-target_height="$((screen_resolution[1] / 3))"
+# calculate target height/width (40% of screen)
+target_width="$((screen_resolution[0] / 5 * 2))"
+target_height="$((screen_resolution[1] / 5 * 2))"
 
 # subtract window width from screen resolution to get x coordinate
 top_right_x_coord="$((screen_resolution[0] - target_width))"
