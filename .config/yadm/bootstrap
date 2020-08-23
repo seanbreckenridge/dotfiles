@@ -44,6 +44,7 @@ declare -rx DART_PACKAGE_LIST="${YADM_DIR}/dart_packages.txt"
 declare -rx CARGO_PACKAGE_LIST="${YADM_DIR}/cargo_packages.txt"
 declare -rx GO_PACKAGE_LIST="${YADM_DIR}/go_packages.txt"
 declare -rx HASKELL_PACKAGE_LIST="${YADM_DIR}/haskell_packages.txt"
+declare -rx MIX_PACKAGE_LIST="${YADM_DIR}/mix_archive_packages.txt"
 
 # make sure personal aliases file exists so that zshrc souces fine
 [[ ! -f "${ZDOTDIR}/aliases/personal_aliases" ]] && touch "${ZDOTDIR}/aliases/personal_aliases"
@@ -178,6 +179,15 @@ if [[ ! -d "$HOME/.emacs.d/" ]]; then
 	"${HOME}/.emacs.d/bin/doom" sync
 fi
 
+havecmd mix || exit $?
+echo "Installing global pheonix mix archives..."
+MIX_ARCHIVE_LIST="$(mix archive | sed -e '/Archives installed at: /d' -e 's/^* //' -e 's/-.*//')"
+while read -r mix_pkg; do
+	if ! grep -q "^${mix_pkg}$" <<<"$MIX_ARCHIVE_LIST"; then
+		mix archive.install --force "${mix_pkg}"
+	fi
+done <"$MIX_PACKAGE_LIST"
+
 echo "Checking for manually installed binaries..."
 declare -a required_binaries optional_binaries
 required_binaries=("wait-for-internet" "shortcuts" "exists" "evry")
@@ -191,10 +201,6 @@ done
 for binary in "${optional_binaries[@]}"; do
 	havecmd "$binary" || print_error "Warning: Couldn't find ${binary}. Install it from https://github.com/seanbreckenridge/${binary}"
 done
-
-# install pheonix archive
-echo "Installing mix archives..."
-havecmd mix && mix archive.install --force hex phx_new
 
 havecmd shortcuts
 havecmd shortcuts && printf "Created %d shortcuts\n" "$(shortcuts create | wc -l)"
