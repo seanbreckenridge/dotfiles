@@ -1,0 +1,2 @@
+#!/bin/sh
+printf '%s %d%%\n' "$(cat /sys/class/power_supply/*/status)" "$(cat /sys/class/power_supply/*/capacity)"
