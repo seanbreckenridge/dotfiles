@@ -275,3 +275,6 @@ bindsym $mod+Shift+w exec --no-startup-id wfi
 # start a terminal
 bindsym $mod+Return exec --no-startup-id alacritty
 
+# open a browser tab
+bindsym $mod+Shift+Return exec --no-startup-id firefox-developer-edition --new-tab;
+
