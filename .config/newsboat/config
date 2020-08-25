@@ -33,7 +33,7 @@ browser linkhandler
 macro , open-in-browser ; toggle-article-read
 macro o set browser "openurl" ; open-in-browser ; set browser linkhandler ; toggle-article-read
 macro l set browser "lynx" ; open-in-browser ; set browser linkhandler ; toggle-article-read
-macro r set browser "readable-lynx" ; open-in-browser ; set browser linkhandler ; toggle-article-read
+macro r set browser "rread -b" ; open-in-browser ; set browser linkhandler ; toggle-article-read
 macro y set browser "cd ~/Downloads; youtube-dl" ; open-in-browser ; set browser linkhandler ; toggle-article-read
 macro 4 set browser "cd ~/Downloads; youtube-dl-480" ; open-in-browser ; set browser linkhandler ; toggle-article-read
 macro 7 set browser "cd ~/Downloads; youtube-dl-720" ; open-in-browser ; set browser linkhandler ; toggle-article-read

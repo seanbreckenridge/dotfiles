@@ -1,0 +1,61 @@
+#!/bin/bash
+# parses a URL with readable (firefox's readability lib)
+# and dump the HTML contents to STDOUT
+
+rread_help() {
+	cat <<RREAD_HELP
+parses a URL with readable (firefox's readability lib)
+and dump the HTML contents to STDOUT
+
+Usage:
+  readable [-b|-d|-p] <URL>
+
+Options:
+  -b  display output with lynx browser (default)
+  -d  dump HTML to STDOUT
+  -p  print parsed text to STDOUT
+RREAD_HELP
+}
+
+clean_broken_utf() {
+	perl -pe 's/[^[:ascii:]]//g'
+} 2>/dev/null
+
+declare ACTION='browser'
+while getopts 'bdph' opt; do
+	case "$opt" in
+	p)
+		ACTION='print'
+		;;
+	b)
+		ACTION='browser'
+		;;
+	d)
+		ACTION='dump'
+		;;
+	h)
+		rread_help
+		exit 0
+		;;
+	\?)
+		rread_help
+		exit 1
+		;;
+	esac
+done
+shift "$((OPTIND - 1))"
+
+URL="${1:?Must pass a URL to process with readable}"
+HTML_OUT="$(readable "$URL")"
+
+case "$ACTION" in
+browser)
+	lynx -stdin <<<"$HTML_OUT"
+	;;
+dump)
+	cat <<<"$HTML_OUT"
+	;;
+print)
+	lynx -stdin -dump <<<"$HTML_OUT" | clean_broken_utf
+	;;
+esac
