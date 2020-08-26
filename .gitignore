@@ -24,6 +24,9 @@ directory_aliases
 .bash_profile
 .bashrc
 
+# my secret files
+.config/my/**/*secret*
+
 
 # Ignore README - handled by git hooks -- see .config/yadm/yadm-with-README.md 
 /README.md
@@ -174,6 +177,7 @@ __pycache__
 /Repos
 /Documents
 /Desktop
+/data
 /.Trash
 /Library
 /Public
