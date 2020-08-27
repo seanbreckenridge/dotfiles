@@ -24,7 +24,7 @@ class weight:
 
 class zsh:
     export_path: Paths = "~/data/zsh_history/"
-    live_zsh_history: Optional[PathIsh] = environ["ZDOTDIR"] + "/.zsh_history"
+    live_zsh_history: Optional[PathIsh] = path.join(environ["ZDOTDIR"], ".zsh_history")
 
 #class stackexchange:
 #    export_path: Paths = "~/data/stexport"
