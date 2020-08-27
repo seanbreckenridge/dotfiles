@@ -152,6 +152,6 @@ alias glum='git pull upstream master'
 
 # clone some repo and cd into it
 gclcd () {
-  gcl "${1:?Provide something to git clone}" || exit 1
+  gcl "${1:?Provide something to git clone}"
   cd "$(newest)"
 }
