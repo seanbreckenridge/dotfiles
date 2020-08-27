@@ -31,8 +31,11 @@ class weight:
 
 class zsh:
     export_path: Paths = "~/data/zsh_history/"
-    live_zsh_history: Optional[PathIsh] = path.join(environ["ZDOTDIR"], ".zsh_history")
+    live_file: Optional[PathIsh] = path.join(environ["ZDOTDIR"], ".zsh_history")
 
+class todotxt:
+    export_path: Paths = "~/data/todotxt/"
+    live_file: Optional[PathIsh] = path.join(environ["XDG_CONFIG_HOME"], "todo", "todo.txt")
 
 class commits:
     # names: List[str] = ["Sean Breckenridge"]
