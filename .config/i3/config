@@ -34,6 +34,7 @@ exec --no-startup-id bash "${REPOS}/todotxt_deadline_notify/copy_todotxt_to_serv
 # loop that runs in the background, running random tasks periodically (cron-like)
 # https://github.com/seanbreckenridge/bgproc
 exec --no-startup-id bash "${REPOS}/bgproc/bgproc"
+exec --no-startup-id bash "${REPOS}/HPI/bgproc"
 
 # bind display key to randomize wallpaper
 bindsym XF86Display exec --no-startup-id randomize-wallpaper
