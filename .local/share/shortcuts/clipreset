@@ -1,3 +1,4 @@
 #!/bin/sh
 # reset the clipboard formatting
+notify "resetting clipboard..."
 clippaste | clipcopy

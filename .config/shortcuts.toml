@@ -217,6 +217,7 @@ command='clipcopy'
 [clipreset]
 command='''
 # reset the clipboard formatting
+notify "resetting clipboard..."
 clippaste | clipcopy
 '''
 
