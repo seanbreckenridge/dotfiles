@@ -48,6 +48,10 @@ class commits:
         Path(environ["REPOS"]),
     ]
 
+# uses ffexport https://github.com/seanbreckenridge/ffexport
+class firefox:
+    export_path: Paths = "~/data/firefox/dbs/"
+
 
 # class stackexchange:
 #    export_path: Paths = "~/data/stexport"
