@@ -20,8 +20,8 @@ The rest of the README is for what I used on arch:
 - [alacritty](https://github.com/alacritty/alacritty) as terminal 
 - [firefox-developer-edition](https://www.archlinux.org/packages/community/x86_64/firefox-developer-edition/) - browser, addons listed in [firefox_addons.txt](./.local/share/firefox_addons.txt)
 - [rofi](https://github.com/davatorium/rofi) - application launcher
-- [nvim](https://neovim.io/) and sometimes [(doom) emacs](https://github.com/hlissner/doom-emacs) (when I want IDE-like support) as editors - see [editor](.local/scripts/system/editor)
-- [i3lock](https://i3wm.org/i3lock/) for screen lock; [daemon process](.local/scripts/system/lock_screen) caches pixelated version of screen to speed up start time
+- [nvim](https://neovim.io/) and sometimes [(doom) emacs](https://github.com/hlissner/doom-emacs) (when I want IDE-like support) as editors - see [editor](.local/scripts/cross-platform/editor)
+- [i3lock](https://i3wm.org/i3lock/) for screen lock; [daemon process](.local/scripts/cross-platform/lock-screen) caches pixelated version of screen to speed up start time
 - [dunst](https://dunst-project.org/) for notifications
 - [lightdm](https://wiki.archlinux.org/index.php/LightDM) - display manager
 - [todotxt](http://todotxt.org/) for todos, with a [rofi interface](.local/scripts/bin/todo_prompt) as GUI, and [tui](https://gitlab.com/seanbreckenridge/full_todotxt) for adding todos.
@@ -36,12 +36,11 @@ I typically default to dracula-like color schemes to keep things consistent. Cur
 Packages can be added to the `.txt` files manually, and then `yadm bootstrap` can be run repeatedly to make sure everything is installed.
 
 - [.config/shortcuts.toml](.config/shortcuts.toml) - describes basic shell scripts that are created by [shortcuts](https://gitlab.com/seanbreckenridge/shortcuts)
-`dir-aliases-ranger` creates bookmarks in ranger to common directories.
+- `dir-aliases-ranger` creates bookmarks in ranger to common directories.
 - [.local/scripts/bin](.local/scripts/bin) - generic scripts
     - media related, [duration](.local/scripts/bin/duration) to get media length, [gifme](.local/scripts/bin/gifme) to convert video to gifs.
     - [gitopen](.local/scripts/bin/gitopen) to open current git directory in browser
     - [qr](.local/scripts/bin/qr) - create a QR code from a string and display it full screen
-- [.local/scripts/system](.local/scripts/system) - system related scripts (modifying brightness, volume etc.) w/ [zsh completion](.config/zsh/completions)
 - [fzf](https://github.com/junegunn/fzf) **everywhere** - in [ranger](https://gitlab.com/seanbreckenridge/dotfiles/-/blob/master/.config/ranger/commands.py), to search `cwd` recursively and jump to directories (`Alt+C`), to [edit config files](https://gitlab.com/seanbreckenridge/dotfiles/-/blob/c072c474d0ec497761f484d0b11ec555ef397062/.config/shortcuts.toml#L7-15), to kill processes, and to [search the entire system](https://gitlab.com/seanbreckenridge/dotfiles/-/blob/master/.config/zsh/functions/flocate). Integration with [`nvim`](.config/nvim/init.vim) to match against lines/files/commands/buffers.
 
 ### Install

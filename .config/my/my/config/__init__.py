@@ -26,7 +26,7 @@ class reddit:
 
 
 class weight:
-    logfile: PathIsh = "~/data/weight.log"
+    datafile: PathIsh = "~/data/weight.json"
 
 
 class zsh:
