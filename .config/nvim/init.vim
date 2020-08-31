@@ -11,7 +11,7 @@ Plug 'junegunn/goyo.vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-Plug 'terryma/vim-multiple-cursors'
+Plug 'terryma/vim-multiple-cursors'  " ctrl+n to use
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'itchyny/lightline.vim'
 call plug#end()

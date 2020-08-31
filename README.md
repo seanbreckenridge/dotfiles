@@ -20,7 +20,7 @@ The rest of the README is for what I used on arch:
 - [alacritty](https://github.com/alacritty/alacritty) as terminal 
 - [firefox-developer-edition](https://www.archlinux.org/packages/community/x86_64/firefox-developer-edition/) - browser, addons listed in [firefox_addons.txt](./.local/share/firefox_addons.txt)
 - [rofi](https://github.com/davatorium/rofi) - application launcher
-- [nvim](https://neovim.io/) as sometimes [(doom) emacs](https://github.com/hlissner/doom-emacs) (when I want IDE-like support) as editors - see [editor](.local/scripts/system/editor)
+- [nvim](https://neovim.io/) and sometimes [(doom) emacs](https://github.com/hlissner/doom-emacs) (when I want IDE-like support) as editors - see [editor](.local/scripts/system/editor)
 - [i3lock](https://i3wm.org/i3lock/) for screen lock; [daemon process](.local/scripts/system/lock_screen) caches pixelated version of screen to speed up start time
 - [dunst](https://dunst-project.org/) for notifications
 - [lightdm](https://wiki.archlinux.org/index.php/LightDM) - display manager
