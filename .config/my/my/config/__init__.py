@@ -48,9 +48,15 @@ class commits:
         Path(environ["REPOS"]),
     ]
 
+# uses my dameon for watching mpv events
+# https://github.com/seanbreckenridge/mpv-sockets/blob/master/DAEMON.md
+class mpv:
+    export_path: Paths = "~/data/mpv/*.json"
+
+
 # uses ffexport https://github.com/seanbreckenridge/ffexport
 class firefox:
-    export_path: Paths = "~/data/firefox/dbs/"
+    export_path: Paths = "~/data/firefox/dbs/*.sqlite"
 
 
 # class stackexchange:
