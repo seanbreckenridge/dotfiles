@@ -44,6 +44,8 @@ alias syserrors="sudo journalctl -p 3 -xb"
 alias sysderrors="sudo systemctl --failed"
 # Non-standard
 
+# edit the python --editable installed packages
+alias 'pip-editable-installs=e "$(find ~/.local/lib/python* -name easy-install.pth)"'
 alias todo='todo.sh'
 # open screenshots folder
 alias screens='sxiv -t "${SCREENSHOTS}"'
