@@ -68,6 +68,10 @@ class league_of_legends:
 class steam:
     export_path: Paths = "~/data/steam.json"
 
+# uses https://github.com/seanbreckenridge/steamscraper
+class blizzard:
+    export_path: Paths = "~/data/blizzard/parsed.json"
+
 # class stackexchange:
 #    export_path: Paths = "~/data/stexport"
 #    stexport: Optional[PathIsh] = repo("stexport")
