@@ -16,6 +16,9 @@ done
 
 evry 1 day -backup_fish_server && backup_server
 evry 2 months -pythonanywhere && pythonanywhere_3_months -Hc "$(which chromedriver)"
+evry 1 day -pull_gooogle_drive && {
+	cd ~/GoogleDrive/ && drive pull
+}
 
 # has the possibility to fail, if I'm not home and it tries to
 # find the raspberry pi on my home network

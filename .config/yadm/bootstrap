@@ -50,7 +50,7 @@ declare -rx MIX_PACKAGE_LIST="${YADM_DIR}/mix_archive_packages.txt"
 [[ ! -f "${ZDOTDIR}/aliases/personal_aliases" ]] && touch "${ZDOTDIR}/aliases/personal_aliases"
 
 # create default user directories
-default_user_dirs=("Repos" "Documents" "Documents/Notes" "Documents/wallpapers" "Downloads" "Pictures/Screenshots" "Pictures" ".local" ".cache" ".credentials")
+default_user_dirs=("Repos" "Documents" "Documents/Notes" "Documents/wallpapers" "GoogleDrive" "Downloads" "Pictures/Screenshots" "Pictures" ".local" ".cache" ".credentials")
 for d_name in "${default_user_dirs[@]}"; do
 	if [[ ! -d "${HOME}/${d_name}" ]]; then
 		mkdir -p "${HOME}/${d_name}"
