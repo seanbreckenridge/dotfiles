@@ -1,0 +1,3 @@
+#!/bin/sh
+# clp, but accepts input as arguments
+echo "$*" | clp

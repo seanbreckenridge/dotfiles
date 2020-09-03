@@ -362,6 +362,12 @@ printf '%s' "$STDIN" | clipcopy
 exec notify "clp" "$(printf 'Copied %d lines to clipboard' "$(echo "$STDIN" | wc -l)")"
 '''
 
+[clp-args]
+command='''
+# clp, but accepts input as arguments
+echo "$*" | clp
+'''
+
 # lots of date shorthands
 
 [tstamp]
