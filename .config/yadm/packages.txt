@@ -106,6 +106,7 @@ ctags
 datamash
 dex
 dragon-drag-and-drop-git
+drive-bin
 dust
 emacs
 entr
