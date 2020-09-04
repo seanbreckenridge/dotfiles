@@ -72,6 +72,9 @@ class steam:
 class blizzard:
     export_path: Paths = "~/data/blizzard/parsed.json"
 
+class old_forums:
+    export_path: Paths = "~/data/old_forums/*.json"
+
 # class stackexchange:
 #    export_path: Paths = "~/data/stexport"
 #    stexport: Optional[PathIsh] = repo("stexport")
