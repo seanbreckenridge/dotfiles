@@ -22,6 +22,7 @@ class github:
 
 class reddit:
     export_path: Paths = "~/data/rexport/"
+    pushshift_export_path: Paths = "~/data/rps_comments/*.json"
     rexport: Optional[PathIsh] = repo("rexport")
 
 
