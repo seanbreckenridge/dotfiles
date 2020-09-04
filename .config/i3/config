@@ -37,7 +37,7 @@ exec --no-startup-id bash "${REPOS}/bgproc/bgproc"
 exec --no-startup-id bash "${REPOS}/HPI/bgproc"
 # mpv-history-daemon, to catpure mpv events/what Im watching/listening to
 # https://github.com/seanbreckenridge/mpv-sockets/blob/master/DAEMON.md
-exec --no-startup-id mpv-history-daemon /tmp/mpvsockets "${HOME}/data/mpv"
+exec --no-startup-id sh -c "python3 ${REPOS}/mpv-sockets/mpv-history-daemon /tmp/mpvsockets ${HOME}/data/mpv"
 
 # bind display key to randomize wallpaper
 bindsym XF86Display exec --no-startup-id randomize-wallpaper
