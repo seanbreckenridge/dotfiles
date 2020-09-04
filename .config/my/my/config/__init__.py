@@ -76,6 +76,9 @@ class blizzard:
 class old_forums:
     export_path: Paths = "~/data/old_forums/*.json"
 
+class skype:
+    export_path: Paths = "~/data/skype.json"
+
 # class stackexchange:
 #    export_path: Paths = "~/data/stexport"
 #    stexport: Optional[PathIsh] = repo("stexport")
