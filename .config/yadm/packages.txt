@@ -83,7 +83,6 @@ stack-static
 tidy
 valgrind
 wasm-pack
-xonsh
 yarn
 
 # utils
