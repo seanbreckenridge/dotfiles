@@ -9,8 +9,9 @@
 # zsh history configuration
 
 HISTFILE="${ZDOTDIR}/.zsh_history"
-HISTSIZE=1000000000
-SAVEHIST=1000000000
+# https://github.com/zsh-users/zsh/blob/17ee9c5f68d18ef48c1ef99ae6162a06675104f2/Src/zsh.h#L46
+HISTSIZE=10000000000000000
+SAVEHIST=10000000000000000
 setopt APPEND_HISTORY     # append to history file instead of replacing
 setopt HIST_REDUCE_BLANKS # delete empty lines from history file
 setopt HIST_IGNORE_SPACE  # ignore lines that start with space
