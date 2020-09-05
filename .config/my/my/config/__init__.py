@@ -15,7 +15,7 @@ def repo(repo_name: str) -> str:
 
 
 class github:
-    gdpr_dir: PathIsh = Path("~/data/github/gdpr").expanduser()
+    gdpr_dir: PathIsh = "~/data/github/gdpr"
     export_path: Paths = "~/data/github/ghexport/"
     ghexport: Optional[PathIsh] = repo("ghexport")
 
@@ -78,6 +78,12 @@ class old_forums:
 
 class skype:
     export_path: Paths = "~/data/skype.json"
+
+class facebook:
+    gdpr_dir: PathIsh = "~/data/facebook_gdpr/"
+
+class ipython:
+    export_path: Paths = "~/data/ipython/*.sqlite"
 
 # class stackexchange:
 #    export_path: Paths = "~/data/stexport"
