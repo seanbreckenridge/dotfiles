@@ -9,4 +9,4 @@ from datetime import datetime, timedelta, timezone
 from collections import Counter
 from glob import glob
 from pprint import pprint
-
+from itertools import chain
