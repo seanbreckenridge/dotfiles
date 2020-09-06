@@ -1,0 +1,83 @@
+#!/bin/bash
+# A wrapper around https://github.com/client9/misspell,
+# which uses ag (silver_searcher) to highlight the
+# spelling mistake in context, so its easier to decide what to do
+#
+# additional arguments are passed on to fd
+#
+# requires fd, ag, misspell, fzf
+
+declare -A MISSPELLED # misspelled words
+declare -a COMMAND    # array of arguments for command to execute
+declare IGNORE_STR    # ignore string for misspell -i flag
+
+banner() {
+	yes '=' | head -c "$(tput cols)" | xargs echo -n
+	echo
+}
+
+# uses 'ag' to show where the misspelling is
+show_context() {
+	local line filename misspelled_word
+	line="$1"
+	printf ">>> %s\n" "$line"
+	filename="$(cut -d":" -f1 <<<"$line")"
+	# grab the misspelled word from the line
+	misspelled_word="$(echo "$line" | grep -oP -m1 '"([^"]+)"' | head -n1 | tr -d '"')"
+	# add to misspelled word set, corresponding value is the line from misspell
+	MISSPELLED[$misspelled_word]="$line"
+	ag --color --context=1 --filename "$misspelled_word" "$filename"
+}
+
+while IFS= read -r misspelled_line; do
+	show_context "$misspelled_line"
+done < <(fd "$@" -x misspell)
+
+if [[ "${#MISSPELLED[@]}" == 0 ]]; then
+	echo "No misspelled words found!"
+	exit 0
+fi
+
+banner
+
+echo "Select 'replace' to replace all matches, or 'ignore' to pick words to ignore (not replace)"
+select choice in replace ignore exit; do
+	case $choice in
+	replace)
+		break
+		;;
+	ignore)
+		# expand the keys of the array with newlines in a subshell. set IFS in the child process
+		# as to not interfere with IFS here.
+		# fzf to allow the user to select what they want
+		# and paste those together into the string misspell expects
+		IGNORE_STR="$(
+			(
+				IFS=$'\n'
+				echo "${!MISSPELLED[*]}"
+			) |
+				fzf -i -m --height=20% --reverse --header="Select one or more words to ignore with 'Tab'" |
+				paste -d"," -s
+		)"
+		break
+		;;
+	exit)
+		exit 0
+		;;
+	esac
+done
+
+COMMAND=(fd)
+COMMAND+=("${@}") # fd args passed by user
+COMMAND+=(-x misspell -w)
+[[ -n "$IGNORE_STR" ]] && COMMAND+=(-i "$IGNORE_STR")
+
+printf '%s\n' "${COMMAND[*]}"
+printf "Execute command? (Y/n) "
+read -r
+case $REPLY in
+N | n) ;;
+*)
+	exec "${COMMAND[@]}"
+	;;
+esac
