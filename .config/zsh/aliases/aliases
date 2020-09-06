@@ -74,6 +74,7 @@ alias tetris='autoload -Uz tetriscurses; tetriscurses'
 alias countdown='termdown'
 alias cl='clipcopy'
 alias rss='e ~/.config/newsboat/urls'
+alias spell='misspell-context'
 
 # if I type python with out any arguments, launch ipython instead
 python() { python3 "$@" }
