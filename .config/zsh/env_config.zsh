@@ -18,7 +18,7 @@ setopt HIST_IGNORE_SPACE  # ignore lines that start with space
 setopt HIST_NO_STORE      # Do not add history and fc commands to the history
 setopt EXTENDED_HISTORY   # save time/duration to history file
 
-# Set environment variables to change defualt cache/config file locations
+# Set environment variables to change default cache/config file locations
 
 # Change npm install dir from /usr/local/bin (which requires sudo)
 export NPM_CONFIG_PREFIX="${XDG_DATA_HOME}/npm-packages"

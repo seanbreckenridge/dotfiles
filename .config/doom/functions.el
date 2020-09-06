@@ -1,6 +1,6 @@
 ;;; ~/.doom.d/functions.el -*- lexical-binding: t; -*-
 
-;; Refrence: https://oremacs.com/swiper/#example---counsel-locate
+;; Reference: https://oremacs.com/swiper/#example---counsel-locate
 
 ;;;; edit config files
 
@@ -33,7 +33,7 @@ INITIAL-INPUT can be given as the initial minibuffer input."
 ;;;; file utilities
 
 (defun seanbr/current-buffer-file-path ()
-  "Gets the absolute path of the current buffers assosiated file"
+  "Gets the absolute path of the current buffers associated file"
   (buffer-file-name (window-buffer (minibuffer-selected-window))))
 
 (defun seanbr/replace-file-extension (filename new-extension)
@@ -66,7 +66,7 @@ INITIAL-INPUT can be given as the initial minibuffer input."
 (defun seanbr/markdown-open-pdf ()
   "Requires mupdf to be installed, opens the current buffer
    (with the extension replaced with .pdf)
-   Save any markdown file (while in markdown-mode) to generate the assosiated pdf
+   Save any markdown file (while in markdown-mode) to generate the associated pdf
    'compile' will refresh mupdf if its running
    "
   (interactive)

@@ -115,7 +115,7 @@ application/csv)
 	;;
 esac
 
-# defualt if extension/mimetype both fail
+# default if extension/mimetype both fail
 try safepipe pistol "$path" && {
 	dump
 	exit 5

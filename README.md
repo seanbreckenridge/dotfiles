@@ -2,7 +2,7 @@
 
 See [this](https://exobrain.sean.fish/tools/) page for a summary of how I use this.
 
-Majority of cross platform functionality is done, keep finding small improvements/mac alternatives to improve scripts. I use mac less so I have yet to configure it to all of my likings; I primarily use linux, and run a couple apps as a compatability layer on mac:
+Majority of cross platform functionality is done, keep finding small improvements/mac alternatives to improve scripts. I use mac less so I have yet to configure it to all of my likings; I primarily use linux, and run a couple apps as a compatibility layer on mac:
 
 * window management/keyboard shortcuts
   * Uses [`skhd`](https://github.com/koekeishiya/skhd) as a hot-key daemon to run applications (e.g. `cmd + opt + enter` launches terminal)
@@ -24,7 +24,7 @@ The rest of the README is for what I used on arch:
 - [i3lock](https://i3wm.org/i3lock/) for screen lock; [daemon process](.local/scripts/cross-platform/lock-screen) caches pixelated version of screen to speed up start time
 - [dunst](https://dunst-project.org/) for notifications
 - [lightdm](https://wiki.archlinux.org/index.php/LightDM) - display manager
-- [todotxt](http://todotxt.org/) for todos, with a [rofi interface](.local/scripts/bin/todo_prompt) as GUI, and [tui](https://gitlab.com/seanbreckenridge/full_todotxt) for adding todos.
+- [todotxt](http://todotxt.org/) for todos, with a [rofi interface](.local/scripts/bin/todo_prompt) as GUI, and [tui](https://github.com/seanbreckenridge/full_todotxt) for adding todos.
 - [ranger](https://github.com/ranger/ranger) - file manager
 - [picom](https://github.com/yshui/picom) for window compositing
 - [i3blocks](https://github.com/vivien/i3blocks) for status bar
@@ -35,7 +35,7 @@ I typically default to dracula-like color schemes to keep things consistent. Cur
 
 Packages can be added to the `.txt` files manually, and then `yadm bootstrap` can be run repeatedly to make sure everything is installed.
 
-- [.config/shortcuts.toml](.config/shortcuts.toml) - describes basic shell scripts that are created by [shortcuts](https://gitlab.com/seanbreckenridge/shortcuts)
+- [.config/shortcuts.toml](.config/shortcuts.toml) - describes basic shell scripts that are created by [shortcuts](https://github.com/seanbreckenridge/shortcuts)
 - `dir-aliases-ranger` creates bookmarks in ranger to common directories.
 - [.local/scripts/bin](.local/scripts/bin) - generic scripts
     - media related, [duration](.local/scripts/bin/duration) to get media length, [gifme](.local/scripts/bin/gifme) to convert video to gifs.

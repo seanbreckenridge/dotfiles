@@ -6,7 +6,7 @@
 # else open a new terminal window and run it there
 #
 # Check if we're on mac/linux to use mac-alacritty
-# (wrapper with differnt --config-file
+# (wrapper with different --config-file
 # or just alacritty
 
 if [ "$(tty)" = "not a tty" ]; then

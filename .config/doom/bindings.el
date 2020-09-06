@@ -33,7 +33,7 @@
 (map! :after latex
       :map LaTeX-mode-map
       :localleader
-      :desc "Display LaTeX preivew pane" "p" #'latex-preview-pane-mode)
+      :desc "Display LaTeX preview pane" "p" #'latex-preview-pane-mode)
 
 ;;;; markdown
 ;; open pdf that corresponds to current buffer in okular

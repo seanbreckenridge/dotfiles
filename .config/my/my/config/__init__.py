@@ -85,6 +85,9 @@ class facebook:
 class ipython:
     export_path: Paths = "~/data/ipython/*.sqlite"
 
+class google:
+    takeout_path: Paths = "~/data/google_takeout/"
+
 # class stackexchange:
 #    export_path: Paths = "~/data/stexport"
 #    stexport: Optional[PathIsh] = repo("stexport")

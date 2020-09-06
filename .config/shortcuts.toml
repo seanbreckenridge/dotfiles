@@ -353,7 +353,7 @@ command='exec ix -v'
 [clp]
 command='''
 # accepts input from STDIN, sends text back to STDOUT
-# copies what it recieved to the clipboard
+# copies what it received to the clipboard
 # used in vim:
 # see https://exobrain.sean.fish/vim/magic_wands/
 STDIN="$(cat)"

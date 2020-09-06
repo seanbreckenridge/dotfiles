@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# wrapper script for sending notificaitons on mac/linux
+# wrapper script for sending notifications on mac/linux
 
 declare -a linux_options
 linux_options=()

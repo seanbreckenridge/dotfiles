@@ -1,6 +1,6 @@
 #!/bin/bash
 # Moves the README.md downloaded from github back to ~/.config/yadm/README.md
-# so that changes made through the web interace stay updated locally
+# so that changes made through the web interacted stay updated locally
 
 cd "${HOME}"
 [[ -f ~/README.md ]] && mv ~/README.md ~/.config/yadm/README.md
