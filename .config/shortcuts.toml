@@ -568,6 +568,14 @@ command="openurl 'https://discord.com/login'"
 [slack]
 command="openurl 'https://app.slack.com/'"
 
+# wrapper for
+# https://github.com/seanbreckenridge/mpv-sockets/blob/master/DAEMON.md
+[mpv-hist-daemon]
+command='''
+ps -ef | grep 'mpv-history-daemon /tmp/mpvsockets' | grep -v grep && exit 0
+exec mpv-history-daemon /tmp/mpvsockets/ "${HOME}/data/mpv"
+'''
+
 [newsboat-force]
 command='''
 # if another instance of newsboat is open, kill it and open one here

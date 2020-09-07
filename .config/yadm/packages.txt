@@ -65,6 +65,7 @@ postgresql
 prettier
 pyenv
 python-gobject
+poetry
 python-pip
 python3
 rebar3-git
