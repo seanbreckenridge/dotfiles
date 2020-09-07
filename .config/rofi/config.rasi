@@ -1,0 +1,5 @@
+configuration {
+	modi: "window,run";
+	location: 2;
+	theme: "dracula";
+}

@@ -22,7 +22,7 @@ while true; do
 	battery_perc "${BATTERY_NAME}"
 	if ((WARNED == 0)); then
 		# hasnt been warned, check if battery is under 10%
-		((BATTERY_PERC <= 10)) && notify-send -u critical 'Battery low!' && WARNED=1
+		((BATTERY_PERC <= 10)) && notify -u critical 'Battery low!' && WARNED=1
 	else # WARNED = 1
 		((BATTERY_PERC > 15)) && WARNED=0
 	fi

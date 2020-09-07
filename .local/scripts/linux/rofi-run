@@ -1,0 +1,7 @@
+#!/bin/bash
+# a history wrapper for rofi, so I can save which commands
+# I ran using https://github.com/seanbreckenridge/ttt/
+
+CMD_TO_RUN="$(compgen -c | shuf | rofi -i -dmenu -display-run "run > ")" || exit $?
+command -v ttt >/dev/null 2>&1 && tttlog "$CMD_TO_RUN"
+exec $CMD_TO_RUN # split on whitespace

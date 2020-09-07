@@ -15,7 +15,8 @@ command='''
 [ec]
 command = '''
 # fuzzy match list-config names, open one to edit (Edit Config)
-list-config | sed "s#^$HOME/##g" | fzf +m -q "$*" | xargs -r -I {} editor "$HOME/{}"'''
+list-config | sed "s#^$HOME/##g" | fzf +m -q "$*" | xargs -r -I {} editor "$HOME/{}"
+'''
 
 [restart-emacs]
 command = """
@@ -83,6 +84,7 @@ printf "\n"
 [wfi]
 command='''
 # wait for internet connection and ping me
+command -v tttlog >/dev/null 2>&1 && tttlog "$(basename "$0")"
 wait-for-internet "$@" && notify "INTERNET" && playping
 '''
 
@@ -98,6 +100,7 @@ command = '''
 # searches trakt for a movie
 [ -z "$SEARCH_STR" ] && SEARCH_STR=$(input-dialog "Search for a movie > " | awk '{$1=$1; print}' | tr " " "+") # awk removes leading/trailing spaces
 [ -z "$SEARCH_STR" ] && exit 1
+command -v tttlog >/dev/null 2>&1 && tttlog "$(basename "$0") $SEARCH_STR"
 openurl "https://trakt.tv/search/movies?query=${SEARCH_STR}&utf8=%E2%9C%93"
 '''
 
@@ -106,6 +109,7 @@ command = '''
 # searches letterboxd for a movie
 [ -z "$SEARCH_STR" ] && SEARCH_STR=$(input-dialog "Search for a movie > " | awk '{$1=$1; print}' | tr " " "+") # awk removes leading/trailing spaces
 [ -z "$SEARCH_STR" ] && exit 1
+command -v tttlog >/dev/null 2>&1 && tttlog "$(basename "$0") $SEARCH_STR"
 openurl "https://letterboxd.com/search/films/${SEARCH_STR}"
 '''
 
@@ -125,6 +129,7 @@ command = '''
 # searches trakt for a tv show
 SEARCH_STR=$(input-dialog "Search for a TV show > " | awk '{$1=$1; print}' | tr " " "+")
 [ -z "$SEARCH_STR" ] && exit 1
+command -v tttlog >/dev/null 2>&1 && tttlog "$(basename "$0") $SEARCH_STR"
 openurl "https://trakt.tv/search/shows?query=${SEARCH_STR}&utf8=%E2%9C%93"
 '''
 
@@ -266,7 +271,7 @@ curl -s ipinfo.io | gron | grep -v 'json.readme' | gron -u | jq -r 'to_entries[]
 [qtile-notify-bindings]
 command='''
 # send a notification with qtile launcher keybindings
-notify-send -t 10000 "qtile bindings:" "$(qtile-bindings --json | jq -r '[.[]|select(.modifier=="control, mod4")] | .[] | "\(.keysym) | \(.command)"' | sed -e "s/spawn('//" -e "s/')$//" -e "s/launch //" -e "s/-developer-edition//" -e "/qtile-notify-bindings/d")"
+notify -t 10000 "qtile bindings:" "$(qtile-bindings --json | jq -r '[.[]|select(.modifier=="control, mod4")] | .[] | "\(.keysym) | \(.command)"' | sed -e "s/spawn('//" -e "s/')$//" -e "s/launch //" -e "s/-developer-edition//" -e "/qtile-notify-bindings/d")"
 '''
 
 [webcam-test]
@@ -479,7 +484,10 @@ done < <(list-config | grep -vE "zsh_history|compdump")
 
 [cheat]
 shebang="#!/bin/sh"
-command='curl "https://cheat.sh/$*"'
+command='''
+command -v tttlog >/dev/null 2>&1 && tttlog "$(basename "$0") $*"
+curl "https://cheat.sh/$*"
+'''
 
 # runs git pull in all my repos in parallel (in 3 seconds). reports errors
 [repos-pull-all]

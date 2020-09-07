@@ -43,31 +43,31 @@ shift "$((OPTIND - 1))"
 case "$ACTION" in
 "$NVIM")
 	if (($# == 0)); then
-		nvim +Explore
+		ttt nvim +Explore
 	else
 		if [[ -e "$1" ]]; then
 			if [[ -d "$1" ]]; then
-				nvim +Explore "$@"
+				ttt nvim +Explore "$@"
 			else
-				nvim "$@"
+				ttt nvim "$@"
 			fi
 		else
-			nvim "$@"
+			ttt nvim "$@"
 		fi
 	fi
 	;;
 "$EMACS")
 	if [[ -n "$ONLINUX" ]]; then
-		setsid emacs "$@" &
+		ttt setsid emacs "$@" &
 	else
-		emacs "$@" # alacritty can handle this in terminal
+		ttt emacs "$@" # alacritty can handle this in terminal
 	fi
 	;;
 "$EMACS_CLIENT")
 	if [[ -n "$ONLINUX" ]]; then
-		setsid emacsclient -c "$@" &
+		ttt setsid emacsclient -c "$@" &
 	else
-		emacs "$@" # dont use emacsclient on mac
+		ttt emacs "$@" # dont use emacsclient on mac
 	fi
 	;;
 esac

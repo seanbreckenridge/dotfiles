@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 # prompts the user with a basic dialog
 
+command -v tttlog >/dev/null 2>&1 && tttlog "$(basename "$0") $@"
+
 [[ -z "$1" ]] && {
 	echo "Pass the prompt string as the first argument" 2>&1
 	exit 1
