@@ -89,7 +89,7 @@ class old_forums:
 class skype:
     export_path: Paths = "~/data/skype.json"
 
-# parsers the GDPR export
+# parses the GDPR export
 class facebook:
     gdpr_dir: PathIsh = "~/data/facebook_gdpr/"
 
