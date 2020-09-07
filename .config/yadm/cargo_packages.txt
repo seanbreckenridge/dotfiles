@@ -1,2 +1,3 @@
 cargo-license
 cargo-update
+evry

@@ -190,7 +190,7 @@ done <"$MIX_PACKAGE_LIST"
 
 echo "Checking for manually installed binaries..."
 declare -a required_binaries optional_binaries
-required_binaries=("wait-for-internet" "shortcuts" "exists" "evry")
+required_binaries=("wait-for-internet" "shortcuts" "exists")
 optional_binaries=("genpasswd" "largechar" "mpvf")
 for binary in "${required_binaries[@]}"; do
 	havecmd "$binary" || {
