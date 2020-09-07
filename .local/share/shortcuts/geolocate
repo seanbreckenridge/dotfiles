@@ -1,3 +1,0 @@
-#!/bin/sh
-IP_ADDR="${1:?provide ip address to geolocate as the first argument}"
-curl --silent "https://ipvigilante.com/${IP_ADDR}" | gron | grep -vE 'ipv4|null|status' | gron -u | jq -r '.data | to_entries[] | "\(.key): \(.value)"'

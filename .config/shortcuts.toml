@@ -272,12 +272,6 @@ notify-send -t 10000 "qtile bindings:" "$(qtile-bindings --json | jq -r '[.[]|se
 [webcam-test]
 command='''mpv /dev/video0'''
 
-[geolocate]
-command='''
-IP_ADDR="${1:?provide ip address to geolocate as the first argument}"
-curl --silent "https://ipvigilante.com/${IP_ADDR}" | gron | grep -vE 'ipv4|null|status' | gron -u | jq -r '.data | to_entries[] | "\(.key): \(.value)"'
-'''
-
 [image-dimensions]
 command='''
 #!/bin/sh
