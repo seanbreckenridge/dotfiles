@@ -567,3 +567,11 @@ command="openurl 'https://discord.com/login'"
 
 [slack]
 command="openurl 'https://app.slack.com/'"
+
+[newsboat-force]
+command='''
+# if another instance of newsboat is open, kill it and open one here
+# specifically useful incase newsboat -x reload is going on in the background
+pgrep -x newsboat && pkill -x newsboat
+exec newsboat
+'''

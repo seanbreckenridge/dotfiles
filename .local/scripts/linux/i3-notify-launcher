@@ -27,4 +27,4 @@
 
 # has some customizations to make my notification in particular look better (e.g. remove -developer-edition from firefox)
 
-notify-send "$(awk '/^mode "launcher"/,/^\}/ {$1=$1; print $0}' ~/.config/i3/config | sed -e '/^#/d' -e '/[\{\}]\s*$/d' -e '/\(Escape\|Return\)/d' -e 's/;\s*mode "default"$//' -e 's/launch //' -e 's/-developer-edition//' -e 's/bindsym \([[:print:]]*\)\s*exec\s*--no-startup-id /\1\| /' -e 's/Shift+\([[:print:]]\)/\U\1/' | sort)"
+notify-send "$(awk '/^mode "launcher"/,/^\}/ {$1=$1; print $0}' ~/.config/i3/config | sed -e '/^#/d' -e '/[\{\}]\s*$/d' -e '/\(Escape\|Return\)/d' -e 's/;\s*mode "default"$//' -e 's/launch //' -e 's/-developer-edition//' -e 's/-force$//' -e 's/bindsym \([[:print:]]*\)\s*exec\s*--no-startup-id /\1\| /' -e 's/Shift+\([[:print:]]\)/\U\1/' | sort)"
