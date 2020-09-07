@@ -14,10 +14,21 @@ for binary in "${required_binaries[@]}"; do
 	havecmd "$binary" || exit $?
 done
 
+copy_keepass_db() {
+	# copy keepass db to google drive, so I can use Keepass2Android on my phone
+	db_here="$DOCUMENTS/updated_database.kdbx"
+	db_there="$HOME/GoogleDrive/updated_database.kdbx"
+	[[ -f "$db_here" ]] && [[ -f "$db_there" ]] && cp -v "$db_here" "$db_there"
+}
+
+copy_keepass_db
+
 evry 1 day -backup_fish_server && backup_server
 evry 2 months -pythonanywhere && pythonanywhere_3_months -Hc "$(which chromedriver)"
-evry 1 day -pull_gooogle_drive && {
-	cd ~/GoogleDrive/ && drive pull
+evry 1 day -google_drive && {
+	cd ~/GoogleDrive/ || exit $?
+	drive push
+	drive pull
 }
 
 # has the possibility to fail, if I'm not home and it tries to
