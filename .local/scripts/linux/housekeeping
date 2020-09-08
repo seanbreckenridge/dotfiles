@@ -18,7 +18,7 @@ copy_keepass_db() {
 	# copy keepass db to google drive, so I can use Keepass2Android on my phone
 	db_here="$DOCUMENTS/updated_database.kdbx"
 	db_there="$HOME/GoogleDrive/updated_database.kdbx"
-	[[ -f "$db_here" ]] && [[ -f "$db_there" ]] && cp -v "$db_here" "$db_there"
+	[[ -f "$db_here" ]] && [[ -f "$db_there" ]] && cp "$db_here" "$db_there"
 }
 
 copy_keepass_db
