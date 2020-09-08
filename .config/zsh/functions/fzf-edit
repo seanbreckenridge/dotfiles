@@ -8,7 +8,8 @@ function fzf-edit() {
 	local enclosing_dir
 	chosen_file="$(fd --full-path -L $@ | fzf +m --preview='${HOME}/.config/fzf_preview {}')" || return
 	if [ -d "$chosen_file" ]; then
-		ttt cd "$chosen_file"
+		cd "$chosen_file"
+		command -v tttlog >/dev/null 2>&1 && tttlog "fzf-edit $PWD"
 		zle && { zle reset-prompt; } # change prompt to update PS1 with new CWD
 	else
 		enclosing_dir=$(dirname "$chosen_file")
