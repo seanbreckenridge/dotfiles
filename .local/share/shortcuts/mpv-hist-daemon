@@ -1,0 +1,3 @@
+#!/bin/sh
+ps -ef | grep 'mpv-history-daemon /tmp/mpvsockets' | grep -v grep && exit 0
+exec mpv-history-daemon /tmp/mpvsockets/ "${HOME}/data/mpv"

@@ -166,7 +166,7 @@ __pycache__
 /.local/lib/pkgconfig/*
 /.local/bin
 /.local/include
-/.local/share/
+/.local/share/*
 !.local/share/emoji
 !.local/share/firefox_addons.txt
 !.local/share/shortcuts/

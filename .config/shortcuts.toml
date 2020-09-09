@@ -61,8 +61,10 @@ i3-msg "$(i3binds | rofi -dmenu -width 50 -lines 30 -location 5 -p "Pick a comma
 
 [reload-browser]
 command='''
-# reload firefox
-exec xdotool search --class "Firefox" key --window %@ "ctrl+r"
+# reload firefox (Navigator is firefox's WM_CLASS)
+# the i is to enter insert mode in firefox (I use vimium)
+# \C is control, r is r, to refresh
+exec xvkbd -window Navigator -text "i\Cr"
 '''
 
 [usdate]
@@ -568,6 +570,15 @@ command='''
 # download at about 720p
 export FORMAT=850
 youtube-dl-at "$@"
+'''
+
+[stream-from-firefox]
+command='''
+# copies the current URL from firefox, and starts streaming it with stream-at-480
+# escape, then yy (yank the URL; using the vimium extension)
+xvkbd -window Navigator -text "\Eyy"
+sleep 1  # just to make sure its copied
+stream-corner-480
 '''
 
 [discord]

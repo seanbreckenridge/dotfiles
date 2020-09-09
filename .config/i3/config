@@ -261,6 +261,7 @@ mode "launcher" {
     bindsym m exec --no-startup-id stream-corner; mode "default"
     bindsym 4 exec --no-startup-id stream-corner-480; mode "default"
     bindsym 7 exec --no-startup-id stream-corner-720; mode "default"
+    bindsym Shift+f exec --no-startup-id stream-from-firefox; mode "default"
     bindsym Shift+m exec --no-startup-id stream-audio; mode "default"
     # see mediaproxy scripts here https://github.com/seanbreckenridge/vps
     bindsym x exec --no-startup-id ttt mediaproxyvideo; mode "default"
