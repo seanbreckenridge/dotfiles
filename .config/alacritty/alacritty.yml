@@ -4,7 +4,7 @@ gtk_theme_variant: None
 
 # Scrollback
 scrolling:
-  history: 10000
+  history: 50000
   multiplier: 3 # Number of lines viewport will each line scrolled
 
 # Font
