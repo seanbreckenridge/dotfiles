@@ -29,23 +29,6 @@ exec --no-startup-id unclutter --timeout 2
 # set a random wallpaper
 exec --no-startup-id randomize-wallpaper
 
-# background processes unrelated to i3 unlreated to i3/basic interaction with operating system
-
-# copy my todo.txt to my server when it changes, so I can be sent reminders
-# https://github.com/seanbreckenridge/todotxt_deadline_notify
-exec --no-startup-id bash "${REPOS}/todotxt_deadline_notify/copy_todotxt_to_server"
-# loop that runs in the background, running random tasks periodically (cron-like)
-# https://github.com/seanbreckenridge/bgproc
-exec --no-startup-id bash "${REPOS}/bgproc/bgproc"
-exec --no-startup-id bash "${REPOS}/HPI/bgproc"
-# mpv-history-daemon, to catpure mpv events/what Im watching/listening to
-# https://github.com/seanbreckenridge/mpv-sockets/blob/master/DAEMON.md
-# https://sean.fish/d/mpv-hist-daemon
-exec --no-startup-id mpv-hist-daemon
-# start window watcher
-# https://github.com/seanbreckenridge/aw-watcher-window
-exec --no-startup-id window_watcher
-
 # bind display key to randomize wallpaper
 bindsym XF86Display exec --no-startup-id ttt randomize-wallpaper
 
@@ -297,4 +280,21 @@ bindsym $mod+Shift+a exec --no-startup-id alacritty
 
 # open a browser tab
 bindsym $mod+Shift+Return exec --no-startup-id ttt firefox-developer-edition --new-tab;
+
+# background processes unrelated to i3/window manager
+
+# copy my todo.txt to my server when it changes, so I can be sent reminders
+# https://github.com/seanbreckenridge/todotxt_deadline_notify
+exec --no-startup-id bash "${REPOS}/todotxt_deadline_notify/copy_todotxt_to_server"
+# loop that runs in the background, running random tasks periodically (cron-like)
+# https://github.com/seanbreckenridge/bgproc
+exec --no-startup-id bash "${REPOS}/bgproc/bgproc"
+exec --no-startup-id bash "${REPOS}/HPI/bgproc"
+# mpv-history-daemon, to catpure mpv events/what Im watching/listening to
+# https://github.com/seanbreckenridge/mpv-sockets/blob/master/DAEMON.md
+# https://sean.fish/d/mpv-hist-daemon
+exec --no-startup-id mpv-hist-daemon
+# start window watcher
+# https://github.com/seanbreckenridge/aw-watcher-window
+exec --no-startup-id window_watcher
 
