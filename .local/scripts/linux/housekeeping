@@ -27,7 +27,9 @@ evry 1 day -backup_fish_server && backup_server
 evry 2 months -pythonanywhere && pythonanywhere_3_months -Hc "$(which chromedriver)"
 evry 1 day -google_drive && {
 	cd ~/GoogleDrive/ || exit $?
+	echo "Running 'drive push'..."
 	drive push
+	echo "Running 'drive pull'..."
 	drive pull
 }
 
