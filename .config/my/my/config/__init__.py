@@ -107,6 +107,11 @@ class facebook:
     gdpr_dir: PathIsh = "~/data/facebook_gdpr/"
 
 
+# parses the GDPR export
+class spotify:
+    gdpr_dir: PathIsh = "~/data/spotify/"
+
+
 # parses backups of and the live ipython history sqlite databases
 class ipython:
     export_path: Paths = "~/data/ipython/*.sqlite"
