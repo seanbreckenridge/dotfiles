@@ -74,6 +74,6 @@ text/* | */xml)
 	;;
 esac
 
-# defualt if extension/mimetype both fail
+# default if extension/mimetype both fail
 pistol "$path" | head -n "$maxln"
 exit 0

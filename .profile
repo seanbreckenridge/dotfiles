@@ -19,7 +19,7 @@ fi
 export LANG='en_US.UTF-8'
 export LC_ALL='en_US.UTF-8'
 
-# Set default applicaitons
+# Set default applications
 export VISUAL='nvim'   # e.g. for edit-command-line in ~/.zshrc, to prompt in current terminal
 export EDITOR='editor' # ~/.local/scripts/cross-platform/editor, wrapper for picking emacs/nvim for editor
 export PAGER='less'
