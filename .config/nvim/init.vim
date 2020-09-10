@@ -157,3 +157,5 @@ vnoremap <Up> <Nop>
 autocmd VimEnter * if expand('%:e') == 'md' | set spell
 " or when writing a git commit
 autocmd BufRead,BufNewFile * if expand('%:t') == 'COMMIT_EDITMSG' | set spell
+" create shortcuts, whenever I edit https://github.com/seanbreckenridge/shortcuts
+autocmd BufWritePost shortcuts.toml !shortcuts create
