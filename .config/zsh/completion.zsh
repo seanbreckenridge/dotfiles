@@ -19,9 +19,9 @@ zstyle ':completion:*' rehash true
 zstyle ':completion::*:(rm|nvim|e|ls):*' ignore-line true
 
 # if ^Xa or tab is hit when over an alias, expand into the alias contents
-bindkey "^Xa" _expand_alias
-zstyle ':completion:*' completer _expand_alias _complete _ignored
-zstyle ':completion:*' regular true
+#bindkey "^Xa" _expand_alias
+#zstyle ':completion:*' completer _expand_alias _complete _ignored
+#zstyle ':completion:*' regular true
 
 ### command completion
 # note: this file has to be loaded after functions.zsh
