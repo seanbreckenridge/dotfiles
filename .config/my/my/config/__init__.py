@@ -120,6 +120,10 @@ class ipython:
 # parses https://takeout.google.com
 class google:
     takeout_path: Paths = "~/data/google_takeout/"
+    # this is the directory that my google drive gets mirrored to locally
+    # when it detects a new takeout, it sends a warning, so I can run
+    # the script to move it to takeout_path
+    google_drive_local_path: Optional[Paths] = "~/GoogleDrive/Takeout/"
 
 
 # https://github.com/seanbreckenridge/ttt
@@ -137,6 +141,9 @@ class window_watcher:
         environ["XDG_DATA_HOME"], "window_events.csv"
     )
 
+
+class smscalls:
+    export_path: Paths = "~/GoogleDrive/SMSBackups/"
 
 # class stackexchange:
 #    export_path: Paths = "~/data/stexport"
