@@ -43,6 +43,7 @@ __pycache__
 /.lftp
 /.ivy2
 /.bundle
+/.netrc
 /.emacs.d/
 /.vim
 /.scala_history
@@ -75,6 +76,7 @@ __pycache__
 /.ghc/ghci_history
 /.ipynb_checkpoints
 /.pulse-cookie
+/.oh-my-stars
 /.node-gyp
 /.electron-gyp
 /.java

@@ -34,6 +34,7 @@ ndg-httpsclient
 nose
 numpy
 oauth2client
+oh-my-stars
 pandas
 pillow
 pip-licenses
