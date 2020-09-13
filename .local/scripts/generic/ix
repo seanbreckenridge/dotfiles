@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 # The world's best pastebin terminal replacement.
 # If -v is given as the first argument, prints what
 # it received as STDIN back to STDOUT
