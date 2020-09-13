@@ -12,7 +12,7 @@ if pgrep -x newsboat >/dev/null; then
 else
 	newsboat -x reload
 	unread="$(newsboat -x print-unread)" || exit $?
-	if [ -z "$unread" ]; then
+	if [[ -z "$unread" ]]; then
 		echo '0' >"$CACHE_FILE"
 	else
 		# delete a space followed by anything

@@ -4,7 +4,7 @@
 # uses the currently focused window
 # requires xprop
 
-if [ -z "$1" ]; then
+if [[ -z "$1" ]]; then
 	WINDOW_ID="$(xprop -root _NET_ACTIVE_WINDOW | awk '{print $NF}')"
 else
 	WINDOW_ID="$1"
