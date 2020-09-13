@@ -26,7 +26,7 @@ path="$1" # Full path of the selected file
 cached="$4"         # Path that should be used to cache image previews
 preview_images="$5" # "True" if image previews are enabled, "False" otherwise.
 
-maxln=$(($(tput lines) - 2))
+maxln=$(($(tput lines) * 2))
 
 # Find out something about the file:
 mimetype=$(file --mime-type -Lb "$path")
