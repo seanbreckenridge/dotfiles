@@ -213,7 +213,7 @@ MPVF_PICKER=rofi setsid mpvf "https://www.twitch.tv/${STREAMER}" >/dev/null &
 [clipedit]
 command = '''
 # edit your clipboard in vim
-clippaste | vipe | clipcopy
+launch "clippaste | vipe | clipcopy"
 '''
 link = 'edit-clipboard'
 
@@ -439,10 +439,11 @@ command='''
 # preview a picture from a URL
 rm -rf /tmp/urlpic
 mkdir -p /tmp/urlpic && cd /tmp/urlpic || exit 1
-wget -q "${1:?Must provide a image URL to preview}"
+URL="${1:-$(clippaste)}"
+wget -q "${URL}"
 exec mpv --loop "$(newest)"
 '''
-link="preivewurlpic"
+links = ["previewurlpic", "urlpicpreview"]
 
 [lastdown]
 command='exec newest "${DOWNLOADS:?No DOWNLOADS environment variable set}"'
