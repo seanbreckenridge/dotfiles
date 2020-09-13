@@ -1,0 +1,6 @@
+#!/bin/sh
+
+CALCURSE_CONFIG="${XDG_CONFIG_HOME:-$HOME/.config}/calcurse"
+
+# for each .enabled extension file, run postsave
+find "$CALCURSE_CONFIG" -type f -name "*.enabled" -exec {} postsave \;

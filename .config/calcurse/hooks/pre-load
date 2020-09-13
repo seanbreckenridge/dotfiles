@@ -1,0 +1,6 @@
+#!/bin/sh
+
+CALCURSE_CONFIG="${XDG_CONFIG_HOME:-$HOME/.config}/calcurse"
+
+# for each .enabled extension file, run preload
+find "$CALCURSE_CONFIG" -type f -name "*.enabled" -exec {} preload \;
