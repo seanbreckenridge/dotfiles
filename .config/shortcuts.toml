@@ -386,7 +386,7 @@ command='''
 import sys, time
 if len(sys.argv) <= 1:
     raise RuntimeError("Must pass epoch time to display as first argument")
-print(time.strftime('%y-%m-%d %H:%M:%S', time.localtime(int(sys.argv[1]))))
+print(time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(int(sys.argv[1]))))
 '''
 link='displayepoch'
 
