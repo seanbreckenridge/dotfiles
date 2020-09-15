@@ -10,14 +10,16 @@ windows:
       - "ranger"
       focus: true
     - "plainplay" # playlist manager
-- window_name: "htop"
-  panes:
-    - "htop"
 - window_name: "tsp streams"
   shell_command_before:
     - "cd ~/.config/tmux_layouts/bg/"
   panes:
-    - ./tsp_streams
+    - "./tsp_streams"
+- window_name: "budget"
+  shell_command_before:
+    - "cd ~/.config/tmux_layouts/bg/"
+  panes:
+    - "./budget"
 - window_name: "dev server"
   shell_command_before:
     - "cd ~/.config/tmux_layouts/bg/"

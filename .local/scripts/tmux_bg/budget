@@ -1,0 +1,5 @@
+#!/bin/bash
+while true; do
+  python3 ~/Repos/mint/analyze/summary.py
+  sleep 10m
+done
