@@ -107,6 +107,9 @@ set path+=**
 " display all matching files for tab completion
 set wildmenu
 
+" mapping to toggle spellcheck
+map <leader>s :set spell!<CR>
+
 " swap to previous buffer
 map <leader><leader> :bprevious<CR>
 
