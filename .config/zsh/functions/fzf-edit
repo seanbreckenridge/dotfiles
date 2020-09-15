@@ -18,6 +18,6 @@ function fzf-edit() {
 		# use rifle to open file
 		rifle "$chosen_file"
 		zle && { zle reset-prompt; } # reset prompt to update PS1
-		zle-keymap-select # check vi mode to update cursor shape
+		zle-keymap-select            # check vi mode to update cursor shape
 	fi
 }
