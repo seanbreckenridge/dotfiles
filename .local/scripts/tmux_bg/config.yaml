@@ -1,0 +1,30 @@
+# defines window/panes for common stuff I do
+session_name: "bg"
+windows:
+- window_name: "music"
+  layout: 'main-vertical'
+  shell_command_before:
+    "cd ~/Music"
+  panes:
+    - shell_command:
+      - "ranger"
+      focus: true
+    - "plainplay" # playlist manager
+- window_name: "htop"
+  panes:
+    - "htop"
+- window_name: "tsp streams"
+  shell_command_before:
+    - "cd ~/.config/tmux_layouts/bg/"
+  panes:
+    - ./tsp_streams
+- window_name: "dev server"
+  shell_command_before:
+    - "cd ~/.config/tmux_layouts/bg/"
+  panes:
+    - "./dev_server"
+- window_name: "app logs"
+  shell_command_before:
+    - "cd ~/.config/tmux_layouts/bg/"
+  panes:
+    - "./app_logs"

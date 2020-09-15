@@ -1,0 +1,12 @@
+#!/bin/bash
+
+cd "$(realpath "$(dirname "${BASH_SOURCE[0]}")")"
+
+# check if already running; exit
+tmux list-sessions | cut -d":" -f1 | grep -qx "bg" && {
+	echo "bg session already running..." 1>&2
+	exit 1
+}
+
+# else run
+exec tmuxp load -d ./config.yaml
