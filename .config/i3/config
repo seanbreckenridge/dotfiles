@@ -92,8 +92,7 @@ floating_modifier $mod
 bindsym $mod+q kill
 
 # rofi run menu
-# wrapper to save history using ttt
-bindsym $mod+r exec --no-startup-id rofi-run
+bindsym $mod+r exec --no-startup-id rofi -show run -display-run "run > "
 
 # rofi switch window menu
 bindsym $mod+Tab exec --no-startup-id rofi -show window -display-window "window > "
