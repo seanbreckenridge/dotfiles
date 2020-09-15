@@ -10,6 +10,16 @@ windows:
       - "ranger"
       focus: true
     - "plainplay" # playlist manager
+- window_name: "calcurse"
+  shell_command_before:
+    - "cd ~/.config/tmux_layouts/bg/"
+  panes:
+    - "./calcurse"
+- window_name: "todo.txt"
+  shell_command_before:
+    - "cd ~/.config/tmux_layouts/bg/"
+  panes:
+    - "./todo"
 - window_name: "tsp streams"
   shell_command_before:
     - "cd ~/.config/tmux_layouts/bg/"
