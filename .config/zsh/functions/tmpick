@@ -1,0 +1,16 @@
+# pick a tmux session if active, else attach/create a new one
+
+tmpick() {
+	if [[ -n "$TMUX" ]]; then
+		# if in tmux, pick a window
+		tmux choose-window
+	else
+		# else
+		if tmux list-sessions >/dev/null 2>&1; then
+			# if tmux is active somewhere, attach
+			tmux attach
+		else
+			tmux
+		fi
+	fi
+}
