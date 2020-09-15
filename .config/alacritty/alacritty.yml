@@ -190,10 +190,11 @@ key_bindings:
   - { key: Subtract, mods: Control, action: DecreaseFontSize }
   - { key: Minus, mods: Control, action: DecreaseFontSize }
   - { key: N, mods: Alt, action: SpawnNewInstance }
-  - { key: Up, mods: Shift, action: ScrollLineUp }
-  - { key: Down, mods: Shift, action: ScrollLineDown }
   - { key: PageUp, mods: Shift, action: ScrollPageUp }
   - { key: PageDown, mods: Shift, action: ScrollPageDown }
+  - { key: Up, mods: Shift, action: ScrollLineUp }
+  - { key: Down, mods: Shift, action: ScrollLineDown }
+
   # Vi Mode
   - { key: Space, mods: Shift|Control, action: ToggleViMode }
   - { key: Space, mods: Shift|Control, mode: Vi, action: ScrollToBottom }

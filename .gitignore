@@ -27,6 +27,8 @@ directory_aliases
 # my secret files
 .config/my/**/*secret*
 
+# ignore symlinked tmux
+/.tmux.conf
 
 # Ignore README - handled by git hooks -- see .config/yadm/yadm-with-README.md 
 /README.md

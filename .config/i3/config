@@ -275,8 +275,8 @@ mode "launcher" {
 # keyboard shortcut to check if I have a remote internet connection
 bindsym $mod+Shift+w exec --no-startup-id wfi
 
-# start a terminal
-bindsym $mod+Return exec --no-startup-id ttt alacritty
+# start a terminal with tmux
+bindsym $mod+Return exec --no-startup-id ttt alacritty-tmux
 
 # another binding to start a terminal, incase ttt isnt working for some reason, as a last resort
 bindsym $mod+Shift+a exec --no-startup-id alacritty

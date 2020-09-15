@@ -605,3 +605,7 @@ pgrep -x newsboat && pkill -x newsboat
 newsboat
 i3-msg exec update-rss  # update rss afterwards, to update menu bar icon
 '''
+
+[alacritty-tmux]
+command='alacritty -e tmux'
+
