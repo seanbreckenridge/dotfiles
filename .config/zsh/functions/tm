@@ -6,7 +6,7 @@ tm() {
 	[[ -n "$TMUX" ]] && change="switch-client" || change="attach-session"
 	# if name specified, create/attach
 	if [[ -n $1 ]]; then
-		tmux $change -t "$1" 2>/dev/null || (tmux new-session -d -s $1 && tmux $change -t "$1")
+		tmux $change -t "$1" 2>/dev/null || (tmux new-session -d -s "$1" && tmux $change -t "$1")
 		return
 	fi
 	tmpick
