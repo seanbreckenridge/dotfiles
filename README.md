@@ -6,7 +6,7 @@ Majority of cross platform functionality is done, keep finding small improvement
 
 * window management/keyboard shortcuts
   * Uses [`skhd`](https://github.com/koekeishiya/skhd) as a hot-key daemon to run applications (e.g. `cmd + opt + enter` launches terminal)
-  * [amethyst](https://github.com/ianyh/Amethyst) to auto-tile windows a la xmonad
+  * [`amethyst`](https://github.com/ianyh/Amethyst) to auto-tile windows a la xmonad
   * `alfred` as a application launcher
 * OS-specific bootstrap files in [`~/.config/yadm`](.config/yadm) that check whether I'm on mac/linux, to decide what sort of install(`yay`/`brew`)/which packages to install.
 * `$PATH` is set properly in `zsh`/`X server` startup, update (`zsh` function) respects the OS and updates packages properly.
@@ -14,20 +14,20 @@ Majority of cross platform functionality is done, keep finding small improvement
 
 The rest of the README is for what I used on arch:
 
-- [zsh](http://zsh.sourceforge.net/), plugins/configuration handled manually in [.config/zsh](.config/zsh) (split across multiple files)
-- [i3-gaps](https://github.com/Airblader/i3) - window manager
-- [yadm](https://yadm.io) to manage dotfiles, see [yadm-with-README.md](.config/yadm/yadm-with-README.md)
-- [alacritty](https://github.com/alacritty/alacritty) as terminal (with [`tmux`](https://github.com/tmux/tmux)
-- [firefox-developer-edition](https://www.archlinux.org/packages/community/x86_64/firefox-developer-edition/) - browser, addons listed in [firefox_addons.txt](./.local/share/firefox_addons.txt)
-- [rofi](https://github.com/davatorium/rofi) - application launcher
-- [nvim](https://neovim.io/) and sometimes [(doom) emacs](https://github.com/hlissner/doom-emacs) (when I want IDE-like support) as editors - see [editor](.local/scripts/cross-platform/editor)
-- [i3lock](https://i3wm.org/i3lock/) for screen lock; [daemon process](.local/scripts/cross-platform/lock-screen) caches pixelated version of screen to speed up start time
-- [dunst](https://dunst-project.org/) for notifications
-- [lightdm](https://wiki.archlinux.org/index.php/LightDM) - display manager
-- [todotxt](http://todotxt.org/) for todos, with a [rofi interface](.local/scripts/bin/todo_prompt) as GUI, and [tui](https://github.com/seanbreckenridge/full_todotxt) for adding todos.
-- [ranger](https://github.com/ranger/ranger) - file manager
-- [picom](https://github.com/yshui/picom) for window compositing
-- [i3blocks](https://github.com/vivien/i3blocks) for status bar
+- [`zsh`](http://zsh.sourceforge.net/), plugins/configuration handled manually in [`.config/zsh`](.config/zsh) (split across multiple files)
+- [`i3-gaps`](https://github.com/Airblader/i3) - window manager
+- [`yadm`](https://yadm.io) to manage dotfiles, see [`yadm-with-README.md`](.config/yadm/yadm-with-README.md)
+- [`alacritty`](https://github.com/alacritty/alacritty) as terminal (with [`tmux`](https://github.com/tmux/tmux))
+- [`firefox-developer-edition`](https://www.archlinux.org/packages/community/x86_64/firefox-developer-edition/) - browser, addons listed in [`firefox_addons.txt`](./.local/share/firefox_addons.txt)
+- [`rofi`](https://github.com/davatorium/rofi) - application launcher
+- [`nvim`](https://neovim.io/) and sometimes [`(doom) emacs`](https://github.com/hlissner/doom-emacs) (when I want IDE-like support) as editors - see [`editor`](.local/scripts/cross-platform/editor)
+- [`i3lock`](https://i3wm.org/i3lock/) for screen lock; [`daemon process`](.local/scripts/cross-platform/lock-screen) caches pixelated version of screen to speed up start time
+- [`dunst`](https://dunst-project.org/) for notifications
+- [`lightdm`](https://wiki.archlinux.org/index.php/LightDM) - display manager
+- [`todotxt`](http://todotxt.org/) for todos, with a [`rofi interface`](.local/scripts/bin/todo_prompt) as GUI, and [`tui`](https://github.com/seanbreckenridge/full_todotxt) for adding todos.
+- [`ranger`](https://github.com/ranger/ranger) - file manager
+- [`picom`](https://github.com/yshui/picom) for window compositing
+- [`i3blocks`](https://github.com/vivien/i3blocks) for status bar
 
 [`ttt`](https://github.com/seanbreckenridge/ttt/) is sprinkled throughout lots of my scripts, it acts as an extension to my shell history, saving commands from `i3` `bindsym`s, or `ranger` commands.
 
