@@ -609,3 +609,8 @@ i3-msg exec update-rss  # update rss afterwards, to update menu bar icon
 [alacritty-tmux]
 command='alacritty -e tmux'
 
+[bash-this-dir]
+command='''
+COMMAND_STR='THIS_DIR="$(realpath "$(dirname "${BASH_SOURCE[0]}")")"'
+echo "$COMMAND_STR" | clipcopy
+'''
