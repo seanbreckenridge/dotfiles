@@ -3,7 +3,7 @@
 # on mac, uses pbpaste (cmd+v clipboard)
 
 if [ -n "$ONLINUX" ]; then
-	xclip -out -selection clipboard
+	exec xclip -out -selection clipboard
 else
-	pbpaste
+	exec pbpaste
 fi

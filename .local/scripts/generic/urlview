@@ -1,0 +1,8 @@
+#!/bin/sh
+if CONTENTS="$(clippaste)"; then
+	openurl "$CONTENTS" || {
+		notify -u critical "Couldn't open url: $CONTENTS"
+	}
+else
+	notify -u critical "Couldn't get clipboard contents"
+fi
