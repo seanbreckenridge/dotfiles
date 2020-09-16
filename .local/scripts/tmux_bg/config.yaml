@@ -20,11 +20,11 @@ windows:
     - "cd ~/.config/tmux_layouts/bg/"
   panes:
     - "./todo"
-- window_name: "tsp streams"
+- window_name: "tsp"
   shell_command_before:
     - "cd ~/.config/tmux_layouts/bg/"
   panes:
-    - "./tsp_streams"
+    - "./tsp"
 - window_name: "budget"
   shell_command_before:
     - "cd ~/.config/tmux_layouts/bg/"
