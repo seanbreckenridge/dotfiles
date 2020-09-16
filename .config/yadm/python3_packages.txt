@@ -52,6 +52,7 @@ pyperclip
 pytest
 python-language-server
 python-rofi
+pyupload
 requests
 rsa
 scipy
