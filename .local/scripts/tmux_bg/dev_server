@@ -3,5 +3,6 @@
 while true; do
 	echo -en "$(tput setaf 2)Hit enter to connect to development server... $(tput sgr0)"
 	read -r
+	wait-for-internet
 	ssh vultr
 done
