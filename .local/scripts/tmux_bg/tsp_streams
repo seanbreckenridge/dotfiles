@@ -1,2 +1,2 @@
 #!/bin/sh
-watch -x tsp
+watch -n 4 -x tsp
