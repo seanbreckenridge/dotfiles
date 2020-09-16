@@ -1,3 +1,2 @@
 #!/bin/bash
-
-watch -n 10 todo.sh -p list
+watch -n 10 -x todo.sh -p list
