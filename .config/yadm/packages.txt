@@ -120,6 +120,7 @@ figlet
 fzf
 gifsicle
 git
+glow
 gron
 highlight
 htop-vim-git
