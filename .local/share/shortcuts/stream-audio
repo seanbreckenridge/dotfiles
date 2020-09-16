@@ -1,2 +1,2 @@
 #!/bin/sh
-STREAM_MEDIA_CMD=mpv stream-media --no-video "$@"
+STREAM_MEDIA_CMD=mpv exec stream-media --no-video "$@"

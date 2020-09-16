@@ -1,2 +1,2 @@
 #!/bin/sh
-python3 -m youtube_dl -o '%(title)s.%(ext)s' -ci "$@"
+exec python3 -m youtube_dl -o '%(title)s.%(ext)s' -ci "$@"

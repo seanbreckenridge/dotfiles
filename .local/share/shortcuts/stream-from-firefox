@@ -3,4 +3,4 @@
 # escape, then yy (yank the URL; using the vimium extension)
 xvkbd -window Navigator -text "\Eyy"
 sleep 1  # just to make sure its copied
-stream-corner-480
+exec stream-corner-480

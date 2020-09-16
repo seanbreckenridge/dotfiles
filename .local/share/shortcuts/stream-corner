@@ -2,4 +2,4 @@
 # streams and sets the instance name on the mpv window
 # this is used with a for_window hook in i3 to put the
 # window in the bottom right
-stream-media --x11-name=mpv_stream_media "$@"
+exec stream-media --x11-name=mpv_stream_media "$@"

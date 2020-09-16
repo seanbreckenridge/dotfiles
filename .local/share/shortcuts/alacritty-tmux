@@ -1,2 +1,2 @@
 #!/bin/sh
-alacritty -e tmux
+exec alacritty -e tmux

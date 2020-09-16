@@ -1,2 +1,2 @@
 #!/bin/sh
-stream-corner-at "$@"
+exec stream-corner-at "$@"

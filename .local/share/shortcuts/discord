@@ -1,2 +1,2 @@
 #!/bin/sh
-openurl 'https://discord.com/login'
+exec openurl 'https://discord.com/login'

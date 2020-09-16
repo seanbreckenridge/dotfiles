@@ -476,7 +476,7 @@ command="echo -n $'\033[48;2;'$1';'$2';'$3'm'"
 command='''
 EXECUTABLE="${1:?No Executable provided}"
 LOCATION="$(which "$EXECUTABLE")" || exit $?
-nvim "$LOCATION"
+exec nvim "$LOCATION"
 '''
 
 [grep-dotfiles]
@@ -493,7 +493,7 @@ done < <(list-config | grep -vE "zsh_history|compdump")
 shebang="#!/bin/sh"
 command='''
 command -v tttlog >/dev/null 2>&1 && tttlog "$(basename "$0") $*"
-curl "https://cheat.sh/$*"
+exec curl "https://cheat.sh/$*"
 '''
 
 # runs git pull in all my repos in parallel (in 3 seconds). reports errors
@@ -520,7 +520,7 @@ setsid -f mpv --x11-name=mpv_stream_media "$@" >/dev/null 2>&1
 '''
 
 [youtube-dl]
-command='''python3 -m youtube_dl -o '%(title)s.%(ext)s' -ci "$@"'''
+command='''exec python3 -m youtube_dl -o '%(title)s.%(ext)s' -ci "$@"'''
 
 [create-youtube-dl-resolution-str]
 command='''
@@ -536,45 +536,45 @@ command='''
 # streams and sets the instance name on the mpv window
 # this is used with a for_window hook in i3 to put the
 # window in the bottom right
-stream-media --x11-name=mpv_stream_media "$@"
+exec stream-media --x11-name=mpv_stream_media "$@"
 '''
 
 [stream-corner-at]
 command='''
 # set the FORMAT environment variable to specify maximum height/width
 # defaults to about 480p
-STREAM_MEDIA_CMD=mpv stream-corner --ytdl-format="$(create-youtube-dl-resolution-str)" "$@"
+STREAM_MEDIA_CMD=mpv exec stream-corner --ytdl-format="$(create-youtube-dl-resolution-str)" "$@"
 '''
 
 [stream-corner-480]
-command='stream-corner-at "$@"'
+command='exec stream-corner-at "$@"'
 
 [stream-corner-720]
 command='''
 export FORMAT=850
-stream-corner-at "$@"
+exec stream-corner-at "$@"
 '''
 
 [stream-audio]
-command='STREAM_MEDIA_CMD=mpv stream-media --no-video "$@"'
+command='STREAM_MEDIA_CMD=mpv exec stream-media --no-video "$@"'
 
 [youtube-dl-at]
 command='''
 # set the FORMAT environment variable to control resolution
-youtube-dl -f "$(create-youtube-dl-resolution-str)" "$@"
+exec youtube-dl -f "$(create-youtube-dl-resolution-str)" "$@"
 '''
 
 [youtube-dl-480]
 command='''
 # download at about 480p
-youtube-dl-at "$@"
+exec youtube-dl-at "$@"
 '''
 
 [youtube-dl-720]
 command='''
 # download at about 720p
 export FORMAT=850
-youtube-dl-at "$@"
+exec youtube-dl-at "$@"
 '''
 
 [stream-from-firefox]
@@ -583,14 +583,14 @@ command='''
 # escape, then yy (yank the URL; using the vimium extension)
 xvkbd -window Navigator -text "\Eyy"
 sleep 1  # just to make sure its copied
-stream-corner-480
+exec stream-corner-480
 '''
 
 [discord]
-command="openurl 'https://discord.com/login'"
+command="exec openurl 'https://discord.com/login'"
 
 [slack]
-command="openurl 'https://app.slack.com/'"
+command="exec openurl 'https://app.slack.com/'"
 
 # wrapper for
 # https://github.com/seanbreckenridge/mpv-sockets/blob/master/DAEMON.md
@@ -611,7 +611,7 @@ i3-msg exec update-rss  # update rss afterwards, to update menu bar icon
 '''
 
 [alacritty-tmux]
-command='alacritty -e tmux'
+command='exec alacritty -e tmux'
 
 [bash-this-dir]
 command='''
