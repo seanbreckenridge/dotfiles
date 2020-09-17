@@ -1,15 +1,15 @@
 # defines window/panes for common stuff I do
 session_name: "bg"
 windows:
-- window_name: "music"
-  layout: 'main-vertical'
-  shell_command_before:
-    "cd ~/Music"
-  panes:
-    - shell_command:
-      - "ranger"
-      focus: true
-    - "plainplay" # playlist manager
+#- window_name: "music"
+#  layout: 'main-vertical'
+#  shell_command_before:
+#    "cd ~/Music"
+#  panes:
+#    - shell_command:
+#      - "ranger"
+#      focus: true
+#    - "plainplay" # playlist manager
 - window_name: "calcurse"
   shell_command_before:
     - "cd ~/.config/tmux_layouts/bg/"
