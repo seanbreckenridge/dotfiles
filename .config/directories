@@ -4,6 +4,7 @@
 D ~/Documents
 M ~/Movies
 S ~/Pictures/Screenshots
+e ~/.local/share/evry/data/
 b ~/Documents/Books
 d ~/Downloads
 m ~/Music

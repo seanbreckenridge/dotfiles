@@ -20,7 +20,7 @@ full-todotxt
 giturlparse
 google-api-python-client
 greasyfork_archive
-hTMLParser
+HTMLParser
 idna
 imgur-uploader
 isort
@@ -41,7 +41,6 @@ pip-licenses
 pipenv
 prettytable
 prompt-toolkit
-prompt_toolkit
 psutil
 pyExecJS
 pyYAML
