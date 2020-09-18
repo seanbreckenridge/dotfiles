@@ -618,3 +618,25 @@ command='''
 COMMAND_STR='THIS_DIR="$(realpath "$(dirname "${BASH_SOURCE[0]}")")"'
 echo "$COMMAND_STR" | clipcopy
 '''
+
+[extracturls]
+command='''
+# recieves text from STDIN, extracts unique URLs
+# pypi.org/project/urlextract
+urls="$(urlextract | sort -u)"
+[ -z "$urls" ] && {
+        notify "No URLs found in text"
+        exit 1
+}
+printf "%s\n" "$urls"
+'''
+
+[urlhandler]
+command='''
+# recieves text from STDIN, extracts unique URLs
+# prompts me to pick one and opens it
+urls="$(extracturls)" || exit $?
+chosen_url="$(echo "$urls" | picker -p 'Pick a URL to open > ')"
+[ -n "$chosen_url" ] && openurl "$chosen_url"
+'''
+

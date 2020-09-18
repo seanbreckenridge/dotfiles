@@ -1,7 +1,0 @@
-#!/bin/sh
-# preview a picture from a URL
-rm -rf /tmp/urlpic
-mkdir -p /tmp/urlpic && cd /tmp/urlpic || exit 1
-URL="${1:-$(clippaste)}"
-wget -q "${URL}"
-exec mpv --loop "$(newest)"

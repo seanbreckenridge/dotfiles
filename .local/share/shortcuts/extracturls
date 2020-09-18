@@ -1,0 +1,9 @@
+#!/bin/sh
+# recieves text from STDIN, extracts unique URLs
+# pypi.org/project/urlextract
+urls="$(urlextract | sort -u)"
+[ -z "$urls" ] && {
+        notify "No URLs found in text"
+        exit 1
+}
+printf "%s\n" "$urls"
