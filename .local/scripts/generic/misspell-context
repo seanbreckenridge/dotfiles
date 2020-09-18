@@ -40,11 +40,17 @@ fi
 
 banner
 
-echo "Select 'replace' to replace all matches, or 'ignore' to pick words to ignore (not replace)"
-select choice in replace ignore exit; do
+echo "Select 'replace' to replace all matches, 'list' to list misspelled words, or 'ignore' to pick words to ignore (not replace)"
+select choice in replace list ignore exit; do
 	case $choice in
 	replace)
 		break
+		;;
+	list)
+		(
+			IFS=$'\n'
+			echo "${!MISSPELLED[*]}"
+		)
 		;;
 	ignore)
 		# expand the keys of the array with newlines in a subshell. set IFS in the child process
