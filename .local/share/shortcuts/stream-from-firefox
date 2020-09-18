@@ -2,5 +2,5 @@
 # copies the current URL from firefox, and starts streaming it with stream-at-480
 # escape, then yy (yank the URL; using the vimium extension)
 xvkbd -window Navigator -text "\Eyy"
-sleep 1  # just to make sure its copied
+sleep 1 # just to make sure its copied
 exec stream-corner-480

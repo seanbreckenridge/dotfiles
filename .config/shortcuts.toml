@@ -582,7 +582,7 @@ command='''
 # copies the current URL from firefox, and starts streaming it with stream-at-480
 # escape, then yy (yank the URL; using the vimium extension)
 xvkbd -window Navigator -text "\Eyy"
-sleep 1  # just to make sure its copied
+sleep 1 # just to make sure its copied
 exec stream-corner-480
 '''
 
@@ -607,7 +607,7 @@ command='''
 # specifically useful incase newsboat -x reload is going on in the background
 pgrep -x newsboat && pkill -x newsboat
 newsboat
-i3-msg exec update-rss  # update rss afterwards, to update menu bar icon
+i3-msg exec update-rss # update rss afterwards, to update menu bar icon
 '''
 
 [alacritty-tmux]
@@ -625,8 +625,8 @@ command='''
 # pypi.org/project/urlextract
 urls="$(urlextract | sort -u)"
 [ -z "$urls" ] && {
-        notify "No URLs found in text"
-        exit 1
+       notify "No URLs found in text"
+       exit 1
 }
 printf "%s\n" "$urls"
 '''
