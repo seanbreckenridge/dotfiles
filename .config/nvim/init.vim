@@ -131,6 +131,9 @@ map <leader>c :w! \| !compile <c-r>%<CR><CR>
 " Open corresponding .pdf/.html or preview
 map <leader>p :!opout <c-r>%<CR><CR>
 
+" copy visual selection to clipboard
+vmap <leader>c "+y
+
 " Plugins
 " goyo
 map <leader>g :Goyo<CR>
