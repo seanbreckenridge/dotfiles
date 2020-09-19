@@ -2,5 +2,5 @@
 while true; do
   python3 ~/Repos/mint/analyze/summary.py | glow -
   date
-  sleep 10m
+  sleep 30m
 done
