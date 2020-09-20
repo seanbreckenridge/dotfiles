@@ -205,7 +205,7 @@ done
 havecmd shortcuts
 havecmd shortcuts && printf "Created %d shortcuts\n" "$(shortcuts create | wc -l)"
 
-ln "${HOME}/.config/tmux.conf" "${HOME}/.tmux.conf"
+[[ ! -e "${HOME}/.tmux.conf" ]] && ln "${HOME}/.config/tmux.conf" "${HOME}/.tmux.conf"
 
 dir-aliases-ranger
 
