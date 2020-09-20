@@ -213,6 +213,7 @@ chromium
 filezilla
 firefox-developer-edition
 gimp
+godot-bin
 google-chrome
 gparted
 keepassxc
