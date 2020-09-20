@@ -51,6 +51,7 @@ __pycache__
 /.scala_history
 /.python_history
 /.mupdf.history
+/.sonic-pi
 /.sc-iminfo
 /.weechat
 /.scalac/
@@ -105,6 +106,8 @@ __pycache__
 /.config/todo/*
 /.todo
 !.config/todo/config
+/.config/rncbc.org
+/.config/sonic-pi.net/
 /.config/GIMP
 /.config/BraveSoftware/
 /.config/newsboat/cache.db

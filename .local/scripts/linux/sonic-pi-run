@@ -1,0 +1,11 @@
+#!/bin/bash
+# wrapper script to handle sonic-pi on arch with pulseaudio
+# see https://exobrain.sean.fish/devlog/sonic_pi/
+# for an explanation
+
+jackd -R -d alsa -d hw:1 &
+qjackctl &
+sleep 5
+sonic-pi # block
+
+kill -15 $(jobs -p)

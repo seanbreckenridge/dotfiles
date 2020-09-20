@@ -222,9 +222,11 @@ obs-linuxbrowser-bin
 obs-studio
 okular
 pinta
+qjackctl
 robo3t-bin
 simplescreenrecorder
 snes9x-gtk
+sonic-pi
 sqlitebrowser
 surf
 thunar
