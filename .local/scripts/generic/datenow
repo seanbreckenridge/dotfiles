@@ -5,6 +5,7 @@
 print_dates() {
 	date "+%m/%d/%y # us date"
 	date "+%d/%m/%y # standard date"
+	date "+%Y/%m/%d # YYYY/MM/DD (blog)"
 	date "+%F # YYYY-MM-DD"
 	date "+%F %T # YYYY-MM-DD HH:MM:SS"
 	date "+%c # full date"
