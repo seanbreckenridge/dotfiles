@@ -12,4 +12,5 @@ case "$BLOCK_BUTTON" in
 	;;
 esac
 
-calcurse -G | grep "^$(date +"%m/%d/%Y")" -c
+# Find meetings that are starting after now, today
+calcurse -G --filter-type=apt --filter-start-from="$(date +'%m/%d/%Y %H:%M')" --filter-end-to="$(date +'%m/%d/%Y')" | wc -l
