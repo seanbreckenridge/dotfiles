@@ -13,7 +13,11 @@ case "$BLOCK_BUTTON" in
 		notify -u critical "Couldn't update RSS feeds..."
 	fi
 	;;
-*) ;; # any other click would just update the blocklet, not the RSS feeds
+3)
+	# https://sean.fish/d/cross-platform/launch?dark
+	# https://sean.fish/d/newsboat-force?dark
+	launch newsboat-force
+	;;
 esac
 
 cat "${HOME}/.cache/rss-unread"
