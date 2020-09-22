@@ -255,6 +255,7 @@ mode "launcher" {
     bindsym s exec --no-startup-id ttt slack; mode "default"
     bindsym k exec --no-startup-id ttt keepassxc; mode "default"
     bindsym r exec --no-startup-id ttt launch ranger; mode "default"
+    bindsym c exec --no-startup-id ttt launch calcurse; mode "default"
     bindsym n exec --no-startup-id ttt launch newsboat-force; mode "default"
     bindsym h exec --no-startup-id ttt launch htop; mode "default"
     bindsym v exec --no-startup-id ttt launch keyvol; mode "default"
