@@ -109,6 +109,7 @@ __pycache__
 /.config/rncbc.org
 /.config/sonic-pi.net/
 /.config/GIMP
+/.config/godot/
 /.config/BraveSoftware/
 /.config/newsboat/cache.db
 /.config/newsboat/urls
