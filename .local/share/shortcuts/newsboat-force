@@ -2,5 +2,6 @@
 # if another instance of newsboat is open, kill it and open one here
 # specifically useful incase newsboat -x reload is going on in the background
 pgrep -x newsboat && pkill -x newsboat
+cd ~/Downloads
 newsboat
 i3-msg exec update-rss # update rss afterwards, to update menu bar icon
