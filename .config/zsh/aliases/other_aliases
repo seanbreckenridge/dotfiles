@@ -15,7 +15,7 @@ alias discogs_update='python3 ~/Repos/albums/discogs_update.py'
 # https://github.com/seanbreckenridge/vps
 alias shorten="${REPOS}/vps/shorten"
 alias remsync="$REPOS/vps/remsync"
-alias remsync_public="REMSYNC_PUBLIC=1 $REPOS/vps/remsync"  # to push to /F/ (public index)
+alias remsync_public="REMSYNC_PUBLIC=1 $REPOS/vps/remsync" # to push to /F/ (public index)
 # to use ranger to quickly remove/add files
 alias remsync_ranger="ranger $HOME/.local/share/remsync && remsync"
 alias remsync_public_ranger="ranger $HOME/.local/share/remsync_public && remsync_public"
@@ -41,11 +41,11 @@ alias greasyfork_generate="cd ${REPOS}/greasyfork_repo_generator && greasyfork_a
 export MINT_DATA="${HOME}/Repos/mint/data"
 alias budget='python3 -m budget'
 budget-summary() {
-    if [[ -z "$1" ]]; then
-      python3 ~/Repos/mint/analyze/summary.py | glow -
-    else
-      python3 ~/Repos/mint/analyze/summary.py "$@"
-    fi
+	if [[ -z "$1" ]]; then
+		python3 ~/Repos/mint/analyze/summary.py | glow -
+	else
+		python3 ~/Repos/mint/analyze/summary.py "$@"
+	fi
 }
 alias 'budget-config=fd -IH conf.py --full-path $REPOS/mint | fzf | xargs -r -I {} editor {}'
 alias budget-history='python3 ~/Repos/mint/analyze/balance_history.py --show'

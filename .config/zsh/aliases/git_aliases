@@ -58,7 +58,7 @@ alias gds='git diff --staged'
 alias gdt='git diff-tree --no-commit-id --name-only -r'
 alias gdw='git diff --word-diff'
 gdh() {
-  git diff HEAD~"${1:-1}"
+	git diff HEAD~"${1:-1}"
 }
 
 alias gf='git fetch'
@@ -154,7 +154,7 @@ alias gupav='git pull --rebase --autostash -v'
 alias glum='git pull upstream master'
 
 # clone some repo and cd into it
-gclcd () {
-  gcl "${1:?Provide something to git clone}"
-  cd "$(newest)"
+gclcd() {
+	gcl "${1:?Provide something to git clone}"
+	cd "$(newest)"
 }
