@@ -132,6 +132,7 @@ map <leader>o :!opout <c-r>%<CR><CR>
 
 " copy visual selection to clipboard
 vmap <leader>c "+y
+vmap <leader>y "+y
 
 " Plugins
 " goyo
