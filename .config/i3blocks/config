@@ -14,7 +14,7 @@ label=📅
 
 # entr in ~/.config/i3/config refreshes this when the file changes
 [todo]
-command=sed '/^\s*$/d' "${HOME}/.config/todo/todo.txt" | wc -l
+command="${HOME}/.config/i3blocks/blocks/todo"
 interval=once
 label=📝
 signal=2

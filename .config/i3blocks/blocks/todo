@@ -1,0 +1,12 @@
+#!/bin/sh
+
+case "$BLOCK_BUTTON" in
+1)
+	todo-prompt
+	;;
+3)
+	todo-prompt add
+	;;
+esac
+
+sed '/^\s*$/d' "${HOME}/.config/todo/todo.txt" | wc -l
