@@ -5,7 +5,7 @@
 
 # if run from rofi/i3, use picker instead
 pick='fzf'
-if [[ "$(tty)" = "not a tty" ]]; then
+if [[ "$(tty)" == "not a tty" ]]; then
 	# cross platform GUI picker https://sean.fish/d/picker?dark
 	pick='picker'
 fi
