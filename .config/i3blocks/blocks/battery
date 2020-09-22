@@ -1,25 +1,28 @@
-#!/bin/sh
-# https://github.com/LukeSmithxyz/voidrice/blob/archi3/.local/bin/statusbar/battery
+#!/bin/bash
+# Modified from https://github.com/LukeSmithxyz/voidrice/blob/archi3/.local/bin/statusbar/battery
 
 # Give a battery name (e.g. BAT0) as an argument.
 
-capacity=$(cat /sys/class/power_supply/"$1"/capacity) || exit
-status=$(cat /sys/class/power_supply/"$1"/status)
+declare color capacity status emoji_status warn
+capacity="$(cat /sys/class/power_supply/"$1"/capacity)" || exit
+status="$(cat /sys/class/power_supply/"$1"/status)"
+emoji_status="$(sed -e "s/,//;s/Discharging/🔋/;s/Not Charging/🛑/;s/Charging/🔌/;s/Unknown/♻️/;s/Full/⚡/;s/ 0*/ /g;s/ :/ /g" <<<"$status")"
 
-if [ "$capacity" -ge 75 ]; then
+if ((capacity >= 75)); then
 	color="#00ff00"
-elif [ "$capacity" -ge 50 ]; then
+elif ((capacity >= 50)); then
 	color="#ffffff"
-elif [ "$capacity" -ge 25 ]; then
+elif ((capacity >= 25)); then
 	color="#ffff00"
 else
 	color="#ff0000"
 	warn="❗"
 fi
 
-[ "$status" = "Charging" ] || [ -z "$warn" ] && {
+# if charging, or if warn isn't set, default to white
+[[ "$status" = "Charging" ]] || [[ -z "$warn" ]] && {
 	color="#ffffff"
 	warn=""
 }
 
-printf "<span color='%s'>%s%s%s</span>\n" "$color" "$(echo "$status" | sed -e "s/,//;s/Discharging/🔋/;s/Not Charging/🛑/;s/Charging/🔌/;s/Unknown/♻️/;s/Full/⚡/;s/ 0*/ /g;s/ :/ /g")" "$warn" "$(echo "$capacity" | sed -e 's/$/%/')"
+echo -e "<span color='${color}'>${emoji_status}${warn}${capacity}%</span>"
