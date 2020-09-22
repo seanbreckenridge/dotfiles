@@ -7,6 +7,11 @@ interval=once
 label=📰
 signal=3
 
+[calendar]
+command="${HOME}/.config/i3blocks/blocks/calendar"
+interval=300
+label=📅
+
 # entr in ~/.config/i3/config refreshes this when the file changes
 [todo]
 command=sed '/^\s*$/d' "${HOME}/.config/todo/todo.txt" | wc -l

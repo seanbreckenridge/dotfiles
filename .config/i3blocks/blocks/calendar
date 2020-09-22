@@ -1,0 +1,15 @@
+#!/bin/sh
+
+case "$BLOCK_BUTTON" in
+1)
+	# send a notification with todays appointments
+	notify "$(calcurse -a)"
+	;;
+3)
+	# open calcurse in my terminal
+	# https://sean.fish/d/cross-platform/launch?dark
+	launch calcurse
+	;;
+esac
+
+calcurse -G | grep "^$(date +"%m/%d/%Y")" -c
