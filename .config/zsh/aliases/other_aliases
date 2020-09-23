@@ -56,6 +56,9 @@ alias 'weight=python3 -c "from my.body.weight import prompt; prompt()"'
 # https://github.com/seanbreckenridge/tts
 alias tts-say='tts -d /tmp/tts.ogg && paplay /tmp/tts.ogg'
 
+# https://github.com/seanbreckenridge/oh-my-stars
+alias mystarsfzf="mystars | sed 's/\x1B\[[0-9;]\+[A-Za-z]//g' | fzf"
+
 # deprecated script reminders
 alias "en=echo -e \"\033[31mUse e!\033[0m\""
 alias geolocate='echo use ipgeocache\!; ipgeocache'
