@@ -31,7 +31,7 @@ The rest of the README is for what I used on arch:
 
 [`ttt`](https://github.com/seanbreckenridge/ttt/) is sprinkled throughout lots of my scripts, it acts as an extension to my shell history, saving commands from `i3` `bindsym`s, or `ranger` commands.
 
-I typically default to dracula-like color schemes to keep things consistent. Currently in use for `qtile`, `alacritty` (terminal), `rofi`, and `emacs`.
+I typically default to [dracula](https://draculatheme.com/)-like color schemes to keep things consistent. Currently in use for `qtile`, `alacritty` (terminal), `rofi`, and `emacs`.
 
 [.config/yadm](.config/yadm) includes lists of global packages for pacman/yay, python, ruby, npm, dart, rust, go, and haskell; the zsh [update](.config/zsh/functions/update) function updates all the corresponding packages.
 
