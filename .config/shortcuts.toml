@@ -644,3 +644,5 @@ chosen_url="$(echo "$urls" | picker -p 'Pick a URL to open > ')"
 }
 '''
 
+[ssh-keygen-good]
+command='ssh-keygen -t rsa -b 4096 -o -a 100'
