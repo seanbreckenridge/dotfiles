@@ -29,11 +29,9 @@ autoload -Uz compinit && compinit
 # lazy-load user defined functions
 autoload -Uz "$ZDOTDIR"/functions/*
 
-# bind fzf-edit (fuzzy match everything and open/cd to dir)
-zle -N fzf-edit; bindkey '^F' fzf-edit
-# fuzzy match everything (including hidden files)
-fzf-edit-hidden() { fzf-edit -H }
-zle -N fzf-edit-hidden; bindkey '^G' fzf-edit-hidden
+# bind fzf_select (fuzzy match everything and open/cd to dir in ranger)
+bindkey -s '^F' "ranger --cmd='fzf_select'^M"
+bindkey -s '^G' "ranger --cmd='chain set show_hidden true; fzf_select_hidden'^M"
 
 # Alt+left arrow/Alt+H to move up a dir
 up-dir() { cd ".."; zle reset-prompt }; zle -N up-dir
