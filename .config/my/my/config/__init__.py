@@ -4,7 +4,7 @@ Configuration file for https://github.com/seanbreckenridge/HPI/
 """
 
 from os import environ, path
-from typing import Optional, List, Callable
+from typing import Optional, Callable, List
 from pathlib import Path
 
 from my.core import PathIsh, Paths
@@ -152,7 +152,7 @@ class smscalls:
     export_path: Paths = "~/GoogleDrive/SMSBackups/"
 
 class photos:
-    paths: List[PathIsh] = ("~/Pictures/iCloudPhotos/", "~/data/google_takeout/")
+    paths: List[PathIsh] = ["~/Pictures/iCloudPhotos/", "~/data/google_takeout/"]
     # dont ignore anything
     ignored: Callable[[Path], bool] = lambda p: False
 
