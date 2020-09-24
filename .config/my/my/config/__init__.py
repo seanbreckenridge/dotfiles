@@ -4,7 +4,7 @@ Configuration file for https://github.com/seanbreckenridge/HPI/
 """
 
 from os import environ, path
-from typing import Optional, List
+from typing import Optional, List, Callable
 from pathlib import Path
 
 from my.core import PathIsh, Paths
@@ -150,6 +150,11 @@ class window_watcher:
 
 class smscalls:
     export_path: Paths = "~/GoogleDrive/SMSBackups/"
+
+class photos:
+    paths: List[PathIsh] = ("~/Pictures/iCloudPhotos/", "~/data/google_takeout/")
+    # dont ignore anything
+    ignored: Callable[[Path], bool] = lambda p: False
 
 # class stackexchange:
 #    export_path: Paths = "~/data/stexport"
