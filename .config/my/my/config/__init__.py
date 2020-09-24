@@ -52,6 +52,12 @@ class todotxt:
     )
 
 
+# parses my rss history
+class rss:
+    export_path: Paths = "~/data/rss/"
+    live_file: Optional[PathIsh] = path.join(environ["XDG_CONFIG_HOME"], "newsboat", "urls")
+
+
 # parses information from git repositories which match my emails
 class commits:
     # names: List[str] = ["Sean Breckenridge"]
