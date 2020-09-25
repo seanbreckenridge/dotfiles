@@ -87,13 +87,5 @@ python3() {
   fi
 }
 
-# plainplay aliases
-# https://gitlab.com/seanbreckenridge/plaintext-playlist.git
-alias play='plainplay'
-alias pplay='plainplay play'
-alias splay='plainplay shuffle'
-alias splayall='plainplay shuffleall "$(plainplay playlistdir)"/*'
-bindkey -s '^P' "^uplay^M"
-
 # stop import from crashing my system for some reason
 alias 'import=printf "Use /usr/bin/import instead\n"'

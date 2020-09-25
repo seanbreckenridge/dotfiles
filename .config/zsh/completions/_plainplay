@@ -1,0 +1,41 @@
+# autocompletion for https://github.com/seanbreckenridge/plaintext-playlist
+
+# to enable this, put the following in your zsh config:
+#
+# # just some aliases I like
+# alias play='plainplay'
+# alias pplay='plainplay play'
+# alias splay='plainplay shuffle'
+#
+# autoload -Uz compinit && compinit  # if not already done somewhere else
+# autoload ~/.config/zsh/completion/_plainplay (this file)
+#
+# compdef _plainplay plainplay play
+# compdef _playlist_files splay pplay
+
+function playlist_commands() {
+	plainplay help | awk -n '/^add.*$/,0 { printf $1 " " }'
+}
+
+function playlist_names() {
+	find "${PLAINTEXT_PLAYLIST_PLAYLISTS:=${XDG_DATA_HOME:-$HOME/.local/share}/plaintext_playlist}" -printf '%f\n' | cut -d'.' -f1 | xargs echo -n
+}
+
+# for plainplay/play
+function _plainplay() {
+	local plist_names plist_cmds
+	plist_cmds="$(playlist_commands)"
+	plist_names="$(playlist_names)"
+	_arguments \
+		"$(printf '1: :(%s)' "$plist_cmds")" \
+		"$(printf '2: :(%s)' "$plist_names")" \
+}
+
+# for splay/pplay aliases
+function _playlist_files() {
+	local plist_names
+	plist_names="$(playlist_names)"
+	_arguments \
+		"$(printf '1: :(%s)' "$plist_names")"
+}
+
