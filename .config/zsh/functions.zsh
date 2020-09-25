@@ -4,13 +4,13 @@ fpath=("$ZDOTDIR"/functions "$ZDOTDIR"/completions "${fpath[@]}")
 
 # if on linux
 if [[ -n "$ONLINUX" ]]; then
-  fpath+=(/usr/share/zsh/site-functions) 
+	fpath+=(/usr/share/zsh/site-functions)
 else
-  # on mac
-  # if compaudit complains:
-  # run:
-  # sudo chown -R $(whoami) <folders>...
-  fpath+=(/usr/local/share/zsh/site-functions)
+	# on mac
+	# if compaudit complains:
+	# run:
+	# sudo chown -R $(whoami) <folders>...
+	fpath+=(/usr/local/share/zsh/site-functions)
 fi
 
 # autoload must be after modifying fpath to auto-load completions
@@ -34,16 +34,20 @@ bindkey -s '^F' "ranger --cmd='fzf_select'^M"
 bindkey -s '^G' "ranger --cmd='chain set show_hidden true; fzf_select_hidden'^M"
 
 # Alt+left arrow/Alt+H to move up a dir
-up-dir() { cd ".."; zle reset-prompt }; zle -N up-dir
+up-dir() {
+	cd ".."
+	zle reset-prompt
+}
+zle -N up-dir
 bindkey "^[[1;3D" up-dir
 bindkey "^[h" up-dir
 
 # https://github.com/seanbreckenridge/ttt/
 # track which cd's Im moving to
 fzf-cd-widget-ttt() {
-  fzf-cd-widget && {
-    command -v tttlog >/dev/null 2>&1 && tttlog "fzf-cd $PWD"
-  }
+	fzf-cd-widget && {
+		command -v tttlog >/dev/null 2>&1 && tttlog "fzf-cd $PWD"
+	}
 } && zle -N fzf-cd-widget-ttt
 
 # Alt+right arrow/Alt+L to launch fzf cd (move into dir)
@@ -52,15 +56,15 @@ bindkey "^[l" fzf-cd-widget-ttt
 
 # Alt+Shift+C to fzf into a directory in my repos
 fzf-repos() {
-  cd "$REPOS"
-  fzf-cd-widget-ttt
-  # if user didnt select a dir to cd into
-  # and is still in Repos, go back to
-  # the dir they were in previously
-  if [ "$PWD" = "$REPOS" ]; then
-    cd "$OLDPWD"
-  fi
-  zle reset-prompt
+	cd "$REPOS"
+	fzf-cd-widget-ttt
+	# if user didnt select a dir to cd into
+	# and is still in Repos, go back to
+	# the dir they were in previously
+	if [ "$PWD" = "$REPOS" ]; then
+		cd "$OLDPWD"
+	fi
+	zle reset-prompt
 }
 zle -N fzf-repos
 bindkey "^[C" fzf-repos

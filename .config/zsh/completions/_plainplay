@@ -40,4 +40,3 @@ function _playlist_files() {
 	_arguments \
 		"$(printf '1: :(%s)' "$plist_names")"
 }
-
