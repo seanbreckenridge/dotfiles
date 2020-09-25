@@ -10,7 +10,7 @@
 # alias splay='plainplay shuffle'
 #
 # autoload -Uz compinit && compinit  # if not already done somewhere else
-# autoload ~/.config/zsh/completion/_plainplay (this file)
+# autoload -Uz ~/.config/zsh/completion/_plainplay # (this file, put it on your system somewhere)
 #
 # compdef _plainplay plainplay play
 # compdef _playlist_files splay pplay
