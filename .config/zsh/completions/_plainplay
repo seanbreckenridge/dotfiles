@@ -1,3 +1,5 @@
+#compdef playlist
+
 # autocompletion for https://github.com/seanbreckenridge/plaintext-playlist
 
 # to enable this, put the following in your zsh config:
@@ -18,7 +20,7 @@ function playlist_commands() {
 }
 
 function playlist_names() {
-	find "${PLAINTEXT_PLAYLIST_PLAYLISTS:=${XDG_DATA_HOME:-$HOME/.local/share}/plaintext_playlist}" -printf '%f\n' | cut -d'.' -f1 | xargs echo -n
+	find "${PLAINTEXT_PLAYLIST_PLAYLISTS:-${XDG_DATA_HOME:-$HOME/.local/share}/plaintext_playlist}" -printf '%f\n' | cut -d'.' -f1 | xargs echo -n
 }
 
 # for plainplay/play
@@ -28,7 +30,7 @@ function _plainplay() {
 	plist_names="$(playlist_names)"
 	_arguments \
 		"$(printf '1: :(%s)' "$plist_cmds")" \
-		"$(printf '2: :(%s)' "$plist_names")" \
+		"$(printf '2: :(%s)' "$plist_names")"
 }
 
 # for splay/pplay aliases
