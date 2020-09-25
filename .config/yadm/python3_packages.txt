@@ -1,3 +1,4 @@
+HTMLParser
 aiohttp
 asyncio
 autopep8
@@ -11,6 +12,7 @@ cget
 colorama
 cookiecutter
 cube-scramble-cli
+currencyconverter
 discogs-client
 discogs_client
 docopt
@@ -20,7 +22,6 @@ full-todotxt
 giturlparse
 google-api-python-client
 greasyfork_archive
-HTMLParser
 idna
 imgur-uploader
 isort
