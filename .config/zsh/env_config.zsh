@@ -105,7 +105,7 @@ export CDPATH="${HOME}:${REPOS}:${HOME}/.config:${HOME}/.local/scripts"
 
 # fzf configuration
 export FZF_DEFAULT_OPTS=""
-export FZF_DEFAULT_COMMAND="fd -H -L -E .git" # ignore files in gitignore
+export FZF_DEFAULT_COMMAND="fd -IHL -E .git"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_ALT_C_COMMAND="$FZF_DEFAULT_COMMAND -t d"
 
