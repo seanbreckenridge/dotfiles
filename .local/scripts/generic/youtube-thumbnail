@@ -1,0 +1,9 @@
+#!/bin/sh
+# preview a youtube thumbnail fullscreen
+YOUTUBE_URL="${1:?Provide Youtube URL as the first argument}"
+IMAGE_URL="$(curl -s "$YOUTUBE_URL" | pup 'link[itemprop="thumbnailUrl"] attr{href}' | head -n 1)" || {
+	echo "Couldn't download "
+	exit 1
+}
+# https://sean.fish/d/previewurlpic?dark
+previewurlpic "$IMAGE_URL"
