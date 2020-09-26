@@ -31,6 +31,8 @@ zstyle ':completion::*:(rm|nvim|e|ls):*' ignore-line true
 
 autoload -Uz "$ZDOTDIR"/completions/*
 compdef _gnu_generic exists youtube-dl wait-for-internet genpasswd genpass shortcuts dragon-drag-and-drop chafa dust highlight ranger rifle scrot keepassxc newsboat mpvf full_todotxt calcurse gifsicle boxes chafa datamash dex glow pup toilet termdown
+# manually source playlist file because top compdef declaration doesnt match alias names; autoload wont catch functions
+source "$ZDOTDIR"/completions/_plainplay
 compdef _plainplay plainplay play
 compdef _playlist_files splay pplay
 compdef _binary_completion which-cat launch vic
