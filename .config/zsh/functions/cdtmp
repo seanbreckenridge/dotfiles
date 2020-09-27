@@ -1,0 +1,6 @@
+# cd to a new tmp directory
+
+cdtmp() {
+	TMPDIR="$(mktemp -p /tmp -d XXXXXXXXXX)"
+	cd "$TMPDIR"
+}
