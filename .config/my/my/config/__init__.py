@@ -32,10 +32,9 @@ class reddit:
     rexport: Optional[PathIsh] = repo("rexport")
 
 
-# parses a manually created log file with https://github.com/seanbreckenridge/autotui
-# https://github.com/seanbreckenridge/HPI/blob/master/my/body/weight.py
-class weight:
-    datafile: PathIsh = "~/data/weight.json"
+# prompt me for actions using https://github.com/seanbreckenridge/autotui
+class body:
+    datadir: PathIsh = "~/data/body/"
 
 
 # parses my zsh history and any backups

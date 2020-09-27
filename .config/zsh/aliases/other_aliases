@@ -58,7 +58,10 @@ alias 'budget-config=fd -IH conf.py --full-path $REPOS/mint | fzf | xargs -r -I 
 alias budget-history='python3 ~/Repos/mint/analyze/balance_history.py --show'
 
 # https://github.com/seanbreckenridge/HPI
-alias 'weight=python3 -c "from my.body.weight import prompt; prompt()"'
+# https://github.com/seanbreckenridge/autotui
+alias 'teeth=python3 -c "from my.body import prompt, Teeth; prompt(Teeth)"'
+alias 'shower=python3 -c "from my.body import prompt, Shower; prompt(Shower)"'
+alias 'weight=python3 -c "from my.body import prompt, Weight; prompt(Weight)"'
 
 # https://github.com/seanbreckenridge/tts
 alias tts-say='tts -d /tmp/tts.ogg && paplay /tmp/tts.ogg'
