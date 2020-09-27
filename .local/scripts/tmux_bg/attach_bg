@@ -5,4 +5,3 @@
 
 [[ -n "$TMUX" ]] && change="switch-client" || change="attach-session"
 tmux "$change" -t 'bg'
-

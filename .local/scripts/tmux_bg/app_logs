@@ -1,8 +1,16 @@
-#!/bin/sh
+#!/bin/bash
 
-while true; do
-	# restart every 10 minutes, so that tail errors are ignored
-	# and new /tmp/ logs are picked up
-	timeout 5m tail -f /tmp/bgproc.log ~/.cache/hpi_app.log /tmp/mpv-history-daemon.log \
-		~/.local/share/window_events.csv ~/.local/share/ttt_history.csv
+declare -a FILES
+FILES=(
+	/tmp/bgproc.log
+	~/.cache/hpi_app.log
+	/tmp/mpv-history-daemon.log
+	~/.local/share/window_events.csv
+	~/.local/share/ttt_history.csv
+)
+
+for f in "${FILES[@]}"; do
+	[[ ! -f "$f" ]] && touch "$f"
 done
+
+exec tail -f "${FILES[@]}"
