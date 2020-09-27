@@ -62,6 +62,7 @@ alias budget-history='python3 ~/Repos/mint/analyze/balance_history.py --show'
 alias 'teeth=python3 -c "from my.body import prompt, Teeth; prompt(Teeth)"'
 alias 'shower=python3 -c "from my.body import prompt, Shower; prompt(Shower)"'
 alias 'weight=python3 -c "from my.body import prompt, Weight; prompt(Weight)"'
+alias 'water=python3 -c "from my.food import prompt, Water; prompt(Water)"'
 
 # https://github.com/seanbreckenridge/tts
 alias tts-say='tts -d /tmp/tts.ogg && paplay /tmp/tts.ogg'
