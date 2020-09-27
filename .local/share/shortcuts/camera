@@ -1,0 +1,10 @@
+#!/bin/bash
+# open mpv to save a picture (using webcam) in ~/Pictures/pics
+
+declare pics
+pics="${PICTURES:?Pictures environment variable not set}/pics"
+[[ ! -d "$pics" ]] && mkdir -p "$pics"
+cd "$pics" || exit 1
+# open mpv so I can take a picture
+mpv /dev/video0
+exec launch ranger "$pics"

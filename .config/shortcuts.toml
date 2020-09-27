@@ -283,6 +283,21 @@ notify -t 10000 "qtile bindings:" "$(qtile-bindings --json | jq -r '[.[]|select(
 [webcam-test]
 command='''mpv /dev/video0'''
 
+[webcam-pic]
+command='''
+# open mpv to save a picture (using webcam) in ~/Pictures/pics
+
+declare pics
+pics="${PICTURES:?Pictures environment variable not set}/pics"
+[[ ! -d "$pics" ]] && mkdir -p "$pics"
+cd "$pics" || exit 1
+# open mpv so I can take a picture
+mpv /dev/video0
+exec launch ranger "$pics"
+'''
+shebang='#!/bin/bash'
+link='camera'
+
 [image-dimensions]
 command='''
 #!/bin/sh
