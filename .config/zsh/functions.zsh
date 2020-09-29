@@ -80,8 +80,3 @@ bindkey "^[C" fzf-repos
 # Alt+R to launch ranger (file manager)
 bindkey -s "^[r" "^uranger^M"
 
-# Alt+Shift+R to launch ranger and fzf_select
-bindkey -s "^[R" "^uranger --cmd=fzf_select^M"
-
-# Alt+X to run xmodmap (to rebind keys on external keyboards)
-bindkey -s "^[x" "^uxmodmap ~/.Xmodmap 2>/dev/null^M"
