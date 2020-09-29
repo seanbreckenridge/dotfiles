@@ -17,7 +17,7 @@ python3() {
 cat() {
   if [[ -t 1 ]] && (($# == 1)) && [[ -r "$1" ]]; then
     # https://github.com/sharkdp/bat
-    bat --pager=never --theme=Dracula "$1"
+    bat --pager=never "$1"
   else
     /usr/bin/cat "$@"
   fi

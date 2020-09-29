@@ -103,6 +103,9 @@ export YSU_MESSAGE_FORMAT="$(tput setaf 1)>>> %alias_type: %alias $(tput sgr0)"
 # directories that can be cd'd into
 export CDPATH="${HOME}:${REPOS}:${HOME}/.config:${HOME}/.local/scripts"
 
+# bat theme
+export BAT_THEME="Dracula"
+
 # fzf configuration
 export FZF_DEFAULT_OPTS=""
 export FZF_DEFAULT_COMMAND="fd -IHL -E .git"
