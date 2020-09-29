@@ -87,5 +87,15 @@ python3() {
   fi
 }
 
+# if I type cat with only one argument, which is a file that exists
+# and this isn't being piped to a file, use bat instead
+cat() {
+  if [[ -t 1 ]] && (($# == 1)) && [[ -r "$1" ]]; then
+    bat --theme=Dracula "$1"
+  else
+    /usr/bin/cat "$@"
+  fi
+}
+
 # stop import from crashing my system for some reason
 alias 'import=printf "Use /usr/bin/import instead\n"'
