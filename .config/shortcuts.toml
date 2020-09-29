@@ -380,9 +380,9 @@ STDIN="$(cat)"
 printf '%s' "$STDIN"
 printf '%s' "$STDIN" | clipcopy
 if [[ "$(echo "$STDIN" | wc -l)" == 1 ]]; then
-  exec notify clp "$(printf 'Copied to clipboard: %s' "$STDIN")"
+	exec notify clp "$(printf 'Copied to clipboard: %s' "$STDIN")"
 else
-  exec notify clp "$(printf 'Copied %d lines to clipboard' "$(echo "$STDIN" | wc -l)")"
+	exec notify clp "$(printf 'Copied %d lines to clipboard' "$(echo "$STDIN" | wc -l)")"
 fi
 '''
 shebang="#!/bin/bash"
@@ -674,8 +674,8 @@ PICKED="$(mystars | sed 's/\x1B\[[0-9;]\+[A-Za-z]//g' | fzf)" || exit $?
 printf '%s\n' "$PICKED"
 URL="$(echo "$PICKED" | urlextract)"
 [[ -n "$URL" ]] && {
-  clp-args "$URL"
-  printf '\n'
+	clp-args "$URL"
+	printf '\n'
 }
 '''
 shebang="#!/bin/bash"

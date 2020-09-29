@@ -4,6 +4,6 @@ PICKED="$(mystars | sed 's/\x1B\[[0-9;]\+[A-Za-z]//g' | fzf)" || exit $?
 printf '%s\n' "$PICKED"
 URL="$(echo "$PICKED" | urlextract)"
 [[ -n "$URL" ]] && {
-  clp-args "$URL"
-  printf '\n'
+	clp-args "$URL"
+	printf '\n'
 }
