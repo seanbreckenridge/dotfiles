@@ -5,7 +5,7 @@ function which-cat() {
 		# if the file is readable
 		if [[ -r "$COMMAND_OUTPUT" ]]; then
 			if iconv --from-code="utf-8" --to-code="utf-8" "$COMMAND_OUTPUT" >/dev/null 2>&1; then
-				cat "$COMMAND_OUTPUT"
+				/usr/bin/cat "$COMMAND_OUTPUT"
 			else
 				file "$COMMAND_OUTPUT"
 			fi
