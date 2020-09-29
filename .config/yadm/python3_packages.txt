@@ -47,6 +47,7 @@ pyautogui
 pyclip-copycat
 pygments
 pyperclip
+pypyp
 pytest
 python-language-server
 python-rofi
