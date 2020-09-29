@@ -1,3 +1,4 @@
 cargo-license
 cargo-update
 evry
+genact
