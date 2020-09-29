@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 # searches all my configuration for a string
 # passes arguments received to grep
 while read -r filename; do

@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 # generates a password and puts it on your clipboard
 # uses https://github.com/seanbreckenridge/genpasswd
 if ! pw=$(genpasswd "$@"); then
@@ -7,7 +7,7 @@ if ! pw=$(genpasswd "$@"); then
 fi
 pw=$(head -n 1 <<<"$pw")
 if [[ "$(tty)" == "not a tty" ]]; then
-	notify "Copied password to clipboard:" "${pw}"
+	clp <<<"Copied password to clipboard:" "${pw}"
 else
 	echo -e "$pw"
 fi

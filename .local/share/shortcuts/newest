@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 # gets the most recently modified file
 # from a directory
 IFS=$'\n'

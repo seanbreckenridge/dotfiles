@@ -147,7 +147,7 @@ fi
 '''
 
 [genpass]
-shebang = "#!/usr/bin/env bash"  # to make sure echo flags work
+shebang = "#!/bin/bash"  # to make sure echo flags work
 command ='''
 # generates a password and puts it on your clipboard
 # uses https://github.com/seanbreckenridge/genpasswd
@@ -157,7 +157,7 @@ if ! pw=$(genpasswd "$@"); then
 fi
 pw=$(head -n 1 <<<"$pw")
 if [[ "$(tty)" == "not a tty" ]]; then
-	notify "Copied password to clipboard:" "${pw}"
+	clp <<<"Copied password to clipboard:" "${pw}"
 else
 	echo -e "$pw"
 fi
@@ -346,7 +346,7 @@ exec file --mime-type -Lb "$@"
 '''
 
 [dragon-sink]
-shebang="#!/usr/bin/env bash"
+shebang="#!/bin/bash"
 command='''
 # brings up a prompt to drag files into.
 # If no flags are provided, copies any files
@@ -379,8 +379,13 @@ command='''
 STDIN="$(cat)"
 printf '%s' "$STDIN"
 printf '%s' "$STDIN" | clipcopy
-exec notify "clp" "$(printf 'Copied %d lines to clipboard' "$(echo "$STDIN" | wc -l)")"
+if [[ "$(echo "$STDIN" | wc -l)" == 1 ]]; then
+  exec notify clp "$(printf 'Copied to clipboard: %s' "$STDIN")"
+else
+  exec notify clp "$(printf 'Copied %d lines to clipboard' "$(echo "$STDIN" | wc -l)")"
+fi
 '''
+shebang="#!/bin/bash"
 
 [clp-args]
 command='''
@@ -425,7 +430,7 @@ command="tr '[:upper:]' '[:lower:]'"
 command="tr '[:lower:]' '[:upper:]'"
 
 [capitalize]
-shebang="#!/usr/bin/env bash"
+shebang="#!/bin/bash"
 command="""
 # capitalizes the first character of a word from STDIN
 s="$(lower)"
@@ -433,7 +438,7 @@ echo "$(upper <<<"${s:0:1}")${s:1}"
 """
 
 [newest]
-shebang="#!/usr/bin/env bash"
+shebang="#!/bin/bash"
 command='''
 # gets the most recently modified file
 # from a directory
@@ -480,11 +485,11 @@ exec mv -v "${FILE}" "./$1"
 '''
 
 [rbg]
-shebang="#!/usr/bin/env bash"
+shebang="#!/bin/bash"
 command="echo -n $'\033[38;2;'$1';'$2';'$3'm'"
 
 [rbgb]
-shebang="#!/usr/bin/env bash"
+shebang="#!/bin/bash"
 command="echo -n $'\033[48;2;'$1';'$2';'$3'm'"
 
 [vic]
@@ -495,7 +500,7 @@ exec nvim "$LOCATION"
 '''
 
 [grep-dotfiles]
-shebang="#!/usr/bin/env bash"
+shebang="#!/bin/bash"
 command='''
 # searches all my configuration for a string
 # passes arguments received to grep
@@ -661,3 +666,16 @@ chosen_url="$(echo "$urls" | picker -p 'Pick a URL to open > ')"
 
 [ssh-keygen-good]
 command='ssh-keygen -t rsa -b 4096 -o -a 100'
+
+[mystarsfzf]
+command='''
+# https://github.com/seanbreckenridge/oh-my-stars
+PICKED="$(mystars | sed 's/\x1B\[[0-9;]\+[A-Za-z]//g' | fzf)" || exit $?
+printf '%s\n' "$PICKED"
+URL="$(echo "$PICKED" | urlextract)"
+[[ -n "$URL" ]] && {
+  clp-args "$URL"
+  printf '\n'
+}
+'''
+shebang="#!/bin/bash"

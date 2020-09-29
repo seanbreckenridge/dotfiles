@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 # accepts input from STDIN, sends text back to STDOUT
 # copies what it received to the clipboard
 # used in vim:
@@ -6,4 +6,8 @@
 STDIN="$(cat)"
 printf '%s' "$STDIN"
 printf '%s' "$STDIN" | clipcopy
-exec notify "clp" "$(printf 'Copied %d lines to clipboard' "$(echo "$STDIN" | wc -l)")"
+if [[ "$(echo "$STDIN" | wc -l)" == 1 ]]; then
+  exec notify clp "$(printf 'Copied to clipboard: %s' "$STDIN")"
+else
+  exec notify clp "$(printf 'Copied %d lines to clipboard' "$(echo "$STDIN" | wc -l)")"
+fi
