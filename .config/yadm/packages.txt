@@ -62,7 +62,6 @@ perl
 perl-test-perltidy
 php
 postgresql
-prettier
 pyenv
 python-gobject
 poetry

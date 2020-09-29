@@ -19,3 +19,4 @@ sqleton
 @jamen/lorem
 @gardenapple/readability-cli
 mintable
+prettier
