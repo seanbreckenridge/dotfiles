@@ -1,4 +1,6 @@
 -- vendorized from https://github.com/Kagami/mpv_slicing
+-- edited to not result in huge avi files (just copy input video/audio streams)
+-- and to save to my $MOVIES directory if possible (else defaults to $HOME)
 -- use 'c' to mark start/end of slice
 local msg = require "mp.msg"
 local utils = require "mp.utils"
@@ -8,19 +10,18 @@ local cut_pos = nil
 local copy_audio = true
 local o = {
     target_dir = "~",
-    vcodec = "rawvideo",
-    acodec = "pcm_s16le",
+    vcodec = "copy",
+    acodec = "copy",
     prevf = "",
-    vf = "format=yuv444p16$hqvf,scale=in_color_matrix=$matrix,format=bgr24",
     hqvf = "",
     postvf = "",
-    opts = "",
+    opts = "-bsf:v h264_mp4toannexb",
     ext = "avi",
     command_template = [[
         ffmpeg -v warning -y -stats
         -ss $shift -i "$in" -t $duration
         -c:v $vcodec -c:a $acodec $audio
-        -vf $prevf$vf$postvf $opts "$out.$ext"
+        $opts "$out.$ext"
     ]],
 }
 options.read_options(o)
@@ -36,15 +37,15 @@ function osd(str)
     return mp.osd_message(str, 3)
 end
 
-function get_homedir()
+function get_video_dir()
   -- It would be better to do platform detection instead of fallback but
   -- it's not that easy in Lua.
-  return os.getenv("HOME") or os.getenv("USERPROFILE") or ""
+  return os.getenv("MOVIES") or os.getenv("HOME") or os.getenv("USERPROFILE") or ""
 end
 
 function log(str)
     local logpath = utils.join_path(
-        o.target_dir:gsub("~", get_homedir()),
+        o.target_dir:gsub("~", get_video_dir()),
         "mpv_slicing.log")
     f = io.open(logpath, "a")
     f:write(string.format("# %s\n%s\n",
@@ -92,7 +93,7 @@ function cut(shift, endpos)
         utils.getcwd(),
         mp.get_property("stream-path")))
     local outpath = escape(utils.join_path(
-        o.target_dir:gsub("~", get_homedir()),
+        o.target_dir:gsub("~", get_video_dir()),
         get_outname(shift, endpos)))
 
     cmd = cmd:gsub("$shift", shift)
@@ -100,9 +101,6 @@ function cut(shift, endpos)
     cmd = cmd:gsub("$vcodec", o.vcodec)
     cmd = cmd:gsub("$acodec", o.acodec)
     cmd = cmd:gsub("$audio", copy_audio and "" or "-an")
-    cmd = cmd:gsub("$prevf", o.prevf)
-    cmd = cmd:gsub("$vf", o.vf)
-    cmd = cmd:gsub("$hqvf", o.hqvf)
     cmd = cmd:gsub("$postvf", o.postvf)
     cmd = cmd:gsub("$matrix", get_csp())
     cmd = cmd:gsub("$opts", o.opts)
