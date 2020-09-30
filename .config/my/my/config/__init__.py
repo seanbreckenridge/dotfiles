@@ -9,14 +9,11 @@ from pathlib import Path
 
 from my.core import PathIsh, Paths
 
+
 class core:
     cache_dir: PathIsh = "/tmp/cachew"
     enabled_modules: Sequence[PathIsh] = []
     disabled_modules: Sequence[PathIsh] = []
-
-
-def repo(repo_name: str) -> str:
-    return path.join(environ["REPOS"], repo_name)
 
 
 # combines:
@@ -25,7 +22,6 @@ def repo(repo_name: str) -> str:
 class github:
     gdpr_dir: PathIsh = "~/data/github/gdpr"
     export_path: Paths = "~/data/github/ghexport/"
-    ghexport: Optional[PathIsh] = repo("ghexport")
 
 
 # combines:
@@ -34,7 +30,6 @@ class github:
 class reddit:
     export_path: Paths = "~/data/rexport/"
     pushshift_export_path: Paths = "~/data/rps_comments/*.json"
-    rexport: Optional[PathIsh] = repo("rexport")
 
 
 # prompt me for actions using https://github.com/seanbreckenridge/autotui
@@ -59,7 +54,9 @@ class todotxt:
 # parses my rss history
 class rss:
     export_path: Paths = "~/data/rss/"
-    live_file: Optional[PathIsh] = path.join(environ["XDG_CONFIG_HOME"], "newsboat", "urls")
+    live_file: Optional[PathIsh] = path.join(
+        environ["XDG_CONFIG_HOME"], "newsboat", "urls"
+    )
 
 
 # parses information from git repositories which match my emails
@@ -155,10 +152,12 @@ class window_watcher:
 class smscalls:
     export_path: Paths = "~/GoogleDrive/SMSBackups/"
 
+
 class photos:
     paths: List[PathIsh] = ["~/Pictures/iCloudPhotos/", "~/data/google_takeout/"]
     # dont ignore anything
     ignored: Callable[[Path], bool] = lambda p: False
+
 
 # class stackexchange:
 #    export_path: Paths = "~/data/stexport"
