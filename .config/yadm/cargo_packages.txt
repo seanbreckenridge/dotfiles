@@ -3,3 +3,5 @@ cargo-update
 evry
 genact
 procs
+diskonaut
+eva
