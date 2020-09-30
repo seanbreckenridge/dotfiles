@@ -23,3 +23,12 @@ cat() {
   fi
 }
 
+# If I run 'ps -ef' with nothing else, without piping it into anything else, use procs instead
+ps() {
+  if [[ -t 1 ]] && [[ "$1" == "-ef" ]] && (($# == 1)); then
+    procs --pager=disable
+    echo "Instead of 'ps -ef | grep something', just use 'procs something'"
+  else
+    /usr/bin/ps "$@"
+  fi
+}
