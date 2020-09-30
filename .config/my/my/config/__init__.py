@@ -4,10 +4,15 @@ Configuration file for https://github.com/seanbreckenridge/HPI/
 """
 
 from os import environ, path
-from typing import Optional, Callable, List
+from typing import Optional, Callable, List, Sequence
 from pathlib import Path
 
 from my.core import PathIsh, Paths
+
+class core:
+    cache_dir: PathIsh = "/tmp/cachew"
+    enabled_modules: Sequence[PathIsh] = []
+    disabled_modules: Sequence[PathIsh] = []
 
 
 def repo(repo_name: str) -> str:
