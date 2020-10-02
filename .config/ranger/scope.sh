@@ -80,15 +80,21 @@ application/json)
 	}
 	;;
 application/csv)
-	exit 2 # display as plain text
+  try head -n$((maxln * 2)) "$path" && {
+    dump
+    exit 5
+  }
+	;;
+application/x-sharedlib | application/x-executable | application/x-pie-executable)
+	fileinfo "$path" && exit 0
 	;;
 *)
 	case "$path" in
 	# Python pickled objects
 	*.pickle)
-    # printing pickled data in preview
-    # window doesn't look good. can use
-    # rifle to preview it by running the file
+		# printing pickled data in preview
+		# window doesn't look good. can use
+		# rifle to preview it by running the file
 		echo "Pickled Python Data"
 		fileinfo "$path"
 		exit 5
