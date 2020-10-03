@@ -8,6 +8,7 @@ bpython
 bs4
 cbeams
 cget
+check-manifest
 colorama
 cookiecutter
 cube-scramble-cli
