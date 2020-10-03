@@ -192,6 +192,7 @@ xdotool
 xterm
 xvkbd
 yadm-git
+yq
 ytop
 zip
 

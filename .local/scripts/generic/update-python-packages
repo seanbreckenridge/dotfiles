@@ -4,6 +4,14 @@
 import pkg_resources
 from subprocess import call
 
+# disable for now, cant figure out why there are errors. Lots of packages
+# just hang and keep trying to re-install
+# probably has something to do with the new feature resolver
+#
+# will wait for now (till its standard), then debug further
+# if new pip doesn't fix it
+import sys; sys.exit(0)
+
 packages = [dist.project_name for dist in pkg_resources.working_set]
 call(
     "python3 -m pip install --use-feature=2020-resolver --upgrade {} | sed 's/^Requirement already up-to-date/Up to date/'"
