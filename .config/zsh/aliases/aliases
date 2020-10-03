@@ -63,8 +63,7 @@ alias path='tr ":" "\n" <<<"$PATH"'
 alias sxfull="sxiv -s f -f"
 # open all the firefox addons in the browser
 alias firefox-addons='openurls < ~/.local/share/firefox_addons.txt'
-# run python with the math module imported to use as my calculator
-alias calc='python3 -i ~/.config/pythonrc -c "from math import *"'
+alias calc='eva' # https://github.com/NerdyPepper/eva
 # pipe some command into stripcolors, removes any ANSI color codes
 alias stripcolors="sed 's/\x1B\[[0-9;]\+[A-Za-z]//g'"
 # alias ? to duck, searches duckduckgo in lynx
