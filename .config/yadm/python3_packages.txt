@@ -28,6 +28,7 @@ isort
 itsdangerous
 jikanpy
 keepassxc-pwned
+logzero
 lxml
 matplotlib
 mysqlclient
@@ -51,6 +52,7 @@ pyperclip
 pypyp
 pytest
 python-language-server
+python-mpv-jsonipc
 python-rofi
 pyupload
 requests
