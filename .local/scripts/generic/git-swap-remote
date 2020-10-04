@@ -1,0 +1,70 @@
+#!/bin/bash
+# swaps my git remote URL from Github to Gitlab
+# or back from Gitlab to Github
+#
+# most of my projects mirror from Gitlab to Github. 90% of
+# the time I push to Gitlab and let it handle mirroring
+# the repositories, but sometimes I want to push a bunch
+# repeatedly to test some work flow or CI tooling, and
+# the rate-limit on the mirroring slows that down
+
+declare REMOTE_NAME REMOTE_URL SWAPPED_URL LOGO MSG
+
+# assumes origin if no argument passed
+REMOTE_NAME="${1:-origin}"
+
+if ! in-gitdir; then
+	echo "You're not in a git repository!" 1>&2
+	exit 1
+fi
+
+# get remote URL for this repo
+if ! REMOTE_URL="$(git remote get-url "$REMOTE_NAME")"; then
+	printf "Couldn't get remote URL for '%s'\n" "$REMOTE_NAME" 1>&2
+	exit 1
+fi
+
+# which logo to display (what we've switched to)
+# 0: 'null'
+# 1: Github
+# 2: Gitlab
+LOGO='0'
+
+# try to match against git url and swap to the other kind
+if [[ "$REMOTE_URL" =~ git@github.com || "$REMOTE_URL" =~ https://github.com ]]; then
+	# matched Github
+	SWAPPED_URL="${REMOTE_URL/github/gitlab}"
+	LOGO='2'
+elif [[ "$REMOTE_URL" =~ git@gitlab.com || "$REMOTE_URL" =~ https://gitlab.com ]]; then
+	# matched Gitlab
+	SWAPPED_URL="${REMOTE_URL/gitlab/github}"
+	LOGO='1'
+else
+	printf "Couldn't match '%s' against Github or Gitlab!\n" "$REMOTE_URL"
+	exit 1
+fi
+
+# swap URL
+git remote set-url "$REMOTE_NAME" "$SWAPPED_URL" || exit $?
+MSG="$(printf "From:\t%s\nTo:\t%s\n" "$REMOTE_URL" "$SWAPPED_URL")"
+
+# print the logo of what we've swapped to!
+# https://sean.fish/d/chafa-cache?dark
+if command -v chafa-cache >/dev/null 2>&1; then
+	case "$LOGO" in
+	1)
+		chafa-cache 'https://i.imgur.com/n8Wcyia.png' --duration=0
+		;;
+	2)
+		chafa-cache 'https://gitlab.com/favicon.ico' --duration=0
+		;;
+	*) ;;
+	esac
+fi
+
+# print in a fancy box if possible
+if command -v boxes >/dev/null 2>&1; then
+	boxes -dshell -pv1h2 <<<"$MSG"
+else
+	printf '%s\n' "$MSG"
+fi
