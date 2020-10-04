@@ -175,6 +175,7 @@ texlive-core
 the_silver_searcher
 tk
 tmux
+tmuxp
 todotxt
 toilet
 unarchiver
