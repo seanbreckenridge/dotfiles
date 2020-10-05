@@ -125,6 +125,13 @@ __pycache__
 /.config/fontforge
 /.config/vlc
 /.config/snes9x
+/.config/coc/extensions/node_modules
+/.config/coc/extensions/*
+!/.config/coc/extensions/package.json
+/.config/coc/list-marketplace-history.json
+/.config/coc/list-extensions-history.json
+/.config/coc/memos.json
+/.config/coc/mru
 /.config/filezilla
 /.config/3T
 /.config/twitchlive

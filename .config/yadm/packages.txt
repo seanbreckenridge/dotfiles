@@ -29,11 +29,13 @@ xorg-xmodmap
 
 # language support
 
+#rebar3-zsh
 ccls
 checkbashisms
 clojure
 cmake
 composer
+ctags
 dart
 dash
 dashbinsh
@@ -44,9 +46,9 @@ elm-bin
 erlang
 fslint
 ghc
-graphviz
 go
 gocode-daemon
+graphviz
 inotify-tools
 java-environment-common
 java-runtime-common
@@ -61,19 +63,18 @@ ocaml
 perl
 perl-test-perltidy
 php
+poetry
 postgresql
 pyenv
 python-gobject
-poetry
 python-pip
 python3
 rebar3-git
-#rebar3-zsh
 redis
 ruby
 ruby-bundler
-rustup
 rust-racer
+rustup
 sbcl
 sbt
 scala
@@ -102,7 +103,6 @@ chafa
 cmatrix
 coreutils
 cronie
-ctags
 datamash
 dex
 dragon-drag-and-drop-git
@@ -139,7 +139,7 @@ mlocate
 moreutils
 ncdu
 neofetch
-neovim
+neovim-git
 neovim-plug-git
 net-tools
 networkmanager-dmenu-git

@@ -56,8 +56,10 @@ python3 -m pip install -q --user -r "$LINUX_PYTHON_PACKAGE_LIST"
 # Install default rust toolchain and rust-clippy
 echo "Instaling rust toolchain..."
 rustup toolchain install stable
-rustup component add clippy
-rustup component add rustfmt
+declare -a RUST_COMPONENTS=(clippy rustfmt rls rust-analysis rust-src)
+for component in "${RUST_COMPONENTS[@]}"; do
+	rustup component add "$component"
+done
 
 # Check services
 echo "Checking if default services are running..."

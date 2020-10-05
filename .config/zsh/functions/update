@@ -15,7 +15,7 @@ function update() {
 	fi
 	yadm bootstrap
 	echo "Updating nvim packages..."
-	nvim +PlugUpdate +qall
+	nvim +PlugUpdate +CocUpdate +qall
 	echo "Updating doom emacs..."
 	doom -y upgrade
 	echo "Updating ruby packages..."
