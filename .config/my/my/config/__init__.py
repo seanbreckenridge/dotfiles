@@ -158,6 +158,8 @@ class photos:
     # dont ignore anything
     ignored: Callable[[Path], bool] = lambda p: False
 
+class location:
+    from .locations_secret import locations as home
 
 # class stackexchange:
 #    export_path: Paths = "~/data/stexport"
