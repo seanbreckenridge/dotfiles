@@ -37,6 +37,7 @@ nose
 numpy
 oauth2client
 pandas
+pick
 pillow
 pip-licenses
 pipenv
@@ -63,6 +64,7 @@ setuptools
 speedtest-cli
 termcolor
 termdown
+textdistance
 thefuck
 toml
 twine
