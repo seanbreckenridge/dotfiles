@@ -18,17 +18,20 @@ copy_keepass_db() {
 	# copy keepass db to google drive, so I can use Keepass2Android on my phone
 	db_here="$DOCUMENTS/updated_database.kdbx"
 	db_there="$HOME/GoogleDrive/updated_database.kdbx"
-	[[ -f "$db_here" ]] && [[ -f "$db_there" ]] && cp "$db_here" "$db_there"
+	[[ -f "$db_here" ]] && [[ -f "$db_there" ]] && cp -v "$db_here" "$db_there"
 }
-
-copy_keepass_db
 
 evry 1 day -backup_fish_server && backup_server
 evry 2 months -pythonanywhere && pythonanywhere_3_months -Hc "$(which chromedriver)"
 evry 1 day -google_drive && {
 	cd ~/GoogleDrive/ || exit $?
 	echo "Running 'drive pull'..."
-	drive pull
+	# first, update new files that have been synced to my drive
+	drive pull -ignore-conflict
+	# copy my password so it syncs to android
+	copy_keepass_db
+	# sync keepass db
+	drive push
 }
 
 # has the possibility to fail, if I'm not home and it tries to
