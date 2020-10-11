@@ -1,6 +1,7 @@
 aiohttp
 asyncio
 autopep8
+autotui
 backoff
 bandcamp-downloader
 black
