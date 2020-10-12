@@ -27,7 +27,7 @@ alias remsync_public="REMSYNC_PUBLIC=1 $REPOS/vps/remsync" # to push to /F/ (pub
 alias remsync_ranger="ranger $HOME/.local/share/remsync && remsync"
 alias remsync_public_ranger="ranger $HOME/.local/share/remsync_public && remsync_public"
 alias playlist='$REPOS/vps/playlist'
-alias restart_glue='ssh vultr "cd ./code/glue && git pull && ~/vps/super --ctl restart glue-server"'
+alias restart-glue='ssh vultr "cd ./code/glue && git pull && ~/vps/super --ctl restart glue-server"'
 alias dotfiles_pull='ssh vultr "cd ~/.dotfiles && git pull"'
 # Alt+Shift+V to connect to VPS
 bindkey -s "^[V" "vultr\n"
