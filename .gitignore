@@ -126,6 +126,7 @@ __pycache__
 /.config/vlc
 /.config/snes9x
 /.config/coc/extensions/node_modules
+/.config/coc/list-location-history.json
 /.config/coc/extensions/*
 !/.config/coc/extensions/package.json
 /.config/coc/list-marketplace-history.json
