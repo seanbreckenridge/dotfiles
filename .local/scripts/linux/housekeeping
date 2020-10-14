@@ -21,6 +21,10 @@ copy_keepass_db() {
 	[[ -f "$db_here" ]] && [[ -f "$db_there" ]] && cp -v "$db_here" "$db_there"
 }
 
+evry 6 hours -approve_fish_comments && {
+	APPROVE_SCRIPT="${REPOS}/vps/approve_comments"
+	[[ -r "$APPROVE_SCRIPT" ]] && "$APPROVE_SCRIPT"
+}
 evry 1 day -backup_fish_server && backup_server
 evry 2 months -pythonanywhere && pythonanywhere_3_months -Hc "$(which chromedriver)"
 evry 1 day -google_drive && {
