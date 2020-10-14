@@ -1,0 +1,5 @@
+#!/bin/sh
+# https://sean.fish/
+# display a count if I have any unapproved comments on my website
+
+cat "${HOME}/.cache/guestbook-comments"
