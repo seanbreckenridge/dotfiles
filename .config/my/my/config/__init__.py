@@ -158,8 +158,13 @@ class photos:
     # dont ignore anything
     ignored: Callable[[Path], bool] = lambda p: False
 
+from typing import Sequence, Union, Tuple
+from datetime import datetime, date
+DateIsh = Union[datetime, date, str]
+LatLon = Tuple[float, float]
+
 class location:
-    from .locations_secret import locations as home
+    from .locations_secret import home
 
 # class stackexchange:
 #    export_path: Paths = "~/data/stexport"
