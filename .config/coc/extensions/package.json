@@ -2,7 +2,7 @@
   "dependencies": {
     "coc-css": ">=1.2.5",
     "coc-docker": ">=0.3.0",
-    "coc-elixir": ">=0.5.2",
+    "coc-elixir": ">=0.6.0",
     "coc-go": ">=0.12.0",
     "coc-marketplace": ">=1.7.0",
     "coc-python": ">=1.2.12",
