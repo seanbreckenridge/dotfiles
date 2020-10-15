@@ -117,6 +117,10 @@ bindsym $mod+Shift+c exec --no-startup-id clipreset
 bindsym $mod+XF86AudioMute exec --no-startup-id mpv-play-pause
 bindsym $mod+XF86AudioMicMute exec --no-startup-id ttt mpv-next-song
 
+# on 'volume up', move forward in the file
+bindsym $mod+XF86AudioRaiseVolume exec --no-startup-id mpv-seek '5'
+bindsym $mod+XF86AudioLowerVolume exec --no-startup-id mpv-seek '-5'
+
 # gaps config
 for_window [class=".*"] border pixel 0
 smart_borders on
