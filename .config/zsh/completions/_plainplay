@@ -20,7 +20,8 @@ function _playlist_commands() {
 }
 
 function _playlist_names() {
-	find "${PLAINTEXT_PLAYLIST_PLAYLISTS:-${XDG_DATA_HOME:-$HOME/.local/share}/plaintext_playlist}" -printf '%f\n' | cut -d'.' -f1 | xargs echo -n
+	local PLAYLIST_DIR="${PLAINTEXT_PLAYLIST_PLAYLISTS:-${XDG_DATA_HOME:-$HOME/.local/share}/plaintext_playlist}"
+	find "$PLAYLIST_DIR" -printf '%f\n' | cut -d'.' -f1 | xargs echo -n
 }
 
 # for plainplay/play
@@ -29,15 +30,14 @@ function _plainplay() {
 	plist_cmds="$(_playlist_commands)"
 	plist_names="$(_playlist_names)"
 	_arguments \
-		"$(printf '1: :(%s)' "$plist_cmds")" \
-		"$(printf '2: :(%s)' "$plist_names")"
+		"1:command:(${plist_cmds})" \
+		"*:playlist names:(${plist_names})"
 }
 
 # for splay/pplay aliases
 function _playlist_files() {
 	local plist_names
 	plist_names="$(_playlist_names)"
-	_arguments \
-		"$(printf '1: :(%s)' "$plist_names")"
+	_alternative \
+		"playlists:playlist names:(${plist_names})"
 }
-
