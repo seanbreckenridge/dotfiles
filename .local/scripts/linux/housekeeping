@@ -31,7 +31,7 @@ evry 1 day -google_drive && {
 	echo "Running 'drive pull'..."
 	# first, update new files that have been synced to my drive
 	drive pull -ignore-conflict
-	# copy my password so it syncs to android
+	# copy my password database so it syncs to android
 	copy_keepass_db
 	# sync keepass db
 	drive push
