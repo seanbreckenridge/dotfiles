@@ -30,11 +30,6 @@ windows:
     - "cd ~/.config/tmux_layouts/bg/"
   panes:
     - "./budget"
-- window_name: "dev server"
-  shell_command_before:
-    - "cd ~/.config/tmux_layouts/bg/"
-  panes:
-    - "./dev_server"
 - window_name: "app logs"
   shell_command_before:
     - "cd ~/.config/tmux_layouts/bg/"
