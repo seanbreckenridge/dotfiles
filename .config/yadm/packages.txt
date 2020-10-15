@@ -35,7 +35,6 @@ checkbashisms
 clojure
 cmake
 composer
-ctags
 dart
 dash
 dashbinsh
