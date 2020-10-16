@@ -47,11 +47,12 @@ class fzf_select(Command):
 
     def execute(self):
         fzf_file = self.run_fzf()
-        if fzf_file is not None:
-            if os.path.isdir(fzf_file):
-                self.fm.cd(fzf_file)
-            else:
-                self.fm.select_file(fzf_file)
+        if fzf_file is None:
+            return
+        if os.path.isdir(fzf_file):
+            self.fm.cd(fzf_file)
+        else:
+            self.fm.select_file(fzf_file)
 
 
 class fzf_select_hidden(fzf_select):
