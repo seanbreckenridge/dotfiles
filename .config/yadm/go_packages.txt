@@ -9,3 +9,4 @@ misspell github.com/client9/misspell/cmd/misspell
 calories github.com/zupzup/calories
 qrc github.com/fumiyas/qrc
 gocloc github.com/hhatto/gocloc/cmd/gocloc
+up github.com/akavel/up
