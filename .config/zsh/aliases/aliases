@@ -66,11 +66,17 @@ alias calc='eva' # https://github.com/NerdyPepper/eva
 alias stripcolors="sed 's/\x1B\[[0-9;]\+[A-Za-z]//g'"
 # alias ? to duck, searches duckduckgo in lynx
 alias "?=duck"
+# watch a twitch stream
 alias watchtwitch="twitchlive -output-format json | jq -r '.[] | .username' | fzf --tac | xargs twitch"
 alias tetris='autoload -Uz tetriscurses; tetriscurses'
-alias countdown='termdown'
+alias 'countdown=termdown'
+# shorthand for copying to clipboard
 alias cl='clipcopy'
+# edit RSS files
 alias rss='e ~/.config/newsboat/urls'
+# search against filepaths with rg
+alias rgf='rg --files | rg'
+# https://sean.fish/d/misspell-context
 alias spell='misspell-context'
 
 # stop import from crashing my system for some reason
