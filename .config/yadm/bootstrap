@@ -142,7 +142,7 @@ done <"$DART_PACKAGE_LIST"
 
 havecmd cargo || exit $?
 echo "Installing global cargo packages..."
-CARGO_INSTALLED_PACKAGES="$(cargo install --list | grep -v "^\s" | cut -d" " -f1)"
+CARGO_INSTALLED_PACKAGES="$(cargo install --list | sed -E -e '/^\s+/d' -e 's|\s.*||')"
 while read -r cargopkg; do
 	if ! grep -q "^$cargopkg$" <<<"$CARGO_INSTALLED_PACKAGES"; then
 		printf "Installing %s\n" "$cargopkg"
