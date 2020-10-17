@@ -1,0 +1,4 @@
+#!/bin/sh
+# inspired by https://github.com/ImFeelingDucky/undollar
+# but one line of shell instead of an npm package
+exec "$@"

@@ -682,3 +682,10 @@ shebang="#!/bin/bash"
 
 [screens]
 command='sxiv -t "${SCREENSHOTS}"'
+
+["$"]
+command='''
+# inspired by https://github.com/ImFeelingDucky/undollar
+# but one line of shell instead of an npm package
+exec "$@"
+'''
