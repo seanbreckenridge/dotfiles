@@ -1,8 +1,13 @@
-#!/bin/sh
+#!/bin/bash
 if CONTENTS="$(clippaste)"; then
-	openurl "$CONTENTS" || {
-		notify -u critical "Couldn't open url: $CONTENTS"
-	}
+	# make sure this looks like text, and there wasnt an image on my clipboard
+	if iconv --from-code="utf-8" --to-code="utf-8" <(printf '%s' "$CONTENTS") >/dev/null 2>&1; then
+		openurl "$CONTENTS" || {
+			notify -u critical "Couldn't open url: $CONTENTS"
+		}
+	else
+		notify -u critical "Clipboard contents don't look like text, ignoring..."
+	fi
 else
 	notify -u critical "Couldn't get clipboard contents"
 fi
