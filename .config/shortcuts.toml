@@ -152,17 +152,16 @@ command ='''
 # generates a password and puts it on your clipboard
 # uses https://github.com/seanbreckenridge/genpasswd
 if ! pw=$(genpasswd "$@"); then
-	echo "$pw"
-	exit 0
+	echo "$pw" >&2
+	exit 1
 fi
 pw=$(head -n 1 <<<"$pw")
 if [[ "$(tty)" == "not a tty" ]]; then
-	clp <<<"Copied password to clipboard:" "${pw}"
+	# send notification and copy to clipboard
+	clp <<<"Copied password to clipboard: ${pw}"
 else
 	echo -e "$pw"
 fi
-# copy to clipboard
-echo -en "$pw" | clipcopy
 '''
 
 # confirm this is ignoring the correct files by running:
