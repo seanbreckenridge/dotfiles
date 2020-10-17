@@ -27,7 +27,7 @@ cat() {
 ps() {
   if [[ -t 1 ]] && [[ "$1" == "-ef" ]] && (($# == 1)); then
     procs --pager=disable
-    echo "Instead of 'ps -ef | grep something', just use 'procs something'"
+    echo "Instead of 'ps -ef | grep something', just use 'procs something'" 1>&2
   else
     /usr/bin/ps "$@"
   fi
