@@ -69,6 +69,10 @@ alias 'water=python3 -c "from my.food import prompt, Water; prompt(Water)"'
 # https://github.com/seanbreckenridge/tts
 alias tts-say='tts -d /tmp/tts.ogg && paplay /tmp/tts.ogg'
 
+# https://github.com/seanbreckenridge/mpv-sockets
+# cd to the directory where the current piece of media is playing from
+alias mpv-cd-currently-playing='cd "$(dirname "$(mpv-currently-playing)")"'
+
 # deprecated script reminders
 alias "en=echo -e \"\033[31mUse e!\033[0m\""
 alias geolocate='echo use ipgeocache\!; ipgeocache'
