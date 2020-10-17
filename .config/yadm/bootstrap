@@ -46,6 +46,8 @@ declare -rx GO_PACKAGE_LIST="${YADM_DIR}/go_packages.txt"
 declare -rx HASKELL_PACKAGE_LIST="${YADM_DIR}/haskell_packages.txt"
 declare -rx MIX_PACKAGE_LIST="${YADM_DIR}/mix_archive_packages.txt"
 
+declare SCRIPT_TARGET_DIR="${HOME}/.local/bin" # should be created by stack/python
+
 # make sure personal aliases file exists so that zshrc souces fine
 [[ ! -f "${ZDOTDIR}/aliases/personal_aliases" ]] && touch "${ZDOTDIR}/aliases/personal_aliases"
 
@@ -191,25 +193,63 @@ while read -r mix_pkg; do
 done <"$MIX_PACKAGE_LIST"
 
 echo "Checking for manually installed binaries..."
-declare -a required_binaries optional_binaries
-required_binaries=("shortcuts" "exists" "wait-for-internet")
-optional_binaries=("genpasswd" "largechar" "mpvf" "mpv-currently-playing" "bgproc")
-for binary in "${required_binaries[@]}"; do
-	havecmd "$binary" || {
-		print_error "Warning: Couldn't find ${binary}. Install it from https://github.com/seanbreckenridge/${binary}"
-		exit 1
-	}
-done
-for binary in "${optional_binaries[@]}"; do
-	havecmd "$binary" || print_error "Warning: Couldn't find ${binary}. Install it from https://github.com/seanbreckenridge/${binary}"
-done
 
-havecmd tttlog || {
-	TTTLOG_BUILD="$(mktemp -p /tmp -d XXXXXXXXXX)"
-	cd "$TTTLOG_BUILD"
-	git clone "https://github.com/seanbreckenridge/ttt" && cd ./ttt
-	make
+# install git-only cargo repos
+havecmd "wait-for-internet" || cargo install --git "https://github.com/seanbreckenridge/wait-for-internet"
+
+# remind me to install mpv wrapper scripts
+havecmd 'mpv-currently-playing' || print_error "Couldn't find mpv wrapper scripts; Install them from https://github.com/seanbreckenridge/mpv-sockets"
+
+# build individual applications
+# clone from second argument (git), cd and run 'make' to install something
+# third argument is passed to make if provided
+make_compatible_build() {
+	local TEMP_INSTALL_DIR
+	havecmd "$1" || {
+		printf "Installing %s from %s\n" "$1" "$2"
+		BUILD_DIR="$(mktemp -p /tmp -d XXXXXXXXXX)"
+		cd "$BUILD_DIR" || return $?
+		git clone "$2" || return $?
+		CLONED="$(command ls -1)" || return $?
+		cd "$CLONED" || return $?
+		if [[ -n "$3" ]]; then
+			make "$3" || return $?
+		else
+			make || return $?
+		fi
+	}
 }
+
+set -e
+make_compatible_build tttlog 'https://github.com/seanbreckenridge/ttt'
+make_compatible_build exists 'https://github.com/seanbreckenridge/exists' install
+make_compatible_build genpasswd 'https://github.com/seanbreckenridge/genpasswd' install
+set +e
+
+install_shell_script() {
+	local TEMP_INSTALL_DIR
+	havecmd "$1" || {
+		printf "Installing %s from %s\n" "$1" "$2"
+		TEMP_INSTALL_DIR="$(mktemp -p /tmp -d XXXXXXXXXX)" # create temporary directory
+		cd "$TEMP_INSTALL_DIR" || return $?                # switch to directory
+		wget "$2" -O "./${1}" || return $?                 # download to script name
+		chmod +x "./${1}" || return $?                     # make executable
+		mv "./${1}" "${SCRIPT_TARGET_DIR}"                 # move to bin directory (~/.local/bin)
+	}
+}
+
+# install some of my individual shell scripts
+set -e
+ls "$SCRIPT_TARGET_DIR" >/dev/null # make sure target directory exists
+install_shell_script calfzf 'https://raw.githubusercontent.com/seanbreckenridge/calories-fzf/master/calfzf'
+install_shell_script mpvf 'https://raw.githubusercontent.com/seanbreckenridge/mpvf/master/mpvf'
+install_shell_script bgproc 'https://raw.githubusercontent.com/seanbreckenridge/bgproc/master/bgproc'
+install_shell_script tts 'https://raw.githubusercontent.com/seanbreckenridge/tts/master/tts'
+install_shell_script plainplay 'https://raw.githubusercontent.com/seanbreckenridge/plaintext-playlist/master/plainplay'
+install_shell_script resolve_cmd_plainplay 'https://raw.githubusercontent.com/seanbreckenridge/plaintext-playlist/master/resolve_cmd_plainplay'
+install_shell_script shortcuts 'https://raw.githubusercontent.com/seanbreckenridge/shortcuts/master/shortcuts'
+install_shell_script pmark 'https://raw.githubusercontent.com/seanbreckenridge/pmark/master/pmark'
+set +e
 
 havecmd shortcuts
 havecmd shortcuts && printf "Created %d shortcuts\n" "$(shortcuts create | wc -l)"

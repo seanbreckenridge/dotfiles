@@ -1,3 +1,5 @@
 rdoc
 rufo
 solargraph
+toml-rb
+docopt
