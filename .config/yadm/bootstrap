@@ -11,7 +11,7 @@
 # has been restarted.
 
 function print_error() {
-	notify-send -u critical "bootstrap error" "$1"
+	notify -u critical "bootstrap error" "$1"
 	echo -e "$(tput setaf 1)$1$(tput sgr0)" 1>&2
 } && export -f print_error
 
@@ -25,7 +25,7 @@ declare -rx YADM_DIR="${HOME}/.config/yadm"
 # report errors if user doesn't have a command
 export HAVECMD_REPORT=1
 
-# make sure $PATH is set up properly
+# make sure $PATH is set up properly, havecmd (to check for commands on the my $PATH) exists
 set -e
 havecmd havecmd
 set +e
@@ -192,13 +192,10 @@ while read -r mix_pkg; do
 	fi
 done <"$MIX_PACKAGE_LIST"
 
-echo "Checking for manually installed binaries..."
+echo "Installing personal tools/scripts..."
 
 # install git-only cargo repos
 havecmd "wait-for-internet" || cargo install --git "https://github.com/seanbreckenridge/wait-for-internet"
-
-# remind me to install mpv wrapper scripts
-havecmd 'mpv-currently-playing' || print_error "Couldn't find mpv wrapper scripts; Install them from https://github.com/seanbreckenridge/mpv-sockets"
 
 # build individual applications
 # clone from second argument (git), cd and run 'make' to install something
@@ -224,6 +221,7 @@ set -e
 make_compatible_build tttlog 'https://github.com/seanbreckenridge/ttt'
 make_compatible_build exists 'https://github.com/seanbreckenridge/exists' install
 make_compatible_build genpasswd 'https://github.com/seanbreckenridge/genpasswd' install
+make_compatible_build mpv-currently-playing 'https://github.com/seanbreckenridge/mpv-sockets' all
 set +e
 
 install_shell_script() {

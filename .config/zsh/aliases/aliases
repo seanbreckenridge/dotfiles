@@ -78,6 +78,8 @@ alias rss='e ~/.config/newsboat/urls'
 alias rgf='rg --files | rg'
 # https://sean.fish/d/misspell-context
 alias spell='misspell-context'
+# mpv: read playlist from stdin
+alias mpv-plainplay='mpv --playlist=- --no-audio-display'
 
 # stop import from crashing my system for some reason
 alias 'import=printf "Use /usr/bin/import instead\n"'
