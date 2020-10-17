@@ -10,3 +10,4 @@ calories github.com/zupzup/calories
 qrc github.com/fumiyas/qrc
 gocloc github.com/hhatto/gocloc/cmd/gocloc
 up github.com/akavel/up
+darker_errors gitlab.com/seanbreckenridge/darker_errors

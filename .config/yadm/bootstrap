@@ -192,8 +192,8 @@ done <"$MIX_PACKAGE_LIST"
 
 echo "Checking for manually installed binaries..."
 declare -a required_binaries optional_binaries
-required_binaries=("wait-for-internet" "shortcuts" "exists" "ttt" "tttlog")
-optional_binaries=("genpasswd" "largechar" "mpvf")
+required_binaries=("shortcuts" "exists" "wait-for-internet")
+optional_binaries=("genpasswd" "largechar" "mpvf" "mpv-currently-playing" "bgproc")
 for binary in "${required_binaries[@]}"; do
 	havecmd "$binary" || {
 		print_error "Warning: Couldn't find ${binary}. Install it from https://github.com/seanbreckenridge/${binary}"
@@ -203,6 +203,13 @@ done
 for binary in "${optional_binaries[@]}"; do
 	havecmd "$binary" || print_error "Warning: Couldn't find ${binary}. Install it from https://github.com/seanbreckenridge/${binary}"
 done
+
+havecmd tttlog || {
+	TTTLOG_BUILD="$(mktemp -p /tmp -d XXXXXXXXXX)"
+	cd "$TTTLOG_BUILD"
+	git clone "https://github.com/seanbreckenridge/ttt" && cd ./ttt
+	make
+}
 
 havecmd shortcuts
 havecmd shortcuts && printf "Created %d shortcuts\n" "$(shortcuts create | wc -l)"
