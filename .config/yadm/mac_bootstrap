@@ -9,7 +9,7 @@
 
 set -e
 
-declare -rx HOMEBREW_BREWFILE="${YADM_DIR}/Brewfile"
+declare -rx HOMEBREW_BREWFILE="${PACKAGE_DIR}/Brewfile"
 
 # setup zsh
 # zsh is default on mac

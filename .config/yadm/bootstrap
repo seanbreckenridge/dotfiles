@@ -29,6 +29,7 @@ install_spkglist() {
 } && export -f install_spkglist
 
 declare -rx YADM_DIR="${HOME}/.config/yadm"
+declare -rx PACKAGE_DIR="${YADM_DIR}/package_lists"
 
 # report errors if user doesn't have a command
 export HAVECMD_REPORT=1
@@ -45,14 +46,14 @@ else
 	bash "${YADM_DIR}/linux_bootstrap" || exit $?
 fi
 
-declare -rx PYTHON_PACKAGE_LIST="${YADM_DIR}/python3_packages.txt"
-declare -rx GLOBAL_GEM_LIST="${YADM_DIR}/ruby_packages.txt"
-declare -rx NODE_PACKAGE_LIST="${YADM_DIR}/node_packages.txt"
-declare -rx DART_PACKAGE_LIST="${YADM_DIR}/dart_packages.txt"
-declare -rx CARGO_PACKAGE_LIST="${YADM_DIR}/cargo_packages.txt"
-declare -rx GO_PACKAGE_LIST="${YADM_DIR}/go_packages.txt"
-declare -rx HASKELL_PACKAGE_LIST="${YADM_DIR}/haskell_packages.txt"
-declare -rx MIX_PACKAGE_LIST="${YADM_DIR}/mix_archive_packages.txt"
+declare -rx PYTHON_PACKAGE_LIST="${PACKAGE_DIR}/python3_packages.txt"
+declare -rx GLOBAL_GEM_LIST="${PACKAGE_DIR}/ruby_packages.txt"
+declare -rx NODE_PACKAGE_LIST="${PACKAGE_DIR}/node_packages.txt"
+declare -rx DART_PACKAGE_LIST="${PACKAGE_DIR}/dart_packages.txt"
+declare -rx CARGO_PACKAGE_LIST="${PACKAGE_DIR}/cargo_packages.txt"
+declare -rx GO_PACKAGE_LIST="${PACKAGE_DIR}/go_packages.txt"
+declare -rx HASKELL_PACKAGE_LIST="${PACKAGE_DIR}/haskell_packages.txt"
+declare -rx MIX_PACKAGE_LIST="${PACKAGE_DIR}/mix_archive_packages.txt"
 
 declare SCRIPT_TARGET_DIR="${HOME}/.local/bin" # should be created by stack/python
 
