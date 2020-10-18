@@ -99,6 +99,7 @@ alias wget='wget --hsts-file "${XDG_CACHE_HOME}/wget-hsts"'
 
 # Terminal encoding issues
 alias up="TERM=xterm up --no-colors"
+alias 'up-live=TERM=xterm up --no-colors --unsafe-full-throttle'
 
 # general environment variable configuration
 export YSU_MESSAGE_FORMAT="$(tput setaf 1)>>> %alias_type: %alias $(tput sgr0)"
