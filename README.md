@@ -39,10 +39,10 @@ Packages can be added to the `.txt` files manually, and then `yadm bootstrap` ca
 
 - [.config/shortcuts.toml](.config/shortcuts.toml) - describes basic shell scripts that are created by [shortcuts](https://github.com/seanbreckenridge/shortcuts)
 - `dir-aliases-ranger` creates bookmarks in ranger to common directories.
-- [.local/scripts/bin](.local/scripts/bin) - generic scripts
-    - media related, [duration](.local/scripts/bin/duration) to get media length, [gifme](.local/scripts/bin/gifme) to convert video to gifs.
-    - [gitopen](.local/scripts/bin/gitopen) to open current git directory in browser
-    - [qr](.local/scripts/bin/qr) - create a QR code from a string and display it full screen
+- [.local/scripts/generic](.local/scripts/generic)
+    - media related, [mduration](.local/scripts/generic/mduration) to get media length, [gifme](.local/scripts/generic/gifme) to convert video to gifs.
+    - [gitopen](.local/scripts/generic/gitopen) to open current git directory in browser
+    - [qr](.local/scripts/generic/qr) - create a QR code from a string and display it full screen
 - [fzf](https://github.com/junegunn/fzf) **everywhere** - in [ranger](https://gitlab.com/seanbreckenridge/dotfiles/-/blob/master/.config/ranger/commands.py), to search `cwd` recursively and jump to directories (`Alt+C`), to [edit config files](https://gitlab.com/seanbreckenridge/dotfiles/-/blob/c072c474d0ec497761f484d0b11ec555ef397062/.config/shortcuts.toml#L7-15), to kill processes, and to [search the entire system](https://gitlab.com/seanbreckenridge/dotfiles/-/blob/master/.config/zsh/functions/flocate). Integration with [`nvim`](.config/nvim/init.vim) to match against lines/files/commands/buffers.
 
 ### Install

@@ -1,18 +1,18 @@
 #!/bin/sh
 
 usage="Usage:
-    average [-h]
-    average FILES...
+    maverage [-h]
+    maverage FILES...
 
-uses the duration script to get the average duration
+uses the mduration script to get the average duration
 in seconds of files given on command line
 
 Example usage:
-  average ~/Music/some_album/*"
+  maverage ~/Music/some_album/*"
 
 if [ "$1" = "-h" ] || [ "$1" = "-help" ] || [ "$1" = "--help" ] || [ -z "$1" ]; then
 	echo "$usage"
 	exit 0
 fi
 
-duration "$@" | datamash --field-separator=s --format="%.1fs" mean 1
+mduration "$@" | datamash --field-separator=s --format="%.1fs" mean 1
