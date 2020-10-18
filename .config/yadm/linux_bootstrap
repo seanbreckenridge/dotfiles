@@ -39,10 +39,14 @@ done
 # see /etc/lightdm/Xsession
 [ ! -f "${HOME}/.zshenv" ] && touch "${HOME}/.zshenv"
 
+# install go, so I can install my package list parser
+[[ $(yay -Q go) ]] || yay -S go
+install_spkglist || exit $?
+
 # yay/pacman to install packages from arch repos
 echo "Checking ~/.config/yadm/packages.txt for any packages to install..."
 # have to use for loop, while loop times out instantly
-for lib in $(read-package-list "${PACKAGE_LIST}"); do
+for lib in $(spkglist "${PACKAGE_LIST}"); do
 	if [[ ! $(yay -Q "${lib}" 2>/dev/null) ]]; then # if package isn't installed
 		yay -S "${lib}"
 	fi
