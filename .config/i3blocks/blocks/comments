@@ -2,4 +2,9 @@
 # https://sean.fish/
 # display a count if I have any unapproved comments on my website
 
+# remove the https://github.com/seanbreckenridge/evry
+# file onclick, causes https://github.com/seanbreckenridge/bgproc/blob/master/personal_jobs/guestbook_comments.job
+# to run again in the next minute or so, which updates the icon
+[ -n "$BLOCK_BUTTON" ] && rm -f ~/.local/share/evry/data/guestbook_comments
+
 cat "${HOME}/.cache/guestbook-comments"
