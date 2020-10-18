@@ -1,14 +1,19 @@
+# for emacs support
 gomodifytags github.com/fatih/gomodifytags
 gore github.com/motemen/gore/cmd/gore
 gotests github.com/cweill/gotests/...
 guru golang.org/x/tools/cmd/guru
+
+# my packages
 keyvol gitlab.com/seanbreckenridge/keyvol
 twitchlive gitlab.com/seanbreckenridge/twitchlive
+darker_errors gitlab.com/seanbreckenridge/darker_errors
+spkglist gitlab.com/seanbreckenridge/spkglist/cmd/spkglist
+
+# others
 wuzz github.com/asciimoo/wuzz
 misspell github.com/client9/misspell/cmd/misspell
 calories github.com/zupzup/calories
 qrc github.com/fumiyas/qrc
 gocloc github.com/hhatto/gocloc/cmd/gocloc
 up github.com/akavel/up
-darker_errors gitlab.com/seanbreckenridge/darker_errors
-spkglist gitlab.com/seanbreckenridge/spkglist/cmd/spkglist

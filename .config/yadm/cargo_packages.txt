@@ -1,8 +1,9 @@
+# globally installed cargo (rust) packages
 cargo-license
-cargo-update
+cargo-update  # to update these packages
 evry
 genact
 procs
 diskonaut
 eva
-kondo
+kondo  # removes node_module/build directories

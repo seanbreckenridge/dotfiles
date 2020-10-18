@@ -1,22 +1,27 @@
+# language support
 @elm-tooling/elm-language-server
 bash-language-server
 coffeescript
 elm-format
 js-beautify
 jsonlint
-moby
 node-cljfmt
+uglifycss
+prettier
 npm
 stylelint
 vscode-html-languageserver-bin
 yaml-language-server
 html-minifier
-uglifycss
+
+# web tools/packages
 serve
+
+# other tools
+moby
 mapscii
-jikan-node
 sqleton
 @jamen/lorem
 @gardenapple/readability-cli
 mintable
-prettier
+

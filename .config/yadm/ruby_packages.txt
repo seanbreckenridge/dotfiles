@@ -1,5 +1,8 @@
+# emacs/coc support
 rdoc
 rufo
 solargraph
+
+# for https://github.com/seanbreckenridge/shortcuts
 toml-rb
 docopt
