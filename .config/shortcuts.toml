@@ -162,6 +162,8 @@ if [[ "$(tty)" == "not a tty" ]]; then
 else
 	echo -e "$pw"
 fi
+# copy password (clp copies the text as well)
+clipcopy <<<"$pw"
 '''
 
 # confirm this is ignoring the correct files by running:
