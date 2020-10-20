@@ -1,6 +1,7 @@
 # cd to a new tmp directory
 
 cdtmp() {
+	local TMPDIR
 	TMPDIR="$(mktemp -p /tmp -d XXXXXXXXXX)"
 	cd "$TMPDIR"
 }
