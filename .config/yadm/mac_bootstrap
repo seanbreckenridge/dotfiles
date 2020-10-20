@@ -17,7 +17,7 @@ declare -rx HOMEBREW_BREWFILE="${PACKAGE_DIR}/Brewfile"
 # delete default files if they exist
 original_files=("${HOME}/.zshenv" "${HOME}/.zshrc" "${HOME}/.zsh_history")
 for file in "${original_files[@]}"; do
-  rm -rf "${file}"
+	rm -rf "${file}"
 done
 
 # use ~/.zshenv to configure mac specific behavior

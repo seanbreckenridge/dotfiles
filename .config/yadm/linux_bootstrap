@@ -28,7 +28,7 @@ echo 'Setting up zsh directory structure...'
 original_files=("${HOME}/.zshenv" "${HOME}/.zshrc" "${HOME}/.zsh_history" "${HOME}/.zprofile")
 
 for file in "${original_files[@]}"; do
-  rm -rf "${file}"
+	rm -rf "${file}"
 done
 
 # so that zsh thinks its setup

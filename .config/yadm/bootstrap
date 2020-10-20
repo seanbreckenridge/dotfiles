@@ -12,7 +12,7 @@
 
 print_error() {
 	notify -u critical "bootstrap error" "$1"
-  printf '%s%s%s\n' "$(tput setaf 1)" "${1}" "$(tput sgr0)" 1>&2
+	printf '%s%s%s\n' "$(tput setaf 1)" "${1}" "$(tput sgr0)" 1>&2
 } && export -f print_error
 
 abort() {
@@ -238,8 +238,8 @@ install_shell_script() {
 	havecmd "$1" || {
 		printf "Installing %s from %s\n" "$1" "$2"
 		TEMP_INSTALL_DIR="$(mktemp -p /tmp -d XXXXXXXXXX)" # create temporary directory
-		cd "${TEMP_INSTALL_DIR}" || return $?                # switch to directory
-		wget "${2}" -O "./${1}" || return $?                 # download to script name
+		cd "${TEMP_INSTALL_DIR}" || return $?              # switch to directory
+		wget "${2}" -O "./${1}" || return $?               # download to script name
 		chmod +x "./${1}" || return $?                     # make executable
 		mv "./${1}" "${SCRIPT_TARGET_DIR}"                 # move to bin directory (~/.local/bin)
 	}
