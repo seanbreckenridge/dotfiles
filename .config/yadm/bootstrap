@@ -12,11 +12,11 @@
 
 print_error() {
 	notify -u critical "bootstrap error" "$1"
-	echo -e "$(tput setaf 1)$1$(tput sgr0)" 1>&2
+  printf '%s%s%s\n' "$(tput setaf 1)" "${1}" "$(tput sgr0)" 1>&2
 } && export -f print_error
 
 abort() {
-	print_error "$1"
+	print_error "${1}"
 	exit 1
 } && export -f abort
 
@@ -40,7 +40,7 @@ havecmd havecmd
 set +e
 
 # dispatch on os type
-if [[ -z "$ONLINUX" ]]; then
+if [[ -z "${ONLINUX}" ]]; then
 	bash "${YADM_DIR}/mac_bootstrap" || exit $?
 else
 	bash "${YADM_DIR}/linux_bootstrap" || exit $?
@@ -74,13 +74,13 @@ echo 'Checking git config...'
 if [[ -z $(git config --global user.name) ]]; then
 	printf "No global name set. Enter full name: "
 	read -r githubusername
-	git config --global user.name "$githubusername"
+	git config --global user.name "${githubusername}"
 fi
 # check for global email config
 if [[ -z $(git config --global user.email) ]]; then
 	printf "No global email set. Enter email connected to your GitHub account: "
 	read -r githubemail
-	git config --global user.email "$githubemail"
+	git config --global user.email "${githubemail}"
 fi
 # set editor to use as nvim
 git config --global core.editor nvim
@@ -97,12 +97,12 @@ havecmd python3 || exit $?
 # Install python packages
 echo "Installing global python site-packages..."
 python3 -m pip list --format=freeze | cut -d "=" -f1 | grep -q "^wheel$" || python3 -m pip install --user wheel
-python3 -m pip install -q --user -r "$PYTHON_PACKAGE_LIST"
+python3 -m pip install -q --user -r "${PYTHON_PACKAGE_LIST}"
 
 # Install personal python packages
 # If command "$1" doesn't exist, install from $2
 function install_python_personal() {
-	havecmd "$1" || python3 -m pip install --user "git+$2"
+	havecmd "${1}" || python3 -m pip install --user "git+${2}"
 }
 install_python_personal "plus1" "https://gitlab.com/seanbreckenridge/plus1"
 install_python_personal "pythonanywhere_3_months" "https://gitlab.com/seanbreckenridge/pythonanywhere-3-months"
@@ -125,41 +125,41 @@ echo "Installing global npm packages..."
 # get a list of installed packages
 NPM_PACKAGE_LIST="$(npm ls -g --json | jq '.dependencies | keys[]' -r)"
 while read -r npkg; do
-	if ! grep -q "^${npkg}$" <<<"$NPM_PACKAGE_LIST"; then
+	if ! grep -q "^${npkg}$" <<<"${NPM_PACKAGE_LIST}"; then
 		printf "Installing %s\n" "$npkg"
 		npm install --global "${npkg}"
 	fi
-done < <(spkglist "$NODE_PACKAGE_LIST")
+done < <(spkglist "${NODE_PACKAGE_LIST}")
 
 havecmd gem || exit $?
 echo "Installing global ruby packages..."
 RUBY_GEMS_LIST="$(gem list | cut -d' ' -f1)"
 while read -r rgem; do
-	if ! grep -q "^${rgem}$" <<<"$RUBY_GEMS_LIST"; then
-		printf "Installing %s\n" "$rgem"
+	if ! grep -q "^${rgem}$" <<<"${RUBY_GEMS_LIST}"; then
+		printf "Installing %s\n" "${rgem}"
 		gem install "${rgem}"
 	fi
-done < <(spkglist "$GLOBAL_GEM_LIST")
+done < <(spkglist "${GLOBAL_GEM_LIST}")
 
 havecmd pub || exit $?
 echo "Installing global dart packages..."
 DART_INSTALLED_PACKAGES="$(pub global list | cut -d" " -f1)"
 while read -r dartpkg; do
-	if ! grep -q "^$dartpkg$" <<<"$DART_INSTALLED_PACKAGES"; then
-		printf "Installing %s\n" "$dartpkg"
-		pub global activate "$dartpkg"
+	if ! grep -q "^${dartpkg}$" <<<"${DART_INSTALLED_PACKAGES}"; then
+		printf "Installing %s\n" "${dartpkg}"
+		pub global activate "${dartpkg}"
 	fi
-done < <(spkglist "$DART_PACKAGE_LIST")
+done < <(spkglist "${DART_PACKAGE_LIST}")
 
 havecmd cargo || exit $?
 echo "Installing global cargo packages..."
 CARGO_INSTALLED_PACKAGES="$(cargo install --list | sed -E -e '/^\s+/d' -e 's|\s.*||')"
 while read -r cargopkg; do
-	if ! grep -q "^$cargopkg$" <<<"$CARGO_INSTALLED_PACKAGES"; then
-		printf "Installing %s\n" "$cargopkg"
-		cargo install "$cargopkg"
+	if ! grep -q "^${cargopkg}$" <<<"${CARGO_INSTALLED_PACKAGES}"; then
+		printf "Installing %s\n" "${cargopkg}"
+		cargo install "${cargopkg}"
 	fi
-done < <(spkglist "$CARGO_PACKAGE_LIST")
+done < <(spkglist "${CARGO_PACKAGE_LIST}")
 
 havecmd go || exit $?
 # takes a line from "$GO_PACKAGE_LIST"
@@ -167,7 +167,7 @@ havecmd go || exit $?
 # and installs it if the binary isn't already on your path
 function install_go_package() {
 	local -a packageinfo
-	read -ra packageinfo <<<"$1"
+	read -ra packageinfo <<<"${1}"
 	havecmd "${packageinfo[0]}" || go get -u -v "${packageinfo[1]}"
 }
 # install pistol manually
@@ -175,18 +175,18 @@ havecmd pistol || env GO111MODULE=on go get -v -u github.com/doronbehar/pistol/c
 
 echo "Installing global go packages..."
 while IFS= read -r go_line; do
-	install_go_package "$go_line"
-done < <(spkglist "$GO_PACKAGE_LIST")
+	install_go_package "${go_line}"
+done < <(spkglist "${GO_PACKAGE_LIST}")
 
 havecmd stack || exit $?
 echo "Installing global haskell packages..."
 while read -r haskell_pkg; do
-	havecmd "$haskell_pkg" || stack install "$haskell_pkg"
-done < <(spkglist "$HASKELL_PACKAGE_LIST")
+	havecmd "${haskell_pkg}" || stack install "${haskell_pkg}"
+done < <(spkglist "${HASKELL_PACKAGE_LIST}")
 
 havecmd emacs || exit $?
 # Install doom emacs
-if [[ ! -d "$HOME/.emacs.d/" ]]; then
+if [[ ! -d "${HOME}/.emacs.d/" ]]; then
 	git clone https://github.com/hlissner/doom-emacs "${HOME}/.emacs.d"
 	"${HOME}/.emacs.d/bin/doom" install
 	"${HOME}/.emacs.d/bin/doom" sync
@@ -196,10 +196,10 @@ havecmd mix || exit $?
 echo "Installing global pheonix mix archives..."
 MIX_ARCHIVE_LIST="$(mix archive | sed -e '/Archives installed at: /d' -e 's/^* //' -e 's/-.*//')"
 while read -r mix_pkg; do
-	if ! grep -q "^${mix_pkg}$" <<<"$MIX_ARCHIVE_LIST"; then
+	if ! grep -q "^${mix_pkg}$" <<<"${MIX_ARCHIVE_LIST}"; then
 		mix archive.install --force "${mix_pkg}"
 	fi
-done < <(spkglist "$MIX_PACKAGE_LIST")
+done < <(spkglist "${MIX_PACKAGE_LIST}")
 
 echo "Installing personal tools/scripts..."
 
@@ -211,15 +211,15 @@ havecmd "wait-for-internet" || cargo install --git "https://github.com/seanbreck
 # third argument is passed to make if provided
 make_compatible_build() {
 	local TEMP_INSTALL_DIR
-	havecmd "$1" || {
-		printf "Installing %s from %s\n" "$1" "$2"
+	havecmd "${1}" || {
+		printf "Installing %s from %s\n" "${1}" "${2}"
 		BUILD_DIR="$(mktemp -p /tmp -d XXXXXXXXXX)"
-		cd "$BUILD_DIR" || return $?
-		git clone "$2" || return $?
+		cd "${BUILD_DIR}" || return $?
+		git clone "${2}" || return $?
 		CLONED="$(command ls -1)" || return $?
-		cd "$CLONED" || return $?
-		if [[ -n "$3" ]]; then
-			make "$3" || return $?
+		cd "${CLONED}" || return $?
+		if [[ -n "${3}" ]]; then
+			make "${3}" || return $?
 		else
 			make || return $?
 		fi
@@ -238,8 +238,8 @@ install_shell_script() {
 	havecmd "$1" || {
 		printf "Installing %s from %s\n" "$1" "$2"
 		TEMP_INSTALL_DIR="$(mktemp -p /tmp -d XXXXXXXXXX)" # create temporary directory
-		cd "$TEMP_INSTALL_DIR" || return $?                # switch to directory
-		wget "$2" -O "./${1}" || return $?                 # download to script name
+		cd "${TEMP_INSTALL_DIR}" || return $?                # switch to directory
+		wget "${2}" -O "./${1}" || return $?                 # download to script name
 		chmod +x "./${1}" || return $?                     # make executable
 		mv "./${1}" "${SCRIPT_TARGET_DIR}"                 # move to bin directory (~/.local/bin)
 	}
@@ -247,7 +247,7 @@ install_shell_script() {
 
 # install some of my individual shell scripts
 set -e
-ls "$SCRIPT_TARGET_DIR" >/dev/null # make sure target directory exists
+ls "${SCRIPT_TARGET_DIR}" >/dev/null # make sure target directory exists
 install_shell_script calfzf 'https://raw.githubusercontent.com/seanbreckenridge/calories-fzf/master/calfzf'
 install_shell_script mpvf 'https://raw.githubusercontent.com/seanbreckenridge/mpvf/master/mpvf'
 install_shell_script bgproc 'https://raw.githubusercontent.com/seanbreckenridge/bgproc/master/bgproc'

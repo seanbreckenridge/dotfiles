@@ -14,7 +14,7 @@ havecmd yay || {
 }
 
 # set zsh as shell
-if ! echo "$SHELL" | grep -q zsh; then
+if ! echo "${SHELL}" | grep -q '/zsh'; then
 	havecmd zsh || sudo pacman -S zsh
 	sudo chsh -s "$(command -v zsh)" "$(whoami)"
 	abort "Restart shell so that zsh environment is setup. Then re-run 'yadm bootstrap'"
@@ -28,9 +28,7 @@ echo 'Setting up zsh directory structure...'
 original_files=("${HOME}/.zshenv" "${HOME}/.zshrc" "${HOME}/.zsh_history" "${HOME}/.zprofile")
 
 for file in "${original_files[@]}"; do
-	if [[ -f "$file" ]]; then
-		rm "$file"
-	fi
+  rm -rf "${file}"
 done
 
 # so that zsh thinks its setup
@@ -55,14 +53,14 @@ done
 # install linux related python packages
 havecmd python3 || exit $?
 echo "Installing linux-specific python packages..."
-python3 -m pip install -q --user -r "$LINUX_PYTHON_PACKAGE_LIST"
+python3 -m pip install -q --user -r "${LINUX_PYTHON_PACKAGE_LIST}"
 
 # Install default rust toolchain and rust-clippy
 echo "Instaling rust toolchain..."
 rustup toolchain install stable
 declare -a RUST_COMPONENTS=(clippy rustfmt rls rust-analysis rust-src)
 for component in "${RUST_COMPONENTS[@]}"; do
-	rustup component add "$component"
+	rustup component add "${component}"
 done
 
 # Check services
@@ -82,7 +80,7 @@ done
 # see mediaproxy scripts here https://github.com/seanbreckenridge/vps
 proxyscripts=("mediaproxyvideo" "mediaproxyaudio")
 for script in "${proxyscripts[@]}"; do
-	HAVECMD_REPORT='' havecmd "$script" || {
+	HAVECMD_REPORT='' havecmd "${script}" || {
 		ln -s "${REPOS}/vps/${script}" ~/.local/bin
 	}
 done
