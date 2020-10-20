@@ -86,4 +86,5 @@ for script in "${proxyscripts[@]}"; do
 done
 
 # make sure https://github.com/seanbreckenridge/bgproc is running
+# shellcheck disable=SC2009
 ps -ef | grep "bgproc" | grep -q bash || print_error "bgproc isn't running!"

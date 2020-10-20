@@ -14,12 +14,12 @@ eval "$(xdotool getmouselocation --shell)"
 # Loop through each screen and compare the offset with the window
 # coordinates.
 monitor_index=0
-while read name width height xoff yoff; do
+while read -r name width height xoff yoff; do
 	if [ "${X}" -ge "$xoff" \
 		-a "${Y}" -ge "$yoff" \
 		-a "${X}" -lt "$(($xoff + $width))" \
 		-a "${Y}" -lt "$(($yoff + $height))" ]; then
-		monitor=$name
+		monitor="${name}"
 		break
 	fi
 	((monitor_index++))
@@ -28,8 +28,8 @@ done < <(xrandr | grep -w connected |
 	sort -nk4,5)
 
 # If we found a monitor, echo it out, otherwise print an error.
-if [[ ! -z "$monitor" ]]; then
-	echo $monitor_index
+if [[ -n "${monitor}" ]]; then
+	echo "${monitor_index}"
 	exit 0
 else
 	echo "Couldn't find any monitor for the current window." >&2

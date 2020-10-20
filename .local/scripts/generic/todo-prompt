@@ -12,6 +12,7 @@ prompt_todos() {
 		CONFIRM="$(printf "yes\nno\n" | picker -p "Mark this todo as complete: $TODO_CHOICE")"
 		if [ "$CONFIRM" = "yes" ]; then
 			TODO_NUM=$(echo "$TODO_CHOICE" | cut -d" " -f1)
+			# shellcheck disable=SC1010
 			notify "Completed Todo:" "$(todo.sh -p do "$TODO_NUM")"
 		fi
 	fi

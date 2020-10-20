@@ -17,8 +17,8 @@ screen_resolution_str="$(main-screen-resolution)"
 IFS='x' read -r -a screen_resolution <<<"$screen_resolution_str"
 
 # calculate target height/width (40% of screen)
-target_width="$((screen_resolution[0] / 5 * 2))"
-target_height="$((screen_resolution[1] / 5 * 2))"
+target_width="$((screen_resolution[0] * 2 / 5))"
+target_height="$((screen_resolution[1] * 2 / 5))"
 
 # subtract window width from screen resolution to get x coordinate
 top_right_x_coord="$((screen_resolution[0] - target_width))"
