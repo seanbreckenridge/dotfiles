@@ -37,13 +37,13 @@ launch "doom sync && restart-emacs"
 [dotfiles]
 command = '''
 # open the dotfiles git repository
-cd "${HOME}/.config/yadm/repo.git"
+cd "${HOME}/.config/yadm/repo.git" || exit 1
 exec gitopen
 '''
 
 [dotfiles-github]
 command='''
-cd "${HOME}/.config/yadm/repo.git"
+cd "${HOME}/.config/yadm/repo.git" || exit 1
 exec githubopen
 '''
 
@@ -625,7 +625,7 @@ command='''
 # if another instance of newsboat is open, kill it and open one here
 # specifically useful incase newsboat -x reload is going on in the background
 pgrep -x newsboat && pkill -x newsboat
-cd ~/Downloads
+cd "{DOWNLOADS:-${HOME}/Downloads}" || exit 1
 newsboat
 i3-msg exec update-rss # update rss afterwards, to update menu bar icon
 '''
