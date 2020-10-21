@@ -688,3 +688,18 @@ command='''
 # but one line of shell instead of an npm package
 exec "$@"
 '''
+
+[up]
+command='''
+# get location of binary, installed with go
+# https://github.com/akavel/up
+BIN="$(where up | grep "$GOBIN")"
+TERM=xterm "$BIN" --no-colors "$@"
+'''
+shebang="#!/usr/bin/env zsh"
+
+[up-live]
+command='''
+up --unsafe-full-throttle
+'''
+shebang="#!/usr/bin/env zsh"

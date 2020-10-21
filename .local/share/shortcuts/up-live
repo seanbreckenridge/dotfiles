@@ -1,0 +1,2 @@
+#!/usr/bin/env zsh
+up --unsafe-full-throttle
