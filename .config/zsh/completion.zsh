@@ -35,5 +35,5 @@ compdef _gnu_generic exists youtube-dl wait-for-internet genpasswd genpass short
 source "$ZDOTDIR"/completions/_plainplay
 compdef _plainplay plainplay play
 compdef _playlist_files splay pplay
-compdef _binary_completion which-cat launch vic
+compdef _binary_completion which-cat launch vic havecmd
 compdef _editor e
