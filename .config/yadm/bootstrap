@@ -61,7 +61,7 @@ declare SCRIPT_TARGET_DIR="${HOME}/.local/bin" # should be created by stack/pyth
 [[ ! -f "${ZDOTDIR}/aliases/personal_aliases" ]] && touch "${ZDOTDIR}/aliases/personal_aliases"
 
 # create default user directories
-default_user_dirs=("Repos" "Documents" "Documents/Notes" "Documents/wallpapers" "GoogleDrive" "Downloads" "Pictures/Screenshots" "Pictures" ".local" ".cache" ".credentials")
+default_user_dirs=("Repos" "Documents" "Documents/Notes" "Documents/wallpapers" "GoogleDrive" "Downloads" "Pictures/Screenshots" "Pictures" ".local" ".cache" ".credentials" "data")
 for d_name in "${default_user_dirs[@]}"; do
 	if [[ ! -d "${HOME}/${d_name}" ]]; then
 		mkdir -p "${HOME}/${d_name}"
