@@ -233,6 +233,17 @@ make_compatible_build genpasswd 'https://github.com/seanbreckenridge/genpasswd' 
 make_compatible_build mpv-currently-playing 'https://github.com/seanbreckenridge/mpv-sockets' all
 set +e
 
+# install largechar
+if ! havecmd largechar; then
+	LARGECHAR_LOCATION="${REPOS:-${HOME}/Repos}/largechar"
+	[[ ! -e "$LARGECHAR_LOCATION" ]] && git clone 'https://github.com/seanbreckenridge/largechar' "$LARGECHAR_LOCATION"
+	set -e
+	cd "$LARGECHAR_LOCATION"
+	./install
+	cp ./largechar ~/.local/bin
+	set +e
+fi
+
 install_shell_script() {
 	local TEMP_INSTALL_DIR
 	havecmd "$1" || {
