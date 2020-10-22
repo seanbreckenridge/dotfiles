@@ -1,6 +1,6 @@
 #!/bin/sh
 # copy from STDIN
-# on X, puts text on both clipboards
+# on X, puts text on 'clipboard', doesn't affect selection clipboard
 # on mac, uses pbcopy (cmd+c/v clipboard)
 
 STDIN="$(cat)"
