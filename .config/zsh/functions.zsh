@@ -80,3 +80,9 @@ bindkey "^[C" fzf-repos
 # Alt+R to launch ranger (file manager)
 bindkey -s "^[r" "^uranger^M"
 
+# Alt+F to rg-nvim
+f-rg-nvim() {
+	rg-nvim "$@"
+}
+zle -N f-rg-nvim
+bindkey "^[f" f-rg-nvim
