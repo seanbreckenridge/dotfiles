@@ -672,9 +672,10 @@ command='''
 PICKED="$(mystars | sed 's/\x1B\[[0-9;]\+[A-Za-z]//g' | fzf)" || exit $?
 printf '%s\n' "$PICKED"
 URL="$(echo "$PICKED" | urlextract)"
+# if a URL was extracted, open it
 [[ -n "$URL" ]] && {
-	clp-args "$URL"
-	printf '\n'
+	openurl "$URL" >/dev/null
+	printf '%s' "$URL" | clipcopy
 }
 '''
 shebang="#!/bin/bash"
