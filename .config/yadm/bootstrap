@@ -239,8 +239,7 @@ if ! havecmd largechar; then
 	[[ ! -e "$LARGECHAR_LOCATION" ]] && git clone 'https://github.com/seanbreckenridge/largechar' "$LARGECHAR_LOCATION"
 	set -e
 	cd "$LARGECHAR_LOCATION"
-	./install
-	cp ./largechar ~/.local/bin
+	make
 	set +e
 fi
 
