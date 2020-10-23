@@ -22,6 +22,10 @@ alias yc="yadm commit"
 alias yp="yadm push"
 alias ycp="yc && yp"
 alias yl="yadm pull --recurse-submodules"
+ydh() {
+	yadm diff HEAD~"${1:-1}"
+}
+
 
 # editor aliases
 alias e='editor'
