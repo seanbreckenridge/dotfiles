@@ -8,7 +8,7 @@ python3() {
     echo -e "$(tput setaf 2)Launching ipython instead...$(tput sgr0)"
     ipython
   else
-    "$(findbianry "python3")" "$@"
+    "$(findbinary "python3")" "$@"
   fi
 }
 
