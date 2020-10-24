@@ -197,7 +197,7 @@ echo "Installing global pheonix mix archives..."
 MIX_ARCHIVE_LIST="$(mix archive | sed -e '/Archives installed at: /d' -e 's/^* //' -e 's/-.*//')"
 while read -r mix_pkg; do
 	if ! grep -q "^${mix_pkg}$" <<<"${MIX_ARCHIVE_LIST}"; then
-		mix archive.install --force "${mix_pkg}"
+		mix archive.install hex "${mix_pkg}"
 	fi
 done < <(spkglist "${MIX_PACKAGE_LIST}")
 

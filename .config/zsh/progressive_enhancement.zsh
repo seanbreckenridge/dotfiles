@@ -8,7 +8,7 @@ python3() {
     echo -e "$(tput setaf 2)Launching ipython instead...$(tput sgr0)"
     ipython
   else
-    /usr/bin/python3 "$@"
+    "$(findbianry "python3")" "$@"
   fi
 }
 
@@ -19,7 +19,7 @@ cat() {
     # https://github.com/sharkdp/bat
     bat --pager=never "$1"
   else
-    /usr/bin/cat "$@"
+    /bin/cat "$@"
   fi
 }
 
@@ -29,6 +29,6 @@ ps() {
     procs --pager=disable
     echo "Instead of 'ps -ef | grep something', just use 'procs something'" 1>&2
   else
-    /usr/bin/ps "$@"
+    /bin/ps "$@"
   fi
 }

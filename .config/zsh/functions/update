@@ -6,9 +6,9 @@ function update() {
 	echo "Updating system (pacman/yay/brew) packages..."
 	if [[ -z "$ONLINUX" ]]; then
 		brew update && brew upgrade
-		brew cask upgrade
+		brew upgrade --cask
 		# run brew cask upgrade --greedy once per month
-		evry 1 month -brewgreedy && brew cask upgrade --greedy
+		evry 1 month -brewgreedy && brew upgrade --cask --greedy
 	else
 		yay -Syu
 		housekeeping

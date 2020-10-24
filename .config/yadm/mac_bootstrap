@@ -57,9 +57,17 @@ mac-alacritty-conf
 # set mac defaults
 echo "Setting application/mac os defaults..."
 bash "${YADM_DIR}/mac/set-default-apps" || exit $?
-printf "mac/set-macos-defaults changes a bunch of settings to make macOS more usable and restarts affected applications\nRun? > "
-# timeout after 10 seconds
-read -r -t 5 && bash "${YADM_DIR}/mac/set-macos-defaults"
+printf 'mac/set-macos-defaults changes a bunch of settings to make macOS more usable and restarts affected applications\nRun? [y/N] > '
+# timeout after 5 seconds
+read -r -t 5
+case "$REPLY" in
+	Y|y)
+		bash "${YADM_DIR}/mac/set-macos-defaults"
+		;;
+	*)
+		:  # do nothing if user didnt respond Y/y
+		;;
+esac
 
 havecmd curl && [[ ! -r "${HOME}/.local/share/nvim/site/autoload/plug.vim" ]] && {
 	printf "Installing vim-plug..."
@@ -74,13 +82,13 @@ brew tap 'AdoptOpenJDK/openjdk'
 brew tap 'dart-lang/dart'
 brew tap 'cjbassi/ytop'
 brew update && brew upgrade
-brew cask upgrade
+brew upgrade --cask
 brew bundle --file="${HOMEBREW_BREWFILE}"
 
 # setup ruby with rbenv
 havecmd rbenv || exit $?
 if [[ "$(rbenv global)" != 2.7.1 ]]; then
-	printf "Building global ruby version..."
+	printf 'Building global ruby version...'
 	rbenv install 2.7.1
 	rbenv global 2.7.1
 fi
