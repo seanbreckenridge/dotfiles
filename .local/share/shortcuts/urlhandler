@@ -3,7 +3,7 @@
 # prompts me to pick one and opens it
 urls="$(extracturls)" || exit $?
 chosen_url="$(echo "$urls" | picker -p 'Pick a URL to open > ')"
-[ -n "$chosen_url" ] && {
+if [ -n "$chosen_url" ]; then
 	echo "$chosen_url" | clipcopy
 	openurl "$chosen_url"
-}
+fi

@@ -403,16 +403,6 @@ command='date +"%A, %B %e, %Y, %l:%M:%S%p"'
 [epoch]
 command='date +"%s"'
 
-[epochdisplay]
-shebang='#!/usr/bin/env python3'
-command='''
-import sys, time
-if len(sys.argv) <= 1:
-    raise RuntimeError("Must pass epoch time to display as first argument")
-print(time.strftime("%Y-%m-%d %H:%M:%S", time.localtime(int(sys.argv[1]))))
-'''
-link='displayepoch'
-
 [weekday]
 command='date +"%A" | lower'
 
@@ -644,10 +634,10 @@ command='''
 # recieves text from STDIN, extracts unique URLs
 # pypi.org/project/urlextract
 urls="$(urlextract | sort -u)"
-[ -z "$urls" ] && {
-       notify "No URLs found in text"
-       exit 1
-}
+if [ -z "$urls" ]; then
+  notify "No URLs found in text"
+  exit 1
+fi
 printf "%s\n" "$urls"
 '''
 
@@ -657,10 +647,10 @@ command='''
 # prompts me to pick one and opens it
 urls="$(extracturls)" || exit $?
 chosen_url="$(echo "$urls" | picker -p 'Pick a URL to open > ')"
-[ -n "$chosen_url" ] && {
-       echo "$chosen_url" | clipcopy
-       openurl "$chosen_url"
-}
+if [ -n "$chosen_url" ]; then
+  echo "$chosen_url" | clipcopy
+  openurl "$chosen_url"
+fi
 '''
 
 [ssh-keygen-good]

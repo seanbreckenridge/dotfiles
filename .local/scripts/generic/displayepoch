@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 import sys, time
-
 if len(sys.argv) <= 1:
     raise RuntimeError("Must pass epoch time to display as first argument")
 print(time.strftime("%Y-%m-%d %H:%M:%S", time.localtime(int(sys.argv[1]))))
