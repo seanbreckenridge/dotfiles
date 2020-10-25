@@ -62,12 +62,12 @@ printf 'mac/set-macos-defaults changes a bunch of settings to make macOS more us
 # timeout after 5 seconds
 read -r -t 5
 case "$REPLY" in
-	Y|y)
-		bash "${YADM_DIR}/mac/set-macos-defaults"
-		;;
-	*)
-		:  # do nothing if user didnt respond Y/y
-		;;
+Y | y)
+	bash "${YADM_DIR}/mac/set-macos-defaults"
+	;;
+*)
+	: # do nothing if user didnt respond Y/y
+	;;
 esac
 
 havecmd curl && [[ ! -r "${HOME}/.local/share/nvim/site/autoload/plug.vim" ]] && {

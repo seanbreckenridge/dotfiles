@@ -13,7 +13,7 @@ from my.core import PathIsh, Paths
 class core:
     cache_dir: PathIsh = "/tmp/cachew"
     enabled_modules: Sequence[PathIsh] = []
-    disabled_modules: Sequence[PathIsh] = ['my.time.tz.via_location']
+    disabled_modules: Sequence[PathIsh] = ["my.time.tz.via_location"]
 
 
 # combines:
@@ -158,13 +158,17 @@ class photos:
     # dont ignore anything
     ignored: Callable[[Path], bool] = lambda p: False
 
+
 from typing import Sequence, Union, Tuple
 from datetime import datetime, date
+
 DateIsh = Union[datetime, date, str]
 LatLon = Tuple[float, float]
 
+
 class location:
     from .locations_secret import home
+
 
 # class stackexchange:
 #    export_path: Paths = "~/data/stexport"

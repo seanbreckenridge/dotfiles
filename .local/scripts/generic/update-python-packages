@@ -10,10 +10,14 @@ from subprocess import call
 #
 # will wait for now (till its standard), then debug further
 # if new pip doesn't fix it
-import sys; sys.exit(0)
+import sys
+
+sys.exit(0)
 
 packages = [dist.project_name for dist in pkg_resources.working_set]
 call(
-    "python3 -m pip install --use-feature=2020-resolver --upgrade {} | sed 's/^Requirement already up-to-date/Up to date/'"
-    .format(' '.join(packages)),
-    shell=True)
+    "python3 -m pip install --use-feature=2020-resolver --upgrade {} | sed 's/^Requirement already up-to-date/Up to date/'".format(
+        " ".join(packages)
+    ),
+    shell=True,
+)

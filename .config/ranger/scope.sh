@@ -80,10 +80,10 @@ application/json)
 	}
 	;;
 application/csv)
-  try head -n$((maxln * 2)) "$path" && {
-    dump
-    exit 5
-  }
+	try head -n$((maxln * 2)) "$path" && {
+		dump
+		exit 5
+	}
 	;;
 application/x-sharedlib | application/x-executable | application/x-pie-executable)
 	fileinfo "$path" && exit 0

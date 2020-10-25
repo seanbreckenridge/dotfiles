@@ -24,4 +24,3 @@ there are some edge cases, but it works for its intended purpose.
 
 The easiest way to edit the README directly (without attaching it to another commit)
 is through modifying it on github, and then `yadm pull`.
-

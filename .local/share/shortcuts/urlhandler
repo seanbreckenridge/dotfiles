@@ -4,6 +4,6 @@
 urls="$(extracturls)" || exit $?
 chosen_url="$(echo "$urls" | picker -p 'Pick a URL to open > ')"
 [ -n "$chosen_url" ] && {
-  echo "$chosen_url" | clipcopy
-  openurl "$chosen_url"
+	echo "$chosen_url" | clipcopy
+	openurl "$chosen_url"
 }

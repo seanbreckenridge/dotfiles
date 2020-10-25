@@ -86,7 +86,9 @@ keys: List[Key] = [
         desc="prompt to select a date format and copy to clipboard",
     ),
     Key(
-        "M-S-d", lazy.spawn("mediasearch"), desc="search for media on letterboxd/trakt",
+        "M-S-d",
+        lazy.spawn("mediasearch"),
+        desc="search for media on letterboxd/trakt",
     ),
     Key(
         "<XF86Display>",
@@ -288,7 +290,11 @@ layouts = [
     layout.Max(),
 ]
 
-widget_defaults = dict(font="Source Code Pro", fontsize=12, padding=3,)
+widget_defaults = dict(
+    font="Source Code Pro",
+    fontsize=12,
+    padding=3,
+)
 extension_defaults = widget_defaults.copy()
 
 

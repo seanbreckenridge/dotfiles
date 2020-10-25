@@ -3,7 +3,7 @@
 # pypi.org/project/urlextract
 urls="$(urlextract | sort -u)"
 [ -z "$urls" ] && {
-       notify "No URLs found in text"
-       exit 1
+	notify "No URLs found in text"
+	exit 1
 }
 printf "%s\n" "$urls"

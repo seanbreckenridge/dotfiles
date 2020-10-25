@@ -26,7 +26,6 @@ ydh() {
 	yadm diff HEAD~"${1:-1}"
 }
 
-
 # editor aliases
 alias e='editor'
 alias ee='e -e'  # edit with emacs

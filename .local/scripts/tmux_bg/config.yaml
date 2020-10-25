@@ -1,37 +1,37 @@
 # defines window/panes for common stuff I do
 session_name: "bg"
 windows:
-#- window_name: "music"
-#  layout: 'main-vertical'
-#  shell_command_before:
-#    "cd ~/Music"
-#  panes:
-#    - shell_command:
-#      - "ranger"
-#      focus: true
-#    - "plainplay" # playlist manager
-- window_name: "calcurse"
-  shell_command_before:
-    - "cd ~/.config/tmux_layouts/bg/"
-  panes:
-    - "./calcurse"
-- window_name: "todo.txt"
-  shell_command_before:
-    - "cd ~/.config/tmux_layouts/bg/"
-  panes:
-    - "./todo"
-- window_name: "tsp"
-  shell_command_before:
-    - "cd ~/.config/tmux_layouts/bg/"
-  panes:
-    - "./tsp"
-- window_name: "budget"
-  shell_command_before:
-    - "cd ~/.config/tmux_layouts/bg/"
-  panes:
-    - "./budget"
-- window_name: "app logs"
-  shell_command_before:
-    - "cd ~/.config/tmux_layouts/bg/"
-  panes:
-    - "./app_logs"
+  #- window_name: "music"
+  #  layout: 'main-vertical'
+  #  shell_command_before:
+  #    "cd ~/Music"
+  #  panes:
+  #    - shell_command:
+  #      - "ranger"
+  #      focus: true
+  #    - "plainplay" # playlist manager
+  - window_name: "calcurse"
+    shell_command_before:
+      - "cd ~/.config/tmux_layouts/bg/"
+    panes:
+      - "./calcurse"
+  - window_name: "todo.txt"
+    shell_command_before:
+      - "cd ~/.config/tmux_layouts/bg/"
+    panes:
+      - "./todo"
+  - window_name: "tsp"
+    shell_command_before:
+      - "cd ~/.config/tmux_layouts/bg/"
+    panes:
+      - "./tsp"
+  - window_name: "budget"
+    shell_command_before:
+      - "cd ~/.config/tmux_layouts/bg/"
+    panes:
+      - "./budget"
+  - window_name: "app logs"
+    shell_command_before:
+      - "cd ~/.config/tmux_layouts/bg/"
+    panes:
+      - "./app_logs"

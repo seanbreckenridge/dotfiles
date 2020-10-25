@@ -409,7 +409,7 @@ command='''
 import sys, time
 if len(sys.argv) <= 1:
     raise RuntimeError("Must pass epoch time to display as first argument")
-print(time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(int(sys.argv[1]))))
+print(time.strftime("%Y-%m-%d %H:%M:%S", time.localtime(int(sys.argv[1]))))
 '''
 link='displayepoch'
 
@@ -658,8 +658,8 @@ command='''
 urls="$(extracturls)" || exit $?
 chosen_url="$(echo "$urls" | picker -p 'Pick a URL to open > ')"
 [ -n "$chosen_url" ] && {
-  echo "$chosen_url" | clipcopy
-  openurl "$chosen_url"
+       echo "$chosen_url" | clipcopy
+       openurl "$chosen_url"
 }
 '''
 
