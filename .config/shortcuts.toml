@@ -185,15 +185,6 @@ command='''
 list-music | shuf | mpv --playlist=- --no-audio-display
 '''
 
-[shfmt-in-place]
-command='''
-# call shfmt on multiple files
-[ -z "$1" ] && echo "Error: must provide a file to call shfmt on." && exit 1
-for f in "$@"; do
-	shfmt "$f" >/tmp/shfmt-temp && cat /tmp/shfmt-temp >"$f"
-done
-'''
-
 [screenshot-to-imgur]
 command='''
 # uploads the most recent screenshot from
@@ -635,8 +626,8 @@ command='''
 # pypi.org/project/urlextract
 urls="$(urlextract | sort -u)"
 if [ -z "$urls" ]; then
-  notify "No URLs found in text"
-  exit 1
+	notify "No URLs found in text"
+	exit 1
 fi
 printf "%s\n" "$urls"
 '''
@@ -648,8 +639,8 @@ command='''
 urls="$(extracturls)" || exit $?
 chosen_url="$(echo "$urls" | picker -p 'Pick a URL to open > ')"
 if [ -n "$chosen_url" ]; then
-  echo "$chosen_url" | clipcopy
-  openurl "$chosen_url"
+	echo "$chosen_url" | clipcopy
+	openurl "$chosen_url"
 fi
 '''
 
