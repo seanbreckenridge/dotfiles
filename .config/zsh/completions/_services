@@ -1,3 +1,4 @@
+#!/bin/zsh
 #compdef services
 
 function _services() {

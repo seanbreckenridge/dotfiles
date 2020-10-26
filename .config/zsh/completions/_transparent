@@ -1,3 +1,4 @@
+#!/bin/zsh
 #compdef transparent
 
 function _transparent() {
