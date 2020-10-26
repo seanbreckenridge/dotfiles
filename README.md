@@ -12,7 +12,7 @@ Majority of cross platform functionality is done, keep finding small improvement
 * `$PATH` is set properly in `zsh`/`X server` startup, update (`zsh` function) respects the OS and updates packages properly.
 * Wrapper scripts in [`~/.local/scripts/cross-platform`](.local/scripts/cross-platform) detect platform to send notifications, interact with clipboard, prompt user for input etc...
 
-The rest of the README is for what I used on arch:
+The rest of the README is for what I use on arch:
 
 - [`zsh`](http://zsh.sourceforge.net/), plugins/configuration handled manually in [`.config/zsh`](.config/zsh) (split across multiple files)
 - [`i3-gaps`](https://github.com/Airblader/i3) - window manager
