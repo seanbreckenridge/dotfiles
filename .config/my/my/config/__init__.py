@@ -13,7 +13,7 @@ from my.core import PathIsh, Paths
 class core:
     cache_dir: PathIsh = "/tmp/cachew"
     enabled_modules: Sequence[PathIsh] = []
-    disabled_modules: Sequence[PathIsh] = ["my.time.tz.via_location"]
+    disabled_modules: Sequence[PathIsh] = []
 
 
 # combines:
