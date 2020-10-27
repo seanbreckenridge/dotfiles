@@ -158,13 +158,16 @@ class photos:
     # dont ignore anything
     ignored: Callable[[Path], bool] = lambda p: False
 
+
 # parses the GDPR export
 class apple:
     gdpr_dir: PathIsh = "~/data/apple/"
 
+
 # parses the GDPR export
 class discord:
     export_path: Paths = "~/data/discord/"
+
 
 from typing import Sequence, Union, Tuple
 from datetime import datetime, date
