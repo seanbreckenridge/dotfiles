@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/zsh
 # override the ranger binary by
 # placing the ranger shortcut
 # on $PATH first
@@ -6,5 +6,5 @@
 # warnings like:
 # https://i.imgur.com/Ky6NhKm.png
 export PYTHONWARNINGS="ignore"
-RANGER_PATH="$(findbinary ranger)" || exit $?
-python3 "$RANGER_PATH" "$@"
+RANGER_PATH="$(where ranger | grep -m1 -v "$SHORTCUTS_DIR")" || exit $?
+exec python3 "$RANGER_PATH" "$@"

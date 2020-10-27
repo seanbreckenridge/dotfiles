@@ -1,4 +1,4 @@
-#!/usr/bin/env zsh
+#!/bin/zsh
 # get location of binary, installed with go
 # https://github.com/akavel/up
 BIN="$(where up | grep "$GOBIN")"

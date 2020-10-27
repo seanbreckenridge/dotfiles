@@ -5,7 +5,7 @@ default_shebang = "#!/bin/sh"
 # default_mode = "0755"
 
 [list-config]
-shebang = "#!/usr/bin/env zsh"
+shebang="#!/bin/zsh"
 command='''
 # list all of my configuration files, by matching combining
 # yadm ls-files and a couple search commands
@@ -226,15 +226,17 @@ clippaste | clipcopy
 '''
 
 [lynx]
+shebang="#!/bin/zsh"
 command = '''
 # override the lynx binary by
 # placing the lynx shortcut
 # on $PATH first
-LYNX_PATH="$(findbinary lynx)" || exit $?
-"$LYNX_PATH" -accept_all_cookies -cfg="${XDG_CONFIG_HOME}/lynx/lynx.cfg" "$@"
+LYNX_PATH="$(where lynx | grep -m1 -v "$SHORTCUTS_DIR")" || exit $?
+exec "$LYNX_PATH" -accept_all_cookies -cfg="${XDG_CONFIG_HOME}/lynx/lynx.cfg" "$@"
 '''
 
 [ranger]
+shebang="#!/bin/zsh"
 command='''
 # override the ranger binary by
 # placing the ranger shortcut
@@ -243,8 +245,8 @@ command='''
 # warnings like:
 # https://i.imgur.com/Ky6NhKm.png
 export PYTHONWARNINGS="ignore"
-RANGER_PATH="$(findbinary ranger)" || exit $?
-python3 "$RANGER_PATH" "$@"
+RANGER_PATH="$(where ranger | grep -m1 -v "$SHORTCUTS_DIR")" || exit $?
+exec python3 "$RANGER_PATH" "$@"
 '''
 
 [printer-server]
@@ -501,7 +503,7 @@ exec curl "https://cheat.sh/$*"
 
 # runs git pull in all my repos in parallel (in 3 seconds). reports errors
 [repos-pull-all]
-shebang="#!/usr/bin/env zsh"
+shebang="#!/bin/zsh"
 command='''
 fd -H --absolute-path --type d --regex "${REPOS}/[^/]+/\.git$" --full-path "$REPOS" | parallel -j 500% "cd {}/.. && has-git-remote && { git pull --quiet && printf '.' || { echo; pwd} }"
 echo
@@ -681,10 +683,10 @@ command='''
 BIN="$(where up | grep "$GOBIN")"
 TERM=xterm "$BIN" --no-colors "$@"
 '''
-shebang="#!/usr/bin/env zsh"
+shebang="#!/bin/zsh"
 
 [up-live]
 command='''
 up --unsafe-full-throttle
 '''
-shebang="#!/usr/bin/env zsh"
+shebang="#!/bin/zsh"
