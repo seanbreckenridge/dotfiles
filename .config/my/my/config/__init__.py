@@ -80,7 +80,7 @@ class mpv:
 
 # uses ffexport https://github.com/seanbreckenridge/ffexport
 class firefox:
-    export_path: Paths = "~/data/firefox/dbs/*.sqlite"
+    export_path: Paths = "~/data/firefox/*.sqlite"
 
 
 # uses lolexport: https://github.com/seanbreckenridge/lolexport
@@ -162,6 +162,9 @@ class photos:
 class apple:
     gdpr_dir: PathIsh = "~/data/apple/"
 
+# parses the GDPR export
+class discord:
+    export_path: Paths = "~/data/discord/"
 
 from typing import Sequence, Union, Tuple
 from datetime import datetime, date
