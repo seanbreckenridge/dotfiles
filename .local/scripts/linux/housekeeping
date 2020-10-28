@@ -42,3 +42,5 @@ evry 1 day -google_drive && {
 evry 3 days -raspibackupdelete && {
 	"${REPOS}"/raspi-backup/backup -d
 }
+
+evry 2 weeks -mnu && ssh vultr ~/vps/mnu
