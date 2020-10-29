@@ -31,7 +31,7 @@ alias e='editor'
 alias ee='e -e'  # edit with emacs
 alias ecl='e -c' # editor with client in background
 
-# Standard
+# Standard/Shorthands
 alias reboot="sudo systemctl reboot"
 alias poweroff="sudo systemctl poweroff"
 alias halt="sudo systemctl halt"
@@ -43,17 +43,17 @@ alias twitchlive-table='twitchlive --output-format="table"'
 alias ft="full_todotxt"
 alias rr="rifle"
 alias free='free -h'
+alias rt='rotten search'  # rotten tomatoes
+alias todo='todo.sh'
+alias rnm='sudo systemctl restart NetworkManager' # restart networkmanager
+
+# Non-standard
 alias syserrors="sudo journalctl -p 3 -xb"
 alias sysderrors="sudo systemctl --failed"
-# Non-standard
-
 # edit the python --editable installed packages
 alias 'pip-editable-installs=e "$(find ~/.local/lib/python* -name easy-install.pth)"'
-alias todo='todo.sh'
 # remove packages that arent being used for anything
 alias remove-orphans='sudo pacman -Rns $(pacman -Qtdq)'
-# restart networkmanager
-alias rnm='sudo systemctl restart NetworkManager'
 # clear yay tar.gz cache
 alias yay-clear-cache='yay -Syu && yay -Sc'
 # create a notes file in the current directory
