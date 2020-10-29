@@ -34,3 +34,23 @@ ps() {
 		command ps "$@"
 	fi
 }
+
+# https://github.com/odeke-em/drive
+# if I run drive outside my google drive
+# move to ~/GoogleDrive/
+drive() {
+	local defaultdrive="${HOME}/GoogleDrive"
+
+	# early exit if drive doesnt exist where I expect
+	[[ ! -r "${defaultdrive}" ]] && command drive "$@"
+
+	# if not trying to create another google drive instance
+	if [[ "${1}" != 'init' ]]; then
+		if ! grep -q "${defaultdrive}" <<<"${PWD}"; then
+			cd "${defaultdrive}" || {
+				printf "Couldnt change directory to %s\n" "${defaultdrive}"
+			}
+		fi
+	fi
+	command drive "$@"
+}
