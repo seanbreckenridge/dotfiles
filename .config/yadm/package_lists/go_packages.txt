@@ -17,4 +17,3 @@ calories github.com/zupzup/calories
 qrc github.com/fumiyas/qrc
 gocloc github.com/hhatto/gocloc/cmd/gocloc
 up github.com/akavel/up
-dockfmt github.com/jessfraz/dockfmt
