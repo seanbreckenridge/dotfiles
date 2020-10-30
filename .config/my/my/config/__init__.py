@@ -169,6 +169,11 @@ class discord:
     export_path: Paths = "~/data/discord/"
 
 
+# .gpx files from https://github.com/mendhak/gpslogger
+class gpslogger:
+    export_path: Paths = "~/GoogleDrive/GPSLogger/"
+
+
 from typing import Sequence, Union, Tuple
 from datetime import datetime, date
 
