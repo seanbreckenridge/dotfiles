@@ -43,7 +43,7 @@ alias twitchlive-table='twitchlive --output-format="table"'
 alias ft="full_todotxt"
 alias rr="rifle"
 alias free='free -h'
-alias rt='rotten search'  # rotten tomatoes
+alias rt='rotten search' # rotten tomatoes
 alias todo='todo.sh'
 alias rnm='sudo systemctl restart NetworkManager' # restart networkmanager
 
