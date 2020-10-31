@@ -101,6 +101,7 @@ calcurse
 chafa
 cmatrix
 coreutils
+croc
 cronie
 datamash
 dex
