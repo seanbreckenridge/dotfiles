@@ -150,7 +150,7 @@ class window_watcher:
 
 
 class smscalls:
-    export_path: Paths = "~/GoogleDrive/SMSBackups/"
+    export_path: PathIsh = "~/GoogleDrive/SMSBackups/"
 
 
 class photos:
