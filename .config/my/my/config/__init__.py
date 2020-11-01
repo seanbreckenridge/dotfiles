@@ -184,9 +184,11 @@ LatLon = Tuple[float, float]
 class location:
     from .locations_secret import home
 
+
 class time:
     class tz:
-        policy = 'convert'
+        policy = "convert"
+
 
 # class stackexchange:
 #    export_path: Paths = "~/data/stexport"
