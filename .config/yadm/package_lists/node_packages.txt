@@ -8,6 +8,8 @@ jsonlint
 node-cljfmt
 uglifycss
 prettier
+@prettier/plugin-php
+prettier-plugin-toml
 npm
 stylelint
 vscode-html-languageserver-bin

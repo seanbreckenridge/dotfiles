@@ -55,6 +55,8 @@ jdk-openjdk
 julia
 jupyter
 ktlint-git
+lua
+lua-format
 mariadb
 mypy
 npm
