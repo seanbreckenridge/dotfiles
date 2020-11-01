@@ -49,16 +49,16 @@ alias greasyfork_generate="cd ${REPOS}/greasyfork_repo_generator && greasyfork_a
 
 # https://github.com/seanbreckenridge/mint
 export MINT_DATA="${HOME}/Repos/mint/data"
-alias budget='python3 -m budget'
+alias budget-history='budget accounts --graph'
+# to edit the account/transaction map information
+alias 'budget-config=fd -IH conf.py --full-path $REPOS/mint | fzf | xargs -r -I {} editor {}'
 budget-summary() {
 	if [[ -z "$1" ]]; then
-		python3 ~/Repos/mint/analyze/summary.py | glow -
+		python3 -m budget summary | glow -
 	else
-		python3 ~/Repos/mint/analyze/summary.py "$@"
+		python3 -m budget summary "$@"
 	fi
 }
-alias 'budget-config=fd -IH conf.py --full-path $REPOS/mint | fzf | xargs -r -I {} editor {}'
-alias budget-history='python3 ~/Repos/mint/analyze/balance_history.py --show'
 
 # https://github.com/seanbreckenridge/HPI
 # https://github.com/seanbreckenridge/autotui
