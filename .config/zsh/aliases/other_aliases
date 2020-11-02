@@ -49,7 +49,7 @@ alias greasyfork_generate="cd ${REPOS}/greasyfork_repo_generator && greasyfork_a
 
 # https://github.com/seanbreckenridge/mint
 export MINT_DATA="${HOME}/Repos/mint/data"
-alias budget-history='budget accounts --graph'
+alias budget-history='python3 -m budget accounts --graph'
 # to edit the account/transaction map information
 alias 'budget-config=fd -IH conf.py --full-path $REPOS/mint | fzf | xargs -r -I {} editor {}'
 budget-summary() {
