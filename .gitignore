@@ -87,6 +87,7 @@ __pycache__
 /.electron-gyp
 /.java
 /.viminfo
+/.nuget
 /.putty
 /.zoom
 /.parallel
