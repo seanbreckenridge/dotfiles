@@ -696,5 +696,5 @@ command='''
 # removes extra space characters from the beginning/end of lines
 # removes lines which have just whitespace (no content)
 # meant to be piped into, like 'some command | chomp'
-sed -E -e 's/^\s*//' -e 's/\s*$//' -e '/^\s*$/d'
+sed -E -e 's/^\s*//; s/\s*$//; /^\s*$/d'
 '''
