@@ -85,6 +85,7 @@ export SHORTCUTS_DIR="${XDG_DATA_HOME}/shortcuts"
 
 # playlist manager: https://github.com/seanbreckenridge/plaintext-playlist
 export PLAINTEXT_PLAYLIST_MUSIC_DIR="${MUSIC}"
+export PLAINTEXT_PLAYLIST_PLAYLISTS="${XDG_DATA_HOME:-$HOME/.local/share}/plaintext_playlist"
 
 # ignore less history
 export LESSHISTFILE="-"
