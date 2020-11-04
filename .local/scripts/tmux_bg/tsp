@@ -1,2 +1,2 @@
 #!/bin/sh
-watch -n 4 -x tsp
+watch -n 5 -x sh -c 'tsp | sed "1d" | sort -rn'
