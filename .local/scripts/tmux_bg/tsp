@@ -1,2 +1,2 @@
 #!/bin/sh
-watch -n 5 -x sh -c 'tsp | sed "1d" | sort -rn'
+watch -n 5 -x sh -c 'tsp | tail -n+2 | sort -rn'
