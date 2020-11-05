@@ -698,3 +698,8 @@ command='''
 # meant to be piped into, like 'some command | chomp'
 sed -E -e 's/^\s*//; s/\s*$//; /^\s*$/d'
 '''
+
+[watchtwitch]
+command='''
+twitchlive -output-format json | jq -r '.[] | .username' | picker -p "who to watch? " | xargs -r twitch
+'''

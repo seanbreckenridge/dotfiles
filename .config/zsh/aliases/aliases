@@ -69,8 +69,6 @@ alias calc='eva' # https://github.com/NerdyPepper/eva
 alias stripcolors="sed 's/\x1B\[[0-9;]\+[A-Za-z]//g'"
 # alias ? to duck, searches duckduckgo in lynx
 alias "?=duck"
-# watch a twitch stream
-alias watchtwitch="twitchlive -output-format json | jq -r '.[] | .username' | fzf --tac | xargs twitch"
 alias tetris='autoload -Uz tetriscurses; tetriscurses'
 alias 'countdown=termdown'
 # shorthand for copying to clipboard
