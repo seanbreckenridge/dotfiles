@@ -9,6 +9,10 @@ from pathlib import Path
 
 from my.core import PathIsh, Paths
 
+from .ipinfo_secret import ACCESS_TOKEN as ipinfo_secret_token
+
+environ["IPINFO_TOKEN"] = ipinfo_secret_token
+
 
 class core:
     cache_dir: PathIsh = "/tmp/cachew"
