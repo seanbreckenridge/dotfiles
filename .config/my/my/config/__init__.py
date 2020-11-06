@@ -9,9 +9,14 @@ from pathlib import Path
 
 from my.core import PathIsh, Paths
 
-from .ipinfo_secret import ACCESS_TOKEN as ipinfo_secret_token
 
-environ["IPINFO_TOKEN"] = ipinfo_secret_token
+# https://github.com/seanbreckenridge/ipgeocache
+try:
+    from .ipinfo_secret import ACCESS_TOKEN as ipinfo_secret_token
+
+    environ["IPINFO_TOKEN"] = ipinfo_secret_token
+except ImportError:
+    pass
 
 
 class core:
