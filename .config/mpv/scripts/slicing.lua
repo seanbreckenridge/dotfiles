@@ -22,7 +22,7 @@ local o = {
         -ss $shift -i "$in" -t $duration
         -c:v $vcodec -c:a $acodec $audio
         $opts "$out.$ext"
-    ]],
+    ]]
 }
 options.read_options(o)
 
@@ -33,24 +33,21 @@ function timestamp(duration)
     return string.format("%02d:%02d:%02.03f", hours, minutes, seconds)
 end
 
-function osd(str)
-    return mp.osd_message(str, 3)
-end
+function osd(str) return mp.osd_message(str, 3) end
 
 function get_video_dir()
-  -- It would be better to do platform detection instead of fallback but
-  -- it's not that easy in Lua.
-  return os.getenv("MOVIES") or os.getenv("HOME") or os.getenv("USERPROFILE") or ""
+    -- It would be better to do platform detection instead of fallback but
+    -- it's not that easy in Lua.
+    return
+        os.getenv("MOVIES") or os.getenv("HOME") or os.getenv("USERPROFILE") or
+            ""
 end
 
 function log(str)
-    local logpath = utils.join_path(
-        o.target_dir:gsub("~", get_video_dir()),
-        "mpv_slicing.log")
+    local logpath = utils.join_path(o.target_dir:gsub("~", get_video_dir()),
+                                    "mpv_slicing.log")
     f = io.open(logpath, "a")
-    f:write(string.format("# %s\n%s\n",
-        os.date("%Y-%m-%d %H:%M:%S"),
-        str))
+    f:write(string.format("# %s\n%s\n", os.date("%Y-%m-%d %H:%M:%S"), str))
     f:close()
 end
 
@@ -61,26 +58,27 @@ function escape(str)
     return str:gsub("\\", "\\\\"):gsub('"', '\\"')
 end
 
-function trim(str)
-    return str:gsub("^%s+", ""):gsub("%s+$", "")
-end
+function trim(str) return str:gsub("^%s+", ""):gsub("%s+$", "") end
 
 function get_csp()
     local csp = mp.get_property("colormatrix")
-    if csp == "bt.601" then return "bt601"
-        elseif csp == "bt.709" then return "bt709"
-        elseif csp == "smpte-240m" then return "smpte240m"
-        else
-            local err = "Unknown colorspace: " .. csp
-            osd(err)
-            error(err)
+    if csp == "bt.601" then
+        return "bt601"
+    elseif csp == "bt.709" then
+        return "bt709"
+    elseif csp == "smpte-240m" then
+        return "smpte240m"
+    else
+        local err = "Unknown colorspace: " .. csp
+        osd(err)
+        error(err)
     end
 end
 
 function get_outname(shift, endpos)
     local name = mp.get_property("filename")
     local dotidx = name:reverse():find(".", 1, true)
-    if dotidx then name = name:sub(1, -dotidx-1) end
+    if dotidx then name = name:sub(1, -dotidx - 1) end
     name = name:gsub(" ", "_")
     name = name:gsub(":", "-")
     name = name .. string.format(".%s-%s", timestamp(shift), timestamp(endpos))
@@ -89,12 +87,11 @@ end
 
 function cut(shift, endpos)
     local cmd = trim(o.command_template:gsub("%s+", " "))
-    local inpath = escape(utils.join_path(
-        utils.getcwd(),
-        mp.get_property("stream-path")))
+    local inpath = escape(utils.join_path(utils.getcwd(),
+                                          mp.get_property("stream-path")))
     local outpath = escape(utils.join_path(
-        o.target_dir:gsub("~", get_video_dir()),
-        get_outname(shift, endpos)))
+                               o.target_dir:gsub("~", get_video_dir()),
+                               get_outname(shift, endpos)))
 
     cmd = cmd:gsub("$shift", shift)
     cmd = cmd:gsub("$duration", endpos - shift)
@@ -118,16 +115,13 @@ function toggle_mark()
     local pos = mp.get_property_number("time-pos")
     if cut_pos then
         local shift, endpos = cut_pos, pos
-        if shift > endpos then
-            shift, endpos = endpos, shift
-        end
+        if shift > endpos then shift, endpos = endpos, shift end
         if shift == endpos then
             osd("Cut fragment is empty")
         else
             cut_pos = nil
-            osd(string.format("Cut fragment: %s - %s",
-                timestamp(shift),
-                timestamp(endpos)))
+            osd(string.format("Cut fragment: %s - %s", timestamp(shift),
+                              timestamp(endpos)))
             cut(shift, endpos)
         end
     else
