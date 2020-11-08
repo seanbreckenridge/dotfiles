@@ -32,6 +32,9 @@ alias ee='e -e'  # edit with emacs
 alias ecl='e -c' # editor with client in background
 
 # Standard/Shorthands
+alias 'rm=rm -v'
+alias 'cp=cp -v'
+alias 'curl=curl -s'
 alias reboot="sudo systemctl reboot"
 alias poweroff="sudo systemctl poweroff"
 alias halt="sudo systemctl halt"
