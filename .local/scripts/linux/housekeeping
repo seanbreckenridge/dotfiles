@@ -9,7 +9,7 @@ wait-for-internet --text "Running 'housekeeping'..."
 export HAVECMD_REPORT=1
 
 declare -a required_binaries
-required_binaries=(evry backup_server pythonanywhere_3_months)
+required_binaries=(evry dust pythonanywhere_3_months)  # dust is used in backup_server
 for binary in "${required_binaries[@]}"; do
 	havecmd "$binary" || exit $?
 done
@@ -21,11 +21,22 @@ copy_keepass_db() {
 	[[ -f "$db_here" ]] && [[ -f "$db_there" ]] && cp -v "$db_here" "$db_there"
 }
 
+# https://github.com/seanbreckenridge/glue
 APPROVE_SCRIPT="${REPOS}/vps/approve_comments"
 [[ -r "$APPROVE_SCRIPT" ]] && "$APPROVE_SCRIPT" 2>/dev/null
 
-evry 1 day -backup_fish_server && backup_server
+# backup cache/token/logs from my server
+BACKUP_SERVER_SCRIPT="${REPOS}/vps/backup_server"
+if [[ -r "$BACKUP_SERVER_SCRIPT" ]]; then
+  evry 1 day -backup_fish_server && "$BACKUP_SERVER_SCRIPT"
+else
+  printf 'Expected backup script to exist at %s\n' "$BACKUP_SERVER_SCRIPT" >&2
+fi
+
+# make sure my pythonanywhere website doesnt expire:
+# https://github.com/seanbreckenridge/pythonanywhere-3-months
 evry 2 months -pythonanywhere && pythonanywhere_3_months -Hc "$(which chromedriver)"
+# run https://github.com/odeke-em/drive to pull/push from google drive
 evry 1 day -google_drive && {
 	cd ~/GoogleDrive/ || exit $?
 	echo "Running 'drive pull'..."
@@ -37,10 +48,15 @@ evry 1 day -google_drive && {
 	drive push
 }
 
+# backup stuff on my computer to my raspberry pi
+# https://github.com/seanbreckenridge/raspi-backup
+#
 # has the possibility to fail, if I'm not home and it tries to
 # find the raspberry pi on my home network
+# (thats fine, it just won't update that time, and will try again in 3 days)
 evry 3 days -raspibackupdelete && {
 	"${REPOS}"/raspi-backup/backup -d
 }
 
+# update https://github.com/seanbreckenridge/mnu_gsheets
 evry 2 weeks -mnu && ssh vultr ~/vps/mnu
