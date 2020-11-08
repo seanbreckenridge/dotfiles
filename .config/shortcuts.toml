@@ -664,6 +664,7 @@ URL="$(echo "$PICKED" | urlextract)"
 }
 '''
 shebang="#!/bin/bash"
+link = "sz"
 
 [screens]
 command='sxiv -t "${SCREENSHOTS}"'

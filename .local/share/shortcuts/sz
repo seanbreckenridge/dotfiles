@@ -1,0 +1,10 @@
+#!/bin/bash
+# https://github.com/seanbreckenridge/oh-my-stars
+PICKED="$(mystars "$@" | fzf --ansi)" || exit $?
+printf '%s\n' "$PICKED"
+URL="$(echo "$PICKED" | urlextract)"
+# if a URL was extracted, open it
+[[ -n "$URL" ]] && {
+	openurl "$URL" >/dev/null
+	printf '%s' "$URL" | clipcopy
+}
