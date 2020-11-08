@@ -45,6 +45,7 @@ alias rr="rifle"
 alias free='free -h'
 alias rt='rotten search' # rotten tomatoes
 alias todo='todo.sh'
+alias stz='mystarsfzf'
 alias rnm='sudo systemctl restart NetworkManager' # restart networkmanager
 
 # Non-standard
