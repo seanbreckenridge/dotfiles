@@ -70,6 +70,7 @@ __pycache__
 /.keras
 /.mozilla
 /.minecraft
+/.lldb
 /.solargraph
 /.w3m
 /.audacity-data/
