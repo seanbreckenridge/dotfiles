@@ -1,0 +1,3 @@
+#!/bin/sh
+[ -n "$SHORTCUTS_DIR" ] && [ -d "$SHORTCUTS_DIR" ] && rm -rf "$SHORTCUTS_DIR"
+shortcuts create

@@ -702,3 +702,9 @@ sed -E -e 's/^\s*//; s/\s*$//; /^\s*$/d'
 command='''
 twitchlive -output-format json | jq -r '.[] | .username' | picker -p "who to watch? " | xargs -r twitch
 '''
+
+[reshortcuts]
+command='''
+[ -n "$SHORTCUTS_DIR" ] && [ -d "$SHORTCUTS_DIR" ] && rm -rf "$SHORTCUTS_DIR"
+shortcuts create
+'''
