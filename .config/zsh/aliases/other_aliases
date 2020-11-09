@@ -12,13 +12,13 @@ bindkey -s '^P' "^uplay^M"
 
 # https://github.com/seanbreckenridge/raspi-backup
 alias pi='ssh pi@$($REPOS/raspi-backup/findpi)'
-alias raspi_backup='$REPOS/raspi-backup/backup -d'
+alias raspi-backup='$REPOS/raspi-backup/backup -d'
 
 # https://github.com/seanbreckenridge/albums
 alias albums='openurl "https://sean.fish/s/albums"'
-alias favorite_albums="python3 \"${REPOS}/albums/favorites.py\" > /tmp/favorites.csv && sc-im /tmp/favorites.csv"
-alias albums_left='python3 ~/Repos/albums/nextalbums.py -n 99999 | cut -d"|" -f4 | grep "^ [12]" | wc -l '
-alias discogs_update='python3 ~/Repos/albums/discogs_update.py'
+alias favorite-albums="python3 \"${REPOS}/albums/favorites.py\" > /tmp/favorites.csv && sc-im /tmp/favorites.csv"
+alias albums-left='python3 ~/Repos/albums/nextalbums.py -n 99999 | cut -d"|" -f4 | grep "^ [12]" | wc -l '
+alias discogs-update='python3 ~/Repos/albums/discogs_update.py'
 
 # vps related
 # https://github.com/seanbreckenridge/vps
@@ -30,9 +30,9 @@ alias remsync_ranger="ranger $HOME/.local/share/remsync && remsync"
 alias remsync_public_ranger="ranger $HOME/.local/share/remsync_public && remsync_public"
 alias playlist='$REPOS/vps/playlist'
 alias restart-glue='ssh vultr "cd ./code/glue && git pull && ~/vps/super --ctl restart glue-server"'
-alias dotfiles_pull='ssh vultr "cd ~/.dotfiles && git pull"'
-alias approve_comments='$REPOS/vps/approve_comments'
-alias page_hits="curl -s 'https://sean.fish/api/page_hit' | jq '.count'"
+alias dotfiles-pull='ssh vultr "cd ~/.dotfiles && git pull"'
+alias approve-comments='$REPOS/vps/approve_comments'
+alias page-hits="curl -s 'https://sean.fish/api/page_hit' | jq '.count'"
 # Alt+Shift+V to connect to VPS
 bindkey -s "^[V" "vultr\n"
 
