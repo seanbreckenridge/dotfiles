@@ -9,7 +9,7 @@ wait-for-internet --text "Running 'housekeeping'..."
 export HAVECMD_REPORT=1
 
 declare -a required_binaries
-required_binaries=(evry dust pythonanywhere_3_months)  # dust is used in backup_server
+required_binaries=(evry dust pythonanywhere_3_months) # dust is used in backup_server
 for binary in "${required_binaries[@]}"; do
 	havecmd "$binary" || exit $?
 done
@@ -23,14 +23,18 @@ copy_keepass_db() {
 
 # https://github.com/seanbreckenridge/glue
 APPROVE_SCRIPT="${REPOS}/vps/approve_comments"
-[[ -r "$APPROVE_SCRIPT" ]] && "$APPROVE_SCRIPT" 2>/dev/null
+if [[ -r "$APPROVE_SCRIPT" ]]; then
+	evry 3 hours -approve_comments && "$APPROVE_SCRIPT" 2>/dev/null
+else
+	printf 'Expected approve script to exist at %s\n' "$APPROVE_SCRIPT" >&2
+fi
 
 # backup cache/token/logs from my server
 BACKUP_SERVER_SCRIPT="${REPOS}/vps/backup_server"
 if [[ -r "$BACKUP_SERVER_SCRIPT" ]]; then
-  evry 1 day -backup_fish_server && "$BACKUP_SERVER_SCRIPT"
+	evry 1 day -backup_fish_server && "$BACKUP_SERVER_SCRIPT"
 else
-  printf 'Expected backup script to exist at %s\n' "$BACKUP_SERVER_SCRIPT" >&2
+	printf 'Expected backup script to exist at %s\n' "$BACKUP_SERVER_SCRIPT" >&2
 fi
 
 # make sure my pythonanywhere website doesnt expire:
