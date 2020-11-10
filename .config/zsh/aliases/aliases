@@ -45,7 +45,7 @@ alias history='history 0'
 alias twitchlive-table='twitchlive --output-format="table"'
 alias ft="full_todotxt"
 alias rr="rifle"
-alias call=calories
+alias clr=calories
 alias free='free -h'
 alias rt='rotten search' # rotten tomatoes
 alias todo='todo.sh'
