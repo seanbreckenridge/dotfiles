@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # prompts me to select a dotfile from
-# https://gitlab.com/seanbreckenridge/subpath-serve.git
+# https://github.com/seanbreckenridge/subpath-serve.git
 # and copies a link to that file to the clipboard
 
 # if run from rofi/i3, use picker instead
