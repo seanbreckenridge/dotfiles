@@ -68,7 +68,7 @@ fi
 case "$mimetype" in
 # Display information about media files:
 video/* | audio/*)
-	fileinfo "$path" && exit 0
+	exifinfo "$path" && exit 0
 	;;
 # Syntax highlight for text files:
 # For json files that dont end with *.json
@@ -86,7 +86,7 @@ application/csv)
 	}
 	;;
 application/x-sharedlib | application/x-executable | application/x-pie-executable)
-	fileinfo "$path" && exit 0
+	exifinfo "$path" && exit 0
 	;;
 *)
 	case "$path" in
@@ -96,7 +96,7 @@ application/x-sharedlib | application/x-executable | application/x-pie-executabl
 		# window doesn't look good. can use
 		# rifle to preview it by running the file
 		echo "Pickled Python Data"
-		fileinfo "$path"
+		exifinfo "$path"
 		exit 5
 		;;
 	# PDF documents:

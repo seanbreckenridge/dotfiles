@@ -15,5 +15,10 @@ fi
 # I can figure out.
 {
 	exiftool "$FILE" | grep -v "^MIME Type"
-	printf "MIME Type                       : %s" "$(file --mime-type -Lb "$FILE")"
+	printf "MIME Type                       : %s" "$(file-mime "$FILE")"
 } | sort
+
+if [ -n "$2" ]; then
+	shift
+	echo "Warning: ignoring additional arguments: $*" >&2
+fi

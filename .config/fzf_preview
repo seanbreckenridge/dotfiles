@@ -54,7 +54,7 @@ image/*)
 	;;
 # Display information about media files:
 video/* | audio/*)
-	try fileinfo "$path" && {
+	try exifinfo "$path" && {
 		dump
 		exit 0
 	}
