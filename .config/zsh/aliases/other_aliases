@@ -6,57 +6,57 @@ alias play='plainplay'
 alias pplay='plainplay play'
 alias splay='plainplay shuffle'
 alias splayall='plainplay shuffleall "$(plainplay playlistdir)"/*'
-alias playrg='cd "$PLAINTEXT_PLAYLIST_MUSIC_DIR"; plainplay listall "$(plainplay playlistdir)"/* | rg -i'
+alias playrg='cd "${PLAINTEXT_PLAYLIST_MUSIC_DIR}"; plainplay listall "$(plainplay playlistdir)"/* | rg -i'
 # play all paths that match whatever I pass as positional arguments
 playrg-() {
-  playrg "$*" | mpv-from-stdin
+	playrg "$*" | mpv-from-stdin
 }
-alias cdpl='cd "$PLAINTEXT_PLAYLIST_PLAYLISTS"'
+alias cdpl='cd "${PLAINTEXT_PLAYLIST_PLAYLISTS}"'
 bindkey -s '^P' "^uplay^M"
 
 # https://github.com/seanbreckenridge/raspi-backup
-alias pi='ssh pi@$($REPOS/raspi-backup/findpi)'
-alias raspi-backup='$REPOS/raspi-backup/backup -d'
+alias pi='ssh pi@$(${REPOS}/raspi-backup/findpi)'
+alias raspi-backup='${REPOS}/raspi-backup/backup -d'
 
 # https://github.com/seanbreckenridge/albums
 alias albums='openurl "https://sean.fish/s/albums"'
-alias favorite-albums="python3 \"${REPOS}/albums/favorites.py\" > /tmp/favorites.csv && sc-im /tmp/favorites.csv"
-alias albums-left='python3 ~/Repos/albums/nextalbums.py -n 99999 | cut -d"|" -f4 | grep "^ [12]" | wc -l '
-alias discogs-update='python3 ~/Repos/albums/discogs_update.py'
+alias favorite-albums='python3 \"${REPOS}/albums/favorites.py\" > /tmp/favorites.csv && sc-im /tmp/favorites.csv'
+alias albums-left='python3 "${REPOS}/albums/nextalbums.py" -n 99999 | cut -d"|" -f4 | grep "^ [12]" | wc -l '
+alias discogs-update='python3 "${REPOS}/albums/discogs_update.py"'
 
 # vps related
 # https://github.com/seanbreckenridge/vps
-alias shorten="${REPOS}/vps/shorten"
-alias remsync="$REPOS/vps/remsync"
-alias remsync_public="REMSYNC_PUBLIC=1 $REPOS/vps/remsync" # to push to /F/ (public index)
+alias shorten='${REPOS}/vps/shorten'
+alias remsync='${REPOS}/vps/remsync'
+alias remsync_public='REMSYNC_PUBLIC=1 ${REPOS}/vps/remsync' # to push to /p/ (public index)
 # to use ranger to quickly remove/add files
-alias remsync_ranger="ranger $HOME/.local/share/remsync && remsync"
-alias remsync_public_ranger="ranger $HOME/.local/share/remsync_public && remsync_public"
-alias playlist='$REPOS/vps/playlist'
+alias remsync_ranger='ranger ${HOME}/.local/share/remsync && remsync'
+alias remsync_public_ranger='ranger ${HOME}/.local/share/remsync_public && remsync_public'
+alias playlist='${REPOS}/vps/playlist'
 alias restart-glue='ssh vultr "cd ./code/glue && git pull && ~/vps/super --ctl restart glue-server"'
-alias dotfiles-pull='ssh vultr "cd ~/.dotfiles && git pull"'
-alias approve-comments='$REPOS/vps/approve_comments'
+alias dotfiles-pull='ssh vultr "cd ./.dotfiles && git pull"'
+alias approve-comments='${REPOS}/vps/approve_comments'
 alias page-hits="curl -s 'https://sean.fish/api/page_hit' | jq '.count'"
 # Alt+Shift+V to connect to VPS
-bindkey -s "^[V" "vultr\n"
+bindkey -s '^[V' 'vultr\n'
 
 # Alt+Shift+L to print live twitch channels
 # https://github.com/seanbreckenridge/twitchlive
-bindkey -s "^[L" "twitchlive-table\n"
+bindkey -s '^[L' 'twitchlive-table\n'
 
 # https://github.com/seanbreckenridge/exobrain
 alias exo='cd "${REPOS}/exobrain"; ranger --cmd="shell ./exosearch"'
 alias exoo='cd "${REPOS}/exobrain"; ranger --cmd="shell ./exosearch -o"'
-alias exo-projects="cd ${REPOS}/exobrain; ./push update projects"
+alias exo-projects='cd ${REPOS}/exobrain; ./push update projects'
 
 # https://github.com/seanbreckenridge/greasyfork_repo_generator
-alias greasyfork_generate="cd ${REPOS}/greasyfork_repo_generator && greasyfork_archive 96096 --output-file scraped_data.json && ./greasyfork_repo_generator -j scraped_data.json --output-dir ../greasyfork --ignore-ids 37826 && cd ../greasyfork && git status"
+alias greasyfork_generate='cd ${REPOS}/greasyfork_repo_generator && greasyfork_archive 96096 --output-file scraped_data.json && ./greasyfork_repo_generator -j scraped_data.json --output-dir ../greasyfork --ignore-ids 37826 && cd ../greasyfork && git status'
 
 # https://github.com/seanbreckenridge/mint
 export MINT_DATA="${HOME}/Repos/mint/data"
 alias budget-history='python3 -m budget accounts --graph'
 # to edit the account/transaction map information
-alias 'budget-config=fd -IH conf.py --full-path $REPOS/mint | fzf | xargs -r -I {} editor {}'
+alias 'budget-config=fd -IH conf.py --full-path ${REPOS}/mint | fzf | xargs -r -I {} editor {}'
 budget-summary() {
 	if [[ -z "$1" ]]; then
 		python3 -m budget summary | glow -
@@ -84,7 +84,6 @@ alias tts-say='tts -d /tmp/tts.ogg && paplay /tmp/tts.ogg'
 alias mpv-cd-currently-playing='cd "$(dirname "$(mpv-currently-playing)")"'
 
 # deprecated script reminders
-alias "en=echo -e \"\033[31mUse e!\033[0m\""
 alias geolocate='echo use ipgeocache\!; ipgeocache'
 
 # random
