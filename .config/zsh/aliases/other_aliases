@@ -83,8 +83,5 @@ alias tts-say='tts -d /tmp/tts.ogg && paplay /tmp/tts.ogg'
 # cd to the directory where the current piece of media is playing from
 alias mpv-cd-currently-playing='cd "$(dirname "$(mpv-currently-playing)")"'
 
-# deprecated script reminders
-alias geolocate='echo use ipgeocache\!; ipgeocache'
-
 # random
 alias malup='while true; do; clear; sleep 60; date; [ "$(curl -s -o /dev/null -I -w "%{http_code}" "https://myanimelist.net")" = "200" ] && notify-send "MAL is up"; done'

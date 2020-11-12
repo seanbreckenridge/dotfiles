@@ -26,7 +26,7 @@ source_if_exists "${ALIAS_DIR}/personal_aliases" # Personal Aliases (e.g. ssh to
 
 # zsh plugins
 # linux paths
-if [[ -n "$ONLINUX" ]]; then
+if [[ -n "${ONLINUX}" ]]; then
 	# fzf
 	source_if_exists /usr/share/fzf/key-bindings.zsh
 	source_if_exists /usr/share/fzf/completion.zsh
