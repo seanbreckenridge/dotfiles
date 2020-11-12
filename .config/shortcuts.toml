@@ -710,4 +710,4 @@ shortcuts create
 '''
 
 [alarm]
-command='paplay /usr/share/sounds/freedesktop/stereo/alarm-clock-elapsed.oga'
+command = 'paplay /usr/share/sounds/freedesktop/stereo/alarm-clock-elapsed.oga'
