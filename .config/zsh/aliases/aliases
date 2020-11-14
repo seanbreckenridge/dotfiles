@@ -87,6 +87,8 @@ alias rgf='rg --files | rg'
 alias spell='misspell-context'
 # mpv: read playlist from stdin
 alias mpv-from-stdin='mpv --playlist=- --no-audio-display'
+# start a server to test HTTP requests against
+alias httpbin='docker run -p 80:80 kennethreitz/httpbin'
 
 # stop import from crashing my system for some reason
 alias 'import=printf "Use /usr/bin/import instead\n"'
