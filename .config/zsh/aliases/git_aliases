@@ -26,7 +26,14 @@ alias gbsr='git bisect reset'
 alias gbss='git bisect start'
 
 alias gc='git commit -v'
-alias gcp="gc && gp"
+# git commit and push; provide positional arguments as commit message
+gcp() {
+	if (($# == 0)); then
+		git commit && git push
+	else
+		git commit -m "$*" && git push
+	fi
+}
 alias gc!='git commit -v --amend'
 alias gcn!='git commit -v --no-edit --amend'
 alias gca='git commit -v -a'
