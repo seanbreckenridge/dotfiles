@@ -612,7 +612,7 @@ command='''
 pgrep -x newsboat && pkill -x newsboat
 cd "${DOWNLOADS:-${HOME}/Downloads}" || exit 1
 newsboat
-i3-msg exec update-rss # update rss afterwards, to update menu bar icon
+exec i3-msg exec update-rss # update rss afterwards, to update menu bar icon
 '''
 
 [alacritty-tmux]
