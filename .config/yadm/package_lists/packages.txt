@@ -232,6 +232,7 @@ simplescreenrecorder
 snes9x-gtk
 sonic-pi
 sqlitebrowser
+steam
 surf
 thunar
 thunderbird

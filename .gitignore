@@ -103,6 +103,9 @@ __pycache__
 /.gore
 /.elvish
 /.wget-hsts
+/.steam
+/.steampath
+/.steampid
 /.jupyter
 /.3T
 /.mal-id-cache
