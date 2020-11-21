@@ -50,6 +50,7 @@ __pycache__
 /.vim
 /.scala_history
 /.python_history
+/.gnome/apps/chrome-*
 /.mupdf.history
 /.sonic-pi
 /.sc-iminfo
