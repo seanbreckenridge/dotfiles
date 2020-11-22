@@ -1,6 +1,7 @@
 # os
 
 autorandr
+arandr
 avahi
 cups
 cups-pdf
