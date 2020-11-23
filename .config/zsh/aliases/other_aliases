@@ -71,7 +71,7 @@ budget-summary() {
 alias 'shower=python3 -c "from my.body import prompt, Shower; prompt(Shower)"'
 alias 'weight=python3 -c "from my.body import prompt, Weight; prompt(Weight)"'
 alias 'water=python3 -c "from my.food import prompt, Water; prompt(Water)"'
-alias 'water_now=python3 -c "from my.food.water import water_now; water_now()"'
+alias 'water-now=python3 -c "from my.food.water import water_now; water_now()"'
 
 # https://github.com/zupzup/calories/
 # https://github.com/seanbreckenridge/calories-fzf/
