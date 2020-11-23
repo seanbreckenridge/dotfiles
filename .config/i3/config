@@ -41,6 +41,9 @@ bindsym $mod+g exec --no-startup-id ttt trackpad
 # could use udev events instead, but this is easier
 exec_always --no-startup-id xmodmap ~/.Xmodmap
 
+# whenever I restart i3, fix my monitor setup
+exec_always --no-startup-id ~/.config/screenlayout/auto.sh
+
 # dunst, for Notifications
 exec --no-startup-id dunst
 
