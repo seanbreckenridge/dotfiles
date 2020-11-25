@@ -132,6 +132,7 @@ imagemagick
 jq
 ldm
 lftp
+libjpeg-turbo # for jpegtran
 librsync
 lm_sensors
 lolcat
@@ -148,6 +149,7 @@ net-tools
 networkmanager-dmenu-git
 nmap
 ntp
+optipng
 pamixer
 pandoc-bin
 parallel

@@ -47,6 +47,7 @@ alias twitchlive-table='twitchlive --output-format="table"'
 alias ft='full_todotxt'
 alias rr='rifle'
 alias clr=calories
+alias optipng='optipng -o7'
 alias free='free -h'
 alias rt='rotten search' # rotten tomatoes
 alias todo='todo.sh'
