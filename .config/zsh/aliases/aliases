@@ -11,6 +11,7 @@ alias lsplain='command ls --color=never'
 alias ll='ls -hl'
 alias la='ll -a'
 alias sl='ls'
+alias dc='cd'  # never going to use the reverse-polish calculator, is *always* a typo
 
 # yadm
 alias yds='yadm diff --staged'
