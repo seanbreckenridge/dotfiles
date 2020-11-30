@@ -1,14 +1,14 @@
 {
   "dependencies": {
-    "coc-css": ">=1.2.5",
-    "coc-docker": ">=0.3.0",
-    "coc-elixir": ">=0.6.0",
-    "coc-go": ">=0.12.0",
-    "coc-marketplace": ">=1.7.0",
-    "coc-python": ">=1.2.12",
+    "coc-css": ">=1.2.6",
+    "coc-docker": ">=0.4.0",
+    "coc-elixir": ">=0.6.1",
+    "coc-go": ">=0.12.1",
+    "coc-marketplace": ">=1.8.0",
+    "coc-python": ">=1.2.13",
     "coc-rls": ">=1.1.6",
     "coc-sh": ">=0.6.0",
-    "coc-solargraph": ">=1.1.7",
-    "coc-tsserver": ">=1.5.8"
+    "coc-solargraph": ">=1.1.8",
+    "coc-tsserver": ">=1.6.1"
   }
 }
