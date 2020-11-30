@@ -32,6 +32,7 @@ keepassxc-pwned
 logzero
 lxml
 matplotlib
+mypy
 mysqlclient
 ndg-httpsclient
 nose
