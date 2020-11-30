@@ -2,7 +2,7 @@
 # accepts input from STDIN, sends text back to STDOUT
 # copies what it received to the clipboard
 # used in vim:
-# see https://exobrain.sean.fish/vim/magic_wands/
+# https://exobrain.sean.fish/programming/languages/shell_tools/vim/magic_wands/
 STDIN="$(cat)"
 printf '%s' "$STDIN"
 printf '%s' "$STDIN" | clipcopy
