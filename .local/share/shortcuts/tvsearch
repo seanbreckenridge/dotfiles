@@ -1,6 +1,6 @@
 #!/bin/sh
 # searches trakt for a tv show
-SEARCH_STR=$(input-dialog "Search for a TV show > " | awk '{$1=$1; print}' | tr " " "+")
+SEARCH_STR=$(input-dialog "Search for a TV show > " | chomp | tr " " "+")
 [ -z "$SEARCH_STR" ] && exit 1
 command -v tttlog >/dev/null 2>&1 && tttlog "$(basename "$0") $SEARCH_STR"
 openurl "https://trakt.tv/search/shows?query=${SEARCH_STR}&utf8=%E2%9C%93"

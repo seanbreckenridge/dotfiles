@@ -1,6 +1,6 @@
 #!/bin/sh
 # searches trakt/letterboxd for a movie
-SEARCH_STR=$(input-dialog "Search for a movie > " | awk '{$1=$1; print}' | tr " " "+") # awk removes leading/trailing spaces
+SEARCH_STR=$(input-dialog "Search for a movie > " | chomp | tr " " "+")
 [ -z "$SEARCH_STR" ] && exit 1
 export SEARCH_STR
 moviesearch-trakt &
