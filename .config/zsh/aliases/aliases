@@ -11,7 +11,7 @@ alias lsplain='command ls --color=never'
 alias ll='ls -hl'
 alias la='ll -a'
 alias sl='ls'
-alias dc='cd'  # never going to use the reverse-polish calculator, is *always* a typo
+alias dc='cd' # never going to use the reverse-polish calculator, is *always* a typo
 
 # yadm
 alias yds='yadm diff --staged'
@@ -21,10 +21,16 @@ alias ysu='yadm status -u'
 alias ya='yadm add'
 alias yc='yadm commit'
 alias yp='yadm push'
-alias ycp='yc && yp'
 alias yl='yadm pull --recurse-submodules'
 ydh() {
 	yadm diff HEAD~"${1:-1}"
+}
+ycp() {
+	if (($# == 0)); then
+		yadm commit && yadm push
+	else
+		yadm commit -m "$*" && yadm push
+	fi
 }
 
 # editor aliases
