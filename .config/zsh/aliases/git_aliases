@@ -165,3 +165,6 @@ gclcd() {
 	gcl "${1:?Provide something to git clone}"
 	cd "$(newest)"
 }
+
+# https://sean.fish/d/git-swap-remote
+alias gswappush='git-swap-remote; git push; git-swap-remote'
