@@ -12,6 +12,7 @@ playrg-() {
 	playrg "$*" | mpv-from-stdin
 }
 alias cdpl='cd "${PLAINTEXT_PLAYLIST_PLAYLISTS}"'
+alias playfzf="(cd \"${PLAINTEXT_PLAYLIST_PLAYLISTS}\"; rg --vimgrep --no-column --color ansi '' | uniq | fzf --ansi)"
 bindkey -s '^P' "^uplay^M"
 
 # https://github.com/seanbreckenridge/raspi-backup
