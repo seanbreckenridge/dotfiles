@@ -48,7 +48,7 @@ __pycache__
 /.netrc
 /.emacs.d/
 /.vim
-/.scala_history
+/.scala_history*
 /.python_history
 /.gnome/apps/chrome-*
 /.mupdf.history
@@ -128,12 +128,17 @@ __pycache__
 /.config/light
 /.config/xbuild
 /.config/slack-term/
+/.config/Microsoft/
+/.config/Microsoft Teams - Preview/
+/.config/teams/
 /.config/VirtualBox/
 /.config/snes9x
 /.config/fontforge
 /.config/vlc
 /.config/snes9x
 /.config/coc/extensions/node_modules
+/.config/coc/list-lists-history.json
+/.config/coc/lists
 /.config/coc/list-location-history.json
 /.config/coc/extensions/*
 !/.config/coc/extensions/package.json
