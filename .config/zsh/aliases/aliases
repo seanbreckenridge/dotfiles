@@ -98,6 +98,9 @@ alias spell='misspell-context'
 alias mpv-from-stdin='mpv --playlist=- --no-audio-display'
 # start a server to test HTTP requests against
 alias httpbin='docker run -p 80:80 kennethreitz/httpbin'
+# https://sean.fish/d/frink
+alias 'convert-units=frink'
+alias 'unit-convert=frink'
 
 # stop import from crashing my system for some reason
 alias 'import=printf "Use /usr/bin/import instead\n"'
