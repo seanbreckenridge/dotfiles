@@ -8,7 +8,7 @@ alias -s {md,html,txt}=nvim
 alias lsplain='command ls --color=never'
 # alias ls to exa
 [[ -n "${ONLINUX}" ]] && alias ls='exa --icons' || alias ls='exa'
-alias ll='ls -hl'
+alias ll='ls -hl --git'
 alias la='ll -a'
 alias sl='ls'
 alias dc='cd' # never going to use the reverse-polish calculator, is *always* a typo
