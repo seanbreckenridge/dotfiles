@@ -42,6 +42,7 @@ alias ecl='e -c' # editor with client in background
 alias 'rm=rm -v'
 alias 'cp=cp -v'
 alias 'curl=curl -s'
+alias 'less=less -i'
 alias reboot='sudo systemctl reboot'
 alias poweroff='sudo systemctl poweroff'
 alias halt='sudo systemctl halt'
