@@ -45,7 +45,7 @@ drive() {
 	[[ ! -r "${defaultdrive}" ]] && command drive "$@"
 
 	# if not trying to create another google drive instance
-	if [[ "${1}" != 'init' ]]; then
+	if [[ "$1" != 'init' ]]; then
 		if ! grep -q "${defaultdrive}" <<<"${PWD}"; then
 			cd "${defaultdrive}" || {
 				printf "Couldnt change directory to %s\n" "${defaultdrive}"
