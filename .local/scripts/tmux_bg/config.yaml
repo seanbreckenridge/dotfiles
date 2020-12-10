@@ -12,26 +12,26 @@ windows:
   #    - "plainplay" # playlist manager
   - window_name: "calcurse"
     shell_command_before:
-      - "cd ~/.config/tmux_layouts/bg/"
+      - "cd ~/.local/scripts/tmux_bg/"
     panes:
       - "./calcurse"
   - window_name: "todo.txt"
     shell_command_before:
-      - "cd ~/.config/tmux_layouts/bg/"
+      - "cd ~/.local/scripts/tmux_bg/"
     panes:
       - "./todo"
   - window_name: "tsp"
     shell_command_before:
-      - "cd ~/.config/tmux_layouts/bg/"
+      - "cd ~/.local/scripts/tmux_bg/"
     panes:
       - "./tsp"
   - window_name: "budget"
     shell_command_before:
-      - "cd ~/.config/tmux_layouts/bg/"
+      - "cd ~/.local/scripts/tmux_bg/"
     panes:
       - "./budget"
   - window_name: "app logs"
     shell_command_before:
-      - "cd ~/.config/tmux_layouts/bg/"
+      - "cd ~/.local/scripts/tmux_bg/"
     panes:
       - "./app_logs"
