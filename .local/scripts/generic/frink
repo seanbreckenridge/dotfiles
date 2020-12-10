@@ -3,4 +3,9 @@
 FRINK_JAR="${XDG_DATA_HOME:-$HOME/.local/share}/frink.jar"
 [ ! -r "$FRINK_JAR" ] && wget "https://frinklang.org/frinkjar/frink.jar" -O "$FRINK_JAR"
 
+echo '''Examples:
+3 ft -> inches
+1 cup -> ml
+6 hrs -> sec'''
+
 exec java -cp "$FRINK_JAR" frink.parser.Frink "$@"
