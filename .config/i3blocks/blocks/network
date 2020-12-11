@@ -2,6 +2,6 @@
 # opens rofi interface for networkmanager on click
 
 # onclick, open networkmanager menu in rofi
-[ "$BLOCK_BUTTON" = "1" ] && networkmanager_dmenu
+[ "$BLOCK_BUTTON" = "3" ] && networkmanager_dmenu
 
 iwgetid -r || echo "no connection..."
