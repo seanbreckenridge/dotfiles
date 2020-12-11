@@ -6,6 +6,6 @@ FRINK_JAR="${XDG_DATA_HOME:-$HOME/.local/share}/frink.jar"
 echo '''Examples:
 3 ft -> inches
 1 cup -> ml
-6 hrs -> sec'''
+6 hrs + 30 minutes -> sec'''
 
 exec java -cp "$FRINK_JAR" frink.parser.Frink "$@"
