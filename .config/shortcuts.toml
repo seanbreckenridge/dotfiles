@@ -336,6 +336,12 @@ gifsicle --colors 256 -O3 "$OLD_GIF" -o "$TMP_GIF" && cp -v "$TMP_GIF" "$NEW_GIF
 [ -n "$OPTIGIF_OVERWRITE" ] && du -h "$OLD_GIF" "$NEW_GIF" && mv -v "$NEW_GIF" "$OLD_GIF"
 '''
 
+[optijpg]
+command='''
+FILE="${1:?provide jpeg to optimize as first argument}"
+exec jpegtran -copy none -optimize -outfile "$FILE" "$FILE"
+'''
+
 [to-icon]
 command='''
 # convert an image to a 16x16 icon - to favicon size
