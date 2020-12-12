@@ -6,6 +6,22 @@ from ranger.api.commands import Command
 from os.path import abspath
 
 
+class quit_and_cd(Command):
+    """
+    Saves the current ranger directory to a temporary file,
+    and exits ranger.
+    After ranger exits, the ranger wrapper function looks at
+    that file. If it exists, it cd's to that directory, then
+    removes it
+    """
+
+    def execute(self):
+        with open("/tmp/cd_ranger", "w") as f:
+            f.write(self.fm.thisdir.path)
+        # same as quitall_bang
+        self.fm.exit()
+
+
 class fzf_select(Command):
     """
     Find a file using fzf. Use fd instead of find.

@@ -6,5 +6,6 @@
 # warnings like:
 # https://i.imgur.com/Ky6NhKm.png
 export PYTHONWARNINGS="ignore"
-RANGER_PATH="$(where ranger | grep -m1 -v "$SHORTCUTS_DIR")" || exit $?
-exec python3 "$RANGER_PATH" "$@"
+# find the location of the ranger script
+RANGER_PATH="$(where ranger | grep -m1 -v "scripts")" || exit $?
+exec python3 "${RANGER_PATH}" "$@" || exit $?

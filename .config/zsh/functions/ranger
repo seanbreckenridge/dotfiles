@@ -1,0 +1,12 @@
+# wraps ranger to cd to rangers'
+# directory when exiting
+# See the quit_and_cd command in ranger/commands.py
+
+ranger() {
+  local LOGFILE='/tmp/cd_ranger'
+  command ranger || exit $?
+  if [[ -f "${LOGFILE}" ]]; then
+    cd "$(cat "${LOGFILE}")"
+    rm -f "${LOGFILE}"
+  fi
+}
