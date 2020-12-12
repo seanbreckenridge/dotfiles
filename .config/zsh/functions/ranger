@@ -4,7 +4,7 @@
 
 ranger() {
 	local LOGFILE='/tmp/cd_ranger'
-	command ranger || exit $?
+	command ranger "$@" || exit $?
 	if [[ -f "${LOGFILE}" ]]; then
 		cd "$(cat "${LOGFILE}")"
 		rm -f "${LOGFILE}"
