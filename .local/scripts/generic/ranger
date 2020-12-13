@@ -8,4 +8,4 @@
 export PYTHONWARNINGS="ignore"
 # find the location of the ranger script
 RANGER_PATH="$(where ranger | grep -m1 -v "scripts")" || exit $?
-exec python3 "${RANGER_PATH}" "$@" || exit $?
+exec python3 "${RANGER_PATH}" "$@"

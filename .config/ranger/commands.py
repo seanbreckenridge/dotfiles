@@ -17,7 +17,7 @@ class quit_and_cd(Command):
 
     def execute(self):
         with open("/tmp/cd_ranger", "w") as f:
-            f.write(self.fm.thisdir.path)
+            f.write(os.path.abspath(self.fm.thisdir.path))
         # same as quitall_bang
         self.fm.exit()
 
