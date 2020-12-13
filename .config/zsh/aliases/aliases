@@ -22,9 +22,12 @@ alias yst='yadm status'
 alias yd='yadm diff'
 alias ysu='yadm status -u'
 alias ya='yadm add'
+alias yA='yadm add --all'
 alias yc='yadm commit'
 alias yp='yadm push'
 alias yl='yadm pull --recurse-submodules'
+alias yrh='yadm reset'
+alias yrhh='yadm reset --hard'
 ydh() {
 	yadm diff HEAD~"${1:-1}"
 }
