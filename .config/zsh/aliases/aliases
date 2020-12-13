@@ -13,6 +13,9 @@ alias la='ll -a'
 alias sl='ls'
 alias dc='cd' # never going to use the reverse-polish calculator, is *always* a typo
 
+# https://github.com/sharkdp/bat
+alias cat='bat'
+
 # yadm
 alias yds='yadm diff --staged'
 alias yst='yadm status'
@@ -59,7 +62,7 @@ alias optipng='optipng -o7'
 alias free='free -h'
 alias rt='rotten search' # rotten tomatoes
 alias todo='todo.sh'
-alias stz='mystarsfzf'
+alias sz='mystarsfzf'
 alias rnm='sudo systemctl restart NetworkManager' # restart networkmanager
 
 # Non-standard
