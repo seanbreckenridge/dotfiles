@@ -9,6 +9,6 @@
     "coc-rls": ">=1.1.6",
     "coc-sh": ">=0.6.0",
     "coc-solargraph": ">=1.1.8",
-    "coc-tsserver": ">=1.6.1"
+    "coc-tsserver": ">=1.6.3"
   }
 }
