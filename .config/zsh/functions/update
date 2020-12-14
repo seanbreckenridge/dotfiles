@@ -1,10 +1,11 @@
 # Update typically used packages
 
 function update() {
-	local START_TIME=$(date +%s)
+	local START_TIME
+	START_TIME="$(date +%s)"
 	wait-for-internet --text "(waiting for internet)"
 	echo "Updating system (pacman/yay/brew) packages..."
-	if [[ -z "$ONLINUX" ]]; then
+	if [[ -z "${ONLINUX}" ]]; then
 		brew update && brew upgrade
 		brew upgrade --cask
 		# run brew cask upgrade --greedy once per month
@@ -28,8 +29,8 @@ function update() {
 	echo "Updating global cargo packages..."
 	cargo install-update -a
 	echo "Updating global go packages..."
-	cd
-	go get -u -v $(cut -d" " -f2 "$HOME/.config/yadm/package_lists/go_packages.txt") 2>&1 | grep "(download)$"
-	cd "$OLDPWD"
-	printf "Finished updates in %d seconds\n" $(bc <<<"$(date +%s) - ${START_TIME}") | boxes -dshell -pv1h2
+	cd || return $?
+	spkglist "$HOME/.config/yadm/package_lists/go_packages.txt" | cut -d" " -f2- | xargs go get -u -v 2>&1 | grep "(download)$"
+	cd "$OLDPWD" || return $?
+	printf "Finished updates in %d seconds\n" "$(($(date +%s) - START_TIME))" | boxes -dshell -pv1h2
 }
