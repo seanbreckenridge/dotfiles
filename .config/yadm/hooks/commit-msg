@@ -2,5 +2,5 @@
 # Reverts README.md copy -- what is done by pre-commit
 # Delete the README.md since the original at ~/.config/yadm/README.md still exists
 
-cd "${HOME}"
+cd || exit $?
 [[ -f ~/README.md ]] && rm ~/README.md

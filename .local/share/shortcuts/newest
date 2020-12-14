@@ -2,5 +2,6 @@
 # gets the most recently modified file
 # from a directory
 IFS=$'\n'
+# shellcheck disable=SC2207
 f=($(ls -1 --color=never -trd "${1:-.}"/*)) || exit 1
 echo "${f[-1]}"

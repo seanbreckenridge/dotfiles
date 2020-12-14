@@ -8,4 +8,5 @@ qjackctl &
 sleep 5
 sonic-pi # block
 
+# shellcheck disable=SC2046
 kill -15 $(jobs -p)

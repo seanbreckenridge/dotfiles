@@ -32,6 +32,7 @@ esac
 case "$mimetype" in
 inode/directory)
 	printf "==> %s Contents <==\n" "$path"
+	# shellcheck disable=SC2012
 	ls -1 "$path" | head -n "$((maxln - 1))" && exit 0
 	;;
 # cant display gifs in fzf preview using chafa, so extract the middle image

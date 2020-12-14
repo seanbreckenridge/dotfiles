@@ -431,6 +431,7 @@ command='''
 # gets the most recently modified file
 # from a directory
 IFS=$'\n'
+# shellcheck disable=SC2207
 f=($(ls -1 --color=never -trd "${1:-.}"/*)) || exit 1
 echo "${f[-1]}"
 '''
@@ -624,6 +625,7 @@ command='exec alacritty -e tmux'
 
 [bash-this-dir]
 command='''
+# shellcheck disable=SC2016
 COMMAND_STR='THIS_DIR="$(realpath "$(dirname "${BASH_SOURCE[0]}")")"'
 echo "$COMMAND_STR" | clipcopy
 '''

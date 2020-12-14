@@ -15,10 +15,10 @@ eval "$(xdotool getmouselocation --shell)"
 # coordinates.
 monitor_index=0
 while read -r name width height xoff yoff; do
-	if [ "${X}" -ge "$xoff" \
-		-a "${Y}" -ge "$yoff" \
-		-a "${X}" -lt "$(($xoff + $width))" \
-		-a "${Y}" -lt "$(($yoff + $height))" ]; then
+	if [ "${X}" -ge "$xoff" ] &&
+		[ "${Y}" -ge "$yoff" ] &&
+		[ "${X}" -lt "$((xoff + width))" ] &&
+		[ "${Y}" -lt "$((yoff + height))" ]; then
 		monitor="${name}"
 		break
 	fi

@@ -32,4 +32,6 @@ done
 command+="-ss $from_command_print -to $to_command_print $4"
 echo "downloading with the following command:"
 echo "$command"
+# not quoted on purpose, TODO: convert this to using an array instead?
+# shellcheck disable=SC2086
 exec $command
