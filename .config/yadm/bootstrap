@@ -153,7 +153,7 @@ done < <(spkglist "${DART_PACKAGE_LIST}")
 
 havecmd cargo || exit $?
 echo "Installing global cargo packages..."
-CARGO_INSTALLED_PACKAGES="$(cargo install --list | sed -E -e '/^\s+/d' -e 's|\s.*||')"
+CARGO_INSTALLED_PACKAGES="$(cargo install --list | sed -E -e '/^\s+/d; s|\s.*||')"
 while read -r cargopkg; do
 	if ! grep -q "^${cargopkg}$" <<<"${CARGO_INSTALLED_PACKAGES}"; then
 		printf "Installing %s\n" "${cargopkg}"
@@ -194,7 +194,7 @@ fi
 
 havecmd mix || exit $?
 echo "Installing global pheonix mix archives..."
-MIX_ARCHIVE_LIST="$(mix archive | sed -e '/Archives installed at: /d' -e 's/^* //' -e 's/-.*//')"
+MIX_ARCHIVE_LIST="$(mix archive | sed -e '/Archives installed at: /d; s/^* //; s/-.*//')"
 while read -r mix_pkg; do
 	if ! grep -q "^${mix_pkg}$" <<<"${MIX_ARCHIVE_LIST}"; then
 		mix archive.install hex "${mix_pkg}"
