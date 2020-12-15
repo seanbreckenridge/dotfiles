@@ -1,7 +1,7 @@
 # os
 
-autorandr
 arandr
+autorandr
 avahi
 cups
 cups-pdf
@@ -23,10 +23,10 @@ reflector
 unclutter
 wpa_supplicant
 xorg-server
-xorg-xinput
-xorg-xwininfo
 xorg-xev
+xorg-xinput
 xorg-xmodmap
+xorg-xwininfo
 
 # language support
 
@@ -123,6 +123,7 @@ fzf
 gifsicle
 git
 glow
+gnu-netcat
 gron
 highlight
 htop-vim-git
@@ -147,6 +148,7 @@ neovim-git
 neovim-plug-git
 net-tools
 networkmanager-dmenu-git
+newsboat
 nmap
 ntp
 optipng
@@ -154,6 +156,7 @@ pamixer
 pandoc-bin
 parallel
 pastel
+patch
 perl-image-exiftool
 pkgfile
 pulsemixer
@@ -172,6 +175,7 @@ scrot
 shellcheck-bin
 so-git
 socat
+sshpass
 strace
 sxiv
 task-spooler
@@ -237,6 +241,7 @@ sonic-pi
 sqlitebrowser
 steam
 surf
+teams
 thunar
 thunderbird
 tor-browser
