@@ -46,21 +46,21 @@ drive() {
 
 # https://github.com/charmbracelet/glow
 glow() {
-  # if passed with no arguments
-  # and theres only one .md file in this
-  # directory, automatically use it
+	# if passed with no arguments
+	# and theres only one .md file in this
+	# directory, automatically use it
 	if (($# == 0)); then
-    local -a MD_FILES
-    MD_FILES=()
-    while IFS= read -r file; do
-      MD_FILES+=("$file")
-    done < <(find . -name '*.md')
-    if (($#MD_FILES[@]==1)); then
-      command glow "${MD_FILES[*]}"
-    else
-      command glow "$@"
-    fi
-  else
-    command glow "$@"
-  fi
+		local -a MD_FILES
+		MD_FILES=()
+		while IFS= read -r file; do
+			MD_FILES+=("$file")
+		done < <(find . -name '*.md')
+		if [[ "${#MD_FILES[@]}" == "1" ]]; then
+			command glow "${MD_FILES[*]}"
+		else
+			command glow "$@"
+		fi
+	else
+		command glow "$@"
+	fi
 }

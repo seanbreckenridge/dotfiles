@@ -61,7 +61,7 @@ fzf-repos() {
 	# if user didnt select a dir to cd into
 	# and is still in Repos, go back to
 	# the dir they were in previously
-	if [ "$PWD" = "$REPOS" ]; then
+	if [[ "$PWD" == "$REPOS" ]]; then
 		cd "$OLDPWD"
 	fi
 	zle reset-prompt

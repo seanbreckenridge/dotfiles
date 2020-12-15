@@ -1,3 +1,4 @@
+#!/bin/zsh
 # wraps ranger to cd to rangers'
 # directory when exiting
 # See the quit_and_cd command in ranger/commands.py

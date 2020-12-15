@@ -1,4 +1,4 @@
-#!/usr/bin/zsh
+#!/bin/zsh
 
 # automatically open certain file types by just
 # typing the name as a command

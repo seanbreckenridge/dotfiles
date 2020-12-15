@@ -1,3 +1,4 @@
+#!/bin/zsh
 # searches duckduckgo on the command line using lynx
 # duck "TERMS TO SEARCH FOR"
 

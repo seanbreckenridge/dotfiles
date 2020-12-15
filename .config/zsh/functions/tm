@@ -1,3 +1,4 @@
+#!/bin/zsh
 # tm - create new tmux session, or switch to existing one
 # `tm` to run tmpick
 # `tm irc` will attach to the irc session (if it exists), else it will create it.

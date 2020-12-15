@@ -1,4 +1,4 @@
-#!/usr/bin/zsh
+#!/bin/zsh
 # source each zsh config file
 
 source_if_exists() {

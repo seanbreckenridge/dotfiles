@@ -1,3 +1,4 @@
+#!/bin/zsh
 # fuzzy search for files on the entire system
 # and cd to the enclosing directory
 

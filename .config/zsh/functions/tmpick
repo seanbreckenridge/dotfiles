@@ -1,3 +1,4 @@
+#!/bin/zsh
 # pick a tmux session if active, else attach/create a new one
 
 tmpick() {

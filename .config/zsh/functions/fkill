@@ -1,3 +1,4 @@
+#!/bin/zsh
 # fkill - kill process
 # use fzf to match against a process and kill it
 

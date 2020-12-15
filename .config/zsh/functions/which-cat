@@ -1,3 +1,6 @@
+#!/bin/zsh
+#runs which, and prints the contents of the function/script
+
 function which-cat() {
 	local COMMAND_OUTPUT USER_INPUT
 	USER_INPUT="${1:?Must provide a command to lookup}"

@@ -1,3 +1,4 @@
+#!/bin/zsh
 # cd to a new tmp directory
 
 cdtmp() {
