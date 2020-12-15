@@ -72,7 +72,7 @@ exec xvkbd -window Navigator -text "i\Cr"
 [usdate]
 command = '''
 # print the date in the us format
-date "+%m/%d/%y"
+exec date "+%m/%d/%y"
 '''
 
 [gi]
@@ -109,7 +109,7 @@ command = '''
 [ -z "$SEARCH_STR" ] && SEARCH_STR=$(input-dialog "Search for a movie > " | chomp | tr " " "+")
 [ -z "$SEARCH_STR" ] && exit 1
 command -v tttlog >/dev/null 2>&1 && tttlog "$(basename "$0") $SEARCH_STR"
-openurl "https://trakt.tv/search/movies?query=${SEARCH_STR}&utf8=%E2%9C%93"
+exec openurl "https://trakt.tv/search/movies?query=${SEARCH_STR}&utf8=%E2%9C%93"
 '''
 
 [moviesearch-letterboxd]
@@ -118,7 +118,7 @@ command = '''
 [ -z "$SEARCH_STR" ] && SEARCH_STR=$(input-dialog "Search for a movie > " | chomp | tr " " "+")
 [ -z "$SEARCH_STR" ] && exit 1
 command -v tttlog >/dev/null 2>&1 && tttlog "$(basename "$0") $SEARCH_STR"
-openurl "https://letterboxd.com/search/films/${SEARCH_STR}"
+exec openurl "https://letterboxd.com/search/films/${SEARCH_STR}"
 '''
 
 [moviesearch]
@@ -138,13 +138,13 @@ command = '''
 SEARCH_STR=$(input-dialog "Search for a TV show > " | chomp | tr " " "+")
 [ -z "$SEARCH_STR" ] && exit 1
 command -v tttlog >/dev/null 2>&1 && tttlog "$(basename "$0") $SEARCH_STR"
-openurl "https://trakt.tv/search/shows?query=${SEARCH_STR}&utf8=%E2%9C%93"
+exec openurl "https://trakt.tv/search/shows?query=${SEARCH_STR}&utf8=%E2%9C%93"
 '''
 
 [mediasearch]
 command = '''
 if SELECTED=$(printf "moviesearch\ntvsearch" | picker -p "Search Media Type > "); then
-	"$SELECTED"
+	exec "$SELECTED"
 fi
 '''
 
@@ -192,6 +192,7 @@ command='''
 # uploads the most recent screenshot from
 # ~/Pictures/Screenshots to imgur
 FILENAME="$(newest "${SCREENSHOTS:?No SCREENSHOTS environment variable set}")" || exit 1
+notify "Uploading imgur..."
 imgur-uploader "$FILENAME"
 IMGUR_URL="$(clippaste)"
 printf "%s\n" "$IMGUR_URL" >>/tmp/imgur_urls.log
@@ -261,7 +262,7 @@ notify -t 10000 "qtile bindings:" "$(qtile-bindings --json | jq -r '[.[]|select(
 '''
 
 [webcam-test]
-command='''mpv /dev/video0'''
+command='exec mpv /dev/video0'
 
 [webcam-pic]
 command='''
@@ -307,7 +308,7 @@ echo "${FILEPATH%%.*}.${REPLACE_EXTENSION#.}"
 command='''
 # convert an image to png
 FILEPATH=${1:?Must provide image to convert}
-convert "$FILEPATH" "$(replace-extension "$FILEPATH" png)"
+exec convert "$FILEPATH" "$(replace-extension "$FILEPATH" png)"
 '''
 
 [optigif]
@@ -394,28 +395,28 @@ echo "$*" | clp
 # lots of date shorthands
 
 [tstamp]
-command="date +'%Y%m%d%H%M%S'"
+command="exec date +'%Y%m%d%H%M%S'"
 
 [now]
-command='date +"%A, %B %e, %Y, %l:%M:%S%p"'
+command='exec date +"%A, %B %e, %Y, %l:%M:%S%p"'
 
 [epoch]
-command='date +"%s"'
+command='exec date +"%s"'
 
 [weekday]
-command='date +"%A" | lower'
+command='exec date +"%A" | lower'
 
 [month]
-command='date +"%B" | lower'
+command='exec date +"%B" | lower'
 
 [year]
-command='date +"%Y"'
+command='exec date +"%Y"'
 
 [lower]
-command="tr '[:upper:]' '[:lower:]'"
+command="exec tr '[:upper:]' '[:lower:]'"
 
 [upper]
-command="tr '[:lower:]' '[:upper:]'"
+command="exec tr '[:lower:]' '[:upper:]'"
 
 [capitalize]
 shebang="#!/bin/bash"
@@ -655,7 +656,7 @@ fi
 '''
 
 [ssh-keygen-good]
-command='ssh-keygen -t rsa -b 4096 -o -a 100'
+command='exec ssh-keygen -t rsa -b 4096 -o -a 100'
 
 [mystarsfzf]
 command='''
@@ -672,7 +673,7 @@ URL="$(echo "$PICKED" | urlextract)"
 shebang="#!/bin/bash"
 
 [screens]
-command='sxiv -t "${SCREENSHOTS}"'
+command='exec sxiv -t "${SCREENSHOTS}"'
 
 ["$"]
 command='''
@@ -701,7 +702,7 @@ command='''
 # removes extra space characters from the beginning/end of lines
 # removes lines which have just whitespace (no content)
 # meant to be piped into, like 'some command | chomp'
-sed -E -e 's/^\s*//; s/\s*$//; /^\s*$/d'
+exec sed -E -e 's/^\s*//; s/\s*$//; /^\s*$/d'
 '''
 
 [watchtwitch]
@@ -711,9 +712,10 @@ twitchlive -output-format json | jq -r '.[] | .username' | picker -p "who to wat
 
 [reshortcuts]
 command='''
+cd || exit $?
 [ -n "$SHORTCUTS_DIR" ] && [ -d "$SHORTCUTS_DIR" ] && rm -rf "$SHORTCUTS_DIR"
-shortcuts create
+exec shortcuts create
 '''
 
 [alarm]
-command = 'paplay /usr/share/sounds/freedesktop/stereo/alarm-clock-elapsed.oga'
+command = 'exec paplay /usr/share/sounds/freedesktop/stereo/alarm-clock-elapsed.oga'

@@ -1,2 +1,2 @@
 #!/bin/sh
-date +"%B" | lower
+exec date +"%B" | lower

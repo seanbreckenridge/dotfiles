@@ -2,4 +2,4 @@
 # removes extra space characters from the beginning/end of lines
 # removes lines which have just whitespace (no content)
 # meant to be piped into, like 'some command | chomp'
-sed -E -e 's/^\s*//; s/\s*$//; /^\s*$/d'
+exec sed -E -e 's/^\s*//; s/\s*$//; /^\s*$/d'

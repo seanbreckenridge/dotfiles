@@ -1,2 +1,2 @@
 #!/bin/sh
-paplay /usr/share/sounds/freedesktop/stereo/alarm-clock-elapsed.oga
+exec paplay /usr/share/sounds/freedesktop/stereo/alarm-clock-elapsed.oga
