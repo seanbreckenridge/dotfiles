@@ -194,7 +194,7 @@ fi
 
 havecmd mix || exit $?
 echo "Installing global pheonix mix archives..."
-MIX_ARCHIVE_LIST="$(mix archive | sed -e '/Archives installed at: /d; s/^* //; s/-.*//')"
+MIX_ARCHIVE_LIST="$(mix archive | tac | sed -e '1d; s/^* //; s/-.*//')"
 while read -r mix_pkg; do
 	if ! grep -q "^${mix_pkg}$" <<<"${MIX_ARCHIVE_LIST}"; then
 		mix archive.install hex "${mix_pkg}"
