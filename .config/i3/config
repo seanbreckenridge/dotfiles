@@ -119,6 +119,7 @@ bindsym $mod+Shift+c exec --no-startup-id clipreset
 # https://gitlab.com/seanbreckenridge/mpv-sockets.git
 bindsym $mod+XF86AudioMute exec --no-startup-id mpv-play-pause
 bindsym $mod+XF86AudioMicMute exec --no-startup-id ttt mpv-next-song
+bindsym $mod+Shift+XF86AudioMute exec --no-startup-id mpv-quit-latest
 
 # on 'volume up', move forward in the file
 bindsym $mod+XF86AudioRaiseVolume exec --no-startup-id mpv-seek '5'
