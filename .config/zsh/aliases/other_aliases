@@ -22,7 +22,7 @@ alias raspi-backup='${REPOS}/raspi-backup/backup -d'
 # https://github.com/seanbreckenridge/albums
 alias albums='openurl "https://sean.fish/s/albums"'
 alias favorite-albums='python3 "${REPOS}/albums/favorites.py" > /tmp/favorites.csv && sc-im /tmp/favorites.csv'
-alias albums-left='python3 "${REPOS}/albums/nextalbums.py" -n 99999 | cut -d"|" -f4 | grep "^ [12]" | wc -l '
+alias albums-left='python3 "${REPOS}/albums/nextalbums.py" -n 9999999 | cut -d"|" -f4 | grep -E "[0-9]" -c'
 alias discogs-update='python3 "${REPOS}/albums/discogs_update.py"'
 
 # vps related
