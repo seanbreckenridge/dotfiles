@@ -49,6 +49,7 @@ __pycache__
 /.emacs.d/
 /.vim
 /.scala_history*
+/.clojure_history
 /.python_history
 /.gnome/apps/chrome-*
 /.mupdf.history
