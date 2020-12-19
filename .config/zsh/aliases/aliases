@@ -75,7 +75,8 @@ alias sysderrors='sudo systemctl --failed'
 # edit the python --editable installed packages
 alias 'pip-editable-installs=e "$(find ~/.local/lib/python* -name easy-install.pth)"'
 # remove packages that arent being used for anything
-alias remove-orphans='sudo pacman -Rns $(pacman -Qtdq)'
+alias orphans='pacman -Qtdq'
+alias remove-orphans='sudo pacman -Rns $(orphans)'
 # clear yay tar.gz cache
 alias yay-clear-cache='yay -Syu && yay -Sc'
 # create a notes file in the current directory
