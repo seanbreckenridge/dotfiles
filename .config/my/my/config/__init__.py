@@ -22,7 +22,7 @@ except ImportError:
 class core:
     cache_dir: PathIsh = "/tmp/cachew"
     enabled_modules: Sequence[PathIsh] = []
-    disabled_modules: Sequence[PathIsh] = []
+    disabled_modules: Sequence[PathIsh] = ["my.reading.polar", "my.stackexchange", "my.pdfs"]
 
 
 # combines:
@@ -181,6 +181,10 @@ class discord:
 # .gpx files from https://github.com/mendhak/gpslogger
 class gpslogger:
     export_path: Paths = "~/GoogleDrive/GPSLogger/"
+
+
+class stackexchange:
+    export_path: PathIsh = ""
 
 
 from typing import Sequence, Union, Tuple
