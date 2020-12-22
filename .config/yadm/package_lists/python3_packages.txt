@@ -41,6 +41,7 @@ oauth2client
 pandas
 pick
 pillow
+pip
 pip-licenses
 pipenv
 prettytable
