@@ -42,22 +42,14 @@ zle -N up-dir
 bindkey "^[[1;3D" up-dir
 bindkey "^[h" up-dir
 
-# https://github.com/seanbreckenridge/ttt/
-# track which cd's Im moving to
-fzf-cd-widget-ttt() {
-	fzf-cd-widget && {
-		command -v tttlog >/dev/null 2>&1 && tttlog "fzf-cd $PWD"
-	}
-} && zle -N fzf-cd-widget-ttt
-
 # Alt+right arrow/Alt+L to launch fzf cd (move into dir)
-bindkey "^[[1;3C" fzf-cd-widget-ttt
-bindkey "^[l" fzf-cd-widget-ttt
+bindkey "^[[1;3C" fzf-cd-widget
+bindkey "^[l" fzf-cd-widget
 
 # Alt+Shift+C to fzf into a directory in my repos
 fzf-repos() {
 	cd "$REPOS"
-	fzf-cd-widget-ttt
+	fzf-cd-widget
 	# if user didnt select a dir to cd into
 	# and is still in Repos, go back to
 	# the dir they were in previously
