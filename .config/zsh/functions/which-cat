@@ -12,8 +12,9 @@ function which-cat() {
 			else
 				file "$COMMAND_OUTPUT"
 			fi
-		else # error finding command
-			printf '%s\n' "$COMMAND_OUTPUT" >&2
+		else
+			# error finding command, or its an alias/function
+			printf '%s\n' "$COMMAND_OUTPUT"
 		fi
 	fi
 }

@@ -50,4 +50,3 @@ else
 	source_if_exists /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 	source_if_exists /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 fi
-

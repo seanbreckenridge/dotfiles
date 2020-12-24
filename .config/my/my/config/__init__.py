@@ -22,7 +22,11 @@ except ImportError:
 class core:
     cache_dir: PathIsh = "/tmp/cachew"
     enabled_modules: Sequence[PathIsh] = []
-    disabled_modules: Sequence[PathIsh] = ["my.reading.polar", "my.stackexchange", "my.pdfs"]
+    disabled_modules: Sequence[PathIsh] = [
+        "my.reading.polar",
+        "my.stackexchange",
+        "my.pdfs",
+    ]
 
 
 # combines:
