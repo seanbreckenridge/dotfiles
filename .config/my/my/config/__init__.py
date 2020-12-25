@@ -157,6 +157,7 @@ class ttt:
 # https://github.com/seanbreckenridge/aw-watcher-window
 class window_watcher:
     export_path: Paths = "~/data/window_watcher/*.csv"
+    force_individual: List[str] = ["Alacritty"]
     live_file: Optional[PathIsh] = path.join(
         environ["XDG_DATA_HOME"], "window_events.csv"
     )
