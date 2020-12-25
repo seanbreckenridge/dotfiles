@@ -1,6 +1,9 @@
 seperator_block_width=15
 markup=pango
 
+# anything with a signal gets refreshed by an entr
+# command in my i3 config https://sean.fish/d/i3/config
+
 [comments]
 command="${HOME}/.config/i3blocks/blocks/comments"
 interval=once
@@ -30,7 +33,6 @@ command="${HOME}/.config/i3blocks/blocks/calendar"
 interval=300
 label=📅
 
-# entr in ~/.config/i3/config refreshes this when the file changes
 [todo]
 command="${HOME}/.config/i3blocks/blocks/todo"
 interval=once
