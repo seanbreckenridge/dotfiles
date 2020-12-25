@@ -1,0 +1,5 @@
+#!/bin/sh
+# how many calories I've eaten today
+
+HPI_QUERY="${REPOS}/HPI/scripts/hpi_query"
+exec "$HPI_QUERY" --days 1 'my.food' 'food' | jq -r '.[] | .calories' | datamash sum 1

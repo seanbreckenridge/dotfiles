@@ -88,6 +88,8 @@ bindsym $mod+Shift+t exec --no-startup-id todo-prompt add
 exec --no-startup-id echo "${HOME}/.config/todo/todo.txt" | entr pkill -RTMIN+2 i3blocks
 exec --no-startup-id echo "${HOME}/.cache/rss-unread" | entr pkill -RTMIN+3 i3blocks
 exec --no-startup-id echo "${HOME}/.cache/guestbook-comments" | entr pkill -RTMIN+4 i3blocks
+exec --no-startup-id echo "${HOME}/data/calories.db" | entr pkill -RTMIN+5 i3blocks
+exec --no-startup-id echo "${HOME}/data/body/water.json" | entr pkill -RTMIN+6 i3blocks
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod

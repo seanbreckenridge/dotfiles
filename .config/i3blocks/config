@@ -7,6 +7,18 @@ interval=once
 label=📖
 signal=4
 
+[water]
+command="${HOME}/.config/i3blocks/blocks/water"
+interval=once
+label=💧
+signal=6
+
+[calories]
+command="${HOME}/.config/i3blocks/blocks/calories"
+interval=once
+label=🍕
+signal=5
+
 [rss]
 command="${HOME}/.config/i3blocks/blocks/rss"
 interval=once
