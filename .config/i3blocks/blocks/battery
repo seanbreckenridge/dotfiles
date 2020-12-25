@@ -25,4 +25,7 @@ fi
 	warn=""
 }
 
+# write to cache file
+printf '%d,%d,%s\n' "$(date +'%s')" "${capacity}" "${status}" >> "${HOME}/data/battery.csv"
+
 echo -e "<span color='${color}'>${emoji_status}${warn}${capacity}%</span>"
