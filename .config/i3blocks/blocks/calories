@@ -1,10 +1,8 @@
-#!/bin/sh
+#!/bin/bash
 # how many calories I've eaten today
 
 HPI_QUERY="${REPOS}/HPI/scripts/hpi_query"
-SUM="$("$HPI_QUERY" --days 1 'my.food' 'food' | jq -r '.[] | .calories' | datamash sum 1)"
-if [ -z "$SUM" ]; then
+{
+	"${HPI_QUERY}" --days 1 'my.food' 'food' | jq -r '.[] | .calories'
 	echo 0
-else
-	echo "$SUM"
-fi
+} | datamash sum 1

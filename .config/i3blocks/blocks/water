@@ -2,9 +2,7 @@
 # how many water I've had today
 
 HPI_QUERY="${REPOS}/HPI/scripts/hpi_query"
-SUM="$("$HPI_QUERY" --days 1 'my.food' 'water' | jq -r '.[] | .glasses' | datamash sum 1)"
-if [ -z "$SUM" ]; then
+{
+	"${HPI_QUERY}" --days 1 'my.food' 'water' | jq -r '.[] | .glasses'
 	echo 0
-else
-	echo "$SUM"
-fi
+} | datamash sum 1
