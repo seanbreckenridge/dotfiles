@@ -12,13 +12,13 @@ signal=4
 
 [water]
 command="${HOME}/.config/i3blocks/blocks/water"
-interval=once
+interval=600
 label=💧
 signal=6
 
 [calories]
 command="${HOME}/.config/i3blocks/blocks/calories"
-interval=once
+interval=600
 label=🍕
 signal=5
 
@@ -41,7 +41,7 @@ signal=2
 
 [battery]
 command="${HOME}/.config/i3blocks/blocks/battery" BAT0
-interval=30
+interval=60
 
 [clock]
 command="${HOME}/.config/i3blocks/blocks/date"
