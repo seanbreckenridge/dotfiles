@@ -14,6 +14,7 @@ playrg-() {
 alias cdpl='cd "${PLAINTEXT_PLAYLIST_PLAYLISTS}"'
 alias playfzf="(cd \"${PLAINTEXT_PLAYLIST_PLAYLISTS}\"; rg --vimgrep --no-column --color ansi '' | uniq | fzf --ansi)"
 bindkey -s '^P' "^uplay^M"
+alias "list-albums=cd \"${PLAINTEXT_PLAYLIST_MUSIC_DIR}\"; find -maxdepth 3 -type f -printf '%h\n' | sort -u | cut -d'/' -f2- | grep -vi twitch"
 
 # https://github.com/seanbreckenridge/raspi-backup
 alias pi='ssh pi@$(${REPOS}/raspi-backup/findpi)'
