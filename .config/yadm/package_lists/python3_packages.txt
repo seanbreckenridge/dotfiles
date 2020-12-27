@@ -4,6 +4,7 @@ autopep8
 autotui
 backoff
 bandcamp-downloader
+bash_like
 black
 bpython
 bs4
