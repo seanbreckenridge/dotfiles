@@ -67,6 +67,7 @@ setuptools
 speedtest-cli
 termcolor
 termdown
+termgraph
 textdistance
 thefuck
 tmuxp
