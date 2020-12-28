@@ -633,7 +633,7 @@ echo "$COMMAND_STR" | clipcopy
 
 [extracturls]
 command='''
-# recieves text from STDIN, extracts unique URLs
+# receives text from STDIN, extracts unique URLs
 # pypi.org/project/urlextract
 urls="$(urlextract | sort -u)"
 if [ -z "$urls" ]; then
@@ -645,7 +645,7 @@ printf "%s\n" "$urls"
 
 [urlhandler]
 command='''
-# recieves text from STDIN, extracts unique URLs
+# receives text from STDIN, extracts unique URLs
 # prompts me to pick one and opens it
 urls="$(extracturls)" || exit $?
 chosen_url="$(echo "$urls" | picker -p 'Pick a URL to open > ')"

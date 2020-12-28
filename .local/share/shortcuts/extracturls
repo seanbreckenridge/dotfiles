@@ -1,5 +1,5 @@
 #!/bin/sh
-# recieves text from STDIN, extracts unique URLs
+# receives text from STDIN, extracts unique URLs
 # pypi.org/project/urlextract
 urls="$(urlextract | sort -u)"
 if [ -z "$urls" ]; then
