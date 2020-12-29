@@ -38,9 +38,8 @@ function osd(str) return mp.osd_message(str, 3) end
 function get_video_dir()
     -- It would be better to do platform detection instead of fallback but
     -- it's not that easy in Lua.
-    return
-        os.getenv("DOWNLOADS") or os.getenv("HOME") or os.getenv("USERPROFILE") or
-            ""
+    return os.getenv("DOWNLOADS") or os.getenv("HOME") or
+               os.getenv("USERPROFILE") or ""
 end
 
 function log(str)
