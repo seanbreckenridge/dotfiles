@@ -154,6 +154,10 @@ class ttt:
     )
 
 
+class battery:
+    export_path: Paths = "~/data/battery.csv"
+
+
 # https://github.com/seanbreckenridge/aw-watcher-window
 class window_watcher:
     export_path: Paths = "~/data/window_watcher/*.csv"
