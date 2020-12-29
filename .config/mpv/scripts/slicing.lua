@@ -1,6 +1,6 @@
 -- vendorized from https://github.com/Kagami/mpv_slicing
 -- edited to not result in huge avi files (just copy input video/audio streams)
--- and to save to my $MOVIES directory if possible (else defaults to $HOME)
+-- and to save to my $DOWNLOADS directory if possible (else defaults to $HOME)
 -- use 'c' to mark start/end of slice
 local msg = require "mp.msg"
 local utils = require "mp.utils"
@@ -39,7 +39,7 @@ function get_video_dir()
     -- It would be better to do platform detection instead of fallback but
     -- it's not that easy in Lua.
     return
-        os.getenv("MOVIES") or os.getenv("HOME") or os.getenv("USERPROFILE") or
+        os.getenv("DOWNLOADS") or os.getenv("HOME") or os.getenv("USERPROFILE") or
             ""
 end
 
