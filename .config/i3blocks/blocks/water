@@ -1,5 +1,7 @@
-#!/bin/sh
+#!/bin/bash
 # how many water I've had today
+
+((BLOCK_BUTTON == 3)) && notify-send "$("${REPOS}/HPI/scripts/water-recent")"
 
 HPI_QUERY="${REPOS}/HPI/scripts/hpi_query"
 {
