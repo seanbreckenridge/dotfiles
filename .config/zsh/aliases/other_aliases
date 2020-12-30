@@ -75,6 +75,7 @@ alias 'water=python3 -c "from my.food import prompt, Water; prompt(Water)"'
 alias 'water-now=python3 -c "from my.food.water import water_now; water_now()"'
 alias 'hpi_query="$REPOS/HPI/scripts/hpi_query"'
 alias 'water-recent="$REPOS/HPI/scripts/water-recent"'
+alias 'history_fzf="$REPOS/HPI/scripts/history_fzf"'
 
 # https://github.com/zupzup/calories/
 # https://github.com/seanbreckenridge/calories-fzf/
