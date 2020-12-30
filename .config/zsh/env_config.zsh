@@ -87,6 +87,9 @@ export SHORTCUTS_DIR="${XDG_DATA_HOME}/shortcuts"
 export PLAINTEXT_PLAYLIST_MUSIC_DIR="${MUSIC}"
 export PLAINTEXT_PLAYLIST_PLAYLISTS="${XDG_DATA_HOME:-$HOME/.local/share}/plaintext_playlist"
 
+# https://github.com/seanbreckenridge/url_metadata
+export URL_METADATA_DIR="${HOME}/data/url_metadata"
+
 # ignore less history
 export LESSHISTFILE="-"
 
