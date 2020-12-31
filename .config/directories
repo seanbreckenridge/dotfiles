@@ -12,6 +12,6 @@ n ~/Documents/Notes
 p ~/.local/share/plaintext_playlist
 q ~/.config/qtile
 r ~/Repos
-s ~/.local/scripts
+s ~/Downloads/Sort
 y ~/.config/yadm
 z ~/.config/zsh
