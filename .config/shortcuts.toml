@@ -239,7 +239,7 @@ exec "$LYNX_PATH" -accept_all_cookies -cfg="${XDG_CONFIG_HOME}/lynx/lynx.cfg" "$
 shebang="#!/bin/zsh"
 command = '''
 ABOOK_PATH="$(where abook | grep -m1 -v "$SHORTCUTS_DIR")" || exit $?
-exec "$ABOOK_PATH" -f "${DOCUMENTS}/addressbook"
+exec "$ABOOK_PATH" -f "${DOCUMENTS}/addressbook" "$@"
 '''
 
 [printer-server]
