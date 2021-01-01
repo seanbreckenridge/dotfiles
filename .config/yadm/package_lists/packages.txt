@@ -90,6 +90,7 @@ yarn
 
 # utils
 
+abook
 alacritty
 ascii-rain-git
 asciiquarium

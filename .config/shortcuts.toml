@@ -235,6 +235,13 @@ LYNX_PATH="$(where lynx | grep -m1 -v "$SHORTCUTS_DIR")" || exit $?
 exec "$LYNX_PATH" -accept_all_cookies -cfg="${XDG_CONFIG_HOME}/lynx/lynx.cfg" "$@"
 '''
 
+[abook]
+shebang="#!/bin/zsh"
+command = '''
+ABOOK_PATH="$(where abook | grep -m1 -v "$SHORTCUTS_DIR")" || exit $?
+exec "$ABOOK_PATH" -f "${DOCUMENTS}/addressbook"
+'''
+
 [printer-server]
 command = '''
 # open the printer interface in the browser
