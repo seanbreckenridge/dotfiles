@@ -5,6 +5,6 @@
 
 HPI_QUERY="${REPOS}/HPI/scripts/hpi_query"
 {
-	"${HPI_QUERY}" --days 1 'my.food' 'food' | jq -r '.[] | .calories'
+	"${HPI_QUERY}" --days 1 --key on 'my.food' 'food' | jq -r '.[] | .calories'
 	echo 0
 } | datamash sum 1
