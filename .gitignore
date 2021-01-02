@@ -186,7 +186,7 @@ __pycache__
 /.config/menus
 /.config/wireshark
 /.config/okularrc
-/.local/share/yadm/repo.git
+/.local/share/yadm
 /.config/obs-studio
 
 /.local/lib/python*
