@@ -202,7 +202,7 @@ xcolor
 xdotool
 xterm
 xvkbd
-yadm-git
+yadm
 yq
 ytop
 zip
