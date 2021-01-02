@@ -196,6 +196,7 @@ vim
 w3m
 weechat
 wget
+whatmp3
 wkhtmltopdf
 xclip
 xcolor
