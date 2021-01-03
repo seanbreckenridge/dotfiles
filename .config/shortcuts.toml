@@ -167,11 +167,11 @@ fi
 '''
 
 # confirm this is ignoring the correct files by running:
-# list-music | grep -Ev "(mp3|flac|ogg|m4a)$"
+# list-music | grep -Ev "(mp3|flac|ogg|m4a|opus)$"
 [list-music]
 command='''
 # list music files (try to ignore cue/log/album artwork files) in the current directory
-fd --type f | grep -iEv "\.(gif|accurip|jpg|png|cue|log|m3u|m3u8|nfo|md5|txt|jpeg|sfv|pdf)$" | sort -n
+fd --type f | grep -iEv "\.(gif|accurip|jpg|png|cue|log|m3u|m3u8|nfo|md5|txt|html|rtf|jpeg|sfv|pdf)$" | sort -n
 '''
 
 [play-music]
