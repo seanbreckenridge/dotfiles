@@ -22,7 +22,7 @@ function _playlist_commands() {
 
 function _playlist_names() {
 	local PLAYLIST_DIR="${PLAINTEXT_PLAYLIST_PLAYLISTS:-${XDG_DATA_HOME:-$HOME/.local/share}/plaintext_playlist}"
-	find "$PLAYLIST_DIR" -printf '%f\n' | cut -d'.' -f1 | xargs echo -n
+	find "$PLAYLIST_DIR" -iname "*.txt" -printf '%f\n' | cut -d'.' -f1 | xargs echo -n
 }
 
 # for plainplay/play
