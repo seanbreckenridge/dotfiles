@@ -91,10 +91,10 @@ export PLAINTEXT_PLAYLIST_PLAYLISTS="${XDG_DATA_HOME:-$HOME/.local/share}/plaint
 export URL_METADATA_DIR="${HOME}/data/url_metadata"
 
 # ignore less history
-export LESSHISTFILE="-"
+export LESSHISTFILE='-'
 
 # gnupg
-export GNUPGHOME="$XDG_DATA_HOME/gnupg"
+export GNUPGHOME="${XDG_DATA_HOME}/gnupg"
 
 # Corrections
 # aliases that fix the config/history path of commands
@@ -104,17 +104,14 @@ alias wget='wget --hsts-file "${XDG_CACHE_HOME}/wget-hsts"'
 # general environment variable configuration
 export YSU_MESSAGE_FORMAT="$(tput setaf 1)>>> %alias_type: %alias $(tput sgr0)"
 
-# directories that can be cd'd into
-export CDPATH="${HOME}:${REPOS}:${HOME}/.config:${HOME}/.local/scripts"
-
 # bat theme
-export BAT_THEME="Dracula"
+export BAT_THEME='Dracula'
 
 # fzf configuration
-export FZF_DEFAULT_OPTS=""
-export FZF_DEFAULT_COMMAND="fd -IHL -E .git"
-export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-export FZF_ALT_C_COMMAND="$FZF_DEFAULT_COMMAND -t d"
+export FZF_DEFAULT_OPTS=''
+export FZF_DEFAULT_COMMAND='fd -IHL -E .git'
+export FZF_CTRL_T_COMMAND="${FZF_DEFAULT_COMMAND}"
+export FZF_ALT_C_COMMAND='fd -L -t d'
 
 # colors for manpages
 export LESS_TERMCAP_mb=$'\e[1;32m'

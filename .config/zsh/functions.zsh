@@ -1,9 +1,9 @@
 # load zsh-completions installed with pacman,
 # user defined functions and completions
-fpath=("$ZDOTDIR"/functions "$ZDOTDIR"/completions "${fpath[@]}")
+fpath=("${ZDOTDIR}/functions" "${ZDOTDIR}/completions" "${fpath[@]}")
 
 # if on linux
-if [[ -n "$ONLINUX" ]]; then
+if [[ -n "${ONLINUX}" ]]; then
 	fpath+=(/usr/share/zsh/site-functions)
 else
 	# on mac
@@ -27,7 +27,7 @@ autoload -Uz compinit && compinit
 # size increases
 
 # lazy-load user defined functions
-autoload -Uz "$ZDOTDIR"/functions/*
+autoload -Uz "${ZDOTDIR}/functions/"*
 
 # bind fzf_select (fuzzy match everything and open/cd to dir in ranger)
 bindkey -s '^F' "ranger --cmd='fzf_select'^M"
@@ -35,31 +35,31 @@ bindkey -s '^G' "ranger --cmd='chain set show_hidden true; fzf_select_hidden'^M"
 
 # Alt+left arrow/Alt+H to move up a dir
 up-dir() {
-	cd ".."
+	cd '..'
 	zle reset-prompt
 }
 zle -N up-dir
-bindkey "^[[1;3D" up-dir
-bindkey "^[h" up-dir
+bindkey '^[[1;3D' up-dir
+bindkey '^[h' up-dir
 
 # Alt+right arrow/Alt+L to launch fzf cd (move into dir)
-bindkey "^[[1;3C" fzf-cd-widget
-bindkey "^[l" fzf-cd-widget
+bindkey '^[[1;3C' fzf-cd-widget
+bindkey '^[l' fzf-cd-widget
 
 # Alt+Shift+C to fzf into a directory in my repos
 fzf-repos() {
-	cd "$REPOS"
+	cd "${REPOS}"
 	fzf-cd-widget
 	# if user didnt select a dir to cd into
 	# and is still in Repos, go back to
 	# the dir they were in previously
-	if [[ "$PWD" == "$REPOS" ]]; then
-		cd "$OLDPWD"
+	if [[ "${PWD}" == "${REPOS}" ]]; then
+		cd "${OLDPWD}"
 	fi
 	zle reset-prompt
 }
 zle -N fzf-repos
-bindkey "^[C" fzf-repos
+bindkey '^[C' fzf-repos
 
 # ^u is Ctrl+U, which is bound to
 # to kill-whole-line
@@ -70,11 +70,11 @@ bindkey "^[C" fzf-repos
 # See <https://unix.stackexchange.com/a/595281/282432>
 
 # Alt+R to launch ranger (file manager)
-bindkey -s "^[r" "^uranger^M"
+bindkey -s '^[r' '^uranger^M'
 
 # Alt+F to rg-nvim
 f-rg-nvim() {
 	rg-nvim "$@"
 }
 zle -N f-rg-nvim
-bindkey "^[f" f-rg-nvim
+bindkey '^[f' f-rg-nvim
