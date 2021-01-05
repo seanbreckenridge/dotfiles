@@ -15,6 +15,7 @@ alias dc='cd' # never going to use the reverse-polish calculator, is *always* a 
 
 # https://github.com/sharkdp/bat
 alias cat='bat'
+alias ccat='/bin/cat'
 
 # yadm
 alias yds='yadm diff --staged'
