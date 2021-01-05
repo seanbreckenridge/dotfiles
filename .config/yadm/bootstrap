@@ -24,7 +24,7 @@ abort() {
 install_spkglist() {
 	havecmd go || return $?
 	if ! havecmd spkglist; then
-		go get -u -v 'gitlab.com/seanbreckenridge/spkglist/cmd/spkglist' || return $?
+		go get -u -v 'github.com/seanbreckenridge/spkglist/cmd/spkglist' || return $?
 	fi
 } && export -f install_spkglist
 
@@ -106,9 +106,9 @@ python3 -m pip install -q --user -r "${PYTHON_PACKAGE_LIST}"
 function install_python_personal() {
 	havecmd "${1}" || python3 -m pip install --user "git+${2}"
 }
-install_python_personal "plus1" "https://gitlab.com/seanbreckenridge/plus1"
-install_python_personal "pythonanywhere_3_months" "https://gitlab.com/seanbreckenridge/pythonanywhere-3-months"
-install_python_personal "rotten" "https://gitlab.com/seanbreckenridge/rotten_tomatoes_cli"
+install_python_personal "plus1" "https://github.com/seanbreckenridge/plus1"
+install_python_personal "pythonanywhere_3_months" "https://github.com/seanbreckenridge/pythonanywhere-3-months"
+install_python_personal "rotten" "https://github.com/seanbreckenridge/rotten_tomatoes_cli"
 install_python_personal "mystars" "https://github.com/seanbreckenridge/oh-my-stars"
 install_python_personal "calcurse_load" "https://github.com/seanbreckenridge/calcurse-load"
 

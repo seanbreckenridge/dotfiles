@@ -5,10 +5,10 @@ gotests github.com/cweill/gotests/...
 guru golang.org/x/tools/cmd/guru
 
 # my packages
-keyvol gitlab.com/seanbreckenridge/keyvol
-twitchlive gitlab.com/seanbreckenridge/twitchlive
-darker_errors gitlab.com/seanbreckenridge/darker_errors
-spkglist gitlab.com/seanbreckenridge/spkglist/cmd/spkglist
+keyvol github.com/seanbreckenridge/keyvol
+twitchlive github.com/seanbreckenridge/twitchlive
+darker_errors github.com/seanbreckenridge/darker_errors
+spkglist github.com/seanbreckenridge/spkglist/cmd/spkglist
 
 # others
 wuzz github.com/asciimoo/wuzz
