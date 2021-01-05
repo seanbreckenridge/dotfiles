@@ -13,7 +13,7 @@ playrg-() {
 	playrg "$*" | mpv-from-stdin
 }
 alias cdpl='cd "${PLAINTEXT_PLAYLIST_PLAYLISTS}"'
-alias playfzf="cm; (cd \"${PLAINTEXT_PLAYLIST_PLAYLISTS}\"; rg --vimgrep --no-column --color ansi '' | uniq | fzf --ansi)"
+alias playfzf="cm; (cd \"${PLAINTEXT_PLAYLIST_PLAYLISTS}\"; rg --color ansi --no-line-number '' | fzf --ansi)"
 bindkey -s '^P' "^uplay^M"
 alias "list-albums=cm; find -maxdepth 3 -type f -printf '%h\n' | sort -u | cut -d'/' -f2- | grep -vi twitch"
 
