@@ -1,9 +1,9 @@
 import os
-import subprocess
 import shutil
-from typing import List, Union, Optional
+import subprocess
+from typing import List, Optional, Union
+
 from ranger.api.commands import Command
-from os.path import abspath
 
 
 class quit_and_cd(Command):
@@ -20,6 +20,22 @@ class quit_and_cd(Command):
             f.write(os.path.abspath(self.fm.thisdir.path))
         # same as quitall_bang
         self.fm.exit()
+
+
+class mkcd(Command):
+    """
+    Create a directory and 'cd' into it
+    Based on the 'cd' command:
+    https://github.com/ranger/ranger/blob/42cb5a521bf9b24eaaf47daed2b45763e704c347/ranger/config/commands.py#L903-L917
+    """
+
+    def execute(self):
+        dirname = os.path.join(self.fm.thisdir.path, os.path.expanduser(self.rest(1)))
+        if not os.path.lexists(dirname):
+            os.makedirs(dirname)
+            self.fm.cd(dirname)
+        else:
+            self.fm.notify("file/directory exists!", bad=True)
 
 
 class fzf_select(Command):
