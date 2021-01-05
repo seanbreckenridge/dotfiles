@@ -1,0 +1,13 @@
+#!/bin/sh
+# initializes a github repository
+# assumes this is a git repository and has a commit
+#
+# This uses hub instead of gh since it handles the
+# 'current directory' initialization nicely
+
+in-gitdir || {
+	echo "Not currently in a git repository" >&2
+	exit 1
+}
+hub create -p
+exec git push --set-upstream origin master
