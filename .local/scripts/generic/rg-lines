@@ -3,10 +3,7 @@
 # first argument is the pattern to search for
 # prints the file and line number that the user selected
 
-# vimgrep to provide line number and filepath for each file
-# no-column to remove the column
-# uniq to remove duplicate lines
-PICKED_LINE="$(rg --vimgrep --no-column --color ansi '' | uniq | fzf --ansi)" || exit $?
+PICKED_LINE="$(rg --line-number --color ansi '' | fzf --ansi)" || exit $?
 if [ -n "$PICKED_LINE" ]; then
 	printf '%s\n' "$PICKED_LINE" | cut -d':' -f'1-2'
 else
