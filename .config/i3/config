@@ -118,7 +118,7 @@ bindsym $mod+c exec --no-startup-id clipedit
 bindsym $mod+Shift+c exec --no-startup-id clipreset
 
 # mpv commands
-# https://gitlab.com/seanbreckenridge/mpv-sockets.git
+# https://github.com/seanbreckenridge/mpv-sockets.git
 bindsym $mod+XF86AudioMute exec --no-startup-id mpv-play-pause
 bindsym $mod+XF86AudioMicMute exec --no-startup-id ttt mpv-next-song
 bindsym $mod+Shift+XF86AudioMute exec --no-startup-id mpv-quit-latest
