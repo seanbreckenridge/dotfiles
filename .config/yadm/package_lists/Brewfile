@@ -138,7 +138,6 @@ cask 'zoomus'         # for stupid video confrencing
 cask 'steam'          # video games
 cask 'gimp'           # image editing
 cask 'mpv'            # media player
-#cask 'alfred' # alternative to spotlight
 cask 'docker'                # for the docker daemon
 cask 'daisydisk'             # visualizes volumes
 cask 'balenaetcher'          # for USB boot drive creation
