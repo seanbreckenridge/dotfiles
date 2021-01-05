@@ -9,5 +9,5 @@ in-gitdir || {
 	echo "Not currently in a git repository" >&2
 	exit 1
 }
-hub create -p
+hub create "$@"
 exec git push --set-upstream origin master
