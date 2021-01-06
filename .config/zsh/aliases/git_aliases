@@ -163,7 +163,7 @@ alias glum='git pull upstream master'
 # clone some repo and cd into it
 gclcd() {
 	gcl "${1:?Provide something to git clone}"
-	cd "$(newest)"
+	cd "$(newest -include-dirs)"
 }
 
 # https://sean.fish/d/git-swap-remote

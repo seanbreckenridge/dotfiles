@@ -9,6 +9,7 @@ keyvol github.com/seanbreckenridge/keyvol
 twitchlive github.com/seanbreckenridge/twitchlive
 darker_errors github.com/seanbreckenridge/darker_errors
 spkglist github.com/seanbreckenridge/spkglist/cmd/spkglist
+newest github.com/seanbreckenridge/newest
 
 # others
 wuzz github.com/asciimoo/wuzz

@@ -439,17 +439,6 @@ s="$(lower)"
 echo "$(upper <<<"${s:0:1}")${s:1}"
 """
 
-[newest]
-shebang="#!/bin/bash"
-command='''
-# gets the most recently modified file
-# from a directory
-IFS=$'\n'
-# shellcheck disable=SC2207
-f=($(ls -1 --color=never -trd "${1:-.}"/*)) || exit 1
-echo "${f[-1]}"
-'''
-
 [lastpic]
 command='exec newest "${SCREENSHOTS:?No SCREENSHOTS environment variable set}"'
 
