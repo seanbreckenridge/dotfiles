@@ -47,6 +47,11 @@ bindkey -s '^[V' 'vultr\n'
 # https://github.com/seanbreckenridge/twitchlive
 bindkey -s '^[L' 'twitchlive-table\n'
 
+# https://github.com/seanbreckenridge/ttt
+CD() {
+	cd "$(tttjump)"
+}
+
 # https://github.com/seanbreckenridge/exobrain
 alias exo='cd "${REPOS}/exobrain"; ranger --cmd="shell ./exosearch"'
 alias exoo='cd "${REPOS}/exobrain"; ranger --cmd="shell ./exosearch -o"'
