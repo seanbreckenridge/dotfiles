@@ -5,11 +5,11 @@
 distanceStr="15 px or 5 ppt"
 
 moveChoice() {
-	i3-msg resize "$1" "$2" "$distanceStr" | grep '"success":true' ||
-		i3-msg resize "$3" "$4" "$distanceStr"
+	i3-msg resize "$1" "$2" "${distanceStr}" | grep '"success":true' ||
+		i3-msg resize "$3" "$4" "${distanceStr}"
 }
 
-case $1 in
+case "$1" in
 up)
 	moveChoice grow up shrink down
 	;;

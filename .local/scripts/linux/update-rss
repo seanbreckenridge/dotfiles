@@ -13,9 +13,9 @@ else
 	newsboat -x reload
 	unread="$(newsboat -x print-unread)" || exit $?
 	if [[ -z "$unread" ]]; then
-		echo '0' >"$CACHE_FILE"
+		echo '0' >"${CACHE_FILE}"
 	else
 		# delete a space followed by anything
-		echo "${unread%% *}" >"$CACHE_FILE"
+		echo "${unread%% *}" >"${CACHE_FILE}"
 	fi
 fi

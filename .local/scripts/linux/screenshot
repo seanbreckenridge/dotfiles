@@ -7,21 +7,21 @@ camera_shutter() {
 }
 
 SCREENSHOT_DIR="${SCREENSHOTS:?No SCREENSHOTS environment variable set}"
-OUTPUT_FILENAME="$SCREENSHOT_DIR/$(date '+%Y-%m-%d--%R:%S').png"
+OUTPUT_FILENAME="${SCREENSHOT_DIR}/$(date '+%Y-%m-%d--%R:%S').png"
 
 # take screenshot, save it and put it on clipboard
 if [ "$1" = "-f" ] || [ "$1" = "--full" ]; then
 	# fullscreen
-	scrot -z "$OUTPUT_FILENAME"
-	xclip -t image/png -selection clipboard <"$OUTPUT_FILENAME"
+	scrot -z "${OUTPUT_FILENAME}"
+	xclip -t image/png -selection clipboard <"${OUTPUT_FILENAME}"
 	camera_shutter
 else
 	# selection
-	maim -s | tee "$OUTPUT_FILENAME" | xclip -t image/png -selection clipboard
+	maim -s | tee "${OUTPUT_FILENAME}" | xclip -t image/png -selection clipboard
 	# if screenshot was cancelled, an empty png file
 	# is still created; delete it
-	if [ "$(stat --printf="%s" "$OUTPUT_FILENAME")" = "0" ]; then
-		rm "$OUTPUT_FILENAME"
+	if [ "$(stat --printf="%s" "${OUTPUT_FILENAME}")" = "0" ]; then
+		rm "${OUTPUT_FILENAME}"
 	else
 		camera_shutter
 	fi

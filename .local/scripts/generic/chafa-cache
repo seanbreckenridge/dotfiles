@@ -8,19 +8,19 @@
 
 declare CHAFA_IMG_CACHE URL HASH TARGET_FILE
 
-CHAFA_IMG_CACHE="${XDG_CACHE_HOME:-$HOME/.cache}/chafa_url_cache"
-mkdir -p "$CHAFA_IMG_CACHE"
+CHAFA_IMG_CACHE="${XDG_CACHE_HOME:-${HOME}/.cache}/chafa_url_cache"
+mkdir -p "${CHAFA_IMG_CACHE}"
 
 URL="${1:?Must pass URL display as first argument\!}"
 shift # remove URL from argument list
-HASH="$(sha1sum <<<"$URL" | cut -d" " -f1)"
+HASH="$(sha1sum <<<"${URL}" | cut -d" " -f1)"
 TARGET_FILE="${CHAFA_IMG_CACHE}/${HASH}.${URL##*.}"
 
-if [[ ! -e "$TARGET_FILE" ]]; then
-	wget -q "$URL" -O "$TARGET_FILE" || {
-		printf "Failed to download '%s'\n" "$URL"
+if [[ ! -e "${TARGET_FILE}" ]]; then
+	wget -q "${URL}" -O "${TARGET_FILE}" || {
+		printf "Failed to download '%s'\n" "${URL}"
 		exit 1
 	}
 fi
 
-exec chafa "$@" "$TARGET_FILE"
+exec chafa "$@" "${TARGET_FILE}"

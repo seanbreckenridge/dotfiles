@@ -9,6 +9,6 @@
 basename_filename="$(remove-extension "${1}")"
 
 case "$1" in
-*.tex | *.md | *.[rR]md | *.ms | *.me | *.mom) setsid mupdf "$basename_filename".pdf >/dev/null 2>&1 & ;;
-*.[0-9]) setsid mupdf "$basename_filename".pdf >/dev/null 2>&1 & ;;
+*.tex | *.md | *.[rR]md | *.ms | *.me | *.mom) setsid mupdf "${basename_filename}.pdf" >/dev/null 2>&1 & ;;
+*.[0-9]) setsid mupdf "${basename_filename}.pdf" >/dev/null 2>&1 & ;;
 esac

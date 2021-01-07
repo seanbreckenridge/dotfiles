@@ -27,16 +27,16 @@ start_services() {
 		echo "Starting ${serv}..."
 		sudo systemctl start "$serv"
 	done
-	touch "$service_toggle_file"
+	touch "${service_toggle_file}"
 }
 
 stop_services() {
 	echo "Stopping services..."
 	for serv in "${service_list[@]}"; do
 		echo "Stopping ${serv}..."
-		sudo systemctl stop "$serv"
+		sudo systemctl stop "${serv}"
 	done
-	[[ -f "$service_toggle_file" ]] && rm "$service_toggle_file"
+	[[ -f "${service_toggle_file}" ]] && rm "${service_toggle_file}"
 }
 
 status_services() {
@@ -56,7 +56,7 @@ status)
 	status_services
 	;;
 *)
-	if [[ -f "$service_toggle_file" ]]; then
+	if [[ -f "${service_toggle_file}" ]]; then
 		stop_services
 	else
 		start_services

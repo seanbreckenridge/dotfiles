@@ -6,14 +6,14 @@
 prompt_todos() {
 	tmpfile="$(mktemp /tmp/todo.XXXXX)"
 	trap 'rm "$tmpfile"' 0 1 15
-	todo.sh -p list | head -n -2 >"$tmpfile"
-	TODO_CHOICE=$(picker -p "Mark which todo as complete? > " <"$tmpfile")
-	if [ -n "$TODO_CHOICE" ]; then
-		CONFIRM="$(printf "yes\nno\n" | picker -p "Mark this todo as complete: $TODO_CHOICE")"
-		if [ "$CONFIRM" = "yes" ]; then
-			TODO_NUM=$(echo "$TODO_CHOICE" | cut -d" " -f1)
+	todo.sh -p list | head -n -2 >"${tmpfile}"
+	TODO_CHOICE=$(picker -p "Mark which todo as complete? > " <"${tmpfile}")
+	if [ -n "${TODO_CHOICE}" ]; then
+		CONFIRM="$(printf "yes\nno\n" | picker -p "Mark this todo as complete: ${TODO_CHOICE}")"
+		if [ "${CONFIRM}" = "yes" ]; then
+			TODO_NUM=$(echo "${TODO_CHOICE}" | cut -d" " -f1)
 			# shellcheck disable=SC1010
-			notify "Completed Todo:" "$(todo.sh -p do "$TODO_NUM")"
+			notify "Completed Todo:" "$(todo.sh -p do "${TODO_NUM}")"
 		fi
 	fi
 }
@@ -21,8 +21,8 @@ prompt_todos() {
 # give the user a dialog to add a new todo
 add_todo() {
 	NEW_TODO="$(input-dialog "Add todo > ")"
-	if [ -n "$NEW_TODO" ]; then
-		notify "Added todo:" "$(todo.sh -p add "$NEW_TODO")"
+	if [ -n "${NEW_TODO}" ]; then
+		notify "Added todo:" "$(todo.sh -p add "${NEW_TODO}")"
 	fi
 }
 

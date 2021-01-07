@@ -3,4 +3,4 @@
 # compile refreshes mupdf if its active
 
 FILE="${1:?Pass an file to render as the first argument.}"
-find "$FILE" | entr compile "$FILE"
+find "${FILE}" | entr compile "${FILE}"

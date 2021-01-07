@@ -14,7 +14,7 @@ i3-is-floating-window && {
 declare -a screen_resolution
 screen_resolution_str="$(main-screen-resolution)"
 # read resolution into array, (width, height)
-IFS='x' read -r -a screen_resolution <<<"$screen_resolution_str"
+IFS='x' read -r -a screen_resolution <<<"${screen_resolution_str}"
 
 # calculate target height/width (40% of screen)
 target_width="$((screen_resolution[0] * 2 / 5))"
@@ -39,4 +39,4 @@ eval "$(xdotool getwindowfocus getwindowgeometry --shell)"
 top_right_y_coord="$((screen_resolution[1] - HEIGHT))"
 
 # move the window to the bottom right
-xdotool getactivewindow windowmove "$top_right_x_coord" "$top_right_y_coord"
+xdotool getactivewindow windowmove "${top_right_x_coord}" "${top_right_y_coord}"

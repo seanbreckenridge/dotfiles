@@ -10,4 +10,4 @@ else
 	WINDOW_ID="$1"
 fi
 
-xprop -id "$WINDOW_ID" | grep -q "I3_FLOATING_WINDOW" || exit $?
+xprop -id "${WINDOW_ID}" | grep -q "I3_FLOATING_WINDOW" || exit $?

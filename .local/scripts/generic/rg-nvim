@@ -5,6 +5,6 @@ declare RG_OUT
 declare -a RG_PARTS
 RG_OUT="$(rg-lines)" || exit $?
 # split into filename and line number
-readarray -t RG_PARTS < <(tr ':' '\n' <<<"$RG_OUT")
+readarray -t RG_PARTS < <(tr ':' '\n' <<<"${RG_OUT}")
 # arithmetic substitution removes extra newline
 exec nvim "+$((RG_PARTS[1]))" "${RG_PARTS[0]}"

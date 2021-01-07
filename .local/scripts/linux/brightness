@@ -7,11 +7,11 @@
 CMD="${1:?No argument provided (up/down)}"
 STEP="${2:-5}" # default to 5%
 
-case "$CMD" in
+case "${CMD}" in
 up)
-	light -A "$STEP"
+	light -A "${STEP}"
 	;;
 down)
-	light -U "$STEP"
+	light -U "${STEP}"
 	;;
 esac

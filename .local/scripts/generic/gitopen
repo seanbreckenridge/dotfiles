@@ -3,8 +3,8 @@
 # it in your browser
 
 if GIT_URL=$(giturl); then
-	openurl "$GIT_URL"
+	openurl "${GIT_URL}"
 else
-	echo "$GIT_URL" >&2 # print error
+	echo "${GIT_URL}" >&2 # print error
 	exit 1
 fi

@@ -11,30 +11,30 @@ export HAVECMD_REPORT=1
 declare -a required_binaries
 required_binaries=(evry dust pythonanywhere_3_months) # dust is used in backup_server
 for binary in "${required_binaries[@]}"; do
-	havecmd "$binary" || exit $?
+	havecmd "${binary}" || exit $?
 done
 
 copy_keepass_db() {
 	# copy keepass db to google drive, so I can use Keepass2Android on my phone
 	db_here="$DOCUMENTS/updated_database.kdbx"
 	db_there="$HOME/GoogleDrive/updated_database.kdbx"
-	[[ -f "$db_here" ]] && [[ -f "$db_there" ]] && cp -v "$db_here" "$db_there"
+	[[ -f "${db_here}" ]] && [[ -f "${db_there}" ]] && cp -v "${db_here}" "${db_there}"
 }
 
 # https://github.com/seanbreckenridge/glue
 APPROVE_SCRIPT="${REPOS}/vps/approve_comments"
-if [[ -r "$APPROVE_SCRIPT" ]]; then
-	evry 3 hours -approve_comments && "$APPROVE_SCRIPT" 2>/dev/null
+if [[ -r "${APPROVE_SCRIPT}" ]]; then
+	evry 3 hours -approve_comments && "${APPROVE_SCRIPT}" 2>/dev/null
 else
-	printf 'Expected approve script to exist at %s\n' "$APPROVE_SCRIPT" >&2
+	printf 'Expected approve script to exist at %s\n' "${APPROVE_SCRIPT}" >&2
 fi
 
 # backup cache/token/logs from my server
 BACKUP_SERVER_SCRIPT="${REPOS}/vps/backup_server"
-if [[ -r "$BACKUP_SERVER_SCRIPT" ]]; then
-	evry 3 days -backup_fish_server && "$BACKUP_SERVER_SCRIPT"
+if [[ -r "${BACKUP_SERVER_SCRIPT}" ]]; then
+	evry 3 days -backup_fish_server && "${BACKUP_SERVER_SCRIPT}"
 else
-	printf 'Expected backup script to exist at %s\n' "$BACKUP_SERVER_SCRIPT" >&2
+	printf 'Expected backup script to exist at %s\n' "${BACKUP_SERVER_SCRIPT}" >&2
 fi
 
 # make sure my pythonanywhere website doesnt expire:
@@ -42,7 +42,7 @@ fi
 evry 2 months -pythonanywhere && pythonanywhere_3_months -Hc "$(which chromedriver)"
 # run https://github.com/odeke-em/drive to pull/push from google drive
 evry 1 day -google_drive && {
-	cd ~/GoogleDrive/ || exit $?
+	cd "${HOME}/GoogleDrive/" || exit $?
 	echo "Running 'drive pull'..."
 	# first, update new files that have been synced to my drive
 	drive pull -ignore-conflict

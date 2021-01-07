@@ -14,5 +14,5 @@ url="$(curl -s -F 'f:1=<-' http://ix.io <<<"${STDIN}")" || {
 	notify "Failed to make request to http://ix.io"
 	exit 1
 }
-echo -n "$url" | clipcopy
+echo -n "${url}" | clipcopy
 notify "Copied link to clipboard" "${url}"

@@ -4,8 +4,8 @@
 # prints the file and line number that the user selected
 
 PICKED_LINE="$(rg --line-number --color ansi '' | fzf --ansi)" || exit $?
-if [ -n "$PICKED_LINE" ]; then
-	printf '%s\n' "$PICKED_LINE" | cut -d':' -f'1-2'
+if [ -n "${PICKED_LINE}" ]; then
+	printf '%s\n' "${PICKED_LINE}" | cut -d':' -f'1-2'
 else
 	exit 1
 fi

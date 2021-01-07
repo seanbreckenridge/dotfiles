@@ -2,13 +2,13 @@
 # converts a string to a qr code and displays it full screen
 # if no URL is passed as the first argument, reads from STDIN
 
-STR="$1"
+INPUT="$1"
 
 if [ -z "$1" ]; then # if no URL was passed, read from STDIN
-	STR="$(cat)"
+	INPUT="$(cat)"
 fi
 
-LOC='/tmp/qr.png'
+TEMP='/tmp/qr.png'
 
-qrencode "$STR" -o "$LOC"
-exec feh -Z "$LOC"
+qrencode "${INPUT}" -o "${TEMP}"
+exec feh -Z "${TEMP}"

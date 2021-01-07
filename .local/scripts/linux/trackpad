@@ -11,16 +11,16 @@
 
 tpad_name="$(xinput list --name-only | grep -i 'touchpad')"
 # ~/.cache/trackpad exists if the trackpad is enabled
-cache_file="$HOME/.cache/trackpad"
+cache_file="${HOME}/.cache/trackpad"
 
 enable_trackpad() {
-	xinput enable "$tpad_name"
-	touch "$cache_file"
+	xinput enable "${tpad_name}"
+	touch "${cache_file}"
 }
 
 disable_trackpad() {
-	xinput disable "$tpad_name"
-	[ -f "$cache_file" ] && rm "$cache_file"
+	xinput disable "${tpad_name}"
+	[ -f "${cache_file}" ] && rm "${cache_file}"
 }
 
 case "$1" in
@@ -31,7 +31,7 @@ enable)
 	enable_trackpad
 	;;
 *)
-	if [ -f "$cache_file" ]; then
+	if [ -f "${cache_file}" ]; then
 		disable_trackpad
 	else
 		enable_trackpad
