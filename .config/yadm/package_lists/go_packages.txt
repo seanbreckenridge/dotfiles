@@ -10,6 +10,7 @@ twitchlive github.com/seanbreckenridge/twitchlive
 darker_errors github.com/seanbreckenridge/darker_errors
 spkglist github.com/seanbreckenridge/spkglist/cmd/spkglist
 newest github.com/seanbreckenridge/newest
+chomp github.com/seanbreckenridge/chomp
 
 # others
 wuzz github.com/asciimoo/wuzz

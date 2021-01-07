@@ -699,14 +699,6 @@ up --unsafe-full-throttle
 '''
 shebang="#!/bin/zsh"
 
-[chomp]
-command='''
-# removes extra space characters from the beginning/end of lines
-# removes lines which have just whitespace (no content)
-# meant to be piped into, like 'some command | chomp'
-exec sed -E -e 's/^\s*//; s/\s*$//; /^\s*$/d'
-'''
-
 [watchtwitch]
 command='''
 twitchlive -output-format json | jq -r '.[] | .username' | picker -p "who to watch? " | xargs -r twitch
