@@ -8,7 +8,7 @@ parses a URL with readable (firefox's readability lib)
 and dump the HTML contents to STDOUT
 
 Usage:
-  readable [-b|-d|-p] <URL>
+  rread [-b|-d|-p] <URL>
 
 Options:
   -b  display output with lynx browser (default)
