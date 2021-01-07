@@ -13,6 +13,7 @@ cget
 check-manifest
 colorama
 cookiecutter
+csvkit
 cube-scramble-cli
 currencyconverter
 discogs-client
