@@ -713,3 +713,9 @@ exec shortcuts create
 
 [alarm]
 command = 'exec paplay /usr/share/sounds/freedesktop/stereo/alarm-clock-elapsed.oga'
+
+[synonym]
+command = '''
+word="${1:?Provide the word to list synonyms as first argument}"
+moby "${word}" | grep ',' | sed 's/,/\n/g' | chomp
+'''
