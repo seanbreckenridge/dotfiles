@@ -1,9 +1,9 @@
 #!/bin/sh
 # optimize gif
 OLD_GIF="${1:?provide gif to optimize as first argument}"
-NEW_GIF="$(remove-extension "$OLD_GIF")-opt.gif"
+NEW_GIF="$(remove-extension "${OLD_GIF}")-opt.gif"
 TMP_GIF='/tmp/optimized.gif'
-rm -rf "$TMP_GIF"
-gifsicle --colors 256 -O3 "$OLD_GIF" -o "$TMP_GIF" && cp -v "$TMP_GIF" "$NEW_GIF" || exit $?
+rm -rf "${TMP_GIF}"
+gifsicle --colors 256 -O3 "${OLD_GIF}" -o "${TMP_GIF}" && cp -v "${TMP_GIF}" "${NEW_GIF}" || exit $?
 # overwrite if specified
-[ -n "$OPTIGIF_OVERWRITE" ] && du -h "$OLD_GIF" "$NEW_GIF" && mv -v "$NEW_GIF" "$OLD_GIF"
+[ -n "${OPTIGIF_OVERWRITE}" ] && du -h "${OLD_GIF}" "${NEW_GIF}" && mv -v "${NEW_GIF}" "${OLD_GIF}"

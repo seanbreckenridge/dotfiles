@@ -3,5 +3,5 @@
 # yadm ls-files and a couple search commands
 {
 	cd && yadm ls-files | sed "s#^#$HOME/#"
-	fd --type=file -H --full-path "${HOME}" "${XDG_CONFIG_HOME}/todo" "${ZDOTDIR}" "${XDG_CONFIG_HOME}/yadm" -E "repo.git"
+	fd --type=file -H --full-path "${HOME}" "${XDG_CONFIG_HOME}/todo" "${ZDOTDIR}" "${XDG_CONFIG_HOME}/yadm"
 } | grep -v "system-config" | exists | sort -u

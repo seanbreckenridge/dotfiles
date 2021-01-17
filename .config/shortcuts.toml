@@ -10,7 +10,7 @@ command = '''
 # yadm ls-files and a couple search commands
 {
 	cd && yadm ls-files | sed "s#^#$HOME/#"
-	fd --type=file -H --full-path "${HOME}" "${XDG_CONFIG_HOME}/todo" "${ZDOTDIR}" "${XDG_CONFIG_HOME}/yadm" -E "repo.git"
+	fd --type=file -H --full-path "${HOME}" "${XDG_CONFIG_HOME}/todo" "${ZDOTDIR}" "${XDG_CONFIG_HOME}/yadm"
 } | grep -v "system-config" | exists | sort -u
 '''
 
@@ -322,26 +322,26 @@ exec convert "$FILEPATH" "$(replace-extension "$FILEPATH" png)"
 command='''
 # optimize gif
 OLD_GIF="${1:?provide gif to optimize as first argument}"
-NEW_GIF="$(remove-extension "$OLD_GIF")-opt.gif"
+NEW_GIF="$(remove-extension "${OLD_GIF}")-opt.gif"
 TMP_GIF='/tmp/optimized.gif'
-rm -rf "$TMP_GIF"
-gifsicle --colors 256 -O3 "$OLD_GIF" -o "$TMP_GIF" && cp -v "$TMP_GIF" "$NEW_GIF" || exit $?
+rm -rf "${TMP_GIF}"
+gifsicle --colors 256 -O3 "${OLD_GIF}" -o "${TMP_GIF}" && cp -v "${TMP_GIF}" "${NEW_GIF}" || exit $?
 # overwrite if specified
-[ -n "$OPTIGIF_OVERWRITE" ] && du -h "$OLD_GIF" "$NEW_GIF" && mv -v "$NEW_GIF" "$OLD_GIF"
+[ -n "${OPTIGIF_OVERWRITE}" ] && du -h "${OLD_GIF}" "${NEW_GIF}" && mv -v "${NEW_GIF}" "${OLD_GIF}"
 '''
 
 [optijpg]
 command='''
 FILE="${1:?provide jpeg to optimize as first argument}"
-exec jpegtran -copy none -optimize -outfile "$FILE" "$FILE"
+exec jpegtran -copy none -optimize -outfile "${FILE}" "${FILE}"
 '''
 
 [to-icon]
 command='''
 # convert an image to a 16x16 icon - to favicon size
 FILEPATH=${1:?Must provide image to convert}
-NEW_FILEPATH="$(remove-extension "$FILEPATH")-icon.png"
-exec convert -resize x16 -gravity center -crop 16x16+0+0 -flatten -colors 256 "$FILEPATH" "$NEW_FILEPATH"
+NEW_FILEPATH="$(remove-extension "${FILEPATH}")-icon.png"
+exec convert -resize x16 -gravity center -crop 16x16+0+0 -flatten -colors 256 "${FILEPATH}" "${NEW_FILEPATH}"
 '''
 
 [rotate-img]
@@ -389,12 +389,12 @@ command='''
 # used in vim:
 # https://exobrain.sean.fish/programming/languages/shell_tools/vim/magic_wands/
 STDIN="$(cat)"
-printf '%s' "$STDIN"
-printf '%s' "$STDIN" | clipcopy
-if [[ "$(echo "$STDIN" | wc -l)" == 1 ]]; then
-	exec notify "${APP:-'clp'}" "$(printf 'Copied to clipboard: %s' "$STDIN")"
+printf '%s' "${STDIN}"
+printf '%s' "${STDIN}" | clipcopy
+if [[ "$(echo "${STDIN}" | wc -l)" == 1 ]]; then
+	exec notify "${APP:-'clp'}" "$(printf 'Copied to clipboard: %s' "${STDIN}")"
 else
-	exec notify "${APP:-'clp'}" "$(printf 'Copied %d lines to clipboard' "$(echo "$STDIN" | wc -l)")"
+	exec notify "${APP:-'clp'}" "$(printf 'Copied %d lines to clipboard' "$(echo "${STDIN}" | wc -l)")"
 fi
 '''
 shebang="#!/bin/bash"
@@ -487,8 +487,8 @@ command="echo -n $'\033[48;2;'$1';'$2';'$3'm'"
 [vic]
 command='''
 EXECUTABLE="${1:?No Executable provided}"
-LOCATION="$(which "$EXECUTABLE")" || exit $?
-exec nvim "$LOCATION"
+LOCATION="$(which "${EXECUTABLE}")" || exit $?
+exec nvim "${LOCATION}"
 '''
 
 [grep-dotfiles]
@@ -630,7 +630,7 @@ command='exec alacritty -e tmux'
 command='''
 # shellcheck disable=SC2016
 COMMAND_STR='THIS_DIR="$(realpath "$(dirname "${BASH_SOURCE[0]}")")"'
-echo "$COMMAND_STR" | clipcopy
+echo "${COMMAND_STR}" | clipcopy
 '''
 
 [extracturls]
@@ -638,11 +638,11 @@ command='''
 # receives text from STDIN, extracts unique URLs
 # pypi.org/project/urlextract
 urls="$(urlextract | sort -u)"
-if [ -z "$urls" ]; then
+if [ -z "${urls}" ]; then
 	notify "No URLs found in text"
 	exit 1
 fi
-printf "%s\n" "$urls"
+printf "%s\n" "${urls}"
 '''
 
 [urlhandler]
@@ -650,10 +650,10 @@ command='''
 # receives text from STDIN, extracts unique URLs
 # prompts me to pick one and opens it
 urls="$(extracturls)" || exit $?
-chosen_url="$(echo "$urls" | picker -p 'Pick a URL to open > ')"
-if [ -n "$chosen_url" ]; then
-	echo "$chosen_url" | clipcopy
-	openurl "$chosen_url"
+chosen_url="$(echo "${urls}" | picker -p 'Pick a URL to open > ')"
+if [ -n "${chosen_url}" ]; then
+	echo "${chosen_url}" | clipcopy
+	openurl "${chosen_url}"
 fi
 '''
 
@@ -664,12 +664,12 @@ command='exec ssh-keygen -t rsa -b 4096 -o -a 100'
 command='''
 # https://github.com/seanbreckenridge/oh-my-stars
 PICKED="$(mystars "$@" | fzf --ansi)" || exit $?
-printf '%s\n' "$PICKED"
-URL="$(echo "$PICKED" | urlextract)"
+printf '%s\n' "${PICKED}"
+URL="$(echo "${PICKED}" | urlextract)"
 # if a URL was extracted, open it
-[[ -n "$URL" ]] && {
-	printf '%s' "$URL" | clipcopy
-	printf '%s\n' "$URL"
+[[ -n "${URL}" ]] && {
+	printf '%s' "${URL}" | clipcopy
+	printf '%s\n' "${URL}"
 }
 '''
 shebang="#!/bin/bash"
@@ -688,10 +688,10 @@ exec "$@"
 command='''
 # get location of binary, installed with go
 # https://github.com/akavel/up
-BIN="$(where up | grep "$GOBIN")"
+BIN="$(where up | grep "${GOBIN}" -m1)"
 TERM=xterm "$BIN" --no-colors "$@"
 '''
-shebang="#!/bin/zsh"
+shebang="#!/bin/zsh -u"
 
 [up-live]
 command='''
@@ -707,7 +707,7 @@ twitchlive -output-format json | jq -r '.[] | .username' | picker -p "who to wat
 [reshortcuts]
 command='''
 cd || exit $?
-[ -n "$SHORTCUTS_DIR" ] && [ -d "$SHORTCUTS_DIR" ] && rm -rf "$SHORTCUTS_DIR"
+[ -n "${SHORTCUTS_DIR}" ] && [ -d "${SHORTCUTS_DIR}" ] && rm -rf "${SHORTCUTS_DIR}"
 exec shortcuts create
 '''
 
