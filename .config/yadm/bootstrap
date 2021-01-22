@@ -270,7 +270,6 @@ install_shell_script shortcuts 'https://raw.githubusercontent.com/seanbreckenrid
 install_shell_script pmark 'https://raw.githubusercontent.com/seanbreckenridge/pmark/master/pmark'
 set +e
 
-havecmd shortcuts
 havecmd shortcuts && printf "Created %d shortcuts\n" "$(shortcuts create | wc -l)"
 
 [[ ! -e "${HOME}/.tmux.conf" ]] && ln "${HOME}/.config/tmux.conf" "${HOME}/.tmux.conf"

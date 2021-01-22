@@ -6,7 +6,7 @@ alias cm='cd "${PLAINTEXT_PLAYLIST_MUSIC_DIR}"'
 alias play='plainplay'
 alias pplay='plainplay play'
 alias splay='plainplay shuffle'
-alias splayall='plainplay shuffleall "$(plainplay playlistdir)"/*'
+alias splayall='fd . "$PLAINTEXT_PLAYLIST_PLAYLISTS" -X plainplay shuffleall'
 alias playrg='cm; plainplay listall "$(plainplay playlistdir)"/* | rg -i'
 # play all paths that match whatever I pass as positional arguments
 playrg-() {
