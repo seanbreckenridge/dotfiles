@@ -71,6 +71,7 @@ __pycache__
 /.oracle_jre_usage/
 /.keras
 /.mozilla
+/.vscode-oss/
 /.minecraft
 /.lldb
 /.solargraph
@@ -117,6 +118,7 @@ __pycache__
 /.todo
 !.config/todo/config
 /.config/rncbc.org
+/.config/Code - OSS/
 /.config/sonic-pi.net/
 /.config/GIMP
 /.config/godot/
@@ -139,6 +141,7 @@ __pycache__
 /.config/snes9x
 /.config/coc/extensions/node_modules
 /.config/coc/list-lists-history.json
+/.config/coc/commands
 /.config/coc/lists
 /.config/coc/list-location-history.json
 /.config/coc/extensions/*
