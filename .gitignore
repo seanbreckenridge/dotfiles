@@ -117,6 +117,9 @@ __pycache__
 /.config/todo/*
 /.todo
 !.config/todo/config
+/.config/bookmark.txt/*
+/.todo
+!.config/bookmark.txt/config
 /.config/rncbc.org
 /.config/Code - OSS/
 /.config/sonic-pi.net/
