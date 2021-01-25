@@ -453,11 +453,10 @@ link="draglastpic"
 [urlpic]
 command='''
 # preview a picture from a URL
-rm -rf /tmp/urlpic
-mkdir -p /tmp/urlpic && cd /tmp/urlpic || exit 1
+TMPDIR="$(mktemp -p /tmp -d urlpic-XXXXXX)"
 URL="${1:-$(clippaste)}"
-wget -q "${URL}"
-exec sxiv -a "$(newest)"
+wget -q -P "${TMPDIR}" "${URL}"
+exec sxiv -a "$(newest "${TMPDIR}")"
 '''
 links = ["previewurlpic", "urlpicpreview"]
 
