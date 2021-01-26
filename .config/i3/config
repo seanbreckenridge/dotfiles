@@ -85,7 +85,6 @@ bindsym $mod+t exec --no-startup-id todo-prompt list
 bindsym $mod+Shift+t exec --no-startup-id todo-prompt add
 
 # bookmark list - add/open with rofi
-bindsym $alt+Shift+b exec --no-startup-id bookmark-open
 bindsym $mod+b exec --no-startup-id todo-prompt bookmark list
 bindsym $mod+Shift+b exec --no-startup-id todo-prompt bookmark add
 
@@ -125,7 +124,7 @@ bindsym $mod+Shift+c exec --no-startup-id clipreset
 # mpv commands
 # https://github.com/seanbreckenridge/mpv-sockets.git
 bindsym $mod+XF86AudioMute exec --no-startup-id mpv-play-pause
-bindsym $mod+XF86AudioMicMute exec --no-startup-id ttt mpv-next-song
+bindsym $mod+XF86AudioMicMute exec --no-startup-id mpv-next-song
 bindsym $mod+Shift+XF86AudioMute exec --no-startup-id mpv-quit-latest
 
 # on 'volume up', move forward in the file
@@ -270,6 +269,7 @@ mode "launcher" {
     bindsym d exec --no-startup-id ttt discord; mode "default"
     bindsym s exec --no-startup-id ttt slack; mode "default"
     bindsym k exec --no-startup-id ttt keepassxc; mode "default"
+    bindsym b exec --no-startup-id ttt bookmark-open; mode "default"
     bindsym r exec --no-startup-id ttt launch ranger; mode "default"
     bindsym c exec --no-startup-id ttt launch calcurse; mode "default"
     bindsym n exec --no-startup-id ttt launch newsboat-force; mode "default"
