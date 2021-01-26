@@ -84,6 +84,11 @@ bindsym XF86AudioMicMute exec --no-startup-id volume micmute
 bindsym $mod+t exec --no-startup-id todo-prompt list
 bindsym $mod+Shift+t exec --no-startup-id todo-prompt add
 
+# bookmark list - add/open with rofi
+bindsym $alt+Shift+b exec --no-startup-id bookmark-open
+bindsym $mod+b exec --no-startup-id todo-prompt bookmark list
+bindsym $mod+Shift+b exec --no-startup-id todo-prompt bookmark add
+
 # Refresh i3blocks icons when certain files change
 exec --no-startup-id echo "${HOME}/.config/todo/todo.txt" | entr pkill -RTMIN+2 i3blocks
 exec --no-startup-id echo "${HOME}/.cache/rss-unread" | entr pkill -RTMIN+3 i3blocks
@@ -226,8 +231,8 @@ bindsym $mod+Shift+9 move container to workspace number "9"
 bindsym $mod+Shift+0 move container to workspace number "10"
 
 workspace_auto_back_and_forth yes
-bindsym $mod+b workspace back_and_forth
-bindsym $mod+Shift+b move container to workspace back_and_forth; workspace back_and_forth
+#bindsym $mod+b workspace back_and_forth
+#bindsym $mod+Shift+b move container to workspace back_and_forth; workspace back_and_forth
 
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart

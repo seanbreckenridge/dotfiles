@@ -1,0 +1,10 @@
+#!/bin/sh
+# allow me to open a URL from https://github.com/seanbreckenridge/bookmark.txt
+
+tmpfile="$(mktemp /tmp/prompt-entry.XXXXX)"
+trap 'rm "$tmpfile"' 0 1 15
+bookmark -p list | head -n -2 >"${tmpfile}"
+ENTRY_CHOICE=$(picker -p "Open which bookmark? > " <"${tmpfile}")
+URL="$(echo "${ENTRY_CHOICE}" | urlextract | head -n 1)"
+[ -z "${URL}" ] && exit 1
+openurl "${URL}"
