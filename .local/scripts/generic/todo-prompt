@@ -9,27 +9,25 @@ if [ "$1" = 'bookmark' ]; then
 	cmd="$1"
 	shift
 fi
+display_cmd="${cmd%%.*}"
 
 prompt_entries() {
-	tmpfile="$(mktemp /tmp/prompt-entry.XXXXX)"
-	trap 'rm "$tmpfile"' 0 1 15
-	"${cmd}" -p list | head -n -2 >"${tmpfile}"
-	ENTRY_CHOICE=$(picker -p "Mark which as done? > " <"${tmpfile}")
+	ENTRY_CHOICE="$("${cmd}" -p list | head -n -2 | picker -p "[${display_cmd}] Mark which as done? > ")"
 	if [ -n "${ENTRY_CHOICE}" ]; then
-		CONFIRM="$(printf 'yes\nno\n' | picker -p "Mark this as done: ${ENTRY_CHOICE}")"
+		CONFIRM="$(printf 'yes\nno\n' | picker -p "[${display_cmd}] Mark this as done: ${ENTRY_CHOICE}")"
 		if [ "${CONFIRM}" = "yes" ]; then
-			ENTRY_NUM=$(echo "${ENTRY_CHOICE}" | cut -d" " -f1)
+			ENTRY_NUM="$(echo "${ENTRY_CHOICE}" | cut -d" " -f1)"
 			# shellcheck disable=SC1010
-			notify "Completed:" "$("${cmd}" -p do "${ENTRY_NUM}")"
+			notify "[${display_cmd}] Completed:" "$("${cmd}" -p do "${ENTRY_NUM}")"
 		fi
 	fi
 }
 
 # give the user a dialog to add a new entry
 add_entry() {
-	NEW_ENTRY="$(input-dialog "Add > ")"
+	NEW_ENTRY="$(input-dialog "[${display_cmd}] Add > ")"
 	if [ -n "${NEW_ENTRY}" ]; then
-		notify "Added:" "$("${cmd}" -p add "${NEW_ENTRY}")"
+		notify "[${display_cmd}] Added:" "$("${cmd}" -p add "${NEW_ENTRY}")"
 	fi
 }
 
