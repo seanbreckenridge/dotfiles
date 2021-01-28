@@ -18,7 +18,7 @@ setopt HIST_IGNORE_SPACE  # ignore lines that start with space
 setopt HIST_NO_STORE      # Do not add history and fc commands to the history
 setopt EXTENDED_HISTORY   # save time/duration to history file
 
-export CDPATH="${REPOS}"
+export CDPATH=".:${REPOS}"
 
 # Set environment variables to change default cache/config file locations
 
