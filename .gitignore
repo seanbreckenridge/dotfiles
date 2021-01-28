@@ -50,6 +50,8 @@ __pycache__
 /.vim
 /.scala_history*
 /.clojure_history
+/.aws
+/.cdk
 /.python_history
 /.gnome/apps/chrome-*
 /.mupdf.history
