@@ -60,6 +60,7 @@ lua
 lua-format
 mariadb
 mypy
+nvm
 npm
 ocaml
 perl

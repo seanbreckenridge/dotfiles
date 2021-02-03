@@ -71,6 +71,7 @@ __pycache__
 /.gem
 /.cache
 /.oracle_jre_usage/
+/.nvm
 /.keras
 /.mozilla
 /.vscode-oss/
