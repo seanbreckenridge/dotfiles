@@ -7,6 +7,7 @@ fuck() {
 }
 
 nvm() {
-	NPM_CONFIG_PREFIX= source_if_exists /usr/share/nvm/init-nvm.sh && alias nvm='NPM_CONFIG_PREFIX= nvm'
+	unset NPM_CONFIG_PREFIX
+	source_if_exists /usr/share/nvm/init-nvm.sh
 	nvm "$@"
 }
