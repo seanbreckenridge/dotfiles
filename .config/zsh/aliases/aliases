@@ -66,10 +66,13 @@ alias rr='rifle'
 alias clr=calories
 alias optipng='optipng -o7'
 alias free='free -h'
-alias rt='rotten search' # rotten tomatoes
 alias todo='todo.sh'
 alias sz='mystarsfzf'
 alias rnm='sudo systemctl restart NetworkManager' # restart networkmanager
+rt() {
+	# rotten tomatoes
+	rotten search "$*"
+}
 
 # Non-standard
 alias syserrors='sudo journalctl -p 3 -xb'
