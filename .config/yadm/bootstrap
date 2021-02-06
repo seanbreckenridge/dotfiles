@@ -136,6 +136,8 @@ if grep -q 'npm-packages' <<<"$NPM_LOC"; then
 	done < <(spkglist "${NODE_PACKAGE_LIST}")
 else
 	printf "NPM path not where expected (%s), skipping package install...\n" "$NPM_LOC"
+	# incase this is the first time this has happened, update npm globally so it gets put into "$NPM_CONFIG_PREFIX"
+	npm install --global npm
 fi
 
 havecmd gem || exit $?
