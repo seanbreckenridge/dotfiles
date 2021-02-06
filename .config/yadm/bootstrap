@@ -120,7 +120,7 @@ HAVECMD_REPORT='' havecmd speedtest-cli && rm "$(command -v speedtest-cli)"
 
 havecmd npm || exit $?
 # install npm packages
-NPM_CONFIG_PREFIX="${XDG_DATA_HOME}/npm-packages"
+export NPM_CONFIG_PREFIX="${XDG_DATA_HOME}/npm-packages"
 echo "Installing global npm packages..."
 # create the npm directory and make sure we own the directory to fix permission issues
 [[ ! -d "${NPM_CONFIG_PREFIX}" ]] && mkdir -p "${NPM_CONFIG_PREFIX}" && sudo chown -R "$(whoami)" "${NPM_CONFIG_PREFIX}"

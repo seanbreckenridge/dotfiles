@@ -26,7 +26,7 @@ function update() {
 	pip install -U -r "${XDG_CONFIG_HOME}/yadm/package_lists/python3_packages.txt"
 	update-python-packages
 	echo "Updating global npm packages..."
-	npm update -g
+	[[ -n "$NPM_CONFIG_PREFIX" ]] && npm update -g
 	echo "Updating global cargo packages..."
 	cargo install-update -a
 	echo "Updating global go packages..."

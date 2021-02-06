@@ -18,6 +18,7 @@ html-minifier
 
 # web tools/packages
 serve
+vercel
 
 # other tools
 moby
