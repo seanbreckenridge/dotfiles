@@ -122,16 +122,21 @@ havecmd npm || exit $?
 # install npm packages
 export NPM_CONFIG_PREFIX="${XDG_DATA_HOME}/npm-packages"
 echo "Installing global npm packages..."
-# create the npm directory and make sure we own the directory to fix permission issues
-[[ ! -d "${NPM_CONFIG_PREFIX}" ]] && mkdir -p "${NPM_CONFIG_PREFIX}" && sudo chown -R "$(whoami)" "${NPM_CONFIG_PREFIX}"
-# get a list of installed packages
-NPM_PACKAGE_LIST="$(npm ls -g --json | jq '.dependencies | keys[]' -r)"
-while read -r npkg; do
-	if ! grep -q "^${npkg}$" <<<"${NPM_PACKAGE_LIST}"; then
-		printf "Installing %s\n" "$npkg"
-		npm install --global "${npkg}"
-	fi
-done < <(spkglist "${NODE_PACKAGE_LIST}")
+NPM_LOC="$(command -v npm)"
+if grep -q 'npm-packages' <<<"$NPM_LOC"; then
+	# create the npm directory and make sure we own the directory to fix permission issues
+	[[ ! -d "${NPM_CONFIG_PREFIX}" ]] && mkdir -p "${NPM_CONFIG_PREFIX}" && sudo chown -R "$(whoami)" "${NPM_CONFIG_PREFIX}"
+	# get a list of installed packages
+	NPM_PACKAGE_LIST="$(npm ls -g --json | jq '.dependencies | keys[]' -r)"
+	while read -r npkg; do
+		if ! grep -q "^${npkg}$" <<<"${NPM_PACKAGE_LIST}"; then
+			printf "Installing %s\n" "$npkg"
+			npm install --global "${npkg}"
+		fi
+	done < <(spkglist "${NODE_PACKAGE_LIST}")
+else
+	printf "NPM path not where expected (%s), skipping package install...\n" "$NPM_LOC"
+fi
 
 havecmd gem || exit $?
 echo "Installing global ruby packages..."
