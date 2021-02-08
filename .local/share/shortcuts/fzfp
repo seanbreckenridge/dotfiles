@@ -1,0 +1,2 @@
+#!/bin/sh
+fzf --preview="${HOME}/.config/fzf_preview {}
