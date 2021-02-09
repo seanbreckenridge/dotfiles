@@ -2,8 +2,8 @@
 # converts a string to a qr code and displays it full screen
 # if no URL is passed as the first argument, reads from STDIN
 
-INPUT="${1:-$(cat)}" # if no URL was passed, read from STDIN
-TEMP="$(mktemp -p /tmp -d 'qr-XXXX')/img.png"  # temporary dir
+INPUT="${1:-$(cat)}"                          # if no URL was passed, read from STDIN
+TEMP="$(mktemp -p /tmp -d 'qr-XXXX')/img.png" # temporary dir
 
 qrencode "${INPUT}" -o "${TEMP}" || exit $?
 exec feh -Z "${TEMP}"
