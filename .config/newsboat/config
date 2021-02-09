@@ -6,6 +6,7 @@ reload-time 30
 reload-threads 4
 show-read-articles yes
 show-read-feeds yes
+scrolloff 10
 download-path "~/Downloads"
 
 # navigation bindings
