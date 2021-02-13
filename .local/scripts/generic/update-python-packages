@@ -16,7 +16,7 @@ sys.exit(0)
 
 packages = [dist.project_name for dist in pkg_resources.working_set]
 call(
-    "python3 -m pip install --user --use-feature=2020-resolver --upgrade {} | sed 's/^Requirement already up-to-date/Up to date/'".format(
+    "python3 -m pip install --user --upgrade {} | sed 's/^Requirement already up-to-date/Up to date/'".format(
         " ".join(packages)
     ),
     shell=True,
