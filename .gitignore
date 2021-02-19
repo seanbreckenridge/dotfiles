@@ -14,6 +14,7 @@ Brewfile.lock.json
 personal_aliases
 secrets
 .zsh_history
+.zsh_sessions
 .zcompdump*
 .zshrc.zwc
 directory_aliases
@@ -55,6 +56,7 @@ __pycache__
 /.python_history
 /.gnome/apps/chrome-*
 /.mupdf.history
+/.cups
 /.sonic-pi
 /.sc-iminfo
 /.weechat
