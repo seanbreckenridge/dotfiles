@@ -96,7 +96,6 @@ brew 'bat'
 brew 'boxes'
 brew 'chafa'
 brew 'datamash'
-brew 'ctags'
 brew 'entr'
 brew 'fd'
 brew 'highlight'
@@ -132,7 +131,6 @@ cask 'alacritty'      # fastest terminal on the block
 cask 'chromedriver'   # for webscraping
 cask 'mysqlworkbench' # easy mysql interface
 cask 'adoptopenjdk8'  # java
-cask 'discord'        # for the memes
 cask 'slack'          # for people who dont know the memes
 cask 'zoomus'         # for stupid video confrencing
 cask 'steam'          # video games
@@ -143,10 +141,8 @@ cask 'daisydisk'             # visualizes volumes
 cask 'balenaetcher'          # for USB boot drive creation
 cask 'keepassxc'             # password manager
 cask 'db-browser-for-sqlite' # sqlite3 GUI
-cask 'megasync'              # mega.nz
 cask 'soundflower'           # audio redirection
 cask 'cyberduck'             # file transfers
-cask 'amethyst'              # tiling
 
 ## Browsers
 cask 'google-chrome'
