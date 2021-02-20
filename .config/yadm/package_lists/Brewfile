@@ -109,7 +109,6 @@ brew 'pandoc'
 brew 'pastel'
 brew 'exiftool'
 brew 'qrencode'
-brew 'ranger'
 brew 'ripgrep'
 brew 'sc-im'
 brew 'socat'
@@ -131,8 +130,8 @@ cask 'alacritty'      # fastest terminal on the block
 cask 'chromedriver'   # for webscraping
 cask 'mysqlworkbench' # easy mysql interface
 cask 'adoptopenjdk8'  # java
-cask 'slack'          # for people who dont know the memes
 cask 'zoom'         # for stupid video confrencing
+cask 'microsoft-teams'
 cask 'steam'          # video games
 cask 'gimp'           # image editing
 cask 'mpv'            # media player
@@ -152,3 +151,6 @@ cask 'tor-browser'
 ## Games
 cask 'minecraft'
 cask 'openemu'
+
+# Mac App Store installations
+mas 'Microsoft Outlook', id: 985367838

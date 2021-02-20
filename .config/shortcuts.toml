@@ -149,7 +149,7 @@ fi
 '''
 
 [genpass]
-shebang = "#!/bin/bash"  # to make sure echo flags work
+shebang = "#!/usr/bin/env bash"
 command ='''
 # generates a password and puts it on your clipboard
 # uses https://github.com/seanbreckenridge/genpasswd
@@ -157,13 +157,10 @@ if ! pw=$(genpasswd "$@"); then
 	echo "$pw" >&2
 	exit 1
 fi
-pw=$(head -n 1 <<<"$pw")
-if [[ "$(tty)" == "not a tty" ]]; then
-	# send notification and copy to clipboard
-	clp <<<"${pw}"
-else
-	echo -e "$pw"
-fi
+pw="$(head -n 1 <<<"$pw")"
+# send notification and copy to clipboard
+clp <<<"${pw}"
+printf '\n'
 '''
 
 # confirm this is ignoring the correct files by running:
@@ -191,7 +188,7 @@ list-music | shuf | mpv --playlist=- --no-audio-display
 command='''
 # uploads the most recent screenshot from
 # ~/Pictures/Screenshots to imgur
-FILENAME="$(newest "${SCREENSHOTS:?No SCREENSHOTS environment variable set}")" || exit 1
+FILENAME="$(lastpic)" || exit 1
 notify "Uploading imgur..."
 imgur-uploader "$FILENAME"
 IMGUR_URL="$(clippaste)"
@@ -440,10 +437,24 @@ echo "$(upper <<<"${s:0:1}")${s:1}"
 """
 
 [lastpic]
-command='exec newest "${SCREENSHOTS:?No SCREENSHOTS environment variable set}"'
+shebang = "#!/usr/bin/env bash"
+command='''
+if [[ -n "${ONLINUX}" ]]; then
+	exec newest "${SCREENSHOTS:?No SCREENSHOTS environment variable set}"
+else
+	# on mac, these are saved to the ~/Desktop
+	find "${HOME}/Desktop" -iname 'screen shot*' | tail -n1 || exit $?
+fi
+'''
 
 [previewlastpic]
-command='lastpic | sxiv - || exit 1'
+command='''
+if [ -n "${ONLINUX}" ]; then
+	lastpic | sxiv - || exit 1  # linux
+else
+	exec open -a Preview "$(lastpic)"  # mac
+fi
+'''
 link="lastpicpreview"
 
 [lastpicdrag]

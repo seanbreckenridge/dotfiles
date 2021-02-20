@@ -61,6 +61,7 @@ python-language-server
 python-mpv-jsonipc
 python-rofi
 pyupload
+ranger-fm
 requests
 rifleman
 rsa

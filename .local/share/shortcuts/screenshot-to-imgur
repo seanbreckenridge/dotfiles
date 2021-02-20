@@ -1,7 +1,7 @@
 #!/bin/sh
 # uploads the most recent screenshot from
 # ~/Pictures/Screenshots to imgur
-FILENAME="$(newest "${SCREENSHOTS:?No SCREENSHOTS environment variable set}")" || exit 1
+FILENAME="$(lastpic)" || exit 1
 notify "Uploading imgur..."
 imgur-uploader "$FILENAME"
 IMGUR_URL="$(clippaste)"

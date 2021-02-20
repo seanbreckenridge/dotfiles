@@ -1,2 +1,6 @@
 #!/bin/sh
-lastpic | sxiv - || exit 1
+if [ -n "${ONLINUX}" ]; then
+	lastpic | sxiv - || exit 1  # linux
+else
+	exec open -a Preview "$(lastpic)"  # mac
+fi
