@@ -202,6 +202,7 @@ __pycache__
 
 /.local/lib/python*
 /.local/man
+/.local/*.md
 /.local/pipx
 /.local/plugged/*
 /.local/state
