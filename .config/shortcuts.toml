@@ -732,3 +732,10 @@ moby "${word}" | grep ',' | sed 's/,/\n/g' | chomp
 
 [fzfp]
 command = 'fzf --preview="${HOME}/.config/fzf_preview {} "$@"'
+
+[largechar-clipboard]
+command='''
+CONTENTS="$(clippaste)"
+[ -z "${CONTENTS}" ] && exit 1
+printf '%s' "${CONTENTS}" | largechar -c
+'''
