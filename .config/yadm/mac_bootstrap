@@ -48,7 +48,7 @@ havecmd brew || /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Hom
 # sanity check to make sure brew is configured
 havecmd brew || exit 1
 
-brew install golang
+havecmd go || brew install golang
 install_spkglist
 go get -u github.com/odeke-em/drive/cmd/drive
 set +e

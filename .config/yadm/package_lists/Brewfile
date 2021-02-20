@@ -56,7 +56,6 @@ brew 'readline'
 brew 'trash'
 brew 'mas'
 brew 'tree'
-brew 'unrar'
 brew 'wget'
 brew 'yarn'
 brew 'tmux'
@@ -129,7 +128,7 @@ cask 'alfred'         # spotlight replacement
 cask 'alacritty'      # fastest terminal on the block
 cask 'chromedriver'   # for webscraping
 cask 'mysqlworkbench' # easy mysql interface
-cask 'adoptopenjdk8'  # java
+cask 'adoptopenjdk/openjdk/adoptopenjdk8'  # java
 cask 'zoom'         # for stupid video confrencing
 cask 'microsoft-teams'
 cask 'steam'          # video games
@@ -140,7 +139,6 @@ cask 'daisydisk'             # visualizes volumes
 cask 'balenaetcher'          # for USB boot drive creation
 cask 'keepassxc'             # password manager
 cask 'db-browser-for-sqlite' # sqlite3 GUI
-cask 'soundflower'           # audio redirection
 cask 'cyberduck'             # file transfers
 
 ## Browsers
