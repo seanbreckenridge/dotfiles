@@ -180,6 +180,7 @@ socat
 sshpass
 strace
 sxiv
+syncthing
 task-spooler
 texlive-bin
 texlive-core

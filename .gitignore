@@ -159,6 +159,7 @@ __pycache__
 /.config/coc/memos.json
 /.config/coc/mru
 /.config/filezilla
+/.config/syncthing
 /.config/3T
 /.config/twitchlive
 /.config/imgur_uploader
