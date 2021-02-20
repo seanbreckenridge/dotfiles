@@ -23,7 +23,7 @@ function update() {
 	echo "Updating ruby packages..."
 	gem update
 	echo "Updating python packages..."
-	pip install -U -r "${XDG_CONFIG_HOME}/yadm/package_lists/python3_packages.txt"
+	pip install --user -U -r "${XDG_CONFIG_HOME}/yadm/package_lists/python3_packages.txt"
 	update-python-packages
 	echo "Updating global npm packages..."
 	# make sure npm path hasnt been mangled by nvm
