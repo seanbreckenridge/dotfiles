@@ -20,6 +20,11 @@ except ImportError:
 
 
 class core:
+    # allow me to select a 'profile', so that computers can have
+    # distinct filenames for similar usage
+    # I set the ONLINUX environment variable when I'm on linux, but
+    # this profile could be any string, to uniquely identify a computer
+    profile: Optional[str] = "" if "ONLINUX" in environ else "mac"
     cache_dir: PathIsh = "/tmp/cachew"
     enabled_modules: Sequence[PathIsh] = []
     disabled_modules: Sequence[PathIsh] = [
