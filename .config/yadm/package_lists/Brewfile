@@ -132,7 +132,7 @@ cask 'chromedriver'   # for webscraping
 cask 'mysqlworkbench' # easy mysql interface
 cask 'adoptopenjdk8'  # java
 cask 'slack'          # for people who dont know the memes
-cask 'zoomus'         # for stupid video confrencing
+cask 'zoom'         # for stupid video confrencing
 cask 'steam'          # video games
 cask 'gimp'           # image editing
 cask 'mpv'            # media player
