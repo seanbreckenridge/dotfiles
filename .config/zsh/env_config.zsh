@@ -92,6 +92,9 @@ export PLAINTEXT_PLAYLIST_PLAYLISTS="${XDG_DATA_HOME:-$HOME/.local/share}/plaint
 # https://github.com/seanbreckenridge/url_metadata
 export URL_METADATA_DIR="${HOME}/data/url_metadata"
 
+# https://github.com/seanbreckenridge/HPI
+export MY_CONFIG="${XDG_CONFIG_HOME}/my"
+
 # ignore less history
 export LESSHISTFILE='-'
 
