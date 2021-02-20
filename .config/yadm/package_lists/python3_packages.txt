@@ -69,6 +69,7 @@ scipy
 selenium
 setuptools
 speedtest-cli
+supervisor
 termcolor
 termdown
 termgraph

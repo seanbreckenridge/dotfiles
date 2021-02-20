@@ -140,6 +140,12 @@ else
 	npm install --global npm
 fi
 
+echo 'Installing coc extensions...'
+COC_NPM_DIR="${HOME}/.config/coc/extensions/"
+havecmd npm && [[ -e "${COC_NPM_DIR}" ]] && {
+	(cd "${COC_NPM_DIR}" && npm install)
+}
+
 havecmd gem || exit $?
 echo "Installing global ruby packages..."
 RUBY_GEMS_LIST="$(gem list | cut -d' ' -f1)"
