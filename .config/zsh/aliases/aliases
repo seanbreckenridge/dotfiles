@@ -68,6 +68,7 @@ alias optipng='optipng -o7'
 alias free='free -h'
 alias todo='todo.sh'
 alias sz='mystarsfzf'
+alias super='"${HOME}/.local/scripts/supervisor/super"'
 alias rnm='sudo systemctl restart NetworkManager' # restart networkmanager
 rt() {
 	# rotten tomatoes

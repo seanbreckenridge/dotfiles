@@ -1,0 +1,44 @@
+#!/usr/bin/env bash
+# A wrapper script for supervisord/supervisorctl
+# which does setup before running supervisor
+
+# source application environment variables
+CUR_DIR="$(realpath "$(dirname "${BASH_SOURCE[0]}")")"
+export CUR_DIR
+
+SUPERVISOR_LOGS='/tmp/supervisor'
+mkdir -p "${SUPERVISOR_LOGS}"
+
+function run_super() {
+	case "$1" in
+	--kill)
+		if pgrep -x supervisord >/dev/null 2>&1; then
+			run_super --ctl "stop all"
+			tail "$SUPERVISOR_LOGS"/*.log
+			pkill -x supervisord
+		else
+			echo "No supervisord process running..." 1>&2
+			exit 1
+		fi
+		;;
+	--daemon)
+		supervisord --configuration="${CUR_DIR}/supervisord.conf"
+		;;
+	--foreground)
+		# run supervisor
+		supervisord --configuration="${CUR_DIR}/supervisord.conf" -n
+		;;
+	--ctl)
+		shift # remove '--ctl' from arg list
+		supervisorctl --configuration="${CUR_DIR}/supervisord.conf" "$@"
+		;;
+	-h | --help | *)
+		# parse this case statement to get the choices
+		SPECIFY_CHOIES="$(grep -P '^\s*--\w+\)\s*$' "${BASH_SOURCE[0]}" | tr -d '[ )\t]')"
+		printf "Must specify one of:\n%s\n" "$SPECIFY_CHOIES" 1>&2
+		exit 1
+		;;
+	esac
+}
+
+run_super "$@"
