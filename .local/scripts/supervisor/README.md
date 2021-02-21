@@ -19,4 +19,3 @@ linux_tasks                      RUNNING   pid 99234, uptime 0:30:10
 mpv_history_daemon_watcher       RUNNING   pid 99235, uptime 0:30:10
 window_watcher                   RUNNING   pid 99236, uptime 0:30:10
 ```
-

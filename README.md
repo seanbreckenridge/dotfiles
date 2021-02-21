@@ -2,13 +2,13 @@
 
 See [this](https://exobrain.sean.fish/tools/) page for a summary of how I use this.
 
-On mac:
+This was originally linux-only, but over the months and years I've added a compatibility layer of sorts on mac:
 
 * window management/keyboard shortcuts
   * Uses [`skhd`](https://github.com/koekeishiya/skhd) as a hot-key daemon to run applications (e.g. `cmd + opt + enter` launches terminal)
-  * `alfred` as a application launcher
+  * [`alfred`](https://www.alfredapp.com/) as a application launcher
 * OS-specific bootstrap files in [`~/.config/yadm`](.config/yadm) that check whether I'm on mac/linux, to decide what sort of install(`yay`/`brew`)/which packages to install.
-* `$PATH` is set properly in `zsh`/`X server` startup, update (`zsh` function) respects the OS and updates packages properly.
+* `$PATH` is set properly in `zsh`/`X server` startup, [update](.config/zsh/functions/update) (`zsh` function) respects the OS and updates packages properly.
 * Wrapper scripts in [`~/.local/scripts/cross-platform`](.local/scripts/cross-platform) detect platform to send notifications, interact with clipboard, prompt user for input etc...
 
 On Arch:
