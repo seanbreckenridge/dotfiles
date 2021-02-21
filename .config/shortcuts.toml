@@ -43,12 +43,6 @@ cd "${HOME}/.local/share/yadm/repo.git" || exit 1
 exec gitopen
 '''
 
-[dotfiles-github]
-command='''
-cd "${HOME}/.local/share/yadm/repo.git" || exit 1
-exec githubopen
-'''
-
 [i3binds]
 command='''
 # print i3 bindings

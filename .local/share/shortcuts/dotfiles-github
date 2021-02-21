@@ -1,3 +1,0 @@
-#!/bin/sh
-cd "${HOME}/.local/share/yadm/repo.git" || exit 1
-exec githubopen
