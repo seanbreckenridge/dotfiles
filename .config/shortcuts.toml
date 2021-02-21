@@ -143,7 +143,7 @@ fi
 '''
 
 [genpass]
-shebang = "#!/usr/bin/env bash"
+shebang = "#!/bin/bash"
 command ='''
 # generates a password and puts it on your clipboard
 # uses https://github.com/seanbreckenridge/genpasswd
@@ -431,7 +431,7 @@ echo "$(upper <<<"${s:0:1}")${s:1}"
 """
 
 [lastpic]
-shebang = "#!/usr/bin/env bash"
+shebang = "#!/bin/bash"
 command='''
 if [[ -n "${ONLINUX}" ]]; then
 	exec newest "${SCREENSHOTS:?No SCREENSHOTS environment variable set}"
