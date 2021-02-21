@@ -2,6 +2,8 @@
 # For whatever reason, my mpv daemon stops working after running
 # continiously for a few days. This restarts it every so often
 # when its not being used for anything
+# See https://github.com/seanbreckenridge/mpv-sockets/blob/master/DAEMON.md
+# for more info on the daemon
 
 DAEMON_PID=''
 
