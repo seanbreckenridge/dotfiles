@@ -2,17 +2,16 @@
 
 See [this](https://exobrain.sean.fish/tools/) page for a summary of how I use this.
 
-Majority of cross platform functionality is done, keep finding small improvements/mac alternatives to improve scripts. I use mac less so I have yet to configure it to all of my likings; I primarily use linux, and run a couple apps as a compatibility layer on mac:
+On mac:
 
 * window management/keyboard shortcuts
   * Uses [`skhd`](https://github.com/koekeishiya/skhd) as a hot-key daemon to run applications (e.g. `cmd + opt + enter` launches terminal)
-  * [`amethyst`](https://github.com/ianyh/Amethyst) to auto-tile windows a la xmonad
   * `alfred` as a application launcher
 * OS-specific bootstrap files in [`~/.config/yadm`](.config/yadm) that check whether I'm on mac/linux, to decide what sort of install(`yay`/`brew`)/which packages to install.
 * `$PATH` is set properly in `zsh`/`X server` startup, update (`zsh` function) respects the OS and updates packages properly.
 * Wrapper scripts in [`~/.local/scripts/cross-platform`](.local/scripts/cross-platform) detect platform to send notifications, interact with clipboard, prompt user for input etc...
 
-The rest of the README is for what I use on arch:
+On Arch:
 
 - [`zsh`](http://zsh.sourceforge.net/), plugins/configuration handled manually in [`.config/zsh`](.config/zsh) (split across multiple files)
 - [`i3-gaps`](https://github.com/Airblader/i3) - window manager
@@ -28,6 +27,8 @@ The rest of the README is for what I use on arch:
 - [`ranger`](https://github.com/ranger/ranger) - file manager
 - [`picom`](https://github.com/yshui/picom) for window compositing
 - [`i3blocks`](https://github.com/vivien/i3blocks) for status bar
+
+[`.local/scripts/supervisor`](.local/scripts/supervisor) has scripts/a config file for [`supervisor`](https://github.com/Supervisor/supervisor), so I dont have to write plists or systemd scripts, and background processes work on both mac and linux. That uses [`bgproc`](https://github.com/seanbreckenridge/bgproc) as an anacron replacement.
 
 [`ttt`](https://github.com/seanbreckenridge/ttt/) is sprinkled throughout lots of my scripts, it acts as an extension to my shell history, saving commands from `i3` `bindsym`s, or `ranger` commands.
 

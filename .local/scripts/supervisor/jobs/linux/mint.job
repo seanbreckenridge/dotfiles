@@ -1,0 +1,18 @@
+#!/bin/bash
+# updates my banking account/transactions
+# https://github.com/seanbreckenridge/mint
+
+MINTLOG='/tmp/mint.log'
+
+update_mintable() {
+	readonly MINT_REPO="${REPOS}/mint"
+	readonly UPDATE_MINT="${MINT_REPO}/mint"
+	"$UPDATE_MINT" fetch >>"$MINTLOG" 2>&1 || return $?
+}
+
+evry 6 hours -updatemint && {
+	wait-for-internet
+	printlog 'mint:fetching accounts...'
+	update_mintable || send-error "Could not fetch data for mint, see $MINTLOG"
+	printlog "mint:finished fetching accounts: $(date)"
+}

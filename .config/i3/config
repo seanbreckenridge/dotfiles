@@ -88,13 +88,6 @@ bindsym $mod+Shift+t exec --no-startup-id todo-prompt add
 bindsym $mod+b exec --no-startup-id todo-prompt bookmark list
 bindsym $mod+Shift+b exec --no-startup-id todo-prompt bookmark add
 
-# Refresh i3blocks icons when certain files change
-exec --no-startup-id echo "${HOME}/.config/todo/todo.txt" | entr pkill -RTMIN+2 i3blocks
-exec --no-startup-id echo "${HOME}/.cache/rss-unread" | entr pkill -RTMIN+3 i3blocks
-exec --no-startup-id echo "${HOME}/.cache/guestbook-comments" | entr pkill -RTMIN+4 i3blocks
-exec --no-startup-id echo "${HOME}/data/calories.db" | entr pkill -RTMIN+5 i3blocks
-exec --no-startup-id echo "${HOME}/data/body/water.json" | entr pkill -RTMIN+6 i3blocks
-
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
@@ -307,16 +300,5 @@ bindsym $mod+Shift+Return exec --no-startup-id ttt firefox-developer-edition --n
 # copy my todo.txt to my server when it changes, so I can be sent reminders
 # https://github.com/seanbreckenridge/todotxt_deadline_notify
 exec --no-startup-id bash "${REPOS}/todotxt_deadline_notify/copy_todotxt_to_server"
-# loop that runs in the background, running random tasks periodically (cron-like)
-# https://github.com/seanbreckenridge/bgproc
-exec --no-startup-id bash "${REPOS}/bgproc/bgproc"
-exec --no-startup-id bash "${REPOS}/HPI/bgproc"
-# mpv-history-daemon, to catpure mpv events/what Im watching/listening to
-# https://github.com/seanbreckenridge/mpv-sockets/blob/master/DAEMON.md
-# https://sean.fish/d/mpv-hist-daemon
-exec --no-startup-id mpv-hist-daemon
-# start window watcher
-# https://github.com/seanbreckenridge/aw-watcher-window
-exec --no-startup-id window_watcher
-# start background tmux session
-# exec --no-startup-id i3-msg 'workspace 9; exec alacritty -e "${HOME}/.local/scripts/tmux_bg/attach_bg"'
+# start supervisor background processes
+exec --no-startup-id "${HOME}/.local/scripts/supervisor/super --daemon"
