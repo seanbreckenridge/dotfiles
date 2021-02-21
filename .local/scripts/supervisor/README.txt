@@ -1,7 +1,0 @@
-This is used to run background processes
-
-Typically one would just use cron or a systemd service, but nothing ever seems to be cross platform enough for me.
-
-supervisord is typically used to respawn processes on servers, but I've had a nice experience with it, so might as well try it here
-
-On linux, I can spawn this by 'exec'ing at the OS level (i.e. on Arch/i3, i3-exec). On mac, a terminal window spawns when I log in and runs in the foreground.

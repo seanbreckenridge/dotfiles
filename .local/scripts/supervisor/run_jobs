@@ -1,0 +1,29 @@
+#!/bin/bash -u
+# Run jobs. Check which OS we're on to figure out which
+# directories of jobs we should include
+# the jobs/shared folder should be run on both OSs
+
+cd "${SUPERVISOR_DIR}" || exit $?
+
+declare -a JOB_DIRS
+declare -a DIR_SUFFIXES=('shared') # always do shared jobs
+
+if [[ "$(uname -s)" == 'Linux' ]]; then
+	DIR_SUFFIXES+=('linux')
+else
+	DIR_SUFFIXES+=('mac')
+fi
+
+# prepend $SUPERVISOR_DIR/jobs to chosen suffixes
+for suffix in "${DIR_SUFFIXES[@]}"; do
+	JOB_DIRS+=("${SUPERVISOR_DIR:?SUPERVISOR_DIR is not set}/jobs/${suffix}")
+done
+
+# append any HPI jobs, if the directory exists
+REPOS="${REPOS:-${HOME}/Repos/}"
+if [[ -e "${REPOS}" ]]; then
+	HPI_JOB_DIR="${REPOS}/HPI/jobs"
+	[[ -d "${HPI_JOB_DIR}" ]] && JOB_DIRS+=("${HPI_JOB_DIR}")
+fi
+
+exec bgproc "$@" "${JOB_DIRS[@]}"

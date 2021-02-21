@@ -25,6 +25,9 @@ directory_aliases
 .bash_profile
 .bashrc
 
+# private bgproc scripts https://github.com/seanbreckenridge/bgproc
+*.priv.job
+
 # my secret files
 .config/my/**/*secret*
 

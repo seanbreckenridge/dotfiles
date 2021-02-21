@@ -1,6 +1,0 @@
-#!/bin/bash
-while true; do
-	python3 -m budget summary | glow -
-	date
-	sleep 30m
-done

@@ -43,12 +43,6 @@ cd "${HOME}/.local/share/yadm/repo.git" || exit 1
 exec gitopen
 '''
 
-[dotfiles-github]
-command='''
-cd "${HOME}/.local/share/yadm/repo.git" || exit 1
-exec githubopen
-'''
-
 [i3binds]
 command='''
 # print i3 bindings
@@ -149,7 +143,7 @@ fi
 '''
 
 [genpass]
-shebang = "#!/usr/bin/env bash"
+shebang = "#!/bin/bash"
 command ='''
 # generates a password and puts it on your clipboard
 # uses https://github.com/seanbreckenridge/genpasswd
@@ -437,7 +431,7 @@ echo "$(upper <<<"${s:0:1}")${s:1}"
 """
 
 [lastpic]
-shebang = "#!/usr/bin/env bash"
+shebang = "#!/bin/bash"
 command='''
 if [[ -n "${ONLINUX}" ]]; then
 	exec newest "${SCREENSHOTS:?No SCREENSHOTS environment variable set}"
@@ -732,3 +726,10 @@ moby "${word}" | grep ',' | sed 's/,/\n/g' | chomp
 
 [fzfp]
 command = 'fzf --preview="${HOME}/.config/fzf_preview {} "$@"'
+
+[largechar-clipboard]
+command='''
+CONTENTS="$(clippaste)"
+[ -z "${CONTENTS}" ] && exit 1
+printf '%s' "${CONTENTS}" | largechar -c
+'''

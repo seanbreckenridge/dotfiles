@@ -1,7 +1,0 @@
-#!/bin/bash
-
-# ./run, to make sure bg is running
-"$(realpath "$(dirname "${BASH_SOURCE[0]}")")"/run
-
-[[ -n "$TMUX" ]] && change="switch-client" || change="attach-session"
-tmux "$change" -t 'bg'

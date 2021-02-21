@@ -1,0 +1,4 @@
+#!/bin/sh
+CONTENTS="$(clippaste)"
+[ -z "${CONTENTS}" ] && exit 1
+printf '%s' "${CONTENTS}" | largechar -c

@@ -1,0 +1,21 @@
+#!/bin/bash
+# saves the number of unapproved comments to a cache file
+# this is for my guest book on https://sean.fish/
+
+get_count() {
+	local SSH_OUTPUT COUNT_LINE
+	SSH_OUTPUT="$(ssh vultr "cd ./code/glue; ./production_server --print-count" 2>/dev/null)" || return $?
+	COUNT_LINE="$(grep -m1 -P '^COUNT:\d+' <<<"$SSH_OUTPUT")" || {
+		echo "Couldn't find 'COUNT' in ssh output" 1>&2
+		return 1
+	}
+	echo -e "$COUNT_LINE" | cut -d":" -f2 || return $?
+}
+
+evry 1 hours -guestbook_comments && {
+	wait-for-internet
+	printlog 'guestbook:updating cache file...'
+	readonly CACHE_FILE="${XDG_CACHE_HOME:-${HOME}/.cache}/guestbook-comments"
+	COUNT="$(get_count)" || return $?
+	echo "$COUNT" >"$CACHE_FILE"
+}

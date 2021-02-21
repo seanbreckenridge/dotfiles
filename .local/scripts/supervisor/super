@@ -3,8 +3,8 @@
 # which does setup before running supervisor
 
 # source application environment variables
-CUR_DIR="$(realpath "$(dirname "${BASH_SOURCE[0]}")")"
-export CUR_DIR
+SUPERVISOR_DIR="$(realpath "$(dirname "${BASH_SOURCE[0]}")")"
+export SUPERVISOR_DIR
 
 SUPERVISOR_LOGS='/tmp/supervisor'
 mkdir -p "${SUPERVISOR_LOGS}"
@@ -22,15 +22,18 @@ function run_super() {
 		fi
 		;;
 	--daemon)
-		supervisord --configuration="${CUR_DIR}/supervisord.conf"
+		supervisord --configuration="${SUPERVISOR_DIR}/supervisord.conf"
 		;;
 	--foreground)
 		# run supervisor
-		supervisord --configuration="${CUR_DIR}/supervisord.conf" -n
+		supervisord --configuration="${SUPERVISOR_DIR}/supervisord.conf" -n
 		;;
 	--ctl)
 		shift # remove '--ctl' from arg list
-		supervisorctl --configuration="${CUR_DIR}/supervisord.conf" "$@"
+		supervisorctl --configuration="${SUPERVISOR_DIR}/supervisord.conf" "$@"
+		;;
+	--logs)
+		tail -f "$SUPERVISOR_LOGS"/*.log
 		;;
 	-h | --help | *)
 		# parse this case statement to get the choices
@@ -41,4 +44,5 @@ function run_super() {
 	esac
 }
 
+cd "${SUPERVISOR_DIR}" || exit $?
 run_super "$@"

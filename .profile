@@ -11,6 +11,10 @@ if [ -n "$ONLINUX" ]; then
 	. "${HOME}/.common_paths"
 	PATH="${HOME}/.gem/ruby/2.7.0/bin:${PATH}"
 	export PATH
+	export SCREENSHOTS="${PICTURES}/Screenshots"
+else
+	# Screenshots on Mac are saved on the Desktop
+	export SCREENSHOTS="${HOME}/Desktop"
 fi
 
 # some system wide defaults
@@ -45,10 +49,3 @@ export DOWNLOADS="${HOME}/Downloads"
 export DOCUMENTS="${HOME}/Documents"
 export MOVIES="${HOME}/Movies"
 export MUSIC="${HOME}/Music"
-
-# Screenshots on Mac are saved on the Desktop
-if [ -n "$ONLINUX" ]; then
-	export SCREENSHOTS="${PICTURES}/Screenshots"
-else
-	export SCREENSHOTS="${HOME}/Desktop"
-fi
