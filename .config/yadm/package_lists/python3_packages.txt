@@ -75,7 +75,6 @@ termdown
 termgraph
 textdistance
 thefuck
-tmuxp
 toml
 twine
 urlextract

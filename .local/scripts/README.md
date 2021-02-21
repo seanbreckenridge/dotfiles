@@ -2,3 +2,4 @@
 - mac - scripts meant to be used on mac
 - linux - scripts meant to be used on linux
 - cross-platform - scripts that check `$ONLINUX`/`uname` to provide cross platform functionality (to interact with the clipboard, or send notifications)
+- supervisor - runs background processes using [supervisor](https://github.com/Supervisor/supervisor), on mac and linux

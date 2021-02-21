@@ -1,7 +1,0 @@
-#!/bin/bash
-
-while true; do
-	echo -en "$(tput setaf 2)Hit enter to open calcurse... $(tput sgr0)"
-	read -r
-	calcurse
-done

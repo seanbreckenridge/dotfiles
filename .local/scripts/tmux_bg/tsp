@@ -1,2 +1,0 @@
-#!/bin/sh
-watch -n 10 -x sh -c 'tsp | tail -n+2 | sort -rn'
