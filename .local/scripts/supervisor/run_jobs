@@ -20,10 +20,7 @@ for suffix in "${DIR_SUFFIXES[@]}"; do
 done
 
 # append any HPI jobs, if the directory exists
-REPOS="${REPOS:-${HOME}/Repos/}"
-if [[ -e "${REPOS}" ]]; then
-	HPI_JOB_DIR="${REPOS}/HPI/jobs"
-	[[ -d "${HPI_JOB_DIR}" ]] && JOB_DIRS+=("${HPI_JOB_DIR}")
-fi
+HPI_JOB_DIR="${REPOS:-${HOME}/Repos}/HPI/jobs"
+[[ -d "${HPI_JOB_DIR}" ]] && JOB_DIRS+=("${HPI_JOB_DIR}")
 
 exec bgproc "$@" "${JOB_DIRS[@]}"
