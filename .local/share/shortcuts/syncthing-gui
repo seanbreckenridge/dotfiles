@@ -1,0 +1,2 @@
+#!/bin/sh
+openurl 'localhost:8384'
