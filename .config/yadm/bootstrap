@@ -286,12 +286,26 @@ set +e
 
 havecmd shortcuts && printf "Created %d shortcuts\n" "$(shortcuts create | wc -l)"
 
+# link tmux configuration
 [[ ! -e "${HOME}/.tmux.conf" ]] && ln "${HOME}/.config/tmux.conf" "${HOME}/.tmux.conf"
 
+# setup directory for ranger
 dir-aliases-ranger
 
+# setup nvim packages
 havecmd nvim || exit $?
 echo "Installing nvim packages..."
 nvim +PlugInstall +qall
+
+# setup calories (https://github.com/zupzup/calories) config file
+if [[ -n "${GOBIN}" ]]; then
+	# is just a file with a single line, which points to the calories database
+	CALORIES_CONF_FILE="${GOBIN}/.caloriesconf"
+	[[ -e "${GOBIN}" ]] || mkdir -vp "${GOBIN}"
+	CALORIES_DB="${HOME}/data/calories.db"
+	[[ -e "${CALORIES_DB}" ]] || echo "Couldn't setup calories, database file doesn't exist"
+	printf '%s' "${CALORIES_DB}" > "${CALORIES_CONF_FILE}"
+	chmod +x "${CALORIES_CONF_FILE}"
+fi
 
 echo "Finished bootstrapping!" | boxes -d shell -p t1l2b1r2
