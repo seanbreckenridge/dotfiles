@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 # Open a URL with no side effects
 
 # On linux:
@@ -9,11 +9,8 @@
 # A URL can be passed as the first argument
 # or piped into openurl
 
-URL="$1"
-
-if [ -z "$1" ]; then # if no URL was passed, read from STDIN
-	URL="$(head -n 1)"
-fi
+# if no URL was passed, read from STDIN
+URL="${1:-$(head -n 1)}"
 
 command -v tttlog >/dev/null 2>&1 && tttlog "openurl $URL"
 
