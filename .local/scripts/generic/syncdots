@@ -1,0 +1,11 @@
+#!/bin/bash
+# syncs credential/secret dotfiles across my computers using syncthing
+# setting up individual syncthing directives
+# for each of these is annoying, so this just
+# sets up those hardlinks for me into the shared ~/Sync folder
+
+SYNCDOTS_LIST="${XDG_CONFIG_HOME:-$HOME/.config}/syncdots.conf"
+if [[ ! -e "$SYNCDOTS_LIST" ]]; then
+  echo "Couldn't find syncdots credential file"
+  exit 1
+fi
