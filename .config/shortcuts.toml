@@ -734,5 +734,5 @@ CONTENTS="$(clippaste)"
 printf '%s' "${CONTENTS}" | largechar -c
 '''
 
-[syncthing-gui]
+[syncgui]
 command = "openurl 'localhost:8384'"
