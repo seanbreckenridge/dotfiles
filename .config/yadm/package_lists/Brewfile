@@ -114,6 +114,8 @@ brew 'socat'
 brew 'the_silver_searcher'
 brew 'unar'
 brew 'haskell-stack'
+brew 'koekeishiya/formulae/skhd'
+brew 'syncthing'
 
 # zsh
 brew 'zsh-autosuggestions'

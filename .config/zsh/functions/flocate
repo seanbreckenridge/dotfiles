@@ -3,6 +3,10 @@
 # and cd to the enclosing directory
 
 function flocate() {
+	[[ -z "$ONLINUX" ]] && {
+		echo "Use 'mdfind' instead"
+		return 1
+	}
 	local FZFFOUNDFILENAME="$(locate / | fzf +m --preview='${HOME}/.config/fzf_preview {}')"
 	# go to directory if its a directory, else go to enclosing directory
 	if [[ -d "$FZFFOUNDFILENAME" ]]; then

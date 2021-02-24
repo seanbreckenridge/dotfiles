@@ -50,7 +50,7 @@ havecmd brew || exit 1
 
 havecmd go || brew install golang
 install_spkglist
-go get -u github.com/odeke-em/drive/cmd/drive
+havecmd drive || go get -u github.com/odeke-em/drive/cmd/drive
 set +e
 
 # generate alacritty config file for mac
@@ -60,8 +60,8 @@ mac-alacritty-conf
 echo "Setting application/mac os defaults..."
 bash "${YADM_DIR}/mac/set-default-apps" || exit $?
 printf 'mac/set-macos-defaults changes a bunch of settings to make macOS more usable and restarts affected applications\nRun? [y/N] > '
-# timeout after 5 seconds
-read -r -t 5
+# timeout after 3 seconds
+read -r -t 3
 case "$REPLY" in
 Y | y)
 	bash "${YADM_DIR}/mac/set-macos-defaults"
@@ -97,6 +97,14 @@ fi
 
 mkdir -p "${HOME}/.local/bin"
 
-# setup skhd for generic keybinds
-brew install koekeishiya/formulae/skhd
-brew services restart skhd
+# setup brew services
+
+declare BREW_LIST_CACHED=
+# setup services
+brew_start_if_stopped() {
+	[[ -z "$BREW_LIST_CACHED" ]] && BREW_LIST_CACHED="$(brew services list)"
+	echo "$BREW_LIST_CACHED" | grep "${1:?Must provide service to start}" | grep -q started || brew services start "$1"
+}
+
+brew_start_if_stopped skhd
+brew_start_if_stopped syncthing
