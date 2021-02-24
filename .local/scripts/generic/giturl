@@ -6,7 +6,7 @@ if in-gitdir; then
 		printf "%s" "$remote_url" 2>&1
 		exit 1
 	fi
-	if https_url="$(printf '%s' "${remote_url}" | /usr/bin/python3 -c "import sys, giturlparse; print(giturlparse.parse(sys.stdin.read().strip()).urls['https'])" 2>/dev/null)"; then
+	if https_url="$(printf '%s' "${remote_url}" | /usr/bin/env python3 -c "import sys, giturlparse; print(giturlparse.parse(sys.stdin.read().strip()).urls['https'])" 2>/dev/null)"; then
 		echo "${https_url}"
 		exit 0
 	else
