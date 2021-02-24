@@ -735,4 +735,4 @@ printf '%s' "${CONTENTS}" | largechar -c
 '''
 
 [syncthing-gui]
-command="openurl 'localhost:8384'"
+command = "openurl 'localhost:8384'"

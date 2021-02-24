@@ -304,7 +304,7 @@ if [[ -n "${GOBIN}" ]]; then
 	[[ -e "${GOBIN}" ]] || mkdir -vp "${GOBIN}"
 	CALORIES_DB="${HOME}/data/calories.db"
 	[[ -e "${CALORIES_DB}" ]] || echo "Couldn't setup calories, database file doesn't exist"
-	printf '%s' "${CALORIES_DB}" > "${CALORIES_CONF_FILE}"
+	printf '%s' "${CALORIES_DB}" >"${CALORIES_CONF_FILE}"
 	chmod +x "${CALORIES_CONF_FILE}"
 fi
 
