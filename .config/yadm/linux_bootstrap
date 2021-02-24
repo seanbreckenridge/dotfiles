@@ -63,14 +63,35 @@ for component in "${RUST_COMPONENTS[@]}"; do
 	rustup component add "${component}"
 done
 
+# check if a systemd service is running
+check_service() {
+	local SERVICE_NAME
+	local -a ADDITIONAL_FLAGS=()
+	SERVICE_NAME="${1:?Must provide name of service}"
+	shift
+	while [[ -n "$1" ]]; do
+		ADDITIONAL_FLAGS+=("$1")
+		shift
+	done
+	echo "$SERVICE_NAME" "${ADDITIONAL_FLAGS[@]}"
+	if [[ "$(systemctl "${ADDITIONAL_FLAGS[@]}" show -p SubState --value "${SERVICE_NAME}")" == "dead" ]]; then
+		print_error "${SERVICE_NAME} is not running, you should enable it with: 'systemctl ${ADDITIONAL_FLAGS[@]} enable ${SERVICE_NAME} --now'"
+	fi
+
+}
+
 # Check services
 echo "Checking if default services are running..."
 # CUPS and avahi are for printing
-services=("NetworkManager" "avahi-daemon" "cups" "ntpd" "cronie" "paccache.timer" "atd" "pkgfile-update.timer")
-for serv in "${services[@]}"; do
-	if [[ "$(systemctl show -p SubState --value "${serv}")" == "dead" ]]; then
-		print_error "${serv} is not running, you should enable it with: 'sudo systemctl enable ${serv} --now'"
-	fi
+SERVICES=("NetworkManager" "avahi-daemon" "cups" "ntpd" "cronie" "paccache.timer" "atd" "pkgfile-update.timer")
+for serv in "${SERVICES[@]}"; do
+	check_service "${serv}"
+done
+
+# user services, dont start till my user logs in
+USER_SERVICES=("emacs" "syncthing")
+for serv in "${USER_SERVICES[@]}"; do
+	check_service "${serv}" --user
 done
 
 # Setup mariadb by following: https://wiki.archlinux.org/index.php/MariaDB
