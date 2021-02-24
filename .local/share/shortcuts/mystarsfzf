@@ -3,7 +3,7 @@
 PICKED="$(mystars "$@" | fzf --ansi)" || exit $?
 printf '%s\n' "${PICKED}"
 URL="$(echo "${PICKED}" | urlextract)"
-# if a URL was extracted, open it
+# if a URL was extracted, copy it to my clipboard
 [[ -n "${URL}" ]] && {
 	printf '%s' "${URL}" | clipcopy
 	printf '%s\n' "${URL}"
