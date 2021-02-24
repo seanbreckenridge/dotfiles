@@ -73,7 +73,6 @@ check_service() {
 		ADDITIONAL_FLAGS+=("$1")
 		shift
 	done
-	echo "$SERVICE_NAME" "${ADDITIONAL_FLAGS[@]}"
 	if [[ "$(systemctl "${ADDITIONAL_FLAGS[@]}" show -p SubState --value "${SERVICE_NAME}")" == "dead" ]]; then
 		print_error "${SERVICE_NAME} is not running, you should enable it with: 'systemctl ${ADDITIONAL_FLAGS[@]} enable ${SERVICE_NAME} --now'"
 	fi
