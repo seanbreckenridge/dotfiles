@@ -509,7 +509,7 @@ done < <(list-config | grep -vE "zsh_history|compdump")
 shebang="#!/bin/sh"
 command='''
 command -v tttlog >/dev/null 2>&1 && tttlog "$(basename "$0") $*"
-exec curl "https://cheat.sh/$*"
+exec curl -s "https://cheat.sh/$*"
 '''
 
 # runs git pull in all my repos in parallel (in 3 seconds). reports errors
