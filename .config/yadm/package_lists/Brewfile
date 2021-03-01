@@ -43,6 +43,7 @@ brew 'quazip'
 brew 'nmap'
 brew 'npm'
 brew 'node'
+brew 'nvm'
 brew 'elixir'
 brew 'ack'
 brew 'grc'
@@ -133,6 +134,7 @@ cask 'chromedriver'   # for webscraping
 cask 'mysqlworkbench' # easy mysql interface
 cask 'adoptopenjdk/openjdk/adoptopenjdk8'  # java
 cask 'zoom'         # for stupid video confrencing
+cask 'visual-studio-code'
 cask 'microsoft-teams'
 cask 'steam'          # video games
 cask 'gimp'           # image editing

@@ -79,7 +79,9 @@ __pycache__
 /.nvm
 /.keras
 /.mozilla
+/.matplotlib
 /.vscode-oss/
+/.vscode/
 /.minecraft
 /.lldb
 /.solargraph
