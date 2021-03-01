@@ -3,6 +3,14 @@
 # this is sourced by the lightdm on Linux and
 # from ~/.zshenv on mac (see ~/.config/yadm/mac_bootstrap)
 
+# Directories
+export REPOS="${HOME}/Repos"
+export PICTURES="${HOME}/Pictures"
+export DOWNLOADS="${HOME}/Downloads"
+export DOCUMENTS="${HOME}/Documents"
+export MOVIES="${HOME}/Movies"
+export MUSIC="${HOME}/Music"
+
 # see /etc/lightdm/Xsession
 [ "$(uname -s)" = "Linux" ] && export ONLINUX=1
 
@@ -42,10 +50,3 @@ export XDG_DATA_HOME="${HOME}/.local/share"
 # define where ZDOTDIR (rest of zsh configuration) is
 export ZDOTDIR="${XDG_CONFIG_HOME}/zsh"
 
-# Directories
-export REPOS="${HOME}/Repos"
-export PICTURES="${HOME}/Pictures"
-export DOWNLOADS="${HOME}/Downloads"
-export DOCUMENTS="${HOME}/Documents"
-export MOVIES="${HOME}/Movies"
-export MUSIC="${HOME}/Music"
