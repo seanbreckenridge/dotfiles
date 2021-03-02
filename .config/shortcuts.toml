@@ -725,7 +725,7 @@ moby "${word}" | grep ',' | sed 's/,/\n/g' | chomp
 '''
 
 [fzfp]
-command = 'fzf --preview="${HOME}/.config/fzf_preview {} "$@"'
+command = 'fzf --preview="${HOME}/.config/fzf_preview {} "$@""'
 
 [largechar-clipboard]
 command='''
