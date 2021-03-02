@@ -9,4 +9,4 @@ read_locs() {
 	python3 -c 'import sys, csv; list(map(lambda l: None if l[1] == "-" else print(l[1]), csv.reader(sys.stdin)))' <"$TTTFILE"
 }
 
-read_locs | sort | uniq -c | sort -n | awk '{$1=""}1' | chomp | exists | fzf --tac
+read_locs | sort | uniq -c | sort -n | chomp | cut -d' ' -f2- | exists | fzf --tac
