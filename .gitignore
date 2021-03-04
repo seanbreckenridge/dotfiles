@@ -144,6 +144,8 @@ __pycache__
 /.config/light
 /.config/xbuild
 /.config/slack-term/
+/.config/kid3rc
+/.config/trashrc
 /.config/Microsoft/
 /.config/Microsoft Teams - Preview/
 /.config/teams/

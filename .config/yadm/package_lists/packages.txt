@@ -231,6 +231,7 @@ godot-bin
 google-chrome
 gparted
 keepassxc
+kid3
 mpv
 mupdf-gl
 obs-linuxbrowser-bin
