@@ -7,7 +7,7 @@ alias play='plainplay'
 alias pplay='plainplay play'
 alias splay='plainplay shuffle'
 alias splayall='fd . "$PLAINTEXT_PLAYLIST_PLAYLISTS" -X plainplay shuffleall'
-alias playrg='cm; plainplay listall "$(plainplay playlistdir)"/* | rg -i'
+alias playrg='cm; fd . "$(plainplay playlistdir)" .txt -X cat | rg -i'
 # play all paths that match whatever I pass as positional arguments
 playrg-() {
 	playrg "$*" | mpv-from-stdin
