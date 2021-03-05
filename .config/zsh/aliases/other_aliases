@@ -13,6 +13,7 @@ playrg() {
 }
 # play all paths that match whatever I pass as positional arguments
 playrg-() {
+	cm
 	playrg "$*" | mpv-from-stdin
 }
 alias cdpl='cd "${PLAINTEXT_PLAYLIST_PLAYLISTS}"'
