@@ -49,4 +49,3 @@ export XDG_DATA_HOME="${HOME}/.local/share"
 
 # define where ZDOTDIR (rest of zsh configuration) is
 export ZDOTDIR="${XDG_CONFIG_HOME}/zsh"
-

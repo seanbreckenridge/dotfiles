@@ -444,9 +444,9 @@ fi
 [previewlastpic]
 command='''
 if [ -n "${ONLINUX}" ]; then
-	lastpic | sxiv - || exit 1  # linux
+	lastpic | sxiv - || exit 1 # linux
 else
-	exec open -a Preview "$(lastpic)"  # mac
+	exec open -a Preview "$(lastpic)" # mac
 fi
 '''
 link="lastpicpreview"
