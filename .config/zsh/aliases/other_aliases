@@ -7,15 +7,18 @@ alias play='plainplay'
 alias pplay='plainplay play'
 alias splay='plainplay shuffle'
 alias splayall='fd . "$PLAINTEXT_PLAYLIST_PLAYLISTS" -X plainplay shuffleall'
-playrg() {
+playrg_f() {
 	cm
 	fd . "$(plainplay playlistdir)" --type file -X cat | rg -i "$*"
 }
 # play all paths that match whatever I pass as positional arguments
-playrg-() {
+playrg-_f() {
 	cm
 	playrg "$*" | mpv-from-stdin
 }
+# use aliases so that the 'cd' actually changes directory in the shell
+alias playrg='cm; playrg_f'
+alias 'playrg-=cm; playrg-_f'
 alias cdpl='cd "${PLAINTEXT_PLAYLIST_PLAYLISTS}"'
 alias playfzf="cm; (cd \"${PLAINTEXT_PLAYLIST_PLAYLISTS}\"; rg --color ansi --no-line-number '' | fzf --ansi)"
 bindkey -s '^P' "^uplay^M"
