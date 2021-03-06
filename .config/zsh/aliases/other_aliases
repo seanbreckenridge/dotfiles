@@ -14,7 +14,7 @@ playrg_f() {
 # play all paths that match whatever I pass as positional arguments
 playrg-_f() {
 	cm
-	playrg "$*" | mpv-from-stdin
+	playrg_f "$*" | mpv-from-stdin
 }
 # use aliases so that the 'cd' actually changes directory in the shell
 alias playrg='cm; playrg_f'
