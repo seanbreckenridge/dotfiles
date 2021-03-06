@@ -107,6 +107,11 @@ class league_of_legends:
     username = "purplepinapples"
 
 
+# uses chessdotcom_export: https://github.com/seanbreckenridge/chessdotcom_export
+class chess:
+    export_path: Paths = "~/data/chessdotcom/"
+
+
 # uses https://github.com/seanbreckenridge/steamscraper
 class steam:
     export_path: Paths = "~/data/steam.json"
