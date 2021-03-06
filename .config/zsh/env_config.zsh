@@ -147,4 +147,6 @@ ${PATH}\
 "
 	source "${HOME}/.common_paths"
 	export PATH
+	# set MPV_PATH so that mpv daemon works properly
+	export MPV_PATH='/usr/local/bin/mpv'
 fi
