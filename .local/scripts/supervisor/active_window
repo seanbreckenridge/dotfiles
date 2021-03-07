@@ -1,7 +1,7 @@
 #!/bin/bash -ex
-# thyme doesnt work on my mac, so this uses
-# my window watcher fork on mac https://github.com/seanbreckenridge/aw-watcher-window
-# and sourcegraph on linux https://github.com/sourcegraph/thyme/issues/32
+# thyme doesnt work on my mac (https://github.com/sourcegraph/thyme/issues/32),
+# so this uses my window watcher fork on mac https://github.com/seanbreckenridge/aw-watcher-window
+# and thyme on linux (https://github.com/sourcegraph/thyme)
 
 cd "$(realpath "$(dirname "${BASH_SOURCE[0]}")")"
 
