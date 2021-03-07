@@ -1,0 +1,16 @@
+#!/bin/bash -eu
+# run this in a loop instead of as a bgproc job, because
+# the bgproc interval is too long
+# https://github.com/sourcegraph/thyme
+# pass sleep time as the first argument, defaults to 10s
+
+declare SLEEP_TIME OS_TAG DATA_FILE
+
+OS_TAG="$(uname -n)_$(uname -r)"
+SLEEP_TIME="${1:-10s}"
+
+while true; do
+	DATA_FILE="${HOME}/data/thyme/$(date "+%F")_${OS_TAG}.json"
+	thyme track -o "${DATA_FILE}"
+	sleep "${SLEEP_TIME}"
+done

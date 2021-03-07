@@ -202,13 +202,19 @@ whatmp3
 wkhtmltopdf
 xclip
 xcolor
-xdotool
 xterm
 xvkbd
 yadm
 yq
 ytop
 zip
+
+# window info, for thyme
+
+xdotool
+xorg-xwininfo
+xorg-xdpyinfo
+wmctrl
 
 # shell
 

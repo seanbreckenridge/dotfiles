@@ -20,3 +20,4 @@ qrc github.com/fumiyas/qrc
 gocloc github.com/hhatto/gocloc/cmd/gocloc
 up github.com/akavel/up
 xurls github.com/mvdan/xurls/cmd/xurls
+thyme github.com/sourcegraph/thyme/cmd/thyme
