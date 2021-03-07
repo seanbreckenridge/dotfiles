@@ -43,10 +43,11 @@ else
 		export PATH="${PATH:+${PATH}:}/usr/local/opt/fzf/bin"
 	fi
 	# Auto-completion
-	[[ $- == *i* ]] && source "/usr/local/opt/fzf/shell/completion.zsh" 2>/dev/null
+	[[ $- == *i* ]] && source_if_exists "/usr/local/opt/fzf/shell/completion.zsh" 2>/dev/null
 	# Key bindings
-	source "/usr/local/opt/fzf/shell/key-bindings.zsh"
+	source_if_exists "/usr/local/opt/fzf/shell/key-bindings.zsh"
 	# Other plugins
 	source_if_exists /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 	source_if_exists /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+	source "${ZDOTDIR}/mac.zsh"
 fi

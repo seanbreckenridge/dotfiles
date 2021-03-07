@@ -6,7 +6,7 @@ Also, `cron` always feels like a hack when a requirement is syncing my scripts i
 
 supervisord is typically used to respawn processes on servers, but I've had a nice experience with it, so might as well try it here
 
-On Linux, I can spawn this by 'exec'ing at the OS level (i.e. on Arch/i3, i3-exec). On mac, a terminal window spawns when I log in and runs in the foreground
+On Linux, I can spawn this by 'exec'ing at the OS level (i.e. on Arch/i3, i3-exec). On mac, I check if this is running whenever I open a (see [`$ZDOTDIR/mac.zsh`](https://github.com/seanbreckenridge/dotfiles/blob/master/.config/zsh/mac.zsh))
 
 The `super` script is the entrypoint to this folder, it uses the `supervisord.conf` file to determine how to run each of the background processes
 
@@ -14,8 +14,8 @@ The `super` script is the entrypoint to this folder, it uses the `supervisord.co
 
 ```
 $ super --ctl status
-bgproc                           RUNNING   pid 99233, uptime 0:30:10
-linux_tasks                      RUNNING   pid 99234, uptime 0:30:10
-mpv_history_daemon_watcher       RUNNING   pid 99235, uptime 0:30:10
-window_watcher                   RUNNING   pid 99236, uptime 0:30:10
+active_window                    RUNNING   pid 32014, uptime 0:00:52
+bgproc                           RUNNING   pid 32015, uptime 0:00:52
+linux_tasks                      RUNNING   pid 32016, uptime 0:00:52
+mpv_history_daemon_watcher       RUNNING   pid 32018, uptime 0:00:52
 ```
