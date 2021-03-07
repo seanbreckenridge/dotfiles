@@ -7,19 +7,15 @@ SUPERVISOR_DIR="$(realpath "$(dirname "${BASH_SOURCE[0]}")")"
 export SUPERVISOR_DIR
 
 SUPERVISOR_LOGS='/tmp/supervisor'
+export SUPERVISOR_LOGS
 mkdir -p "${SUPERVISOR_LOGS}"
 
 function run_super() {
 	case "$1" in
 	--kill)
-		if pgrep -x supervisord >/dev/null 2>&1; then
-			run_super --ctl "stop all"
-			tail "$SUPERVISOR_LOGS"/*.log
-			pkill -x supervisord
-		else
-			echo "No supervisord process running..." 1>&2
-			return 1
-		fi
+		run_super --ctl "stop all"
+		tail "$SUPERVISOR_LOGS"/*.log
+		run_super --ctl "shutdown"
 		;;
 	--daemon)
 		supervisord --configuration="${SUPERVISOR_DIR}/supervisord.conf"
