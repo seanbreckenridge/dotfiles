@@ -736,3 +736,6 @@ printf '%s' "${CONTENTS}" | largechar -c
 
 [syncgui]
 command = "openurl 'localhost:8384'"
+
+[rn]
+command = "launch ranger"
