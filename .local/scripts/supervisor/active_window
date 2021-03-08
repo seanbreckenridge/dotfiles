@@ -12,7 +12,7 @@ else
   WINDOW_WATCHER_ARGS=()
   # just save to my data directory instead of ~/.local/share/window_watcher
   if [[ -d "${HOME}/data/window_watcher/" ]]; then
-    WINDOW_WATCHER_ARGS+=(--datafile "${HOME}/data/window_watcher/$(date "+%s")")
+    WINDOW_WATCHER_ARGS+=(--datafile "${HOME}/data/window_watcher/$(date "+%s").csv")
   fi
   exec window_watcher "${WINDOW_WATCHER_ARGS[@]}"
 fi
