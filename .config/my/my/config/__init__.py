@@ -172,9 +172,6 @@ class battery:
 class window_watcher:
     export_path: Paths = "~/data/window_watcher/*.csv"
     force_individual: Optional[List[str]] = ["Alacritty"]
-    live_file: Optional[PathIsh] = path.join(
-        environ["XDG_DATA_HOME"], "window_events.csv"
-    )
 
 
 class smscalls:
