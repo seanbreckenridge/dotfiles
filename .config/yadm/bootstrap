@@ -111,6 +111,7 @@ install_python_personal "pythonanywhere_3_months" "https://github.com/seanbrecke
 install_python_personal "rotten" "https://github.com/seanbreckenridge/rotten_tomatoes_cli"
 install_python_personal "mystars" "https://github.com/seanbreckenridge/oh-my-stars"
 install_python_personal "calcurse_load" "https://github.com/seanbreckenridge/calcurse-load"
+install_python_personal "mpv-history-daemon" "https://github.com/seanbreckenridge/mpv-history-daemon"
 
 # speedtest installs 2 executable scripts
 # speedtest and speedtest-cli, which both have the same
@@ -245,7 +246,7 @@ set -e
 make_compatible_build tttlog 'https://github.com/seanbreckenridge/ttt'
 make_compatible_build exists 'https://github.com/seanbreckenridge/exists' install
 make_compatible_build genpasswd 'https://github.com/seanbreckenridge/genpasswd' install
-make_compatible_build mpv-currently-playing 'https://github.com/seanbreckenridge/mpv-sockets' all
+make_compatible_build mpv-currently-playing 'https://github.com/seanbreckenridge/mpv-sockets'
 set +e
 
 # install largechar

@@ -1,4 +1,0 @@
-#!/bin/sh
-# don't start if mpv-history-daemon is already running
-ps -ef | grep 'mpv-history-daemon /tmp/mpvsockets' | grep -v grep && exit 0
-exec mpv-history-daemon /tmp/mpvsockets/ "${HOME}/data/mpv"
