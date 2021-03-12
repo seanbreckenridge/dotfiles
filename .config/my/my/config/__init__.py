@@ -91,7 +91,7 @@ class commits:
 
 
 # uses my dameon for watching mpv events
-# https://github.com/seanbreckenridge/mpv-sockets/blob/master/DAEMON.md
+# https://github.com/seanbreckenridge/mpv-history-daemon
 class mpv:
     export_path: Paths = "~/data/mpv/*.json"
 
