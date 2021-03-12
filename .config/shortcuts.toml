@@ -730,3 +730,12 @@ command = "openurl 'localhost:8384'"
 
 [rn]
 command = "launch ranger"
+
+[tq]
+command='''
+# convert a TOML file to JSON, usually piped into jq
+import sys, json, toml
+
+print(json.dumps(toml.loads(sys.stdin.read())))
+'''
+shebang = "#!/usr/bin/env python3"
