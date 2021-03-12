@@ -54,7 +54,7 @@ glow() {
 		MD_FILES=()
 		while IFS= read -r file; do
 			MD_FILES+=("$file")
-		done < <(find . -name '*.md')
+		done < <(find . -maxdepth 1 -name '*.md')
 		if [[ "${#MD_FILES[@]}" == "1" ]]; then
 			command glow "${MD_FILES[*]}"
 		else
