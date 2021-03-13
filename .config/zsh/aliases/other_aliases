@@ -47,6 +47,7 @@ alias playlist='${REPOS}/vps/playlist'
 alias restart-glue='ssh vultr "cd ./code/glue && git pull && ~/vps/super --ctl restart glue-server"'
 alias dotfiles-pull='ssh vultr "cd ./.dotfiles && git pull"'
 alias approve-comments='${REPOS}/vps/approve_comments'
+alias print-new-comments='${REPOS}/vps/approve_comments --print-new-comments'
 alias page-hits="curl -s 'https://sean.fish/api/page_hit' | jq '.count'"
 # Alt+Shift+V to connect to VPS
 bindkey -s '^[V' 'vultr\n'
