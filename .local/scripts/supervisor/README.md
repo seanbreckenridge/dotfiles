@@ -6,7 +6,7 @@ Also, `cron` always feels like a hack when a requirement is syncing my scripts i
 
 supervisord is typically used to respawn processes on servers, but I've had a nice experience with it, so might as well try it here
 
-On Linux, I can spawn this by 'exec'ing at the OS level (i.e. on Arch/i3, i3-exec). On mac, I check if this is running whenever I open a (see [`$ZDOTDIR/mac.zsh`](https://github.com/seanbreckenridge/dotfiles/blob/master/.config/zsh/mac.zsh))
+On Linux, I can spawn this by 'exec'ing at the OS level (i.e. on Arch/i3, i3-exec). On mac, I check if this is running whenever I open a terminal (see [`$ZDOTDIR/mac.zsh`](https://github.com/seanbreckenridge/dotfiles/blob/master/.config/zsh/mac.zsh))
 
 The `super` script is the entrypoint to this folder, it uses the `supervisord.conf` file to determine how to run each of the background processes
 
