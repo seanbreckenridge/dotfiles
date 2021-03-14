@@ -1,5 +1,7 @@
 """
-Configuration file for https://github.com/seanbreckenridge/HPI/
+Configuration file for
+https://github.com/karlicoss/HPI/
+https://github.com/seanbreckenridge/HPI/
 [Human Programming Interface]
 """
 
@@ -20,17 +22,37 @@ except ImportError:
 
 
 class core:
-    # allow me to select a 'profile', so that computers can have
-    # distinct filenames for similar usage
-    # I set the ONLINUX environment variable when I'm on linux, but
-    # this profile could be any string, to uniquely identify a computer
-    profile: Optional[str] = "" if "ONLINUX" in environ else "mac"
     cache_dir: PathIsh = "/tmp/cachew"
     enabled_modules: Sequence[PathIsh] = []
     disabled_modules: Sequence[PathIsh] = [
         "my.reading.polar",
         "my.stackexchange",
         "my.pdfs",
+        "my.rtm",
+        "my.media",
+        "my.google",
+        "my.jawbone",
+        "my.twitter",
+        "my.vk",
+        "my.rss",
+        "my.photos",
+        "my.location.google",
+        "my.calendar",
+        "my.body",
+        "my.taplog",
+        "my.runnerup",
+        "my.rescuetime",
+        "my.pocket",
+        "my.lastfm",
+        "my.kobo",
+        "my.instapaper",
+        "my.hypothesis",
+        "my.foursquare",
+        "my.fbmessenger",
+        "my.endomondo",
+        "my.emfit",
+        "my.bluemaestro",
+        "my.arbtt"
     ]
 
 
@@ -79,7 +101,7 @@ class rss:
 
 # parses information from git repositories which match my emails
 class commits:
-    # names: List[str] = ["Sean Breckenridge"]
+    names: List[str] = ["Sean Breckenridge"]
     emails: List[str] = [
         "seanbrecke@gmail.com",
         "sbrecken@ucsc.edu",
