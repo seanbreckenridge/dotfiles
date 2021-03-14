@@ -302,11 +302,16 @@ nvim +PlugInstall +qall
 if [[ -n "${GOBIN}" ]]; then
 	# is just a file with a single line, which points to the calories database
 	CALORIES_CONF_FILE="${GOBIN}/.caloriesconf"
-	[[ -e "${GOBIN}" ]] || mkdir -vp "${GOBIN}"
-	CALORIES_DB="${HOME}/data/calories.db"
-	[[ -e "${CALORIES_DB}" ]] || abort "Couldn't setup calories, database file doesn't exist"
-	printf '%s' "${CALORIES_DB}" >"${CALORIES_CONF_FILE}"
-	chmod +x "${CALORIES_CONF_FILE}"
+	# if the file doesn't exist, then setup config
+	if [[ ! -e "${CALORIES_CONF_FILE}" ]]; then
+		[[ -e "${GOBIN}" ]] || mkdir -vp "${GOBIN}"
+		CALORIES_DB="${HOME}/data/calories.db"
+		[[ -e "${CALORIES_DB}" ]] || abort "Couldn't setup calories, database file doesn't exist"
+		printf '%s' "${CALORIES_DB}" >"${CALORIES_CONF_FILE}"
+		chmod +x "${CALORIES_CONF_FILE}"
+	else
+		printf 'calories is already setup...\n'
+	fi
 fi
 
 echo "Finished bootstrapping!" | boxes -d shell -p t1l2b1r2
