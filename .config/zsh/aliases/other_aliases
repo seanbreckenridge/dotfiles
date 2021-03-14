@@ -20,8 +20,8 @@ playrg-_f() {
 alias playrg='cm; playrg_f'
 alias 'playrg-=cm; playrg-_f'
 alias cdpl='cd "${PLAINTEXT_PLAYLIST_PLAYLISTS}"'
-alias playfzf='cm; rg --color never --with-filename --no-heading --line-number "" "${PLAINTEXT_PLAYLIST_PLAYLISTS}/"*.txt | sed -e "s|^${PLAINTEXT_PLAYLIST_PLAYLISTS}/||" | fzf'
-alias 'playfzf-=playfzf | cut -d":" -f3- | mpv-from-stdin'
+alias playfzf='cm; rg --color never --with-filename --no-heading "" "${PLAINTEXT_PLAYLIST_PLAYLISTS}/"*.txt | sed -e "s|^${PLAINTEXT_PLAYLIST_PLAYLISTS}/||" | fzf'
+alias 'playfzf-=playfzf | cut -d":" -f2- | mpv-from-stdin'
 bindkey -s '^P' "^uplay^M"
 alias "list-albums=cm; find -maxdepth 3 -type f -printf '%h\n' | sort -u | cut -d'/' -f2- | grep -vi twitch"
 
