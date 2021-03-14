@@ -247,6 +247,7 @@ make_compatible_build tttlog 'https://github.com/seanbreckenridge/ttt'
 make_compatible_build exists 'https://github.com/seanbreckenridge/exists' install
 make_compatible_build genpasswd 'https://github.com/seanbreckenridge/genpasswd' install
 make_compatible_build mpv-currently-playing 'https://github.com/seanbreckenridge/mpv-sockets'
+make_compatible_build calmerge 'https://github.com/seanbreckenridge/calories-scripts'
 set +e
 
 # install largechar
@@ -274,7 +275,6 @@ install_shell_script() {
 # install some of my individual shell scripts
 set -e
 ls "${SCRIPT_TARGET_DIR}" >/dev/null # make sure target directory exists
-install_shell_script calfzf 'https://raw.githubusercontent.com/seanbreckenridge/calories-fzf/master/calfzf'
 install_shell_script mpvf 'https://raw.githubusercontent.com/seanbreckenridge/mpvf/master/mpvf'
 install_shell_script bgproc 'https://raw.githubusercontent.com/seanbreckenridge/bgproc/master/bgproc'
 install_shell_script tts 'https://raw.githubusercontent.com/seanbreckenridge/tts/master/tts'
