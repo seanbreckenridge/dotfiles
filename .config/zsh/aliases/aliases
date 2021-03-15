@@ -108,8 +108,6 @@ alias rss='editor ~/.config/newsboat/urls'
 alias rgf='rg --files | rg'
 # https://sean.fish/d/misspell-context
 alias spell='misspell-context'
-# mpv: read playlist from stdin
-alias mpv-from-stdin='mpv --playlist=- --no-audio-display'
 # start a server to test HTTP requests against
 alias httpbin='docker run -p 80:80 kennethreitz/httpbin'
 # https://sean.fish/d/frink
