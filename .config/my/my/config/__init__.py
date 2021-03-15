@@ -91,8 +91,8 @@ class todotxt:
     )
 
 
-# parses my rss history
-class rss:
+# parses the history of me adding/removing rss feeds
+class newsboat:
     export_path: Paths = "~/data/rss/"
     live_file: Optional[PathIsh] = path.join(
         environ["XDG_CONFIG_HOME"], "newsboat", "urls"
@@ -175,7 +175,7 @@ class google:
     # this is the directory that my google drive gets mirrored to locally
     # when it detects a new takeout, it sends a warning, so I can run
     # the script to move it to takeout_path
-    google_drive_local_path: Optional[Paths] = "~/GoogleDrive/Takeout/"
+    google_drive_local_path: Optional[str] = "~/GoogleDrive/Takeout/"
 
 
 # https://github.com/seanbreckenridge/ttt
