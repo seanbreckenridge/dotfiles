@@ -132,6 +132,7 @@ if [[ -z "$ONLINUX" ]]; then
 	PATH="\
 /usr/local/bin:\
 ${HOME}/.rbenv/versions/2.7.1/bin:\
+${HOME}/Library/Python/3.9/bin:\
 /usr/local/opt/coreutils/libexec/gnubin:\
 /usr/local/opt/diffutils/bin:\
 /usr/local/opt/findutils/libexec/gnubin:\
