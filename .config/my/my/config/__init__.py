@@ -52,8 +52,15 @@ class core:
         "my.endomondo",
         "my.emfit",
         "my.bluemaestro",
-        "my.arbtt"
+        "my.arbtt",
     ]
+
+
+def if_exists(p: PathIsh) -> Optional[PathIsh]:
+    pp = Path(p)
+    if pp.exists():
+        return pp
+    return None
 
 
 # combines:
@@ -80,22 +87,24 @@ class body:
 # parses my zsh history and any backups
 class zsh:
     export_path: Paths = "~/data/zsh_history/"
-    live_file: Optional[PathIsh] = path.join(environ["ZDOTDIR"], ".zsh_history")
+    live_file: Optional[PathIsh] = if_exists(
+        path.join(environ["ZDOTDIR"], ".zsh_history")
+    )
 
 
 # parses current/finished http://todotxt.org/ using topydo
 class todotxt:
     export_path: Paths = "~/data/todotxt/"
-    live_file: Optional[PathIsh] = path.join(
-        environ["XDG_CONFIG_HOME"], "todo", "todo.txt"
+    live_file: Optional[PathIsh] = if_exists(
+        path.join(environ["XDG_CONFIG_HOME"], "todo", "todo.txt")
     )
 
 
 # parses the history of me adding/removing rss feeds
 class newsboat:
     export_path: Paths = "~/data/rss/"
-    live_file: Optional[PathIsh] = path.join(
-        environ["XDG_CONFIG_HOME"], "newsboat", "urls"
+    live_file: Optional[PathIsh] = if_exists(
+        path.join(environ["XDG_CONFIG_HOME"], "newsboat", "urls")
     )
 
 
@@ -181,8 +190,8 @@ class google:
 # https://github.com/seanbreckenridge/ttt
 class ttt:
     export_path: Paths = "~/data/ttt/*.csv"
-    live_file: Optional[PathIsh] = path.join(
-        environ["XDG_DATA_HOME"], "ttt_history.csv"
+    live_file: Optional[PathIsh] = if_exists(
+        path.join(environ["XDG_DATA_HOME"], "ttt_history.csv")
     )
 
 
