@@ -684,7 +684,7 @@ command='''
 # get location of binary, installed with go
 # https://github.com/akavel/up
 BIN="$(where up | grep "${GOBIN}" -m1)"
-TERM=xterm "$BIN" --no-colors "$@"
+TERM=xterm "$BIN" "$@"
 '''
 shebang="#!/bin/zsh -u"
 
