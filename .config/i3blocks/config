@@ -28,10 +28,10 @@ interval=once
 label=📰
 signal=3
 
-[calendar]
-command="${HOME}/.config/i3blocks/blocks/calendar"
-interval=300
-label=📅
+#[calendar]
+#command="${HOME}/.config/i3blocks/blocks/calendar"
+#interval=300
+#label=📅
 
 [todo]
 command="${HOME}/.config/i3blocks/blocks/todo"
