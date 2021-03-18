@@ -454,7 +454,7 @@ command='''
 # preview a picture from a URL
 TMPDIR="$(mktemp -p /tmp -d urlpic-XXXXXX)"
 URL="${1:-$(clippaste)}"
-wget -q -P "${TMPDIR}" "${URL}"
+wget -P "${TMPDIR}" "${URL}"
 exec rifle "$(newest "${TMPDIR}")"
 '''
 links = ["previewurlpic", "urlpicpreview"]
