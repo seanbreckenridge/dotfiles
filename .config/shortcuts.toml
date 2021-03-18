@@ -442,13 +442,7 @@ fi
 '''
 
 [previewlastpic]
-command='''
-if [ -n "${ONLINUX}" ]; then
-	lastpic | sxiv - || exit 1 # linux
-else
-	exec open -a Preview "$(lastpic)" # mac
-fi
-'''
+command='exec rifle "$(lastpic)"'
 link="lastpicpreview"
 
 [lastpicdrag]
@@ -461,7 +455,7 @@ command='''
 TMPDIR="$(mktemp -p /tmp -d urlpic-XXXXXX)"
 URL="${1:-$(clippaste)}"
 wget -q -P "${TMPDIR}" "${URL}"
-exec sxiv -a "$(newest "${TMPDIR}")"
+exec rifle "$(newest "${TMPDIR}")"
 '''
 links = ["previewurlpic", "urlpicpreview"]
 
@@ -739,3 +733,11 @@ import sys, json, toml
 print(json.dumps(toml.loads(sys.stdin.read())))
 '''
 shebang = "#!/usr/bin/env python3"
+
+[sqlitebrowser-]
+command='''
+# on linux, call the binary directly
+[[ -n "$ONLINUX" ]] && exec sqlitebrowser "$@"
+# on mac, this is installed into /Applications/
+exec open -a DB\ Browser\ for\ SQLite "$@"
+'''

@@ -3,4 +3,4 @@
 TMPDIR="$(mktemp -p /tmp -d urlpic-XXXXXX)"
 URL="${1:-$(clippaste)}"
 wget -q -P "${TMPDIR}" "${URL}"
-exec sxiv -a "$(newest "${TMPDIR}")"
+exec rifle "$(newest "${TMPDIR}")"
