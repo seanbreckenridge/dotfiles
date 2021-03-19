@@ -85,14 +85,15 @@ budget-summary() {
 }
 
 # https://github.com/seanbreckenridge/HPI
-# https://github.com/seanbreckenridge/autotui
-alias 'shower=python3 -c "from my.body import prompt, Shower; prompt(Shower)"'
-alias 'weight=python3 -c "from my.body import prompt, Weight; prompt(Weight)"'
-alias 'water=python3 -c "from my.food import prompt, Water; prompt(Water)"'
-alias 'water-now=python3 -c "from my.food.water import water_now; water_now()"'
 alias 'hpi_query="$REPOS/HPI/scripts/hpi_query"'
-alias 'water-recent="$REPOS/HPI/scripts/water-recent"'
 alias 'history_fzf="$REPOS/HPI/scripts/history_fzf"'
+
+# https://github.com/seanbreckenridge/tupletally
+TUPLETALLY='/tmp/tupletally_aliases'
+if [[ ! -e "${TUPLETALLY}" ]]; then
+  tupletally generate >"${TUPLETALLY}"
+fi
+source "${TUPLETALLY}"
 
 # https://github.com/zupzup/calories/
 # https://github.com/seanbreckenridge/calories-fzf/

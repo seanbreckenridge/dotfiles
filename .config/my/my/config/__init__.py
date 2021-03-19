@@ -38,7 +38,6 @@ class core:
         "my.photos",
         "my.location.google",
         "my.calendar",
-        "my.body",
         "my.taplog",
         "my.runnerup",
         "my.rescuetime",
@@ -80,8 +79,9 @@ class reddit:
 
 
 # prompt me for actions using https://github.com/seanbreckenridge/autotui
+# interfaces created by https://github.com/seanbreckenridge/tupletally
 class body:
-    datadir: PathIsh = "~/data/body/"
+    datadir: PathIsh = "~/data/tupletally/"
 
 
 # parses my zsh history and any backups
