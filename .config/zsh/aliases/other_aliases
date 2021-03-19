@@ -89,11 +89,11 @@ alias 'hpi_query="$REPOS/HPI/scripts/hpi_query"'
 alias 'history_fzf="$REPOS/HPI/scripts/history_fzf"'
 
 # https://github.com/seanbreckenridge/tupletally
-TUPLETALLY='/tmp/tupletally_aliases'
-if [[ ! -e "${TUPLETALLY}" ]]; then
-  tupletally generate >"${TUPLETALLY}"
+TUPLETALLY_ALIASES='/tmp/tupletally_aliases'
+if [[ ! -e "${TUPLETALLY_ALIASES}" ]]; then
+  tupletally generate >"${TUPLETALLY_ALIASES}"
 fi
-source "${TUPLETALLY}"
+source "${TUPLETALLY_ALIASES}"
 
 # https://github.com/zupzup/calories/
 # https://github.com/seanbreckenridge/calories-fzf/
