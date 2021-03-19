@@ -102,7 +102,7 @@ class todotxt:
 
 # parses the history of me adding/removing rss feeds
 class newsboat:
-    export_path: Paths = "~/data/rss/"
+    export_path: Paths = "~/data/newsboat/"
     live_file: Optional[PathIsh] = if_exists(
         path.join(environ["XDG_CONFIG_HOME"], "newsboat", "urls")
     )
