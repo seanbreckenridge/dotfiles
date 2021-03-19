@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 readonly INPUT="${1:?Provide the .org file to convert from as the first argument}"
 readonly OUTPUT="${2:?Provide the output.md path as the second argument}"

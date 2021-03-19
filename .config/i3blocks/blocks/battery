@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # Modified from https://github.com/LukeSmithxyz/voidrice/blob/archi3/.local/bin/statusbar/battery
 
 # Give a battery name (e.g. BAT0) as an argument.

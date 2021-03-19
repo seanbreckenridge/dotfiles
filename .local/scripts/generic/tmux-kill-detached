@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 tmux list-sessions | grep -E -v '\(attached\)$' | while IFS=$'\n' read -r line; do
 	echo "Killing ${line}"
 	tmux kill-session -t "${line%%:*}"

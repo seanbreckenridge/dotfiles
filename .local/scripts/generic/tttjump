@@ -1,7 +1,9 @@
-#!/bin/bash -e
+#!/usr/bin/env bash
 # This prints directories that appear a lot in ttt_history,
 # letting me cd to one of them
 # Requires python, fzf, exists (https://github.com/seanbreckenridge/exists)
+
+set -e
 
 TTTFILE="${TTT_HISTFILE:-${XDG_DATA_HOME:-${HOME}/.local/share}/ttt_history.csv}"
 

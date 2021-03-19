@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 if CONTENTS="$(clippaste)"; then
 	# make sure this looks like text, and there wasnt an image on my clipboard
 	if iconv --from-code="utf-8" --to-code="utf-8" <(printf '%s' "$CONTENTS") >/dev/null 2>&1; then

@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # Moves the README.md downloaded from github back to ~/.config/yadm/README.md
 # so that changes made through the web interacted stay updated locally
 

@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # Gets the youtube ID for a user from a link
 # Could be a link to their channel or a video
 # Searches the <meta> tags for a channelId value

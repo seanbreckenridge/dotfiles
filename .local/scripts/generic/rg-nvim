@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # fzf all file contents recursively with rg, open the line
 # the ser selects
 declare RG_OUT

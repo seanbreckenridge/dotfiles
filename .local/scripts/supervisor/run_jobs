@@ -1,4 +1,5 @@
-#!/bin/bash -u
+#!/usr/bin/env bash
+set -u
 # Run jobs. Check which OS we're on to figure out which
 # directories of jobs we should include
 # the jobs/shared folder should be run on both OSs

@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 path="$1"
 maxln=$(($(tput lines) - 2))

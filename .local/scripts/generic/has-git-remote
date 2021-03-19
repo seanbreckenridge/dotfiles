@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # returns a zero exit code if the git directory has at least one remote URL set
 in-gitdir || exit $?
 [[ "$(git remote --verbose 2>/dev/null | wc -l)" != "0" ]] || exit 1

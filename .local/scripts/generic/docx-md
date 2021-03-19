@@ -1,4 +1,5 @@
-#!/bin/bash -e
+#!/usr/bin/env bash
+set -e
 # convert a docx to markdown and open it in nvim
 TARGET="$(remove-extension "${1:?Provide the docx to convert as the first argument}").md"
 pandoc -s "$1" -t markdown -o "${TARGET}"

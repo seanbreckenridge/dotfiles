@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # display a image from a URL using chafa
 # if this image has already been downloaded before, use the locally cached version
 # assumes the URL includes the file extension, so the target

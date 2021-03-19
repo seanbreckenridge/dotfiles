@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # This is a script to copy configuration files from somewhere else on the system
 # These are not symlinks or hardlinks - they're duplicates of the files

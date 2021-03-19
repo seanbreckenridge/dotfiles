@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 if [[ -n "${ONLINUX}" ]]; then
 	exec newest "${SCREENSHOTS:?No SCREENSHOTS environment variable set}"
 else

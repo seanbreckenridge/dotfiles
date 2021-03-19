@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # A wrapper around https://github.com/client9/misspell
 # which uses ag (silver_searcher) to highlight the
 # spelling mistake in context, so its easier to decide what to do

@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # accepts input from STDIN, sends text back to STDOUT
 # copies what it received to the clipboard
 # used in vim:

@@ -1,4 +1,6 @@
-#!/bin/bash -ex
+#!/usr/bin/env bash
+set -e
+set -x
 # uses my window watcher fork https://github.com/seanbreckenridge/aw-watcher-window
 
 declare -a WINDOW_WATCHER_ARGS

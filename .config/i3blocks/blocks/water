@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # how many water I've had today
 
 ((BLOCK_BUTTON == 3)) && notify-send "$("${REPOS}/HPI/scripts/water-recent")"

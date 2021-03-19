@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # swaps my git remote URL from Github to Gitlab
 # or back from Gitlab to Github
 #

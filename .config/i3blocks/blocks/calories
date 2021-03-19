@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # how many calories I've eaten today
 
 ((BLOCK_BUTTON == 3)) && notify-send "$(calories | sed -E 's/^\s*-+/------/' | chomp)"

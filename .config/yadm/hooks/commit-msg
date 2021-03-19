@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # Reverts README.md copy -- what is done by pre-commit
 # Delete the README.md since the original at ~/.config/yadm/README.md still exists
 

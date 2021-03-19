@@ -143,7 +143,7 @@ fi
 '''
 
 [genpass]
-shebang = "#!/bin/bash"
+shebang = "#!/usr/bin/env bash"
 command ='''
 # generates a password and puts it on your clipboard
 # uses https://github.com/seanbreckenridge/genpasswd
@@ -274,7 +274,7 @@ cd "$pics" || exit 1
 mpv /dev/video0
 exec launch ranger "$pics"
 '''
-shebang='#!/bin/bash'
+shebang='#!/usr/bin/env bash'
 link='camera'
 
 [image-dimensions]
@@ -349,7 +349,7 @@ exec file --mime-type -Lb "$@"
 '''
 
 [dragon-sink]
-shebang="#!/bin/bash"
+shebang="#!/usr/bin/env bash"
 command='''
 # brings up a prompt to drag files into.
 # If no flags are provided, copies any files
@@ -388,7 +388,7 @@ else
 	exec notify "${APP:-'clp'}" "$(printf 'Copied %d lines to clipboard' "$(echo "${STDIN}" | wc -l)")"
 fi
 '''
-shebang="#!/bin/bash"
+shebang="#!/usr/bin/env bash"
 
 [clp-args]
 command='''
@@ -423,7 +423,7 @@ command="exec tr '[:upper:]' '[:lower:]'"
 command="exec tr '[:lower:]' '[:upper:]'"
 
 [capitalize]
-shebang="#!/bin/bash"
+shebang="#!/usr/bin/env bash"
 command="""
 # capitalizes the first character of a word from STDIN
 s="$(lower)"
@@ -431,7 +431,7 @@ echo "$(upper <<<"${s:0:1}")${s:1}"
 """
 
 [lastpic]
-shebang = "#!/bin/bash"
+shebang = "#!/usr/bin/env bash"
 command='''
 if [[ -n "${ONLINUX}" ]]; then
 	exec newest "${SCREENSHOTS:?No SCREENSHOTS environment variable set}"
@@ -475,11 +475,11 @@ exec mv -v "${FILE}" "./$1"
 '''
 
 [rbg]
-shebang="#!/bin/bash"
+shebang="#!/usr/bin/env bash"
 command="echo -n $'\033[38;2;'$1';'$2';'$3'm'"
 
 [rbgb]
-shebang="#!/bin/bash"
+shebang="#!/usr/bin/env bash"
 command="echo -n $'\033[48;2;'$1';'$2';'$3'm'"
 
 [vic]
@@ -490,7 +490,7 @@ exec nvim "${LOCATION}"
 '''
 
 [grep-dotfiles]
-shebang="#!/bin/bash"
+shebang="#!/usr/bin/env bash"
 command='''
 # searches all my configuration for a string
 # passes arguments received to grep
@@ -661,7 +661,7 @@ URL="$(echo "${PICKED}" | urlextract)"
 	printf '%s\n' "${URL}"
 }
 '''
-shebang="#!/bin/bash"
+shebang="#!/usr/bin/env bash"
 
 [screens]
 command='exec sxiv -t "${SCREENSHOTS}"'
