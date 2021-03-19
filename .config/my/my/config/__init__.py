@@ -81,7 +81,7 @@ class reddit:
 # prompt me for actions using https://github.com/seanbreckenridge/autotui
 # interfaces created by https://github.com/seanbreckenridge/tupletally
 class body:
-    datadir: PathIsh = "~/data/tupletally/"
+    datadir: PathIsh = environ.get("TUPLETALLY_DATA_DIR", "~/data/tupletally/")
 
 
 # parses my zsh history and any backups

@@ -95,6 +95,8 @@ export URL_METADATA_DIR="${HOME}/data/url_metadata"
 # https://github.com/seanbreckenridge/HPI
 export MY_CONFIG="${XDG_CONFIG_HOME}/my"
 
+export TUPLETALLY_DATA_DIR="${HOME}/data/tupletally"
+
 # ignore less history
 export LESSHISTFILE='-'
 

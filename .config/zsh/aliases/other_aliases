@@ -91,7 +91,7 @@ alias 'history_fzf="$REPOS/HPI/scripts/history_fzf"'
 # https://github.com/seanbreckenridge/tupletally
 TUPLETALLY_ALIASES='/tmp/tupletally_aliases'
 if [[ ! -e "${TUPLETALLY_ALIASES}" ]]; then
-  tupletally generate >"${TUPLETALLY_ALIASES}"
+  python3 -m tupletally generate >"${TUPLETALLY_ALIASES}"
 fi
 source "${TUPLETALLY_ALIASES}"
 
