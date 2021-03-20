@@ -1,5 +1,5 @@
 #!/bin/sh
 # on linux, call the binary directly
-[[ -n "$ONLINUX" ]] && exec sqlitebrowser "$@"
+havecmd 'sqlitebrowser' && exec sqlitebrowser "$@"
 # on mac, this is installed into /Applications/
 exec open -a DB\ Browser\ for\ SQLite "$@"
