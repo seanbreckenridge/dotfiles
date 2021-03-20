@@ -23,7 +23,7 @@ timestamp_filename() {
 }
 
 if havecmd arbtt-capture; then
-	exec arbtt-capture -f "$(timestamp_filename log)" -r 10
+	exec arbtt-capture -f "$(timestamp_filename log)" -r 30
 else
-	exec window_watcher -d "$(timestamp_filename csv)" -p 10
+	exec window_watcher -d "$(timestamp_filename csv)" -p 30
 fi
