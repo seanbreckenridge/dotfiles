@@ -44,6 +44,7 @@ brew 'nmap'
 brew 'npm'
 brew 'node'
 brew 'nvm'
+brew 'yajl' # for ijson, for https://github.com/karlicoss/HPI/blob/master/my/arbtt.py
 brew 'elixir'
 brew 'ack'
 brew 'grc'
