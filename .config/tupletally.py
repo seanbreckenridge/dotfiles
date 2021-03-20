@@ -16,4 +16,3 @@ class Weight(NamedTuple):
 class Water(NamedTuple):
     when: datetime
     glasses: float
-
