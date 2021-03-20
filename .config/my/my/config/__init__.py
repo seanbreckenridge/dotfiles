@@ -22,7 +22,7 @@ except ImportError:
 
 
 class core:
-    cache_dir: PathIsh = "/tmp/cachew"
+    cache_dir: PathIsh = path.join(environ["HOME"], ".cache", "cachew")
     enabled_modules: Sequence[PathIsh] = []
     disabled_modules: Sequence[PathIsh] = [
         "my.reading.polar",
