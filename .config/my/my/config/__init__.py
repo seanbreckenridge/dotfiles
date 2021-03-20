@@ -51,7 +51,6 @@ class core:
         "my.endomondo",
         "my.emfit",
         "my.bluemaestro",
-        "my.arbtt",
     ]
 
 
@@ -204,6 +203,10 @@ class window_watcher:
     export_path: Paths = "~/data/window_watcher/*.csv"
     force_individual: Optional[List[str]] = ["Alacritty"]
 
+# https://github.com/nomeata/arbtt
+class arbtt:
+    logfiles: Paths = "~/data/arbtt/*.log"
+
 
 class smscalls:
     export_path: PathIsh = "~/GoogleDrive/SMSBackups/"
@@ -248,6 +251,8 @@ class location:
 class time:
     class tz:
         policy = "convert"
+
+
 
 
 # class stackexchange:
