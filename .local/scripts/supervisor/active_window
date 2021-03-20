@@ -7,6 +7,6 @@ declare -a WINDOW_WATCHER_ARGS
 WINDOW_WATCHER_ARGS=(-i 'Firefox Developer Edition \(Private Browsing\)')
 # just save to my data directory instead of ~/.local/share/window_watcher
 if [[ -d "${HOME}/data/window_watcher/" ]]; then
-	WINDOW_WATCHER_ARGS+=(--datafile "${HOME}/data/window_watcher/$(date "+%s").csv")
+	WINDOW_WATCHER_ARGS+=(--datafile "${HOME}/data/window_watcher/$(date "+%s")_$(uname -n).csv")
 fi
 exec window_watcher "${WINDOW_WATCHER_ARGS[@]}"
