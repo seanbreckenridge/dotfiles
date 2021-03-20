@@ -45,6 +45,7 @@ __pycache__
 # application config files to ignore
 /.cookiecutter_replay
 /.stack
+/.cabal
 /.sbt
 /.lftp
 /.ivy2
@@ -82,6 +83,8 @@ __pycache__
 /.matplotlib
 /.vscode-oss/
 /.vscode/
+/.arbtt/*.log
+/.arbtt/*.log.lck
 /.minecraft
 /.lldb
 /.solargraph

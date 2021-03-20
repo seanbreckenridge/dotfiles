@@ -194,12 +194,6 @@ while IFS= read -r go_line; do
 	install_go_package "${go_line}"
 done < <(spkglist "${GO_PACKAGE_LIST}")
 
-havecmd stack || exit $?
-echo "Installing global haskell packages..."
-while read -r haskell_pkg; do
-	havecmd "${haskell_pkg}" || stack install "${haskell_pkg}"
-done < <(spkglist "${HASKELL_PACKAGE_LIST}")
-
 havecmd emacs || exit $?
 # Install doom emacs
 if [[ ! -d "${HOME}/.emacs.d/" ]]; then

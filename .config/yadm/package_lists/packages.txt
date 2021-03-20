@@ -32,6 +32,8 @@ xorg-xwininfo
 
 #rebar3-zsh
 ccls
+ghc
+cabal-install
 checkbashisms
 clojure
 cmake
@@ -83,7 +85,6 @@ sbt
 scala
 scalafmt
 shfmt
-stack-static
 tidy
 valgrind
 wasm-pack

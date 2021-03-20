@@ -1,4 +1,0 @@
-# currently installed with stack
-brittany
-ghcid
-hlint

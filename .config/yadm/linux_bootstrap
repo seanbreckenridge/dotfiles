@@ -63,6 +63,13 @@ for component in "${RUST_COMPONENTS[@]}"; do
 	rustup component add "${component}"
 done
 
+# try to install arbtt https://github.com/nomeata/arbtt
+havecmd cabal && {
+	havecmd arbtt-capture || {
+		cabal update && cabal install --allow-newer --ghc-options=-dynamic arbtt
+	}
+}
+
 # check if a systemd service is running
 check_service() {
 	local SERVICE_NAME

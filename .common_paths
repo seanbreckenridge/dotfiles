@@ -26,5 +26,6 @@ ${HOME}/.local/share/go/bin:\
 ${HOME}/.local/share/cargo/bin:\
 ${HOME}/.local/share/pubcache/bin:\
 ${HOME}/.emacs.d/bin:\
+${HOME}/.cabal/bin:\
 ${PATH}"
 export PATH
