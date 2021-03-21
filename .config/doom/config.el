@@ -75,16 +75,10 @@
  ccls-executable "/usr/bin/ccls")
 
 ;;;; python
-(after! (python flycheck lsp-ui)
-  (defun setup-flycheck ()
-    (flycheck-add-next-checker 'lsp 'python-pylint)
-    )
-  )
+(defun python-flycheck-setup ()
+  (flycheck-add-next-checker 'lsp 'python-pylint 'python-mypy))
 
-(set-formatter! 'black "yapf")
-
-;; disable mypy
-(setq-default flycheck-disabled-checkers '(python-mypy))
+(add-hook 'python-mode-local-vars-hook #'python-flycheck-setup)
 
 (after! lsp
   (setq lsp-pyls-plugins-pycodestyle-enabled nil ;; Disable to ensure sanity
