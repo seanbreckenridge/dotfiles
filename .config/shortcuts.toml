@@ -434,22 +434,20 @@ echo "$(upper <<<"${s:0:1}")${s:1}"
 shebang = "#!/usr/bin/env bash"
 command='''
 if [[ -n "${ONLINUX}" ]]; then
-	exec newest "${SCREENSHOTS:?No SCREENSHOTS environment variable set}"
+	exec newest "$@" "${SCREENSHOTS:?No SCREENSHOTS environment variable set}"
 else
 	# on mac, these are saved to the ~/Desktop
 	find "${HOME}/Desktop" -iname 'screen shot*' | tail -n1 || exit $?
 fi
 '''
 
-[previewlastpic]
+[lastpicpreview]
 command='exec rifle "$(lastpic)"'
-link="lastpicpreview"
 
 [lastpicdrag]
 command='dragon-drag-and-drop -x "$(lastpic)"'
-link="draglastpic"
 
-[urlpic]
+[urlpicpreview]
 command='''
 # preview a picture from a URL
 TMPDIR="$(mktemp -p /tmp -d urlpic-XXXXXX)"
@@ -457,10 +455,9 @@ URL="${1:-$(clippaste)}"
 wget -P "${TMPDIR}" "${URL}"
 exec rifle "$(newest "${TMPDIR}")"
 '''
-links = ["previewurlpic", "urlpicpreview"]
 
 [lastdown]
-command='exec newest "${DOWNLOADS:?No DOWNLOADS environment variable set}"'
+command='exec newest "$@" "${DOWNLOADS:?No DOWNLOADS environment variable set}"'
 
 [mvlast]
 command='''

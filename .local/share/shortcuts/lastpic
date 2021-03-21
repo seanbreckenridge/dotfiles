@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 if [[ -n "${ONLINUX}" ]]; then
-	exec newest "${SCREENSHOTS:?No SCREENSHOTS environment variable set}"
+	exec newest "$@" "${SCREENSHOTS:?No SCREENSHOTS environment variable set}"
 else
 	# on mac, these are saved to the ~/Desktop
 	find "${HOME}/Desktop" -iname 'screen shot*' | tail -n1 || exit $?

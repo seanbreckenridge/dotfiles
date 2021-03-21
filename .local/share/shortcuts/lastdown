@@ -1,2 +1,2 @@
 #!/bin/sh
-exec newest "${DOWNLOADS:?No DOWNLOADS environment variable set}"
+exec newest "$@" "${DOWNLOADS:?No DOWNLOADS environment variable set}"
