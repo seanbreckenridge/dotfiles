@@ -22,7 +22,7 @@ timestamp_filename() {
 	printf '%s/%s_%s.%s' "${prefix}" "$(date '+%s')" "$(uname -n)" "${ext}"
 }
 
-if havecmd arbtt-capture; then
+if [[ "$(uname -s)" == "Linux" ]]; then
 	exec arbtt-capture -f "$(timestamp_filename log)" -r 30
 else
 	exec window_watcher -d "$(timestamp_filename csv)" -p 30
