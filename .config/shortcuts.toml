@@ -81,7 +81,6 @@ printf "\n"
 
 [wfi]
 command='''
-#!/bin/sh
 # wait for internet connection and ping me
 command -v tttlog >/dev/null 2>&1 && tttlog "$(basename "$0")"
 wait-for-internet "$@" && {
@@ -279,7 +278,6 @@ link='camera'
 
 [image-dimensions]
 command='''
-#!/bin/sh
 # print the image dimensions for one or more images
 for f in "$@"; do
 	img_size="$(exiftool "$f" | grep "Image Size")"
@@ -497,7 +495,6 @@ done < <(list-config | grep -vE "zsh_history|compdump")
 '''
 
 [cheat]
-shebang="#!/bin/sh"
 command='''
 command -v tttlog >/dev/null 2>&1 && tttlog "$(basename "$0") $*"
 exec curl -s "https://cheat.sh/$*"
