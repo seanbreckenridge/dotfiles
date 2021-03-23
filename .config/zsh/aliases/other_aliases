@@ -87,6 +87,9 @@ budget-summary() {
 # https://github.com/seanbreckenridge/HPI
 alias 'hpi_query="$REPOS/HPI/scripts/hpi_query"'
 alias 'history_fzf="$REPOS/HPI/scripts/history_fzf"'
+alias 'cz="$REPOS/HPI/scripts/food-fzf"'
+alias 'clr=food-recent'
+alias 'ca=food-now'
 
 # https://github.com/seanbreckenridge/tupletally
 TUPLETALLY_ALIASES='/tmp/tupletally_aliases'
