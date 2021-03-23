@@ -87,13 +87,6 @@ brew update && brew upgrade
 brew upgrade --cask
 brew bundle --file="${HOMEBREW_BREWFILE}"
 
-# try to install arbtt https://github.com/nomeata/arbtt
-havecmd cabal && {
-	havecmd arbtt-capture || {
-		cabal update && cabal install arbtt
-	}
-}
-
 # setup ruby with rbenv
 havecmd rbenv || exit $?
 if [[ "$(rbenv global)" != 2.7.1 ]]; then
