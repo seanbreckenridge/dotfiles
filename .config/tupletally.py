@@ -14,3 +14,9 @@ class Weight(NamedTuple):
 class Water(NamedTuple):
     when: datetime
     glasses: float
+
+
+class Food(NamedTuple):
+    when: datetime
+    food: str
+    calories: float

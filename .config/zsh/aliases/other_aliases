@@ -95,11 +95,6 @@ if [[ ! -e "${TUPLETALLY_ALIASES}" ]]; then
 fi
 source "${TUPLETALLY_ALIASES}"
 
-# https://github.com/zupzup/calories/
-# https://github.com/seanbreckenridge/calories-fzf/
-alias ca='calories add'
-alias cz='calfzf'
-
 # https://github.com/seanbreckenridge/tts
 alias tts-say='tts -d /tmp/tts.ogg && paplay /tmp/tts.ogg'
 

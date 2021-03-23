@@ -1,10 +1,8 @@
 #!/usr/bin/env bash
 # how many calories I've eaten today
 
-((BLOCK_BUTTON == 3)) && notify-send "$(calories | sed -E 's/^\s*-+/------/' | chomp)"
-
 HPI_QUERY="${REPOS}/HPI/scripts/hpi_query"
 {
-	"${HPI_QUERY}" --days 1 --key on 'my.calories' 'food' | jq -r '.[] | .calories'
+	"${HPI_QUERY}" --days 1 'my.body' 'food' | jq -r '.[] | .calories'
 	echo 0
 } | datamash sum 1

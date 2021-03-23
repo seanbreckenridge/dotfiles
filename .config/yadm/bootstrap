@@ -241,7 +241,6 @@ make_compatible_build tttlog 'https://github.com/seanbreckenridge/ttt'
 make_compatible_build exists 'https://github.com/seanbreckenridge/exists' install
 make_compatible_build genpasswd 'https://github.com/seanbreckenridge/genpasswd' install
 make_compatible_build mpv-currently-playing 'https://github.com/seanbreckenridge/mpv-sockets'
-make_compatible_build calmerge 'https://github.com/seanbreckenridge/calories-scripts'
 set +e
 
 # install largechar
@@ -291,21 +290,5 @@ dir-aliases-ranger
 havecmd nvim || exit $?
 echo "Installing nvim packages..."
 nvim +PlugInstall +qall
-
-# setup calories (https://github.com/zupzup/calories) config file
-if [[ -n "${GOBIN}" ]]; then
-	# is just a file with a single line, which points to the calories database
-	CALORIES_CONF_FILE="${GOBIN}/.caloriesconf"
-	# if the file doesn't exist, then setup config
-	if [[ ! -e "${CALORIES_CONF_FILE}" ]]; then
-		[[ -e "${GOBIN}" ]] || mkdir -vp "${GOBIN}"
-		CALORIES_DB="${HOME}/data/calories.db"
-		[[ -e "${CALORIES_DB}" ]] || abort "Couldn't setup calories, database file doesn't exist"
-		printf '%s' "${CALORIES_DB}" >"${CALORIES_CONF_FILE}"
-		chmod +x "${CALORIES_CONF_FILE}"
-	else
-		printf 'calories is already setup...\n'
-	fi
-fi
 
 echo "Finished bootstrapping!" | boxes -d shell -p t1l2b1r2
