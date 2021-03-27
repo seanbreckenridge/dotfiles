@@ -143,6 +143,11 @@ class chess:
     export_path: Paths = "~/data/chessdotcom/"
 
 
+# uses traktexport: https://github.com/seanbreckenridge/traktexport
+class trakt:
+    export_path: Paths = "~/data/trakt/"
+
+
 # uses https://github.com/seanbreckenridge/steamscraper
 class steam:
     export_path: Paths = "~/data/steam.json"
