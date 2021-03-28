@@ -148,6 +148,10 @@ class trakt:
     export_path: Paths = "~/data/trakt/"
 
 
+# uses my personal albums system: https://github.com/seanbreckenridge/albums
+class albums:
+    export_path: Paths = "~/data/albums/*.json"
+
 # uses https://github.com/seanbreckenridge/steamscraper
 class steam:
     export_path: Paths = "~/data/steam.json"
