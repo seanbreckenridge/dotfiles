@@ -3,5 +3,5 @@
 evry 6 hours -update_my_stars && {
 	wait-for-internet
 	printlog "mystars:updating oh-my-stars..."
-	mystars -u -c=never >>/tmp/mystars_update.log 2>&1
+	mystars -u -c=never >>/tmp/mystars_update.log 2>&1 || send-error "mystars update failed"
 }
