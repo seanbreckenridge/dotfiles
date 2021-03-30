@@ -199,9 +199,6 @@ class google:
 # https://github.com/seanbreckenridge/ttt
 class ttt:
     export_path: Paths = "~/data/ttt/*.csv"
-    live_file: Optional[PathIsh] = if_exists(
-        path.join(environ["XDG_DATA_HOME"], "ttt_history.csv")
-    )
 
 
 class battery:
