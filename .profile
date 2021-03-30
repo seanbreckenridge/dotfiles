@@ -50,5 +50,10 @@ export XDG_DATA_HOME="${HOME}/.local/share"
 # define where ZDOTDIR (rest of zsh configuration) is
 export ZDOTDIR="${XDG_CONFIG_HOME}/zsh"
 
+# variables which ideally should be sourced into the global
+# environment since they could be referenced without opening a terminal
+# e.g. from my menu bar/window manager/run launcher
 # https://github.com/seanbreckenridge/tupletally
 export TUPLETALLY_DATA_DIR="${HOME}/data/tupletally"
+# https://github.com/seanbreckenridge/ttt
+export TTT_HISTFILE="${HOME}/data/ttt/$(date '+%s').csv"
