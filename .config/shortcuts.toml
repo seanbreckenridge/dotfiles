@@ -716,9 +716,6 @@ printf '%s' "${CONTENTS}" | largechar -c
 [syncgui]
 command = "openurl 'localhost:8384'"
 
-[rn]
-command = "launch ranger"
-
 [tq]
 command='''
 # convert a TOML file to JSON, usually piped into jq
