@@ -32,7 +32,7 @@ function update() {
 	cargo install-update -a
 	echo "Updating global go packages..."
 	cd || return $?
-	spkglist "$HOME/.config/yadm/package_lists/go_packages.txt" | cut -d" " -f2- | xargs go get -u -v 2>&1 | grep "(download)$"
+	spkglist "$HOME/.config/yadm/package_lists/go_packages.txt" | cut -d" " -f2- | xargs go get -u -v 2>&1
 	cd "$OLDPWD" || return $?
 	printf "Finished updates in %d seconds\n" "$(($(date +%s) - START_TIME))" | boxes -dshell -pv1h2
 }
