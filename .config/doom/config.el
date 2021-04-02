@@ -76,7 +76,7 @@
 
 ;;;; python
 (defun python-flycheck-setup ()
-  (flycheck-add-next-checker 'lsp 'python-pylint 'python-mypy))
+  (flycheck-add-next-checker 'python-pylint 'python-mypy))
 
 (add-hook 'python-mode-local-vars-hook #'python-flycheck-setup)
 
