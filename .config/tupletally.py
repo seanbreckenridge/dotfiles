@@ -18,5 +18,5 @@ class Water(NamedTuple):
 
 class Food(NamedTuple):
     when: datetime
-    food: str
     calories: int
+    food: str

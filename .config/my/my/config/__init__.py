@@ -27,7 +27,6 @@ class core:
     disabled_modules: Sequence[PathIsh] = [
         "my.reading.polar",
         "my.stackexchange",
-        "my.pdfs",
         "my.rtm",
         "my.media",
         "my.google",
@@ -149,6 +148,7 @@ class trakt:
 class albums:
     export_path: Paths = "~/data/albums/*.json"
 
+
 # uses https://github.com/seanbreckenridge/steamscraper
 class steam:
     export_path: Paths = "~/data/steam.json"
@@ -231,6 +231,14 @@ class discord:
 # .gpx files from https://github.com/mendhak/gpslogger
 class gpslogger:
     export_path: Paths = "~/GoogleDrive/GPSLogger/"
+
+
+class pdfs:
+    paths: Paths = [
+        "~/Documents/Books/",
+        "~/Documents/Notes/",
+        "~/GoogleDrive/Education",
+    ]
 
 
 class stackexchange:
