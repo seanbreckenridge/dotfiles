@@ -83,8 +83,6 @@ __pycache__
 /.matplotlib
 /.vscode-oss/
 /.vscode/
-/.arbtt/*.log
-/.arbtt/*.log.lck
 /.minecraft
 /.lldb
 /.solargraph
