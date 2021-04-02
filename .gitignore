@@ -105,6 +105,7 @@ __pycache__
 /.java
 /.viminfo
 /.nuget
+/.pylint.d/*
 /.putty
 /.zoom
 /.parallel
