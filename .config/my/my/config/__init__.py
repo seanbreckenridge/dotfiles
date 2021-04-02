@@ -74,7 +74,7 @@ class github:
 # comment export from: https://github.com/seanbreckenridge/pushshift_comment_export
 class reddit:
     export_path: Paths = "~/data/rexport/"
-    pushshift_export_path: Paths = "~/data/rps_comments/*.json"
+    pushshift_export_path: Paths = "~/data/pushshift/"
 
 
 # prompt me for actions using https://github.com/seanbreckenridge/autotui
