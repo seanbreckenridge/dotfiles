@@ -19,4 +19,3 @@ evry 1 hours -guestbook_comments && {
 	COUNT="$(get_count)" || send-error "guestbook Couldn't update cache file"
 	echo "$COUNT" >"$CACHE_FILE"
 }
-
