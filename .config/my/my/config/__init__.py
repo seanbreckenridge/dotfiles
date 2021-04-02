@@ -237,7 +237,6 @@ class pdfs:
     paths: Paths = [
         "~/Documents/Books/",
         "~/Documents/Notes/",
-        "~/GoogleDrive/Education",
     ]
 
 
