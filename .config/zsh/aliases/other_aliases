@@ -113,7 +113,7 @@ alias optimg='rifleman -a image'
 job-reset() {
 	local EVRY_DATA_DIR TEMP_TAG CHOSEN_TAG
 	TEMP_TAG='job_reset__'
-	EVRY_DATA_DIR="$(EVRY_DEBUG=1 evry 0 seconds -"${TEMP_TAG}" | grep 'data directory' | rcut -d' ' -f1)"
+	EVRY_DATA_DIR="$(EVRY_DEBUG=1 evry 0 seconds -"${TEMP_TAG}" | grep 'data directory' | rcut -d":" -f1 | chomp)"
 	command rm "${EVRY_DATA_DIR}/${TEMP_TAG}"
 	cd "${EVRY_DATA_DIR}"
 	CHOSEN_TAG="$(fzf)" || return 1
