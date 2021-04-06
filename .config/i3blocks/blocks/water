@@ -1,10 +1,9 @@
 #!/usr/bin/env bash
 # how many water I've had today
 
-((BLOCK_BUTTON == 3)) && notify-send "$("${REPOS}/HPI/scripts/water-recent")"
+((BLOCK_BUTTON == 3)) && notify-send "$(python3 -m tupletally recent water)"
 
-HPI_QUERY="${REPOS}/HPI/scripts/hpi_query"
 {
-	"${HPI_QUERY}" --days 1 'my.body' 'water' | jq -r '.[] | .glasses'
+	hpi query --recent 1d my.body.water | jq -r '.[] | .glasses'
 	echo 0
 } | datamash sum 1

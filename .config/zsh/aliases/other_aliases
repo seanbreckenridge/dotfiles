@@ -85,7 +85,6 @@ budget-summary() {
 }
 
 # https://github.com/seanbreckenridge/HPI
-alias 'hpi_query="$REPOS/HPI/scripts/hpi_query"'
 alias 'history_fzf="$REPOS/HPI/scripts/history_fzf"'
 alias 'cz="$REPOS/HPI/scripts/food-fzf"'
 alias 'clr=food-recent'
