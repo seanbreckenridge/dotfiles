@@ -112,6 +112,7 @@ alias httpbin='docker run -p 80:80 kennethreitz/httpbin'
 # https://sean.fish/d/frink
 alias 'convert-units=frink'
 alias 'unit-convert=frink'
+alias 'timer=countdown'
 
 # stop import from crashing my system for some reason
 alias 'import=printf "Use /usr/bin/import instead\n"'
