@@ -8,6 +8,7 @@ cd "${SUPERVISOR_DIR}" || exit $?
 
 declare -a JOB_DIRS
 declare -a DIR_SUFFIXES=('shared') # always do shared jobs
+declare -a DIR_PREFIXES=()
 
 if [[ "$(uname -s)" == 'Linux' ]]; then
 	DIR_SUFFIXES+=('linux')
@@ -15,13 +16,28 @@ else
 	DIR_SUFFIXES+=('mac')
 fi
 
-# prepend $SUPERVISOR_DIR/jobs to chosen suffixes
-for suffix in "${DIR_SUFFIXES[@]}"; do
-	JOB_DIRS+=("${SUPERVISOR_DIR:?SUPERVISOR_DIR is not set}/jobs/${suffix}")
-done
+# find DIR_PREFIXES
+# either ./jobs/ or my HPI/jobs directories, both which are structured
+# in the mac/linux/shared structue
 
+DIR_PREFIXES+=("${SUPERVISOR_DIR:?SUPERVISOR_DIR is not set}/jobs")
 # append any HPI jobs, if the directory exists
 HPI_JOB_DIR="${REPOS:-${HOME}/Repos}/HPI/jobs"
-[[ -d "${HPI_JOB_DIR}" ]] && JOB_DIRS+=("${HPI_JOB_DIR}")
+[[ -d "${HPI_JOB_DIR}" ]] && DIR_PREFIXES+=("${HPI_JOB_DIR}")
+
+# combine prefixes and suffixes
+
+# prepend $SUPERVISOR_DIR/jobs to chosen suffixes
+for prefix in "${DIR_PREFIXES[@]}"; do
+	for suffix in "${DIR_SUFFIXES[@]}"; do
+		target="${prefix}/${suffix}"
+		if [[ -d "${target}" ]]; then
+			JOB_DIRS+=("${target}")
+		else
+			printf '"%s" does not exist!\n' "${target}" 1>&2
+			exit 1
+		fi
+	done
+done
 
 exec bgproc "$@" "${JOB_DIRS[@]}"
