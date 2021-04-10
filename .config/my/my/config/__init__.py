@@ -16,12 +16,17 @@ from my.core import PathIsh, Paths
 def repo(name: str) -> str:
     return path.join(environ["REPOS"], name)
 
+
 # https://github.com/seanbreckenridge/reorder_editable
 # if my easy-install.pth file was ordered wrong, fix it and exit!
 from reorder_editable import Editable
+
 if Editable().reorder([repo("HPI"), repo("HPI-fork")]):
     # this is true if we actually reordered the path, else path was already ordered
-    print("easy-install.pth was ordered wrong! It has been reordered, exiting to apply changes...", file=sys.stderr)
+    print(
+        "easy-install.pth was ordered wrong! It has been reordered, exiting to apply changes...",
+        file=sys.stderr,
+    )
     sys.exit(0)
 
 
