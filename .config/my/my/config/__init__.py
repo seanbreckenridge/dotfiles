@@ -5,11 +5,23 @@ https://github.com/seanbreckenridge/HPI/
 [Human Programming Interface]
 """
 
+import sys
 from os import environ, path
 from typing import Optional, Callable, List, Sequence
 from pathlib import Path
 
 from my.core import PathIsh, Paths
+
+
+def repo(name: str) -> str:
+    return path.join(environ["REPOS"], name)
+
+# if my easy-install.pth file was ordered wrong, fix it and exit!
+from reorder_editable import Editable
+if Editable().reorder([repo("HPI"), repo("HPI-fork")]):
+    # this is true if we actually reordered the path, else path was already ordered
+    print("easy-install.pth was ordered wrong! is now fixed, exiting to apply changes...")
+    sys.exit(0)
 
 
 # https://github.com/seanbreckenridge/ipgeocache
