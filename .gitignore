@@ -142,6 +142,7 @@ __pycache__
 /.config/newsboat/urls
 /.config/transmission/
 /.config/so/config.yml
+/.config/gh/hosts.yml
 /.config/visualboyadvance-m/
 /.config/light
 /.config/xbuild
