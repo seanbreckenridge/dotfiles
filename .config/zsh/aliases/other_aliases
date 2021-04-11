@@ -110,10 +110,8 @@ alias optimg='rifleman -a image'
 # https://github.com/seanbreckenridge/evry
 # reset a job (remove the tag file) for an evry job
 job-reset() {
-	local EVRY_DATA_DIR TEMP_TAG CHOSEN_TAG
-	TEMP_TAG='job_reset__'
-	EVRY_DATA_DIR="$(EVRY_DEBUG=1 evry 0 seconds -"${TEMP_TAG}" | grep 'data directory' | rcut -d":" -f1 | chomp)"
-	command rm "${EVRY_DATA_DIR}/${TEMP_TAG}"
+	local EVRY_DATA_DIR CHOSEN_TAG
+	EVRY_DATA_DIR="$(dirname "$(evry location -tag)")"
 	cd "${EVRY_DATA_DIR}"
 	CHOSEN_TAG="$(fzf)" || return 1
 	rm -v "${CHOSEN_TAG}"
