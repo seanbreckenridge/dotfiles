@@ -69,6 +69,7 @@ class core:
         "my.arbtt",
         "my.emfit",
         "my.bluemaestro",
+        "my.zotero",  # temporarily? till I start using it
     ]
 
 
