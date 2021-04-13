@@ -1,3 +1,5 @@
+import os
+
 from promnesia.common import Source
 from promnesia.sources import (
     facebook,
@@ -63,3 +65,6 @@ SOURCES = [
         ignored=["*.gpx", "*/SMSBackups/*.xml"],
     ),
 ]
+
+CACHE_DIR = os.path.join(os.environ["HOME"], ".cache", "promnesia")
+
