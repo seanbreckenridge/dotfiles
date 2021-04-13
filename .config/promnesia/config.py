@@ -1,7 +1,11 @@
 from promnesia.common import Source
 from promnesia.sources import (
+    facebook,
     reddit,
-    discord,
+    commits,
+    todotxt,
+    albums,
+    github,
     auto,
     takeout,
     discord,
@@ -12,12 +16,19 @@ from promnesia.sources import (
     trakt,
     ttt,
     zsh,
+    smscalls,
 )
 
 
 SOURCES = [
+    todotxt,
+    albums,
+    github,
+    commits,
+    smscalls,
     reddit,
     discord,
+    facebook,
     newsboat,
     mpv,
     trakt,
