@@ -25,7 +25,7 @@ SOURCES = [
     old_forums,
     ttt,
     zsh,
-    ffexport,
+    Source(ffexport, name="browsing"),
     Source(
         auto.index,
         "~/Repos/",
