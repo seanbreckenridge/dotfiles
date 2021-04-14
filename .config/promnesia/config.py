@@ -1,10 +1,7 @@
 import os
 
 from promnesia.common import Source
-from promnesia.sources import (
-    reddit,
-    auto
-)
+from promnesia.sources import reddit, auto
 
 from promnesia_sean.sources import (
     facebook,
@@ -71,4 +68,3 @@ SOURCES = [
 ]
 
 CACHE_DIR = os.path.join(os.environ["HOME"], ".cache", "promnesia")
-
