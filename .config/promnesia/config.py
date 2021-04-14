@@ -2,14 +2,18 @@ import os
 
 from promnesia.common import Source
 from promnesia.sources import (
-    facebook,
     reddit,
+    auto
+)
+
+from promnesia_sean.sources import (
+    facebook,
+    ipython,
     commits,
     todotxt,
     albums,
     github,
-    auto,
-    takeout,
+    google_takeout,
     discord,
     ffexport,
     mpv,
@@ -21,8 +25,8 @@ from promnesia.sources import (
     smscalls,
 )
 
-
 SOURCES = [
+    ipython,
     todotxt,
     albums,
     github,
@@ -34,7 +38,7 @@ SOURCES = [
     newsboat,
     mpv,
     trakt,
-    takeout,
+    google_takeout,
     old_forums,
     ttt,
     zsh,
