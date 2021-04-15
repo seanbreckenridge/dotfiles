@@ -147,6 +147,10 @@ class firefox:
     export_path: Paths = "~/data/firefox/*.sqlite"
 
 
+class chrome:
+    export_path: Paths = "~/data/chrome/"
+
+
 # uses lolexport: https://github.com/seanbreckenridge/lolexport
 class league_of_legends:
     export_path: Paths = "~/data/league_of_legends/parsed*.json"
