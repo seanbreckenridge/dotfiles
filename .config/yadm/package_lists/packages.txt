@@ -165,7 +165,7 @@ pkgfile
 pulsemixer
 pup
 qrencode
-ranger
+ranger-git
 rdiff-backup
 ripgrep
 rlwrap
