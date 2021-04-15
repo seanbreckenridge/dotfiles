@@ -95,6 +95,9 @@ export URL_METADATA_DIR="${HOME}/data/url_metadata"
 # https://github.com/seanbreckenridge/HPI
 export MY_CONFIG="${XDG_CONFIG_HOME}/my"
 
+# https://github.com/karlicoss/promnesia
+export PROMNESIA_CONFIG="${XDG_CONFIG_HOME}/promnesia/config.py"
+
 export TUPLETALLY_DATA_DIR="${HOME}/data/tupletally"
 
 # ignore less history
