@@ -260,7 +260,6 @@ mode "launcher" {
     bindsym t exec --no-startup-id ttt thunderbird; mode "default"
     bindsym e exec --no-startup-id ttt emacs; mode "default"
     bindsym d exec --no-startup-id ttt discord; mode "default"
-    bindsym s exec --no-startup-id ttt slack; mode "default"
     bindsym k exec --no-startup-id ttt keepassxc; mode "default"
     bindsym b exec --no-startup-id ttt bookmark-open; mode "default"
     bindsym l exec --no-startup-id ttt largechar-clipboard; mode "default"

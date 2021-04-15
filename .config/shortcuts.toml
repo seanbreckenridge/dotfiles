@@ -593,9 +593,6 @@ exec stream-corner-480
 [discord]
 command="exec openurl 'https://discord.com/login'"
 
-[slack]
-command="exec openurl 'https://app.slack.com/'"
-
 [newsboat-force]
 command='''
 # if another instance of newsboat is open, kill it and open one here

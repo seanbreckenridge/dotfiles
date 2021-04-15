@@ -1,2 +1,0 @@
-#!/bin/sh
-exec openurl 'https://app.slack.com/'
