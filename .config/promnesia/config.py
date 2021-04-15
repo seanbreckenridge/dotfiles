@@ -1,7 +1,7 @@
 import os
 
 from promnesia.common import Source
-from promnesia.sources import reddit, auto
+from promnesia.sources import reddit, auto, github
 
 from promnesia_sean.sources import (
     facebook,
@@ -9,7 +9,6 @@ from promnesia_sean.sources import (
     commits,
     todotxt,
     albums,
-    github,
     google_takeout,
     discord,
     ffexport,
