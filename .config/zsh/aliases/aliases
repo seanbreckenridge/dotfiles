@@ -46,6 +46,7 @@ alias ee='editor -e'  # edit with emacs
 alias ecl='editor -c' # editor with client in background
 
 # Standard/Shorthands
+alias 'xargsl=xargs -I {} sh -c' # line-based xargs
 alias 'rm=rm -v'
 alias 'cp=cp -v'
 alias 'curl=curl -s'
@@ -77,8 +78,6 @@ rt() {
 # Non-standard
 alias syserrors='sudo journalctl -p 3 -xb'
 alias sysderrors='sudo systemctl --failed'
-# edit the python --editable installed packages
-alias 'pip-editable-installs=e "$(find ~/.local/lib/python* -name easy-install.pth)"'
 # remove packages that arent being used for anything
 alias list-orphans='pacman -Qtdq'
 alias remove-orphans='sudo pacman -Rns $(list-orphans)'
