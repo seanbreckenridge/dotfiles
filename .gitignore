@@ -81,6 +81,8 @@ __pycache__
 /.nvm
 /.keras
 /.mozilla
+/.waterfox/
+/.moonchild productions/
 /.matplotlib
 /.vscode-oss/
 /.vscode/
