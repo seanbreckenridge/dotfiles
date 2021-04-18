@@ -142,9 +142,14 @@ class mpv:
     export_path: Paths = "~/data/mpv/*.json"
 
 
-# uses ffexport https://github.com/seanbreckenridge/ffexport
-class firefox:
-    export_path: Paths = "~/data/firefox/*.sqlite"
+# uses browserexport https://github.com/seanbreckenridge/browserexport
+class browsing:
+    export_path: Paths = "~/data/browsing/"
+
+    # use my active firefox database
+    from browserexport.browsers.firefox import Firefox
+
+    live_databases: Paths = (Firefox.locate_database())
 
 
 class chrome:
