@@ -194,6 +194,7 @@ __pycache__
 /.config/chromium
 /.config/dconf
 /.config/google-chrome
+/.config/vivaldi
 /.config/Slack
 /.config/Electron
 /.config/nvim/.netrwhist
@@ -215,6 +216,7 @@ __pycache__
 /.config/obs-studio
 
 /.local/lib/python*
+/.local/lib/vivaldi
 /.local/man
 /.local/*.md
 /.local/pipx

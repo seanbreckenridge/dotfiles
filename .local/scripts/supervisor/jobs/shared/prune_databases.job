@@ -1,8 +1,0 @@
-#!/usr/bin/env bash
-# temporary job to fix this:
-# https://github.com/seanbreckenridge/HPI/blob/b51a27ddae914841badeafd675060b6209666717/my/browsing.py#L53-L58
-
-evry 3 hours -prune_ffexport_dbs && {
-	printlog "prune_databases:removing temporary databases..."
-	find /tmp -iname "places*sqlite" -delete -print 2>/dev/null
-}
