@@ -22,6 +22,7 @@ fi
 
 DIR_PREFIXES+=("${SUPERVISOR_DIR:?SUPERVISOR_DIR is not set}/jobs")
 # append any HPI jobs, if the directory exists
+# https://github.com/seanbreckenridge/HPI
 HPI_JOB_DIR="${REPOS:-${HOME}/Repos}/HPI/jobs"
 [[ -d "${HPI_JOB_DIR}" ]] && DIR_PREFIXES+=("${HPI_JOB_DIR}")
 
@@ -35,7 +36,6 @@ for prefix in "${DIR_PREFIXES[@]}"; do
 			JOB_DIRS+=("${target}")
 		else
 			printf '"%s" does not exist!\n' "${target}" 1>&2
-			exit 1
 		fi
 	done
 done
