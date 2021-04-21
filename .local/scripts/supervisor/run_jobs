@@ -4,7 +4,7 @@ set -u
 # directories of jobs we should include
 # the jobs/shared folder should be run on both OSs
 
-cd "${SUPERVISOR_DIR}" || exit $?
+cd "${SUPERVISOR_DIR:="$(realpath "$(dirname "${BASH_SOURCE[0]}")")"}" || exit $?
 
 declare -a JOB_DIRS
 declare -a DIR_SUFFIXES=('shared') # always do shared jobs
