@@ -22,10 +22,10 @@ from promnesia_sean.sources import (
 )
 
 SOURCES = [
+    Source(github, render_markdown=True),
     ipython,
     todotxt,
     albums,
-    github,
     commits,
     smscalls,
     reddit,
