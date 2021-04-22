@@ -41,8 +41,8 @@ except ImportError:
 
 class core:
     cache_dir: PathIsh = path.join(environ["HOME"], ".cache", "cachew")
-    enabled_modules: Sequence[PathIsh] = []
-    disabled_modules: Sequence[PathIsh] = [
+    enabled_modules: Sequence[str] = []
+    disabled_modules: Sequence[str] = [
         "my.reading.polar",
         "my.stackexchange",
         "my.rtm",
@@ -149,7 +149,7 @@ class browsing:
     # use my active firefox database
     from browserexport.browsers.firefox import Firefox
 
-    live_databases: Paths = (Firefox.locate_database())
+    live_databases: Paths = Firefox.locate_database()
 
 
 class chrome:
