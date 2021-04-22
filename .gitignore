@@ -81,6 +81,7 @@ __pycache__
 /.nvm
 /.keras
 /.mozilla
+/.config/kwalletrc
 /.waterfox/
 /.moonchild productions/
 /.matplotlib
