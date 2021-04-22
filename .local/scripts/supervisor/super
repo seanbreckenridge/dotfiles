@@ -13,7 +13,7 @@ function run_super() {
 	case "$1" in
 	--kill)
 		run_super --ctl "stop all"
-		tail "$SUPERVISOR_LOGS"/*.log
+		tail "$SUPERVISOR_LOGS"/*
 		run_super --ctl "shutdown"
 		;;
 	--daemon)
