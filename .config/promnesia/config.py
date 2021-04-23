@@ -22,13 +22,13 @@ from promnesia_sean.sources import (
 )
 
 SOURCES = [
+    Source(reddit, render_markdown=True),
     Source(github, render_markdown=True),
     ipython,
     todotxt,
     albums,
     commits,
     smscalls,
-    reddit,
     discord,
     facebook,
     newsboat,
