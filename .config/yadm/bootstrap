@@ -60,7 +60,7 @@ android)
 esac
 
 declare -rx PYTHON_PACKAGE_LIST="${PACKAGE_DIR}/python3_packages.txt"
-declare -rx SCIPYTHON_PACKAGE_LIST="${PACKAGE_DIR}/scientific_python.txt"  # probably don't have to install on android
+declare -rx SCIPYTHON_PACKAGE_LIST="${PACKAGE_DIR}/scientific_python.txt" # probably don't have to install on android
 declare -rx GLOBAL_GEM_LIST="${PACKAGE_DIR}/ruby_packages.txt"
 declare -rx NODE_PACKAGE_LIST="${PACKAGE_DIR}/node_packages.txt"
 declare -rx DART_PACKAGE_LIST="${PACKAGE_DIR}/dart_packages.txt"

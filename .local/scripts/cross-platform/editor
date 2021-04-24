@@ -58,28 +58,28 @@ case "$ACTION" in
 	;;
 "$EMACS")
 	case "$ON_OS" in
-		linux)
-			ttt setsid emacs "$@" &
-			;;
-		mac)
-			ttt emacs "$@" # alacritty can handle this in terminal
-			;;
-		android)
-			echo "No emacs on android (yet?)"
-			;;
+	linux)
+		ttt setsid emacs "$@" &
+		;;
+	mac)
+		ttt emacs "$@" # alacritty can handle this in terminal
+		;;
+	android)
+		echo "No emacs on android (yet?)"
+		;;
 	esac
 	;;
 "$EMACS_CLIENT")
 	case "$ON_OS" in
-		linux)
-			ttt setsid emacsclient -c "$@" &
-			;;
-		mac)
-			ttt emacs "$@" # dont use emacsclient on mac
-			;;
-		android)
-			echo "No emacs on android (yet?)"
-			;;
+	linux)
+		ttt setsid emacsclient -c "$@" &
+		;;
+	mac)
+		ttt emacs "$@" # dont use emacsclient on mac
+		;;
+	android)
+		echo "No emacs on android (yet?)"
+		;;
 	esac
 	;;
 esac

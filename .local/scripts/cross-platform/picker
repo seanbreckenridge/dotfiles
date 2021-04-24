@@ -32,19 +32,19 @@ done
 shift $((OPTIND - 1))
 
 case "$ON_OS" in
-	linux)
-		declare LINES
-		LINES="$(wc -l <<<"$STDIN")"
-		# if STDIN is less than 15 lines, limit the list view to that number
-		((LINES < 15)) && linux_options+=(-lines "$LINES")
-		printf '%s' "$STDIN" | rofi -i -dmenu "${linux_options[@]}" || exit $?
-		;;
-	mac)
-		printf '%s' "$STDIN" | choose -c 9400D3 -b 1C1C1C -u || exit $?
-		;;
-	android)
-		# system dialog of some kind?
-		echo 'Use system dialog on android?' 1>&2
-		printf '%s' "$STDIN" | fzf || exit $?
-		;;
+linux)
+	declare LINES
+	LINES="$(wc -l <<<"$STDIN")"
+	# if STDIN is less than 15 lines, limit the list view to that number
+	((LINES < 15)) && linux_options+=(-lines "$LINES")
+	printf '%s' "$STDIN" | rofi -i -dmenu "${linux_options[@]}" || exit $?
+	;;
+mac)
+	printf '%s' "$STDIN" | choose -c 9400D3 -b 1C1C1C -u || exit $?
+	;;
+android)
+	# system dialog of some kind?
+	echo 'Use system dialog on android?' 1>&2
+	printf '%s' "$STDIN" | fzf || exit $?
+	;;
 esac

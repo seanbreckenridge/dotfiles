@@ -8,15 +8,15 @@ STDIN="$(cat)"
 [ -z "${STDIN}" ] && exit
 
 case "$ON_OS" in
-	linux)
-		printf '%s' "${STDIN}" | xclip -in -selection clipboard
-		;;
-	mac)
-		printf '%s' "${STDIN}" | pbcopy
-		;;
-	android)
-		echo "No Clipboard Access?" >&2
-		printf '%s' "${STDIN}"
-		exit 1
-		;;
+linux)
+	printf '%s' "${STDIN}" | xclip -in -selection clipboard
+	;;
+mac)
+	printf '%s' "${STDIN}" | pbcopy
+	;;
+android)
+	echo "No Clipboard Access?" >&2
+	printf '%s' "${STDIN}"
+	exit 1
+	;;
 esac
