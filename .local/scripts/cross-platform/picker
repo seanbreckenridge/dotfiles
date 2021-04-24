@@ -44,7 +44,7 @@ case "$ON_OS" in
 		;;
 	android)
 		# system dialog of some kind?
-		echo 'Use system dialog on android?'
+		echo 'Use system dialog on android?' 1>&2
 		printf '%s' "$STDIN" | fzf || exit $?
 		;;
 esac
