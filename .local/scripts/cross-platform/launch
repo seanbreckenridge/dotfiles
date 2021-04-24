@@ -11,11 +11,19 @@
 
 if [ "$(tty)" = "not a tty" ]; then
 	# open a new terminal, load zsh configuration (for zsh functions/environment), then launch the passed command
-	if [ -n "$ONLINUX" ]; then
-		alacritty -e zsh -ic "$@"
-	else
-		mac-alacritty -e zsh -ic "$@"
-	fi
+	case "$ON_OS" in
+		linux)
+			alacritty -e zsh -ic "$@"
+			;;
+		mac)
+			mac-alacritty -e zsh -ic "$@"
+			;;
+		android)
+			# just run the command directly on android
+			sh -c "$@"
+			exit 0
+			;;
+	esac
 else
 	# execute the command in the current shell
 	sh -c "$@"

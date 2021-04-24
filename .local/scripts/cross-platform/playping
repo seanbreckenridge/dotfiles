@@ -1,8 +1,16 @@
 #!/bin/sh
 # Sends a notification-like ping
 
-if [ -n "$ONLINUX" ]; then
-	exec paplay /usr/share/sounds/freedesktop/stereo/message.oga
-else
-	exec afplay /System/Library/Sounds/Ping.aiff
-fi
+case "$ON_OS" in
+	linux)
+		exec paplay /usr/share/sounds/freedesktop/stereo/message.oga
+		;;
+	mac)
+		exec afplay /System/Library/Sounds/Ping.aiff
+		;;
+	android)
+		# TODO: play system sound somehow
+		# wouldn't work over ssh?
+		:
+		;;
+esac

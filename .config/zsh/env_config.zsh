@@ -132,24 +132,3 @@ export LESS_TERMCAP_so=$'\e[01;33m'
 export LESS_TERMCAP_ue=$'\e[0m'
 export LESS_TERMCAP_us=$'\e[1;4;31m'
 
-# If on mac, put gnu utils on path before others:
-if [[ -z "$ONLINUX" ]]; then
-	PATH="\
-/usr/local/bin:\
-${HOME}/.rbenv/versions/2.7.1/bin:\
-${HOME}/Library/Python/3.9/bin:\
-/usr/local/opt/coreutils/libexec/gnubin:\
-/usr/local/opt/diffutils/bin:\
-/usr/local/opt/findutils/libexec/gnubin:\
-/usr/local/opt/gawk/libexec/gnubin:\
-/usr/local/opt/gnu-indent/libexec/gnubin:\
-/usr/local/opt/gnu-sed/libexec/gnubin:\
-/usr/local/opt/gnu-tar/libexec/gnubin:\
-/usr/local/opt/gnu-which/libexec/gnubin:\
-/usr/local/opt/grep/libexec/gnubin:\
-/usr/local/opt/gnu-getopt/bin:\
-${PATH}\
-"
-	source "${HOME}/.common_paths"
-	export PATH
-fi

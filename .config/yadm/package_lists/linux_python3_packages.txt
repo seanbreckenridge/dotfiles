@@ -1,3 +1,4 @@
 iwlib
 python-xlib
+python-language-server
 ueberzug

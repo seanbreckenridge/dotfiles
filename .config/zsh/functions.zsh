@@ -2,16 +2,21 @@
 # user defined functions and completions
 fpath=("${ZDOTDIR}/functions" "${ZDOTDIR}/completions" "${fpath[@]}")
 
-# if on linux
-if [[ -n "${ONLINUX}" ]]; then
-	fpath+=(/usr/share/zsh/site-functions)
-else
-	# on mac
-	# if compaudit complains:
-	# run:
-	# sudo chown -R $(whoami) <folders>...
-	fpath+=(/usr/local/share/zsh/site-functions)
-fi
+case "$ON_OS" in
+	linux)
+		fpath+=(/usr/share/zsh/site-functions)
+		;;
+	mac)
+		# on mac
+		# if compaudit complains:
+		# run:
+		# sudo chown -R $(whoami) <folders>...
+		fpath+=(/usr/local/share/zsh/site-functions)
+		;;
+	android)
+		fpath+=("${HOME}/../usr/share/zsh/site-functions")
+		;;
+esac
 
 # autoload must be after modifying fpath to auto-load completions
 

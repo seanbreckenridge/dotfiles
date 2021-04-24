@@ -16,8 +16,14 @@ command -v tttlog >/dev/null 2>&1 && tttlog "openurl $URL"
 
 printf '%s\n' "$URL"
 
-if [ -n "$ONLINUX" ]; then
-	setsid "$BROWSER" "$URL" >/dev/null 2>&1 &
-else
-	open -n -a "Firefox Developer Edition" --args "--new-tab" "$URL"
-fi
+case "$ON_OS" in
+	linux)
+		setsid "$BROWSER" "$URL" >/dev/null 2>&1 &
+		;;
+	mac)
+		open -n -a "Firefox Developer Edition" --args "--new-tab" "$URL"
+		;;
+	android)
+		echo "Not sure how to open on android..."
+		;;
+esac

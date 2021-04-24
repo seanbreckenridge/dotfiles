@@ -1,0 +1,59 @@
+#!/usr/bin/env bash
+# Sets up termux on my android device
+
+# delete default files if they exist
+original_files=("${HOME}/.zshenv" "${HOME}/.zshrc" "${HOME}/.zsh_history")
+for file in "${original_files[@]}"; do
+	rm -rf "${file}"
+done
+
+# configure both bash and zsh to source the .profile,
+# so that my path gets setup properly
+
+# bash will typically source ~/.profile on shell launch
+# if we haven't switched to zsh, a shell restart should
+# cause this to be sourced
+# setup zsh files
+echo 'Setting up zsh profile...'
+echo 'source "${HOME}/.profile"; export TERM=xterm-256color' >"${HOME}/.zshenv"
+
+# check if we have access to the my directories
+# on my $PATH, to see if zsh has been properly configured
+if [[ ! "$(command -v havecmd)" ]]; then
+	printf "Issue finding 'havecmd', environment is not setup properly\n"
+	printf "Try restarting the shell and making sure ~/.profile is getting sourced\n"
+	exit 1
+fi
+
+# set zsh as shell
+if ! echo "${SHELL}" | grep -q '/zsh'; then
+	havecmd zsh || apt install zsh
+	chsh -s zsh # seems to be different on termux?
+	abort "Restart shell so that zsh environment is setup. Then re-run 'yadm bootstrap'"
+else
+	echo "zsh is already set as your default shell"
+fi
+
+declare -rx TERMUX_PACKAGES="${PACKAGE_DIR}/termux_packages.txt"
+
+# Install spkglist so I can parse package lists
+set -e
+havecmd go || apt install golang
+install_spkglist
+set +e
+
+mkdir -p "${HOME}/.local/bin"
+touch "${HOME}/.hushlogin"
+
+[[ ! -d "${HOME}/storage" ]] && termux-setup-storage
+
+for lib in $(spkglist "${TERMUX_PACKAGES}"); do
+	if ! dpkg-query -W -f='${Status}' "${lib}" | grep -q "ok installed"; then # if package isn't installed
+		apt install "${lib}"
+	fi
+done
+
+printf "Installing nvim-plug...\n"
+if [[ ! -f ~/.local/share/nvim/site/autoload/plug.vim ]]; then
+	curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+fi

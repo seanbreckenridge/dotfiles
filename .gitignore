@@ -8,6 +8,12 @@
 .CFUserTextEncoding
 Brewfile.lock.json
 
+# Termux
+/storage
+/.termux_authinfo
+/.termux/shell
+/.hushlogin
+
 # zsh
 /.zshenv
 .zcompcache

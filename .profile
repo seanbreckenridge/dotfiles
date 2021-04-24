@@ -11,19 +11,62 @@ export DOCUMENTS="${HOME}/Documents"
 export MOVIES="${HOME}/Movies"
 export MUSIC="${HOME}/Music"
 
-# see /etc/lightdm/Xsession
-[ "$(uname -s)" = "Linux" ] && export ONLINUX=1
+# set global OS environment variable
+# used in lots of my scripts
+# and in my bootstrap/installation process
+# to choose how to install everything
+case "$(uname -s)" in
+Linux*)
+	if command -v termux-setup-storage >/dev/null 2>&1; then
+		ON_OS='android'
+	else
+		ON_OS='linux'
+	fi
+	;;
+Darwin*)
+	ON_OS='mac'
+	;;
+*)
+	printf "Unknown Operating System...\n"
+	uname -s
+	uname -r
+	;;
+esac
 
-if [ -n "$ONLINUX" ]; then
-	# source common_paths for shared (mac/linux) path modifications
-	. "${HOME}/.common_paths"
+export ON_OS
+
+# common path modifications
+PATH="\
+${HOME}/.local/share/shortcuts:\
+${HOME}/.local/bin:\
+${HOME}/.local/share/npm-packages/bin:\
+${HOME}/.local/scripts/mac:\
+${HOME}/.local/scripts/linux:\
+${HOME}/.local/scripts/cross-platform:\
+${HOME}/.local/scripts/generic:\
+${HOME}/.local/share/go/bin:\
+${HOME}/.local/share/cargo/bin:\
+${HOME}/.local/share/pubcache/bin:\
+${HOME}/.emacs.d/bin:\
+${HOME}/.cabal/bin:\
+${PATH}"
+
+# os-specific
+case "$ON_OS" in
+linux)
 	PATH="${HOME}/.gem/ruby/2.7.0/bin:${PATH}"
-	export PATH
 	export SCREENSHOTS="${PICTURES}/Screenshots"
-else
+	;;
+mac)
 	# Screenshots on Mac are saved on the Desktop
 	export SCREENSHOTS="${HOME}/Desktop"
-fi
+	;;
+*)
+	figlet termux
+	:
+	;;
+esac
+export PATH
 
 # some system wide defaults
 

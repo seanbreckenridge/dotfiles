@@ -1,0 +1,105 @@
+#!/usr/bin/env bash
+# In other words, things that should get run
+# on computers (linux/mac), but not on android
+
+echo "Installing scientific python packages..."
+python3 -m pip install --user -q -r "${SCIPYTHON_PACKAGE_LIST}"
+
+install_python_personal "plus1" "https://github.com/seanbreckenridge/plus1"
+install_python_personal "pythonanywhere_3_months" "https://github.com/seanbreckenridge/pythonanywhere-3-months"
+install_python_personal "calcurse_load" "https://github.com/seanbreckenridge/calcurse-load"
+install_python_personal "mpv-history-daemon" "https://github.com/seanbreckenridge/mpv-history-daemon"
+
+havecmd npm || exit $?
+# install npm packages
+export NPM_CONFIG_PREFIX="${XDG_DATA_HOME}/npm-packages"
+echo "Installing global npm packages..."
+NPM_LOC="$(command -v npm)"
+if grep -q 'npm-packages' <<<"$NPM_LOC"; then
+	# create the npm directory and make sure we own the directory to fix permission issues
+	[[ ! -d "${NPM_CONFIG_PREFIX}" ]] && mkdir -p "${NPM_CONFIG_PREFIX}" && sudo chown -R "$(whoami)" "${NPM_CONFIG_PREFIX}"
+	# get a list of installed packages
+	NPM_PACKAGE_LIST="$(npm ls -g --json | jq '.dependencies | keys[]' -r)"
+	while read -r npkg; do
+		if ! grep -q "^${npkg}$" <<<"${NPM_PACKAGE_LIST}"; then
+			printf "Installing %s\n" "$npkg"
+			npm install --global "${npkg}"
+		fi
+	done < <(spkglist "${NODE_PACKAGE_LIST}")
+else
+	printf "NPM path not where expected (%s), skipping package install...\n" "$NPM_LOC"
+	# incase this is the first time this has happened, update npm globally so it gets put into "$NPM_CONFIG_PREFIX"
+	npm install --global npm
+fi
+
+havecmd gem || exit $?
+echo "Installing global ruby packages..."
+RUBY_GEMS_LIST="$(gem list | cut -d' ' -f1)"
+while read -r rgem; do
+	if ! grep -q "^${rgem}$" <<<"${RUBY_GEMS_LIST}"; then
+		printf "Installing %s\n" "${rgem}"
+		gem install "${rgem}"
+	fi
+done < <(spkglist "${GLOBAL_GEM_LIST}")
+
+havecmd pub || exit $?
+echo "Installing global dart packages..."
+DART_INSTALLED_PACKAGES="$(pub global list | cut -d" " -f1)"
+while read -r dartpkg; do
+	if ! grep -q "^${dartpkg}$" <<<"${DART_INSTALLED_PACKAGES}"; then
+		printf "Installing %s\n" "${dartpkg}"
+		pub global activate "${dartpkg}"
+	fi
+done < <(spkglist "${DART_PACKAGE_LIST}")
+
+havecmd cargo || exit $?
+echo "Installing global cargo packages..."
+CARGO_INSTALLED_PACKAGES="$(cargo install --list | sed -E -e '/^\s+/d; s|\s.*||')"
+while read -r cargopkg; do
+	if ! grep -q "^${cargopkg}$" <<<"${CARGO_INSTALLED_PACKAGES}"; then
+		printf "Installing %s\n" "${cargopkg}"
+		cargo install "${cargopkg}"
+	fi
+done < <(spkglist "${CARGO_PACKAGE_LIST}")
+
+havecmd go || exit $?
+# takes a line from "$GO_PACKAGE_LIST"
+# binary -> package source
+# and installs it if the binary isn't already on your path
+function install_go_package() {
+	local -a packageinfo
+	read -ra packageinfo <<<"${1}"
+	havecmd "${packageinfo[0]}" || go get -u -v "${packageinfo[1]}"
+}
+
+echo "Installing global go packages..."
+while IFS= read -r go_line; do
+	install_go_package "${go_line}"
+done < <(spkglist "${GO_PACKAGE_LIST}")
+
+havecmd emacs || exit $?
+# Install doom emacs
+if [[ ! -d "${HOME}/.emacs.d/" ]]; then
+	git clone https://github.com/hlissner/doom-emacs "${HOME}/.emacs.d"
+	"${HOME}/.emacs.d/bin/doom" install
+	"${HOME}/.emacs.d/bin/doom" sync
+fi
+
+havecmd mix || exit $?
+echo "Installing global pheonix mix archives..."
+MIX_ARCHIVE_LIST="$(mix archive | tac | sed -e '1d; s/^* //; s/-.*//')"
+while read -r mix_pkg; do
+	if ! grep -q "^${mix_pkg}$" <<<"${MIX_ARCHIVE_LIST}"; then
+		mix archive.install hex "${mix_pkg}"
+	fi
+done < <(spkglist "${MIX_PACKAGE_LIST}")
+
+# install largechar
+if ! havecmd largechar; then
+	LARGECHAR_LOCATION="${REPOS:-${HOME}/Repos}/largechar"
+	[[ ! -e "$LARGECHAR_LOCATION" ]] && git clone 'https://github.com/seanbreckenridge/largechar' "$LARGECHAR_LOCATION"
+	set -e
+	cd "$LARGECHAR_LOCATION"
+	make
+	set +e
+fi

@@ -5,7 +5,9 @@
 # https://github.com/chipsenkbeil/choose
 
 # get user input from STDIN
-readonly STDIN="$(cat)"
+declare STDIN
+STDIN="$(cat)" || exit $?
+readonly STDIN
 
 declare -a linux_options
 linux_options=()
@@ -29,12 +31,20 @@ while getopts "p:" OPT; do
 done
 shift $((OPTIND - 1))
 
-if [[ -n "$ONLINUX" ]]; then
-	declare LINES
-	LINES="$(wc -l <<<"$STDIN")"
-	# if STDIN is less than 15 lines, limit the list view to that number
-	((LINES < 15)) && linux_options+=(-lines "$LINES")
-	printf "%s" "$STDIN" | rofi -i -dmenu "${linux_options[@]}" || exit $?
-else
-	printf "%s" "$STDIN" | choose -c 9400D3 -b 1C1C1C -u || exit $?
-fi
+case "$ON_OS" in
+	linux)
+		declare LINES
+		LINES="$(wc -l <<<"$STDIN")"
+		# if STDIN is less than 15 lines, limit the list view to that number
+		((LINES < 15)) && linux_options+=(-lines "$LINES")
+		printf '%s' "$STDIN" | rofi -i -dmenu "${linux_options[@]}" || exit $?
+		;;
+	mac)
+		printf '%s' "$STDIN" | choose -c 9400D3 -b 1C1C1C -u || exit $?
+		;;
+	android)
+		# system dialog of some kind?
+		echo 'Use system dialog on android?' 1>&2
+		printf '%s' "$STDIN" | fzf || exit $?
+		;;
+esac

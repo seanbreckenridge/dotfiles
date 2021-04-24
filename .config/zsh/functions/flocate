@@ -3,7 +3,7 @@
 # and cd to the enclosing directory
 
 function flocate() {
-	[[ -z "$ONLINUX" ]] && {
+	[[ "$ON_OS" != 'linux' ]] && {
 		echo "Use 'mdfind' instead"
 		return 1
 	}

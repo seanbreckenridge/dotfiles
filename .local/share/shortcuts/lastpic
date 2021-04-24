@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-if [[ -n "${ONLINUX}" ]]; then
+if [[ "$ON_OS" == 'linux' ]]; then
 	exec newest "$@" "${SCREENSHOTS:?No SCREENSHOTS environment variable set}"
 else
 	# on mac, these are saved to the ~/Desktop
