@@ -137,6 +137,7 @@ havecmd npm && [[ -e "${COC_NPM_DIR}" ]] && {
 }
 
 if [[ "$ON_OS" != 'android' ]]; then
+	echo "Installing scientific python packages..."
 	python3 -m pip install --user -q -r "${SCIPYTHON_PACKAGE_LIST}"
 
 	install_python_personal "plus1" "https://github.com/seanbreckenridge/plus1"
