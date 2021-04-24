@@ -52,15 +52,5 @@ evry 1 day -google_drive && {
 	drive push
 }
 
-# backup stuff on my computer to my raspberry pi
-# https://github.com/seanbreckenridge/raspi-backup
-#
-# has the possibility to fail, if I'm not home and it tries to
-# find the raspberry pi on my home network
-# (thats fine, it just won't update that time, and will try again in 3 days)
-evry 3 days -raspibackupdelete && {
-	"${REPOS}"/raspi-backup/backup -d
-}
-
 # update https://github.com/seanbreckenridge/mnu_gsheets
 evry 2 weeks -mnu && ssh vultr ~/vps/mnu
