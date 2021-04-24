@@ -55,8 +55,6 @@ ${HOME}/.emacs.d/bin:\
 ${HOME}/.cabal/bin:\
 ${PATH}"
 
-. "${HOME}/.common_paths"
-
 # os-specific
 case "$ON_OS" in
 linux)
