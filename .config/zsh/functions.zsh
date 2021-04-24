@@ -5,16 +5,18 @@ fpath=("${ZDOTDIR}/functions" "${ZDOTDIR}/completions" "${fpath[@]}")
 case "$ON_OS" in
 	linux)
 		fpath+=(/usr/share/zsh/site-functions)
+		;;
 	mac)
-
+		# on mac
+		# if compaudit complains:
+		# run:
+		# sudo chown -R $(whoami) <folders>...
+		fpath+=(/usr/local/share/zsh/site-functions)
+		;;
+	android)
+		fpath+=("${HOME}/../usr/share/zsh/site-functions")
+		;;
 esac
-else
-	# on mac
-	# if compaudit complains:
-	# run:
-	# sudo chown -R $(whoami) <folders>...
-	fpath+=(/usr/local/share/zsh/site-functions)
-fi
 
 # autoload must be after modifying fpath to auto-load completions
 
