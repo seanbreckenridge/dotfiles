@@ -2,9 +2,12 @@
 # user defined functions and completions
 fpath=("${ZDOTDIR}/functions" "${ZDOTDIR}/completions" "${fpath[@]}")
 
-# if on linux
-if [[ -n "${ONLINUX}" ]]; then
-	fpath+=(/usr/share/zsh/site-functions)
+case "$ON_OS" in
+	linux)
+		fpath+=(/usr/share/zsh/site-functions)
+	mac)
+
+esac
 else
 	# on mac
 	# if compaudit complains:
