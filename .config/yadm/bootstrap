@@ -39,7 +39,7 @@ havecmd havecmd || {
 	# optionally let me continue - this may be the first time I'm running this
 	# on android and I need to install zsh/setup defaults
 	printf 'Continue anyways [Ctrl+C to Cancel] ?'
-	read -r
+	read -r || exit $?
 }
 
 set -u
