@@ -4,12 +4,16 @@ See [this](https://exobrain.sean.fish/tools/) page for a summary of how I use th
 
 This was originally linux-only, but over the months and years I've added a compatibility layer of sorts on mac:
 
-* window management/keyboard shortcuts
-  * Uses [`skhd`](https://github.com/koekeishiya/skhd) as a hot-key daemon to run applications (e.g. `cmd + opt + enter` launches terminal)
-  * [`alfred`](https://www.alfredapp.com/) as a application launcher
-* OS-specific bootstrap files in [`~/.config/yadm`](.config/yadm) that check whether I'm on mac/linux, to decide what sort of install(`yay`/`brew`)/which packages to install.
-* `$PATH` is set properly in `zsh`/`X server` startup, [update](.config/zsh/functions/update) (`zsh` function) respects the OS and updates packages properly.
-* Wrapper scripts in [`~/.local/scripts/cross-platform`](.local/scripts/cross-platform) detect platform to send notifications, interact with clipboard, prompt user for input etc...
+- window management/keyboard shortcuts
+  - Uses [`skhd`](https://github.com/koekeishiya/skhd) as a hot-key daemon to run applications (e.g. `cmd + opt + enter` launches terminal)
+  - [`alfred`](https://www.alfredapp.com/) as a application launcher
+- OS-specific bootstrap files in [`~/.config/yadm`](.config/yadm) that check whether I'm on mac/linux, to decide what sort of install(`yay`/`brew`)/which packages to install.
+- `$PATH` is set properly in `zsh`/`X server` startup, [update](.config/zsh/functions/update) (`zsh` function) respects the OS and updates packages properly.
+- Wrapper scripts in [`~/.local/scripts/cross-platform`](.local/scripts/cross-platform) detect platform to send notifications, interact with clipboard, prompt user for input etc...
+
+On Android (using [Termux](https://termux.com/)):
+
+Not a ton of application-specific setup yet, handles setting up zsh, installs packages using `apt`
 
 On Arch:
 
@@ -41,9 +45,9 @@ Packages can be added to the `.txt` files manually, and then `yadm bootstrap` ca
 - [.config/shortcuts.toml](.config/shortcuts.toml) - describes basic shell scripts that are created by [shortcuts](https://github.com/seanbreckenridge/shortcuts)
 - `dir-aliases-ranger` creates bookmarks in ranger to common directories.
 - [.local/scripts/generic](.local/scripts/generic)
-    - media related, [mduration](.local/scripts/generic/mduration) to get media length, [gifme](.local/scripts/generic/gifme) to convert video to gifs.
-    - [gitopen](.local/scripts/generic/gitopen) to open current git directory in browser
-    - [qr](.local/scripts/generic/qr) - create a QR code from a string and display it full screen
+  - media related, [mduration](.local/scripts/generic/mduration) to get media length, [gifme](.local/scripts/generic/gifme) to convert video to gifs.
+  - [gitopen](.local/scripts/generic/gitopen) to open current git directory in browser
+  - [qr](.local/scripts/generic/qr) - create a QR code from a string and display it full screen
 - [fzf](https://github.com/junegunn/fzf) **everywhere** - in [ranger](https://gitlab.com/seanbreckenridge/dotfiles/-/blob/master/.config/ranger/commands.py), to search `cwd` recursively and jump to directories (`Alt+C`), to [edit config files](https://gitlab.com/seanbreckenridge/dotfiles/-/blob/c072c474d0ec497761f484d0b11ec555ef397062/.config/shortcuts.toml#L7-15), to kill processes, and to [search the entire system](https://gitlab.com/seanbreckenridge/dotfiles/-/blob/master/.config/zsh/functions/flocate). Integration with [`nvim`](.config/nvim/init.vim) to match against lines/files/commands/buffers.
 
 ### Install

@@ -2,8 +2,15 @@
 # on X, pastes from the clipboard buffer
 # on mac, uses pbpaste (cmd+v clipboard)
 
-if [ -n "$ONLINUX" ]; then
-	exec xclip -out -selection clipboard
-else
-	exec pbpaste
-fi
+case "$ON_OS" in
+	linux)
+		exec xclip -out -selection clipboard
+		;;
+	mac)
+		exec pbpaste
+		;;
+	android)
+		echo 'No Clipboard Access?' >&2
+		exit 1
+		;;
+esac

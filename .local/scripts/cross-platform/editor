@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-readonly usage="Usage: $(basename "$0") [OPTION] FILE...
+readonly usage="Usage: editor [OPTION] FILE...
 Opens an editor. If no options are provided,
 opens the file(s) with nvim
 
@@ -57,17 +57,29 @@ case "$ACTION" in
 	fi
 	;;
 "$EMACS")
-	if [[ -n "$ONLINUX" ]]; then
-		ttt setsid emacs "$@" &
-	else
-		ttt emacs "$@" # alacritty can handle this in terminal
-	fi
+	case "$ON_OS" in
+		linux)
+			ttt setsid emacs "$@" &
+			;;
+		mac)
+			ttt emacs "$@" # alacritty can handle this in terminal
+			;;
+		android)
+			echo "No emacs on android (yet?)"
+			;;
+	esac
 	;;
 "$EMACS_CLIENT")
-	if [[ -n "$ONLINUX" ]]; then
-		ttt setsid emacsclient -c "$@" &
-	else
-		ttt emacs "$@" # dont use emacsclient on mac
-	fi
+	case "$ON_OS" in
+		linux)
+			ttt setsid emacsclient -c "$@" &
+			;;
+		mac)
+			ttt emacs "$@" # dont use emacsclient on mac
+			;;
+		android)
+			echo "No emacs on android (yet?)"
+			;;
+	esac
 	;;
 esac

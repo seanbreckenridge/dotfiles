@@ -11,10 +11,6 @@ export DOCUMENTS="${HOME}/Documents"
 export MOVIES="${HOME}/Movies"
 export MUSIC="${HOME}/Music"
 
-# see /etc/lightdm/Xsession
-# TODO: Deprecate for ON_OS
-[ "$(uname -s)" = "Linux" ] && export ONLINUX=1
-
 # set global OS environment variable
 # used in lots of my scripts
 # and in my bootstrap/installation process

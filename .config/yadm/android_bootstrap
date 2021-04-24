@@ -15,7 +15,7 @@ done
 # cause this to be sourced
 # setup zsh files
 echo 'Setting up zsh profile...'
-echo 'source "${HOME}/.profile"; export TERM=xterm-256color' > "${HOME}/.zshenv"
+echo 'source "${HOME}/.profile"; export TERM=xterm-256color' >"${HOME}/.zshenv"
 
 # check if we have access to the my directories
 # on my $PATH, to see if zsh has been properly configured
@@ -28,7 +28,7 @@ fi
 # set zsh as shell
 if ! echo "${SHELL}" | grep -q '/zsh'; then
 	havecmd zsh || apt install zsh
-	chsh -s zsh  # seems to be different on termux?
+	chsh -s zsh # seems to be different on termux?
 	abort "Restart shell so that zsh environment is setup. Then re-run 'yadm bootstrap'"
 else
 	echo "zsh is already set as your default shell"
@@ -48,7 +48,7 @@ touch "${HOME}/.hushlogin"
 [[ ! -d "${HOME}/storage" ]] && termux-setup-storage
 
 for lib in $(spkglist "${TERMUX_PACKAGES}"); do
-	if ! dpkg-query -W -f='${Status}' "${lib}" | grep -q "ok installed"; then  # if package isn't installed
+	if ! dpkg-query -W -f='${Status}' "${lib}" | grep -q "ok installed"; then # if package isn't installed
 		apt install "${lib}"
 	fi
 done
@@ -57,4 +57,3 @@ printf "Installing nvim-plug...\n"
 if [[ ! -f ~/.local/share/nvim/site/autoload/plug.vim ]]; then
 	curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 fi
-

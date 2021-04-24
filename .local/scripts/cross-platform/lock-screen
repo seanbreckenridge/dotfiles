@@ -3,18 +3,25 @@
 # the daemon process creates the pixelated image every minute in the background
 # so that i3lock doesnt have to wait for the image to be generated when run
 
-# if on mac
-if command -v pmset 2>/dev/null; then
-	pmset displaysleepnow
-	exit 0
-fi
+case "$ON_OS" in
+	mac)
+		pmset displaysleepnow
+		exit 0
+		;;
+	android)
+		echo "Lock screen using termux on android?"
+		;;
+	linux)
+		if [ "$1" = "-b" ]; then # daemon
+			while true; do
+				scrot --silent --overwrite "${HOME}/.cache/desktop.png"
+				convert -scale 2% -scale 5000% "${HOME}/.cache/desktop.png" "${HOME}/.cache/pixel.png"
+				sleep 120
+			done
+		else
+			i3lock -ni "${HOME}/.cache/pixel.png"
+		fi
+		;;
 
-if [ "$1" = "-b" ]; then # daemon
-	while true; do
-		scrot --silent --overwrite "${HOME}/.cache/desktop.png"
-		convert -scale 2% -scale 5000% "${HOME}/.cache/desktop.png" "${HOME}/.cache/pixel.png"
-		sleep 120
-	done
-else
-	i3lock -ni "${HOME}/.cache/pixel.png"
-fi
+esac
+
