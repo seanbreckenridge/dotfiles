@@ -12,6 +12,7 @@ Brewfile.lock.json
 /storage
 /.termux_authinfo
 /.termux/shell
+/.hushlogin
 
 # zsh
 /.zshenv
