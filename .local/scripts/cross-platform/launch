@@ -21,7 +21,6 @@ if [ "$(tty)" = "not a tty" ]; then
 		android)
 			# just run the command directly on android
 			sh -c "$@"
-			exit 0
 			;;
 	esac
 else
