@@ -1,0 +1,32 @@
+python  # installs as python3
+openssh
+ncurses-utils  # tput
+exa
+bat
+golang
+curl
+ruby
+neovim
+yarn
+nodejs
+htop-legacy
+perl
+datamash
+entr
+fd
+ffmpeg
+fzf
+figlet
+git
+jq
+lynx
+ranger
+wget
+
+termux-api  # clipboard interaction? not sure if it works
+
+# for building python lxml package??
+libxml2
+libxslt
+libiconv
+

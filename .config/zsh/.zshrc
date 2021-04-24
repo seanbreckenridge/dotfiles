@@ -15,7 +15,6 @@ source "${ZDOTDIR}/prompt.zsh"                  # prompt configuration
 source "${ZDOTDIR}/functions.zsh"               # functions, bindings, command completion
 source "${ZDOTDIR}/completion.zsh"              # zsh completion
 source "${ZDOTDIR}/lazy.zsh"                    # lazy load shell tools
-source "${ZDOTDIR}/progressive_enhancement.zsh" # improve default commands in particular situations
 
 # source aliases
 ALIAS_DIR="${ZDOTDIR}/aliases"
@@ -25,18 +24,18 @@ source "${ALIAS_DIR}/other_aliases"              # Aliases for my own projects
 source_if_exists "${ALIAS_DIR}/personal_aliases" # Personal Aliases (e.g. ssh to servers)
 
 # zsh plugins
-# linux paths
-if [[ -n "${ONLINUX}" ]]; then
-	# fzf
-	source_if_exists /usr/share/fzf/key-bindings.zsh
-	source_if_exists /usr/share/fzf/completion.zsh
-	# other plugins
-	source_if_exists /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-	source_if_exists /usr/share/doc/pkgfile/command-not-found.zsh
-	source_if_exists /usr/share/zsh/plugins/zsh-you-should-use/you-should-use.plugin.zsh
-	source_if_exists /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-# mac paths
-else
+case "$ON_OS" in
+	linux)
+		# fzf
+		source_if_exists /usr/share/fzf/key-bindings.zsh
+		source_if_exists /usr/share/fzf/completion.zsh
+		# other plugins
+		source_if_exists /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+		source_if_exists /usr/share/doc/pkgfile/command-not-found.zsh
+		source_if_exists /usr/share/zsh/plugins/zsh-you-should-use/you-should-use.plugin.zsh
+		source_if_exists /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+		;;
+	mac)
 	# Setup fzf
 	# ---------
 	if [[ ! "$PATH" == */usr/local/opt/fzf/bin* ]]; then
@@ -50,4 +49,9 @@ else
 	source_if_exists /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 	source_if_exists /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 	source "${ZDOTDIR}/mac.zsh"
-fi
+	;;
+android)
+	source "${HOME}/../usr/share/fzf/key-bindings.zsh"
+	source "${HOME}/../usr/share/fzf/completion.zsh"
+	;;
+esac

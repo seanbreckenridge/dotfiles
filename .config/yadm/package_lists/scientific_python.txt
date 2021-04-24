@@ -1,0 +1,5 @@
+# things I would only want to install on a computer, not on android
+pandas
+matplotlib
+numpy
+scipy

@@ -2,7 +2,7 @@
 # yadm bootstrap script
 # Installs all my packages/sets up my environment.
 #
-# Checks for the presence of the $ONLINUX variable,
+# Checks for the presence of the $ON_OS variable,
 # which is set in ~/.profile by checking `uname`
 # on linux. Since the ~/.profile is sourced at the
 # beginning of the Xsession and not when opening
@@ -34,19 +34,32 @@ declare -rx PACKAGE_DIR="${YADM_DIR}/package_lists"
 # report errors if user doesn't have a command
 export HAVECMD_REPORT=1
 
-# make sure $PATH is set up properly, havecmd (to check for commands on the my $PATH) exists
-set -e
-havecmd havecmd
-set +e
+# make sure my $PATH is setup properly
+havecmd havecmd || {
+	# optionally let me continue - this may be the first time I'm running this
+	# on android and I need to install zsh/setup defaults
+	printf 'Continue anyways [Ctrl+C to Cancel] ?'
+	read -r
+}
+
+set -u
+printf 'Running bootstrap for: %s\n' "${ON_OS}"
+set +u
 
 # dispatch on os type
-if [[ -z "${ONLINUX}" ]]; then
-	bash "${YADM_DIR}/mac_bootstrap" || exit $?
-else
-	bash "${YADM_DIR}/linux_bootstrap" || exit $?
-fi
+case "$ON_OS" in
+	mac)
+		bash "${YADM_DIR}/mac_bootstrap" || exit $?
+		;;
+	linux)
+		bash "${YADM_DIR}/linux_bootstrap" || exit $?
+		;;
+	android)
+		bash "${YADM_DIR}/android_bootstrap" || exit $?
+esac
 
 declare -rx PYTHON_PACKAGE_LIST="${PACKAGE_DIR}/python3_packages.txt"
+declare -rx SCIPYTHON_PACKAGE_LIST="${PACKAGE_DIR}/scientific_python.txt"
 declare -rx GLOBAL_GEM_LIST="${PACKAGE_DIR}/ruby_packages.txt"
 declare -rx NODE_PACKAGE_LIST="${PACKAGE_DIR}/node_packages.txt"
 declare -rx DART_PACKAGE_LIST="${PACKAGE_DIR}/dart_packages.txt"
@@ -96,22 +109,20 @@ yadm gitconfig pull.rebase false
 yadm gitconfig core.hooksPath ~/.config/yadm/hooks
 
 havecmd python3 || exit $?
-# Install python packages
+# Install python packages -- even when on android, I use this enough/do
+# enough scripting here that its worth it
 echo "Installing global python site-packages..."
 python3 -m pip list --format=freeze | cut -d "=" -f1 | grep -q "^wheel$" || python3 -m pip install --user wheel
-python3 -m pip install -q --user -r "${PYTHON_PACKAGE_LIST}"
+python3 -m pip install --user -q -r "${PYTHON_PACKAGE_LIST}"
 
 # Install personal python packages
 # If command "$1" doesn't exist, install from $2
 function install_python_personal() {
 	havecmd "${1}" || python3 -m pip install --user "git+${2}"
 }
-install_python_personal "plus1" "https://github.com/seanbreckenridge/plus1"
-install_python_personal "pythonanywhere_3_months" "https://github.com/seanbreckenridge/pythonanywhere-3-months"
 install_python_personal "rotten" "https://github.com/seanbreckenridge/rotten_tomatoes_cli"
 install_python_personal "mystars" "https://github.com/seanbreckenridge/oh-my-stars"
-install_python_personal "calcurse_load" "https://github.com/seanbreckenridge/calcurse-load"
-install_python_personal "mpv-history-daemon" "https://github.com/seanbreckenridge/mpv-history-daemon"
+
 
 # speedtest installs 2 executable scripts
 # speedtest and speedtest-cli, which both have the same
@@ -119,97 +130,130 @@ install_python_personal "mpv-history-daemon" "https://github.com/seanbreckenridg
 # tab completion nicer
 HAVECMD_REPORT='' havecmd speedtest-cli && rm "$(command -v speedtest-cli)"
 
-havecmd npm || exit $?
-# install npm packages
-export NPM_CONFIG_PREFIX="${XDG_DATA_HOME}/npm-packages"
-echo "Installing global npm packages..."
-NPM_LOC="$(command -v npm)"
-if grep -q 'npm-packages' <<<"$NPM_LOC"; then
-	# create the npm directory and make sure we own the directory to fix permission issues
-	[[ ! -d "${NPM_CONFIG_PREFIX}" ]] && mkdir -p "${NPM_CONFIG_PREFIX}" && sudo chown -R "$(whoami)" "${NPM_CONFIG_PREFIX}"
-	# get a list of installed packages
-	NPM_PACKAGE_LIST="$(npm ls -g --json | jq '.dependencies | keys[]' -r)"
-	while read -r npkg; do
-		if ! grep -q "^${npkg}$" <<<"${NPM_PACKAGE_LIST}"; then
-			printf "Installing %s\n" "$npkg"
-			npm install --global "${npkg}"
-		fi
-	done < <(spkglist "${NODE_PACKAGE_LIST}")
-else
-	printf "NPM path not where expected (%s), skipping package install...\n" "$NPM_LOC"
-	# incase this is the first time this has happened, update npm globally so it gets put into "$NPM_CONFIG_PREFIX"
-	npm install --global npm
-fi
-
 echo 'Installing coc extensions...'
 COC_NPM_DIR="${HOME}/.config/coc/extensions/"
 havecmd npm && [[ -e "${COC_NPM_DIR}" ]] && {
 	(cd "${COC_NPM_DIR}" && npm install)
 }
 
-havecmd gem || exit $?
-echo "Installing global ruby packages..."
-RUBY_GEMS_LIST="$(gem list | cut -d' ' -f1)"
-while read -r rgem; do
-	if ! grep -q "^${rgem}$" <<<"${RUBY_GEMS_LIST}"; then
-		printf "Installing %s\n" "${rgem}"
-		gem install "${rgem}"
+if [[ "$ON_OS" != 'android' ]]; then
+	python3 -m pip install --user -q -r "${SCIPYTHON_PACKAGE_LIST}"
+
+install_python_personal "plus1" "https://github.com/seanbreckenridge/plus1"
+install_python_personal "pythonanywhere_3_months" "https://github.com/seanbreckenridge/pythonanywhere-3-months"
+install_python_personal "calcurse_load" "https://github.com/seanbreckenridge/calcurse-load"
+install_python_personal "mpv-history-daemon" "https://github.com/seanbreckenridge/mpv-history-daemon"
+
+	havecmd npm || exit $?
+	# install npm packages
+	export NPM_CONFIG_PREFIX="${XDG_DATA_HOME}/npm-packages"
+	echo "Installing global npm packages..."
+	NPM_LOC="$(command -v npm)"
+	if grep -q 'npm-packages' <<<"$NPM_LOC"; then
+		# create the npm directory and make sure we own the directory to fix permission issues
+		[[ ! -d "${NPM_CONFIG_PREFIX}" ]] && mkdir -p "${NPM_CONFIG_PREFIX}" && sudo chown -R "$(whoami)" "${NPM_CONFIG_PREFIX}"
+		# get a list of installed packages
+		NPM_PACKAGE_LIST="$(npm ls -g --json | jq '.dependencies | keys[]' -r)"
+		while read -r npkg; do
+			if ! grep -q "^${npkg}$" <<<"${NPM_PACKAGE_LIST}"; then
+				printf "Installing %s\n" "$npkg"
+				npm install --global "${npkg}"
+			fi
+		done < <(spkglist "${NODE_PACKAGE_LIST}")
+	else
+		printf "NPM path not where expected (%s), skipping package install...\n" "$NPM_LOC"
+		# incase this is the first time this has happened, update npm globally so it gets put into "$NPM_CONFIG_PREFIX"
+		npm install --global npm
 	fi
-done < <(spkglist "${GLOBAL_GEM_LIST}")
-
-havecmd pub || exit $?
-echo "Installing global dart packages..."
-DART_INSTALLED_PACKAGES="$(pub global list | cut -d" " -f1)"
-while read -r dartpkg; do
-	if ! grep -q "^${dartpkg}$" <<<"${DART_INSTALLED_PACKAGES}"; then
-		printf "Installing %s\n" "${dartpkg}"
-		pub global activate "${dartpkg}"
+	
+	havecmd gem || exit $?
+	echo "Installing global ruby packages..."
+	RUBY_GEMS_LIST="$(gem list | cut -d' ' -f1)"
+	while read -r rgem; do
+		if ! grep -q "^${rgem}$" <<<"${RUBY_GEMS_LIST}"; then
+			printf "Installing %s\n" "${rgem}"
+			gem install "${rgem}"
+		fi
+	done < <(spkglist "${GLOBAL_GEM_LIST}")
+	
+	havecmd pub || exit $?
+	echo "Installing global dart packages..."
+	DART_INSTALLED_PACKAGES="$(pub global list | cut -d" " -f1)"
+	while read -r dartpkg; do
+		if ! grep -q "^${dartpkg}$" <<<"${DART_INSTALLED_PACKAGES}"; then
+			printf "Installing %s\n" "${dartpkg}"
+			pub global activate "${dartpkg}"
+		fi
+	done < <(spkglist "${DART_PACKAGE_LIST}")
+	
+	havecmd cargo || exit $?
+	echo "Installing global cargo packages..."
+	CARGO_INSTALLED_PACKAGES="$(cargo install --list | sed -E -e '/^\s+/d; s|\s.*||')"
+	while read -r cargopkg; do
+		if ! grep -q "^${cargopkg}$" <<<"${CARGO_INSTALLED_PACKAGES}"; then
+			printf "Installing %s\n" "${cargopkg}"
+			cargo install "${cargopkg}"
+		fi
+	done < <(spkglist "${CARGO_PACKAGE_LIST}")
+	
+	havecmd go || exit $?
+	# takes a line from "$GO_PACKAGE_LIST"
+	# binary -> package source
+	# and installs it if the binary isn't already on your path
+	function install_go_package() {
+		local -a packageinfo
+		read -ra packageinfo <<<"${1}"
+		havecmd "${packageinfo[0]}" || go get -u -v "${packageinfo[1]}"
+	}
+	
+	echo "Installing global go packages..."
+	while IFS= read -r go_line; do
+		install_go_package "${go_line}"
+	done < <(spkglist "${GO_PACKAGE_LIST}")
+	
+	havecmd emacs || exit $?
+	# Install doom emacs
+	if [[ ! -d "${HOME}/.emacs.d/" ]]; then
+		git clone https://github.com/hlissner/doom-emacs "${HOME}/.emacs.d"
+		"${HOME}/.emacs.d/bin/doom" install
+		"${HOME}/.emacs.d/bin/doom" sync
 	fi
-done < <(spkglist "${DART_PACKAGE_LIST}")
+	
+	havecmd mix || exit $?
+	echo "Installing global pheonix mix archives..."
+	MIX_ARCHIVE_LIST="$(mix archive | tac | sed -e '1d; s/^* //; s/-.*//')"
+	while read -r mix_pkg; do
+		if ! grep -q "^${mix_pkg}$" <<<"${MIX_ARCHIVE_LIST}"; then
+			mix archive.install hex "${mix_pkg}"
+		fi
+	done < <(spkglist "${MIX_PACKAGE_LIST}")
 
-havecmd cargo || exit $?
-echo "Installing global cargo packages..."
-CARGO_INSTALLED_PACKAGES="$(cargo install --list | sed -E -e '/^\s+/d; s|\s.*||')"
-while read -r cargopkg; do
-	if ! grep -q "^${cargopkg}$" <<<"${CARGO_INSTALLED_PACKAGES}"; then
-		printf "Installing %s\n" "${cargopkg}"
-		cargo install "${cargopkg}"
+
+	# install largechar
+	if ! havecmd largechar; then
+		LARGECHAR_LOCATION="${REPOS:-${HOME}/Repos}/largechar"
+		[[ ! -e "$LARGECHAR_LOCATION" ]] && git clone 'https://github.com/seanbreckenridge/largechar' "$LARGECHAR_LOCATION"
+		set -e
+		cd "$LARGECHAR_LOCATION"
+		make
+		set +e
 	fi
-done < <(spkglist "${CARGO_PACKAGE_LIST}")
+else
+	# a tiny subset of packages to install on android
+	havecmd npm || exit $?  # needed for coc
+	havecmd cargo || exit $?  # needed to build some packages
 
-havecmd go || exit $?
-# takes a line from "$GO_PACKAGE_LIST"
-# binary -> package source
-# and installs it if the binary isn't already on your path
-function install_go_package() {
-	local -a packageinfo
-	read -ra packageinfo <<<"${1}"
-	havecmd "${packageinfo[0]}" || go get -u -v "${packageinfo[1]}"
-}
-# install pistol manually
-havecmd pistol || env GO111MODULE=on go get -v -u github.com/doronbehar/pistol/cmd/pistol
+	# needed for shortcuts
+	havecmd gem || exit $?
+	havecmd ruby || exit $?
 
-echo "Installing global go packages..."
-while IFS= read -r go_line; do
-	install_go_package "${go_line}"
-done < <(spkglist "${GO_PACKAGE_LIST}")
-
-havecmd emacs || exit $?
-# Install doom emacs
-if [[ ! -d "${HOME}/.emacs.d/" ]]; then
-	git clone https://github.com/hlissner/doom-emacs "${HOME}/.emacs.d"
-	"${HOME}/.emacs.d/bin/doom" install
-	"${HOME}/.emacs.d/bin/doom" sync
+	# for shortcuts
+	gem install toml-rb docopt
+	havecmd evry || cargo install evry  # task scheduling
 fi
 
-havecmd mix || exit $?
-echo "Installing global pheonix mix archives..."
-MIX_ARCHIVE_LIST="$(mix archive | tac | sed -e '1d; s/^* //; s/-.*//')"
-while read -r mix_pkg; do
-	if ! grep -q "^${mix_pkg}$" <<<"${MIX_ARCHIVE_LIST}"; then
-		mix archive.install hex "${mix_pkg}"
-	fi
-done < <(spkglist "${MIX_PACKAGE_LIST}")
+# install pistol manually
+havecmd pistol || env GO111MODULE=on go get -v -u github.com/doronbehar/pistol/cmd/pistol
 
 echo "Installing personal tools/scripts..."
 
@@ -223,7 +267,7 @@ make_compatible_build() {
 	local TEMP_INSTALL_DIR
 	havecmd "${1}" || {
 		printf "Installing %s from %s\n" "${1}" "${2}"
-		BUILD_DIR="$(mktemp -p /tmp -d XXXXXXXXXX)"
+		BUILD_DIR="$(mktemp -p "${TMPDIR:-/tmp}" -d XXXXXXXXXX)"
 		cd "${BUILD_DIR}" || return $?
 		git clone "${2}" || return $?
 		CLONED="$(command ls -1)" || return $?
@@ -243,21 +287,11 @@ make_compatible_build genpasswd 'https://github.com/seanbreckenridge/genpasswd' 
 make_compatible_build mpv-currently-playing 'https://github.com/seanbreckenridge/mpv-sockets'
 set +e
 
-# install largechar
-if ! havecmd largechar; then
-	LARGECHAR_LOCATION="${REPOS:-${HOME}/Repos}/largechar"
-	[[ ! -e "$LARGECHAR_LOCATION" ]] && git clone 'https://github.com/seanbreckenridge/largechar' "$LARGECHAR_LOCATION"
-	set -e
-	cd "$LARGECHAR_LOCATION"
-	make
-	set +e
-fi
-
 install_shell_script() {
 	local TEMP_INSTALL_DIR
 	havecmd "$1" || {
 		printf "Installing %s from %s\n" "$1" "$2"
-		TEMP_INSTALL_DIR="$(mktemp -p /tmp -d XXXXXXXXXX)" # create temporary directory
+		TEMP_INSTALL_DIR="$(mktemp -p ${TMPDIR:-/tmp} -d XXXXXXXXXX)" # create temporary directory
 		cd "${TEMP_INSTALL_DIR}" || return $?              # switch to directory
 		wget "${2}" -O "./${1}" || return $?               # download to script name
 		chmod +x "./${1}" || return $?                     # make executable
@@ -291,4 +325,4 @@ havecmd nvim || exit $?
 echo "Installing nvim packages..."
 nvim +PlugInstall +qall
 
-echo "Finished bootstrapping!" | boxes -d shell -p t1l2b1r2
+echo "Finished bootstrapping!"

@@ -133,7 +133,8 @@ export LESS_TERMCAP_ue=$'\e[0m'
 export LESS_TERMCAP_us=$'\e[1;4;31m'
 
 # If on mac, put gnu utils on path before others:
-if [[ -z "$ONLINUX" ]]; then
+case "$ON_OS" in
+	mac)
 	PATH="\
 /usr/local/bin:\
 ${HOME}/.rbenv/versions/2.7.1/bin:\
@@ -150,6 +151,9 @@ ${HOME}/Library/Python/3.9/bin:\
 /usr/local/opt/gnu-getopt/bin:\
 ${PATH}\
 "
-	source "${HOME}/.common_paths"
 	export PATH
-fi
+	;;
+android)
+	:
+	;;
+esac
