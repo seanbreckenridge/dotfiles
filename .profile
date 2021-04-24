@@ -39,7 +39,22 @@ esac
 
 export ON_OS
 
-# source common_paths for shared (mac/linux) path modifications
+# common path modifications
+PATH="\
+${HOME}/.local/share/shortcuts:\
+${HOME}/.local/bin:\
+${HOME}/.local/share/npm-packages/bin:\
+${HOME}/.local/scripts/mac:\
+${HOME}/.local/scripts/linux:\
+${HOME}/.local/scripts/cross-platform:\
+${HOME}/.local/scripts/generic:\
+${HOME}/.local/share/go/bin:\
+${HOME}/.local/share/cargo/bin:\
+${HOME}/.local/share/pubcache/bin:\
+${HOME}/.emacs.d/bin:\
+${HOME}/.cabal/bin:\
+${PATH}"
+
 . "${HOME}/.common_paths"
 
 # os-specific

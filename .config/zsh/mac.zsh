@@ -10,3 +10,22 @@ if [[ ! -e /tmp/supervisord.pid ]]; then
 	echo "Supervisor pid file does not exist, starting supervisor..."
 	super --daemon
 fi
+
+# If on mac, put gnu utils on path before others:
+PATH="\
+/usr/local/bin:\
+${HOME}/.rbenv/versions/2.7.1/bin:\
+${HOME}/Library/Python/3.9/bin:\
+/usr/local/opt/coreutils/libexec/gnubin:\
+/usr/local/opt/diffutils/bin:\
+/usr/local/opt/findutils/libexec/gnubin:\
+/usr/local/opt/gawk/libexec/gnubin:\
+/usr/local/opt/gnu-indent/libexec/gnubin:\
+/usr/local/opt/gnu-sed/libexec/gnubin:\
+/usr/local/opt/gnu-tar/libexec/gnubin:\
+/usr/local/opt/gnu-which/libexec/gnubin:\
+/usr/local/opt/grep/libexec/gnubin:\
+/usr/local/opt/gnu-getopt/bin:\
+${PATH}\
+"
+export PATH
