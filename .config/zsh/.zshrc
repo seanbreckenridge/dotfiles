@@ -10,11 +10,12 @@ source_if_exists() {
 }
 
 # source zsh config
-source "${ZDOTDIR}/env_config.zsh" # History/Application configuration
-source "${ZDOTDIR}/prompt.zsh"     # prompt configuration
-source "${ZDOTDIR}/functions.zsh"  # functions, bindings, command completion
-source "${ZDOTDIR}/completion.zsh" # zsh completion
-source "${ZDOTDIR}/lazy.zsh"       # lazy load shell tools
+source "${ZDOTDIR}/env_config.zsh"              # History/Application configuration
+source "${ZDOTDIR}/prompt.zsh"                  # prompt configuration
+source "${ZDOTDIR}/functions.zsh"               # functions, bindings, command completion
+source "${ZDOTDIR}/completion.zsh"              # zsh completion
+source "${ZDOTDIR}/lazy.zsh"                    # lazy load shell tools
+source "${ZDOTDIR}/progressive_enhancement.zsh" # slightly improve commands
 
 # source aliases
 ALIAS_DIR="${ZDOTDIR}/aliases"
