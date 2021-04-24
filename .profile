@@ -19,22 +19,22 @@ export MUSIC="${HOME}/Music"
 # used in lots of my scripts
 # and in my bootstrap/installation process
 # to choose how to install everything
-case "$(uname -s)" in 
-	Linux*)
-		if command -v termux-setup-storage >/dev/null 2>&1; then
-			ON_OS='android'
-		else
-			ON_OS='linux'
-		fi
-		;;
-	Darwin*)
-		ON_OS='mac'
-		;;
-	*)
-		printf "Unknown Operating System...\n"
-		uname -s
-		uname -r
-		;;
+case "$(uname -s)" in
+Linux*)
+	if command -v termux-setup-storage >/dev/null 2>&1; then
+		ON_OS='android'
+	else
+		ON_OS='linux'
+	fi
+	;;
+Darwin*)
+	ON_OS='mac'
+	;;
+*)
+	printf "Unknown Operating System...\n"
+	uname -s
+	uname -r
+	;;
 esac
 
 export ON_OS
@@ -44,18 +44,18 @@ export ON_OS
 
 # os-specific
 case "$ON_OS" in
-	linux)
-		PATH="${HOME}/.gem/ruby/2.7.0/bin:${PATH}"
-		export SCREENSHOTS="${PICTURES}/Screenshots"
-		;;
-	mac)
-		# Screenshots on Mac are saved on the Desktop
-		export SCREENSHOTS="${HOME}/Desktop"
-		;;
-	*)
-		figlet termux
-		:
-		;;
+linux)
+	PATH="${HOME}/.gem/ruby/2.7.0/bin:${PATH}"
+	export SCREENSHOTS="${PICTURES}/Screenshots"
+	;;
+mac)
+	# Screenshots on Mac are saved on the Desktop
+	export SCREENSHOTS="${HOME}/Desktop"
+	;;
+*)
+	figlet termux
+	:
+	;;
 esac
 export PATH
 

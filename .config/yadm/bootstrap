@@ -48,14 +48,15 @@ set +u
 
 # dispatch on os type
 case "$ON_OS" in
-	mac)
-		bash "${YADM_DIR}/mac_bootstrap" || exit $?
-		;;
-	linux)
-		bash "${YADM_DIR}/linux_bootstrap" || exit $?
-		;;
-	android)
-		bash "${YADM_DIR}/android_bootstrap" || exit $?
+mac)
+	bash "${YADM_DIR}/mac_bootstrap" || exit $?
+	;;
+linux)
+	bash "${YADM_DIR}/linux_bootstrap" || exit $?
+	;;
+android)
+	bash "${YADM_DIR}/android_bootstrap" || exit $?
+	;;
 esac
 
 declare -rx PYTHON_PACKAGE_LIST="${PACKAGE_DIR}/python3_packages.txt"
@@ -123,7 +124,6 @@ function install_python_personal() {
 install_python_personal "rotten" "https://github.com/seanbreckenridge/rotten_tomatoes_cli"
 install_python_personal "mystars" "https://github.com/seanbreckenridge/oh-my-stars"
 
-
 # speedtest installs 2 executable scripts
 # speedtest and speedtest-cli, which both have the same
 # functionatly. This removes speedtest-cli to make
@@ -139,10 +139,10 @@ havecmd npm && [[ -e "${COC_NPM_DIR}" ]] && {
 if [[ "$ON_OS" != 'android' ]]; then
 	python3 -m pip install --user -q -r "${SCIPYTHON_PACKAGE_LIST}"
 
-install_python_personal "plus1" "https://github.com/seanbreckenridge/plus1"
-install_python_personal "pythonanywhere_3_months" "https://github.com/seanbreckenridge/pythonanywhere-3-months"
-install_python_personal "calcurse_load" "https://github.com/seanbreckenridge/calcurse-load"
-install_python_personal "mpv-history-daemon" "https://github.com/seanbreckenridge/mpv-history-daemon"
+	install_python_personal "plus1" "https://github.com/seanbreckenridge/plus1"
+	install_python_personal "pythonanywhere_3_months" "https://github.com/seanbreckenridge/pythonanywhere-3-months"
+	install_python_personal "calcurse_load" "https://github.com/seanbreckenridge/calcurse-load"
+	install_python_personal "mpv-history-daemon" "https://github.com/seanbreckenridge/mpv-history-daemon"
 
 	havecmd npm || exit $?
 	# install npm packages
@@ -165,7 +165,7 @@ install_python_personal "mpv-history-daemon" "https://github.com/seanbreckenridg
 		# incase this is the first time this has happened, update npm globally so it gets put into "$NPM_CONFIG_PREFIX"
 		npm install --global npm
 	fi
-	
+
 	havecmd gem || exit $?
 	echo "Installing global ruby packages..."
 	RUBY_GEMS_LIST="$(gem list | cut -d' ' -f1)"
@@ -175,7 +175,7 @@ install_python_personal "mpv-history-daemon" "https://github.com/seanbreckenridg
 			gem install "${rgem}"
 		fi
 	done < <(spkglist "${GLOBAL_GEM_LIST}")
-	
+
 	havecmd pub || exit $?
 	echo "Installing global dart packages..."
 	DART_INSTALLED_PACKAGES="$(pub global list | cut -d" " -f1)"
@@ -185,7 +185,7 @@ install_python_personal "mpv-history-daemon" "https://github.com/seanbreckenridg
 			pub global activate "${dartpkg}"
 		fi
 	done < <(spkglist "${DART_PACKAGE_LIST}")
-	
+
 	havecmd cargo || exit $?
 	echo "Installing global cargo packages..."
 	CARGO_INSTALLED_PACKAGES="$(cargo install --list | sed -E -e '/^\s+/d; s|\s.*||')"
@@ -195,7 +195,7 @@ install_python_personal "mpv-history-daemon" "https://github.com/seanbreckenridg
 			cargo install "${cargopkg}"
 		fi
 	done < <(spkglist "${CARGO_PACKAGE_LIST}")
-	
+
 	havecmd go || exit $?
 	# takes a line from "$GO_PACKAGE_LIST"
 	# binary -> package source
@@ -205,12 +205,12 @@ install_python_personal "mpv-history-daemon" "https://github.com/seanbreckenridg
 		read -ra packageinfo <<<"${1}"
 		havecmd "${packageinfo[0]}" || go get -u -v "${packageinfo[1]}"
 	}
-	
+
 	echo "Installing global go packages..."
 	while IFS= read -r go_line; do
 		install_go_package "${go_line}"
 	done < <(spkglist "${GO_PACKAGE_LIST}")
-	
+
 	havecmd emacs || exit $?
 	# Install doom emacs
 	if [[ ! -d "${HOME}/.emacs.d/" ]]; then
@@ -218,7 +218,7 @@ install_python_personal "mpv-history-daemon" "https://github.com/seanbreckenridg
 		"${HOME}/.emacs.d/bin/doom" install
 		"${HOME}/.emacs.d/bin/doom" sync
 	fi
-	
+
 	havecmd mix || exit $?
 	echo "Installing global pheonix mix archives..."
 	MIX_ARCHIVE_LIST="$(mix archive | tac | sed -e '1d; s/^* //; s/-.*//')"
@@ -227,7 +227,6 @@ install_python_personal "mpv-history-daemon" "https://github.com/seanbreckenridg
 			mix archive.install hex "${mix_pkg}"
 		fi
 	done < <(spkglist "${MIX_PACKAGE_LIST}")
-
 
 	# install largechar
 	if ! havecmd largechar; then
@@ -240,8 +239,8 @@ install_python_personal "mpv-history-daemon" "https://github.com/seanbreckenridg
 	fi
 else
 	# a tiny subset of packages to install on android
-	havecmd npm || exit $?  # needed for coc
-	havecmd cargo || exit $?  # needed to build some packages
+	havecmd npm || exit $?   # needed for coc
+	havecmd cargo || exit $? # needed to build some packages
 
 	# needed for shortcuts
 	havecmd gem || exit $?
@@ -249,7 +248,7 @@ else
 
 	# for shortcuts
 	gem install toml-rb docopt
-	havecmd evry || cargo install evry  # task scheduling
+	havecmd evry || cargo install evry # task scheduling
 fi
 
 # install pistol manually
@@ -292,10 +291,10 @@ install_shell_script() {
 	havecmd "$1" || {
 		printf "Installing %s from %s\n" "$1" "$2"
 		TEMP_INSTALL_DIR="$(mktemp -p ${TMPDIR:-/tmp} -d XXXXXXXXXX)" # create temporary directory
-		cd "${TEMP_INSTALL_DIR}" || return $?              # switch to directory
-		wget "${2}" -O "./${1}" || return $?               # download to script name
-		chmod +x "./${1}" || return $?                     # make executable
-		mv "./${1}" "${SCRIPT_TARGET_DIR}"                 # move to bin directory (~/.local/bin)
+		cd "${TEMP_INSTALL_DIR}" || return $?                         # switch to directory
+		wget "${2}" -O "./${1}" || return $?                          # download to script name
+		chmod +x "./${1}" || return $?                                # make executable
+		mv "./${1}" "${SCRIPT_TARGET_DIR}"                            # move to bin directory (~/.local/bin)
 	}
 }
 

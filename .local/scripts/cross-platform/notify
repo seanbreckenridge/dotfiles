@@ -34,7 +34,7 @@ fi
 # Send Notification!
 
 case "$ON_OS" in
-	linux)
+linux)
 	# if user passed arguments which were parsed
 	if (("${#linux_options[@]}" > 1)); then
 		notify-send "${linux_options[@]}" "$@"

@@ -134,7 +134,7 @@ export LESS_TERMCAP_us=$'\e[1;4;31m'
 
 # If on mac, put gnu utils on path before others:
 case "$ON_OS" in
-	mac)
+mac)
 	PATH="\
 /usr/local/bin:\
 ${HOME}/.rbenv/versions/2.7.1/bin:\
