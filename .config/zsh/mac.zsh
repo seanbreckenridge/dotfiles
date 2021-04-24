@@ -12,7 +12,11 @@ if [[ ! -e /tmp/supervisord.pid ]]; then
 fi
 
 # If on mac, put gnu utils on path before others:
+# ~/.local/bin/ here is duplicated, so that its before
+# /usr/local/bin/, for any scripts I want to override
+# e.g. https://github.com/seanbreckenridge/mpv-sockets#install
 PATH="\
+${HOME}/.local/bin:\
 /usr/local/bin:\
 ${HOME}/.rbenv/versions/2.7.1/bin:\
 ${HOME}/Library/Python/3.9/bin:\
@@ -26,6 +30,5 @@ ${HOME}/Library/Python/3.9/bin:\
 /usr/local/opt/gnu-which/libexec/gnubin:\
 /usr/local/opt/grep/libexec/gnubin:\
 /usr/local/opt/gnu-getopt/bin:\
-${PATH}\
-"
+${PATH}"
 export PATH
