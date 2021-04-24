@@ -13,7 +13,7 @@ This was originally linux-only, but over the months and years I've added a compa
 
 On Android (using [Termux](https://termux.com/)):
 
-Not a ton of application-specific setup yet, handles setting up zsh, installs packages using `apt`
+Not a ton of application-specific setup yet, handles setting up `zsh`, installs all my packages using `apt`; see [`android_bootstrap`](./.config/yadm/android_bootstrap)
 
 On Arch:
 
