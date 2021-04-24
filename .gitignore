@@ -58,6 +58,8 @@ __pycache__
 /.clojure_history
 /.aws
 /.cdk
+/.android/
+/.Motorola Mobility/
 /.python_history
 /.gnome/apps/chrome-*
 /.mupdf.history
@@ -147,6 +149,7 @@ __pycache__
 /.config/transmission/
 /.config/so/config.yml
 /.config/gh/hosts.yml
+/.config/gh/state.yml
 /.config/visualboyadvance-m/
 /.config/light
 /.config/xbuild
