@@ -1,19 +1,17 @@
 #!/usr/bin/env bash
 # Sets up termux on my android device
 
+# setup zsh files
+
 # delete default files if they exist
 original_files=("${HOME}/.zshenv" "${HOME}/.zshrc" "${HOME}/.zsh_history")
 for file in "${original_files[@]}"; do
 	rm -rf "${file}"
 done
 
-# configure both bash and zsh to source the .profile,
-# so that my path gets setup properly
-
 # bash will typically source ~/.profile on shell launch
 # if we haven't switched to zsh, a shell restart should
 # cause this to be sourced
-# setup zsh files
 echo 'Setting up zsh profile...'
 echo 'source "${HOME}/.profile"; export TERM=xterm-256color' >"${HOME}/.zshenv"
 
