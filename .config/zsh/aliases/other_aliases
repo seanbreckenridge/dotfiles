@@ -2,7 +2,8 @@
 # random aliases for some of my projects/unrelated shorthands
 
 # https://github.com/seanbreckenridge/plaintext-playlist.git
-alias mpv-from-stdin='mpv --playlist=- --no-audio-display'
+# --msg-level=file=error removes the 'reading from stdin...' info message
+alias mpv-from-stdin='mpv --playlist=- --no-audio-display --msg-level=file=error'
 alias cm='cd "${PLAINTEXT_PLAYLIST_MUSIC_DIR}"'
 alias cdpl='cd "${PLAINTEXT_PLAYLIST_PLAYLISTS}"'
 alias play='plainplay'
