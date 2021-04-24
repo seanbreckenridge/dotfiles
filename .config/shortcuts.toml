@@ -431,7 +431,7 @@ echo "$(upper <<<"${s:0:1}")${s:1}"
 [lastpic]
 shebang = "#!/usr/bin/env bash"
 command='''
-if [[ -n "${ONLINUX}" ]]; then
+if [[ "$ON_OS" == 'linux' ]]; then
 	exec newest "$@" "${SCREENSHOTS:?No SCREENSHOTS environment variable set}"
 else
 	# on mac, these are saved to the ~/Desktop

@@ -29,10 +29,7 @@ done
 
 cat <<EOF >"${HOME}/.zshenv"
 # if we're not on linux, source the ~/.profile when shell starts
-[[ -z "\$ONLINUX" ]] && { 
-  # should set XDG_CONFIG_HOME and ZDOTDIR
-  source "\${HOME}/.profile"
-}
+source "\${HOME}/.profile"
 EOF
 
 # check if we have access to the my directories

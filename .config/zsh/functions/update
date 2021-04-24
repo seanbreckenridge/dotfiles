@@ -6,33 +6,46 @@ function update() {
 	START_TIME="$(date +%s)"
 	wait-for-internet --text "(waiting for internet)"
 	echo "Updating system (pacman/yay/brew) packages..."
-	if [[ -z "${ONLINUX}" ]]; then
+	case "$ON_OS" in
+	mac)
 		brew update && brew upgrade
 		brew upgrade --cask
 		# run brew cask upgrade --greedy once per month
 		evry 1 month -brewgreedy && brew upgrade --cask --greedy
-	else
+		;;
+	linux)
 		yay -Syu
 		housekeeping
-	fi
+		;;
+	android)
+		apt update && apt upgrade
+		;;
+	esac
 	yadm bootstrap
 	echo "Updating nvim packages..."
 	nvim +PlugUpdate +qall
-	echo "Updating doom emacs..."
-	doom -y upgrade
-	echo "Updating ruby packages..."
-	gem update
-	echo "Updating python packages..."
-	python -m pip install --user -U -r "${XDG_CONFIG_HOME}/yadm/package_lists/python3_packages.txt"
-	update-python-packages
-	echo "Updating global npm packages..."
-	# make sure npm path hasnt been mangled by nvm
-	command -v npm | grep -q 'npm-packages' && npm update -g
+	case "$ON_OS" in
+	android)
+		:
+		;;
+	*)
+		# run when on any computer
+		echo "Updating doom emacs..."
+		doom -y upgrade
+		echo "Updating ruby packages..."
+		gem update
+		echo "Updating python packages..."
+		python -m pip install --user -U -r "${XDG_CONFIG_HOME}/yadm/package_lists/python3_packages.txt"
+		echo "Updating global npm packages..."
+		# make sure npm path hasnt been mangled by nvm
+		command -v npm | grep -q 'npm-packages' && npm update -g
+		echo "Updating global go packages..."
+		cd || return $?
+		spkglist "$HOME/.config/yadm/package_lists/go_packages.txt" | cut -d" " -f2- | xargs go get -u -v 2>&1
+		cd "$OLDPWD" || return $?
+		;;
+	esac
 	echo "Updating global cargo packages..."
 	cargo install-update -a
-	echo "Updating global go packages..."
-	cd || return $?
-	spkglist "$HOME/.config/yadm/package_lists/go_packages.txt" | cut -d" " -f2- | xargs go get -u -v 2>&1
-	cd "$OLDPWD" || return $?
-	printf "Finished updates in %d seconds\n" "$(($(date +%s) - START_TIME))" | boxes -dshell -pv1h2
+	printf "Finished updates in %d seconds\n" "$(($(date +%s) - START_TIME))"
 }
