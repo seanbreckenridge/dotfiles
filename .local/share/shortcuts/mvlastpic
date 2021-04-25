@@ -1,4 +1,3 @@
 #!/bin/sh
 FILE="$(lastpic)" || exit 1
 exec mv -v "${FILE}" "./$1"
-

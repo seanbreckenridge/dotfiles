@@ -3,4 +3,3 @@
 STREAMER="${1:?Pass the twitch user to stream from as the first argument.}"
 pgrep -x chatterino >/dev/null || setsid chatterino >/dev/null 2>&1 &
 MPVF_PICKER=rofi setsid mpvf "https://www.twitch.tv/${STREAMER}" >/dev/null &
-

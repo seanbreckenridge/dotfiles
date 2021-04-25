@@ -15,4 +15,3 @@ while IFS= read -r f; do
 	path="${f#file://}"
 	$cmd -v "${path}" "$(pwd)/$(basename "${path}")"
 done <<<"$files"
-

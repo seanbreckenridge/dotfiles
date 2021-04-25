@@ -1,4 +1,3 @@
 #!/bin/sh
 # set the FORMAT environment variable to control resolution
 exec youtube-dl -f "$(create-youtube-dl-resolution-str)" "$@"
-

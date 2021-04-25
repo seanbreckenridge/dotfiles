@@ -4,4 +4,3 @@
 xvkbd -window Navigator -text "\Eyy"
 sleep 1 # just to make sure its copied
 exec stream-corner-480
-

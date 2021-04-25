@@ -4,4 +4,3 @@
 while read -r filename; do
 	grep -Hrin "$@" "$filename"
 done < <(list-config | grep -vE "zsh_history|compdump")
-

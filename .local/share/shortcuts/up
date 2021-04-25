@@ -3,4 +3,3 @@
 # https://github.com/akavel/up
 BIN="$(where up | grep "${GOBIN}" -m1)"
 TERM=xterm "$BIN" "$@"
-

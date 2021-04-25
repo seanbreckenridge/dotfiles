@@ -1,4 +1,3 @@
 #!/bin/sh
 FILE="$(lastdown)" || exit 1
 exec mv -v "${FILE}" "./$1"
-

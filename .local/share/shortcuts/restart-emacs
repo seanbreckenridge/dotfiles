@@ -5,4 +5,3 @@ if systemctl --user restart emacs; then
 else
 	notify 'couldn't restart emacs server'
 fi
-

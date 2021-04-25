@@ -2,4 +2,3 @@
 # capitalizes the first character of a word from STDIN
 s="$(lower)"
 echo "$(upper <<<"${s:0:1}")${s:1}"
-

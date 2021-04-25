@@ -2,4 +2,3 @@
 EXECUTABLE="${1:?No Executable provided}"
 LOCATION="$(which "${EXECUTABLE}")" || exit $?
 exec nvim "${LOCATION}"
-

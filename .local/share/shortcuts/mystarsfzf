@@ -8,4 +8,3 @@ URL="$(echo "${PICKED}" | urlextract)"
 	printf '%s' "${URL}" | clipcopy
 	printf '%s\n' "${URL}"
 }
-

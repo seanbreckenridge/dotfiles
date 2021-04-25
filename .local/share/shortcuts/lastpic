@@ -5,4 +5,3 @@ else
 	# on mac, these are saved to the ~/Desktop
 	find "${HOME}/Desktop" -iname 'screen shot*' | tail -n1 || exit $?
 fi
-

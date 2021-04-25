@@ -2,4 +2,3 @@
 # wfi, and then reload the browser
 wfi
 exec reload-browser
-

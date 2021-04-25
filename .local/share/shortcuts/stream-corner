@@ -3,4 +3,3 @@
 # this is used with a for_window hook in i3 to put the
 # window in the bottom right
 exec stream-media --x11-name=mpv_stream_media "$@"
-

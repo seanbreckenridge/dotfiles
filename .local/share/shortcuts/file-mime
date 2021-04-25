@@ -2,4 +2,3 @@
 # get mime type for one or more files
 # this is the same as what rifle (ranger) does
 exec file --mime-type -Lb "$@"
-

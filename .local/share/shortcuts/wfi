@@ -5,4 +5,3 @@ wait-for-internet "$@" && {
 	notify "INTERNET"
 	playping
 }
-

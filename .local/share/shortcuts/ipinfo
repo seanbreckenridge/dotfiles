@@ -1,4 +1,3 @@
 #!/bin/sh
 # get my ip information
 curl -s ipinfo.io | gron | grep -v 'json.readme' | gron -u | jq -r 'to_entries[] | "\(.key): \(.value)"'
-

@@ -1,4 +1,3 @@
 #!/bin/sh
 # list music files (try to ignore cue/log/album artwork files) in the current directory
 fd --type f | grep -iEv "\.(gif|accurip|jpg|png|cue|log|m3u|m3u8|nfo|md5|txt|html|rtf|jpeg|sfv|pdf|ffp|pls)$" | sort -n
-

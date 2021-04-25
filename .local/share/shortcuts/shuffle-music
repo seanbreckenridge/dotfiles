@@ -1,4 +1,3 @@
 #!/bin/sh
 # Plays songs from this folder, recursively, randomly
 list-music | shuf | mpv --playlist=- --no-audio-display
-

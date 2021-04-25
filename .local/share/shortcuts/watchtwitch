@@ -1,3 +1,2 @@
 #!/bin/sh
 twitchlive -output-format json | jq -r '.[] | .username' | picker -p "who to watch? " | xargs -r twitch
-

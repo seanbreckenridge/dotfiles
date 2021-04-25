@@ -2,4 +2,3 @@
 # remove the extension from a filename
 FILEPATH="${1:?You must provide a filepath to remove the extension for.}"
 echo "${FILEPATH%%.*}"
-

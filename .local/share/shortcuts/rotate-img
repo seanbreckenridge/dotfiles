@@ -1,4 +1,3 @@
 #!/bin/sh
 FILEPATH=${1:?Must provide image to convert}
 exec convert "${FILEPATH}" -rotate 90 "${FILEPATH}"
-
