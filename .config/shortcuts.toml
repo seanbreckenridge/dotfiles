@@ -681,7 +681,7 @@ twitchlive -output-format json | jq -r '.[] | .username' | picker -p "who to wat
 command='''
 cd || exit $?
 [ -n "${SHORTCUTS_DIR}" ] && [ -d "${SHORTCUTS_DIR}" ] && rm -rf "${SHORTCUTS_DIR}"
-exec shortcuts create
+exec python3 -m shortcuts create --debug
 '''
 
 [alarm]
