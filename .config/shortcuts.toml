@@ -19,16 +19,6 @@ command = '''
 list-config | sed "s#^$HOME/##g" | fzf +m -q "$*" | xargs -r -I {} editor "$HOME/{}"
 '''
 
-["restart-emacs"]
-command = """
-# restart the emacs server managed by systemd
-if systemctl --user restart emacs; then
-	notify 'restarted emacs server'
-else
-	notify 'couldn't restart emacs server'
-fi
-"""
-
 [dotfiles]
 command='''
 # open the dotfiles git repository
