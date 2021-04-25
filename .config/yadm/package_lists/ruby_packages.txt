@@ -3,7 +3,3 @@ rdoc
 rufo
 solargraph
 github-linguist
-
-# for https://github.com/seanbreckenridge/shortcuts
-toml-rb
-docopt

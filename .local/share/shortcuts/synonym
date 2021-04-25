@@ -1,3 +1,4 @@
 #!/bin/sh
 word="${1:?Provide the word to list synonyms as first argument}"
 moby "${word}" | grep ',' | sed 's/,/\n/g' | chomp
+

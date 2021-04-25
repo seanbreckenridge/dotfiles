@@ -8,3 +8,4 @@ cd "$pics" || exit 1
 # open mpv so I can take a picture
 mpv /dev/video0
 exec launch ranger "$pics"
+

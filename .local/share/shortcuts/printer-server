@@ -2,3 +2,4 @@
 # open the printer interface in the browser
 PRINTER_PORT=$(sudo cat /etc/cups/cupsd.conf | grep -i "Listen localhost" | cut -d":" -f2)
 printf "localhost:%d" "$PRINTER_PORT" | openurl
+

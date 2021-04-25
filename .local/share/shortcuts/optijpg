@@ -1,3 +1,4 @@
 #!/bin/sh
 FILE="${1:?provide jpeg to optimize as first argument}"
 exec jpegtran -copy none -optimize -outfile "${FILE}" "${FILE}"
+

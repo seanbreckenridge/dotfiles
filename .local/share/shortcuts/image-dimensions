@@ -4,3 +4,4 @@ for f in "$@"; do
 	img_size="$(exiftool "$f" | grep "Image Size")"
 	[ -z "$img_size" ] && printf "Could not get 'Image Size' for %s" "$f" 1>&2 || printf "%s %s\n" "${img_size#*: }" "$f"
 done
+

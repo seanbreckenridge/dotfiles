@@ -1,3 +1,4 @@
 #!/bin/sh
 # edit your clipboard in vim
 launch "clippaste | vipe | clipcopy"
+

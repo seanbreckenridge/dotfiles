@@ -5,3 +5,4 @@ pgrep -x newsboat && pkill -x newsboat
 cd "${DOWNLOADS:-${HOME}/Downloads}" || exit 1
 newsboat
 exec i3-msg exec update-rss # update rss afterwards, to update menu bar icon
+

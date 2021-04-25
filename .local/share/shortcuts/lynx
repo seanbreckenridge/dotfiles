@@ -4,3 +4,4 @@
 # on $PATH first
 LYNX_PATH="$(where lynx | grep -m1 -v "$SHORTCUTS_DIR")" || exit $?
 exec "$LYNX_PATH" -accept_all_cookies -cfg="${XDG_CONFIG_HOME}/lynx/lynx.cfg" "$@"
+

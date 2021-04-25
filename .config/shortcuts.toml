@@ -2,7 +2,6 @@
 # into standalone shell scripts
 default_shebang = "#!/bin/sh"
 
-# default_mode = "0755"
 [list-config]
 shebang = "#!/bin/zsh"
 command = '''
@@ -20,24 +19,18 @@ command = '''
 list-config | sed "s#^$HOME/##g" | fzf +m -q "$*" | xargs -r -I {} editor "$HOME/{}"
 '''
 
-[restart-emacs]
+["restart-emacs"]
 command = """
 # restart the emacs server managed by systemd
 if systemctl --user restart emacs; then
-	notify "restarted emacs server"
+	notify 'restarted emacs server'
 else
-	notify "couldn't restart emacs server"
+	notify 'couldn't restart emacs server'
 fi
 """
 
-[refresh-doom]
-command = '''
-# open a terminal, run doom sync, and restart the emacs daemon
-launch "doom sync && restart-emacs"
-'''
-
 [dotfiles]
-command = '''
+command='''
 # open the dotfiles git repository
 cd "${HOME}/.local/share/yadm/repo.git" || exit 1
 exec gitopen
@@ -50,7 +43,7 @@ command='''
 sed 's/^bindsym --release/bindsym/g' "${HOME}/.config/i3/config" | awk '/^bindsym/ {$1=""; print substr($0, 2)}'
 '''
 
-[i3binds-prompt]
+["i3binds-prompt"]
 command='''
 # prompt i3 bindings w/ rofi and run one of the commands
 i3-msg "$(i3binds | rofi -dmenu -width 50 -lines 30 -location 5 -p "Pick a command to run > " | sed 's/--no-startup-id //g' | cut -d" " -f 2-)"'''

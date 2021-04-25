@@ -1,5 +1,6 @@
 #!/bin/sh
 # reload firefox (Navigator is firefox's WM_CLASS)
-# the i is to enter insert mode in firefox (I use vimium)
-# \C is control, r is r, to refresh
+                                                         
+                                   
 exec xvkbd -window Navigator -text "i\Cr"
+

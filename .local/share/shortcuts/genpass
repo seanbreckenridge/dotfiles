@@ -9,3 +9,4 @@ pw="$(head -n 1 <<<"$pw")"
 # send notification and copy to clipboard
 clp <<<"${pw}"
 printf '\n'
+

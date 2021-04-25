@@ -2,3 +2,4 @@
 if SELECTED=$(printf "moviesearch\ntvsearch" | picker -p "Search Media Type > "); then
 	exec "$SELECTED"
 fi
+

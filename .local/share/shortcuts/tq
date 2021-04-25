@@ -3,3 +3,4 @@
 import sys, json, toml
 
 print(json.dumps(toml.loads(sys.stdin.read())))
+

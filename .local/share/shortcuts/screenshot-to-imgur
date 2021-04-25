@@ -7,3 +7,4 @@ imgur-uploader "$FILENAME"
 IMGUR_URL="$(clippaste)"
 printf "%s\n" "$IMGUR_URL" >>/tmp/imgur_urls.log
 notify "Uploaded Image to Imgur:" "$IMGUR_URL"
+

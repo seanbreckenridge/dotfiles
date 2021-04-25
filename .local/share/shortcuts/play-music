@@ -1,3 +1,4 @@
 #!/bin/sh
 # play music in the current directory, recursively
 list-music | mpv --playlist=- --no-audio-display
+

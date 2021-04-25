@@ -11,3 +11,4 @@ if [[ "$(echo "${STDIN}" | wc -l)" == 1 ]]; then
 else
 	exec notify "${APP:-'clp'}" "$(printf 'Copied %d lines to clipboard' "$(echo "${STDIN}" | wc -l)")"
 fi
+

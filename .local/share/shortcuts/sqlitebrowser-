@@ -3,3 +3,4 @@
 havecmd 'sqlitebrowser' && exec sqlitebrowser "$@"
 # on mac, this is installed into /Applications/
 exec open -a DB\ Browser\ for\ SQLite "$@"
+

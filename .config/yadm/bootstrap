@@ -127,6 +127,7 @@ function install_python_personal() {
 
 install_python_personal "rotten" "https://github.com/seanbreckenridge/rotten_tomatoes_cli"
 install_python_personal "mystars" "https://github.com/seanbreckenridge/oh-my-stars"
+install_python_personal "shortcuts" "https://github.com/seanbreckenridge/shortcuts"
 
 # speedtest installs 2 executable scripts
 # speedtest and speedtest-cli, which both have the same
@@ -204,12 +205,11 @@ install_shell_script bgproc 'https://raw.githubusercontent.com/seanbreckenridge/
 install_shell_script tts 'https://raw.githubusercontent.com/seanbreckenridge/tts/master/tts'
 install_shell_script plainplay 'https://raw.githubusercontent.com/seanbreckenridge/plaintext-playlist/master/plainplay'
 install_shell_script resolve_cmd_plainplay 'https://raw.githubusercontent.com/seanbreckenridge/plaintext-playlist/master/resolve_cmd_plainplay'
-install_shell_script shortcuts 'https://raw.githubusercontent.com/seanbreckenridge/shortcuts/master/shortcuts'
 install_shell_script pmark 'https://raw.githubusercontent.com/seanbreckenridge/pmark/master/pmark'
 install_shell_script bookmark 'https://raw.githubusercontent.com/seanbreckenridge/bookmark.txt/master/bookmark'
 set +e
 
-havecmd shortcuts && printf "Created %d shortcuts\n" "$(shortcuts create | wc -l)"
+printf "Created %d shortcuts\n" "$(python3 -m shortcuts create --debug | wc -l)"
 
 # link tmux configuration
 [[ ! -e "${HOME}/.tmux.conf" ]] && ln "${HOME}/.config/tmux.conf" "${HOME}/.tmux.conf"

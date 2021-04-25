@@ -1,3 +1,4 @@
 #!/bin/sh
 # print the date in the us format
 exec date "+%m/%d/%y"
+
