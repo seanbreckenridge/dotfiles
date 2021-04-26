@@ -1,7 +1,7 @@
 import os
 
 from promnesia.common import Source
-from promnesia.sources import reddit, auto, github
+from promnesia.sources import reddit, auto, github, smscalls
 
 from promnesia_sean.sources import (
     facebook,
@@ -18,7 +18,6 @@ from promnesia_sean.sources import (
     trakt,
     ttt,
     zsh,
-    smscalls,
 )
 
 SOURCES = [
