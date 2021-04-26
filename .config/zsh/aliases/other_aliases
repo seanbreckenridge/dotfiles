@@ -92,7 +92,7 @@ alias 'clr=food-recent'
 alias 'ca=food-now'
 
 # https://github.com/seanbreckenridge/tupletally
-TUPLETALLY_ALIASES="${TMPDIR:-/tmp}/tupletally_aliases"
+TUPLETALLY_ALIASES="${HOME}/.cache/tupletally_aliases"
 if [[ ! -e "${TUPLETALLY_ALIASES}" ]]; then
 	if havecmd tupletally; then
 		python3 -m tupletally generate >"${TUPLETALLY_ALIASES}"
