@@ -24,6 +24,9 @@ function update() {
 	yadm bootstrap
 	echo "Updating nvim packages..."
 	nvim +PlugUpdate +qall
+	echo "Updating global npm packages..."
+	# make sure npm path hasnt been mangled by nvm
+	command -v npm | grep -q 'npm-packages' && npm update -g
 	case "$ON_OS" in
 	android)
 		:
@@ -36,9 +39,6 @@ function update() {
 		gem update
 		echo "Updating python packages..."
 		python -m pip install --user -U -r "${XDG_CONFIG_HOME}/yadm/package_lists/python3_packages.txt"
-		echo "Updating global npm packages..."
-		# make sure npm path hasnt been mangled by nvm
-		command -v npm | grep -q 'npm-packages' && npm update -g
 		echo "Updating global cargo packages..."
 		cargo install-update -a
 		echo "Updating global go packages..."

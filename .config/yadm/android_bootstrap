@@ -57,7 +57,13 @@ if [[ ! -f ~/.local/share/nvim/site/autoload/plug.vim ]]; then
 fi
 
 # a tiny subset of packages to install on android
-havecmd npm || exit $?             # needed for coc
+havecmd npm || exit $? # needed for coc
+
+export NPM_CONFIG_PREFIX="${XDG_DATA_HOME}/npm-packages"
+# create the npm directory and make sure we own the directory to fix permission issues
+[[ ! -d "${NPM_CONFIG_PREFIX}" ]] && mkdir -p "${NPM_CONFIG_PREFIX}" && chown -R "$(whoami)" "${NPM_CONFIG_PREFIX}"
+npm install -g npm
+
 havecmd cargo || exit $?           # needed to build some packages
 havecmd evry || cargo install evry # task scheduling
 havecmd shfmt || GO111MODULE=on go get mvdan.cc/sh/v3/cmd/shfmt
