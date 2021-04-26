@@ -55,3 +55,9 @@ printf "Installing nvim-plug...\n"
 if [[ ! -f ~/.local/share/nvim/site/autoload/plug.vim ]]; then
 	curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 fi
+
+# a tiny subset of packages to install on android
+havecmd npm || exit $?             # needed for coc
+havecmd cargo || exit $?           # needed to build some packages
+havecmd evry || cargo install evry # task scheduling
+havecmd shfmt || GO111MODULE=on go get mvdan.cc/sh/v3/cmd/shfmt

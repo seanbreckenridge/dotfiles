@@ -143,11 +143,6 @@ havecmd npm && [[ -e "${COC_NPM_DIR}" ]] && {
 
 if [[ "$ON_OS" != 'android' ]]; then
 	bash "${YADM_DIR}/computer_bootstrap" || exit $?
-else
-	# a tiny subset of packages to install on android
-	havecmd npm || exit $?             # needed for coc
-	havecmd cargo || exit $?           # needed to build some packages
-	havecmd evry || cargo install evry # task scheduling
 fi
 
 # install pistol manually

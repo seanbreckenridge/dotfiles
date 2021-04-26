@@ -22,6 +22,7 @@ jq
 lynx
 ranger
 wget
+gh
 
 termux-api  # clipboard interaction? not sure if it works
 
