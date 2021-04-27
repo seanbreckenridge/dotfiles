@@ -3,9 +3,9 @@ openssh
 ncurses-utils  # tput
 exa
 bat
+rust
 golang
 curl
-ruby
 neovim
 yarn
 nodejs
