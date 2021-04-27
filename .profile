@@ -35,6 +35,22 @@ esac
 
 export ON_OS
 
+# the 'root data directory' for HPI is different depending
+# on what I'm on, as on syncthing for android,
+# its easier to sync one of the folders in
+# shared instead of ~/data (which is owned by termux)
+# from my phone
+case "$ON_OS" in
+	android)
+		HPIDATA="${HOME}/storage/shared/data"
+		;;
+	*)
+		HPIDATA="${HOME}/data"
+		;;
+esac
+
+export HPIDATA
+
 # common path modifications
 PATH="\
 ${HOME}/.local/share/shortcuts:\
@@ -97,6 +113,6 @@ export ZDOTDIR="${XDG_CONFIG_HOME}/zsh"
 # environment since they could be referenced without opening a terminal
 # e.g. from my menu bar/window manager/run launcher
 # https://github.com/seanbreckenridge/ttally
-export TTALLY_DATA_DIR="${HOME}/data/phone/ttally"
+export TTALLY_DATA_DIR="${HPIDATA}/phone/ttally"
 # https://github.com/seanbreckenridge/ttt
-export TTT_HISTFILE="${HOME}/data/phone/ttt/$(date '+%s').csv"
+export TTT_HISTFILE="${HPIDATA}/phone/ttt/$(date '+%s').csv"

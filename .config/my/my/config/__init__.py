@@ -223,7 +223,7 @@ class google:
 
 # https://github.com/seanbreckenridge/ttt
 class ttt:
-    export_path: Paths = "~/data/ttt/*.csv"
+    export_path: Paths = "~/data/phone/ttt/*.csv"
 
 
 class battery:
