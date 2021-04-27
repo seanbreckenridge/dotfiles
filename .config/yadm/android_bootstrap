@@ -40,15 +40,18 @@ havecmd go || apt install golang
 install_spkglist
 set +e
 
-[[ ! -d "${HOME}/storage" ]] && termux-setup-storage
-[[ ! -d "${HPIDATA}" ]] && mkdir -p "${HPIDATA}"
-
-
 for lib in $(spkglist "${TERMUX_PACKAGES}"); do
 	if ! dpkg-query -W -f='${Status}' "${lib}" | grep -q "ok installed"; then # if package isn't installed
 		apt install "${lib}"
 	fi
 done
+
+# setup some additional directories
+set -u
+[[ ! -d "${HOME}/storage" ]] && termux-setup-storage
+mkdir -vp "${HPIDATA}/phone" "${REPOS}"
+[[ ! -e "${HOME}/phonedata" ]] && ln -vs "${HPIDATA}/phone" "${HOME}/phonedata"
+set +u
 
 printf "Installing nvim-plug...\n"
 if [[ ! -f ~/.local/share/nvim/site/autoload/plug.vim ]]; then
@@ -63,6 +66,14 @@ export NPM_CONFIG_PREFIX="${XDG_DATA_HOME}/npm-packages"
 [[ ! -d "${NPM_CONFIG_PREFIX}" ]] && mkdir -p "${NPM_CONFIG_PREFIX}" && chown -R "$(whoami)" "${NPM_CONFIG_PREFIX}"
 npm install -g npm
 
+# dont want to go through all the npm/cargo/golang package lists
+# I use on computers, since a lot of them arent useful here
+
+# manually install some commands
 havecmd cargo || exit $?           # needed to build some packages
 havecmd evry || cargo install evry # task scheduling
 havecmd shfmt || GO111MODULE=on go get mvdan.cc/sh/v3/cmd/shfmt
+
+# small utilities I use in scripts
+havecmd newest || go get github.com/seanbreckenridge/newest
+havecmd chomp || go get github.com/seanbreckenridge/chomp

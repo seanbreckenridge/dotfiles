@@ -669,10 +669,15 @@ twitchlive -output-format json | jq -r '.[] | .username' | picker -p "who to wat
 
 [reshortcuts]
 command='''
+set -o pipefail
 cd || exit $?
-[ -n "${SHORTCUTS_DIR}" ] && [ -d "${SHORTCUTS_DIR}" ] && rm -rf "${SHORTCUTS_DIR}"
-python3 -m shortcuts create --debug && fd . "${SHORTCUTS_DIR}" -X rifleman
+[[ -n "${SHORTCUTS_DIR}" ]] && [[ -d "${SHORTCUTS_DIR}" ]] && rm -rf "${SHORTCUTS_DIR}"
+echo "Creating/formatting shortcuts..."
+DEBUG_OUTPUT="$(python3 -m shortcuts create --debug && fd . "${SHORTCUTS_DIR}" -X rifleman 2>&1)" || {
+	echo "$DEBUG_OUTPUT"
+}
 '''
+shebang="#!/usr/bin/env bash"
 
 [alarm]
 command = 'exec paplay /usr/share/sounds/freedesktop/stereo/alarm-clock-elapsed.oga'

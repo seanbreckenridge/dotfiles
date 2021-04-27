@@ -2,6 +2,14 @@
 # In other words, things that should get run
 # on computers (linux/mac), but not on android
 
+# create default user directories
+default_user_dirs=("Repos" "Documents" "Downloads" "Pictures/Screenshots" ".local/bin" ".cache" ".credentials" "Sync")
+for d_name in "${default_user_dirs[@]}"; do
+	if [[ ! -d "${HOME}/${d_name}" ]]; then
+		mkdir -p "${HOME}/${d_name}"
+	fi
+done
+
 echo "Installing scientific python packages..."
 python3 -m pip install --user -q -r "${SCIPYTHON_PACKAGE_LIST}"
 

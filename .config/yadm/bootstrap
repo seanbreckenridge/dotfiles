@@ -74,13 +74,8 @@ declare SCRIPT_TARGET_DIR="${HOME}/.local/bin" # should be created by stack/pyth
 # make sure personal aliases file exists so that zshrc souces fine
 [[ ! -f "${ZDOTDIR}/aliases/personal_aliases" ]] && touch "${ZDOTDIR}/aliases/personal_aliases"
 
-# create default user directories
-default_user_dirs=("Repos" "Documents" "Downloads" "Pictures/Screenshots" ".local/bin" ".cache" ".credentials" "data" "Sync")
-for d_name in "${default_user_dirs[@]}"; do
-	if [[ ! -d "${HOME}/${d_name}" ]]; then
-		mkdir -p "${HOME}/${d_name}"
-	fi
-done
+# data directory for https://github.com/seanbreckenridge/HPI
+[[ -n "${HPIDATA}" && ! -d "${HPIDATA}" ]] && mkdir -p "${HPIDATA}"
 
 havecmd git || exit $?
 echo 'Checking git config...'
@@ -204,9 +199,14 @@ install_shell_script pmark 'https://raw.githubusercontent.com/seanbreckenridge/p
 install_shell_script bookmark 'https://raw.githubusercontent.com/seanbreckenridge/bookmark.txt/master/bookmark'
 set +e
 
-printf "Created %d shortcuts\n" "$(python3 -m shortcuts create --debug | wc -l)"
+if havecmd reshortcuts; then
+	reshortcuts  # shortcuts create and format all the created files
+else
+	printf "Created %d shortcuts\n" "$(python3 -m shortcuts create --debug | wc -l)"
+fi
 
-# link tmux configuration
+
+# link tmux config -- seems this fails on termux (android)?
 [[ ! -e "${HOME}/.tmux.conf" ]] && ln "${HOME}/.config/tmux.conf" "${HOME}/.tmux.conf"
 
 # setup directory for ranger

@@ -1,4 +1,8 @@
-#!/bin/sh
+#!/usr/bin/env bash
+set -o pipefail
 cd || exit $?
-[ -n "${SHORTCUTS_DIR}" ] && [ -d "${SHORTCUTS_DIR}" ] && rm -rf "${SHORTCUTS_DIR}"
-python3 -m shortcuts create --debug && fd . "${SHORTCUTS_DIR}" -X rifleman
+[[ -n "${SHORTCUTS_DIR}" ]] && [[ -d "${SHORTCUTS_DIR}" ]] && rm -rf "${SHORTCUTS_DIR}"
+echo "Creating/formatting shortcuts..."
+DEBUG_OUTPUT="$(python3 -m shortcuts create --debug && fd . "${SHORTCUTS_DIR}" -X rifleman 2>&1)" || {
+	echo "$DEBUG_OUTPUT"
+}
