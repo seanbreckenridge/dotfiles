@@ -1,6 +1,7 @@
 python  # installs as python3
 openssh
 ncurses-utils  # tput
+man
 exa
 bat
 rust
@@ -12,6 +13,7 @@ nodejs
 htop-legacy
 perl
 datamash
+termux-services # sv-enable sshd
 entr
 fd
 ffmpeg
