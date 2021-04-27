@@ -80,31 +80,40 @@ def if_exists(p: PathIsh) -> Optional[PathIsh]:
     return None
 
 
+# if the HPIDATA environment variable is set (which points to my data)
+# use that. Else, just default to ~/data
+prefix: Path = Path(environ.get("HPIDATA", path.join(environ["HOME"], "data")))
+
+# prepend my data directory onto this path
+def data(p: PathIsh) -> Path:
+    return prefix / p
+
+
 # combines:
 # periodic exports from: https://github.com/karlicoss/ghexport
 # github GDPR export
 class github:
-    gdpr_dir: PathIsh = "~/data/github/gdpr"
-    export_path: Paths = "~/data/github/ghexport/"
+    gdpr_dir: PathIsh = data("github/gdpr")
+    export_path: Paths = data("github/ghexport")
 
 
 # combines:
 # periodic exports from: https://github.com/karlicoss/rexport/
 # comment export from: https://github.com/seanbreckenridge/pushshift_comment_export
 class reddit:
-    export_path: Paths = "~/data/rexport/"
-    pushshift_export_path: Paths = "~/data/pushshift/"
+    export_path: Paths = data("rexport")
+    pushshift_export_path: Paths = data("pushshift")
 
 
 # prompt me for actions using https://github.com/seanbreckenridge/autotui
 # interfaces created by https://github.com/seanbreckenridge/ttally
 class body:
-    datadir: PathIsh = environ.get("TTALLY_DATA_DIR", "~/data/phone/ttally/")
+    datadir: PathIsh = environ.get("TTALLY_DATA_DIR", data("phone/ttally/"))
 
 
 # parses my zsh history and any backups
 class zsh:
-    export_path: Paths = "~/data/zsh_history/"
+    export_path: Paths = data("zsh_history")
     live_file: Optional[PathIsh] = if_exists(
         path.join(environ["ZDOTDIR"], ".zsh_history")
     )
@@ -112,7 +121,7 @@ class zsh:
 
 # parses current/finished http://todotxt.org/ using topydo
 class todotxt:
-    export_path: Paths = "~/data/todotxt/"
+    export_path: Paths = data("todotxt")
     live_file: Optional[PathIsh] = if_exists(
         path.join(environ["XDG_CONFIG_HOME"], "todo", "todo.txt")
     )
@@ -120,7 +129,7 @@ class todotxt:
 
 # parses the history of me adding/removing rss feeds
 class newsboat:
-    export_path: Paths = "~/data/newsboat/"
+    export_path: Paths = data("newsboat")
 
 
 # parses information from git repositories which match my emails
@@ -139,12 +148,12 @@ class commits:
 # uses my dameon for watching mpv events
 # https://github.com/seanbreckenridge/mpv-history-daemon
 class mpv:
-    export_path: Paths = "~/data/mpv/*.json"
+    export_path: Paths = data("mpv/*.json")
 
 
 # uses browserexport https://github.com/seanbreckenridge/browserexport
 class browsing:
-    export_path: Paths = "~/data/browsing/"
+    export_path: Paths = data("browsing")
 
     # use my active firefox database
     from browserexport.browsers.firefox import Firefox
@@ -152,69 +161,65 @@ class browsing:
     live_databases: Paths = Firefox.locate_database()
 
 
-class chrome:
-    export_path: Paths = "~/data/chrome/"
-
-
 # uses lolexport: https://github.com/seanbreckenridge/lolexport
 class league_of_legends:
-    export_path: Paths = "~/data/league_of_legends/parsed*.json"
+    export_path: Paths = data("league_of_legends/parsed*.json")
     username = "purplepinapples"
 
 
 # uses chessdotcom_export: https://github.com/seanbreckenridge/chessdotcom_export
 class chess:
-    export_path: Paths = "~/data/chessdotcom/"
+    export_path: Paths = data("chessdotcom")
 
 
 # uses traktexport: https://github.com/seanbreckenridge/traktexport
 class trakt:
-    export_path: Paths = "~/data/trakt/"
+    export_path: Paths = data("trakt")
 
 
 # uses my personal albums system: https://github.com/seanbreckenridge/albums
 class albums:
-    export_path: Paths = "~/data/albums/*.json"
+    export_path: Paths = data("albums/*.json")
 
 
 # uses https://github.com/seanbreckenridge/steamscraper
 class steam:
-    export_path: Paths = "~/data/steam.json"
+    export_path: Paths = data("steam.json")
 
 
 # https://github.com/seanbreckenridge/blizzard_gdpr_parser
 class blizzard:
-    export_path: Paths = "~/data/blizzard/parsed.json"
+    export_path: Paths = data("blizzard/parsed.json")
 
 
 # https://github.com/seanbreckenridge/forum_parser
 class old_forums:
-    export_path: Paths = "~/data/old_forums/*.json"
+    export_path: Paths = data("old_forums/*.json")
 
 
 # parses the GDPR export
 class skype:
-    export_path: Paths = "~/data/skype.json"
+    export_path: Paths = data("skype.json")
 
 
 # parses the GDPR export
 class facebook:
-    gdpr_dir: PathIsh = "~/data/facebook_gdpr/"
+    gdpr_dir: PathIsh = data("facebook_gdpr")
 
 
 # parses the GDPR export
 class spotify:
-    gdpr_dir: PathIsh = "~/data/spotify/"
+    gdpr_dir: PathIsh = data("spotify")
 
 
-# parses backups of and the live ipython history sqlite databases
+# parses backups of my ipython history
 class ipython:
-    export_path: Paths = "~/data/ipython/*.sqlite"
+    export_path: Paths = data("ipython/*.sqlite")
 
 
 # parses https://takeout.google.com
 class google:
-    takeout_path: Paths = "~/data/google_takeout/"
+    takeout_path: Paths = data("google_takeout")
     # this is the directory that my google drive gets mirrored to locally
     # when it detects a new takeout, it sends a warning, so I can run
     # the script to move it to takeout_path
@@ -223,16 +228,16 @@ class google:
 
 # https://github.com/seanbreckenridge/ttt
 class ttt:
-    export_path: Paths = "~/data/phone/ttt/*.csv"
+    export_path: Paths = data("phone/ttt/*.csv")
 
 
 class battery:
-    export_path: Paths = "~/data/battery.csv"
+    export_path: Paths = data("battery.csv")
 
 
 # https://github.com/seanbreckenridge/aw-watcher-window
 class window_watcher:
-    export_path: Paths = "~/data/window_watcher/*.csv"
+    export_path: Paths = data("window_watcher/*.csv")
     force_individual: Optional[List[str]] = ["Alacritty"]
 
 
@@ -241,19 +246,19 @@ class smscalls:
 
 
 class photos:
-    paths: List[PathIsh] = ["~/Pictures/iCloudPhotos/", "~/data/google_takeout/"]
+    paths: List[PathIsh] = ["~/Pictures/iCloudPhotos/", data("google_takeout")]
     # dont ignore anything
     ignored: Callable[[Path], bool] = lambda p: False
 
 
 # parses the GDPR export
 class apple:
-    gdpr_dir: PathIsh = "~/data/apple/"
+    gdpr_dir: PathIsh = data("apple")
 
 
 # parses the GDPR export
 class discord:
-    export_path: Paths = "~/data/discord/"
+    export_path: Paths = data("discord")
 
 
 # .gpx files from https://github.com/mendhak/gpslogger
