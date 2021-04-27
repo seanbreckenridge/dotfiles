@@ -228,7 +228,8 @@ class google:
 
 # https://github.com/seanbreckenridge/ttt
 class ttt:
-    export_path: Paths = data("phone/ttt/*.csv")
+    # both ttt histories, from my computer and from termux on my phone
+    export_path: Paths = (data("ttt/*.csv"), data("phone/ttt/*.csv"),)
 
 
 class battery:
