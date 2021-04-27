@@ -91,14 +91,14 @@ alias 'cz="$REPOS/HPI/scripts/food-fzf"'
 alias 'clr=food-recent'
 alias 'ca=food-now'
 
-# https://github.com/seanbreckenridge/tupletally
-TUPLETALLY_ALIASES="${HOME}/.cache/tupletally_aliases"
-if [[ ! -e "${TUPLETALLY_ALIASES}" ]]; then
-	if havecmd tupletally; then
-		python3 -m tupletally generate >"${TUPLETALLY_ALIASES}"
+# https://github.com/seanbreckenridge/ttally
+TTALLY_ALIASES="${HOME}/.cache/ttally_aliases"
+if [[ ! -e "${TTALLY_ALIASES}" ]]; then
+	if havecmd ttally; then
+		python3 -m ttally generate >"${TTALLY_ALIASES}"
 	fi
 fi
-[[ -e "${TUPLETALLY_ALIASES}" ]] && source "${TUPLETALLY_ALIASES}"
+[[ -e "${TTALLY_ALIASES}" ]] && source "${TTALLY_ALIASES}"
 
 # https://github.com/seanbreckenridge/tts
 alias tts-say='tts -d /tmp/tts.ogg && paplay /tmp/tts.ogg'
