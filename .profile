@@ -35,6 +35,7 @@ esac
 
 export ON_OS
 
+# https://github.com/seanbreckenridge/HPI
 # the 'root data directory' for HPI is different depending
 # on what I'm on, as on syncthing for android,
 # its easier to sync one of the folders in
