@@ -99,4 +99,4 @@ export ZDOTDIR="${XDG_CONFIG_HOME}/zsh"
 # https://github.com/seanbreckenridge/ttally
 export TTALLY_DATA_DIR="${HOME}/data/phone/ttally"
 # https://github.com/seanbreckenridge/ttt
-export TTT_HISTFILE="${HOME}/data/ttt/$(date '+%s').csv"
+export TTT_HISTFILE="${HOME}/data/phone/ttt/$(date '+%s').csv"
