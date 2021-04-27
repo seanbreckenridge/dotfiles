@@ -110,10 +110,14 @@ export XDG_DATA_HOME="${HOME}/.local/share"
 # define where ZDOTDIR (rest of zsh configuration) is
 export ZDOTDIR="${XDG_CONFIG_HOME}/zsh"
 
+# helper envvar to be used in names of files
+SHELL_BOOT_TIME="$(date '+%s')"
+export SHELL_BOOT_TIME
+
 # variables which ideally should be sourced into the global
 # environment since they could be referenced without opening a terminal
 # e.g. from my menu bar/window manager/run launcher
 # https://github.com/seanbreckenridge/ttally
 export TTALLY_DATA_DIR="${HPIDATA}/phone/ttally"
 # https://github.com/seanbreckenridge/ttt
-export TTT_HISTFILE="${HPIDATA}/phone/ttt/$(date '+%s').csv"
+export TTT_HISTFILE="${HPIDATA}/ttt/${SHELL_BOOT_TIME}.csv"

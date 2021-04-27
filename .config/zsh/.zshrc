@@ -54,5 +54,6 @@ mac)
 android)
 	source "${HOME}/../usr/share/fzf/key-bindings.zsh"
 	source "${HOME}/../usr/share/fzf/completion.zsh"
+	source "${ZDOTDIR}/android.zsh"
 	;;
 esac

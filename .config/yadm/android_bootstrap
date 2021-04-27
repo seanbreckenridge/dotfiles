@@ -49,7 +49,7 @@ done
 # setup some additional directories
 set -u
 [[ ! -d "${HOME}/storage" ]] && termux-setup-storage
-mkdir -vp "${HPIDATA}/phone" "${REPOS}"
+mkdir -vp "${HPIDATA}/phone" "${HPIDATA}/phone/ttt" "${REPOS}"
 [[ ! -e "${HOME}/phonedata" ]] && ln -vs "${HPIDATA}/phone" "${HOME}/phonedata"
 set +u
 
