@@ -96,7 +96,7 @@ export ZDOTDIR="${XDG_CONFIG_HOME}/zsh"
 # variables which ideally should be sourced into the global
 # environment since they could be referenced without opening a terminal
 # e.g. from my menu bar/window manager/run launcher
-# https://github.com/seanbreckenridge/tupletally
-export TUPLETALLY_DATA_DIR="${HOME}/data/tupletally"
+# https://github.com/seanbreckenridge/ttally
+export TTALLY_DATA_DIR="${HOME}/data/phone/ttally"
 # https://github.com/seanbreckenridge/ttt
 export TTT_HISTFILE="${HOME}/data/ttt/$(date '+%s').csv"

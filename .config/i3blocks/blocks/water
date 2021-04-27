@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # how many water I've had today
 
-((BLOCK_BUTTON == 3)) && notify-send "$(python3 -m tupletally recent water)"
+((BLOCK_BUTTON == 3)) && notify-send "$(python3 -m ttally recent water)"
 
 {
 	hpi query --recent 1d my.body.water | jq -r '.[] | .glasses'

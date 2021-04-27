@@ -7,8 +7,8 @@ if [[ "$(uname -s)" == "Linux" ]]; then
 	echo "${HOME}/.config/todo/todo.txt" | entr pkill -RTMIN+2 i3blocks &
 	echo "${HOME}/.cache/rss-unread" | entr pkill -RTMIN+3 i3blocks &
 	echo "${HOME}/.cache/guestbook-comments" | entr pkill -RTMIN+4 i3blocks &
-	find "${HOME}/data/tupletally" -name 'food*.json' | entr pkill -RTMIN+5 i3blocks &
-	find "${HOME}/data/tupletally" -name 'water*.json' | entr pkill -RTMIN+6 i3blocks &
+	find "${HOME}/data/phone/ttally" -name 'food*.json' | entr pkill -RTMIN+5 i3blocks &
+	find "${HOME}/data/phone/ttally" -name 'water*.json' | entr pkill -RTMIN+6 i3blocks &
 else
 	# just sleep for a day in the background, so we wait
 	# will autorestart once a day when not on linux, which seems fine
