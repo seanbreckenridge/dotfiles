@@ -99,6 +99,7 @@ export MY_CONFIG="${XDG_CONFIG_HOME}/my"
 export PROMNESIA_CONFIG="${XDG_CONFIG_HOME}/promnesia/config.py"
 
 export TTALLY="${HOME}/data/phone/ttally"
+export AUTOTUI_DATETIME_LIVE=1
 
 # ignore less history
 export LESSHISTFILE='-'
