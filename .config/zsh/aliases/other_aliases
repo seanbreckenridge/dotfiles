@@ -91,6 +91,7 @@ alias 'clr=food-recent'
 alias 'ca=food-now'
 
 # https://github.com/seanbreckenridge/ttally
+alias 'czd=cz -d'
 TTALLY_ALIASES="${HOME}/.cache/ttally_aliases"
 if [[ ! -e "${TTALLY_ALIASES}" ]]; then
 	if havecmd ttally; then
