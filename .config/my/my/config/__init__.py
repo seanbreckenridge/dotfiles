@@ -167,9 +167,9 @@ class league_of_legends:
     username = "purplepinapples"
 
 
-# uses chessdotcom_export: https://github.com/seanbreckenridge/chessdotcom_export
+# uses https://github.com/seanbreckenridge/chess_export
 class chess:
-    export_path: Paths = data("chessdotcom")
+    export_path: Paths = data("chess")
 
 
 # uses traktexport: https://github.com/seanbreckenridge/traktexport

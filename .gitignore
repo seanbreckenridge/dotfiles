@@ -17,7 +17,8 @@ Brewfile.lock.json
 # zsh
 /.zshenv
 .zcompcache
-personal_aliases
+/.config/zsh/aliases/personal_aliases
+/.config/zsh/aliases/tokens
 secrets
 .zsh_history
 .zsh_sessions
