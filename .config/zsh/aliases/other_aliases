@@ -87,7 +87,6 @@ budget-summary() {
 
 # https://github.com/seanbreckenridge/HPI
 alias 'history_fzf="$REPOS/HPI/scripts/history_fzf"'
-alias 'cz="$REPOS/HPI/scripts/food-fzf"'
 alias 'clr=food-recent'
 alias 'ca=food-now'
 
