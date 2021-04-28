@@ -2,4 +2,4 @@
 # android-specific setup
 
 # https://github.com/seanbreckenridge/ttt
-export TTT_HISTFILE="${HPIDATA}/ttt/phone/${SHELL_BOOT_TIME}.csv"
+export TTT_HISTFILE="${HPIDATA}/phone/ttt/${SHELL_BOOT_TIME}.csv"
