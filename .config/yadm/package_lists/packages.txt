@@ -134,6 +134,7 @@ hub
 hyperfine
 imagemagick
 jq
+khinsider
 ldm
 lftp
 libjpeg-turbo # for jpegtran
@@ -203,15 +204,15 @@ whatmp3
 wkhtmltopdf
 xclip
 xcolor
+xdotool
+xorg-xdpyinfo
+xorg-xwininfo
 xterm
 xvkbd
 yadm
 yq
 ytop
 zip
-xdotool
-xorg-xwininfo
-xorg-xdpyinfo
 
 # shell
 
