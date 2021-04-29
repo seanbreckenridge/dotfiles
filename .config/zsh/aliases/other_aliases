@@ -87,11 +87,8 @@ budget-summary() {
 
 # https://github.com/seanbreckenridge/HPI
 alias 'history_fzf="$REPOS/HPI/scripts/history_fzf"'
-alias 'clr=food-recent'
-alias 'ca=food-now'
 
 # https://github.com/seanbreckenridge/ttally
-alias 'czd=cz -d'
 TTALLY_ALIASES="${HOME}/.cache/ttally_aliases"
 if [[ ! -e "${TTALLY_ALIASES}" ]]; then
 	if havecmd ttally; then
@@ -99,6 +96,10 @@ if [[ ! -e "${TTALLY_ALIASES}" ]]; then
 	fi
 fi
 [[ -e "${TTALLY_ALIASES}" ]] && source "${TTALLY_ALIASES}"
+alias 'czd=cz -d'
+alias 'clr=food-recent'
+alias 'wlr=water-recent'
+alias 'ca=food-now'
 
 # https://github.com/seanbreckenridge/tts
 alias tts-say='tts -d /tmp/tts.ogg && paplay /tmp/tts.ogg'
