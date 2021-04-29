@@ -34,9 +34,9 @@ alias raspi-backup='${REPOS}/raspi-backup/backup -d'
 
 # https://github.com/seanbreckenridge/albums
 alias albums='openurl "https://sean.fish/s/albums"'
-alias favorite-albums='python3 "${REPOS}/albums/favorites.py" > /tmp/favorites.csv && sc-im /tmp/favorites.csv'
-alias albums-left='python3 "${REPOS}/albums/nextalbums.py" -n 9999999 | cut -d"|" -f4 | grep -E "[0-9]" -c'
-alias discogs-update='python3 "${REPOS}/albums/discogs_update.py"'
+alias favorite-albums='nextalbums favorites > /tmp/favorites.csv && sc-im /tmp/favorites.csv'
+alias 'discogs-update=nextalbums discogs-update'
+alias albums-left='hpi query my.albums.to_listen | jq length'
 
 # vps related
 # https://github.com/seanbreckenridge/vps
