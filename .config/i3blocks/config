@@ -4,6 +4,11 @@ markup=pango
 # anything with a signal gets refreshed by an entr
 # command in my i3 config https://sean.fish/d/i3/config
 
+[mpv-paused]
+command="${HOME}/.config/i3blocks/blocks/mpv-paused"
+interval=180
+label=⏸
+
 [comments]
 command="${HOME}/.config/i3blocks/blocks/comments"
 interval=once
