@@ -723,3 +723,10 @@ command = 'ttally-say "$(python3 -m ttally recent food "$@")"'
 
 [wlr]
 command = 'ttally-say "$(python3 -m ttally recent water "$@")"'
+
+[mz]
+command = '''
+# use cached https://github.com/seanbreckenridge/projects repository information
+# to quickly open one of my Github repositories
+jq -r '.[] | .html_url' <"${REPOS}/projects/cache.json" | fzf | xargs -r openurl
+'''
