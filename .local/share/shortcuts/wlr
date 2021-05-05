@@ -1,0 +1,2 @@
+#!/bin/sh
+ttally-say "$(python3 -m ttally recent water "$@")"

@@ -717,3 +717,9 @@ havecmd 'sqlitebrowser' && exec sqlitebrowser "$@"
 # on mac, this is installed into /Applications/
 exec open -a DB\ Browser\ for\ SQLite "$@"
 '''
+
+[clr]
+command = 'ttally-say "$(python3 -m ttally recent food "$@")"'
+
+[wlr]
+command = 'ttally-say "$(python3 -m ttally recent water "$@")"'

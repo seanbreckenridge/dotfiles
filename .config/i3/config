@@ -110,9 +110,9 @@ bindsym Shift+Print exec --no-startup-id ttt screenshot --full
 # upload the most recent screenshot to imgur, copy result to clipboard
 bindsym $mod+Print exec --no-startup-id ttt screenshot-to-imgur
 # edit clipboard in vim
-bindsym $mod+c exec --no-startup-id clipedit
+bindsym $mod+Shift+c exec --no-startup-id clipedit
 # reset clipboard formatting
-bindsym $mod+Shift+c exec --no-startup-id clipreset
+bindsym $mod+$alt+c exec --no-startup-id clipreset
 
 # mpv commands
 # https://github.com/seanbreckenridge/mpv-sockets.git
@@ -123,6 +123,9 @@ bindsym $mod+Shift+XF86AudioMute exec --no-startup-id mpv-quit-latest
 # on 'volume up', move forward in the file
 bindsym $mod+XF86AudioRaiseVolume exec --no-startup-id mpv-seek '5'
 bindsym $mod+XF86AudioLowerVolume exec --no-startup-id mpv-seek '-5'
+
+# to log food I eat with https://github.com/seanbreckenridge/ttally
+bindsym $mod+c exec --no-startup-id cz
 
 # gaps config
 for_window [class=".*"] border pixel 0

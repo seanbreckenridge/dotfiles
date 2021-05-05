@@ -97,8 +97,6 @@ if [[ ! -e "${TTALLY_ALIASES}" ]]; then
 fi
 [[ -e "${TTALLY_ALIASES}" ]] && source "${TTALLY_ALIASES}"
 alias 'czd=cz -d'
-alias 'clr=food-recent'
-alias 'wlr=water-recent'
 alias 'ca=food-now'
 alias 'wn=water-now'
 
