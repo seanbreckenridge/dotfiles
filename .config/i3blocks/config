@@ -8,6 +8,7 @@ markup=pango
 command="${HOME}/.config/i3blocks/blocks/mpv-paused"
 interval=180
 label=⏸
+signal=7
 
 [comments]
 command="${HOME}/.config/i3blocks/blocks/comments"
