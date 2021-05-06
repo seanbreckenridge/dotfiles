@@ -151,7 +151,6 @@ mode "water" {
     bindsym 8 exec --no-startup-id sh -c "wn -p | awk 'NR == 8' | xargs -r wn"; mode "default"
     bindsym 9 exec --no-startup-id sh -c "wn -p | awk 'NR == 9' | xargs -r wn"; mode "default"
     bindsym Escape mode "default"
-    bindsym Escape mode "default"
     bindsym Return mode "default"
 }
 
