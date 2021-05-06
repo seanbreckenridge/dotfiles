@@ -1,0 +1,3 @@
+#!/bin/sh
+# clr without the calorie count
+ttally-say "$(python3 -m ttally recent food "$@" | awk '{ $3=""; print $0 }')"

@@ -308,10 +308,10 @@ mode "launcher" {
     bindsym x exec --no-startup-id ttt mediaproxyvideo; mode "default"
     bindsym Shift+x exec --no-startup-id ttt mediaproxyaudio; mode "default"
     # bindings for https://github.com/seanbreckenridge/ttally
-    # https://sean.fish/d/clr
+    # https://sean.fish/d/clrs
     # https://sean.fish/d/wlr
     bindsym w exec --no-startup-id wlr; mode "default"
-    bindsym c exec --no-startup-id clr; mode "default"
+    bindsym c exec --no-startup-id clrs; mode "default"
     bindsym Escape mode "default"
     bindsym Return mode "default"
 }

@@ -724,6 +724,13 @@ command = 'ttally-say "$(python3 -m ttally recent food "$@")"'
 [wlr]
 command = 'ttally-say "$(python3 -m ttally recent water "$@")"'
 
+
+[clrs]
+command = '''
+# clr without the calorie count
+ttally-say "$(python3 -m ttally recent food "$@" | awk '{ $3=""; print $0 }')"
+'''
+
 [mz]
 command = '''
 # use cached https://github.com/seanbreckenridge/projects repository information
