@@ -1,16 +1,5 @@
 # mac-specific shell startup commands
 
-# check if supervisord (background processes are running)
-# else start them
-#
-# this does mean processes don't start running till
-# I open a terminal, but I start one on boot anyways
-
-if [[ ! -e /tmp/supervisord.pid ]]; then
-	echo "Supervisor pid file does not exist, starting supervisor..."
-	super --daemon
-fi
-
 # If on mac, put gnu utils on path before others:
 # ~/.local/bin/ here is duplicated, so that its before
 # /usr/local/bin/, for any scripts I want to override
@@ -32,3 +21,15 @@ ${HOME}/Library/Python/3.9/bin:\
 /usr/local/opt/gnu-getopt/bin:\
 ${PATH}"
 export PATH
+
+# check if supervisord (background processes are running)
+# else start them
+#
+# this does mean processes don't start running till
+# I open a terminal, but I start one on boot anyways
+
+if [[ ! -e /tmp/supervisord.pid ]]; then
+	echo "Supervisor pid file does not exist, starting supervisor..."
+	super --daemon
+fi
+
