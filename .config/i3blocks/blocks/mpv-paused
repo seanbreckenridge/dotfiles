@@ -3,7 +3,7 @@
 # waiting in the background
 
 case "$BLOCK_BUTTON" in
-  1)
+  3)
   notify-send "$(mpv-currently-playing --all)"
   ;;
 esac
