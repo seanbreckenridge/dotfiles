@@ -126,6 +126,34 @@ bindsym $mod+XF86AudioLowerVolume exec --no-startup-id mpv-seek '-5'
 
 # to log food I eat with https://github.com/seanbreckenridge/ttally
 bindsym $mod+c exec --no-startup-id cz
+# mode to log water. wn -p prints a numbered list of my common entries
+bindsym $mod+w mode "water"; exec --no-startup-id notify "$(wn -p | nl | chomp)"
+
+# this binds numbers to how often I log that item, by analyzing at my history
+# e.g. the most common items I log in my history for water are 1 and 1.5,
+# so
+# mod+w 1 logs 1 glass
+# mod+w 2 logs 1.5 glasses
+# mod+w 3 logs 2 glasses
+# mod+w 3 logs 0.5 glasses
+#
+# its not sequential, its based on how often I log the entries, so it dynamically
+# updates as I add more entries
+
+mode "water" {
+    bindsym 1 exec --no-startup-id sh -c "wn -p | awk 'NR == 1' | xargs -r wn"; mode "default"
+    bindsym 2 exec --no-startup-id sh -c "wn -p | awk 'NR == 2' | xargs -r wn"; mode "default"
+    bindsym 3 exec --no-startup-id sh -c "wn -p | awk 'NR == 3' | xargs -r wn"; mode "default"
+    bindsym 4 exec --no-startup-id sh -c "wn -p | awk 'NR == 4' | xargs -r wn"; mode "default"
+    bindsym 5 exec --no-startup-id sh -c "wn -p | awk 'NR == 5' | xargs -r wn"; mode "default"
+    bindsym 6 exec --no-startup-id sh -c "wn -p | awk 'NR == 6' | xargs -r wn"; mode "default"
+    bindsym 7 exec --no-startup-id sh -c "wn -p | awk 'NR == 7' | xargs -r wn"; mode "default"
+    bindsym 8 exec --no-startup-id sh -c "wn -p | awk 'NR == 8' | xargs -r wn"; mode "default"
+    bindsym 9 exec --no-startup-id sh -c "wn -p | awk 'NR == 9' | xargs -r wn"; mode "default"
+    bindsym Escape mode "default"
+    bindsym Escape mode "default"
+    bindsym Return mode "default"
+}
 
 # gaps config
 for_window [class=".*"] border pixel 0
@@ -267,7 +295,6 @@ mode "launcher" {
     bindsym b exec --no-startup-id ttt bookmark-open; mode "default"
     bindsym l exec --no-startup-id ttt largechar-clipboard; mode "default"
     bindsym r exec --no-startup-id ttt launch ranger; mode "default"
-    bindsym c exec --no-startup-id ttt launch calcurse; mode "default"
     bindsym n exec --no-startup-id ttt launch newsboat-force; mode "default"
     bindsym h exec --no-startup-id ttt launch htop; mode "default"
     bindsym v exec --no-startup-id ttt launch keyvol; mode "default"
@@ -281,9 +308,15 @@ mode "launcher" {
     # see mediaproxy scripts here https://github.com/seanbreckenridge/vps
     bindsym x exec --no-startup-id ttt mediaproxyvideo; mode "default"
     bindsym Shift+x exec --no-startup-id ttt mediaproxyaudio; mode "default"
+    # bindings for https://github.com/seanbreckenridge/ttally
+    # https://sean.fish/d/clr
+    # https://sean.fish/d/wlr
+    bindsym w exec --no-startup-id wlr; mode "default"
+    bindsym c exec --no-startup-id clr; mode "default"
     bindsym Escape mode "default"
     bindsym Return mode "default"
 }
+
 
 # keyboard shortcut to check if I have a remote internet connection
 bindsym $mod+Shift+w exec --no-startup-id wfi
