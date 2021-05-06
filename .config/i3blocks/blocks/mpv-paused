@@ -2,4 +2,10 @@
 # list any paused mpv instances, so I remember I have stuff paused
 # waiting in the background
 
+case "$BLOCK_BUTTON" in
+  1)
+  notify-send "$(mpv-currently-playing --all)"
+  ;;
+esac
+
 diff -y --suppress-common-lines <(mpv-currently-playing --socket) <(mpv-active-sockets) | wc -l
