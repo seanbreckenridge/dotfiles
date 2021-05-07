@@ -33,8 +33,6 @@ done
 
 # so that zsh thinks its setup
 # rest of my setup is done is ~/.profile
-# which is sourced in lightdm
-# see /etc/lightdm/Xsession
 [[ -f "${HOME}/.zshenv" ]] || touch "${HOME}/.zshenv"
 
 # install go, so I can install my package list parser

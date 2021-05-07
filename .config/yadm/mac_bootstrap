@@ -21,8 +21,7 @@ for file in "${original_files[@]}"; do
 done
 
 # use ~/.zshenv to configure mac specific behavior.
-# on linux, ~/.profile is sourced at the beginning of lightdm
-# using lightdm (/etc/lightdm/Xsession)
+# on linux, ~/.profile is sourced in my .xinitrc
 # Modifying environment variables at a system
 # level isn't as feasible on mac, so this just makes sure
 # that the terminal environment has the correct $PATH/environment
