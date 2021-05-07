@@ -54,6 +54,7 @@ bindsym $mod+Shift+Tab exec --no-startup-id ttt i3binds-prompt
 # sudo usermod -aG video sean
 # to allow my user to modify files in /sys/class/backlight
 # symlinked to the /sys/devices/pcie...
+# (may have to restart window manager for it to take affect)
 bindsym XF86MonBrightnessUp exec --no-startup-id brightness up
 bindsym XF86MonBrightnessDown exec --no-startup-id brightness down
 
