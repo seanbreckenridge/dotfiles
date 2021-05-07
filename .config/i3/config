@@ -39,7 +39,7 @@ bindsym $mod+g exec --no-startup-id ttt trackpad
 
 # for when I plug in an external keyboard - refresh i3 to rebind keys
 # could use udev events instead, but this is easier
-exec_always --no-startup-id xmodmap ~/.Xmodmap
+exec_always --no-startup-id xmodmap ~/.config/X11/Xmodmap
 
 # whenever I restart i3, fix my monitor setup
 exec_always --no-startup-id ~/.config/screenlayout/auto.sh

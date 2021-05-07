@@ -46,10 +46,8 @@ docker-compose
 elixir
 elm-bin
 erlang
-fslint
 ghc
 go
-gocode-daemon
 graphviz
 inotify-tools
 java-environment-common
@@ -57,7 +55,6 @@ java-runtime-common
 jdk-openjdk
 julia
 jupyter
-ktlint-git
 lua
 lua-format
 mariadb
@@ -87,12 +84,10 @@ scalafmt
 shfmt
 tidy
 valgrind
-wasm-pack
 yarn
 
 # utils
 
-abook
 alacritty
 ascii-rain-git
 asciiquarium
@@ -177,7 +172,6 @@ sc-im
 screenkey-git
 scrot
 shellcheck-bin
-so-git
 socat
 sshpass
 strace
@@ -191,6 +185,7 @@ tk
 tmux
 todotxt
 toilet
+tree
 unarchiver
 unrar
 unzip
@@ -198,7 +193,6 @@ util-linux
 vi
 vim
 w3m
-weechat
 wget
 whatmp3
 wkhtmltopdf
@@ -226,19 +220,16 @@ zsh-you-should-use
 # applications
 
 balena-etcher
-chatterino2-git
 chromium
 filezilla
 firefox-developer-edition
 gimp
-godot-bin
 google-chrome
 gparted
 keepassxc
 kid3
 mpv
 mupdf-gl
-obs-linuxbrowser-bin
 obs-studio
 okular
 pinta
@@ -248,13 +239,10 @@ simplescreenrecorder
 snes9x-gtk
 sonic-pi
 sqlitebrowser
-steam
-surf
 teams
 thunar
 thunderbird
 tor-browser
-tree
 vbam-wx
 zoom
 

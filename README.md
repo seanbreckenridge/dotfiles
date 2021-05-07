@@ -26,7 +26,6 @@ On Arch:
 - [`nvim`](https://neovim.io/) (with [`coc`](https://github.com/neoclide/coc.nvim)) and sometimes [`(doom) emacs`](https://github.com/hlissner/doom-emacs) (when I want IDE-like support) as editors - see [`editor`](.local/scripts/cross-platform/editor)
 - [`i3lock`](https://i3wm.org/i3lock/) for screen lock; [`daemon process`](.local/scripts/cross-platform/lock-screen) caches pixelated version of screen to speed up start time
 - [`dunst`](https://dunst-project.org/) for notifications
-- [`lightdm`](https://wiki.archlinux.org/index.php/LightDM) - display manager
 - [`todotxt`](http://todotxt.org/) for todos, with a [`rofi interface`](.local/scripts/bin/todo_prompt) as GUI, and [`tui`](https://github.com/seanbreckenridge/full_todotxt) for adding todos.
 - [`ranger`](https://github.com/ranger/ranger) - file manager
 - [`picom`](https://github.com/yshui/picom) for window compositing
@@ -54,7 +53,7 @@ Packages can be added to the `.txt` files manually, and then `yadm bootstrap` ca
 
     # on mac, run `xcode-select --install`
     yadm clone https://gitlab.com/seanbreckenridge/dotfiles
-    # restart the computer so that ~/.profile is sourced by /etc/lightdm/Xsession
+    # restart the computer so that ~/.profile/zsh is setup properly
     # so OS detection can be done to install the correct packages
     yadm bootstrap
 

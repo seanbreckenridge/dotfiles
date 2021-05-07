@@ -208,13 +208,6 @@ LYNX_PATH="$(where lynx | grep -m1 -v "$SHORTCUTS_DIR")" || exit $?
 exec "$LYNX_PATH" -accept_all_cookies -cfg="${XDG_CONFIG_HOME}/lynx/lynx.cfg" "$@"
 '''
 
-[abook]
-shebang="#!/bin/zsh"
-command = '''
-ABOOK_PATH="$(where abook | grep -m1 -v "$SHORTCUTS_DIR")" || exit $?
-exec "$ABOOK_PATH" -f "${DOCUMENTS}/addressbook" "$@"
-'''
-
 [printer-server]
 command = '''
 # open the printer interface in the browser
@@ -438,7 +431,7 @@ exec rifle "$(newest "${TMPDIR}")"
 '''
 
 [lastdown]
-command='exec newest "$@" "${DOWNLOADS:?No DOWNLOADS environment variable set}"'
+command='exec newest "$@" "${XDG_DOWNLOAD_DIR:?No XDG_DOWNLOAD_DIR environment variable set}"'
 
 [mvlast]
 command='''
@@ -581,7 +574,7 @@ command='''
 # if another instance of newsboat is open, kill it and open one here
 # specifically useful incase newsboat -x reload is going on in the background
 pgrep -x newsboat && pkill -x newsboat
-cd "${DOWNLOADS:-${HOME}/Downloads}" || exit 1
+cd "${XDG_DOWNLOAD_DIR:-${HOME}/Downloads}" || exit 1
 newsboat
 exec i3-msg exec update-rss # update rss afterwards, to update menu bar icon
 '''

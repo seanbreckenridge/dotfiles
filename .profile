@@ -1,15 +1,21 @@
 #!/bin/sh
 # global configuration/environment
-# this is sourced by the lightdm on Linux and
+# this is sourced in .xinitrc (when I run startx) on Linux and
 # from ~/.zshenv on mac (see ~/.config/yadm/mac_bootstrap)
 
 # Directories
+
+## XDG
+export XDG_DOWNLOAD_DIR="$HOME/Downloads"
+export XDG_DOCUMENTS_DIR="$HOME/Documents"
+export XDG_MUSIC_DIR="$HOME/Music"
+export XDG_PICTURES_DIR="$HOME/Pictures"
+export XDG_VIDEOS_DIR="$HOME/Movies"
+export XDG_CONFIG_HOME="${HOME}/.config"
+export XDG_CACHE_HOME="${HOME}/.cache"
+export XDG_DATA_HOME="${HOME}/.local/share"
+
 export REPOS="${HOME}/Repos"
-export PICTURES="${HOME}/Pictures"
-export DOWNLOADS="${HOME}/Downloads"
-export DOCUMENTS="${HOME}/Documents"
-export MOVIES="${HOME}/Movies"
-export MUSIC="${HOME}/Music"
 
 # set global OS environment variable
 # used in lots of my scripts
@@ -42,12 +48,12 @@ export ON_OS
 # shared instead of ~/data (which is owned by termux)
 # from my phone
 case "$ON_OS" in
-	android)
-		HPIDATA="${HOME}/storage/shared/data"
-		;;
-	*)
-		HPIDATA="${HOME}/data"
-		;;
+android)
+	HPIDATA="${HOME}/storage/shared/data"
+	;;
+*)
+	HPIDATA="${HOME}/data"
+	;;
 esac
 
 export HPIDATA
@@ -72,7 +78,7 @@ ${PATH}"
 case "$ON_OS" in
 linux)
 	PATH="${HOME}/.gem/ruby/2.7.0/bin:${PATH}"
-	export SCREENSHOTS="${PICTURES}/Screenshots"
+	export SCREENSHOTS="${XDG_PICTURES_DIR}/Screenshots"
 	;;
 mac)
 	# Screenshots on Mac are saved on the Desktop
@@ -101,11 +107,6 @@ export READER='okular'
 
 # Compilation flags
 export ARCHFLAGS="-arch x86_64"
-
-# XDG user dirs
-export XDG_CONFIG_HOME="${HOME}/.config"
-export XDG_CACHE_HOME="${HOME}/.cache"
-export XDG_DATA_HOME="${HOME}/.local/share"
 
 # define where ZDOTDIR (rest of zsh configuration) is
 export ZDOTDIR="${XDG_CONFIG_HOME}/zsh"
