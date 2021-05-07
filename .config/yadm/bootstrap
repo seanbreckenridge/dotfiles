@@ -200,11 +200,10 @@ install_shell_script bookmark 'https://raw.githubusercontent.com/seanbreckenridg
 set +e
 
 if havecmd reshortcuts; then
-	reshortcuts  # shortcuts create and format all the created files
+	reshortcuts # shortcuts create and format all the created files
 else
 	printf "Created %d shortcuts\n" "$(python3 -m shortcuts create --debug | wc -l)"
 fi
-
 
 # link tmux config -- seems this fails on termux (android)?
 [[ ! -e "${HOME}/.tmux.conf" ]] && ln "${HOME}/.config/tmux.conf" "${HOME}/.tmux.conf"

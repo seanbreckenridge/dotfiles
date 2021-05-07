@@ -3,9 +3,9 @@
 # waiting in the background
 
 case "$BLOCK_BUTTON" in
-  3)
-  notify-send "$(mpv-currently-playing --all)"
-  ;;
+3)
+	notify-send "$(mpv-currently-playing --all)"
+	;;
 esac
 
 diff -y --suppress-common-lines <(mpv-currently-playing --socket) <(mpv-active-sockets) | wc -l

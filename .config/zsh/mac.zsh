@@ -32,4 +32,3 @@ if [[ ! -e /tmp/supervisord.pid ]]; then
 	echo "Supervisor pid file does not exist, starting supervisor..."
 	super --daemon
 fi
-
