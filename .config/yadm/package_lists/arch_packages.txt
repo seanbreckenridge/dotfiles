@@ -32,7 +32,6 @@ xorg-xwininfo
 
 #rebar3-zsh
 ccls
-ghc
 cabal-install
 checkbashisms
 clojure
@@ -120,6 +119,7 @@ figlet
 fzf
 gifsicle
 git
+github-cli
 glow
 gnu-netcat
 gron
