@@ -1,2 +1,2 @@
 #!/bin/sh
-ttally-say "$(python3 -m ttally recent food "$@")"
+print-or-notify "$(python3 -m ttally recent food "$@")"

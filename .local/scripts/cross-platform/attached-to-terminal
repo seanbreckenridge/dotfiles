@@ -1,0 +1,25 @@
+#!/bin/sh
+# returns a zero exit code if this command is being run in the terminal
+# else returns a non-zero exit code
+#
+# not sure if this is perfect, but it works for my use cases so far
+
+TTY_OUT="$(tty)"
+[ -n "${TTY_VERBOSE}" ] && notify "$TTY_OUT"
+
+[ "${TTY_OUT}" = 'not a tty' ] && exit 1
+
+# check who to see if tty/1 is connected to the current user
+# seems to be the case when I launch 'startx' manually to
+# start my graphical environment, the tty1 is still connected
+# in the background
+#
+# awk cmd - if the first session matches my user, print the tty
+# if thats tty1, Aseems to signify this was launched with
+# startx? may be totally wrong, just what I've noticed so far
+[ '/dev/tty1' = "${TTY_OUT}" ] &&
+	[ "$(who | awk -v user="$(whoami)" 'NR == 1 && user == $1 { print $2 }')" = 'tty1' ] &&
+	exit 1
+
+# didn't match any checks for running in the background, should be attached to terminal
+exit 0

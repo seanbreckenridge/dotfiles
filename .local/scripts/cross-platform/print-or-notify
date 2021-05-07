@@ -1,0 +1,10 @@
+#!/bin/sh
+# if on a terminal, just print what the user passed
+# as arguments. otherwise, use the notify script
+# here to send a notification
+
+if attached-to-terminal; then
+	printf '%s\n' "$*"
+else
+	notify "$*"
+fi

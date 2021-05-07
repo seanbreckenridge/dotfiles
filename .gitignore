@@ -140,8 +140,8 @@ __pycache__
 
 # Top level config/local files to ignore
 /.config/todo/*
-/.todo
 !.config/todo/config
+/.todo
 /.config/bookmark.txt/*
 /.todo
 !.config/bookmark.txt/config

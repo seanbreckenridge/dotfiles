@@ -127,7 +127,7 @@ bindsym $mod+XF86AudioRaiseVolume exec --no-startup-id mpv-seek '5'
 bindsym $mod+XF86AudioLowerVolume exec --no-startup-id mpv-seek '-5'
 
 # to log food I eat with https://github.com/seanbreckenridge/ttally
-bindsym $mod+c exec --no-startup-id cz
+bindsym $mod+c exec --no-startup-id cz -p
 # mode to log water. wn -p prints a numbered list of my common entries
 bindsym $mod+w mode "water"; exec --no-startup-id notify "$(wn -p | nl | chomp)"
 

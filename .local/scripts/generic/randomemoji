@@ -8,8 +8,8 @@ remoji="$(echo "${remoji_line}" | sed "s/ .*//")"
 # notify user
 printf '%s' "${remoji}" | clipcopy
 msg="'${remoji}' copied to clipboard"
-if [ "$(tty)" = "not a tty" ]; then
-	notify "Emoji" "${msg}" &
-else
+if attached-to-terminal; then
 	printf '%s\n' "${msg}"
+else
+	notify "Emoji" "${msg}" &
 fi

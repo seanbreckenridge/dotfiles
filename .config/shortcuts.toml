@@ -712,16 +712,16 @@ exec open -a DB\ Browser\ for\ SQLite "$@"
 '''
 
 [clr]
-command = 'ttally-say "$(python3 -m ttally recent food "$@")"'
+command = 'print-or-notify "$(python3 -m ttally recent food "$@")"'
 
 [wlr]
-command = 'ttally-say "$(python3 -m ttally recent water "$@")"'
+command = 'print-or-notify "$(python3 -m ttally recent water "$@")"'
 
 
 [clrs]
 command = '''
 # clr without the calorie count
-ttally-say "$(python3 -m ttally recent food "$@" | awk '{ $3=""; print $0 }')"
+print-or-notify "$(python3 -m ttally recent food "$@" | awk '{ $3=""; print $0 }')"
 '''
 
 [mz]

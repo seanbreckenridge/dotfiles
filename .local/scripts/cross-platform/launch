@@ -1,7 +1,5 @@
 #!/bin/sh
 #
-# Checks if a command is being launched from a tty
-# or not (e.g. from dmenu/rofi - an application launcher)
 # If its being launched from a tty, run it as normal,
 # else open a new terminal window and run it there
 #
@@ -9,7 +7,13 @@
 # (wrapper with different --config-file
 # or just alacritty
 
-if [ "$(tty)" = "not a tty" ]; then
+# set to check if there are issues in checking whether or not we're connected to a terminal
+# export TTY_VERBOSE='1'
+
+if attached-to-terminal; then
+	# execute the command in the current shell
+	sh -c "$@"
+else
 	# open a new terminal, load zsh configuration (for zsh functions/environment), then launch the passed command
 	case "$ON_OS" in
 	linux)
@@ -23,7 +27,4 @@ if [ "$(tty)" = "not a tty" ]; then
 		sh -c "$@"
 		;;
 	esac
-else
-	# execute the command in the current shell
-	sh -c "$@"
 fi
