@@ -228,12 +228,6 @@ command='''
 curl -s ipinfo.io | gron | grep -v 'json.readme' | gron -u | jq -r 'to_entries[] | "\(.key): \(.value)"'
 '''
 
-[qtile-notify-bindings]
-command='''
-# send a notification with qtile launcher keybindings
-notify -t 10000 "qtile bindings:" "$(qtile-bindings --json | jq -r '[.[]|select(.modifier=="control, mod4")] | .[] | "\(.keysym) | \(.command)"' | sed -e "s/spawn('//" -e "s/')$//" -e "s/launch //" -e "s/-developer-edition//" -e "/qtile-notify-bindings/d")"
-'''
-
 [webcam-test]
 command='exec mpv /dev/video0'
 
