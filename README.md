@@ -1,6 +1,6 @@
 # dotfiles
 
-This was originally linux-only, but over the months and years I've added a compatability layer of sorts; [A global `ON_OS` variable](.profile) which has the current operating system (`linux`, `mac` or `android`) is set on X server/terminal launch. Lots of my scripts in [`cross-platform`](.local/scripts/cross-platform) and the bootstrap scripts in [`.config/yadm`](.config/yadm) dispatch against that to provide different functionality, e.g. send notifications, interact with clipboard, prompt user for input etc...
+This was originally linux-only, but over the months and years I've added a compatability layer of sorts; [A global `ON_OS` variable](.profile) which has the current operating system (`linux`, `mac` or `android`) is set on X server/terminal launch. Lots of my scripts in [`cross-platform`](.local/scripts/cross-platform) and the bootstrap scripts in [`.config/yadm`](.config/yadm) dispatch against that to provide different functionality, e.g. [send notifications](.local/scripts/cross-platform/notify), [pick an item from a list](.local/scripts/cross-platform/picker) (dmenu/rofi-like), [prompt user for input](.local/scripts/cross-platform/input-dialog) etc...
 
 In general:
 
@@ -9,14 +9,14 @@ In general:
 - [`alacritty`](https://github.com/alacritty/alacritty) as terminal (with [`tmux`](https://github.com/tmux/tmux))
 - [`firefox-developer-edition`](https://www.archlinux.org/packages/community/x86_64/firefox-developer-edition/) - browser, addons listed in [`firefox_addons.txt`](./.local/share/firefox_addons.txt)
 - [`nvim`](https://neovim.io/) (with [`coc`](https://github.com/neoclide/coc.nvim)) and sometimes [`(doom) emacs`](https://github.com/hlissner/doom-emacs) (when I want IDE-like support) as editors - see [`editor`](.local/scripts/cross-platform/editor)
-- [`todotxt`](http://todotxt.org/) for todos, with a [`rofi interface`](.local/scripts/generic/todo_prompt) as GUI, and [`tui`](https://github.com/seanbreckenridge/full_todotxt) for adding todos.
+- [`todotxt`](http://todotxt.org/) for todos, with a [`rofi-interface`](.local/scripts/generic/todo-prompt) as GUI, and [`tui`](https://github.com/seanbreckenridge/full_todotxt) for adding todos.
 - [`ranger`](https://github.com/ranger/ranger) - terminal file manager, with a few [custom commands](.config/ranger/commands.py) to integrate [`fzf`](https://github.com/junegunn/fzf), lots of [additional bindings](.config/ranger/rc.conf)/an [extensive preview script](.config/ranger/scope.sh)
 
 I use [`syncthing`](https://github.com/syncthing/syncthing) to sync my files/data across my computers.
 
 On Arch:
 
-- [`i3-gaps`](https://github.com/Airblader/i3) - window manager
+- [`i3-gaps`](https://github.com/Airblader/i3) - window manager; [config file](.config/i3/config) - [`i3-notify-launcher`](https://sean.fish/d/i3-notify-launcher?dark) reminds me of [my bindings for my launcher mode](https://i.imgur.com/m6q3L37.png)
 - [`rofi`](https://github.com/davatorium/rofi) - application launcher
 - [`i3lock`](https://i3wm.org/i3lock/) for screen lock; [`daemon process`](.local/scripts/cross-platform/lock-screen) caches pixelated version of screen to speed up start time
 - [`dunst`](https://dunst-project.org/) for notifications
