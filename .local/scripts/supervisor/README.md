@@ -16,6 +16,5 @@ The `super` script is the entrypoint to this folder, it uses the `supervisord.co
 $ super --ctl status
 active_window                    RUNNING   pid 32014, uptime 0:00:52
 bgproc                           RUNNING   pid 32015, uptime 0:00:52
-linux_tasks                      RUNNING   pid 32016, uptime 0:00:52
 mpv_history_daemon_watcher       RUNNING   pid 32018, uptime 0:00:52
 ```

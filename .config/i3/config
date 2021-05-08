@@ -343,3 +343,6 @@ bindsym $mod+Shift+Return exec --no-startup-id ttt firefox-developer-edition --n
 exec --no-startup-id bash "${REPOS}/todotxt_deadline_notify/copy_todotxt_to_server"
 # start supervisor background processes
 exec --no-startup-id "${HOME}/.local/scripts/supervisor/super --daemon"
+
+# run linux background tasks (e.g. to update my menu bar blocks)
+exec --no-startup-id linux_tasks
