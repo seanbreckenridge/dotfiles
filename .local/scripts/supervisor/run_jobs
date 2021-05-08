@@ -40,4 +40,5 @@ for prefix in "${DIR_PREFIXES[@]}"; do
 	done
 done
 
+export BGPROC_SLEEPTIME=300
 exec bgproc "$@" "${JOB_DIRS[@]}"
