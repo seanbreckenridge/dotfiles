@@ -1,0 +1,8 @@
+#!/bin/bash
+# https://github.com/karlicoss/promnesia
+# run the promnesia indexer
+
+evry 3 hours -promnesia_index && {
+	printlog "promnesia_index:running index..."
+	promnesia index --overwrite >>/tmp/promnesia_index.log 2>&1 || send-error "promnesia index failed..."
+}
