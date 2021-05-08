@@ -297,17 +297,20 @@ mode "launcher" {
     bindsym l exec --no-startup-id ttt largechar-clipboard; mode "default"
     bindsym r exec --no-startup-id ttt launch ranger; mode "default"
     bindsym n exec --no-startup-id ttt launch newsboat-force; mode "default"
+    bindsym m exec --no-startup-id ttt launch neomutt; mode "default"
+    bindsym Shift+m exec --no-startup-id ttt launch sync-neomutt; mode "default"
     bindsym h exec --no-startup-id ttt launch htop; mode "default"
     bindsym v exec --no-startup-id ttt launch keyvol; mode "default"
     bindsym u exec --no-startup-id ttt urlview; mode "default"
+    # music/playlist related
     bindsym p exec --no-startup-id launch plainplay; mode "default"
     bindsym Shift+p exec --no-startup-id launch plainplay single; mode "default"
+    bindsym Shift+s exec --no-startup-id launch splayall; mode "default"
     # mpv-ytdl bindings
-    bindsym m exec --no-startup-id stream-corner; mode "default"
+    bindsym s exec --no-startup-id stream-corner; mode "default"
     bindsym 4 exec --no-startup-id stream-corner-480; mode "default"
     bindsym 7 exec --no-startup-id stream-corner-720; mode "default"
     bindsym Shift+f exec --no-startup-id stream-from-firefox; mode "default"
-    bindsym Shift+m exec --no-startup-id stream-audio; mode "default"
     # see mediaproxy scripts here https://github.com/seanbreckenridge/vps
     bindsym x exec --no-startup-id ttt mediaproxyvideo; mode "default"
     bindsym Shift+x exec --no-startup-id ttt mediaproxyaudio; mode "default"

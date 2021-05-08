@@ -1,0 +1,4 @@
+#!/bin/sh
+# wait for internet, sync my mail, then launch neomutt
+wait-for-internet && mailsync
+exec neomutt

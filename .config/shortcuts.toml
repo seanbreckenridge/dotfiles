@@ -724,3 +724,10 @@ command = '''
 # to quickly open one of my Github repositories
 jq -r '.[] | .html_url' <"${REPOS}/projects/cache.json" | fzf | xargs -r openurl
 '''
+
+[sync-neomutt]
+command = '''
+# wait for internet, sync my mail, then launch neomutt
+wait-for-internet && mailsync
+exec neomutt
+'''

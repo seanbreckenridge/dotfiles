@@ -14,6 +14,14 @@ Brewfile.lock.json
 /.termux/shell
 /.hushlogin
 
+# mail
+/.config/msmtp
+/.config/mutt
+/.mbsyncrc
+/.notmuch-config
+/.password-store
+/.urlview
+
 # zsh
 /.zshenv
 .zcompcache
@@ -64,6 +72,7 @@ __pycache__
 /.scala_history*
 /.clojure_history
 /.aws
+/.abook
 /.cdk
 /.android/
 /.Motorola Mobility/
