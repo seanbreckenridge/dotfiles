@@ -2,7 +2,7 @@
 
 Since yadm acts directly on the `$HOME` directory instead of symlinking,
 in order to have a README for this repo without polluting `$HOME` with a `README.md`
-file, this uses hooks located at [.config/yadm/hooks](.config/yadm/hooks) to temporarily copy
+file, this uses hooks located at [.config/yadm/hooks](hooks) to temporarily copy
 the `README.md` to `$HOME` while committing, and then deleting it afterwards.
 
 Theres another hook that moves `~/README.md` to `~/.config/yadm/README.md` `post-merge`, so that
