@@ -284,7 +284,8 @@ bar {
 # launcher binding
 # also parse the i3 config file and extrac the bindsyms
 # to send me a notification
-bindsym $mod+d mode "launcher"; exec --no-startup-id ttt i3-notify-launcher
+bindsym $mod+d mode "launcher"
+bindsym $mod+Shift+d mode "launcher"; exec --no-startup-id ttt i3-notify-launcher
 
 mode "launcher" {
     bindsym a exec --no-startup-id ttt alacritty; mode "default"
