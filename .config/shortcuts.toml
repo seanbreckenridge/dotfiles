@@ -140,7 +140,7 @@ printf '\n'
 '''
 
 # confirm this is ignoring the correct files by running:
-# list-music | grep -Ev "(mp3|flac|ogg|m4a|opus)$"
+# list-music | grep -Ev "(mp3|flac|ogg|m4a|opus|wav)$":
 [list-music]
 command='''
 # list music files (try to ignore cue/log/album artwork files) in the current directory
