@@ -264,10 +264,6 @@ bindsym $mod+Shift+r restart
 # use xprop to find class names
 assign [class="Thunderbird"] 10
 
-# download my mail
-assign [instance="mailsync"] 10
-exec --no-startup-id alacritty --class mailsync -e syncloop-neomutt
-
 # if a mpv window with --x11-name=mpv_stream_media is launched,
 # resize it into the bottom right of the screen
 # (picture-in-picture style).
