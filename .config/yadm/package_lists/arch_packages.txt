@@ -251,7 +251,6 @@ sonic-pi
 sqlitebrowser
 teams
 thunar
-thunderbird
 tor-browser
 vbam-wx
 zoom
