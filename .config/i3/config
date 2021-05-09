@@ -262,8 +262,6 @@ workspace_auto_back_and_forth yes
 bindsym $mod+Shift+r restart
 
 # use xprop to find class names
-assign [class="Thunderbird"] 10
-
 # if a mpv window with --x11-name=mpv_stream_media is launched,
 # resize it into the bottom right of the screen
 # (picture-in-picture style).
@@ -290,7 +288,7 @@ bindsym $mod+Shift+d mode "launcher"; exec --no-startup-id ttt i3-notify-launche
 mode "launcher" {
     bindsym a exec --no-startup-id ttt alacritty; mode "default"
     bindsym f exec --no-startup-id ttt firefox-developer-edition; mode "default"
-    bindsym t exec --no-startup-id ttt thunderbird; mode "default"
+    bindsym t exec --no-startup-id ttt trakt-progress; mode "default"
     bindsym e exec --no-startup-id ttt emacs; mode "default"
     bindsym d exec --no-startup-id ttt discord; mode "default"
     bindsym k exec --no-startup-id ttt keepassxc; mode "default"

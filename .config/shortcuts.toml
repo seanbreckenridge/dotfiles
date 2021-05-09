@@ -732,3 +732,6 @@ wait-for-internet && mailsync
 pkill -RTMIN+8 i3blocks  # refresh number of unread mail in status bar
 exec neomutt
 '''
+
+[trakt-progress]
+command='openurl "https://trakt.tv/users/purplepinapples/progress"'

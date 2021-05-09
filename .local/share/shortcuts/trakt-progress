@@ -1,0 +1,2 @@
+#!/bin/sh
+openurl "https://trakt.tv/users/purplepinapples/progress"
