@@ -1,0 +1,28 @@
+#!/bin/bash
+# update my mail
+# requires me to run this manually
+# in a terminal because my imap sync
+# passwords are encrypted with gpg
+#
+# seem to be some issue with that running
+# in the background/automatically - since
+# it has to prompt me using a system dialog
+# for my gpg password
+
+# remove tag file on launch so this runs immedaitely
+rm -f "$(evry location -mailsync)"
+
+while true; do
+	if pgrep -x neomutt; then
+		echo "Ignoring, neomutt is open..." >&2
+	else
+		evry 10 minutes -mailsync && {
+			wait-for-internet
+			mailsync && {
+				rm -f "${HOME}/.cache/mailsync_warn" # remove warning file -- mailsync has been run recently
+				pkill -RTMIN+8 i3blocks
+			}
+		}
+	fi
+	sleep 1m
+done

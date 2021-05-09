@@ -729,5 +729,6 @@ jq -r '.[] | .html_url' <"${REPOS}/projects/cache.json" | fzf | xargs -r openurl
 command = '''
 # wait for internet, sync my mail, then launch neomutt
 wait-for-internet && mailsync
+pkill -RTMIN+8 i3blocks  # refresh number of unread mail in status bar
 exec neomutt
 '''

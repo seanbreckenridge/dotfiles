@@ -25,6 +25,7 @@ signal=3
 [mail]
 command="${HOME}/.config/i3blocks/blocks/mail"
 interval=60
+signal=8
 
 [todo]
 command="${HOME}/.config/i3blocks/blocks/todo"
