@@ -28,22 +28,26 @@ interval=600
 label=🍕
 signal=5
 
+[todo]
+command="${HOME}/.config/i3blocks/blocks/todo"
+interval=once
+label=📝
+signal=2
+
 [rss]
 command="${HOME}/.config/i3blocks/blocks/rss"
 interval=once
 label=📰
 signal=3
 
+[mail]
+command="${HOME}/.config/i3blocks/blocks/mail"
+interval=60
+
 #[calendar]
 #command="${HOME}/.config/i3blocks/blocks/calendar"
 #interval=300
 #label=📅
-
-[todo]
-command="${HOME}/.config/i3blocks/blocks/todo"
-interval=once
-label=📝
-signal=2
 
 [battery]
 command="${HOME}/.config/i3blocks/blocks/battery" BAT0
