@@ -734,4 +734,4 @@ exec neomutt
 '''
 
 [trakt-progress]
-command='openurl "https://trakt.tv/users/purplepinapples/progress"'
+command = 'openurl "https://trakt.tv/users/purplepinapples/progress"'

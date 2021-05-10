@@ -8,4 +8,6 @@ case "$BLOCK_BUTTON" in
 	;;
 esac
 
-diff -y --suppress-common-lines <(mpv-currently-playing --socket) <(mpv-active-sockets) | wc -l
+paused_count="$(diff -y --suppress-common-lines <(mpv-currently-playing --socket) <(mpv-active-sockets) | wc -l)"
+
+colorize_number "${paused_count}"
