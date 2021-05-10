@@ -113,6 +113,7 @@ alias 'convert-units=frink'
 alias 'unit-convert=frink'
 alias 'timer=countdown'
 alias 'ml=mailsync-loop'
+alias 'confirm=fzf -m'
 
 # stop import from crashing my system for some reason
 alias 'import=printf "Use /usr/bin/import instead\n"'
