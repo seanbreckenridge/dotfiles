@@ -41,7 +41,7 @@ signal=2
 [calories]
 command="${HOME}/.config/i3blocks/blocks/calories"
 interval=600
-label=🥣
+label=🍍
 signal=5
 
 [water]
