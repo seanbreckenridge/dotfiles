@@ -89,8 +89,8 @@ def data(p: PathIsh) -> Path:
     return prefix / p
 
 
-if "IPGEOCACHE_DIR" not in os.environ:
-    os.environ["IPGEOCACHE_DIR"] = data("ipgeocache")
+if "IPGEOCACHE_DIR" not in environ:
+    environ["IPGEOCACHE_DIR"] = str(data("ipgeocache"))
 
 
 # combines:
