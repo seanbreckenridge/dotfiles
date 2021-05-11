@@ -89,6 +89,10 @@ def data(p: PathIsh) -> Path:
     return prefix / p
 
 
+if "IPGEOCACHE_DIR" not in os.environ:
+    os.environ["IPGEOCACHE_DIR"] = data("ipgeocache")
+
+
 # combines:
 # periodic exports from: https://github.com/karlicoss/ghexport
 # github GDPR export
