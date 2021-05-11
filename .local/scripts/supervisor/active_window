@@ -7,8 +7,8 @@ set -x
 timestamp_filename() {
 	printf '%s/%s_%s.csv' "${HOME}/data/window_watcher" "$(date '+%s')" "$(uname -n)"
 }
- # wait for a bit before starting so X server is ready?
- # not sure if this fixes the issue of it not recognizing the window
+# wait for a bit before starting so X server is ready?
+# not sure if this fixes the issue of it not recognizing the window
 sleep 5
 
 exec window_watcher -d "$(timestamp_filename)" -p 10 -i 'Firefox Developer Edition \(Private Browsing\)'

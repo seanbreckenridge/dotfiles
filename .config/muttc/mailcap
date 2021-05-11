@@ -1,0 +1,12 @@
+# to track 'shell-like' history https://github.com/seanbreckenridge/ttt
+# most of these just forward to rifle, my file manager
+# for config see https://github.com/seanbreckenridge/dotfiles/blob/master/.config/ranger/rifle.conf
+text/plain; rifle %s ;
+text/html; rifle %s ; nametemplate=%s.html
+text/html; ttt lynx -assume_charset=%{charset} -display_charset=utf-8 -dump %s; nametemplate=%s.html; copiousoutput;
+image/*; rifle %s ;
+video/*; rifle %s ; copiousoutput
+audio/*; rifle %s ;
+application/pdf; rifle %s ;
+application/pgp-encrypted; ttt gpg -d '%s'; copiousoutput;
+application/pgp-keys; ttt gpg --import '%s'; copiousoutput;

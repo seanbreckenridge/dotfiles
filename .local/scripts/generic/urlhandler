@@ -1,0 +1,22 @@
+#!/bin/sh
+# receives text from STDIN, extracts unique URLs
+# prompts me to pick one and opens it
+
+# --urlextract is used in tmux, urlscan is the default
+# (used for things like opening URLs in neomutt)
+if [ "$1" = '--urlextract' ]; then
+	urls="$(extracturls)" || exit $?
+else
+	urls="$(urlscan -n)"
+fi
+
+if [ -z "${urls}" ]; then
+	notify "No URLs found"
+	exit 1
+fi
+
+chosen_url="$(echo "${urls}" | picker -p 'Pick a URL to open > ')"
+if [ -n "${chosen_url}" ]; then
+	echo "${chosen_url}" | clipcopy
+	openurl "${chosen_url}"
+fi

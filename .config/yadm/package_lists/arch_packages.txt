@@ -217,6 +217,7 @@ pass
 notmuch
 abook
 mutt-wizard
+urlscan
 
 # shell
 
