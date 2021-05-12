@@ -219,6 +219,12 @@ abook
 mutt-wizard
 urlscan
 
+# battery performance
+
+tlp
+tp_smapi
+acpi_call
+
 # shell
 
 bash

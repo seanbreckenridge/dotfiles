@@ -6,12 +6,12 @@
 # They are synced as reference and for completeness
 
 # exit if on mac
-[[ -z "$ONLINUX" ]] && exit 1
+[[ "${ON_OS}" != 'linux' ]] && exit 1
 
 # provide absolute paths to directories, ending with a forward slash
 declare dirs=("/etc/X11/xorg.conf.d/")
 # provide absolute paths to files
-declare files=("/etc/pacman.conf" "/etc/nsswitch.conf" "/etc/pacman.d/hooks/mirrorupgrade.hook" "/etc/systemd/system/lockscreen@.service" "/etc/pulse/client.conf")
+declare files=("/etc/pacman.conf" "/etc/pacman.d/hooks/mirrorupgrade.hook" "/etc/systemd/system/lockscreen@.service" "/etc/tlp.conf")
 
 SYSTEM_CONF_TARGET="${HOME}/.local/system-config"
 
