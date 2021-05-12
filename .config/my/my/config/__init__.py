@@ -227,6 +227,7 @@ class twitch:
     class gdpr:
         gdpr_dir: PathIsh = data("twitch/gdpr")
 
+
 # parses backups of my ipython history
 class ipython:
     export_path: Paths = data("ipython/*.sqlite")
@@ -261,7 +262,7 @@ class window_watcher:
 
 
 class smscalls:
-    export_path: PathIsh = "~/GoogleDrive/SMSBackups/"
+    export_path: PathIsh = (data("SMSBackups"), data("phone/SMSBackups"))  # type: ignore
 
 
 class photos:
@@ -282,7 +283,7 @@ class discord:
 
 # .gpx files from https://github.com/mendhak/gpslogger
 class gpslogger:
-    export_path: Paths = "~/GoogleDrive/GPSLogger/"
+    export_path: Paths = (data("gpslogger"), data("phone/gpslogger"))
 
 
 class pdfs:
