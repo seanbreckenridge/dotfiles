@@ -85,19 +85,14 @@ export JULIA_DEPOT_PATH="${XDG_DATA_HOME}/julia"
 # shortcuts: https://github.com/seanbreckenridge/shortcuts
 export SHORTCUTS_DIR="${XDG_DATA_HOME}/shortcuts"
 
-# playlist manager: https://github.com/seanbreckenridge/plaintext-playlist
-export PLAINTEXT_PLAYLIST_MUSIC_DIR="${XDG_MUSIC_DIR}"
-export PLAINTEXT_PLAYLIST_PLAYLISTS="${XDG_DATA_HOME:-$HOME/.local/share}/plaintext_playlist"
-
-export IPGEOCACHE_DIR="${HPIDATA}/ipgeocache"
-
+# here for mac/windows compatability -- otherwise the defaults
+# are my path on linux (when resolved by the appdirs python package)
 # https://github.com/seanbreckenridge/HPI
-export MY_CONFIG="${XDG_CONFIG_HOME}/my"
-
 # https://github.com/karlicoss/promnesia
+export MY_CONFIG="${XDG_CONFIG_HOME}/my"
 export PROMNESIA_CONFIG="${XDG_CONFIG_HOME}/promnesia/config.py"
 
-export TTALLY="${HOME}/data/phone/ttally"
+# https://github.com/seanbreckenridge/autotui
 export AUTOTUI_DATETIME_LIVE=1
 
 # ignore less history

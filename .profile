@@ -122,3 +122,8 @@ export SHELL_BOOT_TIME
 export TTALLY_DATA_DIR="${HPIDATA}/phone/ttally"
 # https://github.com/seanbreckenridge/ttt
 export TTT_HISTFILE="${HPIDATA}/ttt/${SHELL_BOOT_TIME}.csv"
+export URL_SUMMARY_DIR="${HPIDATA}/url_summary"
+# playlist manager: https://github.com/seanbreckenridge/plaintext-playlist
+export PLAINTEXT_PLAYLIST_MUSIC_DIR="${XDG_MUSIC_DIR}"
+export PLAINTEXT_PLAYLIST_PLAYLISTS="${HOME}/.local/share/plaintext_playlist"
+export IPGEOCACHE_DIR="${HPIDATA}/ipgeocache"
