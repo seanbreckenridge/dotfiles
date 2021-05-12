@@ -21,6 +21,7 @@ from promnesia_sean.sources import (
 )
 
 SOURCES = [
+    Source(discord, render_markdown=True),
     Source(reddit, render_markdown=True),
     Source(github, render_markdown=True),
     ipython,
@@ -28,7 +29,6 @@ SOURCES = [
     albums,
     commits,
     smscalls,
-    discord,
     facebook,
     newsboat,
     mpv,
