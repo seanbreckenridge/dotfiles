@@ -6,6 +6,9 @@ from typing import List, Optional, Union
 from ranger.api.commands import Command
 
 
+tmpdir = os.environ.get("TMPDIR", "/tmp")
+
+
 class quit_and_cd(Command):
     """
     Saves the current ranger directory to a temporary file,
@@ -16,7 +19,7 @@ class quit_and_cd(Command):
     """
 
     def execute(self):
-        with open("/tmp/cd_ranger", "w") as f:
+        with open(os.path.join(tmpdir, "cd_ranger"), "w") as f:
             f.write(os.path.abspath(self.fm.thisdir.path))
         # same as quitall_bang
         self.fm.exit()
