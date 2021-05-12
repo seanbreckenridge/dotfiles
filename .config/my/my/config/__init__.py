@@ -216,6 +216,17 @@ class spotify:
     gdpr_dir: PathIsh = data("spotify")
 
 
+class twitch:
+
+    # my chatlogs from the overrustle_logs dump
+    # https://github.com/seanbreckenridge/overrustle_parser
+    class overrustle:
+        export_path: Paths = data("twitch/overrustle_logs.json")
+
+    # parses the privacy request
+    class gdpr:
+        gdpr_dir: PathIsh = data("twitch/gdpr")
+
 # parses backups of my ipython history
 class ipython:
     export_path: Paths = data("ipython/*.sqlite")
