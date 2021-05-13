@@ -257,6 +257,7 @@ __pycache__
 # default user directories
 /Repos
 /Documents
+/Shared
 /Sync
 /Desktop
 /Applications
