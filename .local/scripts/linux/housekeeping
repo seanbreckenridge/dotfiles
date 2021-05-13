@@ -14,13 +14,6 @@ for binary in "${required_binaries[@]}"; do
 	havecmd "${binary}" || exit $?
 done
 
-copy_keepass_db() {
-	# copy keepass db to google drive, so I can use Keepass2Android on my phone
-	db_here="$DOCUMENTS/updated_database.kdbx"
-	db_there="$HOME/GoogleDrive/updated_database.kdbx"
-	[[ -f "${db_here}" ]] && [[ -f "${db_there}" ]] && cp -v "${db_here}" "${db_there}"
-}
-
 # https://github.com/seanbreckenridge/glue
 APPROVE_SCRIPT="${REPOS}/vps/approve_comments"
 if [[ -r "${APPROVE_SCRIPT}" ]]; then
@@ -43,13 +36,9 @@ evry 2 months -pythonanywhere && pythonanywhere_3_months -Hc "$(which chromedriv
 # run https://github.com/odeke-em/drive to pull/push from google drive
 evry 1 day -google_drive && {
 	cd "${HOME}/GoogleDrive/" || exit $?
-	echo "Running 'drive pull'..."
-	# first, update new files that have been synced to my drive
-	drive pull -ignore-conflict
-	# copy my password database so it syncs to android
-	copy_keepass_db
-	# sync keepass db
-	drive push
+	echo "Syncing Google Drive..."
+	drive pull -ignore-conflict -no-prompt
+	drive push -no-prompt
 }
 
 # update https://github.com/seanbreckenridge/mnu_gsheets
