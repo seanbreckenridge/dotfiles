@@ -16,6 +16,7 @@ datamash
 termux-services # sv-enable sshd
 entr
 fd
+tree
 ffmpeg
 fzf
 figlet
