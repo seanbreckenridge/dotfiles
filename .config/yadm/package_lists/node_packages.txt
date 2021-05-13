@@ -25,6 +25,6 @@ moby
 mapscii
 sqleton
 @jamen/lorem
-@gardenapple/readability-cli
+readability-cli
 mintable
 
