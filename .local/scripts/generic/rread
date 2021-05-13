@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 # parses a URL with readable (firefox's readability lib)
 # and dump the HTML contents to STDOUT
+# requires https://www.npmjs.com/package/readability-cli
+# and lynx https://lynx.invisible-island.net/
 
 rread_help() {
 	cat <<RREAD_HELP
