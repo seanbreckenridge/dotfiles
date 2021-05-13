@@ -15,12 +15,14 @@ from promnesia_sean.sources import (
     mpv,
     newsboat,
     old_forums,
+    twitch,
     trakt,
     ttt,
     zsh,
 )
 
 SOURCES = [
+    twitch,
     Source(discord, render_markdown=True),
     Source(reddit, render_markdown=True),
     Source(github, render_markdown=True),
