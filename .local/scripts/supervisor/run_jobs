@@ -1,24 +1,42 @@
 #!/usr/bin/env bash
-set -u
 # Run jobs. Check which OS we're on to figure out which
 # directories of jobs we should include
-# the jobs/shared folder should be run on both OSs
+# the jobs/all folder should be run on all machines
+# the jobs/computer should be run on any computer - i.e. not
+# on android
+#
+# the ON_OS variable is checked to determine which
+# on I'm on -- see https://sean.fish/d/.profile?dark
 
 cd "${SUPERVISOR_DIR:="$(realpath "$(dirname "${BASH_SOURCE[0]}")")"}" || exit $?
 
 declare -a JOB_DIRS
-declare -a DIR_SUFFIXES=('shared') # always do shared jobs
+declare -a DIR_SUFFIXES=('all')
 declare -a DIR_PREFIXES=()
 
-if [[ "$(uname -s)" == 'Linux' ]]; then
-	DIR_SUFFIXES+=('linux')
-else
-	DIR_SUFFIXES+=('mac')
+if [[ -z "${ON_OS}" ]]; then
+	echo "ON_OS variable is not set -- need that to determine how to run jobs" 1>&2
+	printf 'See %s\n' "https://sean.fish/d/.profile?dark" 1>&2
+	exit 1
 fi
+
+if [[ "${ON_OS}" != 'android' ]]; then
+	DIR_SUFFIXES+=("computer")
+fi
+
+case "${ON_OS}" in
+linux)
+	DIR_SUFFIXES+=('linux')
+	;;
+mac)
+	DIR_SUFFIXES+=('mac')
+	;;
+*) ;;
+esac
 
 # find DIR_PREFIXES
 # either ./jobs/ or my HPI/jobs directories, both which are structured
-# in the mac/linux/shared structue
+# in the mac/linux/computer structue
 
 DIR_PREFIXES+=("${SUPERVISOR_DIR:?SUPERVISOR_DIR is not set}/jobs")
 # append any HPI jobs, if the directory exists
