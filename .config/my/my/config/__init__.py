@@ -117,10 +117,11 @@ class body:
 
 # parses my zsh history and any backups
 class zsh:
-    export_path: Paths = data("zsh_history")
+    export_path: Paths = (data("zsh_history"), data("phone/zsh_history"))
     live_file: Optional[PathIsh] = if_exists(
         path.join(environ["ZDOTDIR"], ".zsh_history")
     )
+
 
 # parses bash history
 class bash:
@@ -234,7 +235,7 @@ class twitch:
 
 # parses backups of my ipython history
 class ipython:
-    export_path: Paths = data("ipython/*.sqlite")
+    export_path: Paths = (data("ipython/*.sqlite"), data("phone/ipython/*.sqlite"))
 
 
 # parses https://takeout.google.com
