@@ -59,6 +59,10 @@ runtime! macros/matchit.vim
 nnoremap j gj
 nnoremap k gk
 
+" Wrap long lines of text (use Qq to run)
+" (obviously, 5Qq to do multiple lines)
+nnoremap Q gq
+
 " Allow hidden buffers
 set hidden
 
