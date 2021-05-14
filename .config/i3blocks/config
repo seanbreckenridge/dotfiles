@@ -53,6 +53,7 @@ signal=6
 [battery]
 command="${HOME}/.config/i3blocks/blocks/battery" BAT0
 interval=60
+signal=9
 
 [clock]
 command="${HOME}/.config/i3blocks/blocks/date"
@@ -61,3 +62,4 @@ interval=5
 [ssid]
 command="${HOME}/.config/i3blocks/blocks/network"
 interval=5
+signal=10
