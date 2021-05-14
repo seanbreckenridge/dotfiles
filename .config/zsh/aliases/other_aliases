@@ -37,6 +37,7 @@ alias albums='openurl "https://sean.fish/s/albums"'
 alias favorite-albums='nextalbums favorites > /tmp/favorites.csv && sc-im /tmp/favorites.csv'
 alias 'discogs-update=nextalbums discogs-update'
 alias albums-left='hpi query my.albums.to_listen | jq length'
+alias albums-cant-find="hpi query my.albums._albums_cached | jq -r '.[] | select(.note==\"cant find\") | \"\(.year) - \(.album_name) - \(.cover_artists)\"'"
 
 # vps related
 # https://github.com/seanbreckenridge/vps
