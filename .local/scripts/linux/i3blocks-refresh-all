@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+# grep the i3blocks config file for signals
+# which can be refreshed, and refresh them
+
+set -x
+
+grep '^signal' "${HOME}/.config/i3blocks/config" | cut -d'=' -f2 | while read -r signal; do
+	pkill -RTMIN+"${signal}" i3blocks
+done
+
+# remove some cache files which impact block functionality
+rm -f "${HOME}/.cache/mailsync_warn"
+rm -f "$(evry location -guestbook_comments)"
+
+notify 'Refreshed all blocks'

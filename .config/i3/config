@@ -279,6 +279,10 @@ bar {
     tray_output none
 }
 
+# send all signals listed in the i3blocks config file to i3blocks
+# causing re-renders to all the blocks
+bindsym $mod+$alt+r exec --no-startup-id i3blocks-refresh-all
+
 # launcher binding
 # also parse the i3 config file and extrac the bindsyms
 # to send me a notification
