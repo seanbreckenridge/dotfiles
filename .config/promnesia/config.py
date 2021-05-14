@@ -19,9 +19,11 @@ from promnesia_sean.sources import (
     trakt,
     ttt,
     zsh,
+    bash,
 )
 
 SOURCES = [
+    bash,
     twitch,
     Source(discord, render_markdown=True),
     Source(reddit, render_markdown=True),
