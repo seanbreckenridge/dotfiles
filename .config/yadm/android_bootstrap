@@ -74,6 +74,7 @@ npm install -g npm
 havecmd cargo || exit $?           # needed to build some packages
 havecmd evry || cargo install evry # task scheduling
 havecmd shfmt || GO111MODULE=on go get mvdan.cc/sh/v3/cmd/shfmt
+havecmd arctee || python3 -m pip install git+https://github.com/karlicoss/arctee
 
 # small utilities I use in scripts
 havecmd newest || go get github.com/seanbreckenridge/newest
