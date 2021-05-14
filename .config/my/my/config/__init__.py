@@ -122,6 +122,10 @@ class zsh:
         path.join(environ["ZDOTDIR"], ".zsh_history")
     )
 
+# parses bash history
+class bash:
+    export_path: Paths = data("bash_history")
+
 
 # parses current/finished http://todotxt.org/ using topydo
 class todotxt:
