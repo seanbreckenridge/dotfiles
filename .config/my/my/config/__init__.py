@@ -188,7 +188,7 @@ class trakt:
 
 # uses my personal albums system: https://github.com/seanbreckenridge/albums
 class albums:
-    export_path: Paths = data("albums/*.json")
+    export_path: Paths = data("albums.json")
 
 
 # uses https://github.com/seanbreckenridge/steamscraper
