@@ -10,7 +10,7 @@ from os import environ, path
 from typing import Optional, Callable, List, Sequence
 from pathlib import Path
 
-from my.core import PathIsh, Paths
+from my.core.common import PathIsh, Paths
 
 
 def repo(name: str) -> str:
@@ -262,7 +262,7 @@ class window_watcher:
 
 
 class smscalls:
-    export_path: PathIsh = (data("SMSBackups"), data("phone/SMSBackups"))  # type: ignore
+    export_path: Paths = (data("SMSBackups"), data("phone/SMSBackups"))
 
 
 class photos:
