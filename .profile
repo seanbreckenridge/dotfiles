@@ -64,7 +64,6 @@ ${HOME}/.local/share/shortcuts:\
 ${HOME}/.local/bin:\
 ${HOME}/.local/share/npm-packages/bin:\
 ${HOME}/.local/scripts/mac:\
-${HOME}/.local/scripts/linux:\
 ${HOME}/.local/scripts/cross-platform:\
 ${HOME}/.local/scripts/generic:\
 ${HOME}/.local/share/go/bin:\
@@ -77,7 +76,7 @@ ${PATH}"
 # os-specific
 case "$ON_OS" in
 linux)
-	PATH="${HOME}/.gem/ruby/2.7.0/bin:${PATH}"
+	PATH="${HOME}/.gem/ruby/2.7.0/bin:${HOME}/.local/scripts/linux:${PATH}"
 	export SCREENSHOTS="${XDG_PICTURES_DIR}/Screenshots"
 	;;
 mac)
