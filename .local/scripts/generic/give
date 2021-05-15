@@ -23,6 +23,6 @@ readonly SCRIPT_BASE_CHOICE="$(echo -e "${SCRIPT_CHOICE}" | rev | cut -d"/" -f1 
 	SCRIPT_CHOICE="${SCRIPT_BASE_CHOICE}"
 
 # create the URL and copy it to my clipboard
-readonly GIVE_URL="${BASE_URL}${SCRIPT_CHOICE}"
+readonly GIVE_URL="${BASE_URL}${SCRIPT_CHOICE}?dark"
 echo -e "${GIVE_URL}"
 echo -en "${GIVE_URL#$'\n'}" | clipcopy
