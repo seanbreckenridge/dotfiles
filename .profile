@@ -124,5 +124,5 @@ export TTT_HISTFILE="${HPIDATA}/ttt/${SHELL_BOOT_TIME}.csv"
 export URL_CACHE_DIR="${HPIDATA}/url_cache"
 # playlist manager: https://github.com/seanbreckenridge/plaintext-playlist
 export PLAINTEXT_PLAYLIST_MUSIC_DIR="${XDG_MUSIC_DIR}"
-export PLAINTEXT_PLAYLIST_PLAYLISTS="${HOME}/.local/share/plaintext_playlist"
+export PLAINTEXT_PLAYLIST_PLAYLISTS="${HPIDATA}/playlists"
 export IPGEOCACHE_DIR="${HPIDATA}/ipgeocache"
