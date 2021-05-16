@@ -6,6 +6,7 @@ https://github.com/seanbreckenridge/HPI/
 """
 
 import sys
+import tempfile
 from os import environ, path
 from typing import Optional, Callable, List, Sequence
 from pathlib import Path
@@ -38,9 +39,11 @@ try:
 except ImportError:
     pass
 
+chosentmpdir: str = environ.get("TMPDIR", tempfile.gettempdir())
 
 class core:
     cache_dir: PathIsh = path.join(environ["HOME"], ".cache", "cachew")
+    tmp_dir: PathIsh = path.join(chosentmpdir, "HPI-tempdir")
     enabled_modules: Sequence[str] = []
     disabled_modules: Sequence[str] = [
         "my.reading.polar",
