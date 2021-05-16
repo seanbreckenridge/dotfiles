@@ -1,6 +1,6 @@
 #!/bin/bash
 
-evry 5 minutes -warn_mailsync && {
+evry 2 minutes -warn_mailsync && {
 	printlog "warn_mailsync: checking when last run..."
 	lastrun="$(stat -c"%Y" "${XDG_CONFIG_HOME:-$HOME/.config}/mutt/.mailsynclastrun")"
 	now="$(date +"%s")"
@@ -8,9 +8,9 @@ evry 5 minutes -warn_mailsync && {
 	# that files' existence is checked for in my status bar, which then displays an error
 	MAILSYNC_WARN_FILE="${HOME}/.cache/mailsync_warn"
 	if ((now - lastrun > 1800)); then
-		touch "$MAILSYNC_WARN_FILE"
+		touch "${MAILSYNC_WARN_FILE}"
 	else
-		rm -f "$MAILSYNC_WARN_FILE"
+		rm -f "${MAILSYNC_WARN_FILE}"
 	fi
 	pkill -RTMIN+8 i3blocks
 }
