@@ -58,3 +58,5 @@ android)
 	source "${ZDOTDIR}/android.zsh"
 	;;
 esac
+
+source "${ZDOTDIR}/alias_cache.zsh"

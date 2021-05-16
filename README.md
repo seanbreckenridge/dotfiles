@@ -10,7 +10,7 @@ In general:
 - [`firefox-developer-edition`](https://www.archlinux.org/packages/community/x86_64/firefox-developer-edition/) - browser, addons listed in [`firefox_addons.txt`](./.local/share/firefox_addons.txt)
 - [`nvim`](https://neovim.io/) (with [`coc`](https://github.com/neoclide/coc.nvim)) and sometimes [`(doom) emacs`](https://github.com/hlissner/doom-emacs) (when I want IDE-like support) as editors - see [`editor`](.local/scripts/cross-platform/editor)
 - [`todotxt`](http://todotxt.org/) for todos, with a [`rofi-interface`](.local/scripts/generic/todo-prompt) as GUI
-- [`ranger`](https://github.com/ranger/ranger) - terminal file manager, with a few [custom commands](.config/ranger/commands.py) to integrate [`fzf`](https://github.com/junegunn/fzf), lots of [additional bindings](.config/ranger/rc.conf)/an [extensive preview script](.config/ranger/scope.sh)
+- [`ranger`](https://github.com/ranger/ranger) - terminal file manager, with a few [custom commands](.config/ranger/commands.py) to integrate [`fzf`](https://github.com/junegunn/fzf), lots of [additional bindings](.config/ranger/rc.conf)/an [extensive preview script](.config/ranger/scope.sh), a [shell function](https://sean.fish/d/functions/ranger?dark) so `cd`ing in ranger changes my shell directory
 
 I use [`syncthing`](https://github.com/syncthing/syncthing) to sync my files/data across my computers.
 
