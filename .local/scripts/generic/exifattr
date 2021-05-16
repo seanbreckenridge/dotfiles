@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# Basic script to extract an exif attribute from a file
+set -e
+set -o pipefail
+
+FPATH="${1:?Must provide path to grab attribute from}"
+EXIFATTR="${2:?Must provide EXIF attribute}"
+exiftool -j "${FPATH}" | jq -r ".[] | .${EXIFATTR}"

@@ -270,6 +270,13 @@ REPLACE_EXTENSION="${2:?Must provide extension to replace extension with}"
 echo "${FILEPATH%%.*}.${REPLACE_EXTENSION#.}"
 '''
 
+[get-extension]
+command='''
+# remove the extension from a filename
+FILEPATH="${1:?You must provide a filepath to remove the extension for.}"
+echo "${FILEPATH##*.}"
+'''
+
 [to-png]
 command='''
 # convert an image to png

@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+# Renames a song to use its EXIF attributes
+# I use this when downloading stuff using
+# https://github.com/iheanyi/bandcamp-dl
+# since that slugifies names
+
+if [[ -z "$1" ]]; then
+	echo "Must provide paths to rename" >&2
+	exit 1
+fi
+
+# cd so moving files is easier
+# this is best run in the same directory as what you're modifying
+cd "$(realpath "$(dirname "$1")")"
+
+for path in "$@"; do
+	ppath="$(basename "${path}")" || continue
+	trackno="$(exifattr "${ppath}" 'Track')" || continue
+	trackname="$(exifattr "${ppath}" 'Title')" || continue
+	ext="$(get-extension "${ppath}")" || continue
+	newpath="$(printf '%d - %s.%s' "${trackno}" "${trackname}" "${ext}")"
+	mv -v "${ppath}" "${newpath}"
+done
