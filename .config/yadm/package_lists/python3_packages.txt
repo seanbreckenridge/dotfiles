@@ -1,6 +1,7 @@
 black
 cbeams
 cget
+cookiecutter
 csvkit
 cube-scramble-cli
 currencyconverter
