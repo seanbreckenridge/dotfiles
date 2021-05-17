@@ -580,6 +580,12 @@ newsboat
 exec i3-msg exec update-rss # update rss afterwards, to update menu bar icon
 '''
 
+[neomuttr]
+command='''
+# neomutt and refresh the i3 block
+neomutt && i3blocks-refresh mail
+'''
+
 [alacritty-tmux]
 command='exec alacritty -e tmux'
 
@@ -724,8 +730,9 @@ jq -r '.[] | .html_url' <"${REPOS}/projects/cache.json" | fzf | xargs -r openurl
 command = '''
 # wait for internet, sync my mail, then launch neomutt
 wait-for-internet && mailsync
-pkill -RTMIN+8 i3blocks  # refresh number of unread mail in status bar
-exec neomutt
+i3blocks-refresh mail
+neomutt
+i3blocks-refresh mail
 '''
 
 [trakt-progress]

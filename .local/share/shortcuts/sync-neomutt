@@ -1,5 +1,6 @@
 #!/bin/sh
 # wait for internet, sync my mail, then launch neomutt
 wait-for-internet && mailsync
-pkill -RTMIN+8 i3blocks # refresh number of unread mail in status bar
-exec neomutt
+i3blocks-refresh mail
+neomutt
+i3blocks-refresh mail

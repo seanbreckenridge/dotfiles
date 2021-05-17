@@ -117,7 +117,7 @@ bindsym $mod+$alt+c exec --no-startup-id clipreset
 
 # mpv commands
 # https://github.com/seanbreckenridge/mpv-sockets.git
-bindsym $mod+XF86AudioMute exec --no-startup-id mpv-play-pause && pkill -RTMIN+7 i3blocks
+bindsym $mod+XF86AudioMute exec --no-startup-id mpv-play-pause && i3blocks-refresh mpv-paused
 bindsym $mod+XF86AudioMicMute exec --no-startup-id mpv-next-song
 bindsym $mod+Shift+XF86AudioMute exec --no-startup-id mpv-quit-latest
 bindsym $mod+m exec --no-startup-id notify-send "$(mpv-currently-playing --all)"
@@ -300,7 +300,7 @@ mode "launcher" {
     bindsym l exec --no-startup-id ttt largechar-clipboard; mode "default"
     bindsym r exec --no-startup-id ttt launch ranger; mode "default"
     bindsym n exec --no-startup-id ttt launch newsboat-force; mode "default"
-    bindsym m exec --no-startup-id ttt launch neomutt; mode "default"
+    bindsym m exec --no-startup-id ttt launch neomuttr; mode "default"
     bindsym Shift+m exec --no-startup-id ttt launch sync-neomutt; mode "default"
     bindsym h exec --no-startup-id ttt launch htop; mode "default"
     bindsym v exec --no-startup-id ttt launch keyvol; mode "default"

@@ -12,5 +12,5 @@ evry 2 minutes -warn_mailsync && {
 	else
 		rm -f "${MAILSYNC_WARN_FILE}"
 	fi
-	pkill -RTMIN+8 i3blocks
+	i3blocks-refresh mail
 }

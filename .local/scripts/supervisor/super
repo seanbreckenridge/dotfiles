@@ -12,7 +12,7 @@ mkdir -p "${SUPERVISOR_LOGS}"
 if [[ "${ON_OS}" == 'linux' ]]; then
 	LINUX_TASK_SCRIPT="${SUPERVISOR_DIR}/linux_tasks"
 else
-	LINUX_TASK_SCRIPT="$(which false)"  # fail fast on other OSs
+	LINUX_TASK_SCRIPT="$(which false)" # fail fast on other OSs
 fi
 export LINUX_TASK_SCRIPT
 

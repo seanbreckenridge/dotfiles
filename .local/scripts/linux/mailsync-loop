@@ -29,7 +29,7 @@ while true; do
 			# https://datatracker.ietf.org/doc/html/rfc3501#section-2.3.2
 			mailsync 2>&1 | grep -v '^IMAP warning: unknown system flag \\Junk$' && {
 				rm -f "${HOME}/.cache/mailsync_warn" # remove warning file -- mailsync has been run recently
-				pkill -RTMIN+8 i3blocks
+				i3blocks-refresh mail
 			}
 		}
 	fi
