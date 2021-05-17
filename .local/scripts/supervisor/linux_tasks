@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+set -eux
+
+echo "${HOME}/.config/todo/todo.txt" | entr -n pkill -RTMIN+2 i3blocks &
+echo "${HOME}/.cache/rss-unread" | entr -n pkill -RTMIN+3 i3blocks &
+echo "${HOME}/.cache/guestbook-comments" | entr -n pkill -RTMIN+4 i3blocks &
+find "${HOME}/data/phone/ttally" -name 'food*.json' | entr -n pkill -RTMIN+5 i3blocks &
+find "${HOME}/data/phone/ttally" -name 'water*.json' | entr -n pkill -RTMIN+6 i3blocks &
+
+sleep 1d
