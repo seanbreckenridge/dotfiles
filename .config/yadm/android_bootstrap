@@ -32,7 +32,7 @@ else
 	echo "zsh is already set as your default shell"
 fi
 
-declare -rx TERMUX_PACKAGES="${PACKAGE_DIR}/termux_packages.txt"
+declare -rx TERMUX_PACKAGES="${PACKAGE_DIR}/android_packages.txt"
 
 # Install spkglist so I can parse package lists
 set -e
