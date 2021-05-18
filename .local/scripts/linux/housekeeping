@@ -14,6 +14,8 @@ for binary in "${required_binaries[@]}"; do
 	havecmd "${binary}" || exit $?
 done
 
+evry 1 day -linkmusic && linkmusic ~/.local/share/musicsync/
+
 # https://github.com/seanbreckenridge/glue
 APPROVE_SCRIPT="${REPOS}/vps/approve_comments"
 if [[ -r "${APPROVE_SCRIPT}" ]]; then
