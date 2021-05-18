@@ -5,6 +5,7 @@ cookiecutter
 csvkit
 cube-scramble-cli
 currencyconverter
+cython
 discogs_client
 flake8
 full-todotxt
