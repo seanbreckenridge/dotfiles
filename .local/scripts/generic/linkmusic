@@ -1,0 +1,166 @@
+#!/usr/bin/env python3
+
+"""
+A script which hardlinks all current files in my playlists to a separate
+folder structure, so that folder can be synced across my devices
+
+This allows me to sync songs I like (i.e. ones in playlist) across
+all my devices without using a ton of space
+
+This works sort of like rsync --delete-after
+
+The TARGET directory is provided as the first argument to this script
+
+\b
+- Creates an index of items in the TARGET directory
+- Hardlink any files from my PLAINTEXT_PLAYLIST_MUSIC_DIR into the TARGET directory
+- If there were any files in the index of the files in the TARGET directory that weren't
+  copied, remove those from TARGET; those are items I deleted from playlists/renamed
+- Remove any empty directories in the TARGET directory
+
+I sync this across my computers/phone by using syncthing
+"""
+
+import sys
+import os
+import subprocess
+from pathlib import Path
+from functools import lru_cache
+from typing import NamedTuple, Iterator
+
+import click
+from logzero import logger  # type: ignore[import]
+
+
+def _check_os() -> None:
+    ON_OS = os.environ.get("ON_OS")
+    if ON_OS is None:
+        click.echo(
+            "$ON_OS environment variable is none. Set to 'linux' to let this run",
+            err=True,
+        )
+        sys.exit(1)
+    else:
+        if ON_OS == "linux":
+            return
+        click.echo(
+            "$ON_OS environment variable is not linux. This should only run on my linux machine",
+            err=True,
+        )
+        sys.exit(1)
+
+
+@lru_cache(maxsize=1)
+def playlistdir() -> Path:
+    proc = subprocess.run(
+        ["plainplay", "playlistdir"], check=True, encoding="utf-8", capture_output=True
+    )
+    p = Path(proc.stdout.strip())
+    assert p.exists(), "'plainplay playlistdir' returned path that doesnt exist"
+    return p
+
+
+@lru_cache(maxsize=1)
+def musicdir() -> Path:
+    return Path(os.environ["PLAINTEXT_PLAYLIST_MUSIC_DIR"])
+
+
+class PlaylistPath(NamedTuple):
+    path: str
+
+    def in_dir(self, directory: Path) -> Path:
+        return directory / self.path
+
+    def in_musicdir(self) -> Path:
+        return self.in_dir(musicdir())
+
+
+def iterate_playlists(playlist_txt_dir: Path) -> Iterator[PlaylistPath]:
+    """
+    Get individual lines from each playlist.txt file
+    """
+    for playlistfile in playlist_txt_dir.rglob("*.txt"):
+        for line in playlistfile.read_text().splitlines():
+            yield PlaylistPath(line.strip())
+
+
+def iter_files(in_dir: Path) -> Iterator[str]:
+    """List files in a directory"""
+    yield from map(
+        lambda f: str(f.absolute()), filter(lambda f: f.is_file(), in_dir.rglob("*"))
+    )
+
+
+def remove_empty_dir(path: str) -> None:
+    try:
+        os.rmdir(path)
+    except OSError:
+        pass
+    else:
+        logger.debug(f"Removed empty directory {path}")
+
+
+def remove_empty_dirs(path: str) -> None:
+    # remove empty directories
+    for root, dirnames, filenames in os.walk(path, topdown=False):
+        for dirname in dirnames:
+            remove_empty_dir(os.path.realpath(os.path.join(root, dirname)))
+
+
+def hardlink_sync_dirs(files: list[PlaylistPath], to_dir: Path) -> None:
+    """
+    Essentially a manual rsync --delete-after with hardlinks
+    Copies all items from files into to_dir, deletes and items
+    that weren't mentioned
+    """
+    # iterate through files already in to_dir
+    to_dir.mkdir(parents=True, exist_ok=True)
+    already_in_set: set[str] = set()
+    # get relative paths to taret directory so we can compare
+    for absf in iter_files(to_dir):
+        already_in_set.add(absf[len(str(to_dir)) + 1 :])
+
+    # copy link if it doesnt already exist on target
+    for p in files:
+        target = p.in_dir(to_dir)
+        if not target.exists():
+            target.parent.mkdir(parents=True, exist_ok=True)
+            logger.info(f"Linking to '{target}'")
+            p.in_musicdir().link_to(target)
+        # remove from set, so at the end we can check
+        # the set. If theres anything left in it,
+        # that wasn't included in the 'files' list,
+        # i.e. its been deleted from a playlist
+        ps = p.path.strip(os.linesep)
+        if ps in already_in_set:
+            already_in_set.remove(ps)
+
+    for removed in already_in_set:
+        to_remove: Path = PlaylistPath(removed).in_dir(to_dir)
+        logger.info(f"Removing '{to_remove}'...")
+        to_remove.unlink()
+
+    remove_empty_dirs(str(to_dir))
+
+
+@click.command(help=__doc__)
+@click.option(
+    "--bypass-os-checks",
+    "bypass",
+    default=False,
+    is_flag=True,
+    help="Dont check the $ON_OS environment variable to make this is running on my linux machine",
+)
+@click.argument("SYNC_TO", type=click.Path())
+def main(bypass: bool, sync_to):
+    if not bypass:
+        _check_os()
+    playlistlines = list(iterate_playlists(playlistdir()))
+    logger.info(f"Syncing {len(playlistlines)} files...")
+    assert len(playlistlines) > 0
+    hardlink_sync_dirs(playlistlines, Path(sync_to))
+    logger.info("Done!")
+
+
+if __name__ == "__main__":
+    main(prog_name="linkmusic")
