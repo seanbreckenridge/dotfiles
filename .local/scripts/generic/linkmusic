@@ -111,7 +111,7 @@ def remove_empty_dirs(path: str) -> None:
             remove_empty_dir(os.path.realpath(os.path.join(root, dirname)))
 
 
-def hardlink_sync_dirs(files: list[PlaylistPath], to_dir: Path) -> None:
+def hardlink_sync_dirs(files: list[PlaylistPath], to_dir: Path, delete: bool) -> None:
     """
     Essentially a manual rsync --delete-after with hardlinks
     Copies all items from files into to_dir, deletes and items
@@ -139,15 +139,16 @@ def hardlink_sync_dirs(files: list[PlaylistPath], to_dir: Path) -> None:
         if ps in already_in_set:
             already_in_set.remove(ps)
 
-    for removed in already_in_set:
-        to_remove: Path = PlaylistPath(removed).in_dir(to_dir)
-        # dont remove hidden files
-        if to_remove.stem.startswith("."):
-            continue
-        logger.info(f"Removing '{to_remove}'...")
-        to_remove.unlink()
+    if delete:
+        for removed in already_in_set:
+            to_remove: Path = PlaylistPath(removed).in_dir(to_dir)
+            # dont remove hidden files
+            if to_remove.stem.startswith("."):
+                continue
+            logger.info(f"Removing '{to_remove}'...")
+            to_remove.unlink()
 
-    remove_empty_dirs(str(to_dir))
+        remove_empty_dirs(str(to_dir))
 
 
 @click.command(help=__doc__)
@@ -158,14 +159,21 @@ def hardlink_sync_dirs(files: list[PlaylistPath], to_dir: Path) -> None:
     is_flag=True,
     help="Dont check the $ON_OS environment variable to make this is running on my linux machine",
 )
+@click.option(
+    "--detete-after",
+    "delete",
+    default=False,
+    is_flag=True,
+    help="Delete files that I've removed from my playlists",
+)
 @click.argument("SYNC_TO", type=click.Path())
-def main(bypass: bool, sync_to):
+def main(bypass: bool, sync_to, delete: bool):
     if not bypass:
         _check_os()
     playlistlines = list(iterate_playlists(playlistdir()))
     logger.info(f"Syncing {len(playlistlines)} files...")
     assert len(playlistlines) > 0
-    hardlink_sync_dirs(playlistlines, Path(sync_to))
+    hardlink_sync_dirs(playlistlines, Path(sync_to), delete=delete)
     logger.info("Done!")
 
 
