@@ -1,11 +1,19 @@
 #!/bin/sh
 # if youre in a git directory, print the HTTPS git URL
 
+verify_giturlparse() {
+	/usr/bin/env python3 -c "import giturlparse"
+}
+
 if in-gitdir; then
 	if ! remote_url="$(git ls-remote --get-url)"; then
 		printf "%s" "$remote_url" 2>&1
 		exit 1
 	fi
+	verify_giturlparse || {
+		echo "Couldn't import giturlparse" >&2
+		exit 1
+	}
 	if https_url="$(printf '%s' "${remote_url}" | /usr/bin/env python3 -c "import sys, giturlparse; print(giturlparse.parse(sys.stdin.read().strip()).urls['https'])" 2>/dev/null)"; then
 		echo "${https_url}"
 		exit 0
