@@ -8,7 +8,6 @@
 ## XDG
 export XDG_DOWNLOAD_DIR="$HOME/Downloads"
 export XDG_DOCUMENTS_DIR="$HOME/Documents"
-export XDG_MUSIC_DIR="$HOME/Music"
 export XDG_PICTURES_DIR="$HOME/Pictures"
 export XDG_VIDEOS_DIR="$HOME/Movies"
 export XDG_CONFIG_HOME="${HOME}/.config"
@@ -73,6 +72,9 @@ ${HOME}/.emacs.d/bin:\
 ${HOME}/.cabal/bin:\
 ${PATH}"
 
+export XDG_MUSIC_DIR="${HOME}/Music"
+export PLAINTEXT_PLAYLIST_PLAYLISTS="${HPIDATA}/playlists"
+
 # os-specific
 case "$ON_OS" in
 linux)
@@ -83,8 +85,12 @@ mac)
 	# Screenshots on Mac are saved on the Desktop
 	export SCREENSHOTS="${HOME}/Desktop"
 	;;
-*)
+android)
 	figlet termux
+	export XDG_MUSIC_DIR="${HOME}/storage/music/"
+	export PLAINTEXT_PLAYLIST_PLAYLISTS="${REPOS}/playlists"
+	;;
+*)
 	:
 	;;
 esac
@@ -124,5 +130,4 @@ export TTT_HISTFILE="${HPIDATA}/ttt/${SHELL_BOOT_TIME}.csv"
 export URL_CACHE_DIR="${HPIDATA}/url_cache"
 # playlist manager: https://github.com/seanbreckenridge/plaintext-playlist
 export PLAINTEXT_PLAYLIST_MUSIC_DIR="${XDG_MUSIC_DIR}"
-export PLAINTEXT_PLAYLIST_PLAYLISTS="${HPIDATA}/playlists"
 export IPGEOCACHE_DIR="${HPIDATA}/ipgeocache"
