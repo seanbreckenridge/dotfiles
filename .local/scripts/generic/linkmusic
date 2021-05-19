@@ -160,7 +160,7 @@ def hardlink_sync_dirs(files: list[PlaylistPath], to_dir: Path, delete: bool) ->
     help="Dont check the $ON_OS environment variable to make this is running on my linux machine",
 )
 @click.option(
-    "--detete-after",
+    "--delete",
     "delete",
     default=False,
     is_flag=True,
