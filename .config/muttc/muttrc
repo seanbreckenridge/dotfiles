@@ -1,6 +1,7 @@
 # I use https://github.com/LukeSmithxyz/mutt-wizard/
 # to configure neomutt, but in order to change some of the bindings/defaults
-# I source this at the bottom of ~/.config/mutt/muttrc
+# I source this at the bottom of ~/.config/mutt/muttrc like
+# source ~/.config/muttc/muttrc
 
 set mailcap_path = ~/.config/muttc/mailcap
 
