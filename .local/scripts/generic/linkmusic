@@ -106,6 +106,8 @@ def remove_empty_dirs(path: str) -> None:
     # remove empty directories
     for root, dirnames, filenames in os.walk(path, topdown=False):
         for dirname in dirnames:
+            if dirname.startswith("."):
+                continue
             remove_empty_dir(os.path.realpath(os.path.join(root, dirname)))
 
 
@@ -139,6 +141,9 @@ def hardlink_sync_dirs(files: list[PlaylistPath], to_dir: Path) -> None:
 
     for removed in already_in_set:
         to_remove: Path = PlaylistPath(removed).in_dir(to_dir)
+        # dont remove hidden files
+        if to_remove.stem.startswith("."):
+            continue
         logger.info(f"Removing '{to_remove}'...")
         to_remove.unlink()
 
