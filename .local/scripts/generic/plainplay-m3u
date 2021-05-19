@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+# https://github.com/seanbreckenridge/plaintext-playlist
+# Create a m3u file for each file in my playlist
+
+set -u
+set -o pipefail
+
+TARGET_DIR="${1:?Provide a directory to put the m3u files into}"
+
+while read -r -d $'\0' playlist; do
+	target="${TARGET_DIR}/$(replace-extension "$(basename "${playlist}")" m3u)"
+	printf 'Creating %s\n' "${target}" >&2
+	plainplay --abs m3u "${playlist}" >"${target}"
+done < <(find "${PLAINTEXT_PLAYLIST_PLAYLISTS}" -type f -name "*.txt" -print0)
