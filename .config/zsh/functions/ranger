@@ -5,7 +5,11 @@
 
 ranger() {
 	local LOGFILE="${TMPDIR:-/tmp}/cd_ranger"
-	"${HOME}/.local/scripts/generic/ranger" "$@" || exit $?
+	if [[ -n "$PIPENV_ACTIVE" ]]; then
+		/usr/bin/ranger "$@" || return $?
+	else
+		"${HOME}/.local/scripts/generic/ranger" "$@" || return $?
+	fi
 	if [[ -f "${LOGFILE}" ]]; then
 		cd "$(cat "${LOGFILE}")"
 		rm -f "${LOGFILE}"
