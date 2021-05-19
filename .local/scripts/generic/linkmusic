@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 
 """
+https://github.com/seanbreckenridge/plaintext-playlist
+
 A script which hardlinks all current files in my playlists to a separate
 folder structure, so that folder can be synced across my devices
 
