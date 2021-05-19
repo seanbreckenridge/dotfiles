@@ -21,6 +21,7 @@ logzero
 mypy
 ndg-httpsclient
 nose
+organize-tool
 pillow
 pip
 pip-licenses
