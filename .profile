@@ -130,3 +130,4 @@ export URL_CACHE_DIR="${HPIDATA}/url_cache"
 # playlist manager: https://github.com/seanbreckenridge/plaintext-playlist
 export PLAINTEXT_PLAYLIST_MUSIC_DIR="${XDG_MUSIC_DIR}"
 export IPGEOCACHE_DIR="${HPIDATA}/ipgeocache"
+export TODO_DIR="${HPIDATA}/todo" # todo.txt

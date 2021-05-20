@@ -56,6 +56,7 @@ class core:
         "my.rtm",
         "my.media",
         "my.google",
+        "my.orgmode",
         "my.jawbone",
         "my.twitter",
         "my.vk",
@@ -120,12 +121,12 @@ class reddit:
 # prompt me for actions using https://github.com/seanbreckenridge/autotui
 # interfaces created by https://github.com/seanbreckenridge/ttally
 class body:
-    datadir: PathIsh = environ.get("TTALLY_DATA_DIR", data("phone/ttally/"))
+    datadir: PathIsh = environ["TTALLY_DATA_DIR"]
 
 
 # parses my zsh history and any backups
 class zsh:
-    export_path: Paths = (data("zsh_history"), data("phone/zsh_history"))
+    export_path: Paths = data("zsh_history")
     live_file: Optional[PathIsh] = if_exists(
         path.join(environ["ZDOTDIR"], ".zsh_history")
     )
@@ -243,7 +244,7 @@ class twitch:
 
 # parses backups of my ipython history
 class ipython:
-    export_path: Paths = (data("ipython/*.sqlite"), data("phone/ipython/*.sqlite"))
+    export_path: Paths = data("ipython/*.sqlite")
 
 
 # parses https://takeout.google.com
@@ -257,15 +258,7 @@ class google:
 
 # https://github.com/seanbreckenridge/ttt
 class ttt:
-    # both ttt histories, from my computer and from termux on my phone
-    export_path: Paths = (
-        data("ttt/*.csv"),
-        data("phone/ttt/*.csv"),
-    )
-
-
-class battery:
-    export_path: Paths = data("battery.csv")
+    export_path: Paths = data("ttt/*.csv")
 
 
 # https://github.com/seanbreckenridge/aw-watcher-window
@@ -275,7 +268,7 @@ class window_watcher:
 
 
 class smscalls:
-    export_path: Paths = (data("SMSBackups"), data("phone/SMSBackups"))
+    export_path: Paths = data("SMSBackups")
 
 
 class photos:
@@ -296,7 +289,7 @@ class discord:
 
 # .gpx files from https://github.com/mendhak/gpslogger
 class gpslogger:
-    export_path: Paths = (data("gpslogger"), data("phone/gpslogger"))
+    export_path: Paths = data("gpslogger")
 
 
 class pdfs:

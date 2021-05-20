@@ -9,4 +9,4 @@ case "$BLOCK_BUTTON" in
 	;;
 esac
 
-sed '/^\s*$/d' "${HOME}/.config/todo/todo.txt" | wc -l
+chomp <"${HOME}/data/todo/todo.txt" | wc -l
