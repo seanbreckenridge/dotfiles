@@ -14,8 +14,6 @@ for binary in "${required_binaries[@]}"; do
 	havecmd "${binary}" || exit $?
 done
 
-evry 1 day -transfer_phone_backups && organize run
-
 evry 1 day -linkmusic && linkmusic ~/.local/share/musicsync/
 
 # https://github.com/seanbreckenridge/glue
