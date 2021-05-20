@@ -2,7 +2,7 @@
 
 This was originally linux-only, but over the months and years I've added a compatability layer of sorts; [A global `ON_OS` variable](.profile) which has the current operating system (`linux`, `mac` or `android`) is set on X server/terminal launch. Lots of my scripts in [`cross-platform`](.local/scripts/cross-platform) and the bootstrap scripts in [`.config/yadm`](.config/yadm) dispatch against that to provide different functionality, e.g. [send notifications](.local/scripts/cross-platform/notify), [pick an item from a list](.local/scripts/cross-platform/picker) (dmenu/rofi-like), [prompt user for input](.local/scripts/cross-platform/input-dialog) etc...
 
-I don't expect anyone to use this directly as its so personal, but hopefully you can choose and pick scripts and configuration that interests you for your own dotfiles
+I don't expect anyone to use this directly as its so personal, but hopefully you can pick and choose scripts and configuration that interests you for your own dotfiles
 
 In general:
 
