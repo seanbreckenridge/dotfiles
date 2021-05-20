@@ -88,7 +88,6 @@ mac)
 android)
 	figlet termux
 	export XDG_MUSIC_DIR="${HOME}/storage/music/"
-	export PLAINTEXT_PLAYLIST_PLAYLISTS="${REPOS}/playlists"
 	;;
 *)
 	:
