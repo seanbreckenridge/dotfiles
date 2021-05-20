@@ -36,7 +36,7 @@ Not a ton of application-specific setup yet, handles setting up `zsh`, installs 
 
 ---
 
-* [`.local/scripts/supervisor`](.local/scripts/supervisor) has scripts/a config file for [`supervisor`](https://github.com/Supervisor/supervisor), so I dont have to write plists or systemd scripts, and background processes work on both mac and linux. That uses [`bgproc`](https://github.com/seanbreckenridge/bgproc) as an anacron replacement.
+* [.local/scripts/supervisor](.local/scripts/supervisor) has scripts/a config file for [`supervisor`](https://github.com/Supervisor/supervisor), so I dont have to write plists or systemd scripts, and background processes work on both mac and linux. That uses [`bgproc`](https://github.com/seanbreckenridge/bgproc) as an anacron replacement.
 * [`ttt`](https://github.com/seanbreckenridge/ttt/) is sprinkled throughout lots of my scripts, it acts as an extension to my shell history, saving commands from `i3` `bindsym`s, or `ranger` commands.
 * I typically default to [dracula](https://draculatheme.com/)-like color schemes to keep things consistent. Currently in use for `alacritty` (terminal), `rofi`, `bat`, `firefox` and `emacs`.
 * [.config/yadm](.config/yadm) includes lists of global packages for pacman/yay, python, ruby, npm, dart, rust, and go; the zsh [update](.config/zsh/functions/update) function updates all the corresponding packages. Packages can be added to the `.txt` files manually, and then `yadm bootstrap` can be run repeatedly to make sure everything is installed
