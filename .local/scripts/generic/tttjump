@@ -6,4 +6,13 @@
 set -e
 set -o pipefail
 
-hpi query my.ttt.history -s | jq -r '.directory' | sort | uniq -c | sort -n | chomp | cut -d' ' -f2- | exists | fzf --tac
+hpi query my.ttt.history -s |
+	jq -r '.directory' |
+	grep -vx "^${HOME}$" |
+	sort |
+	uniq -c |
+	sort -n |
+	chomp |
+	cut -d' ' -f2- |
+	exists |
+	fzf --tac
