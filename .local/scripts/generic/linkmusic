@@ -82,7 +82,7 @@ def iterate_playlists(playlist_txt_dir: Path) -> Iterator[PlaylistPath]:
     Get individual lines from each playlist.txt file
     """
     for playlistfile in playlist_txt_dir.rglob("*.txt"):
-        for line in playlistfile.read_text().splitlines():
+        for line in filter(str.strip, playlistfile.read_text().splitlines()):
             yield PlaylistPath(line.strip())
 
 
