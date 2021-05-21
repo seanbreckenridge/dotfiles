@@ -87,7 +87,7 @@ def iterate_playlists(playlist_txt_dir: Path) -> Iterator[PlaylistPath]:
 
 
 def iter_files(in_dir: Path) -> Iterator[str]:
-    """List files in a directory"""
+    """Recursively List files in a directory"""
     yield from map(
         lambda f: str(f.absolute()), filter(lambda f: f.is_file(), in_dir.rglob("*"))
     )
@@ -117,9 +117,9 @@ def hardlink_sync_dirs(files: list[PlaylistPath], to_dir: Path, delete: bool) ->
     Copies all items from files into to_dir, deletes and items
     that weren't mentioned
     """
-    # iterate through files already in to_dir
     to_dir.mkdir(parents=True, exist_ok=True)
     already_in_set: set[str] = set()
+    # recursively iterate through files already in to_dir
     # get relative paths to taret directory so we can compare
     for absf in iter_files(to_dir):
         already_in_set.add(absf[len(str(to_dir)) + 1 :])
