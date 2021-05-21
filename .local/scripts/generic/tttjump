@@ -12,7 +12,6 @@ hpi query my.ttt.history -s |
 	sort |
 	uniq -c |
 	sort -n |
-	chomp |
-	cut -d' ' -f2- |
+	awk '{print $2}' |
 	exists |
 	fzf --tac
