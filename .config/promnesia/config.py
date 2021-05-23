@@ -23,6 +23,30 @@ from promnesia_sean.sources import (
 )
 
 SOURCES = [
+    Source(
+        auto.index,
+        "~/Repos/",
+        name="Repos",
+        ignored=[
+            "*/dss-cruzhacks/data/*.csv",
+            "*/albums/*",
+            "*fixture/*",
+            "*/vcr_cassettes/*",
+            "*/search_index.json",
+            "*/yarn.lock",
+            "*/package.json",
+            "*[plus1]*",
+            "*/package-lock.json",
+            "*/promnesia-fork/tests/*",
+        ],
+    ),
+    Source(
+        auto.index,
+        "~/Documents/Education",
+        name="School",
+        ignored=["*Canvas*"],
+    ),
+    Source(auto.index, "~/GoogleDrive/", name="GoogleDrive"),
     bash,
     twitch,
     Source(discord, render_markdown=True),
@@ -42,25 +66,6 @@ SOURCES = [
     ttt,
     zsh,
     browsing,
-    Source(
-        auto.index,
-        "~/Repos/",
-        name="Repos",
-        ignored=[
-            "*/dss-cruzhacks/data/*.csv",
-            "*/albums/*",
-            "*fixture/*",
-            "*/vcr_cassettes/*",
-            "*/search_index.json",
-            "*/yarn.lock",
-            "*/package.json",
-            "*[plus1]*",
-            "*/package-lock.json",
-            "*/promnesia-fork/tests/*",
-        ],
-    ),
-    Source(auto.index, "~/Documents/", name="Documents", ignored=["*/Mac_Documents/*"]),
-    Source(auto.index, "~/GoogleDrive/", name="GoogleDrive"),
 ]
 
 CACHE_DIR = os.path.join(os.environ["HOME"], ".cache", "promnesia")
