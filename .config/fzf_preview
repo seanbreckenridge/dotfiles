@@ -21,6 +21,12 @@ case "$path" in
 		exit 0
 	}
 	;;
+*.docx)
+	try pandoc -t markdown "$path" && {
+		dump
+		exit 0
+	}
+	;;
 *.1)
 	try man -P cat "$path" && {
 		dump

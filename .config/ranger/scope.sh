@@ -103,6 +103,12 @@ application/x-sharedlib | application/x-executable | application/x-pie-executabl
 	*.pdf)
 		try pdftoppm -jpeg -singlefile "$path" "${cached//.jpg/}" && exit 6 || exit 1
 		;;
+	*.docx)
+		try pandoc -t markdown "$path" && {
+			dump
+			exit 5
+		}
+		;;
 	*.1)
 		try safepipe man -P cat "$path" && {
 			dump
@@ -116,7 +122,7 @@ application/x-sharedlib | application/x-executable | application/x-pie-executabl
 	}
 	try safepipe pistol --out-format=ansi "$path" && {
 		dump
-		exit 5
+		exit 0
 	}
 	;;
 esac
