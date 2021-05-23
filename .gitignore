@@ -157,6 +157,7 @@ __pycache__
 /.todo
 !.config/bookmark.txt/config
 /.config/rncbc.org
+/.config/czkawka
 /.config/Code - OSS/
 /.config/sonic-pi.net/
 /.config/GIMP
