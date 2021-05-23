@@ -59,14 +59,8 @@ SOURCES = [
             "*/promnesia-fork/tests/*",
         ],
     ),
-    Source(auto.index, "~/Documents/", name="Documents"),
-    Source(
-        auto.index,
-        "~/GoogleDrive/",
-        name="GoogleDrive",
-        # ignore any data files
-        ignored=["*.gpx", "*/SMSBackups/*.xml"],
-    ),
+    Source(auto.index, "~/Documents/", name="Documents", ignored=["*/Mac_Documents/*"]),
+    Source(auto.index, "~/GoogleDrive/", name="GoogleDrive"),
 ]
 
 CACHE_DIR = os.path.join(os.environ["HOME"], ".cache", "promnesia")
