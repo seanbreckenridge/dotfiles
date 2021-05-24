@@ -195,6 +195,11 @@ class trakt:
     export_path: Paths = data("trakt")
 
 
+# uses https://github.com/seanbreckenridge/grouvee_export
+class grouvee:
+    export_path: Paths = data("grouvee")
+
+
 # uses my personal albums system: https://github.com/seanbreckenridge/albums
 class albums:
     export_path: Paths = data("albums.json")
