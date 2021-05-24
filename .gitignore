@@ -184,6 +184,7 @@ __pycache__
 /.config/vlc
 /.config/snes9x
 /.config/coc/extensions/node_modules
+/.config/malexport
 /.config/coc/list-lists-history.json
 /.config/coc/commands
 /.config/coc/lists
