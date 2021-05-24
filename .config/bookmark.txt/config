@@ -2,7 +2,7 @@
 
 # Note: This is a bash script, its sourced when todo.sh runs
 # Your bookmark.txt directory (this should be an absolute path)
-export TODO_DIR="$HOME/.config/bookmark.txt"
+export TODO_DIR="${HPIDATA}/bookmarks"
 
 # Your bookmark/removed/report.txt locations
 export TODO_FILE="$TODO_DIR/bookmarks.txt"
