@@ -24,6 +24,9 @@ with open(alacritty_config_file, "r") as yf:
 
 # increase font size
 config["font"]["size"] = float(int(config["font"]["size"] * 1.5))
+# seem to have issues rendering colors with Source Code Pro
+# delete font config to use default on mac (Menlo)
+del config["font"]["normal"]
 
 local_alacritty_file = os.path.join(os.environ["HOME"], ".local/share/alacritty.yml")
 with open(local_alacritty_file, "w") as yf:
