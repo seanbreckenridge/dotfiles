@@ -14,7 +14,10 @@ for binary in "${required_binaries[@]}"; do
 	havecmd "${binary}" || exit $?
 done
 
-evry 1 day -linkmusic && linkmusic ~/.local/share/musicsync/
+# sync music in playlists to my phone
+# https://github.com/seanbreckenridge/plaintext-playlist
+# https://github.com/seanbreckenridge/dotfiles/blob/master/.local/scripts/generic/linkmusic
+evry 1 day -linkmusic && linkmusic ~/.local/share/musicsync/ --delete
 
 # https://github.com/seanbreckenridge/glue
 APPROVE_SCRIPT="${REPOS}/vps/approve_comments"
@@ -35,6 +38,7 @@ fi
 # make sure my pythonanywhere website doesnt expire:
 # https://github.com/seanbreckenridge/pythonanywhere-3-months
 evry 2 months -pythonanywhere && pythonanywhere_3_months -Hc "$(which chromedriver)"
+
 # run https://github.com/odeke-em/drive to pull/push from google drive
 evry 1 day -google_drive && {
 	cd "${HOME}/GoogleDrive/" || exit $?
