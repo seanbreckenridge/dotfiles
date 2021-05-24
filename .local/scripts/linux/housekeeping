@@ -43,6 +43,7 @@ evry 1 day -google_drive && {
 	drive push -no-prompt
 }
 
+# https://github.com/seanbreckenridge/grouvee_export
 evry 2 months -grouvee_export && python3 -m grouvee_export export
 
 # update https://github.com/seanbreckenridge/mnu_gsheets
