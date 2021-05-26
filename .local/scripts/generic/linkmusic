@@ -82,8 +82,12 @@ def iterate_playlists(playlist_txt_dir: Path) -> Iterator[PlaylistPath]:
     Get individual lines from each playlist.txt file
     """
     for playlistfile in playlist_txt_dir.rglob("*.txt"):
-        for line in filter(str.strip, playlistfile.read_text().splitlines()):
-            yield PlaylistPath(line.strip())
+        try:
+            for line in filter(str.strip, playlistfile.read_text(encoding="utf-8").splitlines()):
+                yield PlaylistPath(line.strip())
+        except UnicodeDecodeError as e:
+            click.echo(f"While decoding {playlistfile}", err=True)
+            raise e
 
 
 def iter_files(in_dir: Path) -> Iterator[str]:
