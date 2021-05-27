@@ -5,61 +5,61 @@ markup=pango
 # command in my i3 config https://sean.fish/d/i3/config
 
 [mpv-paused]
-command="${HOME}/.config/i3blocks/blocks/mpv-paused"
+command=b-mpv-paused
 interval=180
 label=⏸
 signal=7
 
 [comments]
-command="${HOME}/.config/i3blocks/blocks/comments"
+command=b-comments
 interval=once
 label=📖
 signal=4
 
 [rss]
-command="${HOME}/.config/i3blocks/blocks/rss"
+command=b-rss
 interval=once
 label=📰
 signal=3
 
 [mail]
-command="${HOME}/.config/i3blocks/blocks/mail"
+command=b-mail
 interval=60
 signal=8
 
 [todo]
-command="${HOME}/.config/i3blocks/blocks/todo"
+command=b-todo
 interval=once
 label=📝
 signal=2
 
 #[calendar]
-#command="${HOME}/.config/i3blocks/blocks/calendar"
+#command=b-calendar
 #interval=300
 #label=📅
 
 [calories]
-command="${HOME}/.config/i3blocks/blocks/calories"
+command=b-calories
 interval=600
 label=🍍
 signal=5
 
 [water]
-command="${HOME}/.config/i3blocks/blocks/water"
+command=b-water
 interval=600
 label=💧
 signal=6
 
 [battery]
-command="${HOME}/.config/i3blocks/blocks/battery" BAT0
+command=b-battery BAT0
 interval=60
 signal=9
 
 [clock]
-command="${HOME}/.config/i3blocks/blocks/date"
+command=b-date
 interval=5
 
 [ssid]
-command="${HOME}/.config/i3blocks/blocks/network"
+command=b-network
 interval=5
 signal=10

@@ -78,7 +78,7 @@ export PLAINTEXT_PLAYLIST_PLAYLISTS="${HPIDATA}/playlists"
 # os-specific
 case "$ON_OS" in
 linux)
-	PATH="${HOME}/.gem/ruby/2.7.0/bin:${HOME}/.local/scripts/linux:${PATH}"
+	PATH="${HOME}/.gem/ruby/2.7.0/bin:${HOME}/.local/scripts/linux:${HOME}/.config/i3blocks/blocks:${PATH}"
 	export SCREENSHOTS="${XDG_PICTURES_DIR}/Screenshots"
 	;;
 mac)
