@@ -42,13 +42,10 @@ try:
 except ImportError:
     pass
 
-# check TMPDIR for android support
-chosentmpdir: str = environ.get("TMPDIR", tempfile.gettempdir())
-
 
 class core:
     cache_dir: PathIsh = path.join(environ["HOME"], ".cache", "cachew")
-    tmp_dir: PathIsh = path.join(chosentmpdir, "HPI-tempdir")
+    tmp_dir: PathIsh = path.join(tempfile.gettempdir(), "HPI-tempdir")
     enabled_modules: Sequence[str] = []
     disabled_modules: Sequence[str] = [
         "my.reading.polar",
