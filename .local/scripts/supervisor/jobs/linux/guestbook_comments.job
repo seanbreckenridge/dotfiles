@@ -4,7 +4,7 @@
 
 get_count() {
 	local SSH_OUTPUT COUNT_LINE
-	SSH_OUTPUT="$(ssh vultr "cd ./code/glue; ./production_server --print-count" 2>/dev/null)" || return $?
+	SSH_OUTPUT="$(ssh vultr 'cd ./code/glue; PATH="$HOME/.asdf/shims/:$PATH" ./production_server --print-count' 2>/dev/null)" || return $?
 	COUNT_LINE="$(grep -m1 -P '^COUNT:\d+' <<<"$SSH_OUTPUT")" || {
 		echo "Couldn't find 'COUNT' in ssh output" 1>&2
 		return 1
