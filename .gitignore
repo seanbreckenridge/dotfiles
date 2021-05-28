@@ -165,6 +165,7 @@ __pycache__
 /.config/BraveSoftware/
 /.config/newsboat/cache.db
 /.config/newsboat/urls
+/.config/Postman/
 /.config/transmission/
 /.config/so/config.yml
 /.config/gh/hosts.yml
@@ -259,6 +260,7 @@ __pycache__
 # default user directories
 /Repos
 /Documents
+/Postman
 /Shared
 /shared
 /phonedata
