@@ -197,6 +197,7 @@ install_shell_script plainplay 'https://raw.githubusercontent.com/seanbreckenrid
 install_shell_script resolve_cmd_plainplay 'https://raw.githubusercontent.com/seanbreckenridge/plaintext-playlist/master/resolve_cmd_plainplay'
 install_shell_script pmark 'https://raw.githubusercontent.com/seanbreckenridge/pmark/master/pmark'
 install_shell_script bookmark 'https://raw.githubusercontent.com/seanbreckenridge/bookmark.txt/master/bookmark'
+install_shell_script frinkconv 'https://raw.githubusercontent.com/seanbreckenridge/frinkconv/master/frinkconv'
 set +e
 
 if havecmd reshortcuts; then

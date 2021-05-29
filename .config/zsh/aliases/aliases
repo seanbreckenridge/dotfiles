@@ -111,9 +111,6 @@ alias rgf='rg --files | rg'
 alias spell='misspell-context'
 # start a server to test HTTP requests against
 alias httpbin='docker run -p 80:80 kennethreitz/httpbin'
-# https://sean.fish/d/frink
-alias 'convert-units=frink'
-alias 'unit-convert=frink'
 alias 'timer=countdown'
 alias 'ml=mailsync-loop'
 alias 'confirm=fzf -m'
