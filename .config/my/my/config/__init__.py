@@ -173,7 +173,10 @@ class browsing:
     # use my active firefox database
     from browserexport.browsers.firefox import Firefox
 
-    live_databases: Paths = Firefox.locate_database()
+    try:
+        live_databases: Paths = Firefox.locate_database()
+    except:
+        live_databases: Paths = ''
 
 
 # uses lolexport: https://github.com/seanbreckenridge/lolexport
@@ -313,7 +316,10 @@ LatLon = Tuple[float, float]
 
 
 class location:
-    from .locations_secret import home
+    try:
+        from .locations_secret import home
+    except:
+        pass
 
 
 class time:
