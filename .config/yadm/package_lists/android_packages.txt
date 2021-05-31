@@ -30,7 +30,10 @@ gh
 termux-api  # clipboard interaction? not sure if it works
 
 # for building python lxml package??
-libxml2
 libxslt
 libiconv
 
+# for building: numpy, cython
+clang
+fftw
+libmsgpack

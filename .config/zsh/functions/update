@@ -5,7 +5,7 @@ function update() {
 	local START_TIME
 	START_TIME="$(date +%s)"
 	wait-for-internet --text "(waiting for internet)"
-	echo "Updating system (pacman/yay/brew) packages..."
+	echo "Updating system (pacman/yay/brew/termux) packages..."
 	case "$ON_OS" in
 	mac)
 		brew update && brew upgrade
@@ -18,7 +18,7 @@ function update() {
 		housekeeping
 		;;
 	android)
-		apt update && apt upgrade
+		pkg update
 		;;
 	esac
 	yadm bootstrap
