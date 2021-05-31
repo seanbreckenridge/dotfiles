@@ -14,16 +14,6 @@ python3() {
 	fi
 }
 
-# If I run 'ps -ef' with nothing else, without piping it into anything else, use procs instead
-ps() {
-	if [[ -t 1 ]] && [[ "$1" == "-ef" ]] && (($# == 1)); then
-		procs --pager=disable
-		echo "Instead of 'ps -ef | grep something', just use 'procs something'" 1>&2
-	else
-		command ps "$@"
-	fi
-}
-
 # https://github.com/odeke-em/drive
 # if I run drive outside my google drive
 # move to ~/GoogleDrive/
