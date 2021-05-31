@@ -9,6 +9,7 @@ golang
 curl
 neovim
 yarn
+glow
 nodejs
 htop-legacy
 perl
