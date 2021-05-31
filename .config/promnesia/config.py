@@ -20,6 +20,7 @@ from promnesia_sean.sources import (
     ttt,
     zsh,
     bash,
+    grouvee,
 )
 
 SOURCES = [
@@ -46,6 +47,7 @@ SOURCES = [
         name="School",
         ignored=["*Canvas*"],
     ),
+    grouvee,
     Source(auto.index, "~/GoogleDrive/", name="GoogleDrive"),
     bash,
     twitch,
