@@ -48,7 +48,7 @@ class core:
     tmp_dir: PathIsh = path.join(tempfile.gettempdir(), "HPI-tempdir")
     enabled_modules: Sequence[str] = []
     disabled_modules: Sequence[str] = [
-        "my.reading.polar",
+        "my.polar",
         "my.stackexchange",
         "my.rtm",
         "my.media",
