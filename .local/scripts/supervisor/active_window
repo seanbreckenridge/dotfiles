@@ -2,7 +2,7 @@
 # uses my window watcher fork https://github.com/seanbreckenridge/aw-watcher-window
 
 # dont run on windows
-[[ -n "${ON_OS}" == 'windows' ]] && exit 1
+[[ "${ON_OS}" == 'windows' ]] && exit 1
 
 set -e
 set -x
