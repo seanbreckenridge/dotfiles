@@ -42,9 +42,7 @@ linux)
 mac)
 	printf '%s' "$STDIN" | choose -c 9400D3 -b 1C1C1C -u || exit $?
 	;;
-android)
-	# system dialog of some kind?
-	echo 'Use system dialog on android?' 1>&2
+android|windows)
 	printf '%s' "$STDIN" | fzf || exit $?
 	;;
 esac

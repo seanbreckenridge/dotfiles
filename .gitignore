@@ -8,6 +8,12 @@
 .CFUserTextEncoding
 Brewfile.lock.json
 
+# Windows
+/.config/wslu
+/.landscape
+/.motd_shown
+/.sudo_as_admin_successful
+
 # Termux
 /storage
 /.termux_authinfo

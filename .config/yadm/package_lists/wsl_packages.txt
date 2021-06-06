@@ -1,0 +1,14 @@
+python3-pip
+tree
+npm
+libicu-dev
+silversearcher-ag
+ripgrep
+jq
+datamash
+entr
+ffmpeg
+fzf
+figlet
+lynx
+wget

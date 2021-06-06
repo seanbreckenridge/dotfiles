@@ -57,6 +57,9 @@ linux)
 android)
 	bash "${YADM_DIR}/android_bootstrap" || exit $?
 	;;
+windows)
+	bash "${YADM_DIR}/windows_bootstrap" || exit $?
+	;;
 esac
 
 declare -rx PYTHON_PACKAGE_LIST="${PACKAGE_DIR}/python3_packages.txt"

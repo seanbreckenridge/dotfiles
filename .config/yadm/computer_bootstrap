@@ -2,13 +2,29 @@
 # In other words, things that should get run
 # on computers (linux/mac), but not on android
 
+set -u
+shared_user_dirs=("Repos" "Documents" "Downloads" "Shared" "Sync" "Music" "data")
 # create default user directories
-default_user_dirs=("Repos" "Documents" "Downloads" "Pictures/Screenshots" ".local/bin" ".cache" ".credentials" "Sync" "Shared")
-for d_name in "${default_user_dirs[@]}"; do
-	if [[ ! -d "${HOME}/${d_name}" ]]; then
-		mkdir -p "${HOME}/${d_name}"
-	fi
-done
+if [[ "${ON_OS}" != "windows" ]]; then
+	defualt_user_dirs="${shared_user_dirs[@]}"
+	default_user_dirs+=("Pictures/Screenshots" ".local/bin" ".cache" ".credentials" "Sync" "Shared")
+	for d_name in "${default_user_dirs[@]}"; do
+		if [[ ! -d "${HOME}/${d_name}" ]]; then
+			mkdir -p "${HOME}/${d_name}"
+		fi
+	done
+else
+	# on windows (WSL), link these to /mnt/c/
+	# check the WHOME variable set in my .profile
+	for d_name in "${shared_user_dirs[@]}"; do
+		target="${WHOME}/${d_name}"
+		if [[ ! -d "${HOME}/${d_name}" ]]; then
+			[[ ! -d "${target}" ]] && mkdir -p "${target}"
+			ln -s "${target}" "${HOME}/${d_name}"
+		fi
+	done
+fi
+set +u
 
 echo "Installing scientific python packages..."
 python3 -m pip install --user -q -r "${SCIPYTHON_PACKAGE_LIST}"
@@ -50,16 +66,6 @@ while read -r rgem; do
 	fi
 done < <(spkglist "${GLOBAL_GEM_LIST}")
 
-havecmd pub || exit $?
-echo "Installing global dart packages..."
-DART_INSTALLED_PACKAGES="$(pub global list | cut -d" " -f1)"
-while read -r dartpkg; do
-	if ! grep -q "^${dartpkg}$" <<<"${DART_INSTALLED_PACKAGES}"; then
-		printf "Installing %s\n" "${dartpkg}"
-		pub global activate "${dartpkg}"
-	fi
-done < <(spkglist "${DART_PACKAGE_LIST}")
-
 havecmd cargo || exit $?
 echo "Installing global cargo packages..."
 CARGO_INSTALLED_PACKAGES="$(cargo install --list | sed -E -e '/^\s+/d; s|\s.*||')"
@@ -77,7 +83,11 @@ havecmd go || exit $?
 function install_go_package() {
 	local -a packageinfo
 	read -ra packageinfo <<<"${1}"
-	havecmd "${packageinfo[0]}" || go get -u -v "${packageinfo[1]}"
+	havecmd "${packageinfo[0]}" || {
+		# fails to build fsnotify on wsl?
+		[[ "${packageinfo[0]}" == 'twitchlive' && "${ON_OS}" == 'windows' ]] && return
+		go get -u -v "${packageinfo[1]}"
+	}
 }
 
 echo "Installing global go packages..."
@@ -93,14 +103,26 @@ if [[ ! -d "${HOME}/.emacs.d/" ]]; then
 	"${HOME}/.emacs.d/bin/doom" sync
 fi
 
-havecmd mix || exit $?
-echo "Installing global pheonix mix archives..."
-MIX_ARCHIVE_LIST="$(mix archive | tac | sed -e '1d; s/^* //; s/-.*//')"
-while read -r mix_pkg; do
-	if ! grep -q "^${mix_pkg}$" <<<"${MIX_ARCHIVE_LIST}"; then
-		mix archive.install --force hex "${mix_pkg}"
-	fi
-done < <(spkglist "${MIX_PACKAGE_LIST}")
+havecmd pub && {
+	echo "Installing global dart packages..."
+	DART_INSTALLED_PACKAGES="$(pub global list | cut -d" " -f1)"
+	while read -r dartpkg; do
+		if ! grep -q "^${dartpkg}$" <<<"${DART_INSTALLED_PACKAGES}"; then
+			printf "Installing %s\n" "${dartpkg}"
+			pub global activate "${dartpkg}"
+		fi
+	done < <(spkglist "${DART_PACKAGE_LIST}")
+}
+
+havecmd mix && {
+	echo "Installing global pheonix mix archives..."
+	MIX_ARCHIVE_LIST="$(mix archive | tac | sed -e '1d; s/^* //; s/-.*//')"
+	while read -r mix_pkg; do
+		if ! grep -q "^${mix_pkg}$" <<<"${MIX_ARCHIVE_LIST}"; then
+			mix archive.install --force hex "${mix_pkg}"
+		fi
+	done < <(spkglist "${MIX_PACKAGE_LIST}")
+}
 
 # install largechar
 if ! havecmd largechar; then

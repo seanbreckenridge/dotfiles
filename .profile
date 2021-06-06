@@ -25,7 +25,22 @@ Linux*)
 	if command -v termux-setup-storage >/dev/null 2>&1; then
 		ON_OS='android'
 	else
-		ON_OS='linux'
+		# check if we're in WSL
+		case "$(uname -r)" in
+		*Microsoft*)
+			ON_OS='windows'
+			# get the windows home directory, something like
+			# /mnt/c/Users/Name
+			WHOME_FILE="${HOME}/.cache/whome"
+			if [[ ! -f "${WHOME_FILE}" ]]; then
+				wslpath "$(wslvar USERPROFILE)" >"${WHOME_FILE}"
+			fi
+			export WHOME="$(cat "${WHOME_FILE}")"
+			;;
+		*)
+			ON_OS='linux'
+			;;
+		esac
 	fi
 	;;
 Darwin*)
@@ -89,6 +104,8 @@ android)
 	figlet termux
 	export XDG_MUSIC_DIR="${HOME}/storage/music/"
 	;;
+windows)
+	;;
 *)
 	:
 	;;
@@ -106,7 +123,11 @@ export VISUAL='nvim'   # e.g. for edit-command-line in ~/.zshrc, to prompt in cu
 export EDITOR='editor' # ~/.local/scripts/cross-platform/editor, wrapper for picking emacs/nvim for editor
 export PAGER='less'
 export TERMINAL='alacritty'
-export BROWSER='firefox-developer-edition'
+if [[ "${ON_OS}" == 'windows' ]]; then
+	export BROWSER='/mnt/c/Program Files/Mozilla Firefox/firefox.exe'
+else
+	export BROWSER='firefox-developer-edition'
+fi
 export READER='okular'
 
 # Compilation flags

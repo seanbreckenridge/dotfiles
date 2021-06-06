@@ -14,6 +14,9 @@ linux)
 mac)
 	printf '%s' "${STDIN}" | pbcopy
 	;;
+windows)
+  printf '%s' "${STDIN}" | clip.exe
+  ;;
 android)
 	echo "No Clipboard Access?" >&2
 	printf '%s' "${STDIN}"

@@ -20,8 +20,7 @@ mac)
 	[[ -z "$RESP" ]] && exit 1
 	printf '%s' "$RESP"
 	;;
-android)
-	echo 'Use system dialog on android?' >&2
+android|windows)
 	printf '%s' "$1"
 	read -r RESP
 	printf '%s' "${RESP}"

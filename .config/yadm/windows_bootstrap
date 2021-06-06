@@ -1,0 +1,80 @@
+#!/usr/bin/env bash
+# Sets up windows (WSL)
+
+# setup zsh files
+
+# delete default files if they exist
+original_files=("${HOME}/.zshenv" "${HOME}/.zshrc" "${HOME}/.zsh_history")
+for file in "${original_files[@]}"; do
+	rm -rf "${file}"
+done
+
+# bash will typically source ~/.profile on shell launch
+# if we haven't switched to zsh, a shell restart should
+# cause this to be sourced
+echo 'Setting up zsh profile...'
+echo 'source "${HOME}/.profile"; cd ~' >"${HOME}/.zshenv"
+
+# check if we have access to the my directories
+# on my $PATH, to see if zsh has been properly configured
+if [[ ! "$(command -v havecmd)" ]]; then
+	printf "Issue finding 'havecmd', environment is not setup properly\n"
+	printf "Try restarting the shell and making sure ~/.profile is getting sourced\n"
+	exit 1
+fi
+
+# set zsh as shell
+if ! grep ^"$(whoami)" /etc/passwd | cut -d':' -f7 | grep -q 'zsh'; then
+	havecmd zsh || sudo apt install zsh
+	sudo chsh -s "$(command -v zsh)" "$(whoami)"
+	abort "Restart shell so that zsh environment is setup. Then re-run 'yadm bootstrap'"
+else
+	echo "zsh is already set as your default shell"
+fi
+
+# note: zsh is set as shell using the alacritty launcher options
+declare -rx WSL_PACKAGES="${PACKAGE_DIR}/wsl_packages.txt"
+
+# Install spkglist so I can parse package lists
+set -e
+havecmd go || sudo apt install golang
+havecmd spkglist || install_spkglist
+set +e
+
+for lib in $(spkglist "${WSL_PACKAGES}"); do
+	if ! dpkg-query -W -f='${Status}' "${lib}" | grep -q "ok installed"; then # if package isn't installed
+		sudo apt install "${lib}"
+	fi
+done
+
+printf "Installing nvim-plug...\n"
+if [[ ! -f ~/.local/share/nvim/site/autoload/plug.vim ]]; then
+	curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+fi
+
+# install rust manually
+havecmd cargo || curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+
+# install yarn
+havecmd yarn || curl -o- -L https://yarnpkg.com/install.sh | bash
+
+# easier to install these using rust on WSL
+WSL_MANUAL_INSTALLS=(exa bat du-dust fd-find)
+havecmd cargo && {
+	for pkg in "${WSL_MANUAL_INSTALLS[@]}"; do
+		havecmd "${pkg}" || cargo install "${pkg}"
+	done
+}
+
+python3 -m pip install ranger-fm
+
+havecmd npm || exit $? # needed for coc
+
+# some manual installs
+havecmd shfmt || GO111MODULE=on go get mvdan.cc/sh/v3/cmd/shfmt
+
+export NPM_CONFIG_PREFIX="${XDG_DATA_HOME}/npm-packages"
+# create the npm directory and make sure we own the directory to fix permission issues
+[[ ! -d "${NPM_CONFIG_PREFIX}" ]] && mkdir -p "${NPM_CONFIG_PREFIX}" && chown -R "$(whoami)" "${NPM_CONFIG_PREFIX}"
+
+exit 0

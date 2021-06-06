@@ -53,10 +53,14 @@ mac)
 	source "${ZDOTDIR}/mac.zsh"
 	;;
 android)
-	source "${HOME}/../usr/share/fzf/key-bindings.zsh"
-	source "${HOME}/../usr/share/fzf/completion.zsh"
+	source_if_exists "${HOME}/../usr/share/fzf/key-bindings.zsh"
+	source_if_exists "${HOME}/../usr/share/fzf/completion.zsh"
 	source "${ZDOTDIR}/android.zsh"
 	;;
+windows)
+	source_if_exists /usr/share/doc/fzf/examples/completion.zsh
+	source_if_exists /usr/share/doc/fzf/examples/key-bindings.zsh
+	source "${ZDOTDIR}/windows.zsh"
 esac
 
 source "${ZDOTDIR}/alias_cache.zsh"

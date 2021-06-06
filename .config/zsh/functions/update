@@ -20,6 +20,9 @@ function update() {
 	android)
 		pkg update
 		;;
+	windows)
+		sudo apt update && sudo apt upgrade
+		;;
 	esac
 	yadm bootstrap
 	echo "Updating nvim packages..."
