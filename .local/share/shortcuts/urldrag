@@ -1,0 +1,6 @@
+#!/bin/sh
+# dragon a picture from my clipboard https://github.com/mwh/dragon
+TMPDIR="$(mktemp -p /tmp -d urlpic-XXXXXX)"
+URL="${1:-$(clippaste)}"
+wget -P "${TMPDIR}" "${URL}"
+exec dragon-drag-and-drop -x "$(newest "${TMPDIR}")"
