@@ -104,8 +104,8 @@ android)
 	figlet termux
 	export XDG_MUSIC_DIR="${HOME}/storage/music/"
 	;;
-windows)
-	;;
+windows) ;;
+
 *)
 	:
 	;;

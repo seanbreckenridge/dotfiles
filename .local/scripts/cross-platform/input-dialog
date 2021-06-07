@@ -20,7 +20,7 @@ mac)
 	[[ -z "$RESP" ]] && exit 1
 	printf '%s' "$RESP"
 	;;
-android|windows)
+android | windows)
 	printf '%s' "$1"
 	read -r RESP
 	printf '%s' "${RESP}"

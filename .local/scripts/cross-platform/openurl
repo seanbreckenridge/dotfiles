@@ -17,7 +17,7 @@ command -v tttlog >/dev/null 2>&1 && tttlog "openurl $URL"
 printf '%s\n' "$URL"
 
 case "$ON_OS" in
-linux|windows)
+linux | windows)
 	# $BROWSER is set properly in ~/.profile
 	setsid "$BROWSER" "$URL" >/dev/null 2>&1 &
 	;;

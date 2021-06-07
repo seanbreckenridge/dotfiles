@@ -83,7 +83,9 @@ def iterate_playlists(playlist_txt_dir: Path) -> Iterator[PlaylistPath]:
     """
     for playlistfile in playlist_txt_dir.rglob("*.txt"):
         try:
-            for line in filter(str.strip, playlistfile.read_text(encoding="utf-8").splitlines()):
+            for line in filter(
+                str.strip, playlistfile.read_text(encoding="utf-8").splitlines()
+            ):
                 yield PlaylistPath(line.strip())
         except UnicodeDecodeError as e:
             click.echo(f"While decoding {playlistfile}", err=True)

@@ -6,9 +6,9 @@
 ALL_SONGS="$(plainplay listall "$(plainplay playlistdir)"/*.txt)"
 
 # move to my music directory
-cd "$PLAINTEXT_PLAYLIST_MUSIC_DIR" || { 
-  echo "Couldn't cd to music directory" 1>&2
-  exit 1
+cd "$PLAINTEXT_PLAYLIST_MUSIC_DIR" || {
+	echo "Couldn't cd to music directory" 1>&2
+	exit 1
 }
 
 # find prints the leading directory file name, this is a approximation (the cut -d"/" -f2
@@ -17,9 +17,9 @@ cd "$PLAINTEXT_PLAYLIST_MUSIC_DIR" || {
 # of all songs in my playlist
 # if no matches are found, print that directory
 find -maxdepth 3 -type f -printf '%h\n' | sort -u | cut -d "/" -f2- | while IFS= read -r dir; do
-  echo "$ALL_SONGS" | fgrep -q "$dir" 2>/dev/null || {
-    echo "${dir}"
-  }
+	echo "$ALL_SONGS" | fgrep -q "$dir" 2>/dev/null || {
+		echo "${dir}"
+	}
 done
 
 # directories that are printed are interpreted by me as:

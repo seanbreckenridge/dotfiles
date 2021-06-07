@@ -42,7 +42,7 @@ linux)
 mac)
 	printf '%s' "$STDIN" | choose -c 9400D3 -b 1C1C1C -u || exit $?
 	;;
-android|windows)
+android | windows)
 	printf '%s' "$STDIN" | fzf || exit $?
 	;;
 esac

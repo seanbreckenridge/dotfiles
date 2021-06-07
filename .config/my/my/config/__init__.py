@@ -176,7 +176,7 @@ class browsing:
     try:
         live_databases: Paths = Firefox.locate_database()
     except:
-        live_databases: Paths = ''
+        live_databases: Paths = ""
 
 
 # uses lolexport: https://github.com/seanbreckenridge/lolexport
