@@ -1,0 +1,28 @@
+#!/bin/bash
+# lists any songs in my music folder that aren't in any playlists
+# https://github.com/seanbreckenridge/plaintext-playlist
+
+# get list of all songs
+ALL_SONGS="$(plainplay listall "$(plainplay playlistdir)"/*.txt)"
+
+# move to my music directory
+cd "$PLAINTEXT_PLAYLIST_MUSIC_DIR" || { 
+  echo "Couldn't cd to music directory" 1>&2
+  exit 1
+}
+
+# find prints the leading directory file name, this is a approximation (the cut -d"/" -f2
+# most of the time prints the Artistname/AlbumName since thats what my Music directory looks like)
+# read that filename into a loop, and check if that album has any songs in the giant list
+# of all songs in my playlist
+# if no matches are found, print that directory
+find -maxdepth 3 -type f -printf '%h\n' | sort -u | cut -d "/" -f2- | while IFS= read -r dir; do
+  echo "$ALL_SONGS" | fgrep -q "$dir" 2>/dev/null || {
+    echo "${dir}"
+  }
+done
+
+# directories that are printed are interpreted by me as:
+# 'there are no songs from this album in any of my playlists', that either means maybe
+# I dont like any of the songs there, and thats fine, or I havent got around to listening
+# to it and I should, and add songs into a playlist.
