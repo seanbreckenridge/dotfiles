@@ -8,6 +8,9 @@ linux)
 mac)
 	exec afplay /System/Library/Sounds/Ping.aiff
 	;;
+windows)
+	exec powershell.exe -c '(New-Object Media.SoundPlayer "C:\Windows\Media\ding.wav").PlaySync();'
+	;;
 android)
 	# TODO: play system sound somehow
 	# wouldn't work over ssh?
