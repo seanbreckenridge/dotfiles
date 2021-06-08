@@ -1,15 +1,16 @@
 #!/bin/sh
 # global configuration/environment
 # this is sourced in .xinitrc (when I run startx) on Linux and
-# from ~/.zshenv on mac (see ~/.config/yadm/mac_bootstrap)
+# from ~/.zshenv on other operating systems
+# mac (see ~/.config/yadm/mac_bootstrap for the generated .zshenv)
 
 # Directories
 
 ## XDG
-export XDG_DOWNLOAD_DIR="$HOME/Downloads"
-export XDG_DOCUMENTS_DIR="$HOME/Documents"
-export XDG_PICTURES_DIR="$HOME/Pictures"
-export XDG_VIDEOS_DIR="$HOME/Movies"
+export XDG_DOWNLOAD_DIR="${HOME}/Downloads"
+export XDG_DOCUMENTS_DIR="${HOME}/Documents"
+export XDG_PICTURES_DIR="${HOME}/Pictures"
+export XDG_VIDEOS_DIR="${HOME}/Movies"
 export XDG_CONFIG_HOME="${HOME}/.config"
 export XDG_CACHE_HOME="${HOME}/.cache"
 export XDG_DATA_HOME="${HOME}/.local/share"
@@ -55,23 +56,6 @@ esac
 
 export ON_OS
 
-# https://github.com/seanbreckenridge/HPI
-# the 'root data directory' for HPI is different depending
-# on what I'm on, as on syncthing for android,
-# its easier to sync one of the folders in
-# shared instead of ~/data (which is owned by termux)
-# from my phone
-case "$ON_OS" in
-android)
-	HPIDATA="${HOME}/storage/shared/data"
-	;;
-*)
-	HPIDATA="${HOME}/data"
-	;;
-esac
-
-export HPIDATA
-
 # common path modifications
 PATH="\
 ${HOME}/.local/share/shortcuts:\
@@ -85,32 +69,39 @@ ${HOME}/.local/share/cargo/bin:\
 ${HOME}/.local/share/pubcache/bin:\
 ${HOME}/.emacs.d/bin:\
 ${HOME}/.cabal/bin:\
+${HOME}/.config/i3blocks/blocks:\
 ${PATH}"
 
-export XDG_MUSIC_DIR="${HOME}/Music"
-export PLAINTEXT_PLAYLIST_PLAYLISTS="${HPIDATA}/playlists"
+# https://github.com/seanbreckenridge/HPI
+# the 'root data directory' for HPI
+HPIDATA="${HOME}/data"
 
-# os-specific
+# defaults, some of these are overwrriten in the case below
+XDG_MUSIC_DIR="${HOME}/Music"
+BROWSER='firefox-developer-edition'
+SCREENSHOTS="${XDG_PICTURES_DIR}/Screenshots"
+
+# overwrite some envvars with OS-specific data
 case "$ON_OS" in
 linux)
-	PATH="${HOME}/.gem/ruby/2.7.0/bin:${HOME}/.local/scripts/linux:${HOME}/.config/i3blocks/blocks:${PATH}"
-	export SCREENSHOTS="${XDG_PICTURES_DIR}/Screenshots"
+	PATH="${HOME}/.gem/ruby/2.7.0/bin:${HOME}/.local/scripts/linux:${PATH}" # add linux scripts to $PATH
+	export ARCHFLAGS="-arch x86_64"                                         # Compilation flags
 	;;
 mac)
-	# Screenshots on Mac are saved on the Desktop
-	export SCREENSHOTS="${HOME}/Desktop"
+	SCREENSHOTS="${HOME}/Desktop" # Screenshots on Mac are saved on the Desktop
 	;;
 android)
+	HPIDATA="${HOME}/storage/shared/data"
+	XDG_MUSIC_DIR="${HOME}/storage/music/"
 	figlet termux
-	export XDG_MUSIC_DIR="${HOME}/storage/music/"
 	;;
-windows) ;;
-
-*)
-	:
+windows)
+	BROWSER='/mnt/c/Program Files/Mozilla Firefox/firefox.exe'
 	;;
 esac
-export PATH
+
+export HPIDATA BROWSER XDG_MUSIC_DIR PATH SCREENSHOTS
+export PLAINTEXT_PLAYLIST_PLAYLISTS="${HPIDATA}/playlists"
 
 # some system wide defaults
 
@@ -123,15 +114,7 @@ export VISUAL='nvim'   # e.g. for edit-command-line in ~/.zshrc, to prompt in cu
 export EDITOR='editor' # ~/.local/scripts/cross-platform/editor, wrapper for picking emacs/nvim for editor
 export PAGER='less'
 export TERMINAL='alacritty'
-if [[ "${ON_OS}" == 'windows' ]]; then
-	export BROWSER='/mnt/c/Program Files/Mozilla Firefox/firefox.exe'
-else
-	export BROWSER='firefox-developer-edition'
-fi
 export READER='okular'
-
-# Compilation flags
-export ARCHFLAGS="-arch x86_64"
 
 # define where ZDOTDIR (rest of zsh configuration) is
 export ZDOTDIR="${XDG_CONFIG_HOME}/zsh"
