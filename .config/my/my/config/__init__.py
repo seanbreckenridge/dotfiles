@@ -169,7 +169,7 @@ class mpv:
 # use my active firefox database
 from browserexport.browsers.firefox import Firefox
 
-live_dbs: Paths = []
+live_dbs: List[Path] = []
 try:
     live_dbs.append(Firefox.locate_database())
 except Exception:
