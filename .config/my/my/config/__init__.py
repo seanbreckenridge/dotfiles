@@ -166,17 +166,19 @@ class mpv:
     export_path: Paths = data("mpv/*.json")
 
 
+# use my active firefox database
+from browserexport.browsers.firefox import Firefox
+
+live_dbs: Paths = []
+try:
+    live_dbs.append(Firefox.locate_database())
+except Exception:
+    pass
+
 # uses browserexport https://github.com/seanbreckenridge/browserexport
 class browsing:
     export_path: Paths = data("browsing")
-
-    # use my active firefox database
-    from browserexport.browsers.firefox import Firefox
-
-    try:
-        live_databases: Paths = Firefox.locate_database()
-    except:
-        live_databases: Paths = ""
+    live_databases: Paths = tuple(live_dbs)
 
 
 # uses lolexport: https://github.com/seanbreckenridge/lolexport
