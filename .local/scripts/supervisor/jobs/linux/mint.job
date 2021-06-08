@@ -2,7 +2,7 @@
 # updates my banking account/transactions
 # https://github.com/seanbreckenridge/mint
 
-wait-for-internet --timeout 10 || exit 0
+wait-for-internet -q --timeout 10 || exit 0
 
 MINTLOG='/tmp/mint.log'
 
