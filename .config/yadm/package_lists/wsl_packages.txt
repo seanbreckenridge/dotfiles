@@ -2,6 +2,7 @@ python3-pip
 tree
 npm
 libicu-dev
+libmagic-dev
 silversearcher-ag
 ripgrep
 jq
