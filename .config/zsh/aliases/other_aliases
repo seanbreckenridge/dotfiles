@@ -38,6 +38,9 @@ alias favorite-albums='nextalbums favorites > /tmp/favorites.csv && sc-im /tmp/f
 alias 'discogs-update=nextalbums discogs-update'
 alias albums-left='hpi query my.albums.to_listen | jq length'
 alias albums-cant-find="hpi query my.albums._albums_cached | jq -r '.[] | select(.note==\"cant find\") | \"\(.year) - \(.album_name) - \(.cover_artists)\"'"
+albums-next() {
+	hpi query my.albums.to_listen -s --limit "${1:-10}" | jq -r '"\(.year) | \(.album_name) - \(.cover_artists)"'
+}
 
 # https://github.com/seanbreckenridge/frinkconv
 conv() {
