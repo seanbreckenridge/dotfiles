@@ -2,6 +2,8 @@
 # saves the number of unapproved comments to a cache file
 # this is for my guest book on https://sean.fish/
 
+wait-for-internet --timeout 10 || exit 0
+
 get_count() {
 	local SSH_OUTPUT COUNT_LINE
 	SSH_OUTPUT="$(ssh vultr 'cd ./code/glue; PATH="$HOME/.asdf/shims/:$PATH" ./production_server --print-count' 2>/dev/null)" || return $?
@@ -13,7 +15,6 @@ get_count() {
 }
 
 evry 1 hours -guestbook_comments && {
-	wait-for-internet
 	printlog 'guestbook:updating cache file...'
 	readonly CACHE_FILE="${XDG_CACHE_HOME:-${HOME}/.cache}/guestbook-comments"
 	COUNT="$(get_count)" || send-error "guestbook Couldn't update cache file"

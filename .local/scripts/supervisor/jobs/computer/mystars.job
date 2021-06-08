@@ -1,7 +1,9 @@
 #!/bin/sh
 # update https://github.com/seanbreckenridge/oh-my-stars
+
+wait-for-internet --timeout 10 || exit 0
+
 evry 6 hours -update_my_stars && {
-	wait-for-internet
 	printlog "mystars:updating oh-my-stars..."
 	mystars -u -c=never >>/tmp/mystars_update.log 2>&1 || send-error "mystars update failed"
 }

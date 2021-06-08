@@ -2,6 +2,8 @@
 # updates my banking account/transactions
 # https://github.com/seanbreckenridge/mint
 
+wait-for-internet --timeout 10 || exit 0
+
 MINTLOG='/tmp/mint.log'
 
 update_mintable() {
@@ -11,7 +13,6 @@ update_mintable() {
 }
 
 evry 6 hours -updatemint && {
-	wait-for-internet
 	printlog 'mint:fetching accounts...'
 	update_mintable || send-error "Could not fetch data for mint, see $MINTLOG"
 	printlog "mint:finished fetching accounts: $(date)"
