@@ -138,7 +138,7 @@ class bash:
 class todotxt:
     export_path: Paths = data("todotxt")
     live_file: Optional[PathIsh] = if_exists(
-        path.join(environ["XDG_CONFIG_HOME"], "todo", "todo.txt")
+        path.join(environ["HPIDATA"], "todo", "todo.txt")
     )
 
 
