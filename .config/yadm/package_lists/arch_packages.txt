@@ -31,8 +31,9 @@ xorg-xwininfo
 # language support
 
 #rebar3-zsh
-ccls
+asdf-vm
 cabal-install
+ccls
 checkbashisms
 clojure
 cmake
@@ -58,8 +59,8 @@ lua
 lua-format
 mariadb
 mypy
-nvm
 npm
+nvm
 ocaml
 perl
 perl-test-perltidy

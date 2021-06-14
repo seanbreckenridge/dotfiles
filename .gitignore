@@ -63,6 +63,12 @@ directory_aliases
 __pycache__
 .mypy_cache
 
+# runelite
+/jagexcache
+/jagex_cl_oldschool_LIVE.dat
+/random.dat
+/.runelite
+
 # application config files to ignore
 /.cookiecutter_replay
 /.stack
@@ -136,6 +142,7 @@ __pycache__
 /.pylint.d/*
 /.putty
 /.zoom
+/.asdf
 /.parallel
 /.ssr
 /.surf
