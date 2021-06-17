@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 # searches for the name of the
 # block in the config file and
-# refreshes its
+# refreshes it by sending
+# the corresponding signal
 
 BLOCK_NAME="${1:?Provide block name to refresh as first argument}"
 
