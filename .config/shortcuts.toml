@@ -716,12 +716,24 @@ havecmd 'sqlitebrowser' && exec sqlitebrowser "$@"
 exec open -a DB\ Browser\ for\ SQLite "$@"
 '''
 
+[recent-ttally]
+command = '''
+func() {
+  python3 -m ttally recent "$MODEL" "$@"
+}
+
+if [ -z "$1" ]; then
+  print-or-notify "$(func)"
+else
+  printf '%s\n' "$(func "$@")"
+fi
+'''
+
 [clr]
-command = 'print-or-notify "$(python3 -m ttally recent food "$@")"'
+command = 'MODEL=food recent-ttally "$@"'
 
 [wlr]
-command = 'print-or-notify "$(python3 -m ttally recent water "$@")"'
-
+command = 'MODEL=water recent-ttally "$@"'
 
 [clrs]
 command = '''

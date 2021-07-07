@@ -1,10 +1,17 @@
 #!/bin/sh
 # if on a terminal, just print what the user passed
-# as arguments. otherwise, use the notify script
+# as arguments or from STDIN. otherwise, use the notify script
 # here to send a notification
 
+TEXT="$*"
+
+# read from stdin if empty
+if [ -z "${TEXT}" ]; then
+	TEXT="$(cat)"
+fi
+
 if attached-to-terminal; then
-	printf '%s\n' "$*"
+	printf '%s\n' "${TEXT}"
 else
-	notify "$*"
+	notify "${TEXT}"
 fi

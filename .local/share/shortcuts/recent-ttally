@@ -1,0 +1,10 @@
+#!/bin/sh
+func() {
+	python3 -m ttally recent "$MODEL" "$@"
+}
+
+if [ -z "$1" ]; then
+	print-or-notify "$(func)"
+else
+	printf '%s\n' "$(func "$@")"
+fi

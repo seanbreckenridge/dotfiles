@@ -1,2 +1,2 @@
 #!/bin/sh
-print-or-notify "$(python3 -m ttally recent water "$@")"
+MODEL=water recent-ttally "$@"
