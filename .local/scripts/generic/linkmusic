@@ -16,6 +16,7 @@ The TARGET directory is provided as the first argument to this script
 \b
 - Creates an index of items in the TARGET directory
 - Hardlink any files from my PLAINTEXT_PLAYLIST_MUSIC_DIR into the TARGET directory
+- Copy any image files in the same directory as the music, to populate cover art on media players
 - If there were any files in the index of the files in the TARGET directory that weren't
   copied, remove those from TARGET; those are items I deleted from playlists/renamed
 - Remove any empty directories in the TARGET directory
@@ -28,7 +29,7 @@ import os
 import subprocess
 from pathlib import Path
 from functools import lru_cache
-from typing import NamedTuple, Iterator
+from typing import NamedTuple, Iterator, Union
 
 import click
 from logzero import logger  # type: ignore[import]
@@ -67,6 +68,11 @@ def musicdir() -> Path:
     return Path(os.environ["PLAINTEXT_PLAYLIST_MUSIC_DIR"])
 
 
+def is_image_path(p: Union[str, Path]) -> bool:
+    s = str(p)
+    return s.endswith(".jpg") or s.endswith(".jpeg") or s.endswith(".png")
+
+
 class PlaylistPath(NamedTuple):
     path: str
 
@@ -75,6 +81,19 @@ class PlaylistPath(NamedTuple):
 
     def in_musicdir(self) -> Path:
         return self.in_dir(musicdir())
+
+    def copy_album_art(self, from_dir: Path, linked_dir: Path) -> None:
+        """
+        Link any album art from the music directory to the linked directory
+        so that album art works nicer on my phone
+        """
+        for f in os.scandir(from_dir):
+            if is_image_path(f.path):
+                from_ = from_dir / f.name
+                target = linked_dir / f.name
+                if not target.exists():
+                    logger.debug(f"Copying album art {from_} {target}")
+                    from_.link_to(target)
 
 
 def iterate_playlists(playlist_txt_dir: Path) -> Iterator[PlaylistPath]:
@@ -99,6 +118,22 @@ def iter_files(in_dir: Path) -> Iterator[str]:
     )
 
 
+def remove_leftover_covert_art(path: str) -> None:
+    """
+    If a directory only includes covert art (images), remove the art
+    """
+    to_remove: list[str] = []
+    for subpath in os.scandir(path):
+        p = subpath.path
+        if subpath.is_file():
+            if is_image_path(p):
+                to_remove.append(p)
+            else:
+                return
+    for art in to_remove:
+        os.unlink(art)
+
+
 def remove_empty_dir(path: str) -> None:
     try:
         os.rmdir(path)
@@ -114,7 +149,9 @@ def remove_empty_dirs(path: str) -> None:
         for dirname in dirnames:
             if dirname.startswith("."):
                 continue
-            remove_empty_dir(os.path.realpath(os.path.join(root, dirname)))
+            d = os.path.realpath(os.path.join(root, dirname))
+            remove_leftover_covert_art(d)
+            remove_empty_dir(d)
 
 
 def hardlink_sync_dirs(files: list[PlaylistPath], to_dir: Path, delete: bool) -> None:
@@ -137,6 +174,11 @@ def hardlink_sync_dirs(files: list[PlaylistPath], to_dir: Path, delete: bool) ->
             target.parent.mkdir(parents=True, exist_ok=True)
             logger.info(f"Linking to '{target}'")
             p.in_musicdir().link_to(target)
+
+        # copy any images in this directory, so that
+        # album art mentioning relative files gets picked
+        # up by media players
+        p.copy_album_art(p.in_musicdir().parent, target.parent)
         # remove from set, so at the end we can check
         # the set. If theres anything left in it,
         # that wasn't included in the 'files' list,
@@ -151,8 +193,9 @@ def hardlink_sync_dirs(files: list[PlaylistPath], to_dir: Path, delete: bool) ->
             # dont remove hidden files
             if to_remove.stem.startswith("."):
                 continue
-            logger.info(f"Removing '{to_remove}'...")
-            to_remove.unlink()
+            if not is_image_path(to_remove):
+                logger.info(f"Removing '{to_remove}'...")
+                to_remove.unlink()
 
         remove_empty_dirs(str(to_dir))
 
