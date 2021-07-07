@@ -17,7 +17,7 @@ done
 # sync music in playlists to my phone
 # https://github.com/seanbreckenridge/plaintext-playlist
 # https://github.com/seanbreckenridge/dotfiles/blob/master/.local/scripts/generic/linkmusic
-evry 1 day -linkmusic && linkmusic ~/.local/share/musicsync/ --delete
+evry 1 hour -linkmusic && linkmusic ~/.local/share/musicsync/ --delete
 
 # https://github.com/seanbreckenridge/glue
 APPROVE_SCRIPT="${REPOS}/vps/approve_comments"
