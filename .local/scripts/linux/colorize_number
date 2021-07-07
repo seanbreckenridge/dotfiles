@@ -1,6 +1,6 @@
 #!/bin/sh
 # if a number is 0, leaves it as is
-# colors a number to make it more noticable
+# colors a number to make it more noticeable
 # used in my i3blocks scripts
 # https://github.com/vivien/i3blocks
 
