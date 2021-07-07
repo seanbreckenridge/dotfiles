@@ -667,6 +667,16 @@ DEBUG_OUTPUT="$(python3 -m shortcuts create --debug && fd . "${SHORTCUTS_DIR}" -
 '''
 shebang="#!/usr/bin/env bash"
 
+[i3jinja]
+command = '''
+set -x
+I3_DIR="${HOME}/.config/i3"
+cd "${I3_DIR}" || exit $?
+exec j2 config.j2 -o config -f yaml <config.yaml
+'''
+shebang="#!/usr/bin/env bash"
+
+
 [alarm]
 command = 'exec paplay /usr/share/sounds/freedesktop/stereo/alarm-clock-elapsed.oga'
 

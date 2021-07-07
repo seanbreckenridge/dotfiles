@@ -1,3 +1,7 @@
+
+
+
+
 # i3 config file (v4)
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
@@ -143,6 +147,7 @@ bindsym $mod+w mode "water"; exec --no-startup-id notify "$(wn -p | nl | chomp)"
 # updates as I add more entries
 
 mode "water" {
+    
     bindsym 1 exec --no-startup-id sh -c "wn -p | awk 'NR == 1' | xargs -r wn"; mode "default"
     bindsym 2 exec --no-startup-id sh -c "wn -p | awk 'NR == 2' | xargs -r wn"; mode "default"
     bindsym 3 exec --no-startup-id sh -c "wn -p | awk 'NR == 3' | xargs -r wn"; mode "default"
@@ -231,6 +236,7 @@ bindsym $mod+a focus parent
 bindsym $mod+z focus child
 
 # switch to workspace
+
 bindsym $mod+1 workspace number "1"
 bindsym $mod+2 workspace number "2"
 bindsym $mod+3 workspace number "3"
@@ -243,6 +249,7 @@ bindsym $mod+9 workspace number "9"
 bindsym $mod+0 workspace number "10"
 
 # move focused container to workspace
+
 bindsym $mod+Shift+1 move container to workspace number "1"
 bindsym $mod+Shift+2 move container to workspace number "2"
 bindsym $mod+Shift+3 move container to workspace number "3"
@@ -284,42 +291,35 @@ bar {
 bindsym $mod+$alt+r exec --no-startup-id i3blocks-refresh-all
 
 # launcher binding
-# also parse the i3 config file and extrac the bindsyms
+# also parse the i3 config file and extract the bindsyms
 # to send me a notification
 bindsym $mod+d mode "launcher"
 bindsym $mod+Shift+d mode "launcher"; exec --no-startup-id ttt i3-notify-launcher
 
 mode "launcher" {
+    
     bindsym a exec --no-startup-id ttt alacritty; mode "default"
     bindsym f exec --no-startup-id ttt firefox-developer-edition; mode "default"
     bindsym t exec --no-startup-id ttt trakt-progress; mode "default"
     bindsym e exec --no-startup-id ttt emacs; mode "default"
     bindsym d exec --no-startup-id ttt discord; mode "default"
     bindsym k exec --no-startup-id ttt keepassxc; mode "default"
-    bindsym b exec --no-startup-id ttt bookmark-open; mode "default"
-    bindsym l exec --no-startup-id ttt largechar-clipboard; mode "default"
-    bindsym r exec --no-startup-id ttt launch ranger; mode "default"
-    bindsym n exec --no-startup-id ttt launch newsboat-force; mode "default"
-    bindsym m exec --no-startup-id ttt launch neomuttr; mode "default"
-    bindsym Shift+m exec --no-startup-id ttt launch sync-neomutt; mode "default"
+    bindsym b exec --no-startup-id bookmark-open; mode "default"
+    bindsym l exec --no-startup-id largechar-clipboard; mode "default"
+    bindsym r exec --no-startup-id launch ranger; mode "default"
+    bindsym n exec --no-startup-id launch newsboat-force; mode "default"
+    bindsym m exec --no-startup-id launch neomuttr; mode "default"
+    bindsym Shift+m exec --no-startup-id launch sync-neomutt; mode "default"
     bindsym h exec --no-startup-id ttt launch htop; mode "default"
     bindsym v exec --no-startup-id ttt launch keyvol; mode "default"
     bindsym u exec --no-startup-id ttt urlview; mode "default"
-    # music/playlist related
     bindsym p exec --no-startup-id launch plainplay; mode "default"
     bindsym Shift+p exec --no-startup-id launch plainplay single; mode "default"
     bindsym Shift+s exec --no-startup-id launch splayall; mode "default"
-    # mpv-ytdl bindings
     bindsym s exec --no-startup-id stream-corner; mode "default"
     bindsym 4 exec --no-startup-id stream-corner-480; mode "default"
     bindsym 7 exec --no-startup-id stream-corner-720; mode "default"
     bindsym Shift+f exec --no-startup-id stream-from-firefox; mode "default"
-    # see mediaproxy scripts here https://github.com/seanbreckenridge/vps
-    bindsym x exec --no-startup-id ttt mediaproxyvideo; mode "default"
-    bindsym Shift+x exec --no-startup-id ttt mediaproxyaudio; mode "default"
-    # bindings for https://github.com/seanbreckenridge/ttally
-    # https://sean.fish/d/clrs
-    # https://sean.fish/d/wlr
     bindsym w exec --no-startup-id wlr; mode "default"
     bindsym c exec --no-startup-id clrs; mode "default"
     bindsym Escape mode "default"
@@ -346,4 +346,3 @@ bindsym $mod+Shift+Return exec --no-startup-id ttt firefox-developer-edition --n
 exec --no-startup-id bash "${REPOS}/todotxt_deadline_notify/copy_todotxt_to_server"
 # start supervisor background processes
 exec --no-startup-id "${HOME}/.local/scripts/supervisor/super --daemon"
-

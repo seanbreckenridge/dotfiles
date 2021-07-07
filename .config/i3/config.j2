@@ -1,0 +1,299 @@
+{# this handles some of the repetitive configuration/launcher bindings #}
+{# global shorthands #}
+{% set ex = "exec --no-startup-id" %}
+
+# i3 config file (v4)
+#
+# Please see https://i3wm.org/docs/userguide.html for a complete reference!
+set $mod Mod4
+set $alt Mod1
+
+# ttt is littered throughout here, to track i3 bindsyms
+# see https://github.com/seanbreckenridge/ttt/ for more info
+
+# Font for window titles. Will also be used by the bar unless a different font
+# is used in the bar {} block below.
+font pango:Source Code Pro 12
+
+# keybind to lock screen manually; automatically locks on screen close
+bindsym $mod+Shift+Escape {{ ex }} ttt lock-screen
+
+# run process to cache pixelated desktop for lock screen
+{{ ex }} lock-screen -b
+
+# use picom for display compositing
+{{ ex }} picom -b
+
+# warn battery daemon
+{{ ex }} warn-battery BAT0
+
+# hide mouse after 2 seconds
+{{ ex }} unclutter --timeout 2
+
+# set a random wallpaper
+{{ ex }} randomize-wallpaper
+
+# bind display key to randomize wallpaper
+bindsym XF86Display {{ ex }} ttt randomize-wallpaper
+
+# Disable trackpad
+#{{ ex }} trackpad disable
+# keyboard shortcut to toggle trackpad
+bindsym $mod+g {{ ex }} ttt trackpad
+
+# for when I plug in an external keyboard - refresh i3 to rebind keys
+# could use udev events instead, but this is easier
+exec_always --no-startup-id xmodmap ~/.config/X11/Xmodmap
+
+# whenever I restart i3, fix my monitor setup
+exec_always --no-startup-id ~/.config/screenlayout/auto.sh
+
+# dunst, for Notifications
+{{ ex }} dunst
+
+# command to display/run i3 key bindings
+bindsym $mod+Shift+Tab {{ ex }} ttt i3binds-prompt
+
+# Bind brightness keys
+# sudo usermod -aG video sean
+# to allow my user to modify files in /sys/class/backlight
+# symlinked to the /sys/devices/pcie...
+# (may have to restart window manager for it to take affect)
+bindsym XF86MonBrightnessUp {{ ex }} brightness up
+bindsym XF86MonBrightnessDown {{ ex }} brightness down
+
+# Bind $mod+Brightness keys to transparency toggle
+# Uses picom-trans to set the transparency to 100/85% (same as active/inactive)
+# This "breaks" inactive transparency for that tile, but that can be fixed by reloading i3 ($mod+Shift+R)
+# Doesn't typically affect use case as transparency for an unfocused window is set permanently
+
+# Disable Transparency for window
+# Change mouse to target
+bindsym $mod+XF86MonBrightnessUp {{ ex }} transparent disable target
+bindsym $mod+XF86MonBrightnessDown {{ ex }} transparent enable target
+
+# Kill/restart picom (compositor)
+bindsym $mod+p {{ ex }} killall picom && notify "Killed picom!"
+bindsym $mod+Shift+p {{ ex }} picom -b && notify "Restarting picom..."
+
+# start the emacs server
+{{ ex }} systemctl --user start emacs
+
+# Use pactl to adjust volume in PulseAudio.
+bindsym XF86AudioRaiseVolume {{ ex }} volume up
+bindsym XF86AudioLowerVolume {{ ex }} volume down
+bindsym XF86AudioMute {{ ex }} volume mute
+bindsym XF86AudioMicMute {{ ex }} volume micmute
+
+# todo list - mark as complete with rofi
+bindsym $mod+t {{ ex }} todo-prompt list
+bindsym $mod+Shift+t {{ ex }} todo-prompt add
+
+# bookmark list - add/open with rofi
+bindsym $mod+b {{ ex }} todo-prompt bookmark list
+bindsym $mod+Shift+b {{ ex }} todo-prompt bookmark add
+
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+# kill focused window
+bindsym $mod+q kill
+
+# rofi run menu
+bindsym $mod+r {{ ex }} rofi -show run -display-run "run > "
+
+# rofi switch window menu
+bindsym $mod+Tab {{ ex }} rofi -show window -display-window "window > "
+
+# network manager interface
+bindsym $mod+n {{ ex }} ttt networkmanager_dmenu
+
+# take a screenshot (select rectangle with cursor)
+bindsym --release Print {{ ex }} ttt screenshot
+# take a screenshot of the entire screen
+bindsym Shift+Print {{ ex }} ttt screenshot --full
+# upload the most recent screenshot to imgur, copy result to clipboard
+bindsym $mod+Print {{ ex }} ttt screenshot-to-imgur
+# edit clipboard in vim
+bindsym $mod+Shift+c {{ ex }} clipedit
+# reset clipboard formatting
+bindsym $mod+$alt+c {{ ex }} clipreset
+
+# mpv commands
+# https://github.com/seanbreckenridge/mpv-sockets.git
+bindsym $mod+XF86AudioMute {{ ex }} mpv-play-pause && i3blocks-refresh mpv-paused
+bindsym $mod+XF86AudioMicMute {{ ex }} mpv-next-song
+bindsym $mod+Shift+XF86AudioMute {{ ex }} mpv-quit-latest
+bindsym $mod+m {{ ex }} notify-send "$(mpv-currently-playing --all)"
+
+# on 'volume up', move forward in the file
+bindsym $mod+XF86AudioRaiseVolume {{ ex }} mpv-seek '5'
+bindsym $mod+XF86AudioLowerVolume {{ ex }} mpv-seek '-5'
+
+# to log food I eat with https://github.com/seanbreckenridge/ttally
+bindsym $mod+c {{ ex }} cz -p
+# mode to log water. wn -p prints a numbered list of my common entries
+bindsym $mod+w mode "water"; {{ ex }} notify "$(wn -p | nl | chomp)"
+
+# this binds numbers to how often I log that item, by analyzing at my history
+# e.g. the most common items I log in my history for water are 1 and 1.5,
+# so
+# mod+w 1 logs 1 glass
+# mod+w 2 logs 1.5 glasses
+# mod+w 3 logs 2 glasses
+# mod+w 3 logs 0.5 glasses
+#
+# its not sequential, its based on how often I log the entries, so it dynamically
+# updates as I add more entries
+
+mode "water" {
+    {% for n in range(1, 10) %}
+    bindsym {{ n }} {{ ex }} sh -c "wn -p | awk 'NR == {{ n }}' | xargs -r wn"; mode "default"{% endfor %}
+    bindsym Escape mode "default"
+    bindsym Return mode "default"
+}
+
+# gaps config
+for_window [class=".*"] border pixel 0
+smart_borders on
+smart_gaps on
+smart_borders no_gaps
+gaps inner 5
+gaps outer 0
+
+# change focus
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# move focused window
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# resize windows - keys above "vim arrow" keys
+bindsym $mod+Shift+y {{ ex }} i3-resize left
+bindsym $mod+Shift+u {{ ex }} i3-resize down
+bindsym $mod+Shift+i {{ ex }} i3-resize up
+bindsym $mod+Shift+o {{ ex }} i3-resize right
+
+# split in horizontal orientation
+bindsym $mod+Shift+z split h
+# split in vertical orientation
+bindsym $mod+Shift+v split v
+
+# switch split default orientation
+# bindsym $mod+s split toggle
+
+# enter full screen mode for the focused container
+bindsym $mod+f fullscreen toggle
+
+# toggle between tabbed and tiling
+#bindsym $mod+s layout tabbed
+#bindsym $mod+Shift+s layout splitv
+
+# swap the current layout for this window to horizontal/vertical
+bindsym $mod+e layout toggle split
+
+# toggle tiling / floating
+bindsym $mod+space floating toggle
+
+# toggle picture in picture
+bindsym $mod+Shift+space {{ ex }} i3-picture-in-picture
+
+# change focus between tiling / floating windows
+# bindsym $mod+space focus mode_toggle
+
+# toggle a window to be sticky and float
+bindsym $mod+s {{ ex }} i3-sticky
+
+# focus the parent container
+bindsym $mod+a focus parent
+
+# focus the child container
+bindsym $mod+z focus child
+
+# switch to workspace
+{% for w in workspaces %}
+bindsym $mod+{{ w }} workspace number "{{ workspaces[w] }}"{% endfor %}
+
+# move focused container to workspace
+{% for w in workspaces %}
+bindsym $mod+Shift+{{ w }} move container to workspace number "{{ workspaces[w] }}"{% endfor %}
+
+workspace_auto_back_and_forth yes
+#bindsym $mod+b workspace back_and_forth
+#bindsym $mod+Shift+b move container to workspace back_and_forth; workspace back_and_forth
+
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+
+# use xprop to find class names
+# if a mpv window with --x11-name=mpv_stream_media is launched,
+# resize it into the bottom right of the screen
+# (picture-in-picture style).
+# see my stream-media script: https://sean.fish/d/stream-media
+# binding for this below (stream-corner)
+# when a new window is launched, its focused automatically, so we
+# dont have to do xdotool trickery
+for_window [instance="mpv_stream_media"] {{ ex }} i3-picture-in-picture
+
+# Start i3bar to display a workspace bar (plus the system information i3status
+# finds out, if available)
+bar {
+    position top
+    status_command i3blocks
+    tray_output none
+}
+
+# send all signals listed in the i3blocks config file to i3blocks
+# causing re-renders to all the blocks
+bindsym $mod+$alt+r {{ ex }} i3blocks-refresh-all
+
+# launcher binding
+# also parse the i3 config file and extract the bindsyms
+# to send me a notification
+bindsym $mod+d mode "launcher"
+bindsym $mod+Shift+d mode "launcher"; {{ ex }} ttt i3-notify-launcher
+
+mode "launcher" {
+    {% for key in launcher %}
+    bindsym {{ key }} {{ ex }} {{ launcher[key] }}; mode "default"{% endfor %}
+    bindsym Escape mode "default"
+    bindsym Return mode "default"
+}
+
+
+# keyboard shortcut to check if I have a remote internet connection
+bindsym $mod+Shift+w {{ ex }} wfi
+
+# start a terminal with tmux
+bindsym $mod+Return {{ ex }} ttt alacritty-tmux
+
+# another binding to start a terminal, incase ttt isnt working for some reason, as a last resort
+bindsym $mod+Shift+a {{ ex }} alacritty
+
+# open a browser tab
+bindsym $mod+Shift+Return {{ ex }} ttt firefox-developer-edition --new-tab;
+
+# background processes unrelated to i3/window manager
+
+# copy my todo.txt to my server when it changes, so I can be sent reminders
+# https://github.com/seanbreckenridge/todotxt_deadline_notify
+{{ ex }} bash "${REPOS}/todotxt_deadline_notify/copy_todotxt_to_server"
+# start supervisor background processes
+{{ ex }} "${HOME}/.local/scripts/supervisor/super --daemon"

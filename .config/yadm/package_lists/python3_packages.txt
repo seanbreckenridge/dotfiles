@@ -16,6 +16,7 @@ imgur-uploader
 ipython
 isort
 itsdangerous
+j2cli
 jikanpy
 logzero
 mypy

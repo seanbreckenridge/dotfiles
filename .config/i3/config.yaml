@@ -1,0 +1,37 @@
+---
+launcher:
+  a: "ttt alacritty"
+  f: "ttt firefox-developer-edition"
+  t: "ttt trakt-progress"
+  e: "ttt emacs"
+  d: "ttt discord"
+  k: "ttt keepassxc"
+  b: "bookmark-open"
+  l: "largechar-clipboard"
+  r: "launch ranger"
+  n: "launch newsboat-force"
+  m: "launch neomuttr"
+  "Shift+m": "launch sync-neomutt"
+  h: "ttt launch htop"
+  v: "ttt launch keyvol"
+  u: "ttt urlview"
+  p: "launch plainplay"
+  "Shift+p": "launch plainplay single"
+  "Shift+s": "launch splayall"
+  s: "stream-corner"
+  4: "stream-corner-480"
+  7: "stream-corner-720"
+  "Shift+f": "stream-from-firefox"
+  w: wlr
+  c: clrs
+workspaces:
+  1: 1
+  2: 2
+  3: 3
+  4: 4
+  5: 5
+  6: 6
+  7: 7
+  8: 8
+  9: 9
+  0: 10
