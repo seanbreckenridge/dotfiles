@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 # AUTHOR: gotbletu (@gmail|twitter|youtube|github|lbry)
 
-DIR=AUDIO_MP3
 helpmsg() {
 	printf "%s\n" "desc: convert to mp3 audio"
 	printf "%s\n" "depend: ffmpeg lame"
@@ -19,14 +18,8 @@ elif [ "$1" = -h ] || [ "$1" = --help ]; then
 	helpmsg
 	exit 0
 else
-	mkdir -p "$DIR"
 	myArray=("$@")
 	for arg in "${myArray[@]}"; do
-		if [[ -f "$arg" && ! -f "$DIR/${arg%.*}.mp3" ]]; then
-			ffmpeg -i "$arg" -codec:a libmp3lame -qscale:a 2 "$DIR/${arg%.*}.mp3"
-		else
-			printf "%s\n" "$arg is invalid or output file already exist"
-			exit 1
-		fi
+		ffmpeg -i "$arg" -codec:a libmp3lame -qscale:a 2 "${arg%.*}.mp3"
 	done
 fi
