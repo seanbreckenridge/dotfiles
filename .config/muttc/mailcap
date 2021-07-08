@@ -4,9 +4,11 @@
 text/plain; rifle %s ;
 text/html; rifle %s ; nametemplate=%s.html
 text/html; ttt lynx -assume_charset=%{charset} -display_charset=utf-8 -dump %s; nametemplate=%s.html; copiousoutput;
+text/csv; rifle %s ;
 image/*; rifle %s ;
 video/*; rifle %s ; copiousoutput
 audio/*; rifle %s ;
+application/zip; ttt unzip %s ;
 application/pdf; rifle %s ;
 application/pgp-encrypted; ttt gpg -d '%s'; copiousoutput;
 application/pgp-keys; ttt gpg --import '%s'; copiousoutput;
