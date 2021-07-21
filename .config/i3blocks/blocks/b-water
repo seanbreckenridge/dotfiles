@@ -1,9 +1,7 @@
 #!/usr/bin/env bash
-# how many water I've had today
-
-((BLOCK_BUTTON == 3)) && notify-send "$(python3 -m ttally recent water)"
+# how many water I've drank today
 
 {
-	hpi query --recent 1d my.body.water | jq -r '.[] | .glasses'
+	hpi query my.body.water --recent 1d -s | jq '.ml'
 	echo 0
-} | datamash sum 1
+} | datamash sum 1 | cut -d'.' -f1

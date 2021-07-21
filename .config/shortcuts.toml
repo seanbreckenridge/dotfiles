@@ -732,9 +732,6 @@ fi
 [clr]
 command = 'MODEL=food recent-ttally "$@"'
 
-[wlr]
-command = 'MODEL=water recent-ttally "$@"'
-
 [clrs]
 command = '''
 # clr without the calorie count

@@ -130,29 +130,6 @@ bindsym $mod+m {{ ex }} notify-send "$(mpv-currently-playing --all)"
 bindsym $mod+XF86AudioRaiseVolume {{ ex }} mpv-seek '5'
 bindsym $mod+XF86AudioLowerVolume {{ ex }} mpv-seek '-5'
 
-# to log food I eat with https://github.com/seanbreckenridge/ttally
-bindsym $mod+c {{ ex }} cz -p
-# mode to log water. wn -p prints a numbered list of my common entries
-bindsym $mod+w mode "water"; {{ ex }} notify "$(wn -p | nl | chomp)"
-
-# this binds numbers to how often I log that item, by analyzing at my history
-# e.g. the most common items I log in my history for water are 1 and 1.5,
-# so
-# mod+w 1 logs 1 glass
-# mod+w 2 logs 1.5 glasses
-# mod+w 3 logs 2 glasses
-# mod+w 3 logs 0.5 glasses
-#
-# its not sequential, its based on how often I log the entries, so it dynamically
-# updates as I add more entries
-
-mode "water" {
-    {% for n in range(1, 10) %}
-    bindsym {{ n }} {{ ex }} sh -c "wn -p | awk 'NR == {{ n }}' | xargs -r wn"; mode "default"{% endfor %}
-    bindsym Escape mode "default"
-    bindsym Return mode "default"
-}
-
 # gaps config
 for_window [class=".*"] border pixel 0
 smart_borders on
