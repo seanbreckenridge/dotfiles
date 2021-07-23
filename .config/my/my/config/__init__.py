@@ -291,7 +291,7 @@ class apple:
 
 # parses the GDPR export
 class discord:
-    export_path: Paths = data("discord")
+    export_path: Paths = data("discord/*.zip")
 
 
 # .gpx files from https://github.com/mendhak/gpslogger
