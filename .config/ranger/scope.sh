@@ -88,8 +88,20 @@ application/csv)
 application/x-sharedlib | application/x-executable | application/x-pie-executable)
 	exifinfo "$path" && exit 0
 	;;
+application/zip)
+	try unzip -Z1 "$path" && {
+		dump
+		exit 5
+	}
+	;;
 *)
 	case "$path" in
+	*.zip)
+		try unzip -Z1 "$path" && {
+			dump
+			exit 5
+		}
+		;;
 	# Python pickled objects
 	*.pickle)
 		# printing pickled data in preview
