@@ -114,7 +114,6 @@ alias httpbin='docker run -p 80:80 kennethreitz/httpbin'
 alias 'timer=countdown'
 alias 'ml=mailsync-loop'
 alias 'confirm=fzf -m'
-alias 'sx=startx'
 
 # stop import from crashing my system for some reason
 alias 'import=printf "Use /usr/bin/import instead\n"'
