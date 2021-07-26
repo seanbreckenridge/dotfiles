@@ -16,6 +16,7 @@ Brewfile.lock.json
 
 # Termux
 /storage
+/downloads
 /.termux_authinfo
 /.termux/shell
 /.hushlogin
