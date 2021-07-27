@@ -107,6 +107,10 @@ fi
 [[ -e "${TTALLY_ALIASES}" ]] && source "${TTALLY_ALIASES}"
 alias 'czd=cz -d'
 alias 'ca=food-now'
+b-() {
+printf "cals: %d\n" "$(b-calories)"
+printf "water: %d\n" "$(b-water)"
+}
 
 # https://github.com/seanbreckenridge/tts
 alias tts-say='tts -d /tmp/tts.ogg && paplay /tmp/tts.ogg'
