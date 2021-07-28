@@ -108,8 +108,8 @@ fi
 alias 'czd=cz -d'
 alias 'ca=food-now'
 b-() {
-printf "cals: %d\n" "$(b-calories)"
-printf "water: %d\n" "$(b-water)"
+	printf "cals: %d\n" "$(b-calories)"
+	printf "water: %d\n" "$(b-water)"
 }
 
 # https://github.com/seanbreckenridge/tts
