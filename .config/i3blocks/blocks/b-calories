@@ -1,23 +1,7 @@
-#!/usr/bin/env python3
+#!/usr/bin/env bash
 # how many calories I've eaten today
 
-from datetime import datetime
-
-from my.core.query_range import select_range, RangeTuple
-from my.body import food  # type: ignore
-
-
-print(
-    int(
-        sum(
-            [
-                f.quantity * f.calories
-                for f in select_range(
-                    food(),
-                    order_by_value_type=datetime,
-                    unparsed_range=RangeTuple(after=None, before=None, within="1d"),
-                )
-            ]
-        )
-    )
-)
+{
+	hpi query my.body.food --recent 1d -s | jq -r '(.quantity)*(.calories)'
+	echo 0
+} | datamash sum 1 | cut -d'.' -f1
