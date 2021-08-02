@@ -1,0 +1,16 @@
+#!/bin/sh
+# i.e. I fullscreen the sxiv (image viewer) instance
+# to turn my laptop into a flashlight
+
+# switch to commonly unused workspace
+i3-msg workspace 9 >/dev/null 2>&1
+
+# set brightness to 100
+light -S 100
+
+# create a 1x1 white pixel image
+FILE=/tmp/flashlight.png
+convert -size 1x1 xc:white "${FILE}"
+
+# and display it
+exec sxiv "${FILE}"
