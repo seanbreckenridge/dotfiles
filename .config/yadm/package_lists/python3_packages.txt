@@ -19,6 +19,7 @@ itsdangerous
 j2cli
 jikanpy
 logzero
+mutagen
 mypy
 ndg-httpsclient
 nose
