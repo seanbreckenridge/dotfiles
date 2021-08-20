@@ -80,6 +80,7 @@ __pycache__
 /.bundle
 /.tox
 /.netrc
+/.config/netrc
 /.emacs.d/
 /.vim
 /.scala_history*
