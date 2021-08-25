@@ -10,6 +10,7 @@ IMAGE_DIRS=(
 evry 1 day -backup_images && {
 	BACKUP_TO="$(python3 -m my.utils.backup_to phone_pictures)"
 	for idir in "${IMAGE_DIRS[@]}"; do
+		[[ -d "${idir}" ]] || continue
 		rsync -Pavh "${idir}" "${BACKUP_TO}/$(basename "${idir}")"
 	done
 }
