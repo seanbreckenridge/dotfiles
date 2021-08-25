@@ -2,7 +2,7 @@
 # https://github.com/karlicoss/promnesia
 # run the promnesia indexer
 
-[[ "${ON_OS}" == 'windows' ]] && exit 0  # don't run on windows
+[[ "${ON_OS}" == 'windows' ]] && exit 0 # don't run on windows
 
 evry 6 hours -promnesia_index && {
 	printlog "promnesia_index:running index..."

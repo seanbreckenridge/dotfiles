@@ -27,6 +27,7 @@ lynx
 ranger
 wget
 gh
+rsync
 
 termux-api  # clipboard interaction? not sure if it works
 

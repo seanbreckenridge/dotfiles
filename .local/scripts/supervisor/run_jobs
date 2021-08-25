@@ -22,6 +22,8 @@ fi
 
 if [[ "${ON_OS}" != 'android' ]]; then
 	DIR_SUFFIXES+=("computer")
+else
+	DIR_SUFFIXES+=("phone")
 fi
 
 case "${ON_OS}" in
