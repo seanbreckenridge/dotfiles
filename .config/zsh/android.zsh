@@ -1,7 +1,7 @@
 #!/usr/bin/env zsh
 # android-specific setup
 
-# run bgproc jobs once a day when I login
+# run bgproc jobs
 # https://github.com/seanbreckenridge/dotfiles/tree/master/.local/scripts/supervisor
 # https://github.com/seanbreckenridge/bgproc
-evry 1 day -run_android_jobs && "${HOME}/.local/scripts/supervisor/run_jobs" -o
+evry 6 hours -run_android_jobs && "${HOME}/.local/scripts/supervisor/run_jobs" -o
