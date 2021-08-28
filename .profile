@@ -131,8 +131,9 @@ export TTALLY_DATA_DIR="${HPIDATA}/ttally"
 # https://github.com/seanbreckenridge/ttt
 export TTT_HISTFILE="${HPIDATA}/ttt/${SHELL_BOOT_TIME}.csv"
 export URL_CACHE_DIR="${HPIDATA}/url_cache"
-# playlist manager: https://github.com/seanbreckenridge/plaintext-playlist
 export OH_MY_STARS_NETRC="${XDG_CONFIG_HOME}/netrc"
+export MALEXPORT_DIR="${HPIDATA}/malexport"
+# playlist manager: https://github.com/seanbreckenridge/plaintext-playlist
 export PLAINTEXT_PLAYLIST_MUSIC_DIR="${XDG_MUSIC_DIR}"
 export IPGEOCACHE_DIR="${HPIDATA}/ipgeocache"
 export TODO_DIR="${HPIDATA}/todo" # todo.txt
