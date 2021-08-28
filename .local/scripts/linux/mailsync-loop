@@ -18,7 +18,7 @@ while true; do
 	if pgrep -x neomutt; then
 		echo "Ignoring, neomutt is open..." >&2
 	else
-		evry 10 minutes -mailsync && {
+		evry 5 minutes -mailsync && {
 			wait-for-internet
 			printf '%s: Running mailsync...\n' "$(date)"
 			# ignore Junk system flags warning -- spams the log a bunch. --quiet doesnt stop it as it uses
