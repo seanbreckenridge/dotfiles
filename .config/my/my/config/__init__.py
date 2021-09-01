@@ -197,6 +197,11 @@ class trakt:
     export_path: Paths = data("trakt")
 
 
+# uses malexport: https://github.com/seanbreckenridge/malexport
+class mal:
+    export_path: Paths = data("malexport")
+
+
 # uses https://github.com/seanbreckenridge/grouvee_export
 class grouvee:
     export_path: Paths = data("grouvee")
