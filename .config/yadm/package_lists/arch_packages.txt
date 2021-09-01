@@ -190,6 +190,7 @@ tree
 unarchiver
 unrar
 unzip
+up
 util-linux
 vi
 vim
