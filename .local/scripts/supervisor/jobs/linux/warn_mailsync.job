@@ -1,6 +1,6 @@
 #!/bin/bash
 
-evry 2 minutes -warn_mailsync && {
+evry 10 minutes -warn_mailsync && {
 	printlog "warn_mailsync: checking when last run..."
 	lastrun="$(stat -c"%Y" "${XDG_CONFIG_HOME:-$HOME/.config}/mutt/.mailsynclastrun")"
 	now="$(date +"%s")"
