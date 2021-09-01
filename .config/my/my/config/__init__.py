@@ -199,7 +199,7 @@ class trakt:
 
 # uses malexport: https://github.com/seanbreckenridge/malexport
 class mal:
-    export_path: Paths = data("malexport")
+    export_path: PathIsh = data("malexport")
 
 
 # uses https://github.com/seanbreckenridge/grouvee_export
