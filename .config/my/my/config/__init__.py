@@ -7,7 +7,7 @@ https://github.com/seanbreckenridge/HPI/
 
 import sys
 import tempfile
-from os import environ, path
+from os import environ, path, listdir
 from typing import Optional, Callable, List, Sequence
 from pathlib import Path
 
@@ -105,6 +105,17 @@ if "IPGEOCACHE_DIR" not in environ:
 class github:
     gdpr_dir: PathIsh = data("github/gdpr")
     export_path: Paths = data("github/ghexport")
+
+
+MAILDIR = Path(
+    environ.get("MAILDIR", path.join(environ["HOME"], ".local", "share", "mail"))
+)
+
+
+# locally synced IMAP mailboxes using mbsync
+class imap:
+    # path[s]/glob to the the mailboxes/IMAP files
+    mailboxes = tuple([MAILDIR / f for f in listdir(MAILDIR) if "@" in f])
 
 
 # combines:
