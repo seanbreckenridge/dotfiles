@@ -658,7 +658,7 @@ DEBUG_OUTPUT="$(python3 -m shortcuts create --debug && fd . "${SHORTCUTS_DIR}" -
 '''
 shebang="#!/usr/bin/env bash"
 
-[i3jinja]
+[i3-jinja]
 command = '''
 set -x
 I3_DIR="${HOME}/.config/i3"

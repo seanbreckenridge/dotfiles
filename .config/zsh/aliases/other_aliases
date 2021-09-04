@@ -36,8 +36,20 @@ alias raspi-backup='${REPOS}/raspi-backup/backup -d'
 alias albums='openurl "https://sean.fish/s/albums"'
 alias favorite-albums='nextalbums favorites > /tmp/favorites.csv && sc-im /tmp/favorites.csv'
 alias 'discogs-update=nextalbums discogs-update'
+# how many albums I have on my list that I havent listened to yet
 alias albums-left='hpi query my.albums.to_listen | jq length'
-alias albums-cant-find="hpi query my.albums._albums_cached | jq -r '.[] | select(.note==\"cant find\") | \"\(.year) - \(.album_name) - \(.cover_artists)\"'"
+# pipe a list of album blobs to this to describe them
+albums-describe() {
+	jq -r '"\(.album_name) - \(.cover_artists) (\(.year))"'
+}
+albums-describe-score() {
+	jq -r '"[\(.score)] \(.album_name) - \(.cover_artists) (\(.year))"'
+}
+# any albums which I can't find/have to order physical copies for to listen to
+alias albums-cant-find="hpi query my.albums._albums_cached | jq -r '.[] | select(.note==\"cant find\")' | albums-describe"
+# list any albums I have yet to listen to, sorted by how many awards they've won
+alias albums-awards="hpi query my.albums.to_listen | jq -r 'sort_by(.reasons | length) | reverse | .[0:10] | .[] | \"[\(.reasons | length)] \(.album_name) - \(.cover_artists) (\(.year))\"'"
+# just the next albums I should listen to chronologically
 albums-next() {
 	hpi query my.albums.to_listen -s --limit "${1:-10}" | jq -r '"\(.year) | \(.album_name) - \(.cover_artists)"'
 }

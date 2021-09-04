@@ -192,6 +192,11 @@ class chess:
     export_path: Paths = data("chess")
 
 
+# uses https://github.com/seanbreckenridge/listenbrainz_export
+class listenbrainz:
+    export_path: Paths = data("listenbrainz")
+
+
 # uses traktexport: https://github.com/seanbreckenridge/traktexport
 class trakt:
     export_path: Paths = data("trakt")

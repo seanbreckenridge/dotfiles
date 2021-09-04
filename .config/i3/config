@@ -308,6 +308,10 @@ bindsym $mod+Shift+a exec --no-startup-id alacritty
 # open a browser tab
 bindsym $mod+Shift+Return exec --no-startup-id ttt firefox-developer-edition --new-tab;
 
+# move chromedriver (webscraping) instances to 9
+assign [class="Chromium-browser"] 9
+
+
 # background processes unrelated to i3/window manager
 
 # copy my todo.txt to my server when it changes, so I can be sent reminders
