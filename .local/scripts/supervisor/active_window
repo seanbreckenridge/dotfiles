@@ -14,4 +14,4 @@ timestamp_filename() {
 # not sure if this fixes the issue of it not recognizing the window
 sleep 5
 
-exec window_watcher -d "$(timestamp_filename)" -p 10 -i '\(Private Browsing\)'
+exec window_watcher -d "$(timestamp_filename)" -p 5 -i '\(Private Browsing\)'
