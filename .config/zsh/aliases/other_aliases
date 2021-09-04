@@ -48,7 +48,10 @@ albums-describe-score() {
 # any albums which I can't find/have to order physical copies for to listen to
 alias albums-cant-find="hpi query my.albums._albums_cached | jq -r '.[] | select(.note==\"cant find\")' | albums-describe"
 # list any albums I have yet to listen to, sorted by how many awards they've won
-alias albums-awards="hpi query my.albums.to_listen | jq -r 'sort_by(.reasons | length) | reverse | .[0:10] | .[] | \"[\(.reasons | length)] \(.album_name) - \(.cover_artists) (\(.year))\"'"
+albums-awards() {
+	local COUNT="${1:-10}"
+	hpi query my.albums.to_listen | jq -r "sort_by(.reasons | length) | reverse | .[0:${COUNT}] | .[] | \"[\(.reasons | length)] \(.album_name) - \(.cover_artists) (\(.year))\""
+}
 # just the next albums I should listen to chronologically
 albums-next() {
 	hpi query my.albums.to_listen -s --limit "${1:-10}" | jq -r '"\(.year) | \(.album_name) - \(.cover_artists)"'
