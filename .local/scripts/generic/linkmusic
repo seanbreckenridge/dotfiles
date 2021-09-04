@@ -37,19 +37,15 @@ from logzero import logger  # type: ignore[import]
 def _check_os() -> None:
     ON_OS = os.environ.get("ON_OS")
     if ON_OS is None:
-        click.echo(
-            "$ON_OS environment variable is none. Set to 'linux' to let this run",
-            err=True,
+        raise ValueError(
+            "$ON_OS environment variable is none. Set to 'linux' to let this run"
         )
-        sys.exit(1)
     else:
         if ON_OS == "linux":
             return
-        click.echo(
-            "$ON_OS environment variable is not linux. This should only run on my linux machine",
-            err=True,
+        raise ValueError(
+            "$ON_OS environment variable is not linux. This should only run on my linux machine"
         )
-        sys.exit(1)
 
 
 @lru_cache(maxsize=1)
@@ -159,8 +155,7 @@ def hardlink_sync_dirs(files: list[PlaylistPath], to_dir: Path, delete: bool) ->
 
 @click.command(help=__doc__)
 @click.option(
-    "--bypass-os-checks",
-    "bypass",
+    "--bypass",
     default=False,
     is_flag=True,
     help="Dont check the $ON_OS environment variable to make this is running on my linux machine",
@@ -175,7 +170,12 @@ def hardlink_sync_dirs(files: list[PlaylistPath], to_dir: Path, delete: bool) ->
 @click.argument("SYNC_TO", type=click.Path())
 def main(bypass: bool, sync_to, delete: bool):
     if not bypass:
-        _check_os()
+        try:
+            _check_os()
+        except ValueError as e:
+            click.echo(str(e), err=True)
+            click.echo("To ignore this, pass --bypass")
+            sys.exit(1)
     playlistlines = list(iterate_playlists(playlistdir()))
     logger.info(f"Syncing {len(playlistlines)} files...")
     assert len(playlistlines) > 0
