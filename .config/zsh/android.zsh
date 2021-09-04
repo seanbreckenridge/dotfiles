@@ -1,6 +1,7 @@
 #!/usr/bin/env zsh
 # android-specific setup
-# this is mostly handling anacron-like tasks that run
+# this is mostly handling anacron-like
+# tasks that run periodically
 
 # run bgproc jobs
 # https://github.com/seanbreckenridge/dotfiles/tree/master/.local/scripts/supervisor
