@@ -112,10 +112,17 @@ MAILDIR = Path(
 )
 
 
+def list_mailboxes(p: Path) -> Sequence[Path]:
+    dirs: List[Path] = []
+    if MAILDIR.exists():
+        dirs = [p / f for f in listdir(p) if "@" in f]
+    return tuple(dirs)
+
+
 # locally synced IMAP mailboxes using mbsync
 class imap:
     # path[s]/glob to the the mailboxes/IMAP files
-    mailboxes = tuple([MAILDIR / f for f in listdir(MAILDIR) if "@" in f])
+    mailboxes = list_mailboxes(MAILDIR)
 
 
 # combines:
