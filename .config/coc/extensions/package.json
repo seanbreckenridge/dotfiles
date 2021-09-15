@@ -2,14 +2,14 @@
   "dependencies": {
     "coc-css": ">=1.2.6",
     "coc-docker": ">=0.5.0",
-    "coc-elixir": ">=0.6.4",
+    "coc-elixir": ">=0.7.0",
     "coc-eslint": ">=1.4.5",
     "coc-go": ">=0.13.3",
     "coc-marketplace": ">=1.8.0",
     "coc-python": ">=1.2.13",
     "coc-rls": ">=1.1.6",
     "coc-sh": ">=0.6.0",
-    "coc-solargraph": ">=1.2.0",
-    "coc-tsserver": ">=1.6.8"
+    "coc-solargraph": ">=1.2.2",
+    "coc-tsserver": ">=1.8.6"
   }
 }
