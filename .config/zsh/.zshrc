@@ -36,7 +36,9 @@ linux)
 	source_if_exists /usr/share/doc/pkgfile/command-not-found.zsh
 	source_if_exists /usr/share/zsh/plugins/zsh-you-should-use/you-should-use.plugin.zsh
 	source_if_exists /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-	source_if_exists /opt/asdf-vm/asdf.sh
+	asdf-enable() {
+		source_if_exists /opt/asdf-vm/asdf.sh
+	}
 	;;
 mac)
 	# Setup fzf
