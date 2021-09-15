@@ -43,7 +43,7 @@ albums-describe() {
 	jq -r '"\(.album_name) - \(.cover_artists) (\(.year))"'
 }
 albums-describe-score() {
-	jq -r '"[\(.score)] \(.album_name) - \(.cover_artists) (\(.year))"'
+	jq -r '"[\(.score) | \(.listened_on)] \(.album_name) - \(.cover_artists) (\(.year))"'
 }
 # any albums which I can't find/have to order physical copies for to listen to
 alias albums-cant-find="hpi query my.albums._albums_cached | jq -r '.[] | select(.note==\"cant find\")' | albums-describe"
