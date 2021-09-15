@@ -24,7 +24,7 @@ abort() {
 install_spkglist() {
 	havecmd go || return $?
 	if ! havecmd spkglist; then
-		go get -u -v 'github.com/seanbreckenridge/spkglist/cmd/spkglist' || return $?
+		go install -v 'github.com/seanbreckenridge/spkglist/cmd/spkglist@latest' || return $?
 	fi
 } && export -f install_spkglist
 
@@ -144,7 +144,7 @@ if [[ "$ON_OS" != 'android' ]]; then
 fi
 
 # install pistol manually
-havecmd pistol || env GO111MODULE=on go get -v -u github.com/doronbehar/pistol/cmd/pistol
+havecmd pistol || env GO111MODULE=on go install -v 'github.com/doronbehar/pistol/cmd/pistol@latest'
 
 echo "Installing personal tools/scripts..."
 

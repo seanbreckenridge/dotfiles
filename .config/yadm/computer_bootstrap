@@ -86,7 +86,7 @@ function install_go_package() {
 	havecmd "${packageinfo[0]}" || {
 		# fails to build fsnotify on wsl?
 		[[ "${packageinfo[0]}" == 'twitchlive' && "${ON_OS}" == 'windows' ]] && return
-		go get -u -v "${packageinfo[1]}"
+		go install -v "${packageinfo[1]}@latest"
 	}
 }
 

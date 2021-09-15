@@ -71,7 +71,7 @@ python3 -m pip install ranger-fm
 havecmd npm || exit $? # needed for coc
 
 # some manual installs
-havecmd shfmt || GO111MODULE=on go get mvdan.cc/sh/v3/cmd/shfmt
+havecmd shfmt || GO111MODULE=on go install -v 'mvdan.cc/sh/v3/cmd/shfmt@latest'
 
 export NPM_CONFIG_PREFIX="${XDG_DATA_HOME}/npm-packages"
 # create the npm directory and make sure we own the directory to fix permission issues

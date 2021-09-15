@@ -73,12 +73,12 @@ npm install -g npm
 # manually install some commands
 havecmd cargo || exit $?           # needed to build some packages
 havecmd evry || cargo install evry # task scheduling
-havecmd shfmt || GO111MODULE=on go get mvdan.cc/sh/v3/cmd/shfmt
+havecmd shfmt || GO111MODULE=on go install mvdan.cc/sh/v3/cmd/shfmt@latest
 havecmd arctee || python3 -m pip install git+https://github.com/karlicoss/arctee
 
 # small utilities I use in scripts
-havecmd newest || go get github.com/seanbreckenridge/newest
-havecmd chomp || go get github.com/seanbreckenridge/chomp
+havecmd newest || go install github.com/seanbreckenridge/newest@latest
+havecmd chomp || go install github.com/seanbreckenridge/chomp@latest
 
 # manually build some python packages which have C extensions
 INSTALLED_PYTHON_PACKAGES="$(python3 -m pip list --format=freeze | cut -d'=' -f1)"

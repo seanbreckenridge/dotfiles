@@ -46,7 +46,7 @@ havecmd brew || exit 1
 
 havecmd go || brew install golang
 install_spkglist
-havecmd drive || go get -u github.com/odeke-em/drive/cmd/drive
+havecmd drive || go install -v 'github.com/odeke-em/drive/cmd/drive@latest'
 set +e
 
 # generate alacritty config file for mac
