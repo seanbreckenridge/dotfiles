@@ -322,6 +322,10 @@ class discord:
     export_path: Paths = data("discord/*.zip")
 
 
+class runelite:
+    export_path: Paths = data("runelite_screenshots")
+
+
 # .gpx files from https://github.com/mendhak/gpslogger
 class gpslogger:
     export_path: Paths = data("gpslogger")
