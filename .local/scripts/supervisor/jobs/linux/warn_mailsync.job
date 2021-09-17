@@ -1,7 +1,6 @@
 #!/bin/bash
 
 evry 10 minutes -warn_mailsync && {
-	printlog "warn_mailsync: checking when last run..."
 	lastrun="$(stat -c"%Y" "${XDG_CONFIG_HOME:-$HOME/.config}/mutt/.mailsynclastrun")"
 	now="$(date +"%s")"
 	# if mailsync hasnt been run in 30 minutes, set a cache file
