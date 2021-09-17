@@ -147,6 +147,12 @@ command='''
 fd --type f | grep -iEv "\.(gif|accurip|jpg|png|cue|log|m3u|m3u8|nfo|md5|txt|html|rtf|jpeg|sfv|pdf|ffp|pls)$" | sort -n
 '''
 
+[list-videos]
+command='''
+fd '.*(mp4|avi|mkv)$' "$@"
+'''
+link = 'list-movies'
+
 [play-music]
 command='''
 # play music in the current directory, recursively

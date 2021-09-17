@@ -1,0 +1,2 @@
+#!/bin/sh
+fd '.*(mp4|avi|mkv)$' "$@"
