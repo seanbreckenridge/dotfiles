@@ -1,5 +1,6 @@
 #!/bin/bash
 # sync music in playlists to my phone
 # https://github.com/seanbreckenridge/plaintext-playlist
+# https://sean.fish/d/linkmusic?dark
 
 evry 1 hour -linkmusic && linkmusic ~/.local/share/musicsync/ --delete
