@@ -56,6 +56,17 @@ albums-awards() {
 albums-next() {
 	hpi query my.albums.to_listen -s --limit "${1:-10}" | jq -r '"\(.year) | \(.album_name) - \(.cover_artists)"'
 }
+# functions to replay music I've listened to recently
+mpv-recent() {
+	hpi query my.mpv.history --order-type datetime --reverse -s --limit "${1:-1}"
+}
+mpv-recent-paths() {
+	mpv-recent "$1" | jq -r .path
+}
+alias replay='mpv-recent-paths | mpv-from-stdin'
+replay-recent() {
+	mpv-recent-paths "${1:-$LINES}" | fzf | mpv-from-stdin
+}
 
 # https://github.com/seanbreckenridge/frinkconv
 conv() {
