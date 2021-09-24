@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+# Check if all my music files are mp3's
+# If they're not, warn me
+#
+# This is mostly so that I can sweep
+# across my music directory, looking for
+# items without album art so my music players
+# which hopefully use APIC frames can
+# pull the album art
+#
+# This uses my list-music script:
+# https://sean.fish/d/list-music?dark
+
+cd "${PLAINTEXT_PLAYLIST_MUSIC_DIR?:Music directory not set\!}"
+
+RESULTS="$(list-music | rcut -d'.' -f1 | sort | uniq -c | chomp)"
+RESULT_COUNT="$(wc -l <<<"${RESULTS}")"
+
+if ((RESULT_COUNT == 1)); then
+	echo "check_music_extensions: all good :)"
+else
+	echo 'check_music_extensions: Found non mp3 files!'
+	echo "${RESULTS}"
+fi
