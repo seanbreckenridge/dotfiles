@@ -1,6 +1,6 @@
 # for emacs support
 gomodifytags github.com/fatih/gomodifytags
-gore github.com/motemen/gore/cmd/gore
+gore github.com/x-motemen/gore/cmd/gore
 gotests github.com/cweill/gotests/...
 guru golang.org/x/tools/cmd/guru
 
