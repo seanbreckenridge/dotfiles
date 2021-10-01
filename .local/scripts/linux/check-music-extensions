@@ -17,8 +17,8 @@ RESULTS="$(list-music | rcut -d'.' -f1 | sort | uniq -c | chomp)"
 RESULT_COUNT="$(wc -l <<<"${RESULTS}")"
 
 if ((RESULT_COUNT == 1)); then
-	echo "check_music_extensions: all good :)"
+	echo "check-music-extensions: all good :)"
 else
-	echo 'check_music_extensions: Found non mp3 files!'
+	echo 'check-music-extensions: Found non mp3 files!'
 	echo "${RESULTS}"
 fi
