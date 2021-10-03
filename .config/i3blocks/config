@@ -6,7 +6,7 @@ markup=pango
 
 [mpv-paused]
 command=b-mpv-paused
-interval=60
+interval=15
 label=⏸
 signal=7
 
