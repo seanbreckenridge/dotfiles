@@ -289,7 +289,6 @@ mode "launcher" {
     bindsym 4 exec --no-startup-id stream-corner-480; mode "default"
     bindsym 7 exec --no-startup-id stream-corner-720; mode "default"
     bindsym Shift+f exec --no-startup-id stream-from-firefox; mode "default"
-    bindsym w exec --no-startup-id wlr; mode "default"
     bindsym c exec --no-startup-id clrs; mode "default"
     bindsym Escape mode "default"
     bindsym Return mode "default"

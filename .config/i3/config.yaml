@@ -22,7 +22,6 @@ launcher:
   4: "stream-corner-480"
   7: "stream-corner-720"
   "Shift+f": "stream-from-firefox"
-  w: wlr
   c: clrs
 workspaces:
   1: 1
