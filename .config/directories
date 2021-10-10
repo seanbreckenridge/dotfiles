@@ -10,7 +10,6 @@ d ~/Downloads
 m ~/Music
 n ~/Documents/Notes
 p ~/.local/share/plaintext_playlist
-q ~/.config/qtile
 r ~/Repos
 s ~/Downloads/Sort
 y ~/.config/yadm
