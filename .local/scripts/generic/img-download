@@ -5,7 +5,6 @@
 # puts the path on my clipboard
 
 import os
-import sys
 import tempfile
 from urllib.parse import urlparse
 
