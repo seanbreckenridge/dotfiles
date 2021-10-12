@@ -431,7 +431,7 @@ command='dragon-drag-and-drop -x "$(lastpic)"'
 [urlpicpreview]
 command='''
 # preview a picture from a URL
-img-download
+img-download || exit $?
 rifle "$(clippaste)"
 '''
 
@@ -758,6 +758,6 @@ command = 'lynx -stdin -dump'
 [urldrag]
 command = '''
 # dragon a picture from my clipboard https://github.com/mwh/dragon
-img-download
+img-download || exit $?
 exec dragon-drag-and-drop -x "$(clippaste)"
 '''

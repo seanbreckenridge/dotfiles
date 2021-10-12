@@ -1,4 +1,4 @@
 #!/bin/sh
 # dragon a picture from my clipboard https://github.com/mwh/dragon
-img-download
+img-download || exit $?
 exec dragon-drag-and-drop -x "$(clippaste)"

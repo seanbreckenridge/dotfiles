@@ -1,4 +1,4 @@
 #!/bin/sh
 # preview a picture from a URL
-img-download
+img-download || exit $?
 rifle "$(clippaste)"
