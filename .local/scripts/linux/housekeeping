@@ -3,7 +3,7 @@
 # Uses my 'evry' tool to handle how often to run tasks:
 # https://github.com/seanbreckenridge/evry
 
-wait-for-internet --text "Running 'housekeeping'..."
+wait-for-internet
 
 # make sure commands exist
 export HAVECMD_REPORT=1
