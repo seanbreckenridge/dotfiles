@@ -1,0 +1,14 @@
+#!/usr/bin/env zsh
+# first argument is some time in epoch time
+# rest of the arguments are passed to 'duration'
+# which parses a human readable time into seconds
+# using https://github.com/seanbreckenridge/evry
+# shifts the epoch time that far into the past
+
+epochshift() {
+	local epochtime subtract
+	epochtime="${1?:Pass epoch time as first argument}"
+	shift
+	subtract="$(duration "$@")"
+	echo "$((epochtime - subtract))"
+}
