@@ -115,10 +115,6 @@ alias 'timer=countdown'
 alias 'ml=mailsync-loop'
 alias 'confirm=fzf -m'
 alias 'up=TERM=xterm up'
-housekeeping-info() {
-	housekeeping
-	EVRY_JSON=1 housekeeping | jq -r '.[] | select((.type == "tag_name") or .type == "till_next_pretty") | .body' | paste -d " " - - | sed -e 's/ / - /'
-}
 
 # stop import from crashing my system for some reason
 alias 'import=printf "Use /usr/bin/import instead\n"'

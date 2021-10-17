@@ -1,4 +1,4 @@
-#!/usr/bin/env zsh
+#!/bin/zsh
 # first argument is some time in epoch time
 # rest of the arguments are passed to 'duration'
 # which parses a human readable time into seconds

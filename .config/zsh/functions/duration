@@ -1,4 +1,4 @@
-#!/usr/bin/env zsh
+#!/bin/zsh
 # parses a human readable time into seconds using
 # https://github.com/seanbreckenridge/evry
 
