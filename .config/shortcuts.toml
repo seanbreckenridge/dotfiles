@@ -749,6 +749,9 @@ i3blocks-refresh mail
 [trakt-progress]
 command = 'openurl "https://trakt.tv/users/purplepinapples/progress"'
 
+[mal-recent]
+command = 'openurl "myanimelist.net/animelist/purplepinapples?status=7&order=5"'
+
 [lynx-from-stdin]
 command = 'lynx -stdin'
 
@@ -761,3 +764,4 @@ command = '''
 img-download || exit $?
 exec dragon-drag-and-drop -x "$(clippaste)"
 '''
+

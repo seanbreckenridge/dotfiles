@@ -2,7 +2,8 @@
 launcher:
   a: "ttt alacritty"
   f: "ttt firefox-developer-edition"
-  t: "ttt trakt-progress"
+  t: "trakt-progress"
+  y: "mal-recent"
   e: "ttt emacs"
   d: "ttt discord"
   k: "ttt keepassxc"

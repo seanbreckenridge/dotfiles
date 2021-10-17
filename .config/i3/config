@@ -269,7 +269,8 @@ mode "launcher" {
     
     bindsym a exec --no-startup-id ttt alacritty; mode "default"
     bindsym f exec --no-startup-id ttt firefox-developer-edition; mode "default"
-    bindsym t exec --no-startup-id ttt trakt-progress; mode "default"
+    bindsym t exec --no-startup-id trakt-progress; mode "default"
+    bindsym y exec --no-startup-id mal-recent; mode "default"
     bindsym e exec --no-startup-id ttt emacs; mode "default"
     bindsym d exec --no-startup-id ttt discord; mode "default"
     bindsym k exec --no-startup-id ttt keepassxc; mode "default"
