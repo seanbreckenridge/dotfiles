@@ -1,0 +1,38 @@
+#!/usr/bin/env python3
+# Parses the upcoming WCA competitions page into JSON
+
+from typing import Iterator
+from dataclasses import dataclass
+
+import requests
+import orjson
+from bs4 import BeautifulSoup
+
+
+@dataclass
+class Competition:
+    date: str
+    name: str
+    location: str
+
+
+def fetch_upcoming_competitions() -> Iterator[Competition]:
+    r = requests.get("https://www.worldcubeassociation.org/competitions")
+    r.raise_for_status()
+    soup = BeautifulSoup(r.text, "html.parser")
+    item_rows = list(soup.select(".list-group-item.not-past"))
+    for item in item_rows:
+        comp_info = item.find(class_="competition-info")
+        yield Competition(
+            date=item.find(class_="date").text.strip(),
+            name=comp_info.find("a").text.strip(),
+            location=comp_info.find(class_="location").text.strip(),
+        )
+
+
+def main() -> None:
+    print(orjson.dumps(list(fetch_upcoming_competitions())).decode("utf-8"))
+
+
+if __name__ == "__main__":
+    main()

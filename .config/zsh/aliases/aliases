@@ -115,6 +115,7 @@ alias 'timer=countdown'
 alias 'ml=mailsync-loop'
 alias 'confirm=fzf -m'
 alias 'up=TERM=xterm up'
+alias wca-local="wca-comps | jq '.[] | select(.location | contains(\"California\")) | values[]' -r | paste -d'|' - - - | sed -e 's/|/ - /g'"
 
 # stop import from crashing my system for some reason
 alias 'import=printf "Use /usr/bin/import instead\n"'

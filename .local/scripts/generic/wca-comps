@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# a cached version of wca-upcoming-competitions to make sure
+# I only hit worldcubeassosiation once a week
+
+CACHE_FILE="${HOME}/.cache/wca.json"
+evry 1 week -wcacomps && wca-upcoming-competitions >"${CACHE_FILE}"
+cat <"${CACHE_FILE}"
