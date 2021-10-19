@@ -245,9 +245,11 @@ class blizzard:
     export_path: Paths = data("blizzard/parsed.json")
 
 
-# https://github.com/seanbreckenridge/forum_parser
+environ["OLD_FORUMS_SELECTORS"] = str(data("old_forum_selectors.json"))
+# https://github.com/seanbreckenridge/old_forums
 class old_forums:
-    export_path: Paths = data("old_forums/*.json")
+    # path[s]/glob to the folder which contains JSON/HTML files
+    export_path: Paths = data("old_forums")
 
 
 # parses the GDPR export
