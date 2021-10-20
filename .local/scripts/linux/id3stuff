@@ -1,0 +1,118 @@
+#!/usr/bin/env python3
+
+## Still a WIP
+
+"""
+Personal opinionated ID3 stuff
+
+- Attach/prompt for Album Art to be added/downloaded if not present
+- Make sure everything has a Artist/Album
+- Resolve broken/similar artists names for the same artist (different spellings/translations)
+- Add Track Numbers
+
+In the future... ?
+
+- Perhaps make this Plex Compliant with some other tool?
+- Add Year
+- Add Genre
+- Add Lyrics
+- Remove Comments/Useless Data
+
+For things like comments/removing data, is sort of hard to imagine doing
+this without mainting some sort of index of what I've asked for previously
+
+Shouldn't use the path name since this modifies path names, so perhaps some hash
+or combination of metadata could be used to create a unique hash
+"""
+
+import os
+import warnings
+from typing import Sequence, NamedTuple, Iterator, List, Optional
+from pathlib import Path
+
+import click
+from mutagen.mp3 import MP3
+from mutagen.id3 import ID3, APIC
+
+# either an album, a disc of an album or a single
+# i.e. some flat collection of mp3 files
+# (shouldn't include album art -- that will be searched for later)
+class Collection(NamedTuple):
+    # both should be absolute paths
+    root: Path
+    paths: List[Path]
+
+    @classmethod
+    def iter_ext_collection(
+        cls, rootdir: Path, ext: str = ".mp3"
+    ) -> Iterator["Collection"]:
+        """
+        Given some directory, return any collections under this
+        with a given extension. Defaults to .mp3
+        """
+        if not ext.startswith("."):
+            ext = f".{ext}"
+        # if not given a directory, return
+        if not rootdir.is_dir():
+            return
+        paths: List[Path] = []
+        for f in map(lambda p: p.absolute(), rootdir.iterdir()):
+            if f.is_dir():
+                yield from cls.iter_ext_collection(f, ext=ext)
+            elif f.suffix == ext:
+                paths.append(f.absolute())
+        if len(paths) > 0:
+            # sanity check to make sure these are all in the same directory
+            assert all(
+                [rootdir == pp.parent for pp in paths]
+            ), f"Files in multiple directories! {paths}"
+            yield cls(root=rootdir.absolute(), paths=paths)
+
+
+def attach_album_art(mp3: MP3) -> None:
+    """
+    Check if the mp3 already has album art.
+    If it doesn't, try:
+        - local dir/recursively check any possible 'Images/Artwork'-like dirs
+        - accept a link or filepath to download/attach, as cover.[jpg/png]
+
+    Instead of trying to link, should compress to one of
+    (1200x_, 700x_, 600x_, 500x_) and then embed it using an APIC frame
+    since thats most likely to be supported by media players
+    """
+    pass
+
+
+def default_music_dir() -> Path:
+    for env_key in ("PLAINTEXT_PLAYLIST_MUSIC_DIR", "XDG_MUSIC_DIR"):
+        if env_key in os.environ:
+            p = Path(os.environ[env_key])
+            if not p.exists():
+                click.echo(
+                    f"Using default {env_key}, path {os.environ[env_key]} doesn't exist!",
+                    err=True,
+                )
+                continue
+            return p
+    click.secho(
+        "No path passed or found in the environment -- can pass your 'root music dir' as the first argument to this script or set the XDG_MUSIC_DIR environment variable",
+        err=True,
+        fg="red",
+    )
+    raise SystemExit(1)
+
+
+@click.command(name=__name__)
+@click.argument("PATH", type=click.Path(exists=True), required=False)
+def main(path: Optional[str]):
+    music_dir: Path
+    if path is not None:
+        music_dir = Path(path)
+    else:
+        music_dir = default_music_dir()
+    collections = list(Collection.iter_ext_collection(music_dir.absolute(), ext="mp3"))
+    print(collections)
+
+
+if __name__ == "__main__":
+    main(prog_name="id3stuff")
