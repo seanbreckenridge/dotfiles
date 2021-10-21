@@ -83,6 +83,7 @@ __pycache__
 /.config/netrc
 /.emacs.d/
 /.vim
+/.config/trackma
 /.scala_history*
 /.clojure_history
 /.aws
