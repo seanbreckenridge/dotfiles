@@ -10,13 +10,13 @@ launcher:
   k: "ttt keepassxc"
   b: "bookmark-open"
   l: "largechar-clipboard"
-  r: "launch ranger"
-  n: "launch newsboat-force"
-  m: "launch neomuttr"
+  r: "ttt launch ranger"
+  n: "ttt launch newsboat-force"
+  m: "ttt launch neomuttr"
   "Shift+m": "launch sync-neomutt"
   h: "ttt launch htop"
   v: "ttt launch keyvol"
-  u: "ttt urlview"
+  u: "urlview"
   p: "launch plainplay"
   "Shift+p": "launch plainplay single"
   "Shift+s": "launch splayall"
@@ -24,7 +24,7 @@ launcher:
   4: "stream-corner-480"
   7: "stream-corner-720"
   "Shift+f": "stream-from-firefox"
-  c: clrs
+  c: "ttt clrs"
 workspaces:
   1: 1
   2: 2
