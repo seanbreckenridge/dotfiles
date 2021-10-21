@@ -3,6 +3,7 @@ launcher:
   a: "ttt alacritty"
   f: "ttt firefox-developer-edition"
   t: "trakt-progress"
+  "Shift+t": "ttt launch trackma-curses"
   y: "mal-recent"
   e: "ttt emacs"
   d: "ttt discord"

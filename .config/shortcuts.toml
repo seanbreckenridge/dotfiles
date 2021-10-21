@@ -764,6 +764,3 @@ command = '''
 img-download || exit $?
 exec dragon-drag-and-drop -x "$(clippaste)"
 '''
-
-[trc]
-command='launch trackma-curses'
