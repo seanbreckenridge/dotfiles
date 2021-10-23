@@ -42,6 +42,9 @@ evry 1 day -google_drive && {
 	echo "Syncing Google Drive..."
 	drive pull -ignore-conflict -no-prompt
 	drive push -no-prompt
+	# if theres a new google takeout, unzip it
+	# https://github.com/seanbreckenridge/google_takeout_parser
+	"${REPOS}/HPI/scripts/unzip_google_takeout" "${HOME}/GoogleDrive/Takeout" && drive push
 }
 
 # https://github.com/seanbreckenridge/grouvee_export
