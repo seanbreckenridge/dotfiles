@@ -284,13 +284,9 @@ class ipython:
     export_path: Paths = data("ipython/*.sqlite")
 
 
-# parses https://takeout.google.com
+# parses https://takeout.google.com using https://github.com/seanbreckenridge/google_takeout_parser
 class google:
-    takeout_path: Paths = data("google_takeout")
-    # this is the directory that my google drive gets mirrored to locally
-    # when it detects a new takeout, it sends a warning, so I can run
-    # the script to move it to takeout_path
-    google_drive_local_path: Optional[str] = "~/GoogleDrive/Takeout/"
+    takeout_path: Paths = data("google_takeout/*.zip")
 
 
 # https://github.com/seanbreckenridge/ttt
