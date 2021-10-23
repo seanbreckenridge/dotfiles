@@ -20,12 +20,12 @@ source "${ZDOTDIR}/progressive_enhancement.zsh" # slightly improve commands
 
 # source aliases
 ALIAS_DIR="${ZDOTDIR}/aliases"
-source "${ALIAS_DIR}/aliases"                    # General aliases
-source "${ALIAS_DIR}/git_aliases"                # Git aliases (from oh-my-zsh)
-source "${ALIAS_DIR}/other_aliases"              # Aliases for my own projects
+source "${ALIAS_DIR}/aliases"       # General aliases
+source "${ALIAS_DIR}/git_aliases"   # Git aliases (from oh-my-zsh)
+source "${ALIAS_DIR}/other_aliases" # Aliases for my own projects
 # Personal Aliases (e.g. ssh to servers)
 SQ=1 source_if_exists "${ALIAS_DIR}/personal_aliases" || SQ=1 source_if_exists "${HPI_DATA}/personal_aliases"
-source_if_exists "${ALIAS_DIR}/tokens"           # Tokens for interacting with APIs etc
+source_if_exists "${ALIAS_DIR}/tokens" # Tokens for interacting with APIs etc
 
 # zsh plugins
 case "$ON_OS" in
