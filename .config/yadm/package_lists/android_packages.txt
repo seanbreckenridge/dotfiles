@@ -28,6 +28,8 @@ ranger
 wget
 gh
 rsync
+silversearcher-ag
+ripgrep
 
 termux-api  # clipboard interaction? not sure if it works
 
