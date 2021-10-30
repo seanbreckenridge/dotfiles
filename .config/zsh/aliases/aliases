@@ -68,7 +68,9 @@ alias ft='full_todotxt'
 alias rr='rifle'
 alias optipng='optipng -o7'
 alias free='free -h'
-alias rgi='rg -i'
+rgi() {
+	rg -i "$*"
+}
 alias todo='todo.sh'
 alias sz='mystarsfzf'
 alias super='"${HOME}/.local/scripts/supervisor/super"'
