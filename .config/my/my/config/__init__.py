@@ -129,8 +129,10 @@ class imap:
 # periodic exports from: https://github.com/karlicoss/rexport/
 # comment export from: https://github.com/seanbreckenridge/pushshift_comment_export
 class reddit:
-    export_path: Paths = data("rexport")
-    pushshift_export_path: Paths = data("pushshift")
+    class rexport:
+        export_path: Paths = data("rexport")
+    class pushshift:
+        export_path: Paths = data("pushshift")
 
 
 # prompt me for actions using https://github.com/seanbreckenridge/autotui
