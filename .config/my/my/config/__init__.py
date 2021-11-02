@@ -131,6 +131,7 @@ class imap:
 class reddit:
     class rexport:
         export_path: Paths = data("rexport")
+
     class pushshift:
         export_path: Paths = data("pushshift")
 
