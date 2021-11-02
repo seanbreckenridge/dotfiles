@@ -116,6 +116,8 @@ python3 -m pip install --user -U pip
 # install wheel
 python3 -m pip list --format=freeze | cut -d "=" -f1 | grep -q "^wheel$" || python3 -m pip install --user wheel
 python3 -m pip install --user -q -r "${PYTHON_PACKAGE_LIST}"
+# install random personal stuff I want importable from anywhere
+python3 -m pip install -e "${HOME}/.config/seanb"
 
 # Install personal python packages
 # If command "$1" doesn't exist, install from $2
