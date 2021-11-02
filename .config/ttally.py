@@ -1,3 +1,7 @@
+# This defines some models for things I want to log often
+# which then generate into TUIs using:
+# https://github.com/seanbreckenridge/ttally
+
 from datetime import datetime
 from typing import NamedTuple
 from functools import lru_cache
