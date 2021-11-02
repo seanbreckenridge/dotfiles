@@ -33,7 +33,6 @@ alias pi='ssh pi@$(${REPOS}/raspi-backup/findpi)'
 alias raspi-backup='${REPOS}/raspi-backup/backup -d'
 
 # https://github.com/seanbreckenridge/albums
-alias albums='openurl "https://sean.fish/s/albums"'
 alias favorite-albums='nextalbums favorites > /tmp/favorites.csv && sc-im /tmp/favorites.csv'
 alias 'discogs-update=nextalbums discogs-update'
 
