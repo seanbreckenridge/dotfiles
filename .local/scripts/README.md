@@ -3,3 +3,4 @@
 - linux - scripts meant to be used on linux
 - cross-platform - scripts that check `$ON_OS`/`uname` to provide cross platform functionality (to interact with the clipboard, or send notifications)
 - supervisor - runs background processes using [supervisor](https://github.com/Supervisor/supervisor), on mac and linux
+- sreminders - scripts to remind me to do something, see the description at the top of [sreminders](generic/sreminders)

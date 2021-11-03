@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -o pipefail
+
 declare LOGCOUNT
 LOGCOUNT="$(hpi query --recent 1w my.body.weight | jq length)" || notify "hpi query failed"
 
