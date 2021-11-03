@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+case "${BLOCK_BUTTON}" in
+1)
+	notify "$(sreminders print)"
+	;;
+esac
+
+sreminders count

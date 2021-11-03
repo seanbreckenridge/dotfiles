@@ -766,4 +766,4 @@ exec dragon-drag-and-drop -x "$(clippaste)"
 '''
 
 [albums]
-command='openurl "https://sean.fish/s/albums"'
+command = 'openurl "https://sean.fish/s/albums"'

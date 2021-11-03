@@ -1,0 +1,71 @@
+#!/usr/bin/env bash
+# 'sourced reminders'
+#
+# Instead of reminding me every 'n' duration to do something, this
+# uses local data to check if I've done it within that duration
+#
+# This works by calling a bunch of other scripts which return
+# a zero exit code if I've done the thing within the expected
+# duration, else exits with exit code '2'
+#
+# number of scripts which have expired gets displayed in my menu bar,
+# and if I click it it sends a notification with the script name,
+# which lets me know what I have left to do
+#
+# this makes these reminders less obstrusive since I don't have to
+# feel like I have to do it when some notify-send is sent, but it still
+# reminds me to do things since the number sits there while I haven't
+#
+# first argument should be 'count' or 'print'
+# any additional arguments are assumed to be additional sreminder
+# directories which include scripts
+
+DEFAULT_SREMINDER_DIR="${HOME}/.local/scripts/sreminders"
+declare -a DIRS
+DIRS=()
+
+find_execs() {
+	for d in "${DIRS[@]}"; do
+		find "${d}" -type f -executable -print0
+	done
+}
+
+main() {
+	local CMD
+	local -a FAILED
+	FAILED=()
+	if [[ -d "${DEFAULT_SREMINDER_DIR}" ]]; then
+		DIRS+=("${DEFAULT_SREMINDER_DIR}")
+	fi
+	case "$1" in
+	count | print)
+		CMD="$1"
+		;;
+	*)
+		echo "Expected first arg to be 'print' or 'count'" >&2
+		exit 1
+		;;
+	esac
+	shift
+	for arg in "$@"; do
+		DIRS+=("${arg}")
+	done
+	while read -r -d $'\0' script; do
+		"${script}"
+		if (($? == 2)); then
+			FAILED+=("$(basename "${script}")")
+		fi
+	done < <(find_execs)
+	case "${CMD}" in
+	print)
+		for f in "${FAILED[@]}"; do
+			echo "${f}"
+		done
+		;;
+	count)
+		echo "${#FAILED[@]}"
+		;;
+	esac
+}
+
+main "$@"

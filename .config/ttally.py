@@ -29,4 +29,5 @@ class Food(NamedTuple):
     @staticmethod
     def attr_validators() -> dict:
         from seanb.ttally_types import prompt_float_default
+
         return {"quantity": lambda: prompt_float_default("quantity")}

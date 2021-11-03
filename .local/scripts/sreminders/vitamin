@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+set -o pipefail
+
+declare LOGCOUNT
+LOGCOUNT="$(hpi query --recent 23h my.body.food -s | jq 'select(.food == "daily multivitamin")' | jq -s length)" || notify "hpi query failed"
+
+[[ "${LOGCOUNT}" == '0' ]] && exit 2
+exit 0

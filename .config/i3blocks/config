@@ -27,6 +27,12 @@ command=b-mail
 interval=60
 signal=8
 
+[sreminders]
+command=b-sreminders
+interval=200
+label=📗
+signal=10
+
 [todo]
 command=b-todo
 interval=once

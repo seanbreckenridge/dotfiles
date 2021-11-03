@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+declare LOGCOUNT
+LOGCOUNT="$(hpi query --recent 1w my.body.weight | jq length)" || notify "hpi query failed"
+
+# if I haven't logged my weight in the last week, remind me to
+[[ "${LOGCOUNT}" == '0' ]] && exit 2
+exit 0
