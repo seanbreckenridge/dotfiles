@@ -7,6 +7,6 @@ echo "${HOME}/.cache/rss-unread" | entr -n i3blocks-refresh rss &
 echo "${HOME}/.cache/guestbook-comments" | entr -n i3blocks-refresh comments &
 find "${HOME}/data/ttally" -name 'food*.json' | entr -n i3blocks-refresh calories &
 find "${HOME}/data/ttally" -name 'food*.json' | entr -n i3blocks-refresh water &
-find "${HOME}/data/ttally" | entr -n i3blocks-refresh sreminders &
+find "${HOME}/data/ttally" -type f | entr -n i3blocks-refresh sreminders &
 
 sleep 1d
