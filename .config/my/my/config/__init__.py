@@ -14,6 +14,8 @@ from pathlib import Path
 from my.core.common import PathIsh, Paths
 
 
+# e.g., converts to ~/Repos/name
+# ~/Repos/ is where I store a lot of my git repositories
 def repo(name: str) -> str:
     return path.join(environ["REPOS"], name)
 
