@@ -16,7 +16,6 @@
 # feel like I have to do it when some notify-send is sent, but it still
 # reminds me to do things since the number sits there while I haven't
 #
-# first argument should be 'count' or 'print'
 # any additional arguments are assumed to be additional sreminder
 # directories which include scripts
 
@@ -37,16 +36,6 @@ main() {
 	if [[ -d "${DEFAULT_SREMINDER_DIR}" ]]; then
 		DIRS+=("${DEFAULT_SREMINDER_DIR}")
 	fi
-	case "$1" in
-	count | print)
-		CMD="$1"
-		;;
-	*)
-		echo "Expected first arg to be 'print' or 'count'" >&2
-		exit 1
-		;;
-	esac
-	shift
 	for arg in "$@"; do
 		DIRS+=("${arg}")
 	done
@@ -56,16 +45,9 @@ main() {
 			FAILED+=("$(basename "${script}")")
 		fi
 	done < <(find_execs)
-	case "${CMD}" in
-	print)
-		for f in "${FAILED[@]}"; do
-			echo "${f}"
-		done
-		;;
-	count)
-		echo "${#FAILED[@]}"
-		;;
-	esac
+	for f in "${FAILED[@]}"; do
+		echo "${f}"
+	done
 }
 
 main "$@"

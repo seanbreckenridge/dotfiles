@@ -2,8 +2,8 @@
 
 case "${BLOCK_BUTTON}" in
 1)
-	notify "$(sreminders print)"
+	notify "$(sreminders)"
 	;;
 esac
 
-sreminders count
+sreminders count | wc -l
