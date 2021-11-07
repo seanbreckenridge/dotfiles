@@ -29,7 +29,7 @@ signal=8
 
 [sreminders]
 command=b-sreminders
-interval=200
+interval=300
 label=📗
 signal=10
 
