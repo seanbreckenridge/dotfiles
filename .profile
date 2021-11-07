@@ -58,6 +58,7 @@ export ON_OS
 
 # common path modifications
 PATH="\
+${REPOS}/HPI/scripts/:\
 ${HOME}/.local/share/shortcuts:\
 ${HOME}/.local/bin:\
 ${HOME}/.local/share/npm-packages/bin:\

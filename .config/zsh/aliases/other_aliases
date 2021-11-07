@@ -91,9 +91,6 @@ budget-summary() {
 	fi
 }
 
-# https://github.com/seanbreckenridge/HPI
-alias 'history_fzf="$REPOS/HPI/scripts/history_fzf"'
-
 # https://github.com/seanbreckenridge/ttally
 TTALLY_ALIASES="${HOME}/.cache/ttally_aliases"
 if [[ ! -e "${TTALLY_ALIASES}" ]]; then
