@@ -54,7 +54,7 @@ class core:
         "my.stackexchange",
         "my.rtm",
         "my.media",
-        "my.google",
+        "my.google\.takeout",  # ignore karlicoss google module
         "my.orgmode",
         "my.jawbone",
         "my.twitter",
