@@ -5,6 +5,7 @@
 # puts the path on my clipboard
 
 import os
+import sys
 import tempfile
 from urllib.parse import urlparse
 
@@ -19,7 +20,10 @@ def url_filename(url: str) -> str:
 
 
 def main() -> None:
-    url = pyperclip.paste().strip()
+    if len(sys.argv) > 1:
+        url = sys.argv[1].strip()
+    else:
+        url = pyperclip.paste().strip()
     assert url, "No content on your clipboard!"
 
     # probably ran twice and the URL is already downloaded?

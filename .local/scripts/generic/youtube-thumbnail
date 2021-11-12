@@ -5,5 +5,6 @@ IMAGE_URL="$(curl -s "${YOUTUBE_URL}" | pup 'link[itemprop="thumbnailUrl"] attr{
 	printf "Couldn't download %s\n" "${YOUTUBE_URL}"
 	exit 1
 }
+
 # https://sean.fish/d/urlpicpreview?dark
-urlpicpreview "${IMAGE_URL}"
+exec urlpicpreview "${IMAGE_URL}"

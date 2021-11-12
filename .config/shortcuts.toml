@@ -431,7 +431,7 @@ command='dragon-drag-and-drop -x "$(lastpic)"'
 [urlpicpreview]
 command='''
 # preview a picture from a URL
-img-download || exit $?
+img-download "$@" || exit $?
 rifle "$(clippaste)"
 '''
 
