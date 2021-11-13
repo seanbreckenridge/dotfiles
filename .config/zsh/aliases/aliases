@@ -40,6 +40,11 @@ ycp() {
 	fi
 }
 
+# so that when copy/pasting commands '$' doesn't cause a command to fail
+function \$ () {
+	"$@"
+}
+
 # editor aliases
 alias e='editor'
 alias ee='editor -e'  # edit with emacs
