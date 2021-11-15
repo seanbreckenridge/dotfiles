@@ -41,7 +41,7 @@ ycp() {
 }
 
 # so that when copy/pasting commands '$' doesn't cause a command to fail
-function \$ () {
+function \$() {
 	"$@"
 }
 
@@ -64,7 +64,13 @@ alias halt='sudo systemctl halt'
 alias shutdown='poweroff'
 alias sctl='super --ctl'
 alias slogs='super --logs'
-alias run_jobs='~/.local/scripts/supervisor/run_jobs'
+run-jobs() {
+	"${HOME}/.local/scripts/supervisor/run_jobs" "$@"
+}
+run-jobs-info() {
+	run-jobs -o
+	EVRY_JSON=1 run-jobs -o | grep -vE '^[[:digit:]]+:' | jq -r '.[] | select((.type == "tag_name") or .type == "till_next_pretty") | .body' | paste -d " " - - | sed -e 's/ / - /'
+}
 alias du='du -hL'
 alias df='df -h'
 alias history='history 0'
