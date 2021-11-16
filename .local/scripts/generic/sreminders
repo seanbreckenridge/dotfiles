@@ -25,7 +25,7 @@ DIRS=()
 
 find_execs() {
 	for d in "${DIRS[@]}"; do
-		find "${d}" -type f -executable -print0
+		find -L "${d}" -type f -executable -print0
 	done
 }
 
