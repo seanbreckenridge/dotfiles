@@ -5,13 +5,13 @@
 """
 Personal opinionated ID3 stuff
 
-- Attach/prompt for Album Art to be added/downloaded if not present
 - Make sure everything has a Artist/Album
-- Resolve broken/similar artists names for the same artist (different spellings/translations)
-- Add Track Numbers
+- Attach/prompt for Album Art to be added/downloaded if not present
 
 In the future... ?
 
+- Resolve broken/similar artists names for the same artist (different spellings/translations)
+- Add Track Numbers
 - Perhaps make this Plex Compliant with some other tool?
 - Add Year
 - Add Genre
@@ -27,12 +27,15 @@ or combination of metadata could be used to create a unique hash
 
 import os
 import warnings
-from typing import Sequence, NamedTuple, Iterator, List, Optional
+from typing import Sequence, NamedTuple, Iterator, List, Optional, Dict
+from functools import partial
 from pathlib import Path
+from pprint import pprint
 
 import click
 from mutagen.mp3 import MP3
-from mutagen.id3 import ID3, APIC
+from mutagen.id3 import ID3, APIC, ID3NoHeaderError
+from mutagen.easyid3 import EasyID3
 
 # either an album, a disc of an album or a single
 # i.e. some flat collection of mp3 files
@@ -69,18 +72,181 @@ class Collection(NamedTuple):
             yield cls(root=rootdir.absolute(), paths=paths)
 
 
-def attach_album_art(mp3: MP3) -> None:
+eprint = partial(click.echo, err=True)
+
+
+def _ui_getchar_pick(choices: Sequence[str], prompt: str = "Select from: ") -> int:
+    """
+    Basic menu allowing the user to select one of the choices
+    returns the index the user chose
+    """
+    assert len(choices) > 0, "Didnt receive any choices to prompt!"
+    eprint(prompt + "\n")
+
+    # prompts like 1,2,3,4,5,6,7,8,9,a,b,c,d,e,f...
+    chr_offset = ord("a") - 10
+
+    # dict from key user can press -> resulting index
+    result_map = {}
+    for i, opt in enumerate(choices, 1):
+        char: str = str(i) if i < 10 else chr(i + chr_offset)
+        result_map[char] = i - 1
+        eprint(f"\t{char}. {opt}")
+
+    eprint("")
+    while True:
+        ch = click.getchar()
+        if ch not in result_map:
+            eprint(f"{ch} not in {list(result_map.keys())}")
+            continue
+        return result_map[ch]
+
+
+OTHER = "Other"
+
+
+def _pick_and_or_edit(choices: List[str], prompt: str = "Select from:") -> str:
+    """
+    Pick from the choices (parts of the Path) to start off with
+    then possibly edit the text in your editor to get it to exactly what you want
+    """
+
+    ch = list(choices)
+    ch.append(OTHER)
+
+    chosen = ch[_ui_getchar_pick(ch, prompt=prompt)]
+    if chosen == OTHER:
+        chosen = ""
+
+    if chosen == "" or click.confirm(f"Edit {chosen}?", default=False):
+        res = click.edit(chosen)
+        if res is not None:  # None if no changes made to text
+            chosen = res.strip()
+
+    return chosen
+
+
+# whether to prompt individually each time
+BASIC_TAGS: Dict[str, bool] = {
+    "title": True,
+    "artist": False,
+    "album": False,
+    "albumartist": False,
+}
+
+
+def safe_id3(f: Path) -> EasyID3:
+    try:
+        return EasyID3(f)
+    except ID3NoHeaderError:
+        # create a empty ID3 frame if nothing exists
+        new_data = ID3()
+        new_data.save(f)
+        return EasyID3(f)
+
+
+# if key is None, checks all BASIC_TAGS. else, checks the one you specify
+def _has_any_missing_basic_id3(
+    collection: Collection, key: Optional[str] = None
+) -> bool:
+    if key is None:
+        for tag in BASIC_TAGS:
+            if _has_any_missing_basic_id3(collection, key=tag):
+                return True
+    else:
+        for f in collection.paths:
+            id3f = safe_id3(f)
+            if key not in id3f:
+                click.echo(f"{f} missing {key}")
+                return True
+    return False
+
+
+def _extract_current_id3_data(mp3: Path) -> Sequence[str]:
+    tags: List[str] = []
+    e = safe_id3(mp3)
+    for tag in BASIC_TAGS:
+        if tag in e:
+            for data in e[tag]:
+                tags.append(data)
+    # Add Song Name - Title to the list of choices
+    # so creating 'singles' Albums is easy
+    if "title" in e and e["title"]:
+        title = e["title"][0]
+        tags.append(f"{title} - Single")
+    return tuple(tags)
+
+
+def attach_basic_id3_metadata(
+    base_music_dir: Path, collection: Collection, force: bool = False
+) -> None:
+    """
+    Track Name
+    Artist
+    Album
+    AlbumArtist
+
+    The force flag can be given to force a prompt, even if the tags already
+    exist. Can be thought of as overwriting the data
+    """
+    parts_len = len(base_music_dir.parts)
+    choices = []
+    for prt in collection.root.parts[len(base_music_dir.parts) :]:
+        choices.append(prt)
+    pprint(collection)
+    click.secho(collection.root, fg="blue")
+    click.secho(f"{len(collection.paths)} songs", fg="blue")
+    for tag, force_individual_prompt in BASIC_TAGS.items():
+        if force or _has_any_missing_basic_id3(collection, tag):
+            if force_individual_prompt or click.confirm(
+                f"Set Custom values for {click.style(tag, fg='red')} for each file?"
+            ):
+                for f in collection.paths:
+                    cc = list(choices)  #  choices which includes this filename
+                    cc.extend(_extract_current_id3_data(f))
+                    cc.append(f.stem)
+                    # dict-like object which supports writing to tags using property-like attrs
+                    id3f = safe_id3(f)
+                    if tag not in id3f or force:
+                        click.echo(f"Editing {click.style(tag, fg='red')} for {f}")
+                        new_data = [
+                            _pick_and_or_edit(
+                                cc, f"Pick closest to {click.style(tag, fg='red')}"
+                            )
+                        ]
+                        # overwrite if forcing
+                        id3f[tag] = new_data
+                        click.echo(f"Adding {tag}={new_data} for {f}...")
+                        id3f.save()
+            else:
+                new_data = [
+                    _pick_and_or_edit(
+                        choices, f"Pick closest to {click.style(tag, fg='red')}"
+                    )
+                ]
+                for f in collection.paths:
+                    id3f = safe_id3(f)
+                    if tag not in id3f or force:
+                        click.echo(f"Adding {tag}={new_data} for {f}...")
+                        id3f[tag] = new_data
+                        id3f.save()
+
+
+def attach_album_art(collection: Collection) -> None:
     """
     Check if the mp3 already has album art.
     If it doesn't, try:
         - local dir/recursively check any possible 'Images/Artwork'-like dirs
         - accept a link or filepath to download/attach, as cover.[jpg/png]
 
-    Instead of trying to link, should compress to one of
-    (1200x_, 700x_, 600x_, 500x_) and then embed it using an APIC frame
-    since thats most likely to be supported by media players
+    Copy/Link that to 'cover.png'/'cover.jpg' if it doesn't already exist
+
+    convert a copy to 500x_ and save that as .scover.jpg, and then
+    embed it using an APIC frame since thats most likely to be supported by media players
+
+    So we keep the high quality for mpv, and then lower quality for all
+    other possible media players
     """
-    pass
 
 
 def default_music_dir() -> Path:
@@ -95,7 +261,7 @@ def default_music_dir() -> Path:
                 continue
             return p
     click.secho(
-        "No path passed or found in the environment -- can pass your 'root music dir' as the first argument to this script or set the XDG_MUSIC_DIR environment variable",
+        "No music dir found in the environment -- set the XDG_MUSIC_DIR environment variable",
         err=True,
         fg="red",
     )
@@ -103,15 +269,36 @@ def default_music_dir() -> Path:
 
 
 @click.command(name=__name__)
+@click.option(
+    "--print",
+    "_print",
+    is_flag=True,
+    default=False,
+    help="Just print the computed collections",
+)
 @click.argument("PATH", type=click.Path(exists=True), required=False)
-def main(path: Optional[str]):
-    music_dir: Path
-    if path is not None:
-        music_dir = Path(path)
+def main(_print: bool, path: Optional[str]) -> None:
+    force: bool = path is not None
+    chosen_dir: Path
+    if force:
+        assert path is not None
+        chosen_dir = Path(path)
     else:
-        music_dir = default_music_dir()
-    collections = list(Collection.iter_ext_collection(music_dir.absolute(), ext="mp3"))
-    print(collections)
+        chosen_dir = default_music_dir()
+    collections = list(
+        sorted(
+            Collection.iter_ext_collection(chosen_dir.absolute(), ext="mp3"),
+            key=lambda c: str(c.root).casefold(),
+        )
+    )
+    if _print:
+        pprint(collections)
+    else:
+        # 'main' loop if no other command
+        for c in collections:
+            attach_basic_id3_metadata(
+                base_music_dir=chosen_dir, collection=c, force=force
+            )
 
 
 if __name__ == "__main__":
