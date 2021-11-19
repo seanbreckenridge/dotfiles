@@ -52,6 +52,8 @@ directory_aliases
 
 # my secret files
 .config/my/**/*secret*
+# my seanb secrets
+.config/seanb/**/*secret*
 
 # ignore symlinked tmux
 /.tmux.conf
@@ -114,6 +116,7 @@ __pycache__
 /.gem
 /.cache
 /.oracle_jre_usage/
+/.config/mpv/watch_later/
 /.nvm
 /.keras
 /.mozilla
