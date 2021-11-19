@@ -17,7 +17,7 @@ if [ "$1" = "-f" ] || [ "$1" = "--full" ]; then
 	camera_shutter
 else
 	# selection
-	maim -s | tee "${OUTPUT_FILENAME}" | xclip -t image/png -selection clipboard
+	maim --hidecursor -s | tee "${OUTPUT_FILENAME}" | xclip -t image/png -selection clipboard
 	# if screenshot was cancelled, an empty png file
 	# is still created; delete it
 	if [ "$(stat --printf="%s" "${OUTPUT_FILENAME}")" = "0" ]; then
