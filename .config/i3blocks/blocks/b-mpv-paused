@@ -3,8 +3,13 @@
 # waiting in the background
 
 case "$BLOCK_BUTTON" in
-3)
+1)
+	# left click: send a location of currently playing media
 	notify-send "$(mpv-currently-playing --all)"
+	;;
+3)
+	# cycle play/pause on current mpv instance
+	mpv-play-pause >/dev/null 2>&1
 	;;
 esac
 
