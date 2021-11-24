@@ -67,9 +67,12 @@ alias slogs='super --logs'
 run-jobs() {
 	"${HOME}/.local/scripts/supervisor/run_jobs" "$@"
 }
+describe-evry-json() {
+	jq -r '.[] | select((.type == "tag_name") or .type == "till_next_pretty") | .body' | paste -d " " - - | sed -e 's/ / - /'
+}
 run-jobs-info() {
 	run-jobs -qo
-	EVRY_JSON=1 run-jobs -qo | jq -r '.[] | select((.type == "tag_name") or .type == "till_next_pretty") | .body' | paste -d " " - - | sed -e 's/ / - /'
+	EVRY_JSON=1 run-jobs -qo | describe-evry-json
 }
 alias du='du -hL'
 alias df='df -h'
