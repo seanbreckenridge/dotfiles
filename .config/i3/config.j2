@@ -242,10 +242,7 @@ bar {
 bindsym $mod+$alt+r {{ ex }} i3blocks-refresh-all
 
 # launcher binding
-# also parse the i3 config file and extract the bindsyms
-# to send me a notification
 bindsym $mod+d mode "launcher"
-bindsym $mod+Shift+d mode "launcher"; {{ ex }} ttt i3-notify-launcher
 
 mode "launcher" {
     {% for key in launcher %}

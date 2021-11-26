@@ -260,10 +260,7 @@ bar {
 bindsym $mod+$alt+r exec --no-startup-id i3blocks-refresh-all
 
 # launcher binding
-# also parse the i3 config file and extract the bindsyms
-# to send me a notification
 bindsym $mod+d mode "launcher"
-bindsym $mod+Shift+d mode "launcher"; exec --no-startup-id ttt i3-notify-launcher
 
 mode "launcher" {
     
