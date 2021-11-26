@@ -276,12 +276,17 @@ def default_music_dir() -> Path:
     default=False,
     help="Just print the computed collections",
 )
+@click.option(
+    "--force/--no-force",
+    "force",
+    is_flag=True,
+    default=False,
+    help="Force prompts for every attribute",
+)
 @click.argument("PATH", type=click.Path(exists=True), required=False)
-def main(_print: bool, path: Optional[str]) -> None:
-    force: bool = path is not None
+def main(_print: bool, path: Optional[str], force: bool) -> None:
     chosen_dir: Path
-    if force:
-        assert path is not None
+    if path is not None:
         chosen_dir = Path(path)
     else:
         chosen_dir = default_music_dir()
