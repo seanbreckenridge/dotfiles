@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+exec recent_history.py |
+	fzf +m --tac |
+	head -n 1 |
+	jq -r .url |
+	openurl
