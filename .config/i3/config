@@ -289,7 +289,8 @@ mode "launcher" {
     bindsym 7 exec --no-startup-id stream-corner-720; mode "default"
     bindsym Shift+f exec --no-startup-id stream-from-firefox; mode "default"
     bindsym c exec --no-startup-id ttt clrs; mode "default"
-    bindsym Shift+C exec --no-startup-id ttt launch cz; mode "default"
+    bindsym $mod+c exec --no-startup-id ttt launch cz; mode "default"
+    bindsym Shift+c exec --no-startup-id ttt launch czd; mode "default"
     bindsym Escape mode "default"
     bindsym Return mode "default"
 }
