@@ -39,10 +39,10 @@ interval=once
 label=📝
 signal=2
 
-#[calendar]
-#command=b-calendar
-#interval=300
-#label=📅
+[calendar]
+command=b-calendar
+interval=300
+label=📅
 
 [calories]
 command=b-calories
