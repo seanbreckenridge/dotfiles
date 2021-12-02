@@ -257,6 +257,11 @@ class old_forums:
     export_path: Paths = data("old_forums")
 
 
+class project_euler:
+    # path[s]/glob to the .txt export files
+    export_path: Paths = data("project_euler")
+
+
 # parses the GDPR export
 class skype:
     export_path: Paths = data("skype.json")
