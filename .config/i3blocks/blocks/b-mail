@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 # https://github.com/LukeSmithxyz/voidrice/blob/master/.local/bin/statusbar/sb-mailbox
 
 # background job checks if mailsync hasnt run in a
@@ -6,20 +6,20 @@
 MAILSYNC_WARN_FILE="${HOME}/.cache/mailsync_warn"
 
 # if I click with any button, remove the warn file
-[ -n "$BLOCK_BUTTON" ] && rm -f "${MAILSYNC_WARN_FILE}"
+[[ -n "$BLOCK_BUTTON" ]] && rm -f "${MAILSYNC_WARN_FILE}"
 
 case $BLOCK_BUTTON in
 3) setsid launch neomutt ;;
 esac
 
-if [ -f "${MAILSYNC_WARN_FILE}" ]; then
+if [[ -f "${MAILSYNC_WARN_FILE}" ]]; then
 	echo '<span color="#ff0000">RUN MAILSYNC!</span>'
 	exit 0
 fi
 
 unread="$(find "${XDG_DATA_HOME:-$HOME/.local/share}"/mail/*/[Ii][Nn][Bb][Oo][Xx]/new/ -type f | wc -l 2>/dev/null)"
 
-if [ "${unread}" = "0" ]; then
+if [[ "${unread}" == "0" ]]; then
 	echo "📪0"
 else
 	printf '📬%s\n' "$(colorize_number ${unread})"
