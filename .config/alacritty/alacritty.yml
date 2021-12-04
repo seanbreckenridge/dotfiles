@@ -23,15 +23,17 @@ env:
   # available, otherwise `xterm-256color` is used.
   TERM: alacritty
 
-#window:
-# Window dimensions (changes require restart)
-#
-# Number of lines/columns (not pixels) in the terminal. The number of columns
-# must be at least `2`, while using a value of `0` for columns and lines will
-# fall back to the window manager's recommended size.
-#dimensions:
-#  columns: 0
-#  lines: 0
+window:
+  # Opacity of the window, from [0.0, 1.0]
+  opactity: 1.0
+  # Window dimensions (changes require restart)
+  #
+  # Number of lines/columns (not pixels) in the terminal. The number of columns
+  # must be at least `2`, while using a value of `0` for columns and lines will
+  # fall back to the window manager's recommended size.
+  #dimensions:
+  #  columns: 0
+  #  lines: 0
 
 # Window position (changes require restart)
 #
@@ -246,12 +248,6 @@ colors:
   #  background: None
 
   indexed_colors: []
-
-# Background opacity
-#
-# Window opacity as a floating point number from `0.0` to `1.0`.
-# The value `0.0` is completely transparent and `1.0` is opaque.
-background_opacity: 1.0
 
 # Bell
 #
