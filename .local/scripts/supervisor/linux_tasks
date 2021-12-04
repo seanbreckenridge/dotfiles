@@ -2,11 +2,21 @@
 set -eux
 set -o pipefail
 
-echo "${HOME}/data/todo/todo.txt" | entr -n i3blocks-refresh todo &
-echo "${HOME}/.cache/rss-unread" | entr -n i3blocks-refresh rss &
-echo "${HOME}/.cache/guestbook-comments" | entr -n i3blocks-refresh comments &
-find "${HOME}/data/ttally" -name 'food*.json' | entr -n i3blocks-refresh calories &
-find "${HOME}/data/ttally" -name 'food*.json' | entr -n i3blocks-refresh water &
-find "${HOME}/data/ttally" -type f | entr -n i3blocks-refresh sreminders &
+# when this process dies, kill the hanging entr processes
+kill_hanging_background_tasks() {
+	ps -ef | grep -P 'i3blocks-refresh \S+ LINUX_TASK' | awk '{print $2}' | xargs kill
+}
 
-sleep 1d
+trap 'kill_hanging_background_tasks' EXIT
+
+# 'LINUX_TASK' isnt really an argument to i3blocks-refresh, it ignores extra arguments
+# its just so that this process can be grepped against when restarting
+echo "${TODO_DIR}/todo.txt" | entr -n i3blocks-refresh todo LINUX_TASK &
+echo "${HOME}/.cache/rss-unread" | entr -n i3blocks-refresh rss LINUX_TASK &
+echo "${HOME}/.cache/guestbook-comments" | entr -n i3blocks-refresh comments LINUX_TASK &
+find "${TTALLY_DATA_DIR}" -name 'food*.json' | entr -n i3blocks-refresh calories LINUX_TASK &
+find "${TTALLY_DATA_DIR}" -name 'food*.json' | entr -n i3blocks-refresh water LINUX_TASK &
+find "${TTALLY_DATA_DIR}" -type f | entr -n i3blocks-refresh sreminders LINUX_TASK &
+
+# restarts once every hour, to pick up any new files found in TTALLY_DATA_DIR
+sleep 1h
