@@ -85,7 +85,7 @@ SCREENSHOTS="${XDG_PICTURES_DIR}/Screenshots"
 # overwrite some envvars with OS-specific data
 case "$ON_OS" in
 linux)
-	PATH="${HOME}/.gem/ruby/2.7.0/bin:${HOME}/.local/scripts/linux:${PATH}" # add linux scripts to $PATH
+	PATH="${HOME}/.local/share/gem/ruby/3.0.0/bin:${HOME}/.local/scripts/linux:${PATH}" # add linux scripts to $PATH
 	export ARCHFLAGS="-arch x86_64"                                         # Compilation flags
 	;;
 mac)
