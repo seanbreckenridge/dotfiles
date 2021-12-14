@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+evry 1 day -create_playlists && {
+	cd "$PLAINTEXT_PLAYLIST_MUSIC_DIR" && fd . "$PLAINTEXT_PLAYLIST_PLAYLISTS" -x sh -c 'plainplay m3u {/.} > {/.}.m3u8'
+}
