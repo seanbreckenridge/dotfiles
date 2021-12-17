@@ -234,7 +234,7 @@ for_window [instance="mpv_stream_media"] {{ ex }} i3-picture-in-picture
 bar {
     position top
     status_command i3blocks
-    tray_output none
+    tray_output primary
 }
 
 # send all signals listed in the i3blocks config file to i3blocks
@@ -267,6 +267,8 @@ bindsym $mod+Shift+Return {{ ex }} ttt firefox-developer-edition --new-tab;
 # move chromedriver (webscraping) instances to 9
 assign [class="Chromium-browser"] 9
 
+# start nm-applet
+{{ ex }} nm-applet
 
 # background processes unrelated to i3/window manager
 

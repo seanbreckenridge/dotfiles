@@ -462,7 +462,7 @@ command="echo -n $'\033[48;2;'$1';'$2';'$3'm'"
 command='''
 EXECUTABLE="${1:?No Executable provided}"
 LOCATION="$(which "${EXECUTABLE}")" || exit $?
-exec nvim "${LOCATION}"
+exec editor "${LOCATION}"
 '''
 
 [grep-dotfiles]

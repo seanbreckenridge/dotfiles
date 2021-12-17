@@ -65,7 +65,7 @@ alias gds='git diff --staged'
 alias gdt='git diff-tree --no-commit-id --name-only -r'
 alias gdw='git diff --word-diff'
 gdh() {
-	git diff HEAD~"${1:-1}"
+	git diff HEAD~"${1:-1}" HEAD
 }
 
 alias gf='git fetch'
