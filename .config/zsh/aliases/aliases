@@ -64,9 +64,7 @@ alias halt='sudo systemctl halt'
 alias shutdown='poweroff'
 alias sctl='super --ctl'
 alias slogs='super --logs'
-run-jobs() {
-	"${HOME}/.local/scripts/supervisor/run_jobs" "$@"
-}
+alias run-jobs='${HOME}/.local/scripts/supervisor/run_jobs'
 describe-evry-json() {
 	jq -r '.[] | select((.type == "tag_name") or .type == "till_next_pretty") | .body' | paste -d " " - - | sed -e 's/ / - /'
 }
