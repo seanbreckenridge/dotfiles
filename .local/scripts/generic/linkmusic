@@ -132,7 +132,7 @@ def hardlink_sync_dirs(files: list[PlaylistPath], to_dir: Path, delete: bool) ->
         if not target.exists():
             target.parent.mkdir(parents=True, exist_ok=True)
             logger.info(f"Linking to '{target}'")
-            p.in_musicdir().link_to(target)
+            p.in_musicdir().hardlink_to(target)
         # remove from set, so at the end we can check
         # the set. If theres anything left in it,
         # that wasn't included in the 'files' list,
