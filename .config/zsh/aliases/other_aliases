@@ -101,10 +101,11 @@ if [[ ! -e "${TTALLY_ALIASES}" ]]; then
 fi
 [[ -e "${TTALLY_ALIASES}" ]] && source "${TTALLY_ALIASES}"
 alias 'czd=cz -d'
+alias 'czl=while cz; do; done'
 alias 'ca=food-now'
 b-() {
-	printf "cals: %d\n" "$(b-calories)"
-	printf "water: %d\n" "$(b-water)"
+	printf "cals: %d\n" "$(b-calories "$@")"
+	printf "water: %d\n" "$(b-water "$@")"
 }
 
 # https://github.com/seanbreckenridge/tts
@@ -124,8 +125,7 @@ job-reset() {
 	local EVRY_DATA_DIR CHOSEN_TAG
 	EVRY_DATA_DIR="$(dirname "$(evry location -tag)")"
 	cd "${EVRY_DATA_DIR}"
-	CHOSEN_TAG="$(fzf)" || return 1
-	rm -v "${CHOSEN_TAG}"
+	CHOSEN_TAG="$(fzf)" && rm -v "${CHOSEN_TAG}"
 	cd -
 }
 
