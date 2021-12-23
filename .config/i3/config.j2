@@ -243,6 +243,7 @@ bindsym $mod+$alt+r {{ ex }} i3blocks-refresh-all
 
 # launcher binding
 bindsym $mod+d mode "launcher"
+bindsym $mod+Shift+d {{ ex }} notify-send -t 15000 "$(i3-launcher)"; mode "launcher"
 
 mode "launcher" {
     {% for key in launcher %}
