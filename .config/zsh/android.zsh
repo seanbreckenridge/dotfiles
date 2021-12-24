@@ -11,12 +11,12 @@ evry 6 hours -run_android_jobs && "${HOME}/.local/scripts/supervisor/run_jobs" -
 # reset any periodic syncs and re-run bgproc jobs
 syncfiles() {
 	for tag in \
-		create_playlists \
 		backup_images; do
-		rm -vf "$(evry location -"$tag")"
+		rm -f "$(evry location -"$tag")"
 	done
 	run-jobs -o
 }
+alias sf=syncfiles
 
 # for building rust/ffi python packages
 export CARGO_BUILD_TARGET=aarch64-linux-android
