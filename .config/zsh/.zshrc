@@ -60,6 +60,8 @@ mac)
 android)
 	source_if_exists "${HOME}/../usr/share/fzf/key-bindings.zsh"
 	source_if_exists "${HOME}/../usr/share/fzf/completion.zsh"
+
+	source_if_exists "${HOME}/.local/share/zsh_plugins/zsh-autosuggestions/zsh-autosuggestions.zsh"
 	source "${ZDOTDIR}/android.zsh"
 	;;
 windows)

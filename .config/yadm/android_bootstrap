@@ -84,3 +84,11 @@ havecmd chomp || go install github.com/seanbreckenridge/chomp@latest
 INSTALLED_PYTHON_PACKAGES="$(python3 -m pip list --format=freeze | cut -d'=' -f1)"
 grep -xqi 'numpy' <<<"${INSTALLED_PYTHON_PACKAGES}" || LDFLAGS=" -lm -lcompiler_rt" pip install numpy --verbose
 grep -xqi 'cython' <<<"${INSTALLED_PYTHON_PACKAGES}" || LDFLAGS=" -lcompiler_rt" pip install cython --verbose
+
+# Install zsh plugins manually
+
+ZSH_PLUGINS="${XDG_DATA_HOME}/zsh_plugins"
+mkdir -p "$ZSH_PLUGINS"
+cd "$ZSH_PLUGINS"
+git clone 'https://github.com/zsh-users/zsh-autosuggestions'
+cd
