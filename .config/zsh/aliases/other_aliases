@@ -104,8 +104,10 @@ alias 'czd=cz -d'
 alias 'czl=while cz; do; done'
 alias 'ca=food-now'
 b-() {
-	printf "cals: %d\n" "$(b-calories "$@")"
-	printf "water: %d\n" "$(b-water "$@")"
+	echo -n "cals: "
+	b-calories "$@"
+	echo -n "water: "
+	b-water "$@"
 }
 
 # https://github.com/seanbreckenridge/tts
