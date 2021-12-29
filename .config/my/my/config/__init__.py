@@ -50,6 +50,7 @@ class core:
     tmp_dir: PathIsh = path.join(tempfile.gettempdir(), "HPI-tempdir")
     enabled_modules: Sequence[str] = []
     disabled_modules: Sequence[str] = [
+        "my.body",
         "my.polar",
         "my.stackexchange",
         "my.rtm",
@@ -136,12 +137,6 @@ class reddit:
 
     class pushshift:
         export_path: Paths = data("pushshift")
-
-
-# prompt me for actions using https://github.com/seanbreckenridge/autotui
-# interfaces created by https://github.com/seanbreckenridge/ttally
-class body:
-    datadir: PathIsh = environ["TTALLY_DATA_DIR"]
 
 
 # parses my zsh history and any backups
