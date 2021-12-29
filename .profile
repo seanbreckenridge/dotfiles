@@ -86,7 +86,7 @@ SCREENSHOTS="${XDG_PICTURES_DIR}/Screenshots"
 case "$ON_OS" in
 linux)
 	PATH="${HOME}/.local/share/gem/ruby/3.0.0/bin:${HOME}/.local/scripts/linux:${PATH}" # add linux scripts to $PATH
-	export ARCHFLAGS="-arch x86_64"                                         # Compilation flags
+	export ARCHFLAGS="-arch x86_64"                                                     # Compilation flags
 	;;
 mac)
 	SCREENSHOTS="${HOME}/Desktop" # Screenshots on Mac are saved on the Desktop
