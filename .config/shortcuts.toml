@@ -291,24 +291,6 @@ FILEPATH=${1:?Must provide image to convert}
 exec convert "$FILEPATH" "$(replace-extension "$FILEPATH" png)"
 '''
 
-[optigif]
-command='''
-# optimize gif
-OLD_GIF="${1:?provide gif to optimize as first argument}"
-NEW_GIF="$(remove-extension "${OLD_GIF}")-opt.gif"
-TMP_GIF='/tmp/optimized.gif'
-rm -rf "${TMP_GIF}"
-gifsicle --colors 256 -O3 "${OLD_GIF}" -o "${TMP_GIF}" && cp -v "${TMP_GIF}" "${NEW_GIF}" || exit $?
-# overwrite if specified
-[ -n "${OPTIGIF_OVERWRITE}" ] && du -h "${OLD_GIF}" "${NEW_GIF}" && mv -v "${NEW_GIF}" "${OLD_GIF}"
-'''
-
-[optijpg]
-command='''
-FILE="${1:?provide jpeg to optimize as first argument}"
-exec jpegtran -copy none -optimize -outfile "${FILE}" "${FILE}"
-'''
-
 [to-icon]
 command='''
 # convert an image to a 16x16 icon - to favicon size
@@ -330,47 +312,9 @@ command='''
 exec file --mime-type -Lb "$@"
 '''
 
-[dragon-sink]
-shebang="#!/usr/bin/env bash"
-command='''
-# brings up a prompt to drag files into.
-# If no flags are provided, copies any files
-# dragged into the prompt into the current directory.
-# if the --mv flag is provided, moves files instead
-declare cmd drg files
-[[ "$1" = "--mv" ]] && cmd="mv" || cmd="cp"
-drg="$(command -v dragon-drag-and-drop)" || drg="$(command -v dragon)" || {
-	echo "couldnt find the dragon-drag-and-drop or dragon command"
-	exit 1
-}
-files="$("$drg" --target --and-exit)"
-[[ -z "$files" ]] && exit 1
-while IFS= read -r f; do
-	path="${f#file://}"
-	$cmd -v "${path}" "$(pwd)/$(basename "${path}")"
-done <<<"$files"
-'''
-
 # shorthand for sending lines from vim to pastebin
 [vix]
 command='exec ix -v'
-
-[clp]
-command='''
-# accepts input from STDIN, sends text back to STDOUT
-# copies what it received to the clipboard
-# used in vim:
-# https://exobrain.sean.fish/programming/languages/shell_tools/vim/magic_wands/
-STDIN="$(cat)"
-printf '%s' "${STDIN}"
-printf '%s' "${STDIN}" | clipcopy
-if [[ "$(echo "${STDIN}" | wc -l)" == 1 ]]; then
-	exec notify "${APP:-'clp'}" "$(printf 'Copied to clipboard: %s' "${STDIN}")"
-else
-	exec notify "${APP:-'clp'}" "$(printf 'Copied %d lines to clipboard' "$(echo "${STDIN}" | wc -l)")"
-fi
-'''
-shebang="#!/usr/bin/env bash"
 
 [clp-args]
 command='''
@@ -462,7 +406,7 @@ command="echo -n $'\033[48;2;'$1';'$2';'$3'm'"
 [vic]
 command='''
 EXECUTABLE="${1:?No Executable provided}"
-LOCATION="$(which "${EXECUTABLE}")" || exit $?
+LOCATION="$(command -v "${EXECUTABLE}")" || exit $?
 exec editor "${LOCATION}"
 '''
 

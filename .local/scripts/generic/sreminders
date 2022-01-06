@@ -31,23 +31,18 @@ find_execs() {
 
 main() {
 	local CMD
-	local -a FAILED
-	FAILED=()
 	if [[ -d "${DEFAULT_SREMINDER_DIR}" ]]; then
 		DIRS+=("${DEFAULT_SREMINDER_DIR}")
 	fi
 	for arg in "$@"; do
-		DIRS+=("${arg}")
+		[[ -d "${arg}" ]] && DIRS+=("${arg}")
 	done
 	while read -r -d $'\0' script; do
 		"${script}"
 		if (($? == 2)); then
-			FAILED+=("$(basename "${script}")")
+			basename "${script}"
 		fi
 	done < <(find_execs)
-	for f in "${FAILED[@]}"; do
-		echo "${f}"
-	done
 }
 
 main "$@"
