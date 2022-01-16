@@ -33,9 +33,7 @@ Linux*)
 			# get the windows home directory, something like
 			# /mnt/c/Users/Name
 			WHOME_FILE="${HOME}/.cache/whome"
-			if [ ! -f "${WHOME_FILE}" ]; then
-				wslpath "$(wslvar USERPROFILE)" >"${WHOME_FILE}"
-			fi
+			[ -f "${WHOME_FILE}" ] || wslpath "$(wslvar USERPROFILE)" >"${WHOME_FILE}"
 			WHOME="$(cat "${WHOME_FILE}")"
 			export WHOME
 			;;
