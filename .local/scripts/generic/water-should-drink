@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# should drink 14.8 ML per pound of weight -- prints how much water I should drink each day
+
+set -e
+set -o pipefail
+
+CURRENT_WEIGHT="$(hpi query ttally.funcs.weight --order-key when --limit 1 --reverse -s | jq .pounds)"
+perl -E "say int(14.8 * ${CURRENT_WEIGHT})"
