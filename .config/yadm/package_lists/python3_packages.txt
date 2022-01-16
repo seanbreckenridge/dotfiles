@@ -35,6 +35,7 @@ pygments
 pyperclip
 pypyp
 pytest
+reorder_editable
 requests
 rifleman
 rsa
