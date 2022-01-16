@@ -51,7 +51,7 @@ label=🍍
 signal=5
 
 [water]
-command=b-water
+command=b-water-perc
 interval=600
 label=💧
 signal=6

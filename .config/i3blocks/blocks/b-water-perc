@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# how many water I've drank today, out of how much I should
+
+printf '%d/%d\n' "$(b-water)" "$(water-should-drink)"
