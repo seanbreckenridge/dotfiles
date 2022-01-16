@@ -4,6 +4,7 @@ set -o pipefail
 
 # when this process dies, kill the hanging entr processes
 kill_hanging_background_tasks() {
+	# shellcheck disable=SC2009
 	ps -ef | grep -P 'i3blocks-refresh \S+ LINUX_TASK' | awk '{print $2}' | xargs kill
 }
 

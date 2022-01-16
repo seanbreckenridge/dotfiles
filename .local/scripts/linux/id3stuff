@@ -26,15 +26,13 @@ or combination of metadata could be used to create a unique hash
 """
 
 import os
-import warnings
 from typing import Sequence, NamedTuple, Iterator, List, Optional, Dict
 from functools import partial
 from pathlib import Path
 from pprint import pprint
 
 import click
-from mutagen.mp3 import MP3
-from mutagen.id3 import ID3, APIC, ID3NoHeaderError
+from mutagen.id3 import ID3, ID3NoHeaderError
 from mutagen.easyid3 import EasyID3
 
 # either an album, a disc of an album or a single
@@ -189,7 +187,6 @@ def attach_basic_id3_metadata(
     The force flag can be given to force a prompt, even if the tags already
     exist. Can be thought of as overwriting the data
     """
-    parts_len = len(base_music_dir.parts)
     choices = []
     for prt in collection.root.parts[len(base_music_dir.parts) :]:
         choices.append(prt)

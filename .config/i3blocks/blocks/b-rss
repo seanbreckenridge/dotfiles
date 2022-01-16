@@ -20,4 +20,4 @@ case "$BLOCK_BUTTON" in
 	;;
 esac
 
-cat "${HOME}/.cache/rss-unread" | colorize_number
+colorize_number <"${HOME}/.cache/rss-unread"

@@ -395,14 +395,6 @@ FILE="$(lastpic)" || exit 1
 exec mv -v "${FILE}" "./$1"
 '''
 
-[rbg]
-shebang="#!/usr/bin/env bash"
-command="echo -n $'\033[38;2;'$1';'$2';'$3'm'"
-
-[rbgb]
-shebang="#!/usr/bin/env bash"
-command="echo -n $'\033[48;2;'$1';'$2';'$3'm'"
-
 [vic]
 command='''
 EXECUTABLE="${1:?No Executable provided}"
@@ -620,7 +612,7 @@ moby "${word}" | grep ',' | sed 's/,/\n/g' | chomp
 '''
 
 [fzfp]
-command = 'fzf --preview="${HOME}/.config/fzf_preview {} "$@""'
+command = 'fzf --preview="${HOME}/.config/fzf_preview {}" "$@"'
 
 [largechar-clipboard]
 command='''

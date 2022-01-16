@@ -7,4 +7,4 @@
 # to run again in the next minute or so, which updates the icon
 [ -n "$BLOCK_BUTTON" ] && rm -f "$(evry location -guestbook_comments)"
 
-cat "${HOME}/.cache/guestbook-comments" | colorize_number
+colorize_number <"${HOME}/.cache/guestbook-comments"

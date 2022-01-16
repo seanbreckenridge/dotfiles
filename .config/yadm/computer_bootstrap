@@ -6,7 +6,7 @@ set -u
 shared_user_dirs=("Repos" "Documents" "Downloads" "Shared" "Music" "data")
 # create default user directories
 if [[ "${ON_OS}" != "windows" ]]; then
-	defualt_user_dirs="${shared_user_dirs[@]}"
+	default_user_dirs=("${shared_user_dirs[@]}")
 	default_user_dirs+=("Pictures/Screenshots" ".local/bin" ".cache" ".credentials")
 	for d_name in "${default_user_dirs[@]}"; do
 		if [[ ! -d "${HOME}/${d_name}" ]]; then

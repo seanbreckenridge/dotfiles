@@ -22,5 +22,5 @@ unread="$(find "${XDG_DATA_HOME:-$HOME/.local/share}"/mail/*/[Ii][Nn][Bb][Oo][Xx
 if [[ "${unread}" == "0" ]]; then
 	echo "📪0"
 else
-	printf '📬%s\n' "$(colorize_number ${unread})"
+	printf '📬%s\n' "$(colorize_number "${unread}")"
 fi

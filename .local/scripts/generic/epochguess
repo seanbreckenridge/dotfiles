@@ -32,7 +32,7 @@ def guess_epochs(line: str, after: int, only_first: bool) -> str:
                 converted.append(str(from_secs))
                 has_converted = True
                 continue
-            except ValueError as e:
+            except ValueError:
                 try:
                     from_ms = datetime.fromtimestamp(float(token) / 1000)
                     if from_ms.year < after:
@@ -40,7 +40,7 @@ def guess_epochs(line: str, after: int, only_first: bool) -> str:
                     converted.append(str(from_ms))
                     has_converted = True
                     continue
-                except ValueError as e:
+                except ValueError:
                     pass
         # if we didn't already 'continue', add the token to the list
         converted.append(token)

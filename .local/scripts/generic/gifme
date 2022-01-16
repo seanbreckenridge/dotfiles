@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
-readonly usage="Usage:
+declare usage
+usage="Usage:
 $(basename "$0") [-h]
 $(basename "$0") <FILE> <START_TIME> <DURATION> [FPS]
 
@@ -59,8 +60,8 @@ readonly fps="${4:-10}"
 readonly convert_delay="$((100 / fps))"
 
 # generate output filename based on input file
-readonly current_time="$(date +%H.%M.%S)"
-declare output_filename
+declare output_filename current_time
+current_time="$(date +%H.%M.%S)"
 output_filename="$(basename "$1")"
 output_filename="${output_filename%.*}" # remove extension
 output_filename="${output_filename}-gifme-${current_time}.gif"

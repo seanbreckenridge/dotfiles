@@ -39,6 +39,7 @@ function run_super() {
 		;;
 	-h | --help | *)
 		# parse this case statement to get the choices
+		# shellcheck disable=SC2021
 		SPECIFY_CHOIES="$(grep -P '^\s*--\w+\)\s*$' "${BASH_SOURCE[0]}" | tr -d '[ )\t]')"
 		printf "Must specify one of:\n%s\n" "$SPECIFY_CHOIES" 1>&2
 		return 1

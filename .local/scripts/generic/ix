@@ -6,7 +6,7 @@
 # <number of lines>!!ix -v
 # See https://exobrain.sean.fish/vim/magic_wands/
 
-readonly STDIN="$(cat)"
+STDIN="$(cat)"
 [[ "$1" == "-v" ]] && cat <<<"${STDIN}"
 
 declare url

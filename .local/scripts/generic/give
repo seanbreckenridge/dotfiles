@@ -18,7 +18,7 @@ SCRIPT_CHOICE="$("${pick}" <<<"${SCRIPT_INDEX}")" || exit 1
 
 # if the URL can be reduced to just the base path, do that
 BASE_FILEPATHS="$(echo -e "${SCRIPT_INDEX}" | rev | cut -d"/" -f1 | rev)"
-readonly SCRIPT_BASE_CHOICE="$(echo -e "${SCRIPT_CHOICE}" | rev | cut -d"/" -f1 | rev)"
+SCRIPT_BASE_CHOICE="$(echo -e "${SCRIPT_CHOICE}" | rev | cut -d"/" -f1 | rev)"
 (("$(grep -c "${SCRIPT_BASE_CHOICE}" <<<"${BASE_FILEPATHS}")" == 1)) &&
 	SCRIPT_CHOICE="${SCRIPT_BASE_CHOICE}"
 

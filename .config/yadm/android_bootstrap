@@ -13,6 +13,7 @@ done
 # if we haven't switched to zsh, a shell restart should
 # cause this to be sourced
 echo 'Setting up zsh profile...'
+# shellcheck disable=SC2016
 echo 'source "${HOME}/.profile"; export TERM=xterm-256color' >"${HOME}/.zshenv"
 
 # check if we have access to the my directories

@@ -44,6 +44,7 @@ iter_dirs() {
 		add_dir_if_exists "${arg}"
 	done
 	# process config file which may additional directories
+	# shellcheck disable=SC1090
 	[[ -e "${SREMINDER_CONFIG}" ]] && source "${SREMINDER_CONFIG}"
 	if [[ -n "${ADDITIONAL_SREMINDER_DIRS[*]}" ]]; then
 		for arg in "${ADDITIONAL_SREMINDER_DIRS[@]}"; do

@@ -16,8 +16,8 @@ cd "$PLAINTEXT_PLAYLIST_MUSIC_DIR" || {
 # read that filename into a loop, and check if that album has any songs in the giant list
 # of all songs in my playlist
 # if no matches are found, print that directory
-find -maxdepth 3 -type f -printf '%h\n' | sort -u | cut -d "/" -f2- | while IFS= read -r dir; do
-	echo "$ALL_SONGS" | fgrep -q "$dir" 2>/dev/null || {
+find . -maxdepth 3 -type f -printf '%h\n' | sort -u | cut -d "/" -f2- | while IFS= read -r dir; do
+	echo "$ALL_SONGS" | grep -F -q "$dir" 2>/dev/null || {
 		echo "${dir}"
 	}
 done
