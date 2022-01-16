@@ -35,8 +35,8 @@ autoload -Uz compinit && compinit
 autoload -Uz "${ZDOTDIR}/functions/"*
 
 # bind fzf_select (fuzzy match everything and open/cd to dir in ranger)
-bindkey -s '^F' "ranger --cmd='fzf_select'^M"
-bindkey -s '^G' "ranger --cmd='chain set show_hidden true; fzf_select_hidden'^M"
+bindkey -s '^F' "R --cmd='fzf_select'^M"
+bindkey -s '^G' "R --cmd='chain set show_hidden true; fzf_select_hidden'^M"
 
 # Alt+left arrow/Alt+H to move up a dir
 up-dir() {
@@ -74,8 +74,8 @@ bindkey '^[C' fzf-repos
 # from the terminal and can't be done from a function or (zle -N)
 # See <https://unix.stackexchange.com/a/595281/282432>
 
-# Alt+R to launch ranger (file manager)
-bindkey -s '^[r' '^uranger^M'
+# Alt+R to launch ranger (file manager) (aliased to 'R')
+bindkey -s '^[r' '^uR^M'
 
 # Alt+F to rg-nvim
 f-rg-nvim() {

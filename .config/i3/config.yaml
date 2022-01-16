@@ -25,8 +25,9 @@ launcher:
   7: "stream-corner-720"
   "Shift+f": "stream-from-firefox"
   c: "ttt clrs"
-  "$mod+c": "ttt launch cz"
-  "Shift+c": "ttt launch czd"
+  "$mod+c": "launch cz"
+  "Shift+c": "launch czd"
+  "$alt+c": "launch czl"
 workspaces:
   1: 1
   2: 2
