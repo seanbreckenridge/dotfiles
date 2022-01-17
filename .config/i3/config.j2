@@ -125,6 +125,7 @@ bindsym $mod+XF86AudioMute {{ ex }} mpv-play-pause && i3blocks-refresh mpv-pause
 bindsym $mod+XF86AudioMicMute {{ ex }} mpv-next-song
 bindsym $mod+Shift+XF86AudioMute {{ ex }} mpv-quit-latest
 bindsym $mod+m {{ ex }} notify-send "$(mpv-currently-playing --all)"
+bindsym $mod+Shift+m {{ ex }} mpv-next-song
 
 # on 'volume up', move forward in the file
 bindsym $mod+XF86AudioRaiseVolume {{ ex }} mpv-seek '5'
