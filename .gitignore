@@ -86,6 +86,7 @@ __pycache__
 /.emacs.d/
 /.vim
 /.config/trackma
+/.config/discord
 /.scala_history*
 /.clojure_history
 /.aws
