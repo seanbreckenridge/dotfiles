@@ -15,6 +15,7 @@ greasyfork_archive
 idna
 imgur-uploader
 ipython
+ipdb
 isort
 itsdangerous
 j2cli
