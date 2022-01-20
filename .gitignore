@@ -89,6 +89,10 @@ __pycache__
 /.config/discord
 /.scala_history*
 /.clojure_history
+# maybe idpb history could be configured with IPython to move it elsewhere?
+# https://github.com/michelesr/ipdb/blob/99fdd984e8b78676a69e62420832f3af6dfd1e8a/ipdb/__main__.py#L31
+# https://github.com/ipython/ipython/blob/46a51ed69cdf41b4333943d9ceeb945c4ede5668/IPython/terminal/interactiveshell.py#L133-L135
+/.pdbhistory
 /.aws
 /.tool-versions
 /.lesshst
@@ -143,6 +147,9 @@ __pycache__
 /.pulse-cookie
 /.oh-my-stars
 /.node-gyp
+/.mongodb
+/.config/MongoDB Compass/
+/.cookiecutters/
 /.electron-gyp
 /.java
 /.viminfo
@@ -212,6 +219,7 @@ __pycache__
 /.config/coc/lists
 /.config/coc/list-location-history.json
 /.config/coc/extensions/*
+/.config/coc/suggest.txt
 !/.config/coc/extensions/package.json
 /.config/coc/list-marketplace-history.json
 /.config/coc/list-extensions-history.json
