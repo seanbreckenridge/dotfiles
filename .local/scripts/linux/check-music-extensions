@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env python3
 # Check if all my music files are mp3's
 # If they're not, warn me
 #
@@ -11,14 +11,33 @@
 # This uses my list-music script:
 # https://sean.fish/d/list-music?dark
 
-cd "${PLAINTEXT_PLAYLIST_MUSIC_DIR?:Music directory not set\!}" || exit
+import os
+import sys
+import subprocess
+from pathlib import Path
+from typing import Iterator
 
-RESULTS="$(list-music | rcut -d'.' -f1 | sort | uniq -c | chomp)"
-RESULT_COUNT="$(wc -l <<<"${RESULTS}")"
 
-if ((RESULT_COUNT == 1)); then
-	echo "check-music-extensions: all good :)"
-else
-	echo 'check-music-extensions: Found non mp3 files!'
-	echo "${RESULTS}"
-fi
+def list_music() -> Iterator[Path]:
+    proc = subprocess.run(
+        "list-music",
+        encoding="utf-8",
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE,
+    )
+    proc.check_returncode()
+    assert proc.stderr.strip() == "", proc.stderr
+    yield from map(Path, proc.stdout.strip().splitlines())
+
+
+def main() -> int:
+    os.chdir(os.environ["PLAINTEXT_PLAYLIST_MUSIC_DIR"])
+    non_mp3 = list(filter(lambda p: p.suffix != ".mp3", list_music()))
+    if len(non_mp3):
+        print("\n".join(list(map(str, non_mp3))))
+        return 2
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())
