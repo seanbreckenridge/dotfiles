@@ -139,12 +139,12 @@ clp <<<"${pw}"
 printf '\n'
 '''
 
-# confirm this is ignoring the correct files by running:
-# list-music | grep -Ev "(mp3|flac|ogg|m4a|opus|wav)$":
 [list-music]
 command='''
 # list music files (try to ignore cue/log/album artwork files) in the current directory
 # dont include the './' prefix, print a relative path assuming current directory
+# confirm this is ignoring the correct files by running:
+# list-music | grep -Ev "mp3$"
 fd --type f | sed -e 's|\.\/||' | grep -iEv "\.(gif|accurip|jpg|png|cue|log|m3u|m3u8|nfo|md5|txt|html|rtf|jpeg|sfv|pdf|ffp|pls)$" | sort -n
 '''
 

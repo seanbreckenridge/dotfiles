@@ -1,15 +1,15 @@
 #!/usr/bin/env python3
-# Check if all my music files are mp3's
-# If they're not, warn me
-#
-# This is mostly so that I can sweep
-# across my music directory, looking for
-# items without album art so my music players
-# which hopefully use APIC frames can
-# pull the album art
-#
-# This uses my list-music script:
-# https://sean.fish/d/list-music?dark
+
+"""
+Check if all my music files are mp3's. If they're not, warn me
+
+This is mostly so that I can sweep across my music directory, looking for
+items without album art so my music players which hopefully use APIC frames can
+pull the album art
+
+This uses my list-music script:
+https://sean.fish/d/list-music?dark
+"""
 
 import os
 import sys
@@ -33,8 +33,8 @@ def list_music() -> Iterator[Path]:
     yield from map(Path, proc.stdout.strip().splitlines())
 
 
-@click.command()
-def main() -> int:
+@click.command(help=__doc__)
+def main() -> None:
     non_mp3 = list(filter(lambda p: p.suffix != ".mp3", list_music()))
     if non_mp3:
         click.secho("Found some non-mp3 files:", fg="red", err=True)
