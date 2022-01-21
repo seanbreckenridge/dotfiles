@@ -17,8 +17,11 @@ import subprocess
 from pathlib import Path
 from typing import Iterator
 
+import click
+
 
 def list_music() -> Iterator[Path]:
+    os.chdir(os.environ["XDG_MUSIC_DIR"])
     proc = subprocess.run(
         "list-music",
         encoding="utf-8",
@@ -30,14 +33,15 @@ def list_music() -> Iterator[Path]:
     yield from map(Path, proc.stdout.strip().splitlines())
 
 
+@click.command()
 def main() -> int:
-    os.chdir(os.environ["PLAINTEXT_PLAYLIST_MUSIC_DIR"])
     non_mp3 = list(filter(lambda p: p.suffix != ".mp3", list_music()))
-    if len(non_mp3):
-        print("\n".join(list(map(str, non_mp3))))
-        return 2
-    return 0
+    if non_mp3:
+        click.secho("Found some non-mp3 files:", fg="red", err=True)
+        click.echo("\n".join(list(map(str, non_mp3))))
+        sys.exit(2)
+    sys.exit(0)
 
 
 if __name__ == "__main__":
-    sys.exit(main())
+    main(prog_name="check-music-extensions")
