@@ -236,6 +236,8 @@ __pycache__
 /.config/autostart
 /.config/brittany
 /.config/cef_user_data
+/.config/planetscale/
+/.pscale/
 /.config/sqlitebrowser
 /.config/zoomus.conf
 /.config/clojure

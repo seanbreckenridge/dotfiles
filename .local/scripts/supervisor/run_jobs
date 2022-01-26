@@ -8,52 +8,70 @@
 # the ON_OS variable is checked to determine which
 # on I'm on -- see https://sean.fish/d/.profile?dark
 
-cd "${SUPERVISOR_DIR:="$(realpath "$(dirname "${BASH_SOURCE[0]}")")"}" || exit $?
-
-declare -a JOB_DIRS
+declare -a JOB_DIRS=()
 declare -a DIR_SUFFIXES=('all')
 declare -a DIR_PREFIXES=()
 
-if [[ -z "${ON_OS}" ]]; then
-	echo "ON_OS variable is not set -- need that to determine how to run jobs" 1>&2
-	printf 'See %s\n' "https://sean.fish/d/.profile?dark" 1>&2
-	exit 1
-fi
+check_os() {
+	if [[ -z "${ON_OS}" ]]; then
+		echo 'ON_OS variable is not set -- need that to determine how to run jobs' 1>&2
+		echo 'See https://sean.fish/d/.profile?dark' 1>&2
+		return 1
+	fi
 
-if [[ "${ON_OS}" != 'android' ]]; then
-	DIR_SUFFIXES+=("computer")
-fi
+	if [[ "${ON_OS}" != 'android' ]]; then
+		DIR_SUFFIXES+=('computer')
+	fi
 
-case "${ON_OS}" in
-linux | mac | android)
-	DIR_SUFFIXES+=("${ON_OS}")
-	;;
-*) ;;
-esac
+	case "${ON_OS}" in
+	linux | mac | android)
+		DIR_SUFFIXES+=("${ON_OS}")
+		;;
+	*)
+		printf 'Unknown ON_OS variable: %s\n' "${ON_OS}"
+		;;
+	esac
+}
 
-# find DIR_PREFIXES
-# either ./jobs/ or my HPI/jobs directories, both which are structured
-# in the mac/linux/computer structue
-
-DIR_PREFIXES+=("${SUPERVISOR_DIR:?SUPERVISOR_DIR is not set}/jobs")
-# append any HPI jobs, if the directory exists
-# https://github.com/seanbreckenridge/HPI
-HPI_JOB_DIR="${REPOS:-${HOME}/Repos}/HPI/jobs"
-[[ -d "${HPI_JOB_DIR}" ]] && DIR_PREFIXES+=("${HPI_JOB_DIR}")
-
-# combine prefixes and suffixes
-
-# prepend $SUPERVISOR_DIR/jobs to chosen suffixes
-for prefix in "${DIR_PREFIXES[@]}"; do
-	for suffix in "${DIR_SUFFIXES[@]}"; do
-		target="${prefix}/${suffix}"
-		if [[ -d "${target}" ]]; then
-			JOB_DIRS+=("${target}")
+read_config() {
+	local CONFIG_FILE
+	CONFIG_FILE="${XDG_CONFIG_HOME:-${HOME}/.config}/run_jobs.conf"
+	if [[ -r "${CONFIG_FILE}" ]]; then
+		# shellcheck disable=SC1090
+		source "${CONFIG_FILE}" || return $?
+		if [[ -z "${BGPROC_DIRS[*]}" ]]; then
+			echo 'No BGPROC_DIRS variable set in run_jobs.conf file, see https://sean.fish/d/run_jobs.conf?dark as an example' 1>&2
+			return 1
 		else
-			printf '"%s" does not exist!\n' "${target}" 1>&2
+			DIR_PREFIXES+=("${BGPROC_DIRS[@]}")
 		fi
-	done
-done
+	else
+		echo 'No run_jobs.conf configuration file, see https://sean.fish/d/run_jobs.conf?dark as an example' 1>&2
+		printf 'Place file at "%s"\n' "${CONFIG_FILE}" 1>&2
+		return 1
+	fi
+}
 
-export BGPROC_SLEEPTIME=300
+compute_job_dirs() {
+	# combine prefixes and suffixes
+	for prefix in "${DIR_PREFIXES[@]}"; do
+		for suffix in "${DIR_SUFFIXES[@]}"; do
+			target="${prefix}/${suffix}"
+			if [[ -d "${target}" ]]; then
+				JOB_DIRS+=("${target}")
+			else
+				printf '"%s" does not exist!\n' "${target}" 1>&2
+			fi
+		done
+	done
+}
+
+setup() {
+	check_os || return $?
+	read_config || return $?
+	compute_job_dirs
+	export BGPROC_SLEEPTIME=300
+}
+
+setup || exit $?
 exec bgproc "$@" "${JOB_DIRS[@]}"

@@ -2,6 +2,9 @@
 # a cached version of wca-upcoming-competitions to make sure
 # I only hit worldcubeassosiation once a week
 
+# make sure script works (no imports fail)
+wca-upcoming-competitions --help 2>/dev/null 1>&2 || exit $?
+
 CACHE_FILE="${HOME}/.cache/wca.json"
 evry 1 week -wcacomps && wca-upcoming-competitions >"${CACHE_FILE}"
 cat <"${CACHE_FILE}"
