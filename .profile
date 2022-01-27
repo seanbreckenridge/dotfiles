@@ -92,7 +92,7 @@ mac)
 	;;
 android)
 	HPIDATA="${HOME}/storage/shared/data"
-	XDG_MUSIC_DIR="${HOME}/storage/music/"
+	XDG_MUSIC_DIR="${HOME}/storage/music"
 	figlet termux
 	;;
 windows)
