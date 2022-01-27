@@ -2,6 +2,6 @@
 # how many calories I've eaten today
 
 {
-	hpi query ttally.funcs.food --recent "${@:-1d}" -s | jq -r '(.quantity)*(.calories)'
+	hpi query ttally.funcs.food -r "${@:-1d}" -s | jq -r '(.quantity)*(.calories)'
 	echo 0
 } | datamash sum 1 | cut -d'.' -f1
