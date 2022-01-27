@@ -44,42 +44,55 @@ try:
 except ImportError:
     pass
 
+DISABLED_MODULES = [
+    "my.body",
+    "my.polar",
+    "my.stackexchange",
+    "my.rtm",
+    "my.media",
+    "my.google\.takeout",  # ignore karlicoss google module
+    "my.orgmode",
+    "my.jawbone",
+    "my.twitter",
+    "my.vk",
+    "my.rss",
+    "my.photos",
+    "my.location.google",
+    "my.calendar",
+    "my.taplog",
+    "my.runnerup",
+    "my.rescuetime",
+    "my.pocket",
+    "my.lastfm",
+    "my.kobo",
+    "my.instapaper",
+    "my.hypothesis",
+    "my.foursquare",
+    "my.fbmessenger",
+    "my.endomondo",
+    "my.arbtt",
+    "my.emfit",
+    "my.bluemaestro",
+    "my.zotero",  # temporarily? till I start using it
+]
+
+# https://github.com/seanbreckenridge/mint
+# If I can't import the 'budget' module that is installed by mint
+# add `my.money` (the dependent module) to disabled, so it doesn't
+# clutter hpi doctor on devices that don't have it installed
+# e.g., on my phone (termux), where installing pandas/numpy/scipy/matplotlib
+# doesnt work
+try:
+    import budget
+except ModuleNotFoundError:
+    DISABLED_MODULES.append("my.money")
+
 
 class core:
     cache_dir: PathIsh = path.join(environ["HOME"], ".cache", "cachew")
     tmp_dir: PathIsh = path.join(tempfile.gettempdir(), "HPI-tempdir")
     enabled_modules: Sequence[str] = []
-    disabled_modules: Sequence[str] = [
-        "my.body",
-        "my.polar",
-        "my.stackexchange",
-        "my.rtm",
-        "my.media",
-        "my.google\.takeout",  # ignore karlicoss google module
-        "my.orgmode",
-        "my.jawbone",
-        "my.twitter",
-        "my.vk",
-        "my.rss",
-        "my.photos",
-        "my.location.google",
-        "my.calendar",
-        "my.taplog",
-        "my.runnerup",
-        "my.rescuetime",
-        "my.pocket",
-        "my.lastfm",
-        "my.kobo",
-        "my.instapaper",
-        "my.hypothesis",
-        "my.foursquare",
-        "my.fbmessenger",
-        "my.endomondo",
-        "my.arbtt",
-        "my.emfit",
-        "my.bluemaestro",
-        "my.zotero",  # temporarily? till I start using it
-    ]
+    disabled_modules: Sequence[str] = tuple(DISABLED_MODULES)
 
 
 def if_exists(p: PathIsh) -> Optional[PathIsh]:
