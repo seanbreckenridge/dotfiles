@@ -21,6 +21,13 @@ import click
 
 
 def list_music() -> Iterator[Path]:
+    """
+    Lists files in the system music directory
+    Excludes common files that are found in ablums, but
+    are *not* audio files from the 'fd' result,
+    so that any new/unexpected music types are shown
+    https://sean.fish/d/list-music?dark
+    """
     os.chdir(os.environ["XDG_MUSIC_DIR"])
     proc = subprocess.run(
         "list-music",
@@ -33,10 +40,16 @@ def list_music() -> Iterator[Path]:
     yield from map(Path, proc.stdout.strip().splitlines())
 
 
+def filter_extension(src: Iterator[Path], ext: str = ".mp3") -> list[Path]:
+    """
+    Remove any Path from src where 'ext' doesn't match
+    """
+    return list(filter(lambda p: p.suffix != ext, src))
+
+
 @click.command(help=__doc__)
 def main() -> None:
-    non_mp3 = list(filter(lambda p: p.suffix != ".mp3", list_music()))
-    if non_mp3:
+    if non_mp3 := filter_extension(list_music()):
         click.secho("Found some non-mp3 files:", fg="red", err=True)
         click.echo("\n".join(list(map(str, non_mp3))))
         sys.exit(2)
