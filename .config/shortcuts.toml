@@ -16,7 +16,7 @@ command = '''
 [ec]
 command = '''
 # fuzzy match list-config names, open one to edit (Edit Config)
-list-config | sed "s#^$HOME/##g" | fzf +m -q "$*" | xargs -r -I {} editor "$HOME/{}"
+list-config | sed "s#^$HOME/##g" | fzfp +m -q "$*" | xargs -r -I {} editor "$HOME/{}"
 '''
 
 [dotfiles]
