@@ -53,5 +53,7 @@ evry 2 months -grouvee_export && python3 -m grouvee_export export
 # update https://github.com/seanbreckenridge/mnu_gsheets
 evry 2 weeks -mnu && ssh vultr ~/vps/mnu
 
+evry 1 week -id3stuff && id3stuff
+
 # run malexport update https://github.com/seanbreckenridge/malexport/
 bash "${HPIDATA}/malexport.job"
