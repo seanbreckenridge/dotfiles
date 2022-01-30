@@ -1,5 +1,3 @@
-from my.listenbrainz import Listen
-
 broken_artists: set[str] = {"bill wutrz"}
 
 ignore_mpv_prefixes: set[str] = {
