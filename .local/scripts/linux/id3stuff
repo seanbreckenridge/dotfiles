@@ -194,6 +194,19 @@ def attach_basic_id3_metadata(
     click.secho(collection.root, fg="blue")
     click.secho(f"{len(collection.paths)} songs", fg="blue")
     for tag, force_individual_prompt in BASIC_TAGS.items():
+
+        # if there are extra spaces on ID3 data, remove them
+        for f in collection.paths:
+            id3f = safe_id3(f)
+            for tag in BASIC_TAGS:
+                if tag in id3f and len(id3f[tag]) == 1:
+                    data = id3f[tag][0]
+                    if data != data.strip():
+                        new_data = [data.strip()]
+                        click.echo(f"Adding {tag}={new_data} for {f}...")
+                        id3f[tag] = new_data
+                        id3f.save()
+
         if force or _has_any_missing_basic_id3(collection, tag):
             if force_individual_prompt or click.confirm(
                 f"Set Custom values for {click.style(tag, fg='red')} for each file?"
@@ -280,8 +293,9 @@ def default_music_dir() -> Path:
     default=False,
     help="Force prompts for every attribute",
 )
+@click.option("--reverse", is_flag=True, default=False)
 @click.argument("PATH", type=click.Path(exists=True), required=False)
-def main(_print: bool, path: Optional[str], force: bool) -> None:
+def main(_print: bool, path: Optional[str], force: bool, reverse: bool) -> None:
     chosen_dir: Path
     if path is not None:
         chosen_dir = Path(path)
@@ -291,6 +305,7 @@ def main(_print: bool, path: Optional[str], force: bool) -> None:
         sorted(
             Collection.iter_ext_collection(chosen_dir.absolute(), ext="mp3"),
             key=lambda c: str(c.root).casefold(),
+            reverse=reverse,
         )
     )
     if _print:
