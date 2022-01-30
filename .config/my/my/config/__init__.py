@@ -354,6 +354,11 @@ class pdfs:
     ]
 
 
+class zulip:
+    class organization:
+        export_path: Paths = data("zulip/organization")
+
+
 class stackexchange:
     export_path: PathIsh = ""
 
