@@ -23,17 +23,24 @@ def repo(name: str) -> str:
 try:
     # https://github.com/seanbreckenridge/reorder_editable
     # if my easy-install.pth file was ordered wrong, fix it and exit!
-    from reorder_editable import Editable
+    from reorder_editable import Editable, ReorderEditableError
 except:
     pass
 else:
-    if Editable().reorder([repo("HPI"), repo("HPI-fork")]):
-        # this is true if we actually reordered the path, else path was already ordered
-        print(
-            "easy-install.pth was ordered wrong! It has been reordered, exiting to apply changes...",
-            file=sys.stderr,
-        )
-        sys.exit(0)
+    try:
+        if Editable().reorder([repo("HPI"), repo("HPI-fork")]):
+            # this is true if we actually reordered the path, else path was already ordered
+            print(
+                "easy-install.pth was ordered wrong! It has been reordered, exiting to apply changes...",
+                file=sys.stderr,
+            )
+            sys.exit(0)
+    except ReorderEditableError as re:
+            # Don't fail if I'm having weird python installation issues on Mac
+        if 'Provided one or more values' in str(re) and sys.platform == "darwin":
+            print(str(re), file=sys.stderr)
+        else:
+            raise re
 
 
 # https://github.com/seanbreckenridge/ipgeocache
