@@ -36,8 +36,8 @@ else:
             )
             sys.exit(0)
     except ReorderEditableError as re:
-            # Don't fail if I'm having weird python installation issues on Mac
-        if 'Provided one or more values' in str(re) and sys.platform == "darwin":
+        # Don't fail if I'm having weird python installation issues on Mac
+        if "Provided one or more values" in str(re) and sys.platform == "darwin":
             print(str(re), file=sys.stderr)
         else:
             raise re
@@ -143,10 +143,11 @@ def list_mailboxes(p: Path) -> Sequence[Path]:
     return tuple(dirs)
 
 
-# locally synced IMAP mailboxes using mbsync
-class imap:
-    # path[s]/glob to the the mailboxes/IMAP files
-    mailboxes = list_mailboxes(MAILDIR)
+class mail:
+    # locally synced IMAP mailboxes using mbsync
+    class imap:
+        # path[s]/glob to the the mailboxes/IMAP files
+        mailboxes = list_mailboxes(MAILDIR)
 
 
 # combines:
@@ -175,15 +176,18 @@ class bash:
 
 # parses current/finished http://todotxt.org/ using topydo
 class todotxt:
-    export_path: Paths = data("todotxt")
-    live_file: Optional[PathIsh] = if_exists(
-        path.join(environ["HPIDATA"], "todo", "todo.txt")
-    )
+    class file_backups:
+        export_path: Paths = data("todotxt")
+        live_file: Optional[PathIsh] = if_exists(
+            path.join(environ["HPIDATA"], "todo", "todo.txt")
+        )
 
 
 # parses the history of me adding/removing rss feeds
-class newsboat:
-    export_path: Paths = data("newsboat")
+class rss:
+    class newsboat:
+        class file_backups:
+            export_path: Paths = data("newsboat")
 
 
 # parses information from git repositories which match my emails
@@ -202,7 +206,8 @@ class commits:
 # uses my dameon for watching mpv events
 # https://github.com/seanbreckenridge/mpv-history-daemon
 class mpv:
-    export_path: Paths = data("mpv/*.json")
+    class history_daemon:
+        export_path: Paths = data("mpv/*.json")
 
 
 # use my active firefox database
@@ -215,55 +220,64 @@ except Exception:
     pass
 
 # uses browserexport https://github.com/seanbreckenridge/browserexport
-class browsing:
-    export_path: Paths = data("browsing")
-    live_databases: Paths = tuple(live_dbs)
+class browser:
+    class export:
+        export_path: Paths = data("browsing")
+        live_databases: Paths = tuple(live_dbs)
 
 
 # uses lolexport: https://github.com/seanbreckenridge/lolexport
-class league_of_legends:
-    export_path: Paths = data("league_of_legends/parsed*.json")
-    username = "purplepinapples"
+class league:
+    class export:
+        export_path: Paths = data("league_of_legends/parsed*.json")
+        username = "purplepinapples"
 
 
 # uses https://github.com/seanbreckenridge/chess_export
 class chess:
-    export_path: Paths = data("chess")
+    class export:
+        export_path: Paths = data("chess")
 
 
 # uses https://github.com/seanbreckenridge/listenbrainz_export
 class listenbrainz:
-    export_path: Paths = data("listenbrainz")
+    class export:
+        export_path: Paths = data("listenbrainz")
 
 
 # uses traktexport: https://github.com/seanbreckenridge/traktexport
 class trakt:
-    export_path: Paths = data("trakt")
+    class export:
+        export_path: Paths = data("trakt")
 
 
 # uses malexport: https://github.com/seanbreckenridge/malexport
 class mal:
-    export_path: PathIsh = data("malexport")
+    class export:
+        export_path: PathIsh = data("malexport")
 
 
 # uses https://github.com/seanbreckenridge/grouvee_export
 class grouvee:
-    export_path: Paths = data("grouvee")
+    class export:
+        export_path: Paths = data("grouvee")
 
 
 # uses my personal albums system: https://github.com/seanbreckenridge/albums
-class albums:
+class nextalbums:
     export_path: Paths = data("albums.json")
 
 
 # uses https://github.com/seanbreckenridge/steamscraper
 class steam:
-    export_path: Paths = data("steam.json")
+    class scraper:
+        export_path: Paths = data("steam.json")
 
 
 # https://github.com/seanbreckenridge/blizzard_gdpr_parser
 class blizzard:
-    export_path: Paths = data("blizzard/parsed.json")
+    class gdpr:
+        export_path: Paths = data("blizzard/parsed.json")
 
 
 environ["OLD_FORUMS_SELECTORS"] = str(data("old_forum_selectors.json"))
@@ -280,17 +294,20 @@ class project_euler:
 
 # parses the GDPR export
 class skype:
-    export_path: Paths = data("skype.json")
+    class gdpr:
+        export_path: Paths = data("skype.json")
 
 
 # parses the GDPR export
 class facebook:
-    gdpr_dir: PathIsh = data("facebook_gdpr")
+    class gdpr:
+        gdpr_dir: PathIsh = data("facebook_gdpr")
 
 
 # parses the GDPR export
 class spotify:
-    gdpr_dir: PathIsh = data("spotify")
+    class gdpr:
+        gdpr_dir: PathIsh = data("spotify")
 
 
 class twitch:
@@ -338,16 +355,19 @@ class photos:
 
 # parses the GDPR export
 class apple:
-    gdpr_dir: PathIsh = data("apple")
+    class privacy_export:
+        gdpr_dir: PathIsh = data("apple")
 
 
 # parses the GDPR export
 class discord:
-    export_path: Paths = data("discord/*.zip")
+    class data_export:
+        export_path: Paths = data("discord/*.zip")
 
 
 class runelite:
-    export_path: Paths = data("runelite_screenshots")
+    class screenshots:
+        export_path: Paths = data("runelite_screenshots")
 
 
 # .gpx files from https://github.com/mendhak/gpslogger
