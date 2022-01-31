@@ -80,6 +80,7 @@ DISABLED_MODULES = [
     "my.arbtt",
     "my.emfit",
     "my.bluemaestro",
+    "my.bumble",
     "my.zotero",  # temporarily? till I start using it
 ]
 
