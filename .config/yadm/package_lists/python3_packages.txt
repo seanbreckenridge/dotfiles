@@ -14,8 +14,8 @@ giturlparse
 greasyfork_archive
 idna
 imgur-uploader
-ipython
 ipdb
+ipython
 isort
 itsdangerous
 j2cli
@@ -43,6 +43,7 @@ rsa
 selenium
 setuptools
 speedtest-cli
+sqlite_backup
 supervisor
 termdown
 termgraph
