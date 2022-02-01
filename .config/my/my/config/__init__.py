@@ -28,7 +28,7 @@ except:
     pass
 else:
     try:
-        if Editable().reorder([repo("HPI"), repo("HPI-fork")]):
+        if Editable().reorder([repo("HPI"), repo("HPI-karlicoss")]):
             # this is true if we actually reordered the path, else path was already ordered
             print(
                 "easy-install.pth was ordered wrong! It has been reordered, exiting to apply changes...",
