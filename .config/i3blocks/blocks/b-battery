@@ -6,7 +6,7 @@
 declare color capacity status emoji_status warn
 capacity="$(cat /sys/class/power_supply/"$1"/capacity)" || exit
 status="$(cat /sys/class/power_supply/"$1"/status)"
-emoji_status="$(sed -e "s/,//;s/Discharging/🔋/;s/Not Charging/🛑/;s/Charging/🔌/;s/Unknown/♻️/;s/Full/⚡/;s/ 0*/ /g;s/ :/ /g" <<<"$status")"
+emoji_status="$(sed -e "s/,//;s/Discharging/🔋/;s/Not charging/♻️/;s/Charging/🔌/;s/Unknown/🛑/;s/Full/⚡/;s/ 0*/ /g;s/ :/ /g" <<<"$status")"
 
 if ((capacity >= 75)); then
 	color="#00ff00"
