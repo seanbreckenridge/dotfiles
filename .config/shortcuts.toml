@@ -56,7 +56,7 @@ exec date "+%m/%d/%y"
 command = '''
 # get gitignores for different languages
 if [ ! "$(echo "$@" | tr -d "\n\r")" = "" ] && [ ! "$1" = "list" ]; then
-	printf "tags*\n*.pdf\n"
+	printf "*.pdf\n"
 fi
 curl -sL "https://gitignore.io/api/$*"
 printf "\n"
