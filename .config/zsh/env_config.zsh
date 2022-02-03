@@ -93,6 +93,7 @@ export SHORTCUTS_DIR="${XDG_DATA_HOME}/shortcuts"
 export MY_CONFIG="${XDG_CONFIG_HOME}/my"
 export PROMNESIA_CONFIG="${XDG_CONFIG_HOME}/promnesia/config.py"
 export HPI_TESTS_SEANB='true'
+export HPI_INSTALL_UPSTREAM_MODULES='true'
 
 # https://github.com/seanbreckenridge/autotui
 export AUTOTUI_DATETIME_LIVE=1
