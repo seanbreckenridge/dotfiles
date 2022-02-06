@@ -6,5 +6,5 @@
 
 evry 6 hours -promnesia_index && {
 	printlog "promnesia_index:running index..."
-	promnesia index >>/tmp/promnesia_index.log 2>&1 || send-error "promnesia index failed..."
+	promnesia index --overwrite >>/tmp/promnesia_index.log 2>&1 || send-error "promnesia index failed..."
 }
