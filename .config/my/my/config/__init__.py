@@ -82,6 +82,7 @@ DISABLED_MODULES = [
     "my.bluemaestro",
     "my.bumble",
     "my.instagram",
+    "my.hackernews",
     "my.zotero",  # temporarily? till I start using it
 ]
 
