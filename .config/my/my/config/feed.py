@@ -1,4 +1,4 @@
-broken_artists: set[str] = {"bill wutrz"}
+from .feed_secret import broken_tags
 
 ignore_mpv_prefixes: set[str] = {
     "/home/sean/Repos/",
