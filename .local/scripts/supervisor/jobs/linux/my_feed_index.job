@@ -20,5 +20,5 @@ evry 3 hours -bg-my-feed-index && {
 	source "$ZDOTDIR/aliases/tokens"
 
 	printlog 'bg-feed-index:running my_feed index...'
-	"${REPOS}/my_feed/index" || send-error 'Error updating feed; check /tmp/feed_index.log'
+	"${REPOS}/my_feed/index" || send-error 'Error updating my_feed'
 }
