@@ -1,0 +1,24 @@
+#!/bin/bash
+# indexes local data and publishes it to my feed
+# https://github.com/seanbreckenridge/my_feed
+
+# shellcheck disable=SC1091
+
+# incase it needs to prompt me for something, skip that
+# feed item for now -- I run this in
+# https://sean.fish/d/housekeeping-info?dark as well,
+# so it'll prompt me when I next do that
+export MY_FEED_BG=1
+
+wait-for-internet -q --timeout 10 || exit 0
+
+evry 3 hours -bg-my-feed-index && {
+
+	# source personal shell files, to include
+	# tokens/envvars that may be required
+	source "$ZDOTDIR/aliases/personal_aliases" 2>/dev/null
+	source "$ZDOTDIR/aliases/tokens"
+
+	printlog 'bg-feed-index:running my_feed index...'
+	"${REPOS}/my_feed/index" || send-error 'Error updating feed; check /tmp/feed_index.log'
+}
