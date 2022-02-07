@@ -314,6 +314,7 @@ bindsym $mod+Shift+Return exec --no-startup-id ttt firefox-developer-edition --n
 
 # move chromedriver (webscraping) instances to 9
 assign [class="Chromium-browser"] 9
+assign [class="Chromium"] 9
 
 # start nm-applet
 exec --no-startup-id nm-applet
