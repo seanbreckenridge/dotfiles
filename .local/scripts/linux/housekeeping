@@ -59,9 +59,5 @@ evry 1 week -id3stuff && id3stuff
 # https://github.com/seanbreckenridge/my_feed
 evry 1 day -my-feed-index && "${REPOS}/my_feed/index"
 
-# Use https://github.com/seanbreckenridge/wca_userinfo to update
-# window on https://github.com/seanbreckenridge/glue
-evry 2 weeks -glue-update-cubing-json && "${REPOS}/glue/sync_cubing_json"
-
 # run malexport update https://github.com/seanbreckenridge/malexport/
 bash "${HPIDATA}/malexport.job"

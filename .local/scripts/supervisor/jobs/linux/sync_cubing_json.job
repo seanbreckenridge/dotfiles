@@ -1,0 +1,10 @@
+#!/bin/bash
+# Use https://github.com/seanbreckenridge/wca_userinfo to update
+# window on https://github.com/seanbreckenridge/glue
+
+wait-for-internet -q --timeout 10 || exit 0
+
+evry 2 weeks -glue-update-cubing-json && {
+	printlog 'cubing-json:updating json file'
+	"${REPOS}/glue/sync_cubing_json" || send-error 'Error updating cubing JSON'
+}
