@@ -60,7 +60,8 @@ DISABLED_MODULES = [
     "my.google\.takeout",  # ignore karlicoss google module
     "my.orgmode",
     "my.jawbone",
-    "my.twitter",
+    "my.twitter.twint",
+    "my.twitter.talon",
     "my.vk",
     "my.rss",
     "my.photos",
@@ -101,7 +102,7 @@ except ModuleNotFoundError:
 class core:
     cache_dir: PathIsh = path.join(environ["HOME"], ".cache", "cachew")
     tmp_dir: PathIsh = path.join(tempfile.gettempdir(), "HPI-tempdir")
-    enabled_modules: Sequence[str] = ["my.twitter.archive"]
+    enabled_modules: Sequence[str] = []
     disabled_modules: Sequence[str] = tuple(DISABLED_MODULES)
 
 
