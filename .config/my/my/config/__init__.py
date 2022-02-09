@@ -101,7 +101,7 @@ except ModuleNotFoundError:
 class core:
     cache_dir: PathIsh = path.join(environ["HOME"], ".cache", "cachew")
     tmp_dir: PathIsh = path.join(tempfile.gettempdir(), "HPI-tempdir")
-    enabled_modules: Sequence[str] = []
+    enabled_modules: Sequence[str] = ["my.twitter.archive"]
     disabled_modules: Sequence[str] = tuple(DISABLED_MODULES)
 
 
@@ -387,6 +387,10 @@ class pdfs:
 class zulip:
     class organization:
         export_path: Paths = data("zulip/organization")
+
+
+class twitter_archive:
+    export_path: Paths = data("twitter/archive.zip")
 
 
 class stackexchange:
