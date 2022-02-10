@@ -36,8 +36,7 @@ else:
             )
             sys.exit(0)
     except ReorderEditableError as re:
-        # Don't fail if I'm having weird python installation issues on Mac
-        if "Provided one or more values" in str(re) and sys.platform == "darwin":
+        if "Provided one or more value" in str(re):
             print(str(re), file=sys.stderr)
         else:
             raise re
