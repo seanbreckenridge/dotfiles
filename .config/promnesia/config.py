@@ -1,7 +1,7 @@
 import os
 
 from promnesia.common import Source
-from promnesia.sources import reddit, auto, github, smscalls
+from promnesia.sources import reddit, twitter, auto, github, smscalls
 
 from promnesia_sean.sources import (
     facebook,
@@ -26,6 +26,7 @@ from promnesia_sean.sources import (
 )
 
 SOURCES = [
+    twitter,
     Source(
         auto.index,
         "~/Repos/",
