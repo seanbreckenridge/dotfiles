@@ -73,6 +73,7 @@ run-jobs-info() {
 	run-jobs -qo
 	EVRY_JSON=1 run-jobs -qo | describe-evry-json
 }
+alias rj=run-jobs-info
 alias du='du -hL'
 alias df='df -h'
 alias history='history 0'
