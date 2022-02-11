@@ -70,7 +70,6 @@ setup() {
 	check_os || return $?
 	read_config || return $?
 	compute_job_dirs
-	export BGPROC_SLEEPTIME=300
 }
 
 setup || exit $?
