@@ -33,13 +33,7 @@ class Food(NamedTuple):
         return {"quantity": lambda: prompt_float_default("quantity")}
 
 
-def edit_in_vim() -> Optional[str]:
-    import click
-
-    m = click.edit(text=None, editor="nvim")
-    return m if m is None else m.strip()
-
-
+# e.g. a concert or something
 class Event(NamedTuple):
     event_type: str
     when: datetime
@@ -49,4 +43,6 @@ class Event(NamedTuple):
 
     @staticmethod
     def attr_validators() -> dict:
+        from seanb.ttally_types import edit_in_vim
+
         return {"comments": edit_in_vim}

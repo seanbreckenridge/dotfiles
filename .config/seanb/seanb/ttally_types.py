@@ -2,6 +2,8 @@
 Used for https://github.com/seanbreckenridge/ttally
 """
 
+import click
+from typing import Optional
 from autotui.prompts import create_repl_prompt_str
 from prompt_toolkit import prompt
 from prompt_toolkit.validation import Validator, Document, ValidationError
@@ -27,3 +29,9 @@ def prompt_float_default(attr: str, default: float = 1.0) -> float:
         return default
     else:
         return float(resp)
+
+
+def edit_in_vim() -> Optional[str]:
+
+    m = click.edit(text=None, editor="nvim")
+    return m if m is None else m.strip()
