@@ -69,7 +69,7 @@ compute_job_dirs() {
 setup() {
 	check_os || return $?
 	read_config || return $?
-	compute_job_dirs
+	compute_job_dirs || return 0
 }
 
 setup || exit $?
