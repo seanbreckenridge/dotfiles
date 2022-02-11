@@ -9,7 +9,7 @@ wait-for-internet
 export HAVECMD_REPORT=1
 
 declare -a required_binaries
-required_binaries=(evry dust pythonanywhere_3_months) # dust is used in backup_server
+required_binaries=(evry dust pythonanywhere_3_months unzip_google_takeout) # dust is used in backup_server
 for binary in "${required_binaries[@]}"; do
 	havecmd "${binary}" || exit $?
 done
@@ -44,7 +44,8 @@ evry 1 day -google-drive && {
 	drive push -no-prompt
 	# if theres a new google takeout, unzip it
 	# https://github.com/seanbreckenridge/google_takeout_parser
-	"${REPOS}/HPI/scripts/unzip_google_takeout" "${HOME}/GoogleDrive/Takeout" && drive push
+	# script from https://github.com/seanbreckenridge/HPI-personal
+	unzip_google_takeout "${HOME}/GoogleDrive/Takeout" && drive push
 }
 
 # https://github.com/seanbreckenridge/grouvee_export
