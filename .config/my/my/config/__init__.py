@@ -225,7 +225,7 @@ except Exception:
 class browser:
     class export:
         export_path: Paths = data("browsing")
-        live_databases: Paths = tuple(live_dbs)
+        active_databases: Paths = tuple(live_dbs)
 
 
 # uses lolexport: https://github.com/seanbreckenridge/lolexport
