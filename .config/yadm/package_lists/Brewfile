@@ -158,4 +158,3 @@ cask 'minecraft'
 cask 'openemu'
 
 # Mac App Store installations
-mas 'Microsoft Outlook', id: 985367838
