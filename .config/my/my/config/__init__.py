@@ -28,7 +28,7 @@ except:
     pass
 else:
     try:
-        if Editable().reorder([repo("HPI"), repo("HPI-karlicoss")]):
+        if Editable().reorder([repo("HPI-personal"), repo("HPI"), repo("HPI-karlicoss")]):
             # this is true if we actually reordered the path, else path was already ordered
             print(
                 "easy-install.pth was ordered wrong! It has been reordered, exiting to apply changes...",
@@ -225,7 +225,8 @@ except Exception:
 class browser:
     class export:
         export_path: Paths = data("browsing")
-        active_databases: Paths = tuple(live_dbs)
+    class active_browser:
+        export_path: Paths = tuple(live_dbs)
 
 
 # uses lolexport: https://github.com/seanbreckenridge/lolexport
