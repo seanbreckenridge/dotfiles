@@ -13,12 +13,31 @@ from pathlib import Path
 
 from my.core.common import PathIsh, Paths
 
+### HELPERS
 
 # e.g., converts to ~/Repos/name
 # ~/Repos/ is where I store a lot of my git repositories
 def repo(name: str) -> str:
     return path.join(environ["REPOS"], name)
 
+
+def if_exists(p: PathIsh) -> Optional[PathIsh]:
+    pp = Path(p)
+    if pp.exists():
+        return pp
+    return None
+
+
+# if the HPIDATA environment variable is set (which points to my data)
+# use that. Else, just default to ~/data
+prefix: Path = Path(environ.get("HPIDATA", path.join(environ["HOME"], "data")))
+
+# prepend my data directory onto this path
+def data(p: PathIsh) -> Path:
+    return prefix / p
+
+
+### REORDER PATH
 
 try:
     # https://github.com/seanbreckenridge/reorder_editable
@@ -28,7 +47,9 @@ except:
     pass
 else:
     try:
-        if Editable().reorder([repo("HPI-personal"), repo("HPI"), repo("HPI-karlicoss")]):
+        if Editable().reorder(
+            [repo("HPI-personal"), repo("HPI"), repo("HPI-karlicoss")]
+        ):
             # this is true if we actually reordered the path, else path was already ordered
             print(
                 "easy-install.pth was ordered wrong! It has been reordered, exiting to apply changes...",
@@ -42,13 +63,7 @@ else:
             raise re
 
 
-# https://github.com/seanbreckenridge/ipgeocache
-try:
-    from .ipinfo_secret import ACCESS_TOKEN as ipinfo_secret_token
-
-    environ["IPINFO_TOKEN"] = ipinfo_secret_token
-except ImportError:
-    pass
+### MODULES
 
 DISABLED_MODULES = [
     "my.body",
@@ -86,6 +101,7 @@ DISABLED_MODULES = [
     "my.zotero",  # temporarily? till I start using it
 ]
 
+
 # https://github.com/seanbreckenridge/mint
 # If I can't import the 'budget' module that is installed by mint
 # add `my.money` (the dependent module) to disabled, so it doesn't
@@ -94,8 +110,14 @@ DISABLED_MODULES = [
 # doesnt work
 try:
     import budget
-except ModuleNotFoundError:
-    DISABLED_MODULES.append("my.money")
+except:
+    DISABLED_MODULES.append("my.mint")
+
+# albums may not work on some versions of python
+try:
+    from nextalbums import __main__ as _m
+except:
+    DISABLED_MODULES.append("my.nextalbums")
 
 
 class core:
@@ -105,25 +127,7 @@ class core:
     disabled_modules: Sequence[str] = tuple(DISABLED_MODULES)
 
 
-def if_exists(p: PathIsh) -> Optional[PathIsh]:
-    pp = Path(p)
-    if pp.exists():
-        return pp
-    return None
-
-
-# if the HPIDATA environment variable is set (which points to my data)
-# use that. Else, just default to ~/data
-prefix: Path = Path(environ.get("HPIDATA", path.join(environ["HOME"], "data")))
-
-# prepend my data directory onto this path
-def data(p: PathIsh) -> Path:
-    return prefix / p
-
-
-if "IPGEOCACHE_DIR" not in environ:
-    environ["IPGEOCACHE_DIR"] = str(data("ipgeocache"))
-
+### MODULE CONFIG
 
 # combines:
 # periodic exports from: https://github.com/karlicoss/ghexport
@@ -225,6 +229,7 @@ except Exception:
 class browser:
     class export:
         export_path: Paths = data("browsing")
+
     class active_browser:
         export_path: Paths = tuple(live_dbs)
 
