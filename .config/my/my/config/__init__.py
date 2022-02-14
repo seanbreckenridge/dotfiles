@@ -56,7 +56,7 @@ DISABLED_MODULES = [
     "my.stackexchange",
     "my.rtm",
     "my.media",
-    "my.google\.takeout",  # ignore karlicoss google module
+    r"my.google\.takeout",  # ignore karlicoss google module
     "my.orgmode",
     "my.jawbone",
     "my.twitter.twint",
