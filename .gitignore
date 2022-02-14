@@ -99,6 +99,7 @@ __pycache__
 /.abook
 /.cdk
 /.android/
+/.cargo
 /.Motorola Mobility/
 /.python_history
 /.subversion
@@ -164,6 +165,7 @@ __pycache__
 /.gnupg
 /.dmrc
 /.npm
+/.npmrc
 /.tor-browser
 /.m2
 /.gore
