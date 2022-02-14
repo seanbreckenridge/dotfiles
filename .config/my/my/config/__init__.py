@@ -2,6 +2,7 @@
 Configuration file for
 https://github.com/karlicoss/HPI/
 https://github.com/seanbreckenridge/HPI/
+https://github.com/seanbreckenridge/HPI-personal
 [Human Programming Interface]
 """
 

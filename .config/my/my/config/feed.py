@@ -1,3 +1,7 @@
+"""
+Config file for https://github.com/seanbreckenridge/my_feed
+"""
+
 from .feed_secret import broken_tags
 
 ignore_mpv_prefixes: set[str] = {
