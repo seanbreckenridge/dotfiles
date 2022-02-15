@@ -90,7 +90,7 @@ linux)
 ${HOME}/.local/share/gem/ruby/3.0.0/bin:\
 ${HOME}/.local/scripts/linux:\
 ${PATH}"
-	export ARCHFLAGS="-arch x86_64"                                                     # Compilation flags
+	export ARCHFLAGS="-arch x86_64" # Compilation flags
 	;;
 mac)
 	SCREENSHOTS="${HOME}/Desktop" # Screenshots on Mac are saved on the Desktop
