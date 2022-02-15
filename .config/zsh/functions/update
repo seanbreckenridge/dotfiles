@@ -16,6 +16,7 @@ function update() {
 	linux)
 		yay -Syu
 		housekeeping
+		havecmd flatpak && flatpak update
 		;;
 	android)
 		pkg update
@@ -44,6 +45,10 @@ function update() {
 		python -m pip install --user -U -r "${XDG_CONFIG_HOME}/yadm/package_lists/python3_packages.txt"
 		echo "Updating global cargo packages..."
 		cargo install-update -a
+		echo "Updating basher..."
+		(cd "$(basher package-path .)" && git pull)
+		echo "Updating shell scripts..."
+		basher-upgrade-all
 		echo "Updating global go packages..."
 		cd || return $?
 		#spkglist "$HOME/.config/yadm/package_lists/go_packages.txt" | awk '{ print $2 "@latest" }' | xargs go install -v 2>&1

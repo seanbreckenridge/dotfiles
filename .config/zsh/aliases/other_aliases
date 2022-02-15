@@ -40,8 +40,6 @@ alias 'discogs-update=nextalbums discogs-update'
 # https://github.com/seanbreckenridge/HPI
 source "${REPOS}/HPI/scripts/functions.sh"
 source "${REPOS}/HPI-personal/scripts/functions.sh"
-PATH="${REPOS}/HPI-personal/scripts:$PATH"
-export PATH
 
 # https://github.com/seanbreckenridge/frinkconv
 conv() {

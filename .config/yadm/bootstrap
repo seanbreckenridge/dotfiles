@@ -71,8 +71,7 @@ declare -rx CARGO_PACKAGE_LIST="${PACKAGE_DIR}/cargo_packages.txt"
 declare -rx GO_PACKAGE_LIST="${PACKAGE_DIR}/go_packages.txt"
 declare -rx HASKELL_PACKAGE_LIST="${PACKAGE_DIR}/haskell_packages.txt"
 declare -rx MIX_PACKAGE_LIST="${PACKAGE_DIR}/mix_archive_packages.txt"
-
-declare SCRIPT_TARGET_DIR="${HOME}/.local/bin" # should be created by stack/python
+declare -rx BASH_PACKAGE_LIST="${PACKAGE_DIR}/bash_packages.txt"
 
 # make sure personal aliases file exists so that zshrc souces fine
 [[ ! -f "${ZDOTDIR}/aliases/personal_aliases" ]] && touch "${ZDOTDIR}/aliases/personal_aliases"
@@ -117,7 +116,7 @@ python3 -m pip install --user -U pip
 python3 -m pip list --format=freeze | cut -d "=" -f1 | grep -q "^wheel$" || python3 -m pip install --user wheel
 python3 -m pip install --user -q -r "${PYTHON_PACKAGE_LIST}"
 # install random personal stuff I want importable from anywhere
-python3 -m pip install "${HOME}/.config/seanb"
+python3 -m pip install -e "${HOME}/.config/seanb"
 
 # Install personal python packages
 # If command "$1" doesn't exist, install from $2
@@ -153,57 +152,34 @@ echo "Installing personal tools/scripts..."
 # install git-only cargo repos
 havecmd "wait-for-internet" || cargo install --git "https://github.com/seanbreckenridge/wait-for-internet"
 
-# build individual applications
-# clone from second argument (git), cd and run 'make' to install something
-# third argument is passed to make if provided
-make_compatible_build() {
-	local TEMP_INSTALL_DIR
-	havecmd "${1}" || {
-		printf "Installing %s from %s\n" "${1}" "${2}"
-		BUILD_DIR="$(mktemp -p "${TMPDIR:-/tmp}" -d XXXXXXXXXX)"
-		cd "${BUILD_DIR}" || return $?
-		git clone "${2}" || return $?
-		CLONED="$(command ls -1)" || return $?
-		cd "${CLONED}" || return $?
-		if [[ -n "${3}" ]]; then
-			make "${3}" || return $?
-		else
-			make || return $?
+# use bpkg to automate make installs
+havecmd bpkg || curl -Lo- "https://raw.githubusercontent.com/bpkg/bpkg/master/setup.sh" | bash
+
+havecmd bpkg || exit $?
+
+set -e
+havecmd tttlog || bpkg install -g seanbreckenridge/ttt
+havecmd exists || bpkg install -g seanbreckenridge/exists
+havecmd genpasswd || bpkg install -g seanbreckenridge/genpasswd
+set +e
+
+echo 'Installing basher/shell scripts...'
+
+BASHER_ROOT="${XDG_DATA_HOME}/basher"
+[[ ! -d "${BASHER_ROOT}" ]] && git clone --depth=1 'https://github.com/basherpm/basher.git' "${BASHER_ROOT}"
+# symlink the single script in the basher bin into .local
+havecmd basher || ln -s "${BASHER_ROOT}/bin/basher" "${HOME}/.local/bin"
+
+# install shell scripts using basher
+havecmd basher && {
+	BASHER_INSTALLED="$(basher list)"
+	while read -r bash_pkg; do
+		if ! grep -xq "${bash_pkg}" <<<"${BASHER_INSTALLED}"; then
+			echo "Installing ${bash_pkg}" 1>&2
+			basher install "${bash_pkg}"
 		fi
-	}
+	done < <(spkglist "${BASH_PACKAGE_LIST}")
 }
-
-set -e
-make_compatible_build tttlog 'https://github.com/seanbreckenridge/ttt'
-make_compatible_build exists 'https://github.com/seanbreckenridge/exists' install
-make_compatible_build genpasswd 'https://github.com/seanbreckenridge/genpasswd' install
-make_compatible_build mpv-currently-playing 'https://github.com/seanbreckenridge/mpv-sockets'
-set +e
-
-install_shell_script() {
-	local TEMP_INSTALL_DIR
-	havecmd "$1" || {
-		printf "Installing %s from %s\n" "$1" "$2"
-		TEMP_INSTALL_DIR="$(mktemp -p "${TMPDIR:-/tmp}" -d XXXXXXXXXX)" # create temporary directory
-		cd "${TEMP_INSTALL_DIR}" || return $?                           # switch to directory
-		wget "${2}" -O "./${1}" || return $?                            # download to script name
-		chmod +x "./${1}" || return $?                                  # make executable
-		mv "./${1}" "${SCRIPT_TARGET_DIR}"                              # move to bin directory (~/.local/bin)
-	}
-}
-
-# install some of my individual shell scripts
-set -e
-ls "${SCRIPT_TARGET_DIR}" >/dev/null # make sure target directory exists
-install_shell_script mpvf 'https://raw.githubusercontent.com/seanbreckenridge/mpvf/master/mpvf'
-install_shell_script bgproc 'https://raw.githubusercontent.com/seanbreckenridge/bgproc/master/bgproc'
-install_shell_script tts 'https://raw.githubusercontent.com/seanbreckenridge/tts/master/tts'
-install_shell_script plainplay 'https://raw.githubusercontent.com/seanbreckenridge/plaintext-playlist/master/plainplay'
-install_shell_script resolve_cmd_plainplay 'https://raw.githubusercontent.com/seanbreckenridge/plaintext-playlist/master/resolve_cmd_plainplay'
-install_shell_script pmark 'https://raw.githubusercontent.com/seanbreckenridge/pmark/master/pmark'
-install_shell_script bookmark 'https://raw.githubusercontent.com/seanbreckenridge/bookmark.txt/master/bookmark'
-install_shell_script frinkconv 'https://raw.githubusercontent.com/seanbreckenridge/frinkconv/master/frinkconv'
-set +e
 
 if havecmd reshortcuts; then
 	reshortcuts # shortcuts create and format all the created files

@@ -98,6 +98,7 @@ __pycache__
 /.lesshst
 /.abook
 /.cdk
+/.bpkg
 /.android/
 /.cargo
 /.Motorola Mobility/
@@ -113,6 +114,7 @@ __pycache__
 /.swipl-dir*
 /.psql_history
 /.yarnrc
+/.var
 /.bash_history
 /.pki/nssdb
 /.rbenv

@@ -7,6 +7,7 @@ cups
 cups-pdf
 dunst
 exfat-utils
+flatpak
 fuse-exfat
 gnome-keyring
 i3-gaps
@@ -120,6 +121,7 @@ figlet
 fzf
 gifsicle
 git
+git-extras
 github-cli
 glow
 gnu-netcat
@@ -212,13 +214,13 @@ zip
 
 # mail
 
-neomutt
+abook
 isync
 msmtp
-pass
-notmuch
-abook
 mutt-wizard
+neomutt
+notmuch
+pass
 urlscan
 
 # battery performance
@@ -259,7 +261,6 @@ simplescreenrecorder
 snes9x-gtk
 sonic-pi
 sqlitebrowser
-teams
 thunar
 tor-browser
 vbam-wx
@@ -267,8 +268,8 @@ zoom
 
 # fonts
 
+#ttf-oxygen
 all-repository-fonts
 ttf-ms-fonts
-#ttf-oxygen
 xorg-font-util
 xorg-fonts-encodings

@@ -56,16 +56,18 @@ esac
 export ON_OS
 
 # common path modifications
-PATH="\
-${HOME}/.local/share/shortcuts:\
+export PATH="\
+${XDG_DATA_HOME}/basher/cellar/bin:\
+${REPOS}/HPI-personal/scripts:\
+${XDG_DATA_HOME}/shortcuts:\
 ${HOME}/.local/bin:\
-${HOME}/.local/share/npm-packages/bin:\
+${XDG_DATA_HOME}/npm-packages/bin:\
 ${HOME}/.local/scripts/mac:\
 ${HOME}/.local/scripts/cross-platform:\
 ${HOME}/.local/scripts/generic:\
-${HOME}/.local/share/go/bin:\
-${HOME}/.local/share/cargo/bin:\
-${HOME}/.local/share/pubcache/bin:\
+${XDG_DATA_HOME}/go/bin:\
+${XDG_DATA_HOME}/cargo/bin:\
+${XDG_DATA_HOME}/pubcache/bin:\
 ${HOME}/.emacs.d/bin:\
 ${HOME}/.cabal/bin:\
 ${HOME}/.config/i3blocks/blocks:\
@@ -83,7 +85,11 @@ SCREENSHOTS="${XDG_PICTURES_DIR}/Screenshots"
 # overwrite some envvars with OS-specific data
 case "$ON_OS" in
 linux)
-	PATH="${HOME}/.local/share/gem/ruby/3.0.0/bin:${HOME}/.local/scripts/linux:${PATH}" # add linux scripts to $PATH
+	# add linux stuff to $PATH
+	PATH="\
+${HOME}/.local/share/gem/ruby/3.0.0/bin:\
+${HOME}/.local/scripts/linux:\
+${PATH}"
 	export ARCHFLAGS="-arch x86_64"                                                     # Compilation flags
 	;;
 mac)

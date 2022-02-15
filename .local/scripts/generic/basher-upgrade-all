@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+while read -r pkg; do
+	echo "Updating ${pkg}..." 1>&2
+	basher upgrade "${pkg}" || exit $?
+done < <(basher outdated | spkglist)

@@ -86,6 +86,7 @@ rgi() {
 	rg -i "$*"
 }
 alias todo='todo.sh'
+alias td='e $TODO_DIR/todo.txt'
 alias sz='mystarsfzf'
 alias super='"${HOME}/.local/scripts/supervisor/super"'
 alias rnm='sudo systemctl restart NetworkManager' # restart networkmanager

@@ -10,7 +10,6 @@ cython
 discogs_client
 flake8
 full-todotxt
-giturlparse
 greasyfork_archive
 idna
 imgur-uploader
