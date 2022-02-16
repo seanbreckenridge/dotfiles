@@ -80,15 +80,14 @@ alias exoo='cd "${REPOS}/exobrain"; ranger --cmd="shell ./exosearch -o"'
 alias greasyfork_generate='cd ${REPOS}/greasyfork_repo_generator && mix escript.build && greasyfork_archive 96096 --output-file scraped_data.json && ./greasyfork_repo_generator -j scraped_data.json --output-dir ../greasyfork --ignore-ids 37826 && cd ../greasyfork && git status'
 
 # https://github.com/seanbreckenridge/mint
-alias budget='python3 -m budget'
-alias budget-history='python3 -m budget accounts --graph'
+alias budget-history='budget accounts --graph'
 # to edit the account/transaction map information
 alias 'budget-config=fd -IH conf.py --full-path ${REPOS}/mint | fzf | xargs -r -I {} editor {}'
 budget-summary() {
 	if [[ -z "$1" ]]; then
-		python3 -m budget summary | glow -
+		budget summary | glow -
 	else
-		python3 -m budget summary "$@"
+		budget summary "$@"
 	fi
 }
 

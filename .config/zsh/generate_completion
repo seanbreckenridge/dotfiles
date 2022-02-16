@@ -1,0 +1,25 @@
+#!/usr/bin/env zsh
+
+for cmd in hpi \
+	nextalbums \
+	browserexport \
+	chess_export \
+	full_todotxt \
+	google_takeout_parser \
+	grouvee_export \
+	ipgeocache \
+	listenbrainz_export \
+	lolexport \
+	malexport \
+	budget \
+	mpv-history-daemon \
+	my_feed \
+	reorder_editable \
+	shortcuts \
+	sqlite_backup \
+	traktexport \
+	url_cache; do
+	var="$(printf '_%s_COMPLETE' "$(echo "${cmd}" | upper | sed -e 's/-/_/g')")"
+	target="${ZDOTDIR}/completions/_${cmd}"
+	zsh -xc "$var=zsh_source ${cmd}" >"${target}"
+done
