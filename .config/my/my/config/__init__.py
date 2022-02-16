@@ -199,12 +199,7 @@ class rss:
 
 # parses information from git repositories which match my emails
 class commits:
-    names: List[str] = ["Sean Breckenridge"]
-    emails: List[str] = [
-        "seanbrecke@gmail.com",
-        "sbrecken@ucsc.edu",
-        "purplepinapplesyt@gmail.com",
-    ]
+    from .commits_secret import emails, names
     roots: Paths = [
         Path(environ["REPOS"]),
     ]
