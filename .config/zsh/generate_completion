@@ -1,5 +1,5 @@
 #!/usr/bin/env zsh
-# generate completion for my projects that use click
+# generate completion for projects that use click
 # https://click.palletsprojects.com/en/8.0.x/shell-completion/
 
 for cmd in hpi \
@@ -20,7 +20,13 @@ for cmd in hpi \
 	shortcuts \
 	sqlite_backup \
 	traktexport \
+	termdown \
+	pipenv \
+	ttally \
+	cookiecutter \
+	black \
 	url_cache; do
+	havecmd "${cmd}" || continue
 	var="$(printf '_%s_COMPLETE' "$(echo "${cmd}" | upper | sed -e 's/-/_/g')")"
 	target="${ZDOTDIR}/completions/_${cmd}"
 	zsh -xc "$var=zsh_source ${cmd}" >"${target}"
