@@ -1,4 +1,6 @@
 #!/usr/bin/env zsh
+# generate completion for my projects that use click
+# https://click.palletsprojects.com/en/8.0.x/shell-completion/
 
 for cmd in hpi \
 	nextalbums \
