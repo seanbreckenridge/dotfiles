@@ -14,7 +14,7 @@ get_count() {
 	echo -e "$COUNT_LINE" | cut -d":" -f2 || return $?
 }
 
-evry 1 hours -guestbook_comments && {
+evry 10 minutes -guestbook_comments && {
 	printlog 'guestbook:updating cache file...'
 	readonly CACHE_FILE="${XDG_CACHE_HOME:-${HOME}/.cache}/guestbook-comments"
 	COUNT="$(get_count)" || send-error "guestbook Couldn't update cache file"
