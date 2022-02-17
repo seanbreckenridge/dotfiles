@@ -157,6 +157,14 @@ def _has_any_missing_basic_id3(
             if key not in id3f:
                 click.echo(f"{f} missing {key}")
                 return True
+            else:
+                data = id3f[key]
+                # no data on the key
+                if len(data) == 0:
+                    return True
+                # if the text is empty
+                if len(data[0].strip()) == 0:
+                    return True
     return False
 
 
@@ -198,13 +206,13 @@ def attach_basic_id3_metadata(
         # if there are extra spaces on ID3 data, remove them
         for f in collection.paths:
             id3f = safe_id3(f)
-            for tag in BASIC_TAGS:
-                if tag in id3f and len(id3f[tag]) == 1:
-                    data = id3f[tag][0]
+            for stag in BASIC_TAGS:
+                if stag in id3f and len(id3f[stag]) == 1:
+                    data = id3f[stag][0]
                     if data != data.strip():
                         new_data = [data.strip()]
-                        click.echo(f"Adding {tag}={new_data} for {f}...")
-                        id3f[tag] = new_data
+                        click.echo(f"Adding {stag}={new_data} for {f}...")
+                        id3f[stag] = new_data
                         id3f.save()
 
         if force or _has_any_missing_basic_id3(collection, tag):
