@@ -288,6 +288,7 @@ mode "launcher" {
     bindsym Shift+p exec --no-startup-id launch plainplay single; mode "default"
     bindsym Shift+s exec --no-startup-id launch splayall; mode "default"
     bindsym s exec --no-startup-id stream-corner; mode "default"
+    bindsym $mod+f exec --no-startup-id ttt launch full_todotxt; mode "default"
     bindsym 4 exec --no-startup-id stream-corner-480; mode "default"
     bindsym 7 exec --no-startup-id stream-corner-720; mode "default"
     bindsym Shift+f exec --no-startup-id stream-from-firefox; mode "default"

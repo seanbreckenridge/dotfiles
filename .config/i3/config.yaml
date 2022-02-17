@@ -21,6 +21,7 @@ launcher:
   "Shift+p": "launch plainplay single"
   "Shift+s": "launch splayall"
   s: "stream-corner"
+  "$mod+f": "ttt launch full_todotxt"
   4: "stream-corner-480"
   7: "stream-corner-720"
   "Shift+f": "stream-from-firefox"
