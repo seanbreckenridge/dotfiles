@@ -175,6 +175,7 @@ sc-im
 screenkey-git
 scrot
 shellcheck-bin
+smpeg
 socat
 sshpass
 strace
