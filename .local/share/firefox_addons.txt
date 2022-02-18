@@ -10,3 +10,7 @@ https://addons.mozilla.org/en-US/firefox/addon/xkcd-enhancements/
 https://addons.mozilla.org/en-US/firefox/addon/react-devtools/
 https://www.frankerfacez.com/
 https://addons.mozilla.org/en-US/firefox/addon/dracula-dark-colorscheme/
+https://addons.mozilla.org/en-US/firefox/addon/blocktube/
+https://addons.mozilla.org/en-US/firefox/addon/sponsorblock/
+https://addons.mozilla.org/en-US/firefox/addon/web-scrobbler/
+https://addons.mozilla.org/en-US/firefox/addon/promnesia/
