@@ -181,12 +181,6 @@ __pycache__
 /.yarnrc
 /.zoom
 
-# exclusions to the blocks below
-!/.config/todo/config
-!/.config/bookmark.txt/config
-!/.config/coc/extensions/package.json
-!/.config/coc/extensions/coc-settings.json
-
 # Top level config/local files to ignore
 /.config/*/zoom.conf
 /.config/3T
@@ -276,10 +270,12 @@ __pycache__
 /.pscale/
 /.todo
 
-# stuff to include from .local
-!.local/share/emoji
-!.local/share/firefox_addons.txt
-!.local/share/shortcuts/
+# exclusions to the .config ignores
+!/.config/todo/config
+!/.config/bookmark.txt/config
+!/.config/coc/extensions/package.json
+!/.config/coc/extensions/coc-settings.json
+
 
 # stuff to ignore in ~/.local
 /.local/*.md
@@ -296,6 +292,12 @@ __pycache__
 /.local/share/*
 /.local/share/yadm
 /.local/state
+
+# exclusions to the .local ignores
+!.local/share/emoji
+!.local/share/firefox_addons.txt
+!.local/share/shortcuts/
+!.local/system-config
 
 # default user directories
 /Repos
