@@ -6,7 +6,8 @@ import click
 from typing import Optional
 from autotui.prompts import create_repl_prompt_str
 from prompt_toolkit import prompt
-from prompt_toolkit.validation import Validator, Document, ValidationError
+from prompt_toolkit.validation import Validator, ValidationError
+from prompt_toolkit.document import Document
 
 
 class FloatValidatorAcceptEmpty(Validator):
