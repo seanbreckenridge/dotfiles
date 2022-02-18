@@ -24,7 +24,7 @@ list-config | sed "s#^$HOME/##g" | fzfp +m -q "$*" | xargs -r -I {} editor "$HOM
 command='''
 # open the dotfiles git repository
 cd "${HOME}/.local/share/yadm/repo.git" || exit 1
-exec gitopen
+exec git open
 '''
 
 [i3binds]
