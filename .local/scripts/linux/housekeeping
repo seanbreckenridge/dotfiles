@@ -61,7 +61,11 @@ evry 1 week -id3stuff && id3stuff
 bash "${HPIDATA}/malexport.job"
 
 # https://github.com/seanbreckenridge/my_feed
-evry 1 day -my-feed-index && "${REPOS}/my_feed/index"
 
 # once a week, re-index to update any scores/metadata I've updated
-evry 1 week -my-feed-re-index && "${REPOS}/my_feed/index" -r
+if evry 1 week -my-feed-re-index; then
+	"${REPOS}/my_feed/index" -r
+else
+	# if we didn't just re-index, do a regular index
+	evry 1 day -my-feed-index && "${REPOS}/my_feed/index"
+fi
