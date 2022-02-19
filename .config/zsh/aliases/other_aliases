@@ -53,7 +53,7 @@ alias remsync='${REPOS}/vps/remsync'
 alias remsync-public='REMSYNC_PUBLIC=1 ${REPOS}/vps/remsync' # to push to /p/ (public index)
 # to use ranger to quickly remove/add files
 alias remsync-ranger='ranger "${HOME}/Documents/remsync" && remsync'
-alias remsync-public-ranger='ranger "${HOME}/Documents/remsync_public" && remsync_public'
+alias remsync-public-ranger='ranger "${HOME}/Documents/remsync_public" && remsync-public'
 alias playlist='${REPOS}/vps/playlist'
 alias restart-glue='ssh vultr "cd ./code/glue && git pull && ~/vps/super --ctl restart glue-server"'
 alias dotfiles-pull='ssh vultr "cd ./.dotfiles && git pull"'
