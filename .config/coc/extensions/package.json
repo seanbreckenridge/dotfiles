@@ -5,11 +5,15 @@
     "coc-elixir": ">=0.7.0",
     "coc-eslint": ">=1.5.6",
     "coc-go": ">=1.1.0",
+    "coc-html": ">=1.6.1",
+    "coc-json": ">=1.4.1",
     "coc-marketplace": ">=1.8.0",
     "coc-pyright": ">=1.1.220",
     "coc-rls": ">=1.1.6",
     "coc-sh": ">=0.6.1",
     "coc-solargraph": ">=1.2.3",
-    "coc-tsserver": ">=1.9.11"
+    "coc-toml": ">=1.1.0",
+    "coc-tsserver": ">=1.9.12",
+    "coc-yaml": ">=1.6.1"
   }
 }
