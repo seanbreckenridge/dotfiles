@@ -92,5 +92,10 @@ grep -xqi 'pandas' <<<"${INSTALLED_PYTHON_PACKAGES}" || CFLAGS="-Wno-deprecated-
 ZSH_PLUGINS="${XDG_DATA_HOME}/zsh_plugins"
 mkdir -p "$ZSH_PLUGINS"
 cd "$ZSH_PLUGINS"
-git clone 'https://github.com/zsh-users/zsh-autosuggestions'
+AUTOSUGGESTIONS="${ZSH_PLUGINS}/zsh-autosuggestions"
+if [[ -d "${AUTOSUGGESTIONS}" ]]; then
+	(cd "${AUTOSUGGESTIONS}" && git pull)
+else
+	git clone 'https://github.com/zsh-users/zsh-autosuggestions'
+fi
 cd
