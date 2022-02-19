@@ -134,12 +134,6 @@ install_python_personal "shortcuts" "https://github.com/seanbreckenridge/shortcu
 # tab completion nicer
 HAVECMD_REPORT='' havecmd speedtest-cli && rm "$(command -v speedtest-cli)"
 
-echo 'Installing coc extensions...'
-COC_NPM_DIR="${HOME}/.config/coc/extensions/"
-havecmd npm && [[ -e "${COC_NPM_DIR}" ]] && {
-	(cd "${COC_NPM_DIR}" && npm install)
-}
-
 if [[ "$ON_OS" != 'android' ]]; then
 	bash "${YADM_DIR}/computer_bootstrap" || exit $?
 fi
@@ -197,5 +191,14 @@ dir-aliases-ranger
 havecmd nvim || exit $?
 echo "Installing nvim packages..."
 nvim +PlugInstall +qall
+echo 'Installing coc extensions...'
+COC_NPM_DIR="${HOME}/.config/coc/extensions/"
+havecmd npm && [[ -e "${COC_NPM_DIR}" ]] && {
+	(cd "${COC_NPM_DIR}" && npm install)
+	# for some reason doing npm install causes pyright to break
+	# re-install it and update everything
+	nvim +'CocInstall -sync coc-pyright' +qall
+	nvim +CocUpdateSync +qall
+}
 
 echo "Finished bootstrapping!"
