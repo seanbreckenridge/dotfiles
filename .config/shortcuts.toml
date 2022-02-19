@@ -705,3 +705,8 @@ command='''
 # it using https://github.com/mkaz/termgraph
 chomp | sort | uniq -c | awk '{print $2 " " $1}' | termgraph | chomp | sort -n
 '''
+
+[boxes-python]
+command='''
+boxes -dshell -pv1h2
+'''
