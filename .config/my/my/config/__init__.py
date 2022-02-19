@@ -9,16 +9,26 @@ https://github.com/seanbreckenridge/HPI-personal
 import sys
 import tempfile
 from os import environ, path, listdir
-from typing import Optional, Callable, List, Sequence
+from typing import Optional, Callable, List, Sequence, Union, Tuple
 from pathlib import Path
+from datetime import datetime, date
+from browserexport.browsers.firefox import Firefox
+
 
 from my.core.common import PathIsh, Paths
 
-### HELPERS
+#############
+#           #
+#  HELPERS  #
+#           #
+#############
 
-# e.g., converts to ~/Repos/name
-# ~/Repos/ is where I store a lot of my git repositories
+
 def repo(name: str) -> str:
+    """
+    e.g., converts to ~/Repos/name
+    ~/Repos/ is where I store a lot of my git repositories
+    """
     return path.join(environ["REPOS"], name)
 
 
@@ -31,29 +41,36 @@ def if_exists(p: PathIsh) -> Optional[PathIsh]:
 
 # if the HPIDATA environment variable is set (which points to my data)
 # use that. Else, just default to ~/data
-prefix: Path = Path(environ.get("HPIDATA", path.join(environ["HOME"], "data")))
+PREFIX: Path = Path(environ.get("HPIDATA", path.join(environ["HOME"], "data")))
 
-# prepend my data directory onto this path
+
 def data(p: PathIsh) -> Path:
-    return prefix / p
+    """prepend my data directory onto this path"""
+    return PREFIX / p
 
 
-### REORDER PATH
+##################
+#                #
+#  REORDER PATH  #
+#                #
+##################
 
 try:
     # https://github.com/seanbreckenridge/reorder_editable
     # if my easy-install.pth file was ordered wrong, fix it and exit!
-    from reorder_editable import Editable, ReorderEditableError
-except:
-    pass
+    from reorder_editable.core import Editable, ReorderEditableError
+except Exception as ex:
+    print(str(ex))
 else:
     try:
         if Editable().reorder(
             [repo("HPI-personal"), repo("HPI"), repo("HPI-karlicoss")]
         ):
-            # this is true if we actually reordered the path, else path was already ordered
+            # this is true if we actually reordered the path
+            # else path was already ordered
             print(
-                "easy-install.pth was ordered wrong! It has been reordered, exiting to apply changes...",
+                "easy-install.pth was ordered wrong! It has been reordered,"
+                "exiting to apply changes...",
                 file=sys.stderr,
             )
             sys.exit(0)
@@ -64,7 +81,11 @@ else:
             raise re
 
 
-### MODULES
+#############
+#           #
+#  MODULES  #
+#           #
+#############
 
 DISABLED_MODULES = [
     "my.body",
@@ -110,14 +131,14 @@ DISABLED_MODULES = [
 # e.g., on my phone (termux), where installing pandas/numpy/scipy/matplotlib
 # doesnt work
 try:
-    import budget
-except:
+    import budget  # noqa
+except ImportError:
     DISABLED_MODULES.append("my.mint")
 
 # albums may not work on some versions of python
 try:
-    from nextalbums import __main__ as _m
-except:
+    from nextalbums import __main__ as _m  # noqa
+except ImportError:
     DISABLED_MODULES.append("my.nextalbums")
 
 
@@ -128,19 +149,27 @@ class core:
     disabled_modules: Sequence[str] = tuple(DISABLED_MODULES)
 
 
-### MODULE CONFIG
+###################
+#                 #
+#  MODULE CONFIG  #
+#                 #
+###################
 
-# combines:
-# periodic exports from: https://github.com/karlicoss/ghexport
-# github GDPR export
+
 class github:
+    """
+    combines:
+    periodic exports from: https://github.com/karlicoss/ghexport
+    github GDPR export
+    """
+
     gdpr_dir: PathIsh = data("github/gdpr")
     export_path: Paths = data("github/ghexport")
 
 
-MAILDIR = Path(
-    environ.get("MAILDIR", path.join(environ["HOME"], ".local", "share", "mail"))
-)
+DEFAULT_MAILDIR = path.join(environ["HOME"], ".local", "share", "mail")
+
+MAILDIR = Path(environ.get("MAILDIR", DEFAULT_MAILDIR))
 
 
 def list_mailboxes(p: Path) -> Sequence[Path]:
@@ -158,13 +187,18 @@ class mail:
 
 
 # combines:
-# periodic exports from: https://github.com/karlicoss/rexport/
-# comment export from: https://github.com/seanbreckenridge/pushshift_comment_export
 class reddit:
     class rexport:
+        """periodic exports from: https://github.com/karlicoss/rexport/"""
+
         export_path: Paths = data("rexport")
 
     class pushshift:
+        """
+        comment export using
+        https://github.com/seanbreckenridge/pushshift_comment_export
+        """
+
         export_path: Paths = data("pushshift")
 
 
@@ -199,22 +233,25 @@ class rss:
 
 # parses information from git repositories which match my emails
 class commits:
-    from .commits_secret import emails, names
+    try:
+        from .commits_secret import emails, names
+
+        emails = emails
+        names = names
+    except ImportError:
+        pass
 
     roots: Paths = [
         Path(environ["REPOS"]),
     ]
 
 
-# uses my dameon for watching mpv events
-# https://github.com/seanbreckenridge/mpv-history-daemon
 class mpv:
     class history_daemon:
+        """https://github.com/seanbreckenridge/mpv-history-daemon"""
+
         export_path: Paths = data("mpv/*.json")
 
-
-# use my active firefox database
-from browserexport.browsers.firefox import Firefox
 
 live_dbs: List[Path] = []
 try:
@@ -222,8 +259,12 @@ try:
 except Exception:
     pass
 
-# uses browserexport https://github.com/seanbreckenridge/browserexport
+
 class browser:
+    """
+    uses browserexport https://github.com/seanbreckenridge/browserexport
+    """
+
     class export:
         export_path: Paths = data("browsing")
 
@@ -231,119 +272,140 @@ class browser:
         export_path: Paths = tuple(live_dbs)
 
 
-# uses lolexport: https://github.com/seanbreckenridge/lolexport
 class league:
     class export:
+        """https://github.com/seanbreckenridge/lolexport"""
+
         export_path: Paths = data("league_of_legends/parsed*.json")
         username = "purplepinapples"
 
 
-# uses https://github.com/seanbreckenridge/chess_export
 class chess:
     class export:
+        """https://github.com/seanbreckenridge/chess_export"""
+
         export_path: Paths = data("chess")
 
 
-# uses https://github.com/seanbreckenridge/listenbrainz_export
 class listenbrainz:
     class export:
+        """https://github.com/seanbreckenridge/listenbrainz_export"""
+
         export_path: Paths = data("listenbrainz")
 
 
-# uses traktexport: https://github.com/seanbreckenridge/traktexport
 class trakt:
     class export:
+        """https://github.com/seanbreckenridge/traktexport"""
+
         export_path: Paths = data("trakt")
 
 
-# uses malexport: https://github.com/seanbreckenridge/malexport
 class mal:
     class export:
+        """https://github.com/seanbreckenridge/malexport"""
+
         export_path: PathIsh = data("malexport")
 
 
-# uses https://github.com/seanbreckenridge/grouvee_export
 class grouvee:
     class export:
+        """https://github.com/seanbreckenridge/grouvee_export"""
+
         export_path: Paths = data("grouvee")
 
 
-# uses my personal albums system: https://github.com/seanbreckenridge/albums
 class nextalbums:
+    """
+    uses my personal albums system
+    https://github.com/seanbreckenridge/albums
+    """
+
     export_path: Paths = data("albums.json")
 
 
-# uses https://github.com/seanbreckenridge/steamscraper
 class steam:
     class scraper:
+        """https://github.com/seanbreckenridge/steamscraper"""
+
         export_path: Paths = data("steam.json")
 
 
-# https://github.com/seanbreckenridge/blizzard_gdpr_parser
 class blizzard:
+    """https://github.com/seanbreckenridge/blizzard_gdpr_parser"""
+
     class gdpr:
         export_path: Paths = data("blizzard/parsed.json")
 
 
 environ["OLD_FORUMS_SELECTORS"] = str(data("old_forum_selectors.json"))
-# https://github.com/seanbreckenridge/old_forums
+
+
 class old_forums:
+    """https://github.com/seanbreckenridge/old_forums"""
+
     # path[s]/glob to the folder which contains JSON/HTML files
     export_path: Paths = data("old_forums")
 
 
 class project_euler:
-    # path[s]/glob to the .txt export files
     export_path: Paths = data("project_euler")
 
 
-# parses the GDPR export
 class skype:
     class gdpr:
         export_path: Paths = data("skype.json")
 
 
-# parses the GDPR export
 class facebook:
     class gdpr:
         gdpr_dir: PathIsh = data("facebook_gdpr")
 
 
-# parses the GDPR export
 class spotify:
     class gdpr:
         gdpr_dir: PathIsh = data("spotify")
 
 
 class twitch:
-
-    # my chatlogs from the overrustle_logs dump
-    # https://github.com/seanbreckenridge/overrustle_parser
     class overrustle:
+        """
+        my chatlogs from the overrustle_logs dump
+        https://github.com/seanbreckenridge/overrustle_parser
+        """
+
         export_path: Paths = data("twitch/overrustle_logs.json")
 
-    # parses the privacy request
     class gdpr:
+        """parses the privacy request"""
+
         gdpr_dir: PathIsh = data("twitch/gdpr")
 
 
-# parses backups of my ipython history
 class ipython:
+    """parses backups of my ipython history"""
+
     export_path: Paths = data("ipython/*.sqlite")
 
 
-# parses https://takeout.google.com using https://github.com/seanbreckenridge/google_takeout_parser
 class google:
+    """
+    parses https://takeout.google.com using
+    https://github.com/seanbreckenridge/google_takeout_parser
+    """
+
     takeout_path: Paths = data("google_takeout/*.zip")
 
 
-# https://github.com/seanbreckenridge/ttt
 class ttt:
+    """https://github.com/seanbreckenridge/ttt"""
+
     export_path: Paths = data("ttt/*.csv")
 
 
-# https://github.com/seanbreckenridge/aw-watcher-window
 class window_watcher:
+    """https://github.com/seanbreckenridge/aw-watcher-window"""
+
     export_path: Paths = data("window_watcher/*.csv")
     force_individual: Optional[List[str]] = ["Alacritty"]
 
@@ -355,18 +417,18 @@ class smscalls:
 class photos:
     paths: List[PathIsh] = ["~/Pictures/iCloudPhotos/", data("google_takeout")]
     # dont ignore anything
-    ignored: Callable[[Path], bool] = lambda p: False
+    ignored: Callable[[Path], bool] = lambda _p: False
 
 
-# parses the GDPR export
 class apple:
     class privacy_export:
         gdpr_dir: PathIsh = data("apple")
 
 
-# parses the GDPR export
 class discord:
     class data_export:
+        """https://github.com/seanbreckenridge/discord_data"""
+
         export_path: Paths = data("discord/*.zip")
 
 
@@ -375,8 +437,9 @@ class runelite:
         export_path: Paths = data("runelite_screenshots")
 
 
-# .gpx files from https://github.com/mendhak/gpslogger
 class gpslogger:
+    """.gpx files from https://github.com/mendhak/gpslogger"""
+
     export_path: Paths = data("gpslogger")
 
 
@@ -400,9 +463,6 @@ class stackexchange:
     export_path: PathIsh = ""
 
 
-from typing import Sequence, Union, Tuple
-from datetime import datetime, date
-
 DateIsh = Union[datetime, date, str]
 LatLon = Tuple[float, float]
 
@@ -410,7 +470,9 @@ LatLon = Tuple[float, float]
 class location:
     try:
         from .locations_secret import home
-    except:
+
+        home = home
+    except ImportError:
         pass
 
 
