@@ -163,6 +163,9 @@ autocmd VimEnter * if expand('%:e') == 'md' | set spell
 autocmd BufRead,BufNewFile * if expand('%:t') == 'COMMIT_EDITMSG' | set spell
 " create shortcuts, whenever I edit https://github.com/seanbreckenridge/shortcuts
 autocmd BufWritePost shortcuts.toml !reshortcuts
+" run i3-jinja to re-create i3 conf file when editing the jinja conf file
+" https://sean.fish/d/config.j2?dark
+autocmd BufWritePost config.j2 !i3-jinja
 
 " coc configuration
 
