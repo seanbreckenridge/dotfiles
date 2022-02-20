@@ -9,7 +9,7 @@ wait-for-internet
 export HAVECMD_REPORT=1
 
 declare -a required_binaries
-required_binaries=(evry dust pythonanywhere_3_months unzip_google_takeout) # dust is used in backup_server
+required_binaries=(evry pythonanywhere_3_months unzip_google_takeout)
 for binary in "${required_binaries[@]}"; do
 	havecmd "${binary}" || exit $?
 done
