@@ -14,6 +14,6 @@
     "coc-solargraph": ">=1.2.3",
     "coc-toml": ">=1.1.0",
     "coc-tsserver": ">=1.9.12",
-    "coc-yaml": ">=1.7.3"
+    "coc-yaml": ">=1.7.4"
   }
 }
