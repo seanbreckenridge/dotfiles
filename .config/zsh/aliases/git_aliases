@@ -347,5 +347,7 @@ gclcd() {
 	cd "$(newest -include-dirs)"
 }
 
+alias gitopen='g open'
+
 # https://sean.fish/d/git-swap-remote
 alias gswappush='git-swap-remote; git push; git-swap-remote'

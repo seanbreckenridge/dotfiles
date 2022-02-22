@@ -17,7 +17,7 @@ If no links are given when called, i.e.:
 $ openlinks
 
 You can input/paste links; they'll be opened when you hit enter/return
-type 'q', 'quit', or EOF (Ctrl+D), Ctrl+C to quit
+EOF (Ctrl+D), Ctrl+C to quit
 """
 
 import sys
@@ -27,9 +27,16 @@ import subprocess
 
 import docopt
 
+assert __doc__ is not None
 docopt.docopt(__doc__)
 
-openurl = lambda url: subprocess.run(shlex.split('openurl "{}"'.format(url)))
+
+def openurl(url: str) -> None:
+    u = url.strip()
+    if not u:
+        return
+    subprocess.run(shlex.split(f'openurl "{u}"'))
+
 
 # open anything given as a command line argument
 links = re.findall(r"(https?://\S+)", " ".join(sys.argv).strip())
@@ -42,9 +49,7 @@ if links:
 while True:
     try:
         user_input = input()
-        for line in user_input.split(r"\s*\n\s*"):
-            if line.strip().lower() in ["q", "quit"]:
-                sys.exit(0)
+        for line in user_input.splitlines():
             openurl(line)
     except (EOFError, KeyboardInterrupt):
         sys.exit(0)

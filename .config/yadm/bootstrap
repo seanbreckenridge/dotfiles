@@ -194,15 +194,21 @@ echo "Installing nvim packages..."
 nvim +PlugInstall +qall
 echo 'Installing coc extensions...'
 COC_NPM_DIR="${HOME}/.config/coc/extensions/"
-havecmd npm && [[ -e "${COC_NPM_DIR}" ]] && {
-	cd "${COC_NPM_DIR}" || exit $?
-	# if this is the first time installing this, run install here
-	if [[ ! -f 'package-lock.json' ]]; then
-		npm install
-	fi
-	# get installed coc packages
-	COC_NPM_INSTALLED="$(npm ls --json | jq '.dependencies | keys[]' -r)"
+havecmd npm && {
 	RAN_COC_NPM=0
+	# shorthand to install pyright
+	install_pyright_sync() {
+		nvim +'CocInstall -sync coc-pyright' +qall
+	}
+	# if the extensions dir doesnt exist, install something
+	# using CocInstall -sync to setup the directory structure
+	if [[ ! -d "${COC_NPM_DIR}" ]]; then
+		mkdir -p "${COC_NPM_DIR}"
+		install_pyright_sync
+	fi
+	cd "${COC_NPM_DIR}" || exit $?
+	# get installed coc packages
+	COC_NPM_INSTALLED="$(npm ls --json | jq '.dependencies | keys[]' -r)" || COC_NPM_INSTALLED=''
 	# install each npm package if not already installed
 	while read -r cpkg; do
 		if ! grep -qx "${cpkg}" <<<"${COC_NPM_INSTALLED}"; then
@@ -212,9 +218,8 @@ havecmd npm && [[ -e "${COC_NPM_DIR}" ]] && {
 		fi
 	done < <(spkglist "${COC_PACKAGE_LIST}")
 	if ((RAN_COC_NPM)); then
-		# for some reason doing npm install causes pyright to break
-		# re-install it and update everything
-		nvim +'CocInstall -sync coc-pyright' +qall
+		# for some reason doing npm install causes pyright to break; re-install it
+		install_pyright_sync
 	fi
 	# update everything
 	nvim +CocUpdateSync +qall

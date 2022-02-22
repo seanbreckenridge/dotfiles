@@ -2,7 +2,7 @@
 Config file for https://github.com/seanbreckenridge/my_feed
 """
 
-from .feed_secret import broken_tags
+from .feed_secret import broken_tags  # noqa
 
 ignore_mpv_prefixes: set[str] = {
     "/home/sean/Repos/",

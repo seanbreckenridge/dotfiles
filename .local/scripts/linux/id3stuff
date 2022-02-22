@@ -35,11 +35,15 @@ import click
 from mutagen.id3 import ID3, ID3NoHeaderError
 from mutagen.easyid3 import EasyID3
 
-# either an album, a disc of an album or a single
-# i.e. some flat collection of mp3 files
-# (shouldn't include album art -- that will be searched for later)
+
 class Collection(NamedTuple):
-    # both should be absolute paths
+    """
+    either an album, a disc of an album or a single
+    i.e. some flat collection of mp3 files
+    (shouldn't include album art -- that will be searched for later)
+    both should be absolute paths
+    """
+
     root: Path
     paths: List[Path]
 
@@ -220,7 +224,7 @@ def attach_basic_id3_metadata(
                 f"Set Custom values for {click.style(tag, fg='red')} for each file?"
             ):
                 for f in collection.paths:
-                    cc = list(choices)  #  choices which includes this filename
+                    cc = list(choices)  # choices which includes this filename
                     cc.extend(_extract_current_id3_data(f))
                     cc.append(f.stem)
                     # dict-like object which supports writing to tags using property-like attrs

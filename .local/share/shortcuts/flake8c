@@ -1,0 +1,2 @@
+#!/bin/sh
+exec flake8 --config ~/.config/flake8 "$@"
