@@ -708,17 +708,20 @@ chomp | sort | uniq -c | awk '{print $2 " " $1}' | termgraph | chomp | sort -n
 
 [boxes-python]
 command='''
+# create a comment box as a python comment, text piped from STDIN
 exec boxes -dshell -pv1h2
 '''
 
 [flake8c]
 command='''
+# flake8 with my default config -- https://sean.fish/d/.config/flake8?dark
 exec flake8 --config ~/.config/flake8 "$@"
 '''
 
 [dotfiles-format]
 shebang = "#!/bin/zsh"
 command='''
+# format and lint all my dotfiles
 cd
 yadm ls-files | exists | rifleman -
 yadm ls-files | exists | rifleman - -a lint

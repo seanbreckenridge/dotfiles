@@ -1,2 +1,3 @@
 #!/bin/sh
+# create a comment box as a python comment, text piped from STDIN
 exec boxes -dshell -pv1h2
