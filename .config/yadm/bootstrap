@@ -72,6 +72,7 @@ declare -rx GO_PACKAGE_LIST="${PACKAGE_DIR}/go_packages.txt"
 declare -rx HASKELL_PACKAGE_LIST="${PACKAGE_DIR}/haskell_packages.txt"
 declare -rx MIX_PACKAGE_LIST="${PACKAGE_DIR}/mix_archive_packages.txt"
 declare -rx BASH_PACKAGE_LIST="${PACKAGE_DIR}/bash_packages.txt"
+declare -rx COC_PACKAGE_LIST="${PACKAGE_DIR}/coc_packages.txt"
 
 # make sure personal aliases file exists so that zshrc souces fine
 [[ ! -f "${ZDOTDIR}/aliases/personal_aliases" ]] && touch "${ZDOTDIR}/aliases/personal_aliases"
@@ -187,17 +188,35 @@ fi
 # setup directory for ranger
 dir-aliases-ranger
 
-# setup nvim packages
+# setup nvim/coc packages
 havecmd nvim || exit $?
 echo "Installing nvim packages..."
 nvim +PlugInstall +qall
 echo 'Installing coc extensions...'
 COC_NPM_DIR="${HOME}/.config/coc/extensions/"
 havecmd npm && [[ -e "${COC_NPM_DIR}" ]] && {
-	(cd "${COC_NPM_DIR}" && npm install)
-	# for some reason doing npm install causes pyright to break
-	# re-install it and update everything
-	nvim +'CocInstall -sync coc-pyright' +qall
+	cd "${COC_NPM_DIR}" || exit $?
+	# if this is the first time installing this, run install here
+	if [[ ! -f 'package-lock.json' ]]; then
+		npm install
+	fi
+	# get installed coc packages
+	COC_NPM_INSTALLED="$(npm ls --json | jq '.dependencies | keys[]' -r)"
+	RAN_COC_NPM=0
+	# install each npm package if not already installed
+	while read -r cpkg; do
+		if ! grep -qx "${cpkg}" <<<"${COC_NPM_INSTALLED}"; then
+			printf "Installing %s\n" "$cpkg"
+			RAN_COC_NPM=1
+			npm install "${cpkg}"
+		fi
+	done < <(spkglist "${COC_PACKAGE_LIST}")
+	if ((RAN_COC_NPM)); then
+		# for some reason doing npm install causes pyright to break
+		# re-install it and update everything
+		nvim +'CocInstall -sync coc-pyright' +qall
+	fi
+	# update everything
 	nvim +CocUpdateSync +qall
 }
 

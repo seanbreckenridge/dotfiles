@@ -1,0 +1,15 @@
+coc-css
+coc-docker
+coc-elixir
+coc-eslint
+coc-go
+coc-html
+coc-json
+coc-marketplace
+coc-pyright
+coc-rls
+coc-sh
+coc-solargraph
+coc-toml
+coc-tsserver
+coc-yaml

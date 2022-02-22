@@ -273,8 +273,6 @@ __pycache__
 # exclusions to the .config ignores
 !/.config/todo/config
 !/.config/bookmark.txt/config
-!/.config/coc/extensions/package.json
-!/.config/coc/extensions/coc-settings.json
 
 
 # stuff to ignore in ~/.local
