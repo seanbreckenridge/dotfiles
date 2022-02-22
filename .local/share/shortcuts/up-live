@@ -1,2 +1,2 @@
 #!/bin/zsh
-up --unsafe-full-throttle
+exec up --unsafe-full-throttle

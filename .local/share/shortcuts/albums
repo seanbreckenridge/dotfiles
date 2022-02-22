@@ -1,2 +1,2 @@
 #!/bin/sh
-openurl "https://sean.fish/s/albums"
+exec openurl "https://sean.fish/s/albums"

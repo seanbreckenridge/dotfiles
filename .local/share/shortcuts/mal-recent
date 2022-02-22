@@ -1,2 +1,2 @@
 #!/bin/sh
-openurl "myanimelist.net/animelist/purplepinapples?status=7&order=5"
+exec openurl "myanimelist.net/animelist/purplepinapples?status=7&order=5"

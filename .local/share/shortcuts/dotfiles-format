@@ -1,0 +1,4 @@
+#!/bin/zsh
+cd
+yadm ls-files | exists | rifleman -
+yadm ls-files | exists | rifleman - -a lint

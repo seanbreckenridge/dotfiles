@@ -1,2 +1,2 @@
 #!/bin/sh
-openurl 'localhost:8384'
+exec openurl 'localhost:8384'

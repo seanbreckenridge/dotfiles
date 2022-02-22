@@ -571,9 +571,7 @@ shebang="#!/usr/bin/env bash"
 command='exec sxiv -t "${SCREENSHOTS}"'
 
 [up-live]
-command='''
-up --unsafe-full-throttle
-'''
+command='exec up --unsafe-full-throttle'
 shebang="#!/bin/zsh"
 
 [watchtwitch]
@@ -623,7 +621,7 @@ printf '%s' "${CONTENTS}" | largechar -c
 '''
 
 [syncgui]
-command = "openurl 'localhost:8384'"
+command = "exec openurl 'localhost:8384'"
 
 [tq]
 command='''
@@ -680,16 +678,16 @@ i3blocks-refresh mail
 '''
 
 [trakt-progress]
-command = 'openurl "https://trakt.tv/users/purplepinapples/progress"'
+command = 'exec openurl "https://trakt.tv/users/purplepinapples/progress"'
 
 [mal-recent]
-command = 'openurl "myanimelist.net/animelist/purplepinapples?status=7&order=5"'
+command = 'exec openurl "myanimelist.net/animelist/purplepinapples?status=7&order=5"'
 
 [lynx-from-stdin]
-command = 'lynx -stdin'
+command = 'exec lynx -stdin'
 
 [lynx-dump]
-command = 'lynx -stdin -dump'
+command = 'exec lynx -stdin -dump'
 
 [urldrag]
 command = '''
@@ -699,7 +697,7 @@ exec dragon-drag-and-drop -x "$(clippaste)"
 '''
 
 [albums]
-command = 'openurl "https://sean.fish/s/albums"'
+command = 'exec openurl "https://sean.fish/s/albums"'
 
 [group-and-termgraph]
 command='''
@@ -710,10 +708,18 @@ chomp | sort | uniq -c | awk '{print $2 " " $1}' | termgraph | chomp | sort -n
 
 [boxes-python]
 command='''
-boxes -dshell -pv1h2
+exec boxes -dshell -pv1h2
 '''
 
 [flake8c]
 command='''
 exec flake8 --config ~/.config/flake8 "$@"
+'''
+
+[dotfiles-format]
+shebang = "#!/bin/zsh"
+command='''
+cd
+yadm ls-files | exists | rifleman -
+yadm ls-files | exists | rifleman - -a lint
 '''

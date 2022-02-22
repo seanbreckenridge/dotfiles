@@ -1,2 +1,2 @@
 #!/bin/sh
-lynx -stdin -dump
+exec lynx -stdin -dump
