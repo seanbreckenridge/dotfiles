@@ -14,6 +14,8 @@ Plug 'junegunn/fzf.vim'
 Plug 'mg979/vim-visual-multi', {'branch': 'master'}  " for tutorial: 'nvim -Nu .local/plugged/vim-visual-multi/tutorialrc'
 Plug 'itchyny/lightline.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'airblade/vim-gitgutter'
+Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
 call plug#end()
 
 " Turn on syntax highlighting
@@ -136,12 +138,27 @@ vmap <leader>y "+y
 " goyo
 map <leader>g :Goyo<CR>
 
+" color scheme
+colorscheme tokyonight
+let g:tokyonight_sidebars = [ "qf", "vista_kind", "terminal", "packer" ]
+
+" Change the "hint" color to the "orange" color, and make the "error" color bright red
+let g:tokyonight_colors = {'hint': 'orange', 'error': '#ff0000'}
+
+" use tokyonight for colorscheme
+let g:lightline = {'colorscheme': 'tokyonight'}
+
+
 " fzf
 map <leader>b :Buffers<CR>
 map <leader>f :Files<CR>
 map <leader>l :Lines<CR>
 " match all lines/files recursively using the_silver_searcher
 map <leader>r :Ag<CR>
+
+" jumping around the git gutter
+nmap ]h <Plug>(GitGutterNextHunk)
+nmap [h <Plug>(GitGutterPrevHunk)
 
 " disable arrow keys
 inoremap <Down> <Nop>
