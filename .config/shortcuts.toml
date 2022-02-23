@@ -328,6 +328,9 @@ echo "$*" | clp
 [tstamp]
 command="exec date +'%Y%m%d%H%M%S'"
 
+[daystamp]
+command='exec date "+%Y_%m_%d"'
+
 [now]
 command='exec date +"%A, %B %e, %Y, %l:%M:%S%p"'
 

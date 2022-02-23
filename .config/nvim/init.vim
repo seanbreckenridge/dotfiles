@@ -15,7 +15,9 @@ Plug 'mg979/vim-visual-multi', {'branch': 'master'}  " for tutorial: 'nvim -Nu .
 Plug 'itchyny/lightline.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'airblade/vim-gitgutter'
+Plug 'airblade/vim-rooter'
 Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
+Plug 'scrooloose/nerdtree'
 call plug#end()
 
 " Turn on syntax highlighting
@@ -116,19 +118,19 @@ set wildmenu
 " mapping to toggle spellcheck
 map <leader>s :set spell!<CR>
 
+" mapping to toggle autocd
+map <leader>c :set autochdir!<CR>
+
 " swap to previous buffer
 map <leader><leader> :bprevious<CR>
 
 " nicer binding for window management
 map <leader>w <C-W>
 
-" Open file manager
-map <leader>e :Explore<CR>
-
 " Compile document (LaTeX/markdown/etc)
-map <leader>c :w! \| !compile <c-r>%<CR><CR>
+" map <leader>c :w! \| !compile <c-r>%<CR><CR>
 " Open corresponding .pdf/.html or preview
-map <leader>o :!opout <c-r>%<CR><CR>
+" map <leader>o :!opout <c-r>%<CR><CR>
 
 " copy visual selection to clipboard
 vmap <leader>c "+y
@@ -141,13 +143,15 @@ map <leader>g :Goyo<CR>
 " color scheme
 colorscheme tokyonight
 let g:tokyonight_sidebars = [ "qf", "vista_kind", "terminal", "packer" ]
-
 " Change the "hint" color to the "orange" color, and make the "error" color bright red
 let g:tokyonight_colors = {'hint': 'orange', 'error': '#ff0000'}
-
-" use tokyonight for colorscheme
+" use tokyonight for lightline
 let g:lightline = {'colorscheme': 'tokyonight'}
 
+" nerdtree
+nnoremap <leader>n :NERDTreeFocus<CR>
+nnoremap <leader>e :NERDTreeToggle<CR>
+nnoremap <C-f> :NERDTreeFind<CR>
 
 " fzf
 map <leader>b :Buffers<CR>
@@ -183,13 +187,13 @@ autocmd BufWritePost shortcuts.toml !reshortcuts
 " run i3-jinja to re-create i3 conf file when editing the jinja conf file
 " https://sean.fish/d/config.j2?dark
 autocmd BufWritePost config.j2 !i3-jinja
+autocmd BufWritePost * if expand('%:f') == '.config/i3/config.yaml' | !i3-jinja
 
 " coc configuration
 
 " Some servers have issues with backup files, see #649.
 set nobackup
 set nowritebackup
-
 
 " Give more space for displaying messages.
 set cmdheight=2
@@ -341,4 +345,3 @@ set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
 " gopls configuration
 " autocmd BufWritePre *.go :call CocAction('organizeImport')
-

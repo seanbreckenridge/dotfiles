@@ -70,7 +70,7 @@ Unless where attributed, any customization and scripts are licensed under the MI
 ```
 MIT License
 
-Copyright (c) 2019-21 Sean Breckenridge
+Copyright (c) 2019-22 Sean Breckenridge
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

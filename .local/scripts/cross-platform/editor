@@ -43,11 +43,11 @@ shift "$((OPTIND - 1))"
 case "$ACTION" in
 "$NVIM")
 	if (($# == 0)); then
-		ttt nvim +Explore
+		ttt nvim +NERDTree
 	else
 		if [[ -e "$1" ]]; then
 			if [[ -d "$1" ]]; then
-				ttt nvim +Explore "$@"
+				ttt nvim +NERDTree "$@"
 			else
 				ttt nvim "$@"
 			fi
