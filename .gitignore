@@ -98,6 +98,7 @@ __pycache__
 /.config/discord
 /.config/kwalletrc
 /.config/mpv/watch_later/
+/.config/libreoffice
 /.config/netrc
 /.config/trackma
 /.cookiecutter_replay
