@@ -9,4 +9,6 @@ case "$BLOCK_BUTTON" in
 	;;
 esac
 
-chomp <"${HOME}/data/todo/todo.txt" | wc -l
+set -u
+
+chomp <"${TODO_DIR}/todo.txt" | wc -l
