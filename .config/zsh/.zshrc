@@ -30,6 +30,9 @@ source_if_exists "${ALIAS_DIR}/tokens" # Tokens for interacting with APIs etc
 # zsh plugins
 case "$ON_OS" in
 linux)
+	# add flatpak to $PATH. It already adds itself to XDG_USER_DIRS (which is picked up by rofi)
+	# in /etc/profile.d/flatpak.sh but that doesn't let me launch it from my terminal
+	export PATH="/var/lib/flatpak/exports/bin:${PATH}"
 	# fzf
 	source_if_exists /usr/share/fzf/key-bindings.zsh
 	source_if_exists /usr/share/fzf/completion.zsh
