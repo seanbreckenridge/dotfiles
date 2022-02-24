@@ -28,6 +28,7 @@ class Food(NamedTuple):
     # if I don't supply a quantity, default to 1
     @staticmethod
     def attr_validators() -> dict:
+        # https://sean.fish/d/ttally_types.py?dark
         from seanb.ttally_types import prompt_float_default
 
         return {"quantity": lambda: prompt_float_default("quantity")}
@@ -38,11 +39,12 @@ class Event(NamedTuple):
     event_type: str
     when: datetime
     description: str
-    score: Optional[int]
-    comments: Optional[str]
+    score: int | None
+    comments: str | None
 
     @staticmethod
     def attr_validators() -> dict:
+        # https://sean.fish/d/ttally_types.py?dark
         from seanb.ttally_types import edit_in_vim
 
         return {"comments": edit_in_vim}
