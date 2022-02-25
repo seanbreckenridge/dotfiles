@@ -103,7 +103,7 @@ if [[ ! -e "${TTALLY_ALIASES}" ]]; then
 	fi
 fi
 [[ -e "${TTALLY_ALIASES}" ]] && source "${TTALLY_ALIASES}"
-alias 'czd=cz -d'
+alias 'czd=PROMPT_DATETIME=1 cz'
 alias 'czl=while cz; do; done'
 alias 'ca=food-now'
 b-() {
