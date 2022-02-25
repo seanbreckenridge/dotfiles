@@ -22,11 +22,11 @@
 # Meaningful aliases for arguments:
 path="$1" # Full path of the selected file
 #width="$2"           # Width of the preview pane (number of fitting characters)
-#height="$3"          # Height of the preview pane (number of fitting characters)
+height="$3"         # Height of the preview pane (number of fitting characters)
 cached="$4"         # Path that should be used to cache image previews
 preview_images="$5" # "True" if image previews are enabled, "False" otherwise.
 
-maxln=$(($(tput lines) * 2))
+maxln=$((height * 3))
 
 # Find out something about the file:
 mimetype=$(file --mime-type -Lb "$path")
