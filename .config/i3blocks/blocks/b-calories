@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 # how many calories I've eaten today
 
+[[ -n "$BLOCK_BUTTON" ]] && clrs
+
 {
 	hpi query ttally.funcs.food -r "${@:-1d}" -s | jq -r '(.quantity)*(.calories)'
 	echo 0
