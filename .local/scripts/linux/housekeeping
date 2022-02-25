@@ -14,7 +14,7 @@ for binary in "${required_binaries[@]}"; do
 	havecmd "${binary}" || exit $?
 done
 
-evry 1 week -check-music-extensions && check-music-extensions
+evry 1 day -check-music-extensions && check-music-extensions
 
 # https://github.com/seanbreckenridge/glue
 APPROVE_SCRIPT="${REPOS}/vps/approve_comments"
