@@ -647,21 +647,27 @@ exec open -a DB\ Browser\ for\ SQLite "$@"
 
 [clr]
 command = '''
+#!/bin/sh
 food() {
-  python3 -m ttally recent food "$@"
+	python3 -m ttally recent food "$@" | {
+		if [ -n "$REMOVE_CALORIES" ]; then
+			awk '{ $3=""; print $0 }' | tr -s ' '
+		else
+			cat
+		fi
+	}
 }
 
 if [ -z "$1" ]; then
-  print-or-notify "$(food)"
+	print-or-notify "$(food "$@")"
 else
-  printf '%s\n' "$(food "$@")"
+	food "$@"
 fi
 '''
 
 [clrs]
 command = '''
-# clr without the calorie count
-print-or-notify "$(python3 -m ttally recent food "$@" | awk '{ $3=""; print $0 }' | tr -s ' ')"
+REMOVE_CALORIES=1 clr "$@"
 '''
 
 [mz]

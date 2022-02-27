@@ -1,10 +1,17 @@
 #!/bin/sh
+#!/bin/sh
 food() {
-	python3 -m ttally recent food "$@"
+	python3 -m ttally recent food "$@" | {
+		if [ -n "$REMOVE_CALORIES" ]; then
+			awk '{ $3=""; print $0 }' | tr -s ' '
+		else
+			cat
+		fi
+	}
 }
 
 if [ -z "$1" ]; then
-	print-or-notify "$(food)"
+	print-or-notify "$(food "$@")"
 else
-	printf '%s\n' "$(food "$@")"
+	food "$@"
 fi
