@@ -190,6 +190,7 @@ tmux
 todotxt-git
 toilet
 tree
+twitch-cli-bin
 unarchiver
 unrar
 unzip

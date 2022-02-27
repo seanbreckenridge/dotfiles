@@ -180,7 +180,7 @@ printf "%s\n" "$IMGUR_URL" >>/tmp/imgur_urls.log
 notify "Uploaded Image to Imgur:" "$IMGUR_URL"
 '''
 
-[twitch]
+[twitch-stream]
 command = '''
 # open chatterino and use mpv to stream from twitch
 STREAMER="${1:?Pass the twitch user to stream from as the first argument.}"

@@ -186,6 +186,7 @@ __pycache__
 /.config/*/zoom.conf
 /.config/3T
 /.config/BraveSoftware/
+/.config/twitch-cli/
 /.config/Code - OSS/
 /.config/Electron
 /.config/GIMP

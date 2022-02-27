@@ -51,6 +51,9 @@ evry 1 day -google-drive && {
 # https://github.com/seanbreckenridge/grouvee_export
 evry 2 months -grouvee-export && python3 -m grouvee_export export
 
+# refresh https://dev.twitch.tv/docs/api/
+evry 2 months -twitch_cli && twitch token
+
 # update https://github.com/seanbreckenridge/mnu_gsheets
 evry 2 weeks -mnu && ssh vultr ~/vps/mnu
 
