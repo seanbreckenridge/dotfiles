@@ -69,6 +69,7 @@ alias shz="shorturls | fzf | sed -e 's|^|https://sean.fish/s/|' | tee /dev/tty |
 
 # Alt+Shift+L to print live twitch channels
 # https://github.com/seanbreckenridge/twitchlive
+alias twitchlive-table='twitchlive --output-format=table'
 bindkey -s '^[L' 'twitchlive-table\n'
 
 # https://github.com/seanbreckenridge/ttt
