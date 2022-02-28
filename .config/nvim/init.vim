@@ -67,6 +67,11 @@ nnoremap k gk
 " (obviously, 5Qq to do multiple lines)
 nnoremap Q gq
 
+" center/fix cursor when jumping around text
+nnoremap n nzzzv
+nnoremap N Nzzzv
+nnoremap J mzJ`z
+
 " Allow hidden buffers
 set hidden
 
