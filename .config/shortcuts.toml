@@ -647,7 +647,6 @@ exec open -a DB\ Browser\ for\ SQLite "$@"
 
 [clr]
 command = '''
-#!/bin/sh
 food() {
 	python3 -m ttally recent food "$@" | {
 		if [ -n "$REMOVE_CALORIES" ]; then

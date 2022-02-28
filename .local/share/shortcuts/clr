@@ -1,5 +1,4 @@
 #!/bin/sh
-#!/bin/sh
 food() {
 	python3 -m ttally recent food "$@" | {
 		if [ -n "$REMOVE_CALORIES" ]; then
