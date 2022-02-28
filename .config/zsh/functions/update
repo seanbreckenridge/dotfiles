@@ -15,7 +15,7 @@ function update() {
 		;;
 	linux)
 		yay -Syu
-		housekeeping
+		housekeeping-info
 		havecmd flatpak && flatpak update
 		;;
 	android)
