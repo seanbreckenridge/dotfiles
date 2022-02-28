@@ -276,7 +276,7 @@ class league:
     class export:
         """https://github.com/seanbreckenridge/lolexport"""
 
-        export_path: Paths = data("league_of_legends/parsed*.json")
+        export_path: Paths = data("league_of_legends/*.json")
         username = "purplepinapples"
 
 
