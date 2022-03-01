@@ -242,7 +242,12 @@ class commits:
         pass
 
     roots: Paths = [
-        Path(environ["REPOS"]),
+        p
+        for p in [
+            Path(environ["REPOS"]),
+            Path(environ["HOME"]) / ".local/share/go/src/github.com/seanbreckenridge/",
+        ]
+        if p.exists()
     ]
 
 
