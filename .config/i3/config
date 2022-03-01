@@ -317,6 +317,10 @@ bindsym $mod+Shift+Return exec --no-startup-id ttt firefox-developer-edition --n
 assign [class="Chromium-browser"] 9
 assign [class="Chromium"] 9
 
+# IM/Chat to 5
+for_window [class="Slack"] move to workspace 5
+for_window [class="Microsoft Teams - Preview"] move to workspace 5
+
 # start nm-applet
 exec --no-startup-id nm-applet
 
