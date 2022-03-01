@@ -80,6 +80,7 @@ havecmd arctee || python3 -m pip install git+https://github.com/karlicoss/arctee
 # small utilities I use in scripts
 havecmd newest || go install github.com/seanbreckenridge/newest@latest
 havecmd chomp || go install github.com/seanbreckenridge/chomp@latest
+havecmd fzfcache || go install github.com/seanbreckenridge/fzfcache@latest
 
 # manually build some python packages which have C extensions
 INSTALLED_PYTHON_PACKAGES="$(python3 -m pip list --format=freeze | cut -d'=' -f1)"
