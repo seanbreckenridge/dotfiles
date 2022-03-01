@@ -13,14 +13,11 @@ command = '''
 } | grep -v "system-config" | exists | sort -u
 '''
 
-[list-config-cached]
-command='exec fzfcache list-config'
-
 [ec]
 command = '''
 cd ~ || exit $?
 # fuzzy match list-config names, open one to edit (Edit Config)
-list-config-cached | sed "s#^$HOME/##g" | fzfp +m -q "$*" | xargs -r -I {} editor "$HOME/{}"
+fzfcache list-config | sed "s#^$HOME/##g" | fzfp +m -q "$*" | xargs -r -I {} editor "$HOME/{}"
 '''
 
 [dotfiles]
