@@ -17,7 +17,6 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'airblade/vim-gitgutter'
 Plug 'airblade/vim-rooter'
 Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
-Plug 'scrooloose/nerdtree'
 call plug#end()
 
 " Turn on syntax highlighting
@@ -153,10 +152,8 @@ let g:tokyonight_colors = {'hint': 'orange', 'error': '#ff0000'}
 " use tokyonight for lightline
 let g:lightline = {'colorscheme': 'tokyonight'}
 
-" nerdtree
-nnoremap <leader>n :NERDTreeFocus<CR>
-nnoremap <leader>e :NERDTreeToggle<CR>
-nnoremap <C-f> :NERDTreeFind<CR>
+" open netrw
+nnoremap <leader>e :Explore<CR>
 
 " fzf
 map <leader>b :Buffers<CR>
