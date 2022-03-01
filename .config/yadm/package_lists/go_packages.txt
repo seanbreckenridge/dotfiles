@@ -11,6 +11,7 @@ darker_errors github.com/seanbreckenridge/darker_errors
 spkglist github.com/seanbreckenridge/spkglist/cmd/spkglist
 newest github.com/seanbreckenridge/newest
 chomp github.com/seanbreckenridge/chomp
+fzfcache github.com/seanbreckenridge/fzfcache
 
 # others
 wuzz github.com/asciimoo/wuzz

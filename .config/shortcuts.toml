@@ -9,15 +9,18 @@ command = '''
 # yadm ls-files and a couple search commands
 {
 	cd && yadm ls-files | sed "s#^#$HOME/#"
-	fd --type=file -H --full-path "${HOME}" "${XDG_CONFIG_HOME}/todo" "${XDG_CONFIG_HOME}/bookmark.txt" "${ZDOTDIR}" "${XDG_CONFIG_HOME}/yadm" "${XDG_CONFIG_HOME}/my"
+	fd --type=file -H -E '__pycache__' -E '.mypy_cache' --full-path "${HOME}" "${XDG_CONFIG_HOME}/todo" "${XDG_CONFIG_HOME}/bookmark.txt" "${ZDOTDIR}" "${XDG_CONFIG_HOME}/yadm" "${XDG_CONFIG_HOME}/my"
 } | grep -v "system-config" | exists | sort -u
 '''
+
+[list-config-cached]
+command='exec fzfcache list-config'
 
 [ec]
 command = '''
 cd ~ || exit $?
 # fuzzy match list-config names, open one to edit (Edit Config)
-list-config | sed "s#^$HOME/##g" | fzfp +m -q "$*" | xargs -r -I {} editor "$HOME/{}"
+list-config-cached | sed "s#^$HOME/##g" | fzfp +m -q "$*" | xargs -r -I {} editor "$HOME/{}"
 '''
 
 [dotfiles]

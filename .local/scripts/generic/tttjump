@@ -6,12 +6,4 @@
 set -e
 set -o pipefail
 
-hpi query my.ttt.history -s |
-	jq -r '.directory' |
-	grep -vx "^${HOME}$" |
-	sort |
-	uniq -c |
-	sort -n |
-	awk '{print $2}' |
-	exists |
-	fzf --tac
+fzfcache "hpi query my.ttt.history -s | jq -r '.directory' | grep -vx ~ | sort | uniq -c | sort -n | awk '{print \$2}' | exists" | fzf --tac
