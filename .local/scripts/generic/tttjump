@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # This prints directories that appear a lot in ttt_history,
 # letting me cd to one of them
-# Requires python, fzf, exists (https://github.com/seanbreckenridge/exists), my ttt HPI module (https://github.com/seanbreckenridge/HPI), fzfcache https://github.com/seanbreckenridge/fzfcache
+# Requires python, fzf, exists (https://github.com/seanbreckenridge/exists), my ttt HPI module (https://github.com/seanbreckenridge/HPI), fzfcache (https://github.com/seanbreckenridge/fzfcache)
 
 set -e
 set -o pipefail
