@@ -32,11 +32,20 @@ def repo(name: str) -> str:
     return path.join(environ["REPOS"], name)
 
 
-def if_exists(p: PathIsh) -> Optional[PathIsh]:
+def if_exists(p: PathIsh) -> Optional[Path]:
     pp = Path(p)
     if pp.exists():
         return pp
     return None
+
+
+def filter_exists(pths: List[PathIsh]) -> List[Path]:
+    res: List[Path] = []
+    for p in pths:
+        r = if_exists(p)
+        if r is not None:
+            res.append(r)
+    return res
 
 
 # if the HPIDATA environment variable is set (which points to my data)
@@ -241,14 +250,13 @@ class commits:
     except ImportError:
         pass
 
-    roots: Paths = [
-        p
-        for p in [
+    roots: Paths = filter_exists(
+        [
             Path(environ["REPOS"]),
+            Path(environ["HOME"]) / "Documents/OldRepos",
             Path(environ["HOME"]) / ".local/share/go/src/github.com/seanbreckenridge/",
         ]
-        if p.exists()
-    ]
+    )
 
 
 class mpv:
