@@ -649,22 +649,10 @@ exec open -a DB\ Browser\ for\ SQLite "$@"
 '''
 
 [clr]
-command = '''
-food() {
-	python3 -m ttally recent food "$@"
-}
-
-if [ -z "$1" ]; then
-	print-or-notify "$(food "$@")"
-else
-	food "$@"
-fi
-'''
+command = '''print-or-notify "$(ttally recent food "$@")"'''
 
 [clrs]
-command = '''
-clr "$@" -r calories
-'''
+command = '''clr -r calories "$@"'''
 
 [mz]
 command = '''

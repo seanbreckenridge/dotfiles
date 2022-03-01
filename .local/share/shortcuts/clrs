@@ -1,2 +1,2 @@
 #!/bin/sh
-clr "$@" -r calories
+clr -r calories "$@"

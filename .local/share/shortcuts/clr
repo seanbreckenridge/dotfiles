@@ -1,10 +1,2 @@
 #!/bin/sh
-food() {
-	python3 -m ttally recent food "$@"
-}
-
-if [ -z "$1" ]; then
-	print-or-notify "$(food "$@")"
-else
-	food "$@"
-fi
+print-or-notify "$(ttally recent food "$@")"
