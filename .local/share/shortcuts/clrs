@@ -1,2 +1,2 @@
 #!/bin/sh
-REMOVE_CALORIES=1 clr "$@"
+clr "$@" -r calories
