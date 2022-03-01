@@ -155,6 +155,9 @@ fd '.*(mp4|avi|mkv)$' "$@"
 '''
 link = 'list-movies'
 
+[list-images]
+command='''fd '.*(png|jpeg|jpg)' "$@"'''
+
 [play-music]
 command='''
 # play music in the current directory, recursively
