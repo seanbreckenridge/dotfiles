@@ -63,9 +63,9 @@ class fzf_select(Command):
 
     # helper function to run fzf in with self.command
     # returns file if selected else none
-    def run_fzf(self) -> Optional[Union[List, str]]:
+    def run_fzf(self) -> Optional[Union[List[str], str]]:
         fzf = self.fm.execute_command(self.command, stdout=subprocess.PIPE)
-        stdout, stderr = fzf.communicate()
+        stdout, _ = fzf.communicate()
         if fzf.returncode == 0:
             stdout_decoded = stdout.decode("utf-8").strip()
             if self.__class__.multi_select:
@@ -84,6 +84,7 @@ class fzf_select(Command):
         fzf_file = self.run_fzf()
         if fzf_file is None:
             return
+        assert isinstance(fzf_file, str)
         if os.path.isdir(fzf_file):
             self.fm.cd(fzf_file)
         else:
@@ -120,7 +121,8 @@ class fzf_copy_from(fzf_select):
                 filepath = os.path.dirname(filepath)
             directory = filepath
         os.chdir(directory)
-        fzf_files: Optional[List[str]] = self.run_fzf()
+        fzf_files = self.run_fzf()
+        assert isinstance(fzf_files, list)
         if fzf_files is not None:
             for f in fzf_files:
                 to_path = os.path.join(self.fm.thisdir.path, os.path.basename(f))
