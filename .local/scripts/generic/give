@@ -4,17 +4,16 @@
 # and copies a link to that file to the clipboard
 
 # if run from rofi/i3, use picker instead
+# cross platform GUI picker https://sean.fish/d/picker?dark
 pick='fzf'
-if ! attached-to-terminal; then
-	# cross platform GUI picker https://sean.fish/d/picker?dark
-	pick='picker'
-fi
+attached-to-terminal || pick='picker'
 
 readonly BASE_URL="https://sean.fish/d/"
 declare SCRIPT_INDEX SCRIPT_CHOICE BASE_FILEPATHS
+SCRIPT_CHOICE="$(fzfcache curl -s "${BASE_URL}" | "$pick")" || exit 1
+
 SCRIPT_INDEX="$(curl -s "${BASE_URL}")"
 readonly SCRIPT_INDEX # convert to constant
-SCRIPT_CHOICE="$("${pick}" <<<"${SCRIPT_INDEX}")" || exit 1
 
 # if the URL can be reduced to just the base path, do that
 BASE_FILEPATHS="$(echo -e "${SCRIPT_INDEX}" | rev | cut -d"/" -f1 | rev)"
