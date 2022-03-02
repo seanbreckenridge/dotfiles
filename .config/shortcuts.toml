@@ -719,3 +719,9 @@ cd
 yadm ls-files | exists | rifleman -
 yadm ls-files | exists | rifleman - -a lint
 '''
+
+[listens-desc]
+command='''
+# https://github.com/seanbreckenridge/HPI-personal/blob/master/scripts/listens
+exec listens --desc "$@"
+'''
