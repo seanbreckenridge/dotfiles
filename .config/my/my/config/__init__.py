@@ -78,7 +78,7 @@ else:
             # this is true if we actually reordered the path
             # else path was already ordered
             print(
-                "easy-install.pth was ordered wrong! It has been reordered,"
+                "easy-install.pth was ordered wrong! It has been reordered, "
                 "exiting to apply changes...",
                 file=sys.stderr,
             )
