@@ -53,14 +53,14 @@ bindkey '^[l' fzf-cd-widget
 
 # uses https://github.com/seanbreckenridge/HPI and https://github.com/seanbreckenridge/ttt
 CD() {
-	cd "$(tttjump --height "${FZF_TMUX_HEIGHT:-50%}" --reverse "$@")"
-	zle reset-prompt
+	cd "$(tttjump --height "${FZF_TMUX_HEIGHT:-50%}" --reverse "$@" -i)"
 }
 zle -N CD
 
 
 CD-Repos() {
 	CD -q "${REPOS}"
+	zle reset-prompt
 }
 zle -N CD-Repos
 
