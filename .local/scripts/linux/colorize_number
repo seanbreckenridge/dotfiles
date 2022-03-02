@@ -4,7 +4,7 @@
 # used in my i3blocks scripts
 # https://github.com/vivien/i3blocks
 
-NUM="${1:-$(cat | chomp | tr -d "\n")}"
+NUM="${1:-$(chomp | tr -d "\n")}"
 
 if [ "${NUM}" = '0' ]; then
 	printf '0\n'
