@@ -6,9 +6,10 @@
 ranger() {
 	local LOGFILE="${TMPDIR:-/tmp}/cd_ranger"
 	if [[ -n "$PIPENV_ACTIVE" ]]; then
+		# if I'm in a pipenv, guess the path of ranger -- typically on my main machine
 		/usr/bin/ranger "$@" || return $?
 	else
-		"${HOME}/.local/scripts/generic/ranger" "$@" || return $?
+		PYTHONWARNINGS=ignore command ranger "$@" || return $?
 	fi
 	if [[ -f "${LOGFILE}" ]]; then
 		cd "$(cat "${LOGFILE}")"

@@ -53,10 +53,11 @@ bindkey '^[l' fzf-cd-widget
 
 # uses https://github.com/seanbreckenridge/HPI and https://github.com/seanbreckenridge/ttt
 CD() {
-	cd "$(tttjump --height "${FZF_TMUX_HEIGHT:-50%}" --reverse "$@" -i)"
+	local chosen
+	chosen="$(tttjump --height "${FZF_TMUX_HEIGHT:-50%}" --reverse "$@" -i)" || return $?
+	cd "${chosen}" || return $?
 }
 zle -N CD
-
 
 CD-Repos() {
 	CD -q "${REPOS}"
@@ -66,6 +67,7 @@ zle -N CD-Repos
 
 # Alt+Shift+C to fzf into something in my ~/Repos, sorted by most used
 bindkey '^[C' CD-Repos
+bindkey -s '^[R' '^uCD && R^M' # CD and open in ranger
 
 # ^u is Ctrl+U, which is bound to
 # to kill-whole-line
