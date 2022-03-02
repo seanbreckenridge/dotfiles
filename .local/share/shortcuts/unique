@@ -1,0 +1,3 @@
+#!/bin/sh
+# filter the text from something piped into this to unique lines
+exec awk '!seen[$0]++'

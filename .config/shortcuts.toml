@@ -694,8 +694,8 @@ command = 'exec openurl "https://sean.fish/s/albums"'
 
 [group-and-termgraph]
 command='''
-# takes data from stdin, groups it using 'uniq -c' and then graphs
-# it using https://github.com/mkaz/termgraph
+# takes data from stdin, groups it using 'uniq -c', sorts it by most common,
+# and then graphs it using https://github.com/mkaz/termgraph
 chomp | sort | uniq -c | awk '{print $2 " " $1}' | termgraph | chomp | awk '{print $NF,$0}' | sort -n | cut -f2- -d' '
 '''
 
@@ -724,4 +724,10 @@ yadm ls-files | exists | rifleman - -a lint
 command='''
 # https://github.com/seanbreckenridge/HPI-personal/blob/master/scripts/listens
 exec listens --desc "$@"
+'''
+
+[unique]
+command='''
+# filter the text from something piped into this to unique lines
+exec awk '!seen[$0]++'
 '''
