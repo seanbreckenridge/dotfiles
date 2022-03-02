@@ -51,20 +51,21 @@ bindkey '^[h' up-dir
 bindkey '^[[1;3C' fzf-cd-widget
 bindkey '^[l' fzf-cd-widget
 
-# Alt+Shift+C to fzf into a directory in my repos
-fzf-repos() {
-	cd "${REPOS}"
-	fzf-cd-widget
-	# if user didnt select a dir to cd into
-	# and is still in Repos, go back to
-	# the dir they were in previously
-	if [[ "${PWD}" == "${REPOS}" ]]; then
-		cd "${OLDPWD}"
-	fi
+# uses https://github.com/seanbreckenridge/HPI and https://github.com/seanbreckenridge/ttt
+CD() {
+	cd "$(tttjump --height "${FZF_TMUX_HEIGHT:-50%}" --reverse "$@")"
 	zle reset-prompt
 }
-zle -N fzf-repos
-bindkey '^[C' fzf-repos
+zle -N CD
+
+
+CD-Repos() {
+	CD -q "${REPOS}"
+}
+zle -N CD-Repos
+
+# Alt+Shift+C to fzf into something in my ~/Repos, sorted by most used
+bindkey '^[C' CD-Repos
 
 # ^u is Ctrl+U, which is bound to
 # to kill-whole-line

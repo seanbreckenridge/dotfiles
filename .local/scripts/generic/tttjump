@@ -6,4 +6,4 @@
 set -e
 set -o pipefail
 
-exec fzfcache "hpi query my.ttt.history -s | jq -r '.directory' | grep -vx ~ | sort | uniq -c | sort -n | awk '{print \$2}' | exists" | fzf --tac
+exec fzfcache "hpi query my.ttt.history -s | jq -r '.directory' | grep -vx ~ | sort | uniq -c | sort -nr | awk '{print \$2}' | exists" | fzf "$@"

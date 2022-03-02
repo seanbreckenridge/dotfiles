@@ -72,11 +72,6 @@ alias shz="shorturls | fzf | sed -e 's|^|https://sean.fish/s/|' | tee /dev/tty |
 alias twitchlive-table='twitchlive --output-format=table'
 bindkey -s '^[L' 'twitchlive-table\n'
 
-# https://github.com/seanbreckenridge/ttt
-CD() {
-	cd "$(tttjump)"
-}
-
 # https://github.com/seanbreckenridge/exobrain
 alias exo='cd "${REPOS}/exobrain"; ranger --cmd="shell ./exosearch"'
 alias exoo='cd "${REPOS}/exobrain"; ranger --cmd="shell ./exosearch -o"'
