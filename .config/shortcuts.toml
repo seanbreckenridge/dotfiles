@@ -562,7 +562,7 @@ command='exec ssh-keygen -t rsa -b 4096 -o -a 100'
 [mystarsfzf]
 command='''
 # https://github.com/seanbreckenridge/oh-my-stars
-PICKED="$(mystars "$@" | fzf --ansi)" || exit $?
+PICKED="$(fzfcache mystars "$@" | fzf --ansi)" || exit $?
 printf '%s\n' "${PICKED}"
 URL="$(echo "${PICKED}" | urlextract)"
 # if a URL was extracted, copy it to my clipboard
