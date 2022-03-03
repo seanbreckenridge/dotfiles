@@ -690,13 +690,6 @@ exec dragon-drag-and-drop -x "$(clippaste)"
 [albums]
 command = 'exec openurl "https://sean.fish/s/albums"'
 
-[group-and-termgraph]
-command='''
-# takes data from stdin, groups it using 'uniq -c', sorts it by most common,
-# and then graphs it using https://github.com/mkaz/termgraph
-chomp | sort | uniq -c | awk '{print $2 " " $1}' | termgraph | chomp | awk '{print $NF,$0}' | sort -n | cut -f2- -d' '
-'''
-
 [boxes-python]
 command='''
 # create a comment box as a python comment, text piped from STDIN

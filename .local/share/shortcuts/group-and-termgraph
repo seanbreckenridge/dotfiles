@@ -1,4 +1,0 @@
-#!/bin/sh
-# takes data from stdin, groups it using 'uniq -c', sorts it by most common,
-# and then graphs it using https://github.com/mkaz/termgraph
-chomp | sort | uniq -c | awk '{print $2 " " $1}' | termgraph | chomp | awk '{print $NF,$0}' | sort -n | cut -f2- -d' '
