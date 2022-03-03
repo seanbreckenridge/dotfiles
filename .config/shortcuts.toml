@@ -164,7 +164,6 @@ command='''
 list-music | mpv --playlist=- --no-audio-display
 '''
 
-
 [shuffle-music]
 command='''
 # Plays songs from this folder, recursively, randomly
@@ -605,7 +604,6 @@ cd "${I3_DIR}" || exit $?
 exec j2 config.j2 -o config -f yaml <config.yaml
 '''
 shebang="#!/usr/bin/env bash"
-
 
 [alarm]
 command = 'exec paplay /usr/share/sounds/freedesktop/stereo/alarm-clock-elapsed.oga'
