@@ -9,23 +9,29 @@ Made to be used in ranger, to prompt for text https://sean.fish/d/rc.conf?dark
 import click
 
 
+def _prompt_and_echo(prompt: str, **kwargs):
+    kwargs["err"] = True
+    click.echo(click.prompt(prompt, **kwargs))
+
+
 @click.command(help=__doc__)
+@click.option("-p", "--prompt", help="Text to prompt with", default=None)
 @click.argument(
     "COERCE_TYPE",
     type=click.Choice(["str", "int", "float", "path", "path_exists"]),
     default="str",
 )
-def main(coerce_type: str) -> None:
+def main(prompt: str, coerce_type: str) -> None:
     if coerce_type == "int":
-        click.echo(click.prompt("Enter Integer", type=int, err=True))
+        _prompt_and_echo(prompt or "Enter Integer", type=int)
     elif coerce_type == "float":
-        click.echo(click.prompt("Enter Float", type=float, err=True))
+        _prompt_and_echo(prompt or "Enter Float", typ=float)
     elif coerce_type == "path":
-        click.echo(click.prompt("Enter Path", type=click.Path(), err=True))
+        _prompt_and_echo(prompt or "Enter Path", type=click.Path())
     elif coerce_type == "path_exists":
-        click.echo(click.prompt("Enter Path", type=click.Path(exists=True), err=True))
+        _prompt_and_echo(prompt or "Enter Path", type=click.Path(exists=True))
     else:
-        click.echo(click.prompt("Enter Text", err=True))
+        _prompt_and_echo(prompt or "Enter Text")
 
 
 if __name__ == "__main__":
