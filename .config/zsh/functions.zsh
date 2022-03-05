@@ -54,7 +54,7 @@ bindkey '^[l' fzf-cd-widget
 # uses https://github.com/seanbreckenridge/HPI and https://github.com/seanbreckenridge/ttt
 CD() {
 	local chosen
-	chosen="$(tttjump --height "${FZF_TMUX_HEIGHT:-50%}" --reverse "$@" -i)" || return $?
+	chosen="$(tttjump --height "${FZF_TMUX_HEIGHT:-50%}" --reverse -i "$@")" || return $?
 	cd "${chosen}" || return $?
 }
 zle -N CD
