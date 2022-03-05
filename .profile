@@ -137,10 +137,17 @@ export TTALLY_DATA_DIR="${HPIDATA}/ttally"
 export MINT_DATA="${HPIDATA}/mint"
 # https://github.com/seanbreckenridge/ttt
 export TTT_HISTFILE="${HPIDATA}/ttt/${SHELL_BOOT_TIME}.csv"
+# https://github.com/seanbreckenridge/url_cache
 export URL_CACHE_DIR="${HPIDATA}/url_cache"
+# https://github.com/seanbreckenridge/oh-my-stars
 export OH_MY_STARS_NETRC="${XDG_CONFIG_HOME}/netrc"
+# https://github.com/seanbreckenridge/malexport
 export MALEXPORT_DIR="${HPIDATA}/malexport"
-# playlist manager: https://github.com/seanbreckenridge/plaintext-playlist
+# https://github.com/seanbreckenridge/plaintext-playlist
 export PLAINTEXT_PLAYLIST_MUSIC_DIR="${XDG_MUSIC_DIR}"
+# https://github.com/seanbreckenridge/ipgeocache
 export IPGEOCACHE_DIR="${HPIDATA}/ipgeocache"
+# https://github.com/todotxt/todo.txt-cli
 export TODO_DIR="${HPIDATA}/todo" # todo.txt
+# https://github.com/seanbreckenridge/mpv-history-daemon
+export MPV_HISTORY_DAEMON_SCAN_TIME='5'
