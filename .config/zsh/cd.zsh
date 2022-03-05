@@ -1,4 +1,4 @@
-# binding to change my directory in the shell
+# bindings to change my directory in the shell
 #
 # Alt+left arrow/Alt+H to move up a dir
 up-dir() {
@@ -29,7 +29,7 @@ bindkey '^[l' fzf-cd-widget
 #
 # see
 # https://sean.fish/d/jumplist?dark
-# https://sean.fish/d/tttjump?dark
+# https://sean.fish/d/tttlist?dark
 CD() {
 	local chosen
 	chosen="$(fzfcache jumplist | fzf --height "${FZF_TMUX_HEIGHT:-50%}" --reverse -i "$@")" || return $?
