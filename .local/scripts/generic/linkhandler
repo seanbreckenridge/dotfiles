@@ -8,7 +8,7 @@
 
 # If no url given. Opens browser. For using script as $BROWSER.
 [ -z "$1" ] && {
-	"$BROWSER"
+	setsid -f "$BROWSER"
 	exit
 }
 
