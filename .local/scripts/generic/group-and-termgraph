@@ -12,6 +12,6 @@ chomp | sort | uniq -c | chomp | sed -e 's/,/_/g' |
 	# replace the last space with a comma (the termgraph delimiter)
 	rev | sed -e 's/ /,/' | rev |
 	# graph with termgraph
-	termgraph --delim ',' |
+	termgraph --delim ',' "$@" |
 	# remove extra lines termgraph prints, sort termgraph by the last column
 	chomp | awk '{print $NF,$0}' | sort -n | cut -f2- -d' '

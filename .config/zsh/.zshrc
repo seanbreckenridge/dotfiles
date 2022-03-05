@@ -14,6 +14,7 @@ source_if_exists() {
 source "${ZDOTDIR}/env_config.zsh"              # History/Application configuration
 source "${ZDOTDIR}/prompt.zsh"                  # prompt configuration
 source "${ZDOTDIR}/functions.zsh"               # functions, bindings, command completion
+source "${ZDOTDIR}/cd.zsh"                      # functions to change my directory
 source "${ZDOTDIR}/completion.zsh"              # zsh completion
 source "${ZDOTDIR}/lazy.zsh"                    # lazy load shell tools
 source "${ZDOTDIR}/progressive_enhancement.zsh" # slightly improve commands

@@ -1,4 +1,3 @@
-#!/usr/bin/env zsh
 # android-specific setup
 # this is mostly handling anacron-like
 # tasks that run periodically

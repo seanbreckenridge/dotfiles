@@ -38,37 +38,6 @@ autoload -Uz "${ZDOTDIR}/functions/"*
 bindkey -s '^F' "R --cmd='fzf_select'^M"
 bindkey -s '^G' "R --cmd='chain set show_hidden true; fzf_select_hidden'^M"
 
-# Alt+left arrow/Alt+H to move up a dir
-up-dir() {
-	cd '..'
-	zle reset-prompt
-}
-zle -N up-dir
-bindkey '^[[1;3D' up-dir
-bindkey '^[h' up-dir
-
-# Alt+right arrow/Alt+L to launch fzf cd (move into dir)
-bindkey '^[[1;3C' fzf-cd-widget
-bindkey '^[l' fzf-cd-widget
-
-# uses https://github.com/seanbreckenridge/HPI and https://github.com/seanbreckenridge/ttt
-CD() {
-	local chosen
-	chosen="$(tttjump --height "${FZF_TMUX_HEIGHT:-50%}" --reverse -i "$@")" || return $?
-	cd "${chosen}" || return $?
-}
-zle -N CD
-
-CD-Repos() {
-	CD -q "${REPOS}"
-	zle reset-prompt
-}
-zle -N CD-Repos
-
-# Alt+Shift+C to fzf into something in my ~/Repos, sorted by most used
-bindkey '^[C' CD-Repos
-bindkey -s '^[R' '^uCD && R^M' # CD and open in ranger
-
 # ^u is Ctrl+U, which is bound to
 # to kill-whole-line
 # this means that Alt+R deletes everything at

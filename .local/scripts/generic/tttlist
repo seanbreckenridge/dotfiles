@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# This prints directories that appear a lot in ttt_history,
+# letting me cd to one of them
+# Requires exists (https://github.com/seanbreckenridge/exists), my ttt HPI module (https://github.com/seanbreckenridge/HPI) chomp (https://github.com/seanbreckenridge/chomp)
+
+set -e
+set -o pipefail
+
+hpi query my.ttt.history -s | jq -r '.directory' | grep -vx ~ | sort | uniq -c | chomp | sort -nr | cut -d' ' -f2- | exists

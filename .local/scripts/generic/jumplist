@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+set -e
+set -o pipefail
+
+# update tttlist cache once a day
+tttlist_cached() {
+	evry 1d -tttlist && tttlist > ~/.cache/tttlist
+	cat ~/.cache/tttlist
+}
+
+{
+	tttlist_cached
+	hpi query my.coding.commits.repos -s | jq -r
+} | grep -v '^/tmp' || exit $?

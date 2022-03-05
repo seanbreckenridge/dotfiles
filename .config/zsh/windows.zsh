@@ -1,5 +1,3 @@
-#!/usr/bin/env zsh
-
 # run bgproc jobs once a day when I login
 # https://github.com/seanbreckenridge/dotfiles/tree/master/.local/scripts/supervisor
 # https://github.com/seanbreckenridge/bgproc
