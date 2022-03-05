@@ -1,7 +1,10 @@
 #!/usr/bin/env bash
-# This prints directories that appear a lot in ttt_history,
-# letting me cd to one of them
-# Requires exists (https://github.com/seanbreckenridge/exists), my ttt HPI module (https://github.com/seanbreckenridge/HPI) chomp (https://github.com/seanbreckenridge/chomp)
+# This prints directories that appear a lot in my ttt history,
+# used in https://sean.fish/d/cd.zsh?dark to cd to one
+# Requires:
+# my ttt HPI module (https://github.com/seanbreckenridge/HPI)
+# https://github.com/seanbreckenridge/exists
+# https://github.com/seanbreckenridge/chomp
 
 set -e
 set -o pipefail

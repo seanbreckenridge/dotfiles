@@ -21,8 +21,15 @@ bindkey '^[l' fzf-cd-widget
 # https://github.com/seanbreckenridge/exists
 # https://github.com/seanbreckenridge/chomp
 #
-# cd to some repo I use commonly
+# cd to some directory I use often
+# this generates/orders directores to jump
+# to, primarly using https://github.com/seanbreckenridge/ttt
+# and a bunch of other shell tools to cache to speedup
+# load time
+#
+# see
 # https://sean.fish/d/jumplist?dark
+# https://sean.fish/d/tttjump?dark
 CD() {
 	local chosen
 	chosen="$(fzfcache jumplist | fzf --height "${FZF_TMUX_HEIGHT:-50%}" --reverse -i "$@")" || return $?
