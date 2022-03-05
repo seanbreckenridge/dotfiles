@@ -16,12 +16,11 @@ ranger() {
 	local IFS tempfile
 	local -a ranger_args=()
 	IFS=$'\t\n'
-	tempfile="$(mktemp -t tmp.XXXXXX)"
+	tempfile="$(mktemp -t ranger.XXXXXX)"
 	ranger_args+=(--cmd="map S chain shell echo %d > "$tempfile"; quitall!")
 	ranger_args+=("$@")
 
 	_call_ranger "${ranger_args[@]}"
-	if [[ -f "$tempfile" ]] && [[ "$(cat -- "$tempfile")" != "$(echo -n $(pwd))" ]]; then
-		cd -- "$(cat "$tempfile")" || return
-	fi
+	[[ -f "$tempfile" ]] && cd -- "$(cat "$tempfile")"
+	rm -f "$tempfile"
 }
