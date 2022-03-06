@@ -4,6 +4,9 @@
 
 fkill() {
 	local pid
-	pid=$(ps -ef | sed 1d | fzf -m --tac | awk '{print $2}') || return $?
+	local pid procs
+	procs="$(ps -ef)"
+	pid="$(sed 1d <<<"${procs}" | fzf -m --tac | awk '{print $2}')"
+	[[ -z "$pid" ]] && return 1
 	echo "$pid" | xargs kill -${1-15}
 }
