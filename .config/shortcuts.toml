@@ -378,6 +378,7 @@ command='exec rifle "$(lastpic)"'
 
 [lastpicdrag]
 command='dragon-drag-and-drop -x "$(lastpic)"'
+link = "draglastpic"
 
 [urlpicpreview]
 command='''
