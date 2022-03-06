@@ -1,0 +1,11 @@
+#!/bin/zsh
+# fwait - kill process
+# use fzf to match against a process and wait for it to finish
+# used like
+# fwait && echo 'do something else'
+
+fwait() {
+	local pid
+	pid=$(ps -ef | sed 1d | fzf -m --tac | awk '{print $2}') || return $?
+	watch -g ps -opid "${pid}"
+}
