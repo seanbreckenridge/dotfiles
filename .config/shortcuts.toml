@@ -576,7 +576,7 @@ shebang="#!/usr/bin/env bash"
 command='exec sxiv -t "${SCREENSHOTS}"'
 
 [up-live]
-command='exec up --unsafe-full-throttle'
+command='TERM=xterm exec up --unsafe-full-throttle'
 shebang="#!/bin/zsh"
 
 [watchtwitch]

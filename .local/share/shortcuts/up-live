@@ -1,2 +1,2 @@
 #!/bin/zsh
-exec up --unsafe-full-throttle
+TERM=xterm exec up --unsafe-full-throttle
