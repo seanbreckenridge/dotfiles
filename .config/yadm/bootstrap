@@ -94,15 +94,18 @@ if [[ -z $(git config --global user.email) ]]; then
 	read -r githubemail
 	git config --global user.email "${githubemail}"
 fi
+
 # set editor to use as nvim
 git config --global core.editor nvim
 # specify how to handle divergent branches
 git config --global pull.rebase false
 # set default branch to silence warning message
 git config --global init.defaultBranch 'master'
+git config --global core.pager 'less -i'
 # set similar configuration for yadm itself
 yadm gitconfig core.editor nvim
 yadm gitconfig pull.rebase false
+yadm gitconfig core.pager 'less -i'
 
 # set the hooks directory
 yadm gitconfig core.hooksPath "${HOME}/.config/yadm/hooks"
