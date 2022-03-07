@@ -60,6 +60,11 @@ evry 2 weeks -mnu && ssh vultr ~/vps/mnu
 # https://sean.fish/d/id3stuff?dark
 evry 1 week -id3stuff && id3stuff
 
+evry 1 week -list-priv-frames && {
+	echo 'Checking priv mpv frames...'
+	mpv_clean_priv_frames list
+}
+
 # run malexport update https://github.com/seanbreckenridge/malexport/
 bash "${HPIDATA}/malexport.job"
 
