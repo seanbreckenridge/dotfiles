@@ -18,6 +18,11 @@ printf '%s\n' "$URL"
 
 case "$ON_OS" in
 linux | windows)
+	# if misconfigured, prevent this from looping infinitely
+	if [[ "$BROWSER" == 'openurl' ]]; then
+		printf '$BROWSER cant be openurl, exiting\n' "${BROWSER}"
+		exit 1
+	fi
 	# $BROWSER is set properly in ~/.profile
 	setsid "$BROWSER" "$URL" >/dev/null 2>&1 &
 	;;
