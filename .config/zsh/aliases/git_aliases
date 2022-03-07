@@ -264,8 +264,8 @@ alias gs='git status'
 alias gst='git status'
 alias gsu='git status -u'
 
+alias gstt='git stash'
 alias gsta='git stash push'
-
 alias gstaa='git stash apply'
 alias gstc='git stash clear'
 alias gstd='git stash drop'
