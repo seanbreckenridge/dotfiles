@@ -29,12 +29,7 @@ alias 'playfzf-=playfzf | cut -d":" -f2- | mpv-from-stdin'
 bindkey -s '^P' "^uplay^M"
 alias "list-albums=cm; find -maxdepth 3 -type f -printf '%h\n' | sort -u | cut -d'/' -f2- | grep -vi twitch"
 
-# https://github.com/seanbreckenridge/raspi-backup
-alias pi='ssh pi@$(${REPOS}/raspi-backup/findpi)'
-alias raspi-backup='${REPOS}/raspi-backup/backup -d'
-
 # https://github.com/seanbreckenridge/albums
-alias favorite-albums='nextalbums favorites > /tmp/favorites.csv && sc-im /tmp/favorites.csv'
 alias 'discogs-update=nextalbums discogs-update'
 
 # https://github.com/seanbreckenridge/HPI
@@ -48,6 +43,8 @@ conv() {
 
 # vps related
 # https://github.com/seanbreckenridge/vps
+alias vultr='ssh vultr'
+alias vultr_logs='vultr "~/vps/logs"'
 alias shorten='${REPOS}/vps/shorten'
 alias remsync='${REPOS}/vps/remsync'
 alias remsync-public='REMSYNC_PUBLIC=1 ${REPOS}/vps/remsync' # to push to /p/ (public index)
@@ -55,10 +52,11 @@ alias remsync-public='REMSYNC_PUBLIC=1 ${REPOS}/vps/remsync' # to push to /p/ (p
 alias remsync-ranger='ranger "${HOME}/Documents/remsync" && remsync'
 alias remsync-public-ranger='ranger "${HOME}/Documents/remsync_public" && remsync-public'
 alias playlist='${REPOS}/vps/playlist'
-alias restart-glue='ssh vultr "cd ./code/glue && git pull && ~/vps/super --ctl restart glue-server"'
-alias dotfiles-pull='ssh vultr "cd ./.dotfiles && git pull"'
 alias approve-comments='${REPOS}/vps/approve_comments'
 alias print-new-comments='${REPOS}/vps/approve_comments --print-new-comments'
+
+alias restart-glue='ssh vultr "cd ./code/glue && git pull && ~/vps/super --ctl restart glue-server"'
+alias dotfiles-pull='ssh vultr "cd ./.dotfiles && git pull"'
 alias page-hits="curl -s 'https://sean.fish/api/page_hit' | jq '.count'"
 # Alt+Shift+V to connect to VPS
 bindkey -s '^[V' 'vultr\n'
