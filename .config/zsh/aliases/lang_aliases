@@ -2,4 +2,5 @@
 # development or programming aliases
 
 alias pn=pipenv
-alias 'pnv=pn shell'
+alias pnsh='pipenv shell'
+alias pnd='pipenv run dev'
