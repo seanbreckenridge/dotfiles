@@ -3,7 +3,7 @@
 
 function update() {
 	local START_TIME
-	START_TIME="$(date +%s)"
+	START_TIME="$(epoch)"
 	wait-for-internet --text "(waiting for internet)"
 	echo "Updating system (pacman/yay/brew/termux) packages..."
 	case "$ON_OS" in
@@ -55,5 +55,5 @@ function update() {
 	(cd "$(basher package-path .)" && git pull)
 	echo "Updating shell scripts..."
 	basher-upgrade-all
-	printf "Finished updates in %d seconds\n" "$(($(date +%s) - START_TIME))"
+	printf "Finished updates in %d seconds\n" "$(($(epoch) - START_TIME))"
 }

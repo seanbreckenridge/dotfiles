@@ -5,7 +5,7 @@
 add_to_food() {
 	local JSON_DATA TEMPFILE
 	JSON_DATA="$(jq -n \
-		--arg TIMESTAMP "$(date '+%s')" \
+		--arg TIMESTAMP "$(epoch)" \
 		'[{"when" :$TIMESTAMP | tonumber, "food": "daily multivitamin", "calories": 0, "water": 0, "quantity": 1}]')" || return $?
 	TEMPFILE="$(mktemp)"
 	printf '%s' "${JSON_DATA}" >"${TEMPFILE}"
