@@ -29,6 +29,7 @@ for cmd in hpi \
 	linkmusic \
 	id3stuff \
 	piazza_scraper \
+	shebang \
 	url_cache; do
 	havecmd "${cmd}" || continue
 	var="$(printf '_%s_COMPLETE' "$(echo "${cmd}" | upper | sed -e 's/-/_/g')")"
