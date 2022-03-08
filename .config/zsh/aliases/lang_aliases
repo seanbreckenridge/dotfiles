@@ -1,0 +1,5 @@
+#!/bin/zsh
+# development or programming aliases
+
+alias pn=pipenv
+alias 'pnv=pn shell'

@@ -34,6 +34,11 @@ autoload -Uz compinit && compinit
 # lazy-load user defined functions
 autoload -Uz "${ZDOTDIR}/functions/"*
 
+# so that when copy/pasting commands '$' doesn't cause a command to fail
+function \$() {
+	"$@"
+}
+
 # bind fzf_select (fuzzy match everything and open/cd to dir in ranger)
 bindkey -s '^F' "R --cmd='fzf_select'^M"
 bindkey -s '^G' "R --cmd='chain set show_hidden true; fzf_select_hidden'^M"
