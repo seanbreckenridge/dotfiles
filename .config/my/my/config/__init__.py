@@ -221,7 +221,7 @@ class zsh:
 
 # parses bash history
 class bash:
-    export_path: Paths = data("bash_history")
+    export_path: Paths = (data("bash_history"), data("bash"))
 
 
 # parses current/finished http://todotxt.org/ using topydo
