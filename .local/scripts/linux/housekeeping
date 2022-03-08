@@ -16,7 +16,7 @@ done
 
 evry 1 day -check-music-extensions && check-music-extensions
 
-# https://github.com/seanbreckenridge/glue
+# approve guestbook comments on https://github.com/seanbreckenridge/glue
 APPROVE_SCRIPT="${REPOS}/vps/approve_comments"
 if [[ -r "${APPROVE_SCRIPT}" ]]; then
 	evry 3 hours -approve-comments && "${APPROVE_SCRIPT}" 2>/dev/null
@@ -24,7 +24,7 @@ else
 	printf 'Expected approve script to exist at %s\n' "${APPROVE_SCRIPT}" >&2
 fi
 
-# backup cache/token/logs from my server
+# backup cache/tokens/logs from my server
 BACKUP_SERVER_SCRIPT="${REPOS}/vps/backup_server"
 if [[ -r "${BACKUP_SERVER_SCRIPT}" ]]; then
 	evry 3 days -backup_fish_server && "${BACKUP_SERVER_SCRIPT}"
@@ -37,7 +37,7 @@ fi
 evry 2 months -pythonanywhere && python3 -m pythonanywhere_3_months -Hc "$(which chromedriver)"
 
 # run https://github.com/odeke-em/drive to pull/push from google drive
-evry 1 day -google-drive && {
+evry 6 hours -google-drive && {
 	cd "${HOME}/GoogleDrive/" || exit $?
 	echo "Syncing Google Drive..."
 	drive pull -ignore-conflict -no-prompt
@@ -52,15 +52,18 @@ evry 1 day -google-drive && {
 evry 2 months -grouvee-export && python3 -m grouvee_export export
 
 # refresh https://dev.twitch.tv/docs/api/
+# so that https://github.com/seanbreckenridge/twitchlive continues to work
 evry 2 months -twitch_cli && twitch token
 
 # update https://github.com/seanbreckenridge/mnu_gsheets
 evry 2 weeks -mnu && ssh vultr ~/vps/mnu
 
+# fix broken ID3 metadata on my music
 # https://sean.fish/d/id3stuff?dark
 evry 1 week -id3stuff && id3stuff
 
-evry 1 week -list-priv-frames && {
+# https://github.com/seanbreckenridge/HPI-personal/blob/master/scripts/mpv_clean_priv_frames
+evry 1 day -list-priv-frames && {
 	echo 'Checking priv mpv frames...'
 	mpv_clean_priv_frames list
 }
@@ -69,7 +72,6 @@ evry 1 week -list-priv-frames && {
 bash "${HPIDATA}/malexport.job"
 
 # https://github.com/seanbreckenridge/my_feed
-
 # once a week, re-index to update any scores/metadata I've updated
 if evry 1 week -my-feed-re-index; then
 	"${REPOS}/my_feed/index" -r
