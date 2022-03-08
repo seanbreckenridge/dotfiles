@@ -53,6 +53,7 @@ def _autocomplete(ctx: click.Context, args: t.Sequence[str], incomplete: str):  
     "--output",
     type=click.Path(exists=False, dir_okay=False, path_type=Path),
     default=None,
+    help="Write to output file, instead of STDOUT",
 )
 @click.argument("SHEBANG", shell_complete=_autocomplete, required=True)
 def main(shebang: str, output: t.Optional[Path]) -> None:
