@@ -27,4 +27,4 @@ sqleton
 @jamen/lorem
 readability-cli
 mintable
-
+git-stats
