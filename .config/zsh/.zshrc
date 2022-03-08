@@ -1,5 +1,13 @@
 #!/bin/zsh
 # source each zsh config file
+# source zsh config
+source "${ZDOTDIR}/env_config.zsh"              # History/Application configuration
+source "${ZDOTDIR}/prompt.zsh"                  # prompt configuration
+source "${ZDOTDIR}/functions.zsh"               # functions, bindings, command completion
+source "${ZDOTDIR}/cd.zsh"                      # functions to change my directory
+source "${ZDOTDIR}/completion.zsh"              # zsh completion
+source "${ZDOTDIR}/lazy.zsh"                    # lazy load shell tools
+source "${ZDOTDIR}/progressive_enhancement.zsh" # slightly improve commands
 
 source_if_exists() {
 	if [[ -r "$1" ]]; then
@@ -10,24 +18,8 @@ source_if_exists() {
 	fi
 }
 
-# source zsh config
-source "${ZDOTDIR}/env_config.zsh"              # History/Application configuration
-source "${ZDOTDIR}/prompt.zsh"                  # prompt configuration
-source "${ZDOTDIR}/functions.zsh"               # functions, bindings, command completion
-source "${ZDOTDIR}/cd.zsh"                      # functions to change my directory
-source "${ZDOTDIR}/completion.zsh"              # zsh completion
-source "${ZDOTDIR}/lazy.zsh"                    # lazy load shell tools
-source "${ZDOTDIR}/progressive_enhancement.zsh" # slightly improve commands
-
-# source aliases
-ALIAS_DIR="${ZDOTDIR}/aliases"
-source "${ALIAS_DIR}/aliases"         # General aliases
-source "${ALIAS_DIR}/git_aliases"     # Git aliases (from oh-my-zsh)
-source "${ALIAS_DIR}/project_aliases" # Aliases for my own projects
-# Personal Aliases (e.g. ssh to servers)
-SQ=1 source_if_exists "${ALIAS_DIR}/personal_aliases" || SQ=1 source_if_exists "${HPIDATA}/personal_aliases"
-# Tokens for interacting with APIs etc
-SQ=1 source_if_exists "${ALIAS_DIR}/tokens" || SQ=1 source_if_exists "${HPIDATA}/tokens"
+# source all aliases
+source "${ZDOTDIR}/source_aliases.zsh"
 
 # zsh plugins
 case "$ON_OS" in
