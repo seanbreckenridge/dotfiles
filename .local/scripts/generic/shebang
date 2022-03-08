@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 
-import sys
 import shutil
 import typing as t
 from pathlib import Path
@@ -43,7 +42,9 @@ echo "hello world\n";""",
 names = list(shebangs.keys())
 
 
-def _autocomplete(ctx: click.Context, args: t.Sequence[str], incomplete: str):  # noqa
+def _autocomplete(
+    ctx: click.Context, args: t.Sequence[str], incomplete: str
+) -> t.List[str]:
     return [n for n in names if n.startswith(incomplete)]
 
 
@@ -70,12 +71,7 @@ def main(shebang: str, output: t.Optional[Path]) -> None:
             shebang_value = shebangs[shebang]
             assert shebang_value is not None
             # use string
-            if isinstance(shebang_value, str):
-                computed_shebang = shebang_value
-            else:
-                # this is a function which computes the shebang
-                assert callable(shebang_value)
-                computed_shebang = shebang_value()
+            computed_shebang = shebang_value
     else:
         path = shutil.which(shebang)
         if path is None:
