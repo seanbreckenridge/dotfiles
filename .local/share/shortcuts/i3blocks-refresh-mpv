@@ -1,0 +1,4 @@
+#!/bin/sh
+i3blocks-refresh mpv-paused &
+i3blocks-refresh mpv-song-description &
+wait

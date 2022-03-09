@@ -726,3 +726,10 @@ exec awk '!seen[$0]++'
 
 [path]
 command = 'echo "$PATH" | tr ":" "\n"'
+
+[i3blocks-refresh-mpv]
+command='''
+i3blocks-refresh mpv-paused &
+i3blocks-refresh mpv-song-description &
+wait
+'''
