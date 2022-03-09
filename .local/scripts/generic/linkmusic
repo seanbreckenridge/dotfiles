@@ -31,6 +31,7 @@ from typing import Iterator
 import click
 from logzero import logger  # type: ignore[import]
 
+# https://sean.fish/d/playlists.py?dark
 from seanb.playlists import PlaylistPath, iterate_playlists, playlistdir
 
 
