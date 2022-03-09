@@ -4,9 +4,9 @@ markup=pango
 # anything with a signal gets refreshed by an entr
 # command in my i3 config https://sean.fish/d/i3/config
 
-[mpv-song-description]
+[mpv-song]
 command=b-mpv-description
-interval=15
+interval=10  # TODO: watch logfile and run command when this changes?
 signal=10
 
 [mpv-paused]
