@@ -157,6 +157,7 @@ __pycache__
 /.sonic-pi
 /.ssh
 /.ssr
+/.git-stats
 /.stack
 /.steam
 /.steampath
