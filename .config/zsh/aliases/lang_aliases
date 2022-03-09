@@ -13,7 +13,7 @@ gh-item-fzf() {
 	}
 	URLS="$(gh "${1:-pr}" list --json 'title,url' --jq '.[] | "\(.url)|\(.title)"')"
 	URL_COUNT="$(wc -l <<<"$URLS")"
-	if ((URL_COUNT==1)); then
+	if ((URL_COUNT == 1)); then
 		cut -d"|" -f1 <<<"$URLS" | openurl
 	else
 		fzf <<<"$URLS" | cut -d" " -f1 | openurl
