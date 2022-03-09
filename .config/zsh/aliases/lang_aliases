@@ -4,3 +4,27 @@
 alias pn=pipenv
 alias pnsh='pipenv shell'
 alias pnd='pipenv run dev'
+
+gh-item-fzf() {
+	local URLS URL_COUNT
+	in-gitdir || {
+		echo 'Not in a git directory' 1>&2
+		return 1
+	}
+	URLS="$(gh "${1:-pr}" list --json 'title,url' --jq '.[] | "\(.url)|\(.title)"')"
+	URL_COUNT="$(wc -l <<<"$URLS")"
+	if ((URL_COUNT==1)); then
+		cut -d"|" -f1 <<<"$URLS" | openurl
+	else
+		fzf <<<"$URLS" | cut -d" " -f1 | openurl
+	fi
+}
+
+# fzf an open PR, open it in my browser
+gh-view-pr() {
+	gh-item-fzf
+}
+
+gh-view-issue() {
+	gh-item-fzf 'issue'
+}
