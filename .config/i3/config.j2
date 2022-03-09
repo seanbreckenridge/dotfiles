@@ -122,11 +122,11 @@ bindsym $mod+$alt+c {{ ex }} clipreset
 # mpv commands
 # https://github.com/seanbreckenridge/mpv-sockets.git
 bindsym $mod+XF86AudioMute {{ ex }} mpv-play-pause && i3blocks-refresh mpv-paused
-bindsym $mod+XF86AudioMicMute {{ ex }} mpv-next-song
+bindsym $mod+XF86AudioMicMute {{ ex }} mpv-next-song && i3blocks-refresh mpv-song-description
 bindsym $mod+Shift+XF86AudioMute {{ ex }} mpv-quit-latest
 bindsym $mod+m {{ ex }} notify-send "$(mpv-currently-playing --all)"
 bindsym $alt+m {{ ex }} mpv-play-pause
-bindsym $mod+Shift+m {{ ex }} mpv-next-song
+bindsym $mod+Shift+m {{ ex }} mpv-next-song && i3blocks-refresh mpv-song-description
 
 # on 'volume up', move forward in the file
 bindsym $mod+XF86AudioRaiseVolume {{ ex }} mpv-seek '5'

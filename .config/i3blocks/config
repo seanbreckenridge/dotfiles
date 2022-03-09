@@ -4,40 +4,45 @@ markup=pango
 # anything with a signal gets refreshed by an entr
 # command in my i3 config https://sean.fish/d/i3/config
 
+[mpv-song-description]
+command=b-mpv-description
+interval=15
+signal=10
+
 [mpv-paused]
 command=b-mpv-paused
 interval=15
 label=⏸
-signal=7
+signal=9
 
 [comments]
 command=b-comments
 interval=once
 label=📖
-signal=4
+signal=8
 
 [rss]
 command=b-rss
 interval=once
 label=📰
-signal=3
+signal=7
 
 [mail]
 command=b-mail
 interval=60
-signal=8
+signal=6
 
 [sreminders]
 command=b-sreminders
 interval=300
 label=📗
-signal=10
+signal=5
 
 [todo]
 command=b-todo
 interval=once
 label=📝
-signal=2
+signal=4
 
 [calendar]
 command=b-calendar
@@ -48,18 +53,18 @@ label=📅
 command=b-calories
 interval=600
 label=🍍
-signal=5
+signal=3
 
 [water]
 command=b-water-perc
 interval=600
 label=💧
-signal=6
+signal=2
 
 [battery]
 command=b-battery BAT0
 interval=60
-signal=9
+signal=1
 
 [clock]
 command=b-date
@@ -68,4 +73,3 @@ interval=5
 [ssid]
 command=b-network
 interval=5
-signal=10
