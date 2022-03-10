@@ -2,4 +2,5 @@
 
 # grab the description -- if nothing is playing; exit
 desc="$(MPV_DESC_SKIP_ALBUM=1 mpv-song-description-py 2>/dev/null)" || exit 0
-echo "$desc"
+# escape HTML characters (otherwise & in artist names breaks this)
+sed 's_&_&amp;_g; s_<_&lt;_g; s_>_&gt;_g;' <<<"$desc"
