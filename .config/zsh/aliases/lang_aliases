@@ -20,7 +20,9 @@ gh-item-fzf() {
 		cut -d"|" -f1 <<<"$URLS" | openurl
 		;;
 	*)
-		fzf <<<"$URLS" | cut -d"|" -f1 | openurl
+		if PICKED="$(fzf <<<"$URLS")"; then
+			echo "$PICKED" | cut -d"|" -f1 | openurl
+		fi
 		;;
 	esac
 }
