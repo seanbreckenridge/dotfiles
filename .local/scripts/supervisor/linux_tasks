@@ -19,5 +19,10 @@ find "${TTALLY_DATA_DIR}" -name 'food*.json' | entr -n i3blocks-refresh calories
 find "${TTALLY_DATA_DIR}" -name 'food*.json' | entr -n i3blocks-refresh water LINUX_TASK &
 find "${TTALLY_DATA_DIR}" -type f | entr -n i3blocks-refresh sreminders LINUX_TASK &
 
+# note: in ps -ef, it looks like this creates 2 processes, but its just the one
+if (($(procs i3blocks-watch-mpv-daemon-logs --no-header | grep bash | wc -l) == 0)); then
+	setsid -f i3blocks-watch-mpv-daemon-logs
+fi
+
 # restarts once every hour, to pick up any new files found in TTALLY_DATA_DIR
 sleep 1h

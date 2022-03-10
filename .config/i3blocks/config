@@ -6,12 +6,12 @@ markup=pango
 
 [mpv-song]
 command=b-mpv-description
-interval=10  # TODO: watch logfile and run command when this changes?
+interval=600
 signal=10
 
 [mpv-paused]
 command=b-mpv-paused
-interval=15
+interval=600
 label=⏸
 signal=9
 
