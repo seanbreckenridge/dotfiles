@@ -6,12 +6,12 @@ markup=pango
 
 [mpv-song]
 command=b-mpv-description
-interval=600
+interval=30
 signal=10
 
 [mpv-paused]
 command=b-mpv-paused
-interval=600
+interval=30
 label=⏸
 signal=9
 
