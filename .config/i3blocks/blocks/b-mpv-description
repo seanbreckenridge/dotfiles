@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 
 # grab the description -- if nothing is playing; exit
-desc="$(MPV_DESC_SKIP_ALBUM=1 mpv-song-description 2>/dev/null)" || exit 0
+desc="$(MPV_DESC_SKIP_ALBUM=1 mpv-song-description-py 2>/dev/null)" || exit 0
 echo "$desc"
