@@ -12,7 +12,7 @@ export MY_FEED_BG=1
 
 wait-for-internet -q --timeout 10 || exit 0
 
-evry 3 hours -bg-my-feed-index && {
+evry 1 hours -bg-my-feed-index && {
 
 	# source personal shell files, to include
 	# tokens/envvars that may be required
