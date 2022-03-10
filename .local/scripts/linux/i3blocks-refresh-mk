@@ -1,0 +1,40 @@
+#!/usr/bin/env bash
+# searches for the name of the block in the i3blocks config file and
+# refreshes it by sending the corresponding signal
+#
+# this parses and caches the i3blocks config file once an hour
+# runs about twice as fast as i3blocks-refresh
+
+BLOCK_NAME="${1:?Provide block name to refresh as first argument}"
+
+I3BLOCKS_CONFIG_FILE="${HOME}/.config/i3blocks/config"
+SIGNAL_CACHE="${HOME}/.cache/i3blocks_signals"
+
+# use 'make' to cache signals based on i3blocks config modification time
+cache() {
+	cd "${SIGNAL_CACHE}" || {
+		mkdir -p "${SIGNAL_CACHE}"
+		cd "${SIGNAL_CACHE}"
+	}
+
+	cp "${I3BLOCKS_CONFIG_FILE}" "${SIGNAL_CACHE}/config"
+	if [[ ! -e "${SIGNAL_CACHE}/Makefile" ]]; then
+		echo 'cache: config
+		i3blocks-parse-signals >./cache
+	' >"${SIGNAL_CACHE}/Makefile"
+	fi
+	make >/dev/null
+}
+
+BLOCK_SIGNAL="$(grep -m1 "${BLOCK_NAME} " <"${SIGNAL_CACHE}/cache" | cut -d' ' -f2)"
+
+if [[ -n "${BLOCK_SIGNAL}" ]]; then
+	pkill -RTMIN+"$BLOCK_SIGNAL" i3blocks || exit $?
+	echo "Refreshed ${BLOCK_NAME}... (${BLOCK_SIGNAL})"
+else
+	printf 'Could not find block %s\n' "${BLOCK_NAME}"
+	exit 1
+fi
+
+# cache the results once every hour
+evry 1h -i3blocks-cache && cache

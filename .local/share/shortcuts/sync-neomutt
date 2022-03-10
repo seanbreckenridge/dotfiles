@@ -1,6 +1,6 @@
 #!/bin/sh
 # wait for internet, sync my mail, then launch neomutt
 wait-for-internet && mailsync
-i3blocks-refresh mail
+i3blocks-refresh-mk mail
 neomutt
-i3blocks-refresh mail
+i3blocks-refresh-mk mail

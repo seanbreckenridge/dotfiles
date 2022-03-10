@@ -1,3 +1,3 @@
 #!/bin/sh
 # neomutt and refresh the i3 block
-neomutt && i3blocks-refresh mail
+neomutt && i3blocks-refresh-mk mail

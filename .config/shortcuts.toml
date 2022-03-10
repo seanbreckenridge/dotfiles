@@ -531,7 +531,7 @@ exec i3-msg exec update-rss # update rss afterwards, to update menu bar icon
 [neomuttr]
 command='''
 # neomutt and refresh the i3 block
-neomutt && i3blocks-refresh mail
+neomutt && i3blocks-refresh-mk mail
 '''
 
 [alacritty-tmux]
@@ -664,9 +664,9 @@ jq -r '.[] | .html_url' <"${REPOS}/projects/cache.json" | fzf | clipcopy
 command = '''
 # wait for internet, sync my mail, then launch neomutt
 wait-for-internet && mailsync
-i3blocks-refresh mail
+i3blocks-refresh-mk mail
 neomutt
-i3blocks-refresh mail
+i3blocks-refresh-mk mail
 '''
 
 [trakt-progress]
@@ -726,11 +726,3 @@ exec awk '!seen[$0]++'
 
 [path]
 command = 'echo "$PATH" | tr ":" "\n"'
-
-[i3blocks-refresh-mpv]
-shebang = "#!/usr/bin/env bash"
-command='''
-i3blocks-refresh mpv-paused &
-i3blocks-refresh mpv-song &
-wait
-'''

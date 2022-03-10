@@ -9,7 +9,9 @@ rm -f "${HOME}/.cache/mailsync_warn"
 rm -f "$(evry location -guestbook_comments)"
 
 grep '^signal' "${HOME}/.config/i3blocks/config" | cut -d'=' -f2 | while read -r signal; do
-	pkill -RTMIN+"${signal}" i3blocks
+	pkill -RTMIN+"${signal}" i3blocks &
 done
+
+wait
 
 attached-to-terminal || notify 'Refreshed all blocks'

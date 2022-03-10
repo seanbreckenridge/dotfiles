@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+i3blocks-refresh-mk mpv-paused &
+i3blocks-refresh-mk mpv-song &
+wait
