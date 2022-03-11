@@ -90,9 +90,14 @@ def hardlink_sync_dirs(files: list[PlaylistPath], to_dir: Path, delete: bool) ->
     # copy link if it doesnt already exist on target
     for p in files:
         target = p.in_dir(to_dir)
-        if not target.exists():
+        source = p.in_musicdir()
+        if not target.exists() or target.stat().st_size != source.stat().st_size:
             target.parent.mkdir(parents=True, exist_ok=True)
-            source = p.in_musicdir()
+            if target.exists():
+                # source and target are different files -- so I probably trimmed or changed
+                # the audio file -- should remove the target musicsync file
+                logger.info(f"Target '{target}' exists, size didn't match -- removing and re-linking...")
+                target.unlink()
             logger.info(f"Linking from '{source}' to '{target}'")
             target.hardlink_to(source)
         # remove from set, so at the end we can check
