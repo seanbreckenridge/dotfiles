@@ -31,8 +31,7 @@ from typing import Iterator
 import click
 from logzero import logger  # type: ignore[import]
 
-# https://sean.fish/d/playlists.py?dark
-from seanb.playlists import PlaylistPath, iterate_playlists, playlistdir
+from plaintext_playlist_py import PlaylistPath, iterate_playlists, playlistdir
 
 
 def _check_os() -> None:
@@ -96,7 +95,9 @@ def hardlink_sync_dirs(files: list[PlaylistPath], to_dir: Path, delete: bool) ->
             if target.exists():
                 # source and target are different files -- so I probably trimmed or changed
                 # the audio file -- should remove the target musicsync file
-                logger.info(f"Target '{target}' exists, size didn't match -- removing and re-linking...")
+                logger.info(
+                    f"Target '{target}' exists, size didn't match -- removing and re-linking..."
+                )
                 target.unlink()
             logger.info(f"Linking from '{source}' to '{target}'")
             target.hardlink_to(source)
