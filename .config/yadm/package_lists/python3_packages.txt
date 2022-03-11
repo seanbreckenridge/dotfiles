@@ -29,6 +29,7 @@ pillow
 pip
 pip-licenses
 pipenv
+pipx
 prettytable
 psutil
 pyYAML
