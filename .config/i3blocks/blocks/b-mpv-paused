@@ -10,6 +10,7 @@ case "$BLOCK_BUTTON" in
 3)
 	# cycle play/pause on current mpv instance
 	mpv-play-pause >/dev/null 2>&1
+	i3blocks-refresh-mpv >/dev/null
 	;;
 esac
 
