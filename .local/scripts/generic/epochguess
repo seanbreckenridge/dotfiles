@@ -14,11 +14,11 @@ from datetime import datetime
 import click
 
 
-def guess_epochs(line: str, after: int, only_first: bool) -> str:
+def guess_epochs(line: str, after: int, only_first: bool, use_token: str = " ") -> str:
     # first guess epoch seconds, then epoch milliseconds
     converted: list[str] = []
     has_converted = False
-    for token in line.split(" "):
+    for token in line.split(use_token):
         # only meant to convert the first token we found, and we've already done that
         if only_first and has_converted:
             converted.append(token)
@@ -61,9 +61,15 @@ def guess_epochs(line: str, after: int, only_first: bool) -> str:
     default=True,
     help="Only convert the first date found per line",
 )
-def main(after: int, first: bool):
-    for line in sys.stdin.read().splitlines():
-        print(guess_epochs(line, after, first))
+@click.option(
+    "-d",
+    "--delimiter",
+    default=" ",
+    help="Delimiter to split by when attemping to find possible matches",
+)
+def main(after: int, first: bool, delimiter: str):
+    for line in iter(sys.stdin.readline, ""):
+        print(guess_epochs(line.strip(), after, first, delimiter))
 
 
 if __name__ == "__main__":
