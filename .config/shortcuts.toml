@@ -733,4 +733,4 @@ tail -n "${1:-100}" /tmp/bgproc.log | epochguess -d":"
 '''
 
 [tally]
-command='sort | uniq -c | sort -n'
+command = 'sort | uniq -c | sort -n'
