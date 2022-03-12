@@ -16,6 +16,7 @@ Plug 'itchyny/lightline.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'tpope/vim-fugitive'
 Plug 'mbbill/undotree'
+Plug 'kevinhwang91/rnvimr'
 Plug 'airblade/vim-gitgutter'
 Plug 'psliwka/vim-smoothie'
 Plug 'airblade/vim-rooter'
@@ -243,6 +244,24 @@ let g:lightline = {
       \ }
 " dont need this anymore since lightline displays mode
 set noshowmode
+
+" ranger
+nnoremap <silent> <A-r> :RnvimrToggle<CR>
+tnoremap <silent> <A-i> <C-\><C-n>:RnvimrResize<CR>
+tnoremap <silent> <A-o> <C-\><C-n>:RnvimrToggle<CR>
+
+" Map Rnvimr action
+" A-r (same binding that opens rnvim
+" opens the file in the parent nvim instance)
+"
+" can use enter as usual to open non-text files in ranger
+let g:rnvimr_action = {
+            \ '<A-r>': 'NvimEdit split',
+            \ '<C-x>': 'NvimEdit split',
+            \ '<C-v>': 'NvimEdit vsplit',
+            \ 'gw': 'JumpNvimCwd',
+            \ 'yw': 'EmitRangerCwd'
+            \ }
 
 " undotree
 nnoremap <leader>u :UndotreeToggle<CR>
