@@ -263,6 +263,14 @@ vnoremap <Left> <Nop>
 vnoremap <Right> <Nop>
 vnoremap <Up> <Nop>
 
+function! SourceIfExists(file)
+  if filereadable(expand(a:file))
+    exe 'source' a:file
+  endif
+endfunction
+
+call SourceIfExists("~/.config/nvim/yadm.vim")
+
 " run set spell when editing markdown
 autocmd VimEnter * if expand('%:e') == 'md' | set spell
 " or when writing a git commit
