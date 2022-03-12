@@ -14,6 +14,14 @@ python3() {
 	fi
 }
 
+man() {
+	if [[ -z "$1" ]]; then
+		macho
+	else
+		command man "$@"
+	fi
+}
+
 # https://github.com/odeke-em/drive
 # if I run drive outside my google drive
 # move to ~/GoogleDrive/
