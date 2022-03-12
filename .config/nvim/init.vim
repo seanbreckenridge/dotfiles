@@ -288,7 +288,7 @@ nmap <leader>h <Plug>(GitGutterPreviewHunk)
 nmap <leader>ga <Plug>(GitGutterStageHunk)
 
 " fugitive (git)
-nmap <leader>gs :G<CR>:wincmd _<CR>
+nmap <leader>gi :G<CR>:wincmd _<CR>
 nmap <leader>gp :Git push<CR>
 nmap <leader>gll :Git pull<CR>
 nmap <leader>glo :Git log<CR>
@@ -297,8 +297,13 @@ nmap <leader>gc :Git commit<CR>:wincmd _<CR>
 nmap <leader>gdd :Git diff<CR>:wincmd _<CR>
 nmap <leader>gds :Git diff --staged<CR>:wincmd _<CR>
 nmap <leader>gdh :Git diff HEAD~1 HEAD<CR>:wincmd _<CR>
-nmap <leader>gaa :Git add .<CR>
-nmap <leader>gap :Git add . --patch<CR>
+" --update, only add item which are already in the index
+nmap <leader>gaa :Git add -u<CR>
+" add everything, adds untracked files
+nmap <leader>gaA :Git add --all<CR>
+" add everything, but prompt me with --patch
+nmap <leader>gap :Git add --all --patch<CR>
+nmap <leader>gu :Git status -u<CR>
 nmap <leader>grs :Git reset<CR>
 nmap <leader>grhh :Git reset --hard HEAD<CR>
 
