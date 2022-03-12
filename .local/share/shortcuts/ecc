@@ -1,0 +1,4 @@
+#!/bin/sh
+cd ~ || exit $?
+# fuzzy match list-config names, open one to edit (Edit Config)
+fzfcache list-config | sed "s#^$HOME/##g" | fzfp +m -q "$*" | xargs -r -I {} editor "$HOME/{}"

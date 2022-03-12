@@ -15,6 +15,7 @@ Plug 'mg979/vim-visual-multi', {'branch': 'master'}  " for tutorial: 'nvim -Nu .
 Plug 'itchyny/lightline.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'tpope/vim-fugitive'
+Plug 'mbbill/undotree'
 Plug 'airblade/vim-gitgutter'
 Plug 'psliwka/vim-smoothie'
 Plug 'airblade/vim-rooter'
@@ -137,8 +138,8 @@ set wildignore+=**/.git/*
 " mapping to toggle spellcheck
 map <leader>s :set spell!<CR>
 
-" https://github.com/junegunn/fzf/blob/master/README-VIM.md
-" like my https://sean.fish/d/ec?dark
+" fzf docs: https://github.com/junegunn/fzf/blob/master/README-VIM.md
+" like my https://sean.fish/d/ecc?dark
 " edit one of my dot/config files
 function! Ec()
   :call fzf#run({"source": "list-config", "sink": "e"})
@@ -194,6 +195,15 @@ set noshowmode
 nnoremap <leader>e :wincmd v<bar> :Explore <bar> :vertical resize 30<CR>
 " open netrw full screen
 nnoremap <leader>E :Explore<CR>
+
+" undotree
+nnoremap <leader>u :UndotreeToggle<CR>
+
+" enable persistent undo (save undo history across file closes) if possible
+if has("persistent_undo")
+  set undodir=$HOME/.cache/undodir
+  set undofile
+endif
 
 " fzf
 map <leader>b :Buffers<CR>
