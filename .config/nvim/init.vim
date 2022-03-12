@@ -120,12 +120,31 @@ set path+=**
 
 " display all matching files for tab completion
 set wildmenu
+set wildmode=longest,list,full
+" Ignore files
+set wildignore+=*__pycache__/*
+set wildignore+=*.mypy_cache/*
+set wildignore+=*.pytet_cache/*
+set wildignore+=*egg-info/*
+set wildignore+=*_build/*
+set wildignore+=**/coverage/*
+set wildignore+=**/node_modules/*
+set wildignore+=**/dist/*
+set wildignore+=**/build/*
+set wildignore+=**/.git/*
 
 " mapping to toggle spellcheck
 map <leader>s :set spell!<CR>
 
+" https://github.com/junegunn/fzf/blob/master/README-VIM.md
+" like my https://sean.fish/d/ec?dark
+" edit one of my dot/config files
+function! Ec()
+  :call fzf#run({"source": "list-config", "sink": "e"})
+endfunction
+map <leader>c :call Ec()<CR>
 " mapping to toggle autocd
-map <leader>c :set autochdir!<CR>
+" map <leader>c :set autochdir!<CR>
 
 " swap to previous buffer
 map <leader><leader> :bprevious<CR>
@@ -133,6 +152,12 @@ map <leader><leader> :bprevious<CR>
 " nicer binding for window management
 map <leader>w <C-W>
 " can use <leader>w+ and <leader>w- to increase
+" vertical resizing
+nnoremap <leader>= :vertical resize +5<CR>
+nnoremap <leader>- :vertical resize -5<CR>
+
+nnoremap <leader>+ :wincmd +<CR>
+nnoremap <leader>_ :wincmd -<CR>
 
 
 " copy visual selection to clipboard
@@ -164,13 +189,16 @@ let g:lightline = {
 " dont need this anymore since lightline displays mode
 set noshowmode
 
-" open netrw
-nnoremap <leader>e :Explore<CR>
+" open netrw like a sidebar file manager
+nnoremap <leader>e :wincmd v<bar> :Explore <bar> :vertical resize 30<CR>
+" open netrw full screen
+nnoremap <leader>E :Explore<CR>
 
 " fzf
 map <leader>b :Buffers<CR>
 map <leader>f :Files<CR>
 map <leader>l :Lines<CR>
+map <C-p> :GitFiles<CR>
 " match all lines/files recursively using the_silver_searcher
 map <leader>r :Ag<CR>
 
@@ -197,9 +225,6 @@ nmap <leader>gaa :Git add .<CR>
 nmap <leader>gap :Git add . --patch<CR>
 nmap <leader>grs :Git reset<CR>
 nmap <leader>grhh :Git reset --hard HEAD<CR>
-
-" reminders:
-" cc 'commit'
 
 " for picking which files to merge from while resolving merge conflicts
 " https://youtu.be/PO6DxfGPQvw?t=292
