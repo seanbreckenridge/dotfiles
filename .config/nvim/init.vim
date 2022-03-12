@@ -16,6 +16,7 @@ Plug 'itchyny/lightline.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
+Plug 'psliwka/vim-smoothie'
 Plug 'airblade/vim-rooter'
 Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
 call plug#end()
