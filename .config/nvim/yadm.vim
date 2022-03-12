@@ -7,29 +7,28 @@
 let g:yadm_repo_path="~/.local/share/yadm/repo.git"
 
 function! YadmCheckGitFile()
-  " if were not already in a git dir
-  if empty(FugitiveGitDir())
-    " use yadm ls-files to check if the current file is tracked by yadm as one of my dotfiles
-    " jobstart runs async
-    call jobstart(['yadm', 'ls-files', '--error-unmatch', expand('%:p')], {'on_exit':{j,d,e->YadmPatch(d)}})
-  endif
+  " use yadm ls-files to check if the current file is tracked by yadm as one of my dotfiles
+  " jobstart runs async
+  call jobstart(['yadm', 'ls-files', '--error-unmatch', expand('%:p')], {'on_exit':{j,d,e->YadmDetectDir(d)}})
 endfunction
 
 " callback from anonymous function above, receives the exit status
-function! YadmPatch(exit_status)
+function! YadmDetectDir(exit_status)
   if a:exit_status == 0
     " exited successfully, this is one of my dotfiles
     " detect with fugitive
     call FugitiveDetect(g:yadm_repo_path)
-    " set gitgutter
     let g:gitgutter_git_executable='yadm'
+    echo "yadm: detected file as dotfile"
   else
-    " this isn't a yadm file -- reset the git gutter
-    let g:gitgutter_git_executable='git'
+    if g:gitgutter_git_executable == "yadm"
+      let g:gitgutter_git_executable='git'
+      echo "yadm: reset gitgutter executable path"
+    endif
   endif
 endfunction
 
 
 if executable('yadm')
-  autocmd BufEnter * call YadmCheckGitFile()
+  autocmd BufReadPost * call YadmCheckGitFile()
 endif

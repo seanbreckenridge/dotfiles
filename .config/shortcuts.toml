@@ -699,8 +699,11 @@ command = 'exec openurl "https://sean.fish/s/albums"'
 [boxes-python]
 command='''
 # create a comment box as a python comment, text piped from STDIN
-exec boxes -dshell -pv1h2
+exec boxes -dshell -pv1h2 "$@"
 '''
+
+[boxes-vim]
+command="""boxes-python | tr '#' '\"'"""
 
 [flake8c]
 command='''
