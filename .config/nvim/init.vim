@@ -142,7 +142,7 @@ vmap <leader>y "+y
 
 " Plugins
 " goyo
-map <leader>g :Goyo<CR>
+map <leader>G :Goyo<CR>
 
 " color scheme
 colorscheme tokyonight
@@ -165,6 +165,8 @@ map <leader>r :Ag<CR>
 " jumping around the git gutter
 nmap ]h <Plug>(GitGutterNextHunk)
 nmap [h <Plug>(GitGutterPrevHunk)
+" preview changed git hunks
+nmap <leader>g <Plug>(GitGutterPreviewHunk)
 
 " disable arrow keys
 inoremap <Down> <Nop>
