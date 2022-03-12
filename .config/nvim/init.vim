@@ -53,6 +53,7 @@ set shiftwidth=2
 set softtabstop=2
 set expandtab
 set noshiftround
+set smartindent
 
 " Cursor motion
 set scrolloff=3
@@ -201,6 +202,10 @@ map <leader>l :Lines<CR>
 map <C-p> :GitFiles<CR>
 " match all lines/files recursively using the_silver_searcher
 map <leader>r :Ag<CR>
+
+if executable('rg')
+  let g:rg_derive_root='true'
+endif
 
 " jumping around the git gutter
 nmap ]h <Plug>(GitGutterNextHunk)
@@ -414,4 +419,4 @@ set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 " nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 
 " gopls configuration
-" autocmd BufWritePre *.go :call CocAction('organizeImport')
+autocmd BufWritePre *.go :call CocAction('organizeImport')
