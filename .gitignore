@@ -53,9 +53,6 @@ secrets
 .config/my/**/*secret*
 .config/seanb/**/*secret*
 
-# ignore symlinked tmux
-/.tmux.conf
-
 # Ignore README - handled by git hooks -- see .config/yadm/yadm-with-README.md 
 /README.md
 /.config/yadm/README.md
