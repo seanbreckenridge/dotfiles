@@ -125,7 +125,7 @@ set wildmode=longest,list,full
 " Ignore files
 set wildignore+=*__pycache__/*
 set wildignore+=*.mypy_cache/*
-set wildignore+=*.pytet_cache/*
+set wildignore+=*.pytest_cache/*
 set wildignore+=*egg-info/*
 set wildignore+=*_build/*
 set wildignore+=**/coverage/*
