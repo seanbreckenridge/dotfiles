@@ -14,6 +14,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'mg979/vim-visual-multi', {'branch': 'master'}  " for tutorial: 'nvim -Nu .local/plugged/vim-visual-multi/tutorialrc'
 Plug 'itchyny/lightline.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 Plug 'airblade/vim-rooter'
 Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
@@ -130,11 +131,8 @@ map <leader><leader> :bprevious<CR>
 
 " nicer binding for window management
 map <leader>w <C-W>
+" can use <leader>w+ and <leader>w- to increase
 
-" Compile document (LaTeX/markdown/etc)
-" map <leader>c :w! \| !compile <c-r>%<CR><CR>
-" Open corresponding .pdf/.html or preview
-" map <leader>o :!opout <c-r>%<CR><CR>
 
 " copy visual selection to clipboard
 vmap <leader>c "+y
@@ -149,8 +147,21 @@ colorscheme tokyonight
 let g:tokyonight_sidebars = [ "qf", "vista_kind", "terminal", "packer" ]
 " Change the "hint" color to the "orange" color, and make the "error" color bright red
 let g:tokyonight_colors = {'hint': 'orange', 'error': '#ff0000'}
-" use tokyonight for lightline
-let g:lightline = {'colorscheme': 'tokyonight'}
+
+" lightline configuration
+let g:lightline = {
+      \ 'colorscheme': 'tokyonight',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
+      \ },
+      \ 'component_function': {
+      \   'gitbranch': 'FugitiveHead'
+      \ },
+      \ }
+
+" dont need this anymore since lightline displays mode
+set noshowmode
 
 " open netrw
 nnoremap <leader>e :Explore<CR>
@@ -166,7 +177,36 @@ map <leader>r :Ag<CR>
 nmap ]h <Plug>(GitGutterNextHunk)
 nmap [h <Plug>(GitGutterPrevHunk)
 " preview changed git hunks
-nmap <leader>g <Plug>(GitGutterPreviewHunk)
+nmap <leader>h <Plug>(GitGutterPreviewHunk)
+
+" stage hunk
+nmap <leader>ga <Plug>(GitGutterStageHunk)
+
+" fugitive (git)
+nmap <leader>gs :G<CR>:wincmd _<CR>
+nmap <leader>gp :Git push<CR>
+nmap <leader>gll :Git pull<CR>
+nmap <leader>glo :Git log<CR>
+" windcmd _ full screens  can <C-W>= to reset
+nmap <leader>gc :Git commit<CR>:wincmd _<CR>
+nmap <leader>gdd :Git diff<CR>:wincmd _<CR>
+nmap <leader>gds :Git diff --staged<CR>:wincmd _<CR>
+nmap <leader>gdh :Git diff HEAD~1 HEAD<CR>:wincmd _<CR>
+nmap <leader>gaa :Git add .<CR>
+nmap <leader>gap :Git add . --patch<CR>
+nmap <leader>grs :Git reset<CR>
+nmap <leader>grhh :Git reset --hard HEAD<CR>
+
+" reminders:
+" cc 'commit'
+
+" for picking which files to merge from while resolving merge conflicts
+" https://youtu.be/PO6DxfGPQvw?t=292
+" middle is what the final merged file is
+" gj to pick hunk from the right (under right index)
+" gf to pick hunk form the left (under left index)
+nmap <leader>gj :diffget //3<CR>
+nmap <leader>gf :diffget //2<CR>
 
 " disable arrow keys
 inoremap <Down> <Nop>
