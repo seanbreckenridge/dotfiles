@@ -20,6 +20,7 @@ Plug 'kevinhwang91/rnvimr'
 Plug 'airblade/vim-gitgutter'
 Plug 'psliwka/vim-smoothie'
 Plug 'airblade/vim-rooter'
+Plug 'seanbreckenridge/yadm-git.vim'
 Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
 call plug#end()
 
@@ -225,6 +226,9 @@ endfunction
 " goyo
 map <leader>G :Goyo<CR>
 
+" yadm
+let g:yadm_git_verbose = 1
+
 " color scheme
 colorscheme tokyonight
 let g:tokyonight_sidebars = [ "qf", "vista_kind", "terminal", "packer" ]
@@ -316,7 +320,6 @@ nmap <leader>grhh :Git reset --hard HEAD<CR>
 nmap <leader>gj :diffget //3<CR>
 nmap <leader>gf :diffget //2<CR>
 
-call SourceIfExists("~/.config/nvim/yadm.vim")
 call SourceIfExists("~/.config/nvim/coc.vim")
 
 """""""""""""
