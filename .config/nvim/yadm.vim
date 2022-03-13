@@ -32,3 +32,6 @@ endfunction
 if executable('yadm')
   autocmd BufReadPost * call YadmCheckGitFile()
 endif
+
+" backup keybinding to reset incase stuff gets messed up
+nnoremap <leader>gg :let g:gitgutter_git_executable='git'<CR>

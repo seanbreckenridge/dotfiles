@@ -282,7 +282,7 @@ endif
 nmap ]h <Plug>(GitGutterNextHunk)
 nmap [h <Plug>(GitGutterPrevHunk)
 " preview changed git hunks
-nmap <leader>h <Plug>(GitGutterPreviewHunk)
+nmap <leader>gP <Plug>(GitGutterPreviewHunk)
 
 " stage hunk
 nmap <leader>gA <Plug>(GitGutterStageHunk)
