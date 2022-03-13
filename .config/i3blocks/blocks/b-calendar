@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 case "$BLOCK_BUTTON" in
 1)
@@ -12,5 +12,26 @@ case "$BLOCK_BUTTON" in
 	;;
 esac
 
-# Find meetings that are starting after now, today
-calcurse -G --filter-type=apt --filter-start-from="$(date +'%m/%d/%Y %H:%M')" --filter-end-to="$(date +'%m/%d/%Y')" | wc -l
+calcurse_filter() {
+	local start end_format end
+	start="$(date "$1")"
+	end_format="${2:-+%m/%d/%Y}"
+	shift
+	shift
+	end="$(date "$end_format" "$@")"
+	calcurse -G --filter-type=apt --filter-start-from="$start" --filter-end-to="$end" | wc -l
+}
+
+today_coming_up="$(calcurse_filter +'%m/%d/%Y %H:%M')"
+today_or_tomorrow="$(calcurse_filter +'%m/%d/%Y' +'%m/%d/%Y' -d '+1 day')"
+
+# Find things on my calendar that are starting after now, today
+# and meetings that are on my calendar, at any time today
+#
+# if all are upcoming (later in the day), just print one
+if ((today_or_tomorrow == today_coming_up)); then
+	printf '%s\n' "$today_coming_up"
+else
+	# print items upcoming / total items today
+	printf '%s/%s\n' "$today_coming_up" "$today_or_tomorrow"
+fi
