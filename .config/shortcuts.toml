@@ -6,9 +6,9 @@ default_shebang = "#!/bin/sh"
 shebang = "#!/bin/zsh"
 command = '''
 # list all of my configuration files, by matching combining
-# yadm ls-files and a couple search commands
+# yadm list and a couple search commands
 {
-	cd && yadm ls-files | sed "s#^#$HOME/#"
+	cd && yadm list | sed "s#^#$HOME/#"
 	fd --type=file -H -E '__pycache__' -E '.mypy_cache' --full-path "${HOME}" "${XDG_CONFIG_HOME}/todo" "${XDG_CONFIG_HOME}/bookmark.txt" "${ZDOTDIR}" "${XDG_CONFIG_HOME}/yadm" "${XDG_CONFIG_HOME}/my"
 } | grep -v "system-config" | exists | sort -u
 '''
