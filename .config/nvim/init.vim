@@ -206,10 +206,10 @@ map <leader>c :call Ec()<CR>
 
 " https://sean.fish/d/jumplist?dark
 " jump to some directory I use often
-function! Jump()
+function! Jumplist()
   call fzf#run({"source": "jumplist", "sink": "cd | Files"})
 endfunction
-map <leader>C :call Jump()<CR>
+map <leader>j :call Jumplist()<CR>
 
 
 " open netrw like a sidebar file manager
