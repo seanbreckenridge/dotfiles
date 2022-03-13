@@ -19,18 +19,18 @@ function! YadmDetectDir(exit_status)
     " detect with fugitive
     call FugitiveDetect(g:yadm_repo_path)
     let g:gitgutter_git_executable='yadm'
-    echo "yadm: detected file as dotfile"
+    echo 'yadm: detected file as dotfile'
   else
-    if g:gitgutter_git_executable == "yadm"
+    if g:gitgutter_git_executable == 'yadm'
       let g:gitgutter_git_executable='git'
-      echo "yadm: reset gitgutter executable path"
+      echo 'yadm: reset gitgutter executable path'
     endif
   endif
 endfunction
 
 
 if executable('yadm')
-  autocmd BufReadPost * call YadmCheckGitFile()
+  autocmd BufWinEnter * call YadmCheckGitFile()
 endif
 
 " backup keybinding to reset incase stuff gets messed up
