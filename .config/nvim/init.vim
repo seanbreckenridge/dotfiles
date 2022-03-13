@@ -198,11 +198,18 @@ nnoremap <leader>_ :wincmd -<CR>
 " like my https://sean.fish/d/ecc?dark
 " edit one of my dot/config files
 function! Ec()
-  :call fzf#run({"source": "list-config", "sink": "e"})
+  call fzf#run({"source": "list-config", "sink": "e"})
 endfunction
 map <leader>c :call Ec()<CR>
 " mapping to toggle autocd
 " map <leader>c :set autochdir!<CR>
+
+" https://sean.fish/d/jumplist?dark
+" jump to some directory I use often
+function! Jump()
+  call fzf#run({"source": "jumplist", "sink": "cd | Files"})
+endfunction
+map <leader>C :call Jump()<CR>
 
 
 " open netrw like a sidebar file manager
