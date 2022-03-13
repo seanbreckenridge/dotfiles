@@ -329,9 +329,8 @@ call SourceIfExists("~/.config/nvim/coc.vim")
 """""""""""""
 
 " run set spell when editing markdown
-autocmd VimEnter * if expand('%:e') == 'md' | set spell
 " dont autocomplete in markdown
-autocmd FileType markdown b:coc_suggest_disable = 1
+autocmd VimEnter * if expand('%:e') == 'md' | set spell | let b:coc_suggest_disable = 1
 " or when writing a git commit
 autocmd BufRead,BufNewFile * if expand('%:t') == 'COMMIT_EDITMSG' | set spell
 " create shortcuts, whenever I edit https://github.com/seanbreckenridge/shortcuts
