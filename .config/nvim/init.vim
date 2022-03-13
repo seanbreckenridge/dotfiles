@@ -285,7 +285,7 @@ nmap [h <Plug>(GitGutterPrevHunk)
 nmap <leader>h <Plug>(GitGutterPreviewHunk)
 
 " stage hunk
-nmap <leader>ga <Plug>(GitGutterStageHunk)
+nmap <leader>gA <Plug>(GitGutterStageHunk)
 
 " fugitive (git)
 nmap <leader>gi :G<CR>:wincmd _<CR>
@@ -303,7 +303,8 @@ nmap <leader>gaa :Git add -u<CR>
 nmap <leader>gaA :Git add --all<CR>
 " add everything, but prompt me with --patch
 nmap <leader>gap :Git add --all --patch<CR>
-nmap <leader>gu :Git status -u<CR>
+nmap <leader>gst :Git status<CR>
+nmap <leader>gsu :Git status -u<CR>
 nmap <leader>grs :Git reset<CR>
 nmap <leader>grhh :Git reset --hard HEAD<CR>
 
