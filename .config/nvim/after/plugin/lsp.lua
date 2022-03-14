@@ -85,4 +85,8 @@ require('lspconfig').pyright.setup {}
 -- yaml
 require('lspconfig').yamlls.setup {}
 
+-- shell
 require('lspconfig').bashls.setup {}
+
+-- golang
+require('lspconfig').gopls.setup {}

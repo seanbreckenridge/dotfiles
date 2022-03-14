@@ -198,6 +198,12 @@ nnoremap <leader>y V"+y
 nnoremap <leader>e :wincmd v<bar> :Explore <bar> :vertical resize 30<CR>
 " open netrw full screen
 nnoremap <leader>E :Explore<CR>
+" resource config
+nnoremap <Leader><CR> :so ~/.config/nvim/init.vim<CR>
+
+" quickfix lists
+nnoremap <leader>gn :cnext<CR>
+nnoremap <leader>gp :cprev<CR>
 
 " window/buffers
 
@@ -223,7 +229,7 @@ nnoremap <leader>_ :wincmd -<CR>
 " Note: more extensive plugins have their own file in plugin/
 
 " goyo
-map <leader>G :Goyo<CR>
+map <leader>YO :Goyo<CR>
 
 " yadm-git
 let g:yadm_git_verbose = 1
