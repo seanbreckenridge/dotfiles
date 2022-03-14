@@ -8,22 +8,43 @@ filetype off
 
 " load plugins/lua
 
-call plug#begin('~/.local/plugged')
+call plug#begin('~/.local/share/plugged')
+" utility/feature plugins
 Plug 'junegunn/goyo.vim'
-Plug 'sheerun/vim-polyglot'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-Plug 'mg979/vim-visual-multi', {'branch': 'master'}  " for tutorial: 'nvim -Nu .local/plugged/vim-visual-multi/tutorialrc'
-Plug 'itchyny/lightline.vim'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'tpope/vim-fugitive'
 Plug 'mbbill/undotree'
 Plug 'kevinhwang91/rnvimr'
-Plug 'airblade/vim-gitgutter'
-Plug 'psliwka/vim-smoothie'
+Plug 'mg979/vim-visual-multi', {'branch': 'master'}  " for tutorial: 'nvim -Nu .local/plugged/vim-visual-multi/tutorialrc'
 Plug 'airblade/vim-rooter'
 Plug 'seanbreckenridge/yadm-git.vim'
+Plug 'airblade/vim-gitgutter'
+Plug 'psliwka/vim-smoothie'
+Plug 'tpope/vim-surround'
+
+" syntax
+Plug 'sheerun/vim-polyglot'
+
+" appearance
+Plug 'itchyny/lightline.vim'
 Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
+
+" lsp
+Plug 'hrsh7th/nvim-cmp'
+
+" lsp - some basics
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/cmp-cmdline'
+Plug 'hrsh7th/cmp-path'
+
+" lsp - icons
+Plug 'onsails/lspkind-nvim'
+
+" lsp - language/syntax specific
+Plug 'neovim/nvim-lspconfig' " community config
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'tamago324/cmp-zsh'
 call plug#end()
 
 " load my lua configuration -- i.e. my init.lua
@@ -42,7 +63,7 @@ syntax on
 filetype plugin indent on
 let mapleader =" "
 
-" Dont execute arbitrary modelines
+" Don't execute arbitrary modelines
 set modelines=0
 set number relativenumber  " line number
 " Blink cursor on error instead of beeping
@@ -61,6 +82,8 @@ set softtabstop=2
 set expandtab
 set noshiftround
 set smartindent
+" Give more space for displaying messages.
+set cmdheight=2
 
 " Cursor motion
 set scrolloff=3
@@ -177,7 +200,7 @@ nnoremap <leader>E :Explore<CR>
 " window/buffers
 
 " swap to previous buffer
-map <leader><leader> :bprevious<CR>
+" map <leader><leader> :bprevious<CR>
 
 " nicer binding for window management
 map <leader>w <C-W>
@@ -200,7 +223,7 @@ nnoremap <leader>_ :wincmd -<CR>
 " goyo
 map <leader>G :Goyo<CR>
 
-" yadm
+" yadm-git
 let g:yadm_git_verbose = 1
 
 " undotree
@@ -228,8 +251,5 @@ map <leader>j :Jump<CR>
 "           "
 """""""""""""
 
-" run set spell when editing markdown
-" dont autocomplete in markdown
-autocmd VimEnter * if expand('%:e') == 'md' | set spell | let b:coc_suggest_disable = 1
-" or when writing a git commit
-autocmd BufRead,BufNewFile * if expand('%:t') == 'COMMIT_EDITMSG' | set spell
+" dont check spelling when writing a git commit
+autocmd BufRead,BufNewFile gitcommit | set spell

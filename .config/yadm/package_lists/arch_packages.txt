@@ -49,6 +49,7 @@ elm-bin
 erlang
 ghc
 go
+gopls
 graphviz
 inotify-tools
 java-environment-common

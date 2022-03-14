@@ -276,7 +276,6 @@ __pycache__
 /.local/lib/vivaldi
 /.local/man
 /.local/pipx
-/.local/plugged/*
 /.local/share/*
 /.local/share/yadm
 /.local/state

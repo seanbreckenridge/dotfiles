@@ -69,7 +69,7 @@ havecmd cargo && {
 
 python3 -m pip install ranger-fm
 
-havecmd npm || exit $? # needed for coc
+havecmd npm || exit $? # needed for completion
 
 # some manual installs
 havecmd shfmt || GO111MODULE=on go install -v 'mvdan.cc/sh/v3/cmd/shfmt@latest'

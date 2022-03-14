@@ -1,5 +1,4 @@
-# emacs/coc support
+# emacs support
 rdoc
 rufo
 solargraph
-github-linguist

@@ -27,7 +27,7 @@ function update() {
 	esac
 	yadm bootstrap
 	echo "Updating nvim packages..."
-	nvim +PlugUpdate +CocUpdateSync +qall
+	nvim +PlugUpdate +qall
 	echo "Updating global npm packages..."
 	# make sure npm path hasnt been mangled by nvm
 	command -v npm | grep -q 'npm-packages' && npm update -g

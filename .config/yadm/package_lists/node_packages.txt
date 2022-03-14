@@ -15,6 +15,10 @@ stylelint
 vscode-html-languageserver-bin
 yaml-language-server
 html-minifier
+vscode-langservers-extracted
+cssmodules-language-server
+pyright
+@tailwindcss/language-server
 
 # web tools/packages
 serve

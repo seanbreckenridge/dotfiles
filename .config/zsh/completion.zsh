@@ -2,6 +2,7 @@
 
 # allow menu select w/ highlight
 zmodload zsh/complist              # http://zsh.sourceforge.net/Doc/Release/Zsh-Modules.html#The-zsh_002fcomplist-Module
+zmodload zsh/zpty                  # https://github.com/tamago324/cmp-zsh
 zstyle ':completion:*' menu select #  http://zsh.sourceforge.net/Guide/zshguide06.html
 zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' \
 	'r:|[._-]=* r:|=*' 'l:|=* r:|=*' # Auto complete with case insenstivity

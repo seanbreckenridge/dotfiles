@@ -61,7 +61,7 @@ if [[ ! -f ~/.local/share/nvim/site/autoload/plug.vim ]]; then
 fi
 
 # a tiny subset of packages to install on android
-havecmd npm || exit $? # needed for coc
+havecmd npm || exit $? # needed for some language servers
 
 export NPM_CONFIG_PREFIX="${XDG_DATA_HOME}/npm-packages"
 # create the npm directory and make sure we own the directory to fix permission issues

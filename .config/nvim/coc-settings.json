@@ -1,9 +1,0 @@
-{
-  "python.formatting.provider": "black",
-  "python.linting.flake8Path": "flake8c",
-  "python.linting.enabled": true,
-  "python.linting.flake8Enabled": true,
-  "python.linting.mypyEnabled": true,
-  "elixirLS.dialyzerEnabled": false,
-  "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": true
-}
