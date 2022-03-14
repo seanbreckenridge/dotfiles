@@ -22,8 +22,10 @@ Plug 'seanbreckenridge/yadm-git.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'psliwka/vim-smoothie'
 Plug 'tpope/vim-surround'
+Plug 'numToStr/Comment.nvim'
 
-" syntax
+" langauges/syntax
+Plug 'sbdchd/neoformat'
 Plug 'sheerun/vim-polyglot'
 
 " appearance
