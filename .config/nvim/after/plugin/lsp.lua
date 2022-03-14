@@ -69,12 +69,14 @@ capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
+-- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
+
 -- web stuff
 require("lspconfig").jsonls.setup {capabilities = capabilities}
 require("lspconfig").cssls.setup {capabilities = capabilities}
 require("lspconfig").html.setup {capabilities = capabilities}
-require('lspconfig').eslint.setup {}
 -- TODO: configure EslintFixAll https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#eslint
+require('lspconfig').eslint.setup {}
 require('lspconfig').cssmodules_ls.setup {}
 require('lspconfig').tailwindcss.setup {}
 require('lspconfig').tsserver.setup {}
