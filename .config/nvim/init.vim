@@ -23,10 +23,12 @@ Plug 'airblade/vim-gitgutter'
 Plug 'psliwka/vim-smoothie'
 Plug 'tpope/vim-surround'
 Plug 'numToStr/Comment.nvim'
+Plug 'L3MON4D3/LuaSnip'
 
 " langauges/syntax
 Plug 'sbdchd/neoformat'
 Plug 'sheerun/vim-polyglot'
+Plug 'rafamadriz/friendly-snippets'
 
 " appearance
 Plug 'itchyny/lightline.vim'
@@ -42,6 +44,9 @@ Plug 'hrsh7th/cmp-path'
 
 " lsp - icons
 Plug 'onsails/lspkind-nvim'
+
+" lsp - snippets
+Plug 'saadparwaiz1/cmp_luasnip'
 
 " lsp - language/syntax specific
 Plug 'neovim/nvim-lspconfig' " community config

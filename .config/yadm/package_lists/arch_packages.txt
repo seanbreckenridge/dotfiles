@@ -59,6 +59,7 @@ julia
 jupyter
 lua
 lua-format
+lua-language-server
 mariadb
 mypy
 npm
