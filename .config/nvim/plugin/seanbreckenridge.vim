@@ -6,7 +6,7 @@ function! ShowDocumentation()
   if (index(['vim','help'], &filetype) >= 0)
     execute 'h '.expand('<cword>')
   else
-    echo 'Not in vim configuration!'
+    :lua vim.lsp.buf.hover()
   endif
 endfunction
 
