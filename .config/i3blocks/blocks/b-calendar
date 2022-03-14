@@ -10,7 +10,6 @@ calcurse_filter() {
 	calcurse -G --filter-type=apt --filter-start-from="$start" --filter-end-to="$end"
 }
 
-
 case "$BLOCK_BUTTON" in
 1)
 	# send a notification with todays appointments
@@ -22,7 +21,6 @@ case "$BLOCK_BUTTON" in
 	launch calcurse
 	;;
 esac
-
 
 # Find things on my calendar that are starting after now, today
 # and meetings that are on my calendar, at any time today
