@@ -1,5 +1,4 @@
 local ls = require "luasnip"
--- local types = require "luasnip.util.types"
 
 ls.config.set_config {
     history = true,
@@ -8,22 +7,7 @@ ls.config.set_config {
     enable_autosnippets = true
 }
 
--- shorthands
-local snippet = ls.s
-local f = ls.function_node
--- local t = ls.text_node
-
-ls.snippets = {
-    all = {
-        -- date -> Tue 16 Nov 2021 09:43:49 AM EST
-        snippet({trig = "date"}, {
-            f(function()
-                return string.format(string.gsub(vim.bo.commentstring, "%%s",
-                                                 " %%s"), os.date())
-            end, {})
-        })
-    }
-}
+ls.snippets = require("seanbreckenridge.snippets")
 
 -- <c-k> is my expansion key
 -- this will expand the current item or jump to the next item within the snippet.
@@ -47,7 +31,7 @@ end)
 vim.keymap.set("n", "<leader>S",
                "<cmd>source ~/.config/nvim/after/plugin/luasnip.lua<CR>")
 
--- Extend snippets
+-- Extend with vs-code style snippets (friendly-snippets repo)
 ls.filetype_extend("html", {})
 ls.filetype_extend("shell", {})
 ls.filetype_extend("gitcommit", {})
@@ -60,3 +44,4 @@ ls.filetype_extend("javascript", {})
 ls.filetype_extend("typescript", {})
 
 require("luasnip.loaders.from_vscode").lazy_load()
+require("luasnip.loaders.from_snipmate").lazy_load()

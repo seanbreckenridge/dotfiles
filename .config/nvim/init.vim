@@ -29,6 +29,7 @@ Plug 'L3MON4D3/LuaSnip'
 Plug 'sbdchd/neoformat'
 Plug 'sheerun/vim-polyglot'
 Plug 'rafamadriz/friendly-snippets'
+Plug 'honza/vim-snippets'
 
 " appearance
 Plug 'itchyny/lightline.vim'

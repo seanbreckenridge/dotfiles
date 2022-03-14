@@ -542,13 +542,6 @@ neomutt && i3blocks-refresh-mk mail
 [alacritty-tmux]
 command='exec alacritty -e tmux'
 
-[bash-this-dir]
-command='''
-# shellcheck disable=SC2016
-COMMAND_STR='THIS_DIR="$(realpath "$(dirname "${BASH_SOURCE[0]}")")"'
-echo "${COMMAND_STR}" | clipcopy
-'''
-
 [extracturls]
 command='''
 # receives text from STDIN, extracts unique URLs

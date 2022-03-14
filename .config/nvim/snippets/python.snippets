@@ -1,0 +1,14 @@
+snippet click
+	from pathlib import Path
+	import click
+
+	@click.command()
+	@click.argument("$2", type=click.Path(exists=True, path_type=Path), required=True)
+	def main($2: Path) -> None:
+		"""
+		"""
+		click.echo($2)
+		$0
+
+	if __name__ == "__main__":
+		main(prog_name="$1")
