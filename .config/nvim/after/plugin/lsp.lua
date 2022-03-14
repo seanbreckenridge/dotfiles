@@ -75,7 +75,6 @@ capabilities.textDocument.completion.completionItem.snippetSupport = true
 require("lspconfig").jsonls.setup {capabilities = capabilities}
 require("lspconfig").cssls.setup {capabilities = capabilities}
 require("lspconfig").html.setup {capabilities = capabilities}
--- TODO: configure EslintFixAll https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#eslint
 require('lspconfig').eslint.setup {}
 require('lspconfig').cssmodules_ls.setup {}
 require('lspconfig').tailwindcss.setup {}

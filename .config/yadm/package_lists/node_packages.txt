@@ -19,6 +19,9 @@ vscode-langservers-extracted
 cssmodules-language-server
 pyright
 @tailwindcss/language-server
+typescript-language-server
+typescript
+eslint
 
 # web tools/packages
 serve
