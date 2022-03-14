@@ -1,2 +1,2 @@
 #!/bin/sh
-exec sxiv -t "${SCREENSHOTS}"
+exec nsxiv -t "${SCREENSHOTS}"

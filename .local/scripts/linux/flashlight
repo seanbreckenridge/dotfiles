@@ -1,9 +1,9 @@
 #!/bin/sh
-# i.e. I fullscreen the sxiv (image viewer) instance
+# i.e. I fullscreen the nsxiv (image viewer) instance
 # to turn my laptop into a flashlight
 
-# switch to commonly unused workspace
-i3-msg workspace 9 >/dev/null 2>&1
+# switch to a newly created 'flashlight' workspace
+i3-msg workspace flashlight >/dev/null 2>&1
 
 # set brightness to 100
 light -S 100
@@ -13,4 +13,4 @@ FILE=/tmp/flashlight.png
 convert -size 1x1 xc:white "${FILE}"
 
 # and display it
-exec sxiv "${FILE}"
+exec nsxiv "${FILE}"

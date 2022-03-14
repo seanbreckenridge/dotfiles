@@ -179,7 +179,7 @@ smpeg
 socat
 sshpass
 strace
-sxiv
+nsxiv
 syncthing
 task-spooler
 texlive-bin

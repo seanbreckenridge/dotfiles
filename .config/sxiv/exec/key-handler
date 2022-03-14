@@ -1,9 +1,0 @@
-#!/bin/sh
-while read -r file; do
-	case "$1" in
-	# ctrl-x-d to move a file to /tmp (i.e. "delete" it)
-	"C-d")
-		mv "$file" "/tmp"
-		;;
-	esac
-done

@@ -68,8 +68,8 @@ alias R=ranger
 alias sz='mystarsfzf'
 alias super='"${HOME}/.local/scripts/supervisor/super"'
 alias urban='udict'
-# sxiv full screen image, fit full width
-alias sxfull='sxiv -s f -f'
+# nsxiv full screen image, fit full width
+alias nsxfull='nsxiv -s f -f'
 alias calc='eva' # https://github.com/NerdyPepper/eva
 alias 'countdown=termdown'
 # shorthand for copying to clipboard
