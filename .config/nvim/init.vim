@@ -6,6 +6,8 @@ set nocompatible
 " Helps force plugins to load correctly when it is turned back on below
 filetype off
 
+" load plugins/lua
+
 call plug#begin('~/.local/plugged')
 Plug 'junegunn/goyo.vim'
 Plug 'sheerun/vim-polyglot'
@@ -23,6 +25,9 @@ Plug 'airblade/vim-rooter'
 Plug 'seanbreckenridge/yadm-git.vim'
 Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
 call plug#end()
+
+" load my lua configuration -- i.e. my init.lua
+lua require("seanbreckenridge")
 
 """""""""""""
 "           "
@@ -123,14 +128,14 @@ set wildignore+=**/dist/*
 set wildignore+=**/build/*
 set wildignore+=**/.git/*
 
+""""""""""""""
+"            "
+"  MAPPINGS  "
+"            "
+""""""""""""""
+
 " mapping to toggle spellcheck
 map <leader>s :set spell!<CR>
-
-""""""""""""""""""
-"                "
-"  BASIC REMAPS  "
-"                "
-""""""""""""""""""
 
 " Move up/down editor lines
 nnoremap j gj
@@ -144,11 +149,6 @@ nnoremap Q gq
 nnoremap n nzzzv
 nnoremap N Nzzzv
 nnoremap J mzJ`z
-
-" Remap help key.
-inoremap <F1> <ESC>:set invfullscreen<CR>a
-nnoremap <F1> :set invfullscreen<CR>
-vnoremap <F1> :set invfullscreen<CR>
 
 " disable arrow keys
 inoremap <Down> <Nop>
@@ -167,13 +167,14 @@ vnoremap <Up> <Nop>
 " copy visual selection to clipboard
 vmap <leader>c "+y
 vmap <leader>y "+y
+nnoremap <leader>y V"+y
 
+" open netrw like a sidebar file manager
+nnoremap <leader>e :wincmd v<bar> :Explore <bar> :vertical resize 30<CR>
+" open netrw full screen
+nnoremap <leader>E :Explore<CR>
 
-""""""""""""""""""""""""""""""
-"                            "
-"  WINDOW,BUFFER MANAGEMENT  "
-"                            "
-""""""""""""""""""""""""""""""
+" window/buffers
 
 " swap to previous buffer
 map <leader><leader> :bprevious<CR>
@@ -188,91 +189,19 @@ nnoremap <leader>- :vertical resize -5<CR>
 nnoremap <leader>+ :wincmd +<CR>
 nnoremap <leader>_ :wincmd -<CR>
 
-""""""""""""""""""""""
-"                    "
-"  CUSTOM FUNCTIONS  "
-"                    "
-""""""""""""""""""""""
+""""""""""""""""""""""""""
+"                        "
+"  PLUGIN CONFIGURATION  "
+"                        "
+""""""""""""""""""""""""""
 
-" fzf docs: https://github.com/junegunn/fzf/blob/master/README-VIM.md
-" like my https://sean.fish/d/ecc?dark
-" edit one of my dot/config files
-function! Ec()
-  call fzf#run({"source": "list-config", "sink": "e"})
-endfunction
-map <leader>c :call Ec()<CR>
-" mapping to toggle autocd
-" map <leader>c :set autochdir!<CR>
-
-" https://sean.fish/d/jumplist?dark
-" jump to some directory I use often
-function! Jumplist()
-  call fzf#run({"source": "jumplist", "sink": "cd | Files"})
-endfunction
-map <leader>j :call Jumplist()<CR>
-
-
-" open netrw like a sidebar file manager
-nnoremap <leader>e :wincmd v<bar> :Explore <bar> :vertical resize 30<CR>
-" open netrw full screen
-nnoremap <leader>E :Explore<CR>
-
-
-"""""""""""""
-"           "
-"  PLUGINS  "
-"           "
-"""""""""""""
-
-function! SourceIfExists(file)
-  if filereadable(expand(a:file))
-    exe 'source' a:file
-  endif
-endfunction
+" Note: more extensive plugins have their own file in plugin/
 
 " goyo
 map <leader>G :Goyo<CR>
 
 " yadm
 let g:yadm_git_verbose = 1
-
-" color scheme
-colorscheme tokyonight
-let g:tokyonight_sidebars = [ "qf", "vista_kind", "terminal", "packer" ]
-" Change the "hint" color to the "orange" color, and make the "error" color bright red
-let g:tokyonight_colors = {'hint': 'orange', 'error': '#ff0000'}
-
-" lightline configuration
-let g:lightline = {
-      \ 'colorscheme': 'tokyonight',
-      \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
-      \ },
-      \ 'component_function': {
-      \   'gitbranch': 'FugitiveHead'
-      \ },
-      \ }
-" dont need this anymore since lightline displays mode
-set noshowmode
-
-" ranger
-nnoremap <silent> <A-r> :RnvimrToggle<CR>
-tnoremap <silent> <A-i> <C-\><C-n>:RnvimrResize<CR>
-tnoremap <silent> <A-o> <C-\><C-n>:RnvimrToggle<CR>
-
-" Map Rnvimr action
-" A-r (same binding that opens rnvim
-" opens the file in the parent nvim instance)
-"
-" can use enter as usual to open non-text files in ranger
-let g:rnvimr_action = {
-            \ '<A-r>': 'NvimEdit split',
-            \ '<C-x>': 'NvimEdit split',
-            \ '<C-v>': 'NvimEdit vsplit',
-            \ 'gw': 'JumpNvimCwd',
-            \ 'yw': 'EmitRangerCwd'
-            \ }
 
 " undotree
 nnoremap <leader>u :UndotreeToggle<CR>
@@ -289,45 +218,9 @@ if executable('rg')
   let g:rg_derive_root='true'
 endif
 
-" jumping around the git gutter
-nmap ]h <Plug>(GitGutterNextHunk)
-nmap [h <Plug>(GitGutterPrevHunk)
-" preview changed git hunks
-nmap <leader>gP <Plug>(GitGutterPreviewHunk)
-
-" stage hunk
-nmap <leader>gA <Plug>(GitGutterStageHunk)
-
-" fugitive (git)
-nmap <leader>gi :G<CR>:wincmd _<CR>
-nmap <leader>gp :Git push<CR>
-nmap <leader>gll :Git pull<CR>
-nmap <leader>glo :Git log<CR>
-" windcmd _ full screens  can <C-W>= to reset
-nmap <leader>gc :Git commit<CR>:wincmd _<CR>
-nmap <leader>gdd :Git diff<CR>:wincmd _<CR>
-nmap <leader>gds :Git diff --staged<CR>:wincmd _<CR>
-nmap <leader>gdh :Git diff HEAD~1 HEAD<CR>:wincmd _<CR>
-" --update, only add item which are already in the index
-nmap <leader>gaa :Git add -u<CR>
-" add everything, adds untracked files
-nmap <leader>gaA :Git add --all<CR>
-" add everything, but prompt me with --patch
-nmap <leader>gap :Git add --all --patch<CR>
-nmap <leader>gst :Git status<CR>
-nmap <leader>gsu :Git status -u<CR>
-nmap <leader>grs :Git reset<CR>
-nmap <leader>grhh :Git reset --hard HEAD<CR>
-
-" for picking which files to merge from while resolving merge conflicts
-" https://youtu.be/PO6DxfGPQvw?t=292
-" middle is what the final merged file is
-" gj to pick hunk from the right (under right index)
-" gf to pick hunk form the left (under left index)
-nmap <leader>gj :diffget //3<CR>
-nmap <leader>gf :diffget //2<CR>
-
-call SourceIfExists("~/.config/nvim/coc.vim")
+" seanbreckenridge (personal functions/plugins)
+map <leader>c :Ec<CR>
+map <leader>j :Jump<CR>
 
 """""""""""""
 "           "
@@ -340,9 +233,3 @@ call SourceIfExists("~/.config/nvim/coc.vim")
 autocmd VimEnter * if expand('%:e') == 'md' | set spell | let b:coc_suggest_disable = 1
 " or when writing a git commit
 autocmd BufRead,BufNewFile * if expand('%:t') == 'COMMIT_EDITMSG' | set spell
-" create shortcuts, whenever I edit https://github.com/seanbreckenridge/shortcuts
-autocmd BufWritePost shortcuts.toml !reshortcuts
-" run i3-jinja to re-create i3 conf file when editing the jinja conf file
-" https://sean.fish/d/config.j2?dark
-autocmd BufWritePost config.j2 !i3-jinja
-autocmd BufWritePost * if expand('%:f') == '.config/i3/config.yaml' | !i3-jinja

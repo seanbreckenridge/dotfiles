@@ -23,7 +23,7 @@ fzfcache list-config | sed "s#^$HOME/##g" | fzfp +m -q "$*" | xargs -r -I {} edi
 # ecc in nvim itself, using the fzf.vim functions
 # see https://sean.fish/d/init.vim?dark
 [ec]
-command="nvim +':call Ec()'"
+command="exec nvim +:Ec"
 
 [dotfiles]
 command='''
@@ -704,6 +704,7 @@ exec boxes -dshell -pv1h2 "$@"
 
 [boxes-vim]
 command="""boxes-python | tr '#' '\"'"""
+link = "boxes-nvim"
 
 [flake8c]
 command='''

@@ -1,2 +1,2 @@
 #!/bin/sh
-nvim +':call Ec()'
+exec nvim +:Ec
