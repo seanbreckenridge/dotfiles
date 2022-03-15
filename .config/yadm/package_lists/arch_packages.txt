@@ -45,6 +45,7 @@ dashbinsh
 docker
 docker-compose
 elixir
+elixir-ls
 elm-bin
 erlang
 ghc

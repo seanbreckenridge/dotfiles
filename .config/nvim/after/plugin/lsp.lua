@@ -85,6 +85,9 @@ require("lspconfig").bashls.setup {}
 -- golang
 require("lspconfig").gopls.setup {}
 
+-- elixir
+require'lspconfig'.elixirls.setup {cmd = {vim.fn.exepath("elixir-ls")}}
+
 -- lua
 local runtime_path = vim.split(package.path, ";")
 table.insert(runtime_path, "lua/?.lua")
