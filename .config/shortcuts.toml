@@ -742,3 +742,8 @@ command='''
 cd ~/.local/share/yadm/repo.git/
 exec gh "$@"
 '''
+
+[calcursed]
+command='''
+exec calcurse -D "$CALCURSE_DIR" -C ~/.config/calcurse "$@"
+'''

@@ -41,6 +41,9 @@ conv() {
 	frinkconv "$*"
 }
 
+# https://github.com/seanbreckenridge/calcurse-load
+alias calcurse=calcursed
+
 # vps related
 # https://github.com/seanbreckenridge/vps
 alias vultr='ssh vultr'

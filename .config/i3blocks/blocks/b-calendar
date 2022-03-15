@@ -7,7 +7,7 @@ calcurse_filter() {
 	shift
 	shift
 	end="$(date "$end_format" "$@")"
-	calcurse -G --filter-type=apt --filter-start-from="$start" --filter-end-to="$end"
+	calcursed -G --filter-type=apt --filter-start-from="$start" --filter-end-to="$end"
 }
 
 case "$BLOCK_BUTTON" in
@@ -18,7 +18,7 @@ case "$BLOCK_BUTTON" in
 3)
 	# open calcurse in my terminal
 	# https://sean.fish/d/cross-platform/launch?dark
-	launch calcurse
+	launch calcursed
 	;;
 esac
 

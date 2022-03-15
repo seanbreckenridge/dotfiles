@@ -151,3 +151,4 @@ export IPGEOCACHE_DIR="${HPIDATA}/ipgeocache"
 export TODO_DIR="${HPIDATA}/todo" # todo.txt
 # https://github.com/seanbreckenridge/mpv-history-daemon
 export MPV_HISTORY_DAEMON_SCAN_TIME='5'
+export CALCURSE_DIR="${HPIDATA}/calcurse"
