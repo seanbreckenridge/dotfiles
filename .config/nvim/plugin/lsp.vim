@@ -7,6 +7,9 @@ nnoremap <silent> [w :lua vim.diagnostic.goto_prev()<CR>
 
 nnoremap <silent> gd :lua vim.lsp.buf.definition()<CR>
 nnoremap <silent> gr :lua vim.lsp.buf.references()<CR>
+nnoremap <silent> rn :lua vim.lsp.buf.rename()<CR>
+" leader<t> is format, so this is logical
+nnoremap <silent> <leader>T :lua vim.lsp.buf.code_action()<CR>
 
 function! ShowDocumentation()
   if (index(['vim','help'], &filetype) >= 0)

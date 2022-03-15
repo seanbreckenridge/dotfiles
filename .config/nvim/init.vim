@@ -6,6 +6,9 @@ set nocompatible
 " Helps force plugins to load correctly when it is turned back on below
 filetype off
 
+" needs to be before the plugin is loaded
+let g:polyglot_disabled = ['org']
+
 " load plugins/lua
 
 call plug#begin('~/.local/share/plugged')
@@ -25,8 +28,9 @@ Plug 'tpope/vim-surround'
 Plug 'numToStr/Comment.nvim'
 Plug 'L3MON4D3/LuaSnip'
 
-" langauges/syntax
+" langauges/syntax/snippets
 Plug 'sbdchd/neoformat'
+Plug 'jceb/vim-orgmode'
 Plug 'sheerun/vim-polyglot'
 Plug 'rafamadriz/friendly-snippets'
 Plug 'honza/vim-snippets'
@@ -35,8 +39,9 @@ Plug 'honza/vim-snippets'
 Plug 'itchyny/lightline.vim'
 Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
 
-" lsp
+" lsp/diagnostic clients
 Plug 'hrsh7th/nvim-cmp'
+Plug 'mfussenegger/nvim-lint'
 
 " lsp - some basics
 Plug 'hrsh7th/cmp-buffer'
@@ -265,5 +270,6 @@ map <leader>j :Jump<CR>
 "           "
 """""""""""""
 
-" dont check spelling when writing a git commit
+" check spelling when writing a git commit
 autocmd BufRead,BufNewFile gitcommit | set spell
+autocmd BufWritePost lua require('lint').try_lint()
