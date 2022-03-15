@@ -16,6 +16,7 @@ from browserexport.browsers.firefox import Firefox
 
 
 from my.core.common import PathIsh, Paths
+from my.core.warnings import high
 
 #############
 #           #
@@ -29,7 +30,13 @@ def repo(name: str) -> str:
     e.g., converts to ~/Repos/name
     ~/Repos/ is where I store a lot of my git repositories
     """
-    return path.join(environ["REPOS"], name)
+    if "REPOS" in environ:
+        return path.join(environ["REPOS"], name)
+    else:
+        high(
+            r"Hey I use the $REPOS environment variable to determine where repositories are on my computer. If you have some directory you put those -- set something like 'export REPOS=~/projects' in your shell config. Otherwise, you can edit this 'def repo' function, or remove it from whatevers using it -- its probably some of my personal config"
+        )
+        return name
 
 
 def if_exists(p: PathIsh) -> Optional[Path]:
@@ -252,7 +259,7 @@ class commits:
 
     roots: Paths = filter_exists(
         [
-            Path(environ["REPOS"]),
+            repo(''),
             Path(environ["HOME"]) / "Documents/OldRepos",
             Path(environ["HOME"]) / ".local/share/go/src/github.com/seanbreckenridge/",
         ]
