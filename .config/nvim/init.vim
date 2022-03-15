@@ -12,6 +12,9 @@ let g:polyglot_disabled = ['org']
 " load plugins/lua
 
 call plug#begin('~/.local/share/plugged')
+" cache lua startup by maintaining a bytecode/module resolution cache
+Plug 'lewis6991/impatient.nvim'
+
 " utility/feature plugins
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -59,6 +62,8 @@ Plug 'neovim/nvim-lspconfig' " community config
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'tamago324/cmp-zsh'
 call plug#end()
+
+lua require('impatient')
 
 " load my lua configuration -- i.e. my init.lua
 lua require("seanbreckenridge")
