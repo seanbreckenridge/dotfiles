@@ -19,3 +19,6 @@ alias sf=syncfiles
 
 # for building rust/ffi python packages
 export CARGO_BUILD_TARGET=aarch64-linux-android
+
+# for building some python libs with C-extensions
+export SODIUM_INSTALL=system
