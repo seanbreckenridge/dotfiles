@@ -185,21 +185,22 @@ class github:
 
 DEFAULT_MAILDIR = path.join(environ["HOME"], ".local", "share", "mail")
 
+# if you want to override this, you can set in your ~/.bashrc or something:
+# export MAILDIR=~/Documents/mail
 MAILDIR = Path(environ.get("MAILDIR", DEFAULT_MAILDIR))
-
-
-def list_mailboxes(p: Path) -> Sequence[Path]:
-    dirs: List[Path] = []
-    if MAILDIR.exists():
-        dirs = [p / f for f in listdir(p) if "@" in f]
-    return tuple(dirs)
 
 
 class mail:
     # locally synced IMAP mailboxes using mbsync
     class imap:
         # path[s]/glob to the the mailboxes/IMAP files
-        mailboxes = list_mailboxes(MAILDIR)
+        # you could also just do something like:
+        # mailboxes = "~/Documents/mail"
+        #
+        # to confirm this is matching your files, can do:
+        # hpi query my.mail.imap.files -s
+
+        mailboxes = MAILDIR
 
 
 # combines:
@@ -259,7 +260,7 @@ class commits:
 
     roots: Paths = filter_exists(
         [
-            repo(''),
+            repo(""),
             Path(environ["HOME"]) / "Documents/OldRepos",
             Path(environ["HOME"]) / ".local/share/go/src/github.com/seanbreckenridge/",
         ]
