@@ -60,15 +60,7 @@ if [[ ! -f ~/.local/share/nvim/site/autoload/plug.vim ]]; then
 	curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 fi
 
-# a tiny subset of packages to install on android
-havecmd npm || exit $? # needed for some language servers
-
-export NPM_CONFIG_PREFIX="${XDG_DATA_HOME}/npm-packages"
-# create the npm directory and make sure we own the directory to fix permission issues
-[[ ! -d "${NPM_CONFIG_PREFIX}" ]] && mkdir -p "${NPM_CONFIG_PREFIX}" && chown -R "$(whoami)" "${NPM_CONFIG_PREFIX}"
-npm install -g npm
-
-# dont want to go through all the npm/cargo/golang package lists
+# dont want to go through all the cargo/golang package lists
 # I use on computers, since a lot of them arent useful here
 
 # manually install some commands

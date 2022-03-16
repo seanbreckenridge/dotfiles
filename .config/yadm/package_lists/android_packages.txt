@@ -6,6 +6,7 @@ exa
 bat
 rust
 golang
+luarocks
 curl
 neovim
 yarn

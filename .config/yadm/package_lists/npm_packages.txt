@@ -2,7 +2,6 @@
 @elm-tooling/elm-language-server
 bash-language-server
 coffeescript
-elm-format
 js-beautify
 jsonlint
 node-cljfmt
