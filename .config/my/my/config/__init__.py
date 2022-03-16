@@ -8,7 +8,7 @@ https://github.com/seanbreckenridge/HPI-personal
 
 import sys
 import tempfile
-from os import environ, path, listdir
+from os import environ, path
 from typing import Optional, Callable, List, Sequence, Union, Tuple
 from pathlib import Path
 from datetime import datetime, date
@@ -70,6 +70,12 @@ def data(p: PathIsh) -> Path:
 #  REORDER PATH  #
 #                #
 ##################
+
+# This section of my config is pretty personal, it deals with how
+# I resolve imports for my multiple local HPI repositories
+# You can do the same, but take a look at reorder_editable to
+# make sure you're actually using this:
+# https://github.com/seanbreckenridge/reorder_editable
 
 try:
     # https://github.com/seanbreckenridge/reorder_editable
@@ -183,11 +189,11 @@ class github:
     export_path: Paths = data("github/ghexport")
 
 
-DEFAULT_MAILDIR = path.join(environ["HOME"], ".local", "share", "mail")
-
 # if you want to override this, you can set in your ~/.bashrc or something:
-# export MAILDIR=~/Documents/mail
-MAILDIR = Path(environ.get("MAILDIR", DEFAULT_MAILDIR))
+# export MAILDIR='~/Documents/mail'
+# or glob something:
+# MAILDIR='~/.local/share/mail/*@gmail.com'
+MAILDIR = environ.get("MAILDIR", "~/.local/share/mail")
 
 
 class mail:
@@ -195,12 +201,12 @@ class mail:
     class imap:
         # path[s]/glob to the the mailboxes/IMAP files
         # you could also just do something like:
-        # mailboxes = "~/Documents/mail"
+        # mailboxes = "~/Documents/mail/*@*"
+        # to match any files in that directory with '@' in them
         #
         # to confirm this is matching your files, can do:
         # hpi query my.mail.imap.files -s
-
-        mailboxes = MAILDIR
+        mailboxes = MAILDIR if MAILDIR is not None else ()
 
 
 # combines:
