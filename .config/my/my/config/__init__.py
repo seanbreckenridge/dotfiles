@@ -206,7 +206,7 @@ class mail:
         #
         # to confirm this is matching your files, can do:
         # hpi query my.mail.imap.files -s
-        mailboxes = MAILDIR if MAILDIR is not None else ()
+        mailboxes = MAILDIR
 
 
 # combines:
