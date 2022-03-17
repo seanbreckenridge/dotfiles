@@ -39,9 +39,4 @@ CD() {
 CD-Repos() {
 	CD -q "${REPOS} "
 	zle reset-prompt
-}
-zle -N CD-Repos
-
-# Alt+Shift+C to fzf into something in my ~/Repos, sorted by most used
-bindkey '^[C' CD-Repos
-bindkey -s '^[R' '^uCD && R^M' # CD and open in ranger
+} && zle -N CD-Repos
