@@ -136,6 +136,7 @@ hyperfine
 imagemagick
 jq
 khinsider
+kitty
 ldm
 lftp
 libjpeg-turbo # for jpegtran
@@ -155,6 +156,7 @@ net-tools
 networkmanager-dmenu-git
 newsboat
 nmap
+nsxiv
 ntp
 optipng
 pamixer
@@ -182,7 +184,6 @@ smpeg
 socat
 sshpass
 strace
-nsxiv
 syncthing
 task-spooler
 texlive-bin
@@ -216,7 +217,6 @@ yadm
 yq
 ytop
 zip
-
 # mail
 
 abook

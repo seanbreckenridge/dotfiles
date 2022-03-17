@@ -81,13 +81,13 @@ if [[ ! -d "${HOME}/.emacs.d/" ]]; then
 	"${HOME}/.emacs.d/bin/doom" sync
 fi
 
-havecmd pub && {
+havecmd dart && {
 	echo "Installing global dart packages..."
-	DART_INSTALLED_PACKAGES="$(pub global list | cut -d" " -f1)"
+	DART_INSTALLED_PACKAGES="$(dart pub global list | cut -d" " -f1)"
 	while read -r dartpkg; do
 		if ! grep -q "^${dartpkg}$" <<<"${DART_INSTALLED_PACKAGES}"; then
 			printf "Installing %s\n" "${dartpkg}"
-			pub global activate "${dartpkg}"
+			dart pub global activate "${dartpkg}"
 		fi
 	done < <(spkglist "${DART_PACKAGE_LIST}")
 }

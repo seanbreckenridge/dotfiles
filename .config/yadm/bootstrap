@@ -65,7 +65,8 @@ esac
 declare -rx PYTHON_PACKAGE_LIST="${PACKAGE_DIR}/python3_packages.txt"
 declare -rx SCIPYTHON_PACKAGE_LIST="${PACKAGE_DIR}/scientific_python.txt" # probably don't have to install on android
 declare -rx GLOBAL_GEM_LIST="${PACKAGE_DIR}/ruby_packages.txt"
-declare -rx NODE_PACKAGE_LIST="${PACKAGE_DIR}/npm_packages.txt"
+declare -rx NPM_PACKAGE_LIST="${PACKAGE_DIR}/npm_packages.txt"
+declare -rx COMPUTER_NPM_PACKAGE_LIST="${PACKAGE_DIR}/computer_npm_packages.txt"
 declare -rx DART_PACKAGE_LIST="${PACKAGE_DIR}/dart_packages.txt"
 declare -rx CARGO_PACKAGE_LIST="${PACKAGE_DIR}/cargo_packages.txt"
 declare -rx GO_PACKAGE_LIST="${PACKAGE_DIR}/go_packages.txt"
@@ -141,6 +142,17 @@ if [[ "$ON_OS" != 'android' ]]; then
 	bash "${YADM_DIR}/computer_bootstrap" || exit $?
 fi
 
+npm_install_from_pkg_list() {
+	local npm_installed="$1"
+	local package_list="$2"
+	while read -r npkg; do
+		if ! grep -q "^${npkg}$" <<<"${npm_installed}"; then
+			printf "Installing %s\n" "$npkg"
+			npm install --global "${npkg}"
+		fi
+	done < <(spkglist "${package_list}")
+}
+
 havecmd npm || exit $?
 # install npm packages
 export NPM_CONFIG_PREFIX="${XDG_DATA_HOME}/npm-packages"
@@ -150,13 +162,10 @@ if grep -q 'npm-packages' <<<"$NPM_LOC"; then
 	# create the npm directory and make sure we own the directory to fix permission issues
 	[[ ! -d "${NPM_CONFIG_PREFIX}" ]] && mkdir -p "${NPM_CONFIG_PREFIX}" && sudo chown -R "$(whoami)" "${NPM_CONFIG_PREFIX}"
 	# get a list of installed packages
-	NPM_PACKAGE_LIST="$(npm ls -g --json | jq '.dependencies | keys[]' -r)"
-	while read -r npkg; do
-		if ! grep -q "^${npkg}$" <<<"${NPM_PACKAGE_LIST}"; then
-			printf "Installing %s\n" "$npkg"
-			npm install --global "${npkg}"
-		fi
-	done < <(spkglist "${NODE_PACKAGE_LIST}")
+	NPM_INSTALLED="$(npm ls -g --json | jq '.dependencies | keys[]' -r)"
+	npm_install_from_pkg_list "$NPM_INSTALLED" "$NPM_PACKAGE_LIST"
+	# computer-only npm packages
+	[[ "$ON_OS" != 'android' ]] && npm_install_from_pkg_list "$NPM_INSTALLED" "$COMPUTER_NPM_PACKAGE_LIST"
 else
 	printf "NPM path not where expected (%s), skipping package install...\n" "$NPM_LOC"
 	# incase this is the first time this has happened, update npm globally so it gets put into "$NPM_CONFIG_PREFIX"
