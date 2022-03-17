@@ -38,5 +38,4 @@ CD() {
 
 CD-Repos() {
 	CD -q "${REPOS} "
-	zle reset-prompt
-} && zle -N CD-Repos
+}
