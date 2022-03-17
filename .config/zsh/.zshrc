@@ -8,6 +8,7 @@ source "${ZDOTDIR}/cd.zsh"                      # functions to change my directo
 source "${ZDOTDIR}/completion.zsh"              # zsh completion
 source "${ZDOTDIR}/lazy.zsh"                    # lazy load shell tools
 source "${ZDOTDIR}/progressive_enhancement.zsh" # slightly improve commands
+source "${ZDOTDIR}/updates.zsh"                 # update globally installed lang-specific packages
 
 source_if_exists() {
 	if [[ -r "$1" ]]; then
