@@ -259,11 +259,8 @@ mode "launcher" {
 # keyboard shortcut to check if I have a remote internet connection
 bindsym $mod+Shift+w {{ ex }} wfi
 
-# start a terminal with tmux
-bindsym $mod+Return {{ ex }} ttt alacritty-tmux
-
-# another binding to start a terminal, incase ttt isnt working for some reason, as a last resort
-bindsym $mod+Shift+a {{ ex }} alacritty
+# open terminal
+bindsym $mod+Return {{ ex }} ttt kitty -1
 
 # open a browser tab
 bindsym $mod+Shift+Return {{ ex }} ttt firefox-developer-edition --new-tab;

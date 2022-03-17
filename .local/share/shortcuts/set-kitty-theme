@@ -1,0 +1,2 @@
+#!/bin/sh
+kitty +kitten themes --reload-in=all "${1:?Must provide theme as kwarg}"

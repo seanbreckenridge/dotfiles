@@ -32,6 +32,7 @@ Plug 'numToStr/Comment.nvim'
 Plug 'L3MON4D3/LuaSnip'
 
 " langauges/syntax/snippets
+Plug 'fladson/vim-kitty'
 Plug 'sbdchd/neoformat'
 Plug 'jceb/vim-orgmode'
 Plug 'sheerun/vim-polyglot'
@@ -40,7 +41,6 @@ Plug 'honza/vim-snippets'
 
 " appearance
 Plug 'itchyny/lightline.vim'
-Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
 
 " lsp/diagnostic clients
 Plug 'hrsh7th/nvim-cmp'

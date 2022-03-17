@@ -3,10 +3,6 @@
 # If its being launched from a tty, run it as normal,
 # else open a new terminal window and run it there
 #
-# Check if we're on mac/linux to use mac-alacritty
-# (wrapper with different --config-file
-# or just alacritty
-
 # set to check if there are issues in checking whether or not we're connected to a terminal
 # export TTY_VERBOSE='1'
 
@@ -16,13 +12,10 @@ if attached-to-terminal; then
 else
 	# open a new terminal, load zsh configuration (for zsh functions/environment), then launch the passed command
 	case "$ON_OS" in
-	linux)
-		alacritty -e zsh -ic "$@"
+	linux|mac)
+		kitty -e zsh -ic "$@"
 		;;
-	mac)
-		mac-alacritty -e zsh -ic "$@"
-		;;
-	android)
+	android|windows)
 		# just run the command directly on android
 		sh -c "$@"
 		;;

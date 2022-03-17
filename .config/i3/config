@@ -268,17 +268,14 @@ bindsym $mod+Shift+d exec --no-startup-id notify-send -t 15000 "$(i3-launcher)";
 
 mode "launcher" {
     
-    bindsym a exec --no-startup-id ttt alacritty; mode "default"
+    bindsym a exec --no-startup-id ttt kitty -1; mode "default"
     bindsym f exec --no-startup-id ttt firefox-developer-edition; mode "default"
     bindsym t exec --no-startup-id trakt-progress; mode "default"
-    bindsym Shift+t exec --no-startup-id ttt launch trackma-curses; mode "default"
     bindsym y exec --no-startup-id mal-recent; mode "default"
-    bindsym e exec --no-startup-id ttt emacs; mode "default"
     bindsym d exec --no-startup-id ttt discord; mode "default"
     bindsym k exec --no-startup-id ttt keepassxc; mode "default"
     bindsym b exec --no-startup-id bookmark-open; mode "default"
     bindsym l exec --no-startup-id largechar-clipboard; mode "default"
-    bindsym r exec --no-startup-id ttt launch ranger; mode "default"
     bindsym n exec --no-startup-id ttt launch newsboat-force; mode "default"
     bindsym m exec --no-startup-id ttt launch neomuttr; mode "default"
     bindsym Shift+m exec --no-startup-id launch sync-neomutt; mode "default"
@@ -286,7 +283,6 @@ mode "launcher" {
     bindsym v exec --no-startup-id ttt launch keyvol; mode "default"
     bindsym u exec --no-startup-id urlview; mode "default"
     bindsym p exec --no-startup-id launch plainplay; mode "default"
-    bindsym Shift+p exec --no-startup-id launch plainplay single; mode "default"
     bindsym Shift+s exec --no-startup-id launch splayall; mode "default"
     bindsym s exec --no-startup-id stream-corner; mode "default"
     bindsym $mod+f exec --no-startup-id ttt launch full_todotxt; mode "default"
@@ -305,11 +301,8 @@ mode "launcher" {
 # keyboard shortcut to check if I have a remote internet connection
 bindsym $mod+Shift+w exec --no-startup-id wfi
 
-# start a terminal with tmux
-bindsym $mod+Return exec --no-startup-id ttt alacritty-tmux
-
-# another binding to start a terminal, incase ttt isnt working for some reason, as a last resort
-bindsym $mod+Shift+a exec --no-startup-id alacritty
+# open terminal
+bindsym $mod+Return exec --no-startup-id ttt kitty -1
 
 # open a browser tab
 bindsym $mod+Shift+Return exec --no-startup-id ttt firefox-developer-edition --new-tab;

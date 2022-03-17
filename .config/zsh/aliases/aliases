@@ -13,8 +13,6 @@ alias la='ll -a'
 alias sl='ls'
 alias dc='cd' # never going to use the reverse-polish calculator, is *always* a typo
 
-# https://github.com/sharkdp/bat
-alias cat='bat'
 alias ccat='/bin/cat'
 
 # yadm aliases to work like git aliases, to manage dotfiles
@@ -95,6 +93,9 @@ alias remove-orphans='sudo pacman -Rns $(list-orphans)'
 # clear yay tar.gz cache
 alias yay-clear-cache='yay -Syu && yay -Sc'
 alias rnm='sudo systemctl restart NetworkManager' # restart networkmanager
+
+# kitty
+alias d="kitty +kitten diff"
 
 # background jobs
 alias sctl='super --ctl'

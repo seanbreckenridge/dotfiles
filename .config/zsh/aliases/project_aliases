@@ -62,8 +62,6 @@ export CUBING_JSON="${REPOS}/glue/cubing.json"
 alias restart-glue='ssh vultr "cd ./code/glue && git pull && ~/vps/super --ctl restart glue-server"'
 alias dotfiles-pull='ssh vultr "cd ./.dotfiles && git pull"'
 alias page-hits="curl -s 'https://sean.fish/api/page_hit' | jq '.count'"
-# Alt+Shift+V to connect to VPS
-bindkey -s '^[V' 'vultr\n'
 # print/select open shortened urls
 # https://github.com/seanbreckenridge/no-db-static-shorturl
 alias shorturls="ssh vultr 'ls shorturls'"

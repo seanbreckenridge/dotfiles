@@ -62,3 +62,34 @@ glow() {
 		command glow "$@"
 	fi
 }
+
+
+alias icat='kitty +kitten icat'
+
+# https://github.com/sharkdp/bat
+# https://github.com/ogham/exa
+# https://sw.kovidgoyal.net/kitty/kittens/icat/
+#
+# if trying to 'cat' all images -- use kitty to print the image directly in the terminal
+# if only one argument and a directory, ls instead
+# else, use bat
+cat() {
+	local all_images=1
+
+	# loop through arguments
+	# if its not an image, break -- and use bat instead
+	# if I'm in tmux -- kitty cant print images, so fallback
+	for arg in "${@}"; do
+		[[ -z "$TMUX" && -f "$arg" && "$(file-mime "$1")" =~ '^image/' ]] && continue
+		all_images=0
+		break
+	done
+
+	if [[ -d "$1" ]]; then
+		exa "$1"
+	elif ((all_images)); then
+		icat "$@"
+	else
+		bat "$@"
+	fi
+}

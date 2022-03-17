@@ -747,3 +747,12 @@ exec gh "$@"
 command='''
 exec calcurse -D "$CALCURSE_DIR" -C ~/.config/calcurse "$@"
 '''
+
+[set-kitty-theme]
+command='''kitty +kitten themes --reload-in=all "${1:?Must provide theme as kwarg}"'''
+
+[light-theme]
+command='set-kitty-theme Light'
+
+[dark-theme]
+command='set-kitty-theme Dark'

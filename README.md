@@ -8,7 +8,7 @@ In general:
 
 - [`zsh`](http://zsh.sourceforge.net/), plugins/configuration handled manually in [`.config/zsh`](.config/zsh) (split across multiple files)
 - [`yadm`](https://yadm.io) to manage dotfiles, see [`yadm-with-README.md`](.config/yadm/yadm-with-README.md)
-- [`alacritty`](https://github.com/alacritty/alacritty) as terminal (with [`tmux`](https://github.com/tmux/tmux))
+- [`kitty`](https://github.com/kovidgoyal/kitty) as terminal (with [`tmux`](https://github.com/tmux/tmux))
 - [`firefox-developer-edition`](https://www.archlinux.org/packages/community/x86_64/firefox-developer-edition/) - browser, addons listed in [`firefox_addons.txt`](./.local/share/firefox_addons.txt)
 - [`neomutt`](https://github.com/neomutt/neomutt) for email
 - [`nvim`](https://neovim.io/) (with [`nvim-cmp`](https://github.com/hrsh7th/nvim-cmp)) and rarely [`(doom) emacs`](https://github.com/hlissner/doom-emacs) as editors - see [`editor`](.local/scripts/cross-platform/editor)
@@ -45,7 +45,6 @@ Similar to Termux, does an `apt`-based install. Installs a bunch of languages/pr
 
 * [.local/scripts/supervisor](.local/scripts/supervisor) has scripts/a config file for [`supervisor`](https://github.com/Supervisor/supervisor), so I dont have to write plists or systemd scripts, and background processes work on both mac and linux. That uses [`bgproc`](https://github.com/seanbreckenridge/bgproc) as an anacron replacement.
 * [`ttt`](https://github.com/seanbreckenridge/ttt/) is sprinkled throughout lots of my scripts, it acts as an extension to my shell history, saving commands from `i3` `bindsym`s, or `ranger` commands. [Lets me `cd`](.config/zsh/cd.zsh) to one of those directories quickly using `fzf`
-* I typically default to [dracula](https://draculatheme.com/)-like color schemes to keep things consistent. Currently in use for `alacritty` (terminal), `rofi`, `bat`, `firefox` and `emacs`.
 * [.config/yadm](.config/yadm) includes lists of global packages for pacman/apt/brew, python, ruby, npm, dart, rust, go, elixir and bash; the zsh [update](.config/zsh/functions/update) function updates all the corresponding packages. Packages can be added to the `.txt` files manually, and then `yadm bootstrap` can be run repeatedly to make sure everything is installed
 * [.config/shortcuts.toml](.config/shortcuts.toml) - describes basic shell scripts that are created by [shortcuts](https://github.com/seanbreckenridge/shortcuts)
 * [.local/scripts/generic](.local/scripts/generic) - lots of my scripts; e.g.
