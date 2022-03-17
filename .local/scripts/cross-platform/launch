@@ -12,10 +12,10 @@ if attached-to-terminal; then
 else
 	# open a new terminal, load zsh configuration (for zsh functions/environment), then launch the passed command
 	case "$ON_OS" in
-	linux|mac)
+	linux | mac)
 		kitty -e zsh -ic "$@"
 		;;
-	android|windows)
+	android | windows)
 		# just run the command directly on android
 		sh -c "$@"
 		;;

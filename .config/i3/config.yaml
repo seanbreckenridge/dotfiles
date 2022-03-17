@@ -20,7 +20,7 @@ launcher:
   "$mod+f": "ttt launch full_todotxt"
   4: "stream-corner-480"
   7: "stream-corner-720"
-  "Shift+f": "stream-from-firefox"
+  "Shift+f": "flatpak-run"
   c: "ttt clrs"
   "$mod+c": "launch cz"
   "Shift+c": "launch czd"

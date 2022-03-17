@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+# launches a flatpak application by letting me pick one with rofi
+
+set -o pipefail
+
+main() {
+	local chosen
+	# https://sean.fish/d/picker?dark
+	chosen="$(flatpak list --columns=application | picker)"
+	[[ -z "$chosen" ]] && return 1
+	setsid -f flatpak run "${chosen}" >/dev/null 2>&1
+}
+
+main || exit $?

@@ -288,7 +288,7 @@ mode "launcher" {
     bindsym $mod+f exec --no-startup-id ttt launch full_todotxt; mode "default"
     bindsym 4 exec --no-startup-id stream-corner-480; mode "default"
     bindsym 7 exec --no-startup-id stream-corner-720; mode "default"
-    bindsym Shift+f exec --no-startup-id stream-from-firefox; mode "default"
+    bindsym Shift+f exec --no-startup-id flatpak-run; mode "default"
     bindsym c exec --no-startup-id ttt clrs; mode "default"
     bindsym $mod+c exec --no-startup-id launch cz; mode "default"
     bindsym Shift+c exec --no-startup-id launch czd; mode "default"
