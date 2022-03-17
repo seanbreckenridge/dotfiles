@@ -127,7 +127,7 @@ bindsym $mod+Shift+XF86AudioMute exec --no-startup-id mpv-quit-latest && i3block
 bindsym $mod+m exec --no-startup-id notify-send "$(mpv-currently-playing --all)"
 bindsym $alt+m exec --no-startup-id mpv-play-pause && i3blocks-refresh-mpv
 bindsym $mod+Shift+m exec --no-startup-id mpv-next-song && i3blocks-refresh-mpv
-bindsym $mod+Shift+S workspace "music"; exec --no-startup-id launch splayall
+bindsym $mod+Shift+S workspace "8"; exec --no-startup-id launch splayall
 
 # on 'volume up', move forward in the file
 bindsym $mod+XF86AudioRaiseVolume exec --no-startup-id mpv-seek '5'
