@@ -93,20 +93,22 @@ __pycache__
 /.config/MongoDB Compass/
 /.config/discord
 /.config/kwalletrc
-/.config/mpv/watch_later/
 /.config/libreoffice
+/.config/mpv/watch_later/
 /.config/netrc
 /.config/trackma
 /.cookiecutter_replay
 /.cookiecutters/
 /.credentials
 /.cups
+/.dart
 /.dmrc
 /.electron-gyp
 /.elvish
 /.emacs.d/
 /.gem
 /.ghc/ghci_history
+/.git-stats
 /.gitconfig
 /.gnome/apps/chrome-*
 /.gnupg
@@ -154,7 +156,6 @@ __pycache__
 /.sonic-pi
 /.ssh
 /.ssr
-/.git-stats
 /.stack
 /.steam
 /.steampath
