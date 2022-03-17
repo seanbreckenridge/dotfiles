@@ -19,10 +19,11 @@
 # K replaces S-k and Scedilla replaces S-scedilla, but S-Delete is sent as-is.
 
 # send notification of actions by parsing this file
+# shellcheck disable=SC2016
 desc="$(chomp <~/.config/nsxiv/exec/key-handler | awk '/^\s*case/,/esac/' | sed -E -e'1d;$d' -e 's_^"([^"]*)".*?#(.*)$_\1 |\2_')"
 notify "$desc"
 
-while read file; do
+while read -r file; do
 	case "$1" in
 	"C-f") realpath "$file" | xclip -in -selection clipboard ;;    # copy full path
 	"C-i") setsid -f pinta "$file" ;;                              # edit image

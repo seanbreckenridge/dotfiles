@@ -739,7 +739,7 @@ command = 'sort | uniq -c | sort -n'
 
 [yh]
 command='''
-cd ~/.local/share/yadm/repo.git/
+cd ~/.local/share/yadm/repo.git/ || exit $?
 exec gh "$@"
 '''
 

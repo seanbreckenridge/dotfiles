@@ -12,4 +12,4 @@ touch /tmp/mpv-history-daemon.log
 
 tail -n 1 -f /tmp/mpv-history-daemon.log |
 	grep --line-buffered -e 'eof|' -e 'playlist-pos|[[:digit:]]' |
-	while read; do i3blocks-refresh-mpv; done
+	while read -r; do i3blocks-refresh-mpv; done

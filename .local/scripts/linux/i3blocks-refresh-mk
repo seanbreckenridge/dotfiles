@@ -14,7 +14,7 @@ SIGNAL_CACHE="${HOME}/.cache/i3blocks_signals"
 cache() {
 	cd "${SIGNAL_CACHE}" || {
 		mkdir -p "${SIGNAL_CACHE}"
-		cd "${SIGNAL_CACHE}"
+		cd "${SIGNAL_CACHE}" || exit 1
 	}
 
 	cp "${I3BLOCKS_CONFIG_FILE}" "${SIGNAL_CACHE}/config"
