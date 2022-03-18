@@ -75,18 +75,19 @@ alias icat='kitty +kitten icat'
 cat() {
 	local all_images=1
 
-	# loop through arguments
-	# if its not an image, break -- and use bat instead
-	# if I'm in tmux -- kitty cant print images, so fallback
-	for arg in "${@}"; do
-		[[ -z "$TMUX" && -f "$arg" && "$(file-mime "$1")" =~ '^image/' ]] && continue
-		all_images=0
-		break
-	done
-
 	if [[ -z "$1" ]]; then
 		all_images=0
+	else
+		# loop through arguments
+		# if its not an image, break -- and use bat instead
+		# if I'm in tmux -- kitty cant print images, so fallback
+		for arg in "${@}"; do
+			[[ -z "$TMUX" && -f "$arg" && "$(file-mime "$1")" =~ '^image/' ]] && continue
+			all_images=0
+			break
+		done
 	fi
+
 	if [[ -d "$1" ]]; then
 		exa "$1"
 	elif ((all_images)); then
