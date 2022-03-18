@@ -31,7 +31,6 @@ xorg-xwininfo
 
 # language support
 
-#rebar3-zsh
 asdf-vm
 cabal-install
 ccls
@@ -93,8 +92,6 @@ yarn
 # utils
 
 alacritty-git
-ascii-rain-git
-asciiquarium
 aspell
 aspell-en
 at
@@ -104,7 +101,6 @@ boxes
 bzip2
 calcurse
 chafa
-cmatrix
 coreutils
 croc
 cronie
@@ -142,13 +138,11 @@ lftp
 libjpeg-turbo # for jpegtran
 librsync
 lm_sensors
-lolcat
 lynx
 maim
 man-db
 mlocate
 moreutils
-ncdu
 neofetch
 neovim-git
 neovim-plug-git
@@ -170,7 +164,6 @@ pulsemixer
 pup
 qrencode
 ranger-git
-rdiff-backup
 ripgrep
 rlwrap
 rofi
@@ -217,6 +210,7 @@ yadm
 yq
 ytop
 zip
+
 # mail
 
 abook
@@ -243,7 +237,7 @@ zsh-completions
 zsh-syntax-highlighting
 zsh-you-should-use
 
-# applications
+# gui applications
 
 balena-etcher
 chromium
@@ -254,26 +248,27 @@ gimp
 google-chrome
 gparted
 keepassxc
-kid3
 mpv
 mupdf-gl
 obs-studio
 okular
 pinta
-qjackctl
 robo3t-bin
 simplescreenrecorder
 snes9x-gtk
-sonic-pi
 sqlitebrowser
 thunar
 tor-browser
 vbam-wx
 zoom
 
+# for sonic pi
+
+qjackctl
+sonic-pi
+
 # fonts
 
-#ttf-oxygen
 all-repository-fonts
 ttf-ms-fonts
 xorg-font-util

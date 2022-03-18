@@ -2,7 +2,6 @@
 cargo-license
 cargo-update  # to update these packages
 evry
-genact
 procs
 diskonaut
 eva

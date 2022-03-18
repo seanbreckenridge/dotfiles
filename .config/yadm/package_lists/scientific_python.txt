@@ -1,4 +1,4 @@
-# things I would only want to install on a computer, not on android
+# things I would only want to install on a computer, not on android -- they can't build
 pandas
 matplotlib
 numpy

@@ -1,4 +1,4 @@
-# emacs support
+# lsp/linting
 rdoc
-rufo
+rubocop
 solargraph
