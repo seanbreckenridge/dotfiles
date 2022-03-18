@@ -756,3 +756,20 @@ command = 'set-kitty-theme Light'
 
 [dark-theme]
 command = 'set-kitty-theme Dark'
+
+[cl-quickfix]
+command = '''
+# pastes text from the clipboard and creates a quickfist list
+# this is typically called from kitty -- which saves the
+# output of the previous command, then calls this in a new window
+set -e
+nvim -q <(clippaste) +copen
+'''
+shebang = "#!/usr/bin/env bash"
+
+[qf] # quickfix
+command = '''
+# usually used like qf <(grep -Hrin ...) or qf <(!!)
+# to repeat last command and create a quickfix list
+nvim -q "$@" +copen
+'''

@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# pastes text from the clipboard and creates a quickfist list
+# this is typically called from kitty -- which saves the
+# output of the previous command, then calls this in a new window
+set -e
+nvim -q <(clippaste) +copen

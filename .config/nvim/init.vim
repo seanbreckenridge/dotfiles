@@ -218,8 +218,36 @@ nnoremap <leader>E :Explore<CR>
 nnoremap <Leader><CR> :so ~/.config/nvim/init.vim<CR>
 
 " quickfix lists
-nnoremap <leader>gn :cnext<CR>
-nnoremap <leader>gp :cprev<CR>
+nnoremap <leader>gj :cnext<CR>zz
+nnoremap <leader>gk :cprev<CR>zz
+nnoremap <leader>j :lnext<CR>zz
+nnoremap <leader>k :lprev<CR>zz
+
+nnoremap <C-q> :call ToggleQFList(1)<CR>
+nnoremap <leader>q :call ToggleQFList(0)<CR>
+
+let g:seanbreckenridge_qf_l = 0
+let g:seanbreckenridge_qf_g = 0
+
+fun! ToggleQFList(global)
+    if a:global
+        if g:seanbreckenridge_qf_g == 1
+            let g:seanbreckenridge_qf_g = 0
+            cclose
+        else
+            let g:seanbreckenridge_qf_g = 1
+            copen
+        end
+    else
+        if g:seanbreckenridge_qf_l == 1
+            let g:seanbreckenridge_qf_l = 0
+            lclose
+        else
+            let g:seanbreckenridge_qf_l = 1
+            lopen
+        end
+    endif
+endfun
 
 " window/buffers
 
@@ -267,7 +295,7 @@ endif
 
 " seanbreckenridge (personal functions/plugins)
 map <leader>c :Ec<CR>
-map <leader>j :Jump<CR>
+map <leader><C-c> :Jump<CR>
 
 """""""""""""
 "           "

@@ -19,4 +19,9 @@ function! ShowDocumentation()
   endif
 endfunction
 
+augroup seanbreckenridge_lsp
+  autocmd!
+  autocmd! BufWrite,BufEnter,InsertLeave * :lua vim.diagnostic.setloclist({open=false, severity = {min=vim.diagnostic.severity.HINT}})
+augroup END
+
 nnoremap <silent> K :call ShowDocumentation()<CR>
