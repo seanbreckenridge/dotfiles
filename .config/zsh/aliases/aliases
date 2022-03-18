@@ -74,6 +74,7 @@ alias 'countdown=termdown'
 alias cl='clipcopy'
 # https://sean.fish/d/misspell-context
 alias spell='misspell-context'
+alias 'jq=jq -M'
 alias 'timer=countdown'
 alias 'ml=mailsync-loop'
 alias 'confirm=fzf -m'
