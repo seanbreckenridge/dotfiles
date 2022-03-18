@@ -1,12 +1,2 @@
 #!/bin/sh
-# prompts me to select an emoji and copies it to my clipboard
-
-chosen="$(picker -p "pick an emoji > " <"${XDG_DATA_HOME}/emoji")"
-
-[ "$chosen" != "" ] || exit
-c="$(echo "$chosen" | sed "s/ .*//")"
-
-# copy to both clipboards
-export APP='emoji'
-echo "$c" | clp
-printf '\n'
+launch 'kitty +kitten unicode_input text'
