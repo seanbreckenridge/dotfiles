@@ -84,6 +84,9 @@ cat() {
 		break
 	done
 
+	if [[ -z "$1" ]]; then
+		all_images=0
+	fi
 	if [[ -d "$1" ]]; then
 		exa "$1"
 	elif ((all_images)); then
