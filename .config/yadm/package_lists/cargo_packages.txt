@@ -1,8 +1,8 @@
-# globally installed cargo (rust) packages
-cargo-license
+cargo-license # list licenses
 cargo-update  # to update these packages
-evry
-procs
-diskonaut
-eva
-kondo  # removes node_module/build directories
+evry          # my task scheduler
+procs         # ps replacement
+eva           # ls replacement
+diskonaut     # disk visualizer
+kondo         # removes node_module/build directories
+so            # stackoverflow
