@@ -749,13 +749,13 @@ exec calcurse -D "$CALCURSE_DIR" -C ~/.config/calcurse "$@"
 '''
 
 [set-kitty-theme]
-command='''kitty +kitten themes --reload-in=all "${1:?Must provide theme as kwarg}"'''
+command='''exec kitty +kitten themes --reload-in=all "${1:?Must provide theme as kwarg}"'''
 
 [light-theme]
-command = 'set-kitty-theme Light'
+command = 'exec set-kitty-theme Light'
 
 [dark-theme]
-command = 'set-kitty-theme Dark'
+command = 'exec set-kitty-theme Dark'
 
 [cl-quickfix]
 command = '''
@@ -764,7 +764,7 @@ command = '''
 # output of the previous command, then calls this in a new window
 # https://github.com/seanbreckenridge/dotfiles/blob/cdae322fa6b735d5ca12dd3248354b5eeaaab0be/.config/kitty/kitty.conf#L1581-L1588
 set -e
-nvim -q <(clippaste) +copen
+exec nvim -q <(clippaste) +copen
 '''
 shebang = "#!/usr/bin/env bash"
 
@@ -772,5 +772,5 @@ shebang = "#!/usr/bin/env bash"
 command = '''
 # usually used like qf <(grep -Hrin ...) or qf <(!!)
 # to repeat last command and create a quickfix list
-nvim -q "$@" +copen
+exec nvim -q "$@" +copen
 '''

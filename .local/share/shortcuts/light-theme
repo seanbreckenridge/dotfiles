@@ -1,2 +1,2 @@
 #!/bin/sh
-set-kitty-theme Light
+exec set-kitty-theme Light

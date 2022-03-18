@@ -1,2 +1,2 @@
 #!/bin/sh
-set-kitty-theme Dark
+exec set-kitty-theme Dark
