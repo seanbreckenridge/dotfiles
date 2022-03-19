@@ -59,7 +59,7 @@ evry 2 months -twitch_cli && twitch token
 evry 2 weeks -mnu && ssh vultr ~/vps/mnu
 
 # fix broken ID3 metadata on my music
-# https://sean.fish/d/id3stuff?dark
+# https://github.com/seanbreckenridge/plaintext_playlist_py
 evry 1 week -id3stuff && id3stuff
 
 # https://github.com/seanbreckenridge/HPI-personal/blob/master/scripts/mpv_clean_priv_frames
