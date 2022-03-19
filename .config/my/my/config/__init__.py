@@ -358,6 +358,13 @@ class steam:
         export_path: Paths = data("steam.json")
 
 
+class piazza:
+    class scraper:
+        """https://github.com/seanbreckenridge/piazza-scraper"""
+
+        export_path: Paths = data("piazza/*.json")
+
+
 class blizzard:
     """https://github.com/seanbreckenridge/blizzard_gdpr_parser"""
 
