@@ -291,6 +291,7 @@ __pycache__
 !.local/share/firefox_addons.txt
 !.local/share/shortcuts/
 !.local/system-config
+!.local/share/gpg_autoclick/
 
 # default user directories
 /Repos

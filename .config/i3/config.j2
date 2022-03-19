@@ -76,6 +76,9 @@ bindsym $mod+XF86MonBrightnessDown {{ ex }} transparent enable target
 bindsym $mod+p {{ ex }} killall picom && notify "Killed picom!"
 bindsym $mod+Shift+p {{ ex }} picom -b && notify "Restarting picom..."
 
+# automatically click the 'save in password manager' and 'ok' buttons for the gpg dialog
+bindsym $alt+p {{ ex }} notify "searching for gpg dialog..." && gpg_autoclick
+
 # start the emacs server
 {{ ex }} systemctl --user start emacs
 

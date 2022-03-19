@@ -1,0 +1,24 @@
+#!/usr/bin/env python3
+# automatically click the 'save in password manager' and 'ok' buttons for the gpg dialog
+# see ~/.local/share/gpg_autoclick
+
+from pathlib import Path
+import pyautogui
+
+datadir = Path("~/.local/share/gpg_autoclick").expanduser()
+
+
+def locate_and_click(p: Path) -> None:
+    assert p.exists(), f"{p} doesnt exist!"
+    locations = list(pyautogui.locateAllOnScreen(str(p)))
+    assert len(locations) > 0, f"Couldnt find {p}"
+    pyautogui.click(locations[0])
+
+
+def main() -> None:
+    locate_and_click(datadir / "tick_box.png")
+    locate_and_click(datadir / "ok.png")
+
+
+if __name__ == "__main__":
+    main()
