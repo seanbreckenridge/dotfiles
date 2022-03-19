@@ -5,7 +5,7 @@ set -e
 set -o pipefail
 
 main() {
-	local plug stars
+	local plug stars unstarred
 	plug="$(grep "^Plug" ~/.config/nvim/init.vim | grep -oP "Plug '(.*?/.*?)'" | cut -d' ' -f2- | tr -d "'")"
 	# https://github.com/seanbreckenridge/oh-my-stars
 	stars="$(mystars -3 | jq -r '.items | .[].arg' | cut -d'/' -f4-)"
