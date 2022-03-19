@@ -1,0 +1,2 @@
+#!/bin/sh
+list-config | grep -vE -e "zsh_history|compdump" -e "$SHORTCUTS_DIR"

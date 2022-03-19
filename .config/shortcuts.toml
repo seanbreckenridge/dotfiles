@@ -414,14 +414,18 @@ LOCATION="$(command -v "${EXECUTABLE}")" || exit $?
 exec editor "${LOCATION}"
 '''
 
+[list-config-no-hist]
+command='''
+list-config | grep -vE -e "zsh_history|compdump" -e "$SHORTCUTS_DIR"
+'''
+
+
 [grep-dotfiles]
 shebang="#!/usr/bin/env bash"
 command='''
 # searches all my configuration for a string
 # passes arguments received to grep
-while read -r filename; do
-	grep -Hrin "$@" "$filename"
-done < <(list-config | grep -vE "zsh_history|compdump|shortcuts.toml")
+list-config-no-hist | xargs grep -Hrin "$@"
 '''
 
 [cheat]
