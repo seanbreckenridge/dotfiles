@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+# star or unstar a github repository
+# requires you to have githubs cli tool 'gh' setup
+
+set -e
+set -o pipefail
+
+# expects input like username/repo, or the full https URL
+repo="${1:?Provide repository or link to star/unstar}"
+method="${2:-PUT}" # provide 'DELETE' as second argument to unstar
+# get last two items from link
+full_name="$repo"
+# if this is an HTTPS, remove that so username/repo remains
+if [[ "$full_name" =~ https://github\.com ]]; then
+	full_name="$(cut -d/ -f4- <<<"$repo")"
+fi
+set -x
+exec gh api --silent -X "${method}" "user/starred/${full_name}"

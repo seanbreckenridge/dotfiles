@@ -64,6 +64,9 @@ alias rr='rifle'
 alias optipng='optipng -o7'
 alias R=ranger
 alias sz='mystarsfzf'
+unstar() {
+	star "$1" DELETE
+}
 alias super='"${HOME}/.local/scripts/supervisor/super"'
 alias urban='udict'
 # nsxiv full screen image, fit full width
