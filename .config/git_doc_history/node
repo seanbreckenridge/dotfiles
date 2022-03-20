@@ -1,0 +1,3 @@
+SOURCE_DIR=~/.cache
+BACKUP_DIR=~/data/node_repl
+COPY_FILES="node_repl_history"

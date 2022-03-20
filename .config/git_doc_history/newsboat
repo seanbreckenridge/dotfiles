@@ -1,0 +1,3 @@
+SOURCE_DIR=~/.config/newsboat
+BACKUP_DIR=~/data/newsboat_git
+COPY_FILES="urls"

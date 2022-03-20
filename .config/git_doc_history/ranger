@@ -1,0 +1,4 @@
+SOURCE_DIR=~/.local/share/ranger
+BACKUP_DIR=~/data/ranger
+COPY_FILES="bookmarks
+history"

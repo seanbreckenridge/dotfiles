@@ -1,0 +1,4 @@
+SOURCE_DIR=~/data/todo  # copy from
+BACKUP_DIR=~/data/todo_git_history # copy to
+COPY_FILES="todo.txt
+done.txt"

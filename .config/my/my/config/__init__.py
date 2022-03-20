@@ -238,20 +238,17 @@ class bash:
     export_path: Paths = (data("bash_history"), data("bash"))
 
 
-# parses current/finished http://todotxt.org/ using topydo
+# parses current/done http://todotxt.org/
 class todotxt:
-    class file_backups:
-        export_path: Paths = data("todotxt")
-        live_file: Optional[PathIsh] = if_exists(
-            path.join(environ["HPIDATA"], "todo", "todo.txt")
-        )
+    class git_history:
+        export_path: Path = data("todo_git_history")
 
 
 # parses the history of me adding/removing rss feeds
 class rss:
     class newsboat:
-        class file_backups:
-            export_path: Paths = data("newsboat")
+        class git_history:
+            export_path: Path = data("newsboat_git")
 
 
 # parses information from git repositories which match my emails

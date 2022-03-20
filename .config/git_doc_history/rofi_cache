@@ -1,0 +1,3 @@
+SOURCE_DIR=~/.cache
+BACKUP_DIR=~/data/rofi_cache
+COPY_FILES="rofi-3.runcache"

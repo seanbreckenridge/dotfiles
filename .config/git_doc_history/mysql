@@ -1,0 +1,3 @@
+SOURCE_DIR=~/.cache
+BACKUP_DIR=~/data/mysql_history
+COPY_FILES="mysql_history"

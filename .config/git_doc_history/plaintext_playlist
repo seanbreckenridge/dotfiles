@@ -1,0 +1,3 @@
+SOURCE_DIR=~/.cache
+BACKUP_DIR=~/data/plaintext_playlist_history
+COPY_FILES="plaintext_playlist_history.txt"
