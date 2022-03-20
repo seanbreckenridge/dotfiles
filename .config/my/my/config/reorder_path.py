@@ -1,5 +1,7 @@
 import sys
 
+from .common import repo
+
 ##################
 #                #
 #  REORDER PATH  #
@@ -14,7 +16,6 @@ import sys
 
 
 def seanbreckenridge_reorder_path():
-    from my.config import repo  # type: ignore[import]
 
     try:
         # https://github.com/seanbreckenridge/reorder_editable
