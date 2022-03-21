@@ -136,8 +136,16 @@ bindsym $mod+Shift+S workspace "8"; exec --no-startup-id launch splayall
 bindsym $mod+XF86AudioRaiseVolume exec --no-startup-id mpv-seek '5'
 bindsym $mod+XF86AudioLowerVolume exec --no-startup-id mpv-seek '-5'
 
+# highlight focused window
+for_window [class=".*"] border pixel 1
+# class                 border  backgr. text    indicator child_border
+client.focused          #4c7899 #285577 #ffffff #2e9ef4   #1100ff
+client.focused_inactive #333333 #5f676a #ffffff #484e50   #00000000
+client.unfocused        #333333 #222222 #888888 #292d2e   #00000000
+client.urgent           #2f343a #900000 #ffffff #900000   #00000000
+client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
+
 # gaps config
-for_window [class=".*"] border pixel 0
 smart_borders on
 smart_gaps on
 smart_borders no_gaps
