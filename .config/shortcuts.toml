@@ -17,7 +17,7 @@ command = '''
 command = '''
 cd ~ || exit $?
 # fuzzy match list-config names, open one to edit (Edit Config)
-fzfcache list-config | sed "s#^$HOME/##g" | fzfp +m -q "$*" | xargs -r -I {} editor "$HOME/{}"
+fzfcache list-config | sed "s#^$HOME/##g" | fzf +m -q "$*" | xargs -r -I {} editor "$HOME/{}"
 '''
 
 # ecc in nvim itself, using the fzf.vim functions
