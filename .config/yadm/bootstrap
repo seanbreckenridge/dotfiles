@@ -64,6 +64,7 @@ esac
 
 declare -rx PYTHON_PACKAGE_LIST="${PACKAGE_DIR}/python3_packages.txt"
 declare -rx SCIPYTHON_PACKAGE_LIST="${PACKAGE_DIR}/scientific_python.txt" # probably don't have to install on android
+declare -rx PIPX_PACKAGE_LIST="${PACKAGE_DIR}/pipx_packages.txt"
 declare -rx GLOBAL_GEM_LIST="${PACKAGE_DIR}/ruby_packages.txt"
 declare -rx NPM_PACKAGE_LIST="${PACKAGE_DIR}/npm_packages.txt"
 declare -rx COMPUTER_NPM_PACKAGE_LIST="${PACKAGE_DIR}/computer_npm_packages.txt"
@@ -128,9 +129,17 @@ function install_python_personal() {
 	havecmd "${1}" || python3 -m pip install --user "git+${2}"
 } && export -f install_python_personal
 
-install_python_personal "rotten" "https://github.com/seanbreckenridge/rotten_tomatoes_cli"
 install_python_personal "mystars" "https://github.com/seanbreckenridge/oh-my-stars"
 install_python_personal "shortcuts" "https://github.com/seanbreckenridge/shortcuts"
+
+PIPX_INSTALLED="$(pipx list --json | jq '.venvs | keys[]' -r)"
+while read -r pipx_pkg; do
+	if ! grep -q "^${pipx_pkg}$" <<<"${PIPX_INSTALLED}"; then
+		printf "Installing %s\n" "$pipx_pkg"
+		pipx install "${pipx_pkg}"
+	fi
+done < <(spkglist "${PIPX_PACKAGE_LIST}")
+
 
 # speedtest installs 2 executable scripts
 # speedtest and speedtest-cli, which both have the same
