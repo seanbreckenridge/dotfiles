@@ -29,7 +29,6 @@ seanbreckenridge_reorder_path()
 #############
 
 
-
 def if_exists(p: PathIsh) -> Optional[Path]:
     pp = Path(p)
     if pp.exists():
@@ -160,6 +159,9 @@ class mail:
         # to confirm this is matching your files, can do:
         # hpi query my.mail.imap.files -s
         mailboxes = MAILDIR
+
+    #class mbox:
+    #   mailboxes = "~/Downloads/importExportBackup"
 
 
 # combines:

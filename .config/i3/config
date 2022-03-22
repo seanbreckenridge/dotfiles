@@ -100,7 +100,7 @@ bindsym $mod+Shift+b exec --no-startup-id todo-prompt bookmark add
 floating_modifier $mod
 
 # kill focused window
-bindsym $mod+q kill
+bindsym $mod+Shift+q kill
 
 # rofi run menu
 bindsym $mod+r exec --no-startup-id rofi -show run -display-run "run > "
