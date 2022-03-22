@@ -160,7 +160,7 @@ class mail:
         # hpi query my.mail.imap.files -s
         mailboxes = MAILDIR
 
-    #class mbox:
+    # class mbox:
     #   mailboxes = "~/Downloads/importExportBackup"
 
 
