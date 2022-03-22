@@ -15,7 +15,6 @@ from browserexport.browsers.firefox import Firefox
 
 
 from my.core.common import PathIsh, Paths
-from my.core.warnings import high
 
 from .common import repo
 from .reorder_path import seanbreckenridge_reorder_path
@@ -80,6 +79,7 @@ DISABLED_MODULES = [
     "my.taplog",
     "my.runnerup",
     "my.rescuetime",
+    "my.mail.mbox",
     "my.pocket",
     "my.lastfm",
     "my.kobo",
