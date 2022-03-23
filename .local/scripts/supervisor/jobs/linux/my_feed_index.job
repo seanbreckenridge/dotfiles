@@ -16,8 +16,8 @@ evry 1 hours -bg-my-feed-index && {
 
 	# source personal shell files, to include
 	# tokens/envvars that may be required
-	source "$ZDOTDIR/aliases/personal_aliases" 2>/dev/null
-	source "$ZDOTDIR/aliases/tokens"
+	source "$HPIDATA/personal_aliases" 2>/dev/null
+	source "$HPIDATA/tokens"
 
 	printlog 'bg-feed-index:running my_feed index...'
 	"${REPOS}/my_feed/index" || send-error 'Error updating my_feed'
