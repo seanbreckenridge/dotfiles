@@ -24,6 +24,7 @@ if [[ ! "$(command -v havecmd)" ]]; then
 	exit 1
 fi
 
+
 # set zsh as shell
 if ! grep ^"$(whoami)" /etc/passwd | cut -d':' -f7 | grep -q 'zsh'; then
 	havecmd zsh || sudo apt install zsh
@@ -55,6 +56,17 @@ for lib in $(spkglist "${WSL_PACKAGES}"); do
 	fi
 done
 
+printf 'Install windows PPAs? [y/N] '
+read -r -t 3
+case "$REPLY" in
+Y | y)
+	windows-ppas
+	;;
+*)
+	: # do nothing if user didnt respond Y/y
+	;;
+esac
+
 printf "Installing nvim-plug...\n"
 if [[ ! -f ~/.local/share/nvim/site/autoload/plug.vim ]]; then
 	curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
@@ -77,7 +89,9 @@ havecmd cargo && {
 havecmd dust || cargo install du-dust
 havecmd find || cargo install fd-find
 
-havecmd todo-txt && ln -s "$(command -v todo-txt)" ~/.local/bin/todo.sh
+havecmd todo-txt && {
+	havecmd todo.sh || ln -s "$(command -v todo-txt)" ~/.local/bin/todo.sh
+}
 
 python3 -m pip install -U ranger-fm
 
