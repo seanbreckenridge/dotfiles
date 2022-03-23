@@ -24,7 +24,6 @@ if [[ ! "$(command -v havecmd)" ]]; then
 	exit 1
 fi
 
-
 # set zsh as shell
 if ! grep ^"$(whoami)" /etc/passwd | cut -d':' -f7 | grep -q 'zsh'; then
 	havecmd zsh || sudo apt install zsh
