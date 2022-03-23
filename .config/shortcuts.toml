@@ -775,4 +775,4 @@ exec nvim -q "$@" +copen
 '''
 
 [lessi]
-command='exec less -i "$@"'
+command = 'exec less -i "$@"'

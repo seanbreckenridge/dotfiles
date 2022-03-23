@@ -8,7 +8,7 @@ In general:
 
 - [`zsh`](http://zsh.sourceforge.net/), plugins/configuration handled manually in [`.config/zsh`](.config/zsh) (split across multiple files)
 - [`yadm`](https://yadm.io) to manage dotfiles, see [`yadm-with-README.md`](.config/yadm/yadm-with-README.md)
-- [`kitty`](https://github.com/kovidgoyal/kitty) as terminal (with [`tmux`](https://github.com/tmux/tmux))
+- [`kitty`](https://github.com/kovidgoyal/kitty) as terminal (with [`tmux`](https://github.com/tmux/tmux)), [`alacritty`](https://github.com/alacritty/alacritty) on windows
 - [`firefox-developer-edition`](https://www.archlinux.org/packages/community/x86_64/firefox-developer-edition/) - browser, addons listed in [`firefox_addons.txt`](./.local/share/firefox_addons.txt)
 - [`neomutt`](https://github.com/neomutt/neomutt) for email
 - [`nvim`](https://neovim.io/) (with [`nvim-cmp`](https://github.com/hrsh7th/nvim-cmp)) and rarely [`(doom) emacs`](https://github.com/hlissner/doom-emacs) as editors - see [`editor`](.local/scripts/cross-platform/editor)

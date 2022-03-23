@@ -13,3 +13,6 @@ fzf
 figlet
 lynx
 wget
+unar
+software-properties-common
+todotxt-cli

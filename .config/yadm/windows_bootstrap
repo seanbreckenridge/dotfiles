@@ -38,7 +38,14 @@ declare -rx WSL_PACKAGES="${PACKAGE_DIR}/wsl_packages.txt"
 
 # Install spkglist so I can parse package lists
 set -e
-havecmd go || sudo apt install golang
+havecmd go || {
+	GO_TMPDIR="$(mktemp -d)"
+	cd "$GO_TMPDIR" || exit $?
+	wget 'https://go.dev/dl/go1.18.linux-amd64.tar.gz' -O './go.tar.gz'
+	tar -xvf './go.tar.gz'
+	sudo mv go /usr/local
+}
+havecmd go || ln /usr/local/go/bin/go go
 havecmd spkglist || install_spkglist
 set +e
 
@@ -60,22 +67,21 @@ havecmd cargo || curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 havecmd yarn || curl -o- -L https://yarnpkg.com/install.sh | bash
 
 # easier to install these using rust on WSL
-WSL_MANUAL_INSTALLS=(exa bat du-dust fd-find)
+WSL_MANUAL_INSTALLS=(exa bat)
 havecmd cargo && {
 	for pkg in "${WSL_MANUAL_INSTALLS[@]}"; do
 		havecmd "${pkg}" || cargo install "${pkg}"
 	done
 }
 
-python3 -m pip install ranger-fm
+havecmd dust || cargo install du-dust
+havecmd find || cargo install fd-find
 
-havecmd npm || exit $? # needed for completion
+havecmd todo-txt && ln -s "$(command -v todo-txt)" ~/.local/bin/todo.sh
+
+python3 -m pip install -U ranger-fm
 
 # some manual installs
 havecmd shfmt || GO111MODULE=on go install -v 'mvdan.cc/sh/v3/cmd/shfmt@latest'
-
-export NPM_CONFIG_PREFIX="${XDG_DATA_HOME}/npm-packages"
-# create the npm directory and make sure we own the directory to fix permission issues
-[[ ! -d "${NPM_CONFIG_PREFIX}" ]] && mkdir -p "${NPM_CONFIG_PREFIX}" && chown -R "$(whoami)" "${NPM_CONFIG_PREFIX}"
 
 exit 0
