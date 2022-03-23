@@ -19,7 +19,7 @@ from my.core.common import PathIsh, Paths
 from .common import repo
 from .reorder_path import seanbreckenridge_reorder_path
 
-seanbreckenridge_reorder_path()
+seanbreckenridge_reorder_path()  # type: ignore[no-untyped-call]
 
 #############
 #           #
@@ -409,6 +409,11 @@ class photos:
 class apple:
     class privacy_export:
         gdpr_dir: PathIsh = data("apple")
+
+
+class linkedin:
+    class privacy_export:
+        gdpr_dir: PathIsh = data("linkedin")
 
 
 class discord:
