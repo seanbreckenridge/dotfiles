@@ -773,3 +773,6 @@ command = '''
 # to repeat last command and create a quickfix list
 exec nvim -q "$@" +copen
 '''
+
+[lessi]
+command='exec less -i "$@"'
