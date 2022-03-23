@@ -13,17 +13,12 @@ command = '''
 } | grep -v "system-config" | exists | sort -u
 '''
 
-[ecc]
+[ec]
 command = '''
 cd ~ || exit $?
 # fuzzy match list-config names, open one to edit (Edit Config)
 fzfcache list-config | sed "s#^$HOME/##g" | fzf +m -q "$*" | xargs -r -I {} editor "$HOME/{}"
 '''
-
-# ecc in nvim itself, using the fzf.vim functions
-# see https://sean.fish/d/init.vim?dark
-[ec]
-command="exec nvim +:Ec"
 
 [dotfiles]
 command='''
