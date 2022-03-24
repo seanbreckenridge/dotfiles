@@ -63,7 +63,6 @@ def data(p: PathIsh) -> Path:
 DISABLED_MODULES = [
     "my.body",
     "my.polar",
-    "my.stackexchange",
     "my.rtm",
     "my.media",
     r"my.google\.takeout",  # ignore karlicoss google module
@@ -451,7 +450,8 @@ class twitter_archive:
 
 
 class stackexchange:
-    export_path: PathIsh = ""
+    export_path: Paths = data("stackexchange")
+    # stexport: Optional[PathIsh] = repo("stexport")
 
 
 DateIsh = Union[datetime, date, str]
@@ -470,8 +470,3 @@ class location:
 class time:
     class tz:
         policy = "convert"
-
-
-# class stackexchange:
-#    export_path: Paths = "~/data/stexport"
-#    stexport: Optional[PathIsh] = repo("stexport")
