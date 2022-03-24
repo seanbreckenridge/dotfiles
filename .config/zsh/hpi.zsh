@@ -1,4 +1,10 @@
 #!/usr/bin/zsh
+# on some machines (WSL/termux),
+# I can't sync to the ~/.config directory easily
+# so this is a workaround, which syncs to somewhere
+# else syncthing has access to and periodically
+# rsyncs to the ~/.config directory
+# this is called from android.zsh/windows.zsh files
 
 sync_hpi_config() {
 	local hpi_synced_dir
