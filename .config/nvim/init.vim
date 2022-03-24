@@ -35,6 +35,7 @@ Plug 'tpope/vim-speeddating'
 Plug 'numToStr/Comment.nvim'
 Plug 'L3MON4D3/LuaSnip'
 Plug 'github/copilot.vim'
+Plug 'windwp/nvim-autopairs'
 
 " langauges/syntax/snippets
 Plug 'fladson/vim-kitty'
@@ -293,6 +294,8 @@ map <leader>l :Lines<CR>
 map <C-p> :GitFiles<CR>
 " match all lines/files recursively using the_silver_searcher
 map <leader>r :Ag<CR>
+
+lua require('nvim-autopairs').setup{}
 
 if executable('rg')
   let g:rg_derive_root='true'
