@@ -6,3 +6,5 @@
 evry 2 hours -run_windows_jobs && "${HOME}/.local/scripts/supervisor/run_jobs" -o
 
 evry 1 hour -sync_hpi_config && sync_hpi_config
+
+touch ~/data/windows_terminal_opened
