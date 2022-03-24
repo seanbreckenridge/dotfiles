@@ -48,6 +48,9 @@ Plug 'honza/vim-snippets'
 
 " appearance
 Plug 'itchyny/lightline.vim'
+" startup
+Plug 'kyazdani42/nvim-web-devicons'
+Plug 'goolord/alpha-nvim'
 
 " lsp/diagnostic clients
 Plug 'hrsh7th/nvim-cmp'
