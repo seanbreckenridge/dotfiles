@@ -1,16 +1,5 @@
 " git related bindings
 
-" jumping around the git gutter
-nmap ]h <Plug>(GitGutterNextHunk)
-nmap [h <Plug>(GitGutterPrevHunk)
-
-" git stuff prefixed with i, since g is used to 'goto' everywhere else
-
-" preview changed git hunks
-nmap <leader>iP <Plug>(GitGutterPreviewHunk)
-" stage hunk
-nmap <leader>iA <Plug>(GitGutterStageHunk)
-
 " fugitive (git)
 nmap <leader>G :G<CR>:wincmd _<CR>
 nmap <leader>ip :Git push<CR>

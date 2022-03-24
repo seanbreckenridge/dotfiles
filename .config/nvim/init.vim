@@ -25,7 +25,8 @@ Plug 'kevinhwang91/rnvimr'
 Plug 'mg979/vim-visual-multi', {'branch': 'master'}  " for tutorial: 'nvim -Nu .local/plugged/vim-visual-multi/tutorialrc'
 Plug 'airblade/vim-rooter'
 Plug 'seanbreckenridge/yadm-git.vim'
-Plug 'airblade/vim-gitgutter'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'lewis6991/gitsigns.nvim'
 Plug 'psliwka/vim-smoothie'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
@@ -283,6 +284,7 @@ map <leader>YO :Goyo<CR>
 
 " yadm-git
 let g:yadm_git_verbose = 1
+let g:yadm_git_gitgutter_enabled = 0
 
 " undotree
 nnoremap <leader>u :UndotreeToggle<CR>
