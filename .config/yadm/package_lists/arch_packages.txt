@@ -117,6 +117,7 @@ feh
 ffmpeg
 ffmpegthumbnailer
 figlet
+flameshot
 fzf
 gifsicle
 git

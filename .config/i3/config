@@ -117,6 +117,8 @@ bindsym --release Print exec --no-startup-id ttt screenshot
 bindsym Shift+Print exec --no-startup-id ttt screenshot --full
 # upload the most recent screenshot to imgur, copy result to clipboard
 bindsym $mod+Print exec --no-startup-id ttt screenshot-to-imgur
+# use flameshot to take a screenshot and edit it
+bindsym $alt+s exec --no-startup-id flameshot gui
 # edit clipboard in vim
 bindsym $mod+Shift+c exec --no-startup-id clipedit
 # reset clipboard formatting
