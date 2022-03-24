@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+# I rarely use my windows machine
+# it seems if I don't update it regularly, the updates get
+# so far behind that turning it on throws it into a bootloop
+# with it trying to catch up with restarts. This is just
+# to remind myself to update it once a month
+# that file is updated on windows, in: https://sean.fish/d/windows.zsh?dark
+
+set -o pipefail
+
+declare A_MONTH
+A_MONTH='2419200'
+
+WINDOWS_TERMINAL_TOUCHFILE="$HPIDATA/windows_terminal_opened"
+
+if [[ ! -e "$WINDOWS_TERMINAL_TOUCHFILE" ]]; then
+	printf 'Could not find windows terminal cachefile at %s\n' "$WINDOWS_TERMINAL_TOUCHFILE"
+	exit 1
+fi
+
+# if that file hasn't been modified for more than a month
+[[ $(($(epoch) - $(stat -c"%Y" "$WINDOWS_TERMINAL_TOUCHFILE"))) -gt "$A_MONTH" ]] && exit 2
+exit 0
