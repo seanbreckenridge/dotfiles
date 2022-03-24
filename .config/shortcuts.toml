@@ -704,13 +704,13 @@ command='''
 exec flake8 --config ~/.config/flake8 "$@"
 '''
 
-[dotfiles-format]
+[yadm-format]
 shebang = "#!/bin/zsh"
 command='''
 # format and lint all my dotfiles
 cd
-yadm ls-files | exists | rifleman -
-yadm ls-files | exists | rifleman - -a lint
+yadm list | exists | rifleman -
+yadm list | exists | rifleman - -a lint
 '''
 
 [listens-desc]

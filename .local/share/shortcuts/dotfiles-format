@@ -1,5 +1,0 @@
-#!/bin/zsh
-# format and lint all my dotfiles
-cd
-yadm ls-files | exists | rifleman -
-yadm ls-files | exists | rifleman - -a lint
