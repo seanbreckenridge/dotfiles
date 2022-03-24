@@ -1,1 +1,2 @@
 rotten-tomatoes-cli
+docker-compose

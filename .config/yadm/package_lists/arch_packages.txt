@@ -42,7 +42,6 @@ dart
 dash
 dashbinsh
 docker
-docker-compose
 elixir
 elixir-ls
 elm-bin
