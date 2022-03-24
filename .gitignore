@@ -221,6 +221,7 @@ __pycache__
 /.config/fontforge
 /.config/gh/hosts.yml
 /.config/gh/state.yml
+/.config/github-copilot/
 /.config/godot/
 /.config/google-chrome
 /.config/gtk-*
