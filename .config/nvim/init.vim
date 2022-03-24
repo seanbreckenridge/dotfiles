@@ -317,5 +317,8 @@ map <leader><C-c> :Jump<CR>
 """""""""""""
 
 " check spelling when writing a git commit
-autocmd BufRead,BufNewFile gitcommit | set spell
-autocmd BufWritePost lua require('lint').try_lint()
+augroup seanbreckenridge_spelling
+    autocmd!
+    autocmd! BufRead,BufNewFile gitcommit | set spell
+    autocmd! BufWritePost lua require('lint').try_lint()
+augroup END
