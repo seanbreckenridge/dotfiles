@@ -239,7 +239,7 @@ curl -s ipinfo.io | gron | grep -v 'json.readme' | gron -u | jq -r 'to_entries[]
 '''
 
 [webcam-test]
-command='exec mpv /dev/video0'
+command='exec /usr/bin/mpv /dev/video0'
 
 [webcam-pic]
 command='''

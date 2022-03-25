@@ -1,2 +1,2 @@
 #!/bin/sh
-exec mpv /dev/video0
+exec /usr/bin/mpv /dev/video0
