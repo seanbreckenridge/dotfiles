@@ -64,6 +64,7 @@ alias rr='rifle'
 alias optipng='optipng -o7'
 alias R=ranger
 alias sz='mystarsfzf'
+alias sr='sreminders'
 unstar() {
 	star "$1" DELETE
 }
