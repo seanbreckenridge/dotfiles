@@ -152,3 +152,5 @@ export TODO_DIR="${HPIDATA}/todo" # todo.txt
 # https://github.com/seanbreckenridge/mpv-history-daemon
 export MPV_HISTORY_DAEMON_SCAN_TIME='5'
 export CALCURSE_DIR="${HPIDATA}/calcurse"
+# https://github.com/seanbreckenridge/s3-image-server
+export S3_IMAGE_UPLOAD_INDEX="${HPIDATA}/s3_img_cache"
