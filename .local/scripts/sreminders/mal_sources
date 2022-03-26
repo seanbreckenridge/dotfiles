@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+# uses epochs saved by:
+# https://github.com/seanbreckenridge/malexport/commit/797de4c7034404ee290b44e42ca66d802a8c2d40#diff-7e973fd46f07ee6bb9dd478cf73ce7975fc69c2035bc8524fdc80b857069dbb0R61
+
+set -o pipefail
+
+declare CACHEFILE WATCHED_TODAY A_DAY_AGO
+CACHEFILE="$HOME/.cache/mal_sources_watched_at"
+A_DAY_AGO="$(date +'%s' -d '-1 day')" # epoch timestamp of one day ago
+WATCHED_TODAY=0
+
+while read -r ts; do
+	# If the timestamp this was watched at is less than a day ago,
+	# increment the watched today counter
+	if [[ "$ts" -gt "$A_DAY_AGO" ]]; then
+		((WATCHED_TODAY++))
+	fi
+done <"$CACHEFILE"
+((WATCHED_TODAY < 3)) && exit 2
+exit 0
