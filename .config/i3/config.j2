@@ -30,6 +30,11 @@ bindsym $mod+Shift+Escape {{ ex }} ttt lock-screen
 # hide mouse after 2 seconds
 {{ ex }} unclutter --timeout 2
 
+# keynav
+{{ ex }} keynav
+
+bindsym $mod+c {{ ex }} xdotool click 1
+
 # set a random wallpaper
 {{ ex }} randomize-wallpaper
 

@@ -125,6 +125,7 @@ __pycache__
 /.java
 /.jupyter
 /.keras
+/.keynav_macros
 /.lesshst
 /.lftp
 /.lldb

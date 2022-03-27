@@ -131,6 +131,7 @@ hub
 hyperfine
 imagemagick
 jq
+keynav
 khinsider
 kitty
 ldm
