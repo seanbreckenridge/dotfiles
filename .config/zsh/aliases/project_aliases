@@ -33,8 +33,9 @@ alias "list-albums=cm; find -maxdepth 3 -type f -printf '%h\n' | sort -u | cut -
 alias 'discogs-update=nextalbums discogs-update'
 
 # https://github.com/seanbreckenridge/HPI
-source "${REPOS}/HPI/scripts/functions.sh"
-source "${REPOS}/HPI-personal/scripts/functions.sh"
+source_if_exists "${REPOS}/HPI/scripts/functions.sh"
+source_if_exists "${REPOS}/HPI-personal/scripts/functions.sh"
+source_if_exists "${REPOS}/my_feed/scripts/functions.sh"
 
 # https://github.com/seanbreckenridge/frinkconv
 conv() {
