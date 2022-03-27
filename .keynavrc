@@ -15,13 +15,14 @@
 daemonize  # background keynav
 clear      # clear all previous keybindings
 
-q record ~/.keynav_macros
 shift+at playback
 #ctrl+semicolon start, sh "exec transset-df -i $(xdotool search --class keynav) 0.3"
 e grid-nav toggle
 Tab restart
-ctrl+semicolon start
+ctrl+semicolon start,grid 3x3
 #ctrl+semicolon start,cut-left .95, cut-up .95, move-right 50, move-down 20
+q end
+shift+q record ~/.keynav_macros
 alt+semicolon start,move-right
 Escape end
 ctrl+bracketleft end
@@ -42,7 +43,7 @@ shift+u move-right,move-up
 shift+b move-left,move-down
 shift+n move-right,move-down
 space warp,click 1,end
-semicolon warp,end
+semicolon warp
 1 click 1
 2 click 2
 3 click 3
