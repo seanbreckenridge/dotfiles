@@ -1,0 +1,35 @@
+#!/bin/sh
+# enable/disable trackpad tap to click
+#
+# Usage:
+#     trackpad-tap-to-click [enable|disable]
+# calling without any options toggles
+
+tpad_name="$(xinput list --name-only | grep -i 'touchpad')"
+cache_file="${HOME}/.cache/trackpad-tap-toclick"
+
+enable_trackpad_click() {
+	xinput set-prop "${tpad_name}" "libinput Tapping Enabled" 1
+	touch "${cache_file}"
+}
+
+disable_trackpad_click() {
+	xinput set-prop "${tpad_name}" "libinput Tapping Enabled" 0
+	[ -f "${cache_file}" ] && rm "${cache_file}"
+}
+
+case "$1" in
+disable)
+	disable_trackpad_click
+	;;
+enable)
+	enable_trackpad_click
+	;;
+*)
+	if [ -f "${cache_file}" ]; then
+		disable_trackpad_click
+	else
+		enable_trackpad_click
+	fi
+	;;
+esac
