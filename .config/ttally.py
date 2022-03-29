@@ -5,9 +5,12 @@
 from datetime import datetime
 from typing import NamedTuple
 
+from seanb.ttally_self import SelfTypes
 
-class Shower(NamedTuple):
+
+class Self(NamedTuple):
     when: datetime
+    what: SelfTypes
 
 
 class Weight(NamedTuple):
