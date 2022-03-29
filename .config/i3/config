@@ -143,6 +143,8 @@ bindsym $mod+Shift+S workspace "8"; exec --no-startup-id launch splayall
 bindsym $mod+XF86AudioRaiseVolume exec --no-startup-id mpv-seek '5'
 bindsym $mod+XF86AudioLowerVolume exec --no-startup-id mpv-seek '-5'
 
+bindsym $alt+Shift+s exec --no-startup-id sreminders-notify
+
 # highlight focused window
 for_window [class=".*"] border pixel 1
 # class                 border  backgr. text    indicator child_border
