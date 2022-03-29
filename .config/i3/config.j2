@@ -137,13 +137,12 @@ bindsym $mod+Shift+XF86AudioMute {{ ex }} mpv-quit-latest && i3blocks-refresh-mp
 bindsym $mod+m {{ ex }} notify-send "$(mpv-song-description-py)"
 bindsym $alt+m {{ ex }} mpv-play-pause && i3blocks-refresh-mpv
 bindsym $mod+Shift+m {{ ex }} mpv-next-song && i3blocks-refresh-mpv
-bindsym $mod+Shift+S workspace "8"; {{ ex }} launch splayall
 
 # on 'volume up', move forward in the file
 bindsym $mod+XF86AudioRaiseVolume {{ ex }} mpv-seek '5'
 bindsym $mod+XF86AudioLowerVolume {{ ex }} mpv-seek '-5'
 
-bindsym $alt+Shift+s {{ ex }} sreminders-notify
+bindsym $mod+Shift+s {{ ex }} sreminders-notify
 
 # highlight focused window
 for_window [class=".*"] border pixel 1
