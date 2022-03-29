@@ -1,4 +1,3 @@
 #!/usr/bin/env bash
 set -e
-set -o pipefail
 find "${1:-$HPIDATA}" -name '*sync-conflict*'
