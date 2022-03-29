@@ -1,2 +1,3 @@
 #!/bin/sh
-notify "$(sreminders)"
+SREMINDERS="$(sreminders)"
+notify "${SREMINDERS:-No sreminders}"

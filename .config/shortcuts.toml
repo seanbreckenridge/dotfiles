@@ -778,4 +778,7 @@ exec nvim -q "$@" +copen
 command = 'exec less -i "$@"'
 
 [sreminders-notify]
-command='''notify "$(sreminders)"'''
+command='''
+SREMINDERS="$(sreminders)"
+notify "${SREMINDERS:-No sreminders}"
+'''
