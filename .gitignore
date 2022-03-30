@@ -170,6 +170,7 @@ __pycache__
 /.subversion
 /.surf
 /.swipl-dir*
+/.terminfo
 /.thunderbird
 /.tool-versions
 /.tor-browser

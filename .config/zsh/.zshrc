@@ -54,7 +54,7 @@ mac)
 	# Other plugins
 	source_if_exists /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 	source_if_exists /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-	source_if_exists /usr/share/doc/git-extras/git-extras-completion.zsh
+	source_if_exists /usr/local/opt/git-extras/share/git-extras/git-extras-completion.zsh
 	source "${ZDOTDIR}/mac.zsh"
 	;;
 android)

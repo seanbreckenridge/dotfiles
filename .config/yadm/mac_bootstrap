@@ -49,9 +49,6 @@ install_spkglist
 havecmd drive || go install -v 'github.com/odeke-em/drive/cmd/drive@latest'
 set +e
 
-# generate alacritty config file for mac
-mac-alacritty-conf
-
 # set mac defaults
 echo "Setting application/mac os defaults..."
 bash "${YADM_DIR}/mac/set-default-apps" || exit $?
