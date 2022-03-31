@@ -7,3 +7,4 @@ seanbreckenridge/pmark
 seanbreckenridge/bookmark.txt
 seanbreckenridge/frinkconv
 paulirish/git-open
+dylanaraps/neofetch

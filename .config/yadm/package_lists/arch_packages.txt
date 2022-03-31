@@ -144,7 +144,6 @@ maim
 man-db
 mlocate
 moreutils
-neofetch
 neovim-git
 neovim-plug-git
 net-tools
