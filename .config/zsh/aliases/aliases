@@ -65,6 +65,7 @@ alias optipng='optipng -o7'
 alias R=ranger
 alias sz='mystarsfzf'
 alias sr='sreminders'
+alias nr='neomuttr'
 unstar() {
 	star "$1" DELETE
 }
