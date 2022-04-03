@@ -1,0 +1,2 @@
+#!/bin/sh
+exec date "+%Y_%m_%d"
