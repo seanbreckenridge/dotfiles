@@ -4,9 +4,7 @@ local ls = require "luasnip"
 local snippet = ls.s
 local f = ls.function_node
 
-local M = {}
-
-M["all"] = {
+ls.add_snippets("all", {
     -- date -> Tue 16 Nov 2021 09:43:49 AM EST
     snippet({trig = "date"}, {
         f(function()
@@ -15,6 +13,4 @@ M["all"] = {
                        os.date())
         end, {})
     })
-}
-
-return M
+})

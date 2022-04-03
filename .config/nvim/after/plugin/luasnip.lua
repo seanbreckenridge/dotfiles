@@ -7,7 +7,7 @@ ls.config.set_config {
     enable_autosnippets = true
 }
 
-ls.snippets = require("seanbreckenridge.snippets")
+require("seanbreckenridge.snippets")
 
 -- Temporarily prevent this from erroring on older verisons of neovim
 -- I don't *need* to have snippets on my phone
