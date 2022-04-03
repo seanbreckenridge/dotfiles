@@ -34,7 +34,8 @@ if vim.keymap then
     vim.keymap.set("n", "<leader>S",
                    "<cmd>source ~/.config/nvim/after/plugin/luasnip.lua<CR>")
 end
--- Extend with vs-code style snippets (friendly-snippets repo)
+
+-- Extend with vs-code style snippets (https://github.com/rafamadriz/friendly-snippets)
 ls.filetype_extend("html", {})
 ls.filetype_extend("shell", {})
 ls.filetype_extend("gitcommit", {})
@@ -45,6 +46,7 @@ ls.filetype_extend("css", {})
 ls.filetype_extend("python", {})
 ls.filetype_extend("javascript", {})
 ls.filetype_extend("typescript", {})
-
 require("luasnip.loaders.from_vscode").lazy_load()
+
+-- load some personal snippest (I use the snipmate for basic text-based snippets)
 require("luasnip.loaders.from_snipmate").lazy_load()
