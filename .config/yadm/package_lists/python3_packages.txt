@@ -44,3 +44,4 @@ twine
 urlextract
 vimbuffer
 youtube-dl
+yt-dlp

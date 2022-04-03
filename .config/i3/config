@@ -305,6 +305,7 @@ mode "launcher" {
     bindsym $mod+f exec --no-startup-id ttt launch full_todotxt; mode "default"
     bindsym 4 exec --no-startup-id stream-corner-480; mode "default"
     bindsym 7 exec --no-startup-id stream-corner-720; mode "default"
+    bindsym 0 exec --no-startup-id stream-corner-1080; mode "default"
     bindsym Shift+f exec --no-startup-id flatpak-run; mode "default"
     bindsym c exec --no-startup-id ttt clrs; mode "default"
     bindsym Shift+n exec --no-startup-id launch sn; mode "default"

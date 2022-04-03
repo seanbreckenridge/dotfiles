@@ -456,7 +456,7 @@ setsid -f mpv --x11-name=mpv_stream_media "$@" >/dev/null 2>&1
 '''
 
 [youtube-dl]
-command='''exec python3 -m youtube_dl -o '%(title)s.%(ext)s' -ci "$@"'''
+command='''exec python3 -m yt_dlp -o '%(title)s.%(ext)s' -ci "$@"'''
 
 [create-youtube-dl-resolution-str]
 command='''
@@ -488,6 +488,12 @@ command='exec stream-corner-at "$@"'
 [stream-corner-720]
 command='''
 export FORMAT=850
+exec stream-corner-at "$@"
+'''
+
+[stream-corner-1080]
+command='''
+export FORMAT=1100
 exec stream-corner-at "$@"
 '''
 

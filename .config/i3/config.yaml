@@ -20,6 +20,7 @@ launcher:
   "$mod+f": "ttt launch full_todotxt"
   4: "stream-corner-480"
   7: "stream-corner-720"
+  0: "stream-corner-1080"
   "Shift+f": "flatpak-run"
   c: "ttt clrs"
   "Shift+n": "launch sn"
