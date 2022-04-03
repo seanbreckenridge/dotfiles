@@ -109,6 +109,8 @@ b-() {
 	echo -n "water: "
 	b-water "$@"
 }
+alias sn='self-now'
+alias snl='while self-now; do; done'
 
 # https://github.com/seanbreckenridge/tts
 alias tts-say='tts -d /tmp/tts.ogg && plaympeg /tmp/tts.ogg'

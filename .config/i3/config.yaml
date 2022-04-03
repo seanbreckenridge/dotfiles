@@ -22,6 +22,7 @@ launcher:
   7: "stream-corner-720"
   "Shift+f": "flatpak-run"
   c: "ttt clrs"
+  "Shift+n": "launch sn"
   "$mod+c": "launch cz"
   "Shift+c": "launch czd"
   "$alt+c": "launch czl"
