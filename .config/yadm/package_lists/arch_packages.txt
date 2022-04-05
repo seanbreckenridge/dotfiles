@@ -55,7 +55,7 @@ java-environment-common
 java-runtime-common
 jdk-openjdk
 julia
-jupyter
+jupyter-notebook
 lua
 lua-format
 lua-language-server
