@@ -56,7 +56,7 @@ evry 2 months -grouvee-export && python3 -m grouvee_export export
 evry 2 months -twitch_cli && twitch token
 
 # update https://github.com/seanbreckenridge/mnu_gsheets
-evry 2 weeks -mnu && ssh vultr ~/vps/mnu
+evry 5 days -mnu && ssh vultr ~/vps/mnu
 
 # fix broken ID3 metadata on my music
 # https://github.com/seanbreckenridge/plaintext_playlist_py
