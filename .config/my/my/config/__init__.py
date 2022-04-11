@@ -159,9 +159,6 @@ class mail:
         # hpi query my.mail.imap.files -s
         mailboxes = MAILDIR
 
-    # class mbox:
-    #   mailboxes = "~/Downloads/importExportBackup"
-
 
 # combines:
 class reddit:
