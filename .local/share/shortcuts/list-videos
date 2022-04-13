@@ -1,2 +1,2 @@
 #!/bin/sh
-fd '.*(mp4|avi|mkv)$' "$@"
+fd '.*(mp4|avi|mkv|webm)$' "$@"
