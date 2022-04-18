@@ -65,7 +65,10 @@ DISABLED_MODULES = [
     "my.polar",
     "my.rtm",
     "my.media",
-    r"my.google\.takeout",  # ignore karlicoss google module
+    # temporarily ignore my google takeout module, is being merged across upstream HPI/promnesia
+    r"my.google\.takeout.html",
+    r"my.google\.takeout.paths",
+    r"my.google_takeout",
     "my.orgmode",
     "my.jawbone",
     "my.twitter.twint",
