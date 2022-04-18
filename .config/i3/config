@@ -309,9 +309,9 @@ mode "launcher" {
     bindsym Shift+f exec --no-startup-id flatpak-run; mode "default"
     bindsym c exec --no-startup-id ttt clrs; mode "default"
     bindsym Shift+n exec --no-startup-id launch sn; mode "default"
-    bindsym $mod+c exec --no-startup-id launch cz; mode "default"
-    bindsym Shift+c exec --no-startup-id launch czd; mode "default"
-    bindsym $alt+c exec --no-startup-id launch czl; mode "default"
+    bindsym $mod+c exec --no-startup-id SKIP_RECENT=1 launch cz; mode "default"
+    bindsym Shift+c exec --no-startup-id SKIP_RECENT=1 launch czd; mode "default"
+    bindsym $alt+c exec --no-startup-id SKIP_RECENT=1 launch czl; mode "default"
     bindsym Escape mode "default"
     bindsym Return mode "default"
 }

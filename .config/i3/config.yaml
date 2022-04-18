@@ -24,9 +24,9 @@ launcher:
   "Shift+f": "flatpak-run"
   c: "ttt clrs"
   "Shift+n": "launch sn"
-  "$mod+c": "launch cz"
-  "Shift+c": "launch czd"
-  "$alt+c": "launch czl"
+  "$mod+c": "SKIP_RECENT=1 launch cz"
+  "Shift+c": "SKIP_RECENT=1 launch czd"
+  "$alt+c": "SKIP_RECENT=1 launch czl"
 workspaces:
   1: 1
   2: 2
