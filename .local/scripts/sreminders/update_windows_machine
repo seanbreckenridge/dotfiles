@@ -8,8 +8,8 @@
 
 set -o pipefail
 
-declare A_MONTH
-A_MONTH='2419200'
+declare CHECK_DURATION
+CHECK_DURATION='1209600' # two weeks
 
 WINDOWS_TERMINAL_TOUCHFILE="$HPIDATA/windows_terminal_opened"
 
@@ -19,5 +19,5 @@ if [[ ! -e "$WINDOWS_TERMINAL_TOUCHFILE" ]]; then
 fi
 
 # if that file hasn't been modified for more than a month
-[[ $(($(epoch) - $(stat -c"%Y" "$WINDOWS_TERMINAL_TOUCHFILE"))) -gt "$A_MONTH" ]] && exit 2
+[[ $(($(epoch) - $(stat -c"%Y" "$WINDOWS_TERMINAL_TOUCHFILE"))) -gt "$CHECK_DURATION" ]] && exit 2
 exit 0
