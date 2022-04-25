@@ -72,6 +72,7 @@ DISABLED_MODULES = [
     "my.orgmode",
     "my.jawbone",
     "my.twitter.twint",
+    "my.stackexchange.gdpr",
     "my.twitter.talon",
     "my.vk",
     "my.rss",
