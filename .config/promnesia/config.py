@@ -1,7 +1,7 @@
 import os
 
 from promnesia.common import Source
-from promnesia.sources import reddit, twitter, auto, github, smscalls
+from promnesia.sources import reddit, twitter, auto, github, smscalls, takeout
 
 from promnesia_sean.sources import (
     facebook,
@@ -10,7 +10,6 @@ from promnesia_sean.sources import (
     todotxt,
     mal,
     albums,
-    google_takeout,
     discord,
     browsing,
     mpv,
@@ -26,6 +25,7 @@ from promnesia_sean.sources import (
 )
 
 SOURCES = [
+    takeout,
     twitter,
     Source(
         auto.index,
@@ -68,7 +68,6 @@ SOURCES = [
     newsboat,
     mpv,
     trakt,
-    google_takeout,
     old_forums,
     ttt,
     zsh,
