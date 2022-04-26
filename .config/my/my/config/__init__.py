@@ -68,6 +68,7 @@ DISABLED_MODULES = [
     # ignore legacy google takeout modules
     r"my.google\.takeout.html",
     r"my.google\.takeout.paths",
+    r"^my.location.google$",
     "my.orgmode",
     "my.jawbone",
     "my.twitter.twint",
@@ -76,7 +77,6 @@ DISABLED_MODULES = [
     "my.vk",
     "my.rss",
     "my.photos",
-    "my.location.google",
     "my.calendar",
     "my.taplog",
     "my.runnerup",
