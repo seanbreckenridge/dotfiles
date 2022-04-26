@@ -427,12 +427,6 @@ class runelite:
         export_path: Paths = data("runelite_screenshots")
 
 
-class gpslogger:
-    """.gpx files from https://github.com/mendhak/gpslogger"""
-
-    export_path: Paths = data("gpslogger")
-
-
 class pdfs:
     paths: Paths = [
         "~/Documents/Books/",
@@ -466,7 +460,19 @@ class location:
     except ImportError:
         pass
 
+    class gpslogger:
+        """.gpx files from https://github.com/mendhak/gpslogger"""
+
+        export_path: Paths = data("gpslogger")
+
+    class via_ip:
+        accuracy: float = 10_000
+
 
 class time:
     class tz:
         policy = "convert"
+
+        class via_location:
+            fast: bool = True
+            require_accuracy: float = 5000
