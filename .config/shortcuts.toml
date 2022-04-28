@@ -528,7 +528,7 @@ sleep 1 # just to make sure its copied
 exec stream-corner-480
 '''
 
-[discord]
+[discord-browser]
 command="exec openurl 'https://discord.com/login'"
 
 [newsboat-force]
