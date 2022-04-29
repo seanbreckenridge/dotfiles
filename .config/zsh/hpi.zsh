@@ -18,3 +18,17 @@ sync_hpi_config() {
 	done
 	printf 'Could not find synced HPI config\n'
 }
+
+# update data sources for commonly updated data (music, tv shows, listens)
+# and then run an index for https://github.com/seanbreckenridge/my_feed
+feed_update_partials() {
+	for tag in \
+		backup_albums \
+		backup_trakt_partial \
+		my-feed-index \
+		partial_listenbrainz_scrobbles; do
+		rm -vf "$(evry location -"$tag")"
+	done
+	~/.local/scripts/supervisor/run_jobs -o
+	housekeeping
+}
