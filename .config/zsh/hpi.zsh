@@ -29,6 +29,6 @@ feed_update_partials() {
 		partial_listenbrainz_scrobbles; do
 		rm -vf "$(evry location -"$tag")"
 	done
-	~/.local/scripts/supervisor/run_jobs -o
+	~/.local/scripts/supervisor/run_jobs -oq
 	housekeeping
 }
