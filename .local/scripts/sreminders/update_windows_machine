@@ -9,7 +9,7 @@
 set -o pipefail
 
 declare CHECK_DURATION
-CHECK_DURATION='1209600' # two weeks
+CHECK_DURATION='2419200' # a month
 
 WINDOWS_TERMINAL_TOUCHFILE="$HPIDATA/windows_terminal_opened"
 
