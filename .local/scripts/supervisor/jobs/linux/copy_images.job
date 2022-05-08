@@ -3,4 +3,4 @@
 # on my phone, this is synced from the underlying dcim/Camera folder:
 # https://sean.fish/d/sync_images.job?dark
 
-evry 5 minutes -copy_images && rsync -Pavh $HPIDATA/phone_pictures/ $XDG_PICTURES_DIR/
+evry 5 minutes -copy_images && rsync -Pavh "${HPIDATA}/phone_pictures" "${XDG_PICTURES_DIR}"
