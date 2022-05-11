@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+# assumes you're in the directory with the files you want to run
+# converts a bunch of singles to a bunch of albums with the individual
+# singles. This is useful to maintain album art for singles
+
+while read -r line; do
+	name=$(remove-extension "$line")
+	if [[ -f "$name" ]]; then
+		echo "Error: ${name} already exists" >&2
+	fi
+	mkdir -v "$name"
+	cp -v "$line" "$name"
+done < <(list-music)
