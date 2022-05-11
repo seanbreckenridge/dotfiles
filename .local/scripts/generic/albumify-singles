@@ -7,7 +7,8 @@ while read -r line; do
 	name=$(remove-extension "$line")
 	if [[ -f "$name" ]]; then
 		echo "Error: ${name} already exists" >&2
+		continue
 	fi
-	mkdir -v "$name"
-	cp -v "$line" "$name"
+	mkdir "$name"
+	cp "$line" "$name"
 done < <(list-music)
