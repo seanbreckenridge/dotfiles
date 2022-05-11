@@ -12,6 +12,7 @@ evry 1 hour -sync_hpi_config && sync_hpi_config
 # reset any periodic syncs and re-run bgproc jobs
 syncfiles() {
 	for tag in \
+		create_playlists \
 		backup_images; do
 		rm -f "$(evry location -"$tag")"
 	done
