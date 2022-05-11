@@ -294,6 +294,14 @@ FILEPATH=${1:?Must provide image to convert}
 exec convert "$FILEPATH" "$(replace-extension "$FILEPATH" png)"
 '''
 
+[to-jpeg]
+command='''
+# convert an image to png
+FILEPATH=${1:?Must provide image to convert}
+exec convert "$FILEPATH" "$(replace-extension "$FILEPATH" jpg)"
+'''
+link = "to-jpg"
+
 [to-icon]
 command='''
 # convert an image to a 16x16 icon - to favicon size
