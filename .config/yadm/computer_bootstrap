@@ -102,6 +102,15 @@ havecmd mix && {
 	done < <(spkglist "${MIX_PACKAGE_LIST}")
 }
 
+havecmd gh && {
+	GH_INSTALLED_PACKAGES="$(gh extension list | awk '{print $3}')"
+	while read -r gh_pkg; do
+		if ! grep -qx "${gh_pkg}" <<<"$GH_INSTALLED_PACKAGES"; then
+			gh extension install "https://github.com/${gh_pkg}"
+		fi
+	done < <(spkglist "${GH_PACKAGE_LIST}")
+}
+
 # install largechar
 if ! havecmd largechar; then
 	LARGECHAR_LOCATION="${REPOS:-${HOME}/Repos}/largechar"
