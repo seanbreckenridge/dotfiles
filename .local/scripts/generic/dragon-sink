@@ -5,8 +5,8 @@
 # if the --mv flag is provided, moves files instead
 declare cmd drg files
 [[ "$1" = "--mv" ]] && cmd="mv" || cmd="cp"
-drg="$(command -v dragon-drag-and-drop)" || drg="$(command -v dragon)" || {
-	echo "couldnt find the dragon-drag-and-drop or dragon command"
+drg="$(command -v dragon-drop)" || drg="$(command -v dragon)" || {
+	echo "couldnt find the dragon-drop or dragon command"
 	exit 1
 }
 files="$("$drg" --target --and-exit)"

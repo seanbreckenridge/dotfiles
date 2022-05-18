@@ -105,7 +105,7 @@ croc
 cronie
 datamash
 dex
-dragon-drag-and-drop-git
+dragon-drop
 drive-bin
 dust
 emacs

@@ -1,2 +1,2 @@
 #!/bin/sh
-dragon-drag-and-drop -x "$(lastpic)"
+dragon-drop -x "$(lastpic)"

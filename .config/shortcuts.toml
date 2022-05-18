@@ -388,7 +388,7 @@ fi
 command='exec rifle "$(lastpic)"'
 
 [lastpicdrag]
-command='dragon-drag-and-drop -x "$(lastpic)"'
+command='dragon-drop -x "$(lastpic)"'
 link = "draglastpic"
 
 [urlpicpreview]
@@ -699,7 +699,7 @@ command = 'exec lynx -stdin -dump'
 command = '''
 # dragon a picture from my clipboard https://github.com/mwh/dragon
 img-download || exit $?
-exec dragon-drag-and-drop -x "$(clippaste)"
+exec dragon-drop -x "$(clippaste)"
 '''
 
 [albums]
