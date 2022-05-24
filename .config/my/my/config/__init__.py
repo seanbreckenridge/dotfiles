@@ -8,7 +8,7 @@ https://github.com/seanbreckenridge/HPI-personal
 
 import tempfile
 from os import environ, path
-from typing import Optional, Callable, List, Sequence, Union, Tuple
+from typing import Optional, Callable, List, Sequence, Union, Tuple, Set
 from pathlib import Path
 from datetime import datetime, date
 from browserexport.browsers.firefox import Firefox
@@ -153,6 +153,19 @@ class github:
 MAILDIR = environ.get("MAILDIR", "~/.local/share/mail")
 
 
+# this is all custom, and may not work for you -- this
+# is how I filter certain Junk/Trash paths from my mail
+
+FILTER_PARTS: Set[str] = {".notmuch", "Trash", "Spam", "Junk"}
+
+
+def filter_mail_path(p: Path) -> bool:
+    pset = set(p.parts[1:])
+    if any(f in pset for f in FILTER_PARTS):
+        return False
+    return True
+
+
 class mail:
     # locally synced IMAP mailboxes using mbsync
     class imap:
@@ -164,6 +177,9 @@ class mail:
         # to confirm this is matching your files, can do:
         # hpi query my.mail.imap.files -s
         mailboxes = MAILDIR
+
+        # filter function which filters the input paths
+        filter_path: Optional[Callable[[Path], bool]] = filter_mail_path
 
 
 # combines:
