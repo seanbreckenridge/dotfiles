@@ -119,7 +119,7 @@ echo "Installing global python site-packages..."
 # upgrade pip
 python3 -m pip install --user -U pip
 # install wheel
-python3 -m pip list --format=freeze | cut -d "=" -f1 | grep -q "^wheel$" || python3 -m pip install --user wheel
+python3 -m pip list --format=freeze | cut -d "=" -f1 | grep -qx "wheel" || python3 -m pip install --user wheel
 python3 -m pip install --user -q -r "${PYTHON_PACKAGE_LIST}"
 # install random personal stuff I want importable from anywhere
 
@@ -147,7 +147,7 @@ install_python_personal "shortcuts" "https://github.com/seanbreckenridge/shortcu
 
 PIPX_INSTALLED="$(pipx list --json | jq '.venvs | keys[]' -r)"
 while read -r pipx_pkg; do
-	if ! grep -q "^${pipx_pkg}$" <<<"${PIPX_INSTALLED}"; then
+	if ! grep -qx "${pipx_pkg}" <<<"${PIPX_INSTALLED}"; then
 		printf "Installing %s\n" "$pipx_pkg"
 		pipx install "${pipx_pkg}"
 	fi
@@ -167,7 +167,7 @@ npm_install_from_pkg_list() {
 	local npm_installed="$1"
 	local package_list="$2"
 	while read -r npkg; do
-		if ! grep -q "^${npkg}$" <<<"${npm_installed}"; then
+		if ! grep -qx "${npkg}" <<<"${npm_installed}"; then
 			printf "Installing %s\n" "$npkg"
 			npm install --global "${npkg}"
 		fi
