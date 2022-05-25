@@ -122,7 +122,19 @@ python3 -m pip install --user -U pip
 python3 -m pip list --format=freeze | cut -d "=" -f1 | grep -q "^wheel$" || python3 -m pip install --user wheel
 python3 -m pip install --user -q -r "${PYTHON_PACKAGE_LIST}"
 # install random personal stuff I want importable from anywhere
-python3 -m pip install -e "${HOME}/.config/seanb"
+
+install_personal_pkg() {
+	if havecmd reorder_editable; then
+		if reorder_editable cat | grep -q "${HOME}/.config/seanb"; then
+			# shellcheck disable=SC2088
+			echo '~/.config/seanb already installed as editable'
+			return
+		fi
+	fi
+	python3 -m pip install -e "${HOME}/.config/seanb"
+}
+
+install_personal_pkg
 
 # Install personal python packages
 # If command "$1" doesn't exist, install from $2
