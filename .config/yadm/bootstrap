@@ -131,7 +131,7 @@ install_personal_pkg() {
 			return
 		fi
 	fi
-	python3 -m pip install -e "${HOME}/.config/seanb"
+	python3 -m pip install --user -e "${HOME}/.config/seanb"
 }
 
 install_personal_pkg
