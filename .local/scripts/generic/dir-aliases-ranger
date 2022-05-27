@@ -27,4 +27,4 @@ readonly BookmarksFile="${RangerDataDir}/bookmarks"
 }
 
 echo "Replacing ranger bookmarks file with dir-aliases..."
-exec sed -e "s#~#$HOME#" -e "/^\S\S\s/d" -e "s/ /:/" "$DirAliasFile" >"$BookmarksFile"
+spkglist "$DirAliasFile" | sed -e "s#~#$HOME#" -e "/^\S\S\s/d" -e "s/ /:/" >"$BookmarksFile"
