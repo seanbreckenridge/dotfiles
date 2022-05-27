@@ -11,8 +11,6 @@ from os import environ, path
 from typing import Optional, Callable, List, Sequence, Union, Tuple, Set
 from pathlib import Path
 from datetime import datetime, date
-from browserexport.browsers.firefox import Firefox
-
 
 from my.core.common import PathIsh, Paths
 
@@ -252,6 +250,8 @@ class mpv:
 
 live_dbs: List[Path] = []
 try:
+    from browserexport.browsers.firefox import Firefox
+
     live_dbs.append(Firefox.locate_database())
 except Exception:
     pass
