@@ -2,7 +2,7 @@
 # A wrapper script for supervisord/supervisorctl
 # which does setup before running supervisor
 
-SUPERVISOR_DIR="$(realpath "$(dirname "${BASH_SOURCE[0]}")")"
+SUPERVISOR_DIR="${HOME}/.local/scripts/supervisor"
 export SUPERVISOR_DIR
 
 SUPERVISOR_LOGS='/tmp/supervisor'
