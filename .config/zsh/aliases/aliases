@@ -66,7 +66,6 @@ alias R=ranger
 alias sz='mystarsfzf'
 alias sr='sreminders'
 alias nr='neomuttr'
-alias super='"${HOME}/.local/scripts/supervisor/super"'
 alias urban='udict'
 # nsxiv full screen image, fit full width
 alias nsxfull='nsxiv -s f -f'
@@ -103,7 +102,6 @@ alias d="kitty +kitten diff"
 # background jobs
 alias sctl='super --ctl'
 alias slogs='super --logs'
-alias run-jobs='${HOME}/.local/scripts/supervisor/run_jobs'
 describe-evry-json() {
 	jq -r '.[] | select((.type == "tag_name") or .type == "till_next_pretty") | .body' | paste -d " " - - | sed -e 's/ / - /'
 }
