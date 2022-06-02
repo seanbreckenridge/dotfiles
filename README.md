@@ -43,7 +43,7 @@ Similar to Termux, does an `apt`-based install. Installs a bunch of languages/pr
 
 ---
 
-* [.local/scripts/supervisor](.local/scripts) has scripts/a config file for [`supervisor`](https://github.com/Supervisor/supervisor), so I dont have to write plists or systemd scripts, and background processes work on both mac and linux. That uses [`bgproc`](https://github.com/seanbreckenridge/bgproc) as an anacron replacement.
+* [.local/scripts/supervisor_jobs](.local/scripts) has jobs for [`supervisor`](https://github.com/Supervisor/supervisor), so I dont have to write plists or systemd scripts, and background processes work on both mac and linux. That uses [`bgproc`](https://github.com/seanbreckenridge/bgproc) as an anacron replacement.
 * [`ttt`](https://github.com/seanbreckenridge/ttt/) is sprinkled throughout lots of my scripts, it acts as an extension to my shell history, saving commands from `i3` `bindsym`s, or `ranger` commands. [Lets me `cd`](.config/zsh/cd.zsh) to one of those directories quickly using `fzf`
 * [.config/yadm](.config/yadm) includes lists of global packages to install for pacman/apt/brew, python, ruby, npm, dart, rust, go, elixir and bash
 * [.config/shortcuts.toml](.config/shortcuts.toml) - describes basic shell scripts that are created by [shortcuts](https://github.com/seanbreckenridge/shortcuts)
