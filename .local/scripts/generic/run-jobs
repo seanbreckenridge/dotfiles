@@ -35,7 +35,7 @@ check_os() {
 
 read_config() {
 	local CONFIG_FILE
-	CONFIG_FILE="${XDG_CONFIG_HOME:-${HOME}/.config}/run_jobs.conf"
+	CONFIG_FILE="${XDG_CONFIG_HOME:-${HOME}/.config}/run-jobs.conf"
 	if [[ -r "${CONFIG_FILE}" ]]; then
 		# shellcheck disable=SC1090
 		source "${CONFIG_FILE}" || return $?

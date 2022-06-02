@@ -2,19 +2,18 @@
 # A wrapper script for supervisord/supervisorctl
 # which does setup before running supervisor
 
-SUPERVISOR_DIR="${HOME}/.local/scripts/supervisor"
-export SUPERVISOR_DIR
-
 SUPERVISOR_LOGS='/tmp/supervisor'
 export SUPERVISOR_LOGS
 mkdir -p "${SUPERVISOR_LOGS}"
 
 if [[ "${ON_OS}" == 'linux' ]]; then
-	LINUX_TASK_SCRIPT="${SUPERVISOR_DIR}/linux_tasks"
+	LINUX_TASK_SCRIPT="$(which linux_tasks)"
 else
 	LINUX_TASK_SCRIPT="$(which false)" # fail fast on other OSs
 fi
 export LINUX_TASK_SCRIPT
+
+SUPERVISOR_CONF="${HOME}/.config/supervisord.conf"
 
 function run_super() {
 	case "$1" in
@@ -24,15 +23,15 @@ function run_super() {
 		run_super --ctl "shutdown"
 		;;
 	--daemon)
-		supervisord --configuration="${SUPERVISOR_DIR}/supervisord.conf"
+		supervisord --configuration="${SUPERVISOR_CONF}"
 		;;
 	--foreground)
 		# run supervisor
-		supervisord --configuration="${SUPERVISOR_DIR}/supervisord.conf" -n
+		supervisord --configuration="${SUPERVISOR_CONF}" -n
 		;;
 	--ctl)
 		shift # remove '--ctl' from arg list
-		supervisorctl --configuration="${SUPERVISOR_DIR}/supervisord.conf" "$@"
+		supervisorctl --configuration="${SUPERVISOR_CONF}" "$@"
 		;;
 	--logs)
 		tail -f "$SUPERVISOR_LOGS"/*.log
@@ -47,5 +46,4 @@ function run_super() {
 	esac
 }
 
-cd "${SUPERVISOR_DIR}" || exit $?
 run_super "$@" || exit $?
