@@ -5,8 +5,9 @@
 # run bgproc jobs
 # https://github.com/seanbreckenridge/dotfiles/tree/master/.local/scripts/supervisor
 # https://github.com/seanbreckenridge/bgproc
-evry 6 hours -run_android_jobs && "${HOME}/.local/scripts/supervisor/run_jobs" -o
+evry 1 hour -run_android_jobs && run-jobs -o
 
+# sync HPI config from syncthing dir to ~/.config so I have access to synced secrets
 evry 1 hour -sync_hpi_config && sync_hpi_config
 
 # reset any periodic syncs and re-run bgproc jobs
