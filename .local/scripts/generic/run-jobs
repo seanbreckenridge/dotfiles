@@ -40,13 +40,13 @@ read_config() {
 		# shellcheck disable=SC1090
 		source "${CONFIG_FILE}" || return $?
 		if [[ -z "${BGPROC_DIRS[*]}" ]]; then
-			echo 'No BGPROC_DIRS variable set in run_jobs.conf file, see https://sean.fish/d/run_jobs.conf?dark as an example' 1>&2
+			echo 'No BGPROC_DIRS variable set in run-jobs.conf file, see https://sean.fish/d/run-jobs.conf?dark as an example' 1>&2
 			return 1
 		else
 			DIR_PREFIXES+=("${BGPROC_DIRS[@]}")
 		fi
 	else
-		echo 'No run_jobs.conf configuration file, see https://sean.fish/d/run_jobs.conf?dark as an example' 1>&2
+		echo 'No run-jobs.conf configuration file, see https://sean.fish/d/run-jobs.conf?dark as an example' 1>&2
 		printf 'Place file at "%s"\n' "${CONFIG_FILE}" 1>&2
 		return 1
 	fi
