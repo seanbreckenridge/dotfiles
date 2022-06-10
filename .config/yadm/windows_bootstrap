@@ -36,7 +36,6 @@ fi
 # note: zsh is set as shell using the alacritty launcher options
 declare -rx WSL_PACKAGES="${PACKAGE_DIR}/wsl_packages.txt"
 
-# Install spkglist so I can parse package lists
 set -e
 havecmd go || {
 	GO_TMPDIR="$(mktemp -d)"
@@ -46,7 +45,7 @@ havecmd go || {
 	sudo mv go /usr/local
 }
 havecmd go || ln /usr/local/go/bin/go go
-havecmd spkglist || install_spkglist
+install_go_cmds
 set +e
 
 for lib in $(spkglist "${WSL_PACKAGES}"); do

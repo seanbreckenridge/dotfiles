@@ -38,7 +38,7 @@ declare -rx TERMUX_PACKAGES="${PACKAGE_DIR}/android_packages.txt"
 # Install spkglist so I can parse package lists
 set -e
 havecmd go || apt install golang
-install_spkglist
+install_go_cmds
 set +e
 
 for lib in $(spkglist "${TERMUX_PACKAGES}"); do

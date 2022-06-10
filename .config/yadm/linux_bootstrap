@@ -35,9 +35,9 @@ done
 # rest of my setup is done is ~/.profile
 [[ -f "${HOME}/.zshenv" ]] || touch "${HOME}/.zshenv"
 
-# install go, so I can install my package list parser
+# install go, so I can install some personal golang tools
 [[ $(yay -Q go) ]] || yay -S go
-install_spkglist || exit $?
+install_go_cmds || exit $?
 
 # yay/pacman to install packages from arch repos
 echo "Checking ~/.config/yadm/packages.txt for any packages to install..."

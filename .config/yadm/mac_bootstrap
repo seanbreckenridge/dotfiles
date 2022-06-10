@@ -45,7 +45,7 @@ havecmd brew || /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Hom
 havecmd brew || exit 1
 
 havecmd go || brew install golang
-install_spkglist
+install_go_cmds
 havecmd drive || go install -v 'github.com/odeke-em/drive/cmd/drive@latest'
 set +e
 
