@@ -139,6 +139,7 @@ lftp
 libjpeg-turbo # for jpegtran
 librsync
 lm_sensors
+lsb-release
 lynx
 maim
 man-db
