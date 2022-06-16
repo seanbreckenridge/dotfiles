@@ -359,11 +359,8 @@ command='exec date +"%B" | lower'
 [year]
 command='exec date +"%Y"'
 
-[lower]
-command="exec tr '[:upper:]' '[:lower:]'"
-
 [upper]
-command="exec tr '[:lower:]' '[:upper:]'"
+command="exec awk '{print toupper($0)}'"
 
 [capitalize]
 shebang="#!/usr/bin/env bash"

@@ -1,0 +1,5 @@
+#!/usr/bin/env python3
+import fileinput
+
+for line in fileinput.input(encoding="utf-8"):
+    print(line.casefold(), end="")
