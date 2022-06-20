@@ -447,6 +447,11 @@ class runelite:
         export_path: Paths = data("runelite_screenshots")
 
 
+class minecraft:
+    class advancements:
+        export_path: Paths = data("minecraft_advancements")
+
+
 class pdfs:
     paths: Paths = [
         "~/Documents/Books/",
