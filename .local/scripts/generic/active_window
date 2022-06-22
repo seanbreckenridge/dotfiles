@@ -1,14 +1,22 @@
 #!/usr/bin/env bash
 # uses my window watcher fork https://github.com/seanbreckenridge/aw-watcher-window
 
+ON_OS="${ON_OS:=$(on_machine)}"
+
 # dont run on windows
-[[ "${ON_OS}" == 'windows' ]] && exit 1
+case "$ON_OS" in
+windows*)
+	exit 1
+	;;
+*) ;;
+
+esac
 
 set -e
 set -x
 
 timestamp_filename() {
-	printf '%s/%s_%s.csv' "${HOME}/data/window_watcher" "$(epoch)" "$(uname -n)"
+	printf '%s/%s_%s.csv' "${HOME}/data/window_watcher" "$(epoch)" "$ON_OS"
 }
 # wait for a bit before starting so X server is ready?
 # not sure if this fixes the issue of it not recognizing the window
