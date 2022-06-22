@@ -35,7 +35,7 @@ Plug 'tpope/vim-vinegar'
 Plug 'tpope/vim-speeddating'
 Plug 'numToStr/Comment.nvim'
 Plug 'L3MON4D3/LuaSnip'
-Plug 'github/copilot.vim'
+" Plug 'github/copilot.vim'
 Plug 'windwp/nvim-autopairs'
 
 " langauges/syntax/snippets
