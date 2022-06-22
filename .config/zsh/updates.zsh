@@ -8,7 +8,7 @@ update_nvim() {
 
 update_npm() {
 	echo "Updating global npm packages..."
-	if command -v npm | grep -q 'npm-packages'; then
+	if is_npm_path_unmangled; then
 		npm update -g
 	else
 		echo 'npm path has been mangled (e.g. by nvm/asdf), skipping update...'
