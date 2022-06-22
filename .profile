@@ -30,12 +30,6 @@ Linux*)
 		case "$(uname -r)" in
 		*Microsoft*)
 			ON_OS='windows'
-			# get the windows home directory, something like
-			# /mnt/c/Users/Name
-			WHOME_FILE="${HOME}/.cache/whome"
-			[ -f "${WHOME_FILE}" ] || wslpath "$(wslvar USERPROFILE)" >"${WHOME_FILE}"
-			WHOME="$(cat "${WHOME_FILE}")"
-			export WHOME
 			;;
 		*)
 			ON_OS='linux'
