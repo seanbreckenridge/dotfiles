@@ -22,6 +22,9 @@ ${HOME}/Library/Python/3.9/bin:\
 ${PATH}"
 export PATH
 
+# reset $PWD to $HOME since sometimes starts in at '/'
+cd
+
 # check if supervisord (background processes are running)
 # else start them
 #
