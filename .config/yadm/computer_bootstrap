@@ -5,15 +5,8 @@
 set -u
 shared_user_dirs=("Repos" "Documents" "Downloads" "Shared" "Music" "data")
 # create default user directories
-if [[ "${ON_OS}" != "windows" ]]; then
-	default_user_dirs=("${shared_user_dirs[@]}")
-	default_user_dirs+=("Pictures/Screenshots" ".local/bin" ".cache" ".credentials")
-	for d_name in "${default_user_dirs[@]}"; do
-		if [[ ! -d "${HOME}/${d_name}" ]]; then
-			mkdir -p "${HOME}/${d_name}"
-		fi
-	done
-else
+case "$ON_OS" in
+windows*)
 	# on windows (WSL), link these to /mnt/c/
 	# check the WHOME variable set in my .profile
 	for d_name in "${shared_user_dirs[@]}"; do
@@ -23,7 +16,18 @@ else
 			ln -s "${target}" "${HOME}/${d_name}"
 		fi
 	done
-fi
+	;;
+*)
+	# otherwise
+	default_user_dirs=("${shared_user_dirs[@]}")
+	default_user_dirs+=("Pictures/Screenshots" ".local/bin" ".cache" ".credentials")
+	for d_name in "${default_user_dirs[@]}"; do
+		if [[ ! -d "${HOME}/${d_name}" ]]; then
+			mkdir -p "${HOME}/${d_name}"
+		fi
+	done
+	;;
+esac
 set +u
 
 echo "Installing scientific python packages..."
@@ -62,8 +66,8 @@ function install_go_package() {
 	local -a packageinfo
 	read -ra packageinfo <<<"${1}"
 	havecmd "${packageinfo[0]}" || {
-		# fails to build fsnotify on wsl?
-		[[ "${packageinfo[0]}" == 'twitchlive' && "${ON_OS}" == 'windows' ]] && return
+		# fails to build fsnotify on wsl
+		[[ "${packageinfo[0]}" == 'twitchlive' && "${ON_OS}" =~ ^windows.* ]] && return
 		go install -v "${packageinfo[1]}@latest"
 	}
 }

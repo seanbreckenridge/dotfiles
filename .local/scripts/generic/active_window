@@ -5,11 +5,8 @@ ON_OS="${ON_OS:=$(on_machine)}"
 
 # dont run on windows
 case "$ON_OS" in
-windows*)
-	exit 1
-	;;
+windows*) exit 1 ;;
 *) ;;
-
 esac
 
 set -e

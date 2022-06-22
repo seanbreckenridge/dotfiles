@@ -34,7 +34,7 @@ fi
 # Send Notification!
 
 case "$ON_OS" in
-linux)
+linux*)
 	# if user passed arguments which were parsed
 	if (("${#linux_options[@]}" > 1)); then
 		notify-send "${linux_options[@]}" "$@"
@@ -42,7 +42,7 @@ linux)
 		notify-send "$@"
 	fi
 	;;
-mac)
+mac*)
 	# user provided just one string to send
 	if (($# == 1)); then
 		osascript -e "$(printf 'display notification "%s" with title "Notification!"' "$1")"
@@ -50,8 +50,7 @@ mac)
 		osascript -e "$(printf 'display notification "%s" with title "%s"' "$2" "$1")"
 	fi
 	;;
-android)
-	# TODO: send an actual android notification?
+*)
 	echo "$*"
 	;;
 esac

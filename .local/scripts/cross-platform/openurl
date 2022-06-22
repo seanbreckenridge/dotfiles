@@ -17,7 +17,7 @@ command -v tttlog >/dev/null 2>&1 && tttlog "openurl $URL"
 printf '%s\n' "$URL"
 
 case "$ON_OS" in
-linux | windows)
+linux* | windows*)
 	# if misconfigured, prevent this from looping infinitely
 	if [[ "$BROWSER" == 'openurl' ]]; then
 		# shellcheck disable=SC2016
@@ -27,10 +27,10 @@ linux | windows)
 	# $BROWSER is set properly in ~/.profile
 	setsid "$BROWSER" "$URL" >/dev/null 2>&1 &
 	;;
-mac)
+mac*)
 	open -n -a "Firefox Developer Edition" --args "--new-tab" "$URL"
 	;;
-android)
+android*)
 	echo "Not sure how to open on android..."
 	;;
 esac

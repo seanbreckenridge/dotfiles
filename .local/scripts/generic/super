@@ -6,11 +6,12 @@ SUPERVISOR_LOGS='/tmp/supervisor'
 export SUPERVISOR_LOGS
 mkdir -p "${SUPERVISOR_LOGS}"
 
-if [[ "${ON_OS}" == 'linux' ]]; then
+LINUX_TASK_SCRIPT=$(which false) # if not on linux, fail fast
+case "$ON_OS" in
+linux_arch*)
 	LINUX_TASK_SCRIPT="$(which linux_tasks)"
-else
-	LINUX_TASK_SCRIPT="$(which false)" # fail fast on other OSs
-fi
+	;;
+esac
 export LINUX_TASK_SCRIPT
 
 SUPERVISOR_CONF="${HOME}/.config/supervisord.conf"

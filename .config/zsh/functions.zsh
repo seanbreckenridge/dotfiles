@@ -3,17 +3,17 @@
 fpath=("${ZDOTDIR}/functions" "${ZDOTDIR}/completions" "${fpath[@]}")
 
 case "$ON_OS" in
-linux)
+linux*)
 	fpath+=(/usr/share/zsh/site-functions)
 	;;
-mac)
+mac*)
 	# on mac
 	# if compaudit complains:
 	# run:
 	# sudo chown -R $(whoami) <folders>...
 	fpath+=(/usr/local/share/zsh/site-functions)
 	;;
-android)
+android*)
 	fpath+=("${HOME}/../usr/share/zsh/site-functions")
 	;;
 esac

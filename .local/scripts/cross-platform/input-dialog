@@ -9,18 +9,18 @@ command -v tttlog >/dev/null 2>&1 && tttlog "$(basename "$0")" "$@"
 }
 
 case "$ON_OS" in
-linux)
+linux*)
 	# use rofi with no list on linux
 	rofi -dmenu -theme-str 'listview {enabled: false;}' -p "$1" || exit $?
 	;;
-mac)
+mac*)
 	# use applescript on mac
 	OSASCRIPT="$(printf 'set T to text returned of (display dialog "%s" buttons {"Cancel", "OK"} default button "OK" default answer "")' "$1")"
 	RESP="$(osascript -e "$OSASCRIPT" 2>/dev/null)" || exit $?
 	[[ -z "$RESP" ]] && exit 1
 	printf '%s' "$RESP"
 	;;
-android | windows)
+*)
 	printf '%s' "$1"
 	read -r RESP
 	printf '%s' "${RESP}"

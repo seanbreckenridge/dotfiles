@@ -4,14 +4,11 @@
 # so that i3lock doesnt have to wait for the image to be generated when run
 
 case "$ON_OS" in
-mac)
+mac*)
 	pmset displaysleepnow
 	exit 0
 	;;
-android)
-	echo "Lock screen using termux on android?"
-	;;
-linux)
+linux*)
 	if [ "$1" = "-b" ]; then # daemon
 		while true; do
 			scrot --silent --overwrite "${HOME}/.cache/desktop.png"
@@ -21,6 +18,9 @@ linux)
 	else
 		i3lock -ni "${HOME}/.cache/pixel.png"
 	fi
+	;;
+*)
+	echo "Dont know how to lock screen..." >&2
 	;;
 
 esac

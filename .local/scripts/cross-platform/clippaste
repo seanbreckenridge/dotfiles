@@ -3,13 +3,13 @@
 # on mac, uses pbpaste (cmd+v clipboard)
 
 case "$ON_OS" in
-linux)
+linux*)
 	exec xclip -out -selection clipboard
 	;;
-mac)
+mac*)
 	exec pbpaste
 	;;
-android)
+*)
 	echo 'No Clipboard Access?' >&2
 	exit 1
 	;;

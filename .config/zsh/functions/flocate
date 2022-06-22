@@ -3,10 +3,12 @@
 # and cd to the enclosing directory
 
 function flocate() {
-	[[ "$ON_OS" != 'linux' ]] && {
-		echo "Use 'mdfind' instead"
+	case "$ON_OS" in
+	mac*)
+		echo "Use 'mdfind' instead" >&2
 		return 1
-	}
+		;;
+	esac
 	local FZFFOUNDFILENAME="$(locate / | fzf +m --preview='${HOME}/.config/fzf_preview {}')"
 	# go to directory if its a directory, else go to enclosing directory
 	if [[ -d "$FZFFOUNDFILENAME" ]]; then

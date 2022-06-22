@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+
+case "$(uname -s)" in
+Linux*)
+	if command -v termux-setup-storage >/dev/null 2>&1; then
+		ON_OS='android'
+	else
+		# check if we're in WSL
+		case "$(uname -r)" in
+		*Microsoft*)
+			ON_OS='windows'
+			;;
+		*)
+			ON_OS='linux'
+			;;
+		esac
+	fi
+	;;
+Darwin*)
+	ON_OS='mac'
+	;;
+*)
+	printf "Unknown Operating System...\n" >&2
+	;;
+esac
+
+echo "$ON_OS"

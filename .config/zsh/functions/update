@@ -5,19 +5,19 @@ function update() {
 	wait-for-internet --text "(waiting for internet)"
 	echo "Updating system (pacman/yay/brew/termux) packages..."
 	case "$ON_OS" in
-	mac)
+	mac*)
 		brew update && brew upgrade
 		brew upgrade --cask
 		;;
-	linux)
+	linux_arch*)
 		yay -Syu
 		housekeeping-info
 		havecmd flatpak && flatpak update
 		;;
-	android)
+	android*)
 		pkg update
 		;;
-	windows)
+	windows*)
 		sudo apt update && sudo apt upgrade
 		;;
 	esac

@@ -25,7 +25,7 @@ source "${ZDOTDIR}/source_aliases.zsh"
 
 # zsh plugins
 case "$ON_OS" in
-linux)
+linux*)
 	# add flatpak to $PATH. It already adds itself to XDG_USER_DIRS (which is picked up by rofi)
 	# in /etc/profile.d/flatpak.sh but that doesn't let me launch it from my terminal
 	export PATH="/var/lib/flatpak/exports/bin:${PATH}"
@@ -41,7 +41,7 @@ linux)
 		source_if_exists /opt/asdf-vm/asdf.sh
 	}
 	;;
-mac)
+mac*)
 	# Setup fzf
 	# ---------
 	if [[ ! "$PATH" == */usr/local/opt/fzf/bin* ]]; then
@@ -57,14 +57,14 @@ mac)
 	source_if_exists /usr/local/opt/git-extras/share/git-extras/git-extras-completion.zsh
 	source "${ZDOTDIR}/mac.zsh"
 	;;
-android)
+android*)
 	source_if_exists "${HOME}/../usr/share/fzf/key-bindings.zsh"
 	source_if_exists "${HOME}/../usr/share/fzf/completion.zsh"
 
 	source_if_exists "${HOME}/.local/share/zsh_plugins/zsh-autosuggestions/zsh-autosuggestions.zsh"
 	source "${ZDOTDIR}/android.zsh"
 	;;
-windows)
+windows*)
 	source_if_exists /usr/share/doc/fzf/examples/completion.zsh
 	source_if_exists /usr/share/doc/fzf/examples/key-bindings.zsh
 	source "${ZDOTDIR}/windows.zsh"

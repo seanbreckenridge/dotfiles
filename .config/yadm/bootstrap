@@ -51,16 +51,16 @@ set +u
 
 # dispatch on os type
 case "$ON_OS" in
-mac)
+mac*)
 	bash "${YADM_DIR}/mac_bootstrap" || exit $?
 	;;
-linux)
+linux*)
 	bash "${YADM_DIR}/linux_bootstrap" || exit $?
 	;;
-android)
+android*)
 	bash "${YADM_DIR}/android_bootstrap" || exit $?
 	;;
-windows)
+windows*)
 	bash "${YADM_DIR}/windows_bootstrap" || exit $?
 	;;
 esac
@@ -162,9 +162,12 @@ done < <(spkglist "${PIPX_PACKAGE_LIST}")
 # tab completion nicer
 HAVECMD_REPORT='' havecmd speedtest-cli && rm "$(command -v speedtest-cli)"
 
-if [[ "$ON_OS" != 'android' ]]; then
+case "$ON_OS" in
+android*) ;;
+*)
 	bash "${YADM_DIR}/computer_bootstrap" || exit $?
-fi
+	;;
+esac
 
 npm_install_from_pkg_list() {
 	local npm_installed="$1"
@@ -189,7 +192,12 @@ if is_npm_path_unmangled "$NPM_LOC"; then
 	NPM_INSTALLED="$(npm ls -g --json | jq '.dependencies | keys[]' -r)"
 	npm_install_from_pkg_list "$NPM_INSTALLED" "$NPM_PACKAGE_LIST"
 	# computer-only npm packages
-	[[ "$ON_OS" != 'android' ]] && npm_install_from_pkg_list "$NPM_INSTALLED" "$COMPUTER_NPM_PACKAGE_LIST"
+	case "$ON_OS" in
+	android*) ;;
+	*)
+		npm_install_from_pkg_list "$NPM_INSTALLED" "$COMPUTER_NPM_PACKAGE_LIST"
+		;;
+	esac
 else
 	printf "NPM path not where expected (%s), skipping package install...\n" "$NPM_LOC"
 	# incase this is the first time this has happened, update npm globally so it gets put into "$NPM_CONFIG_PREFIX"

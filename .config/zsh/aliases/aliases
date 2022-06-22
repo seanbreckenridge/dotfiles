@@ -7,7 +7,15 @@ alias -s {md,html,txt}=nvim
 # save ls so it can be used elsewhere if I want
 alias lsplain='command ls --color=never'
 # alias ls to exa
-[[ "$ON_OS" == 'mac' ]] && alias ls='exa' || alias ls='exa --icons'
+case "$ON_OS" in
+mac*)
+	# icons dont work on mac?
+	alias ls='exa'
+	;;
+*)
+	alias ls='exa --icons'
+	;;
+esac
 alias ll='ls -hl --git'
 alias la='ll -a'
 alias sl='ls'

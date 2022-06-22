@@ -17,38 +17,6 @@ export XDG_DATA_HOME="${HOME}/.local/share"
 
 export REPOS="${HOME}/Repos"
 
-# set global OS environment variable
-# used in lots of my scripts
-# and in my bootstrap/installation process
-# to choose how to install everything
-case "$(uname -s)" in
-Linux*)
-	if command -v termux-setup-storage >/dev/null 2>&1; then
-		ON_OS='android'
-	else
-		# check if we're in WSL
-		case "$(uname -r)" in
-		*Microsoft*)
-			ON_OS='windows'
-			;;
-		*)
-			ON_OS='linux'
-			;;
-		esac
-	fi
-	;;
-Darwin*)
-	ON_OS='mac'
-	;;
-*)
-	printf "Unknown Operating System...\n"
-	uname -s
-	uname -r
-	;;
-esac
-
-export ON_OS
-
 # common path modifications
 export PATH="\
 ${XDG_DATA_HOME}/basher/cellar/bin:\
@@ -67,6 +35,9 @@ ${HOME}/.cabal/bin:\
 ${HOME}/.config/i3blocks/blocks:\
 ${PATH}"
 
+# temporarily export $PATH
+export PATH
+
 # https://github.com/seanbreckenridge/HPI
 # the 'root data directory' for HPI
 HPIDATA="${HOME}/data"
@@ -76,9 +47,17 @@ XDG_MUSIC_DIR="${HOME}/Music"
 BROWSER='firefox-developer-edition'
 SCREENSHOTS="${XDG_PICTURES_DIR}/Screenshots"
 
+if hash on_machine; then
+	ON_OS="$(on_machine)"
+else
+	echo 'Warning: on_machine not avaiable, falling back to manual OS detection...' >&2
+	ON_OS="$(manual_on_os)"
+fi
+export ON_OS
+
 # overwrite some envvars with OS-specific data
 case "$ON_OS" in
-linux)
+linux*)
 	# add linux stuff to $PATH
 	PATH="\
 ${HOME}/.local/share/gem/ruby/3.0.0/bin:\
@@ -86,15 +65,14 @@ ${HOME}/.local/scripts/linux:\
 ${PATH}"
 	export ARCHFLAGS="-arch x86_64" # Compilation flags
 	;;
-mac)
+mac*)
 	SCREENSHOTS="${HOME}/Desktop" # Screenshots on Mac are saved on the Desktop
 	;;
-android)
+android*)
 	HPIDATA="${HOME}/storage/shared/data"
 	XDG_MUSIC_DIR="${HOME}/storage/music"
-	figlet termux
 	;;
-windows)
+windows*)
 	BROWSER='/mnt/c/Program Files/Mozilla Firefox/firefox.exe'
 	;;
 esac

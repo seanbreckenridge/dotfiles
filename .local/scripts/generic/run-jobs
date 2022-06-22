@@ -19,13 +19,16 @@ check_os() {
 		return 1
 	fi
 
-	if [[ "${ON_OS}" != 'android' ]]; then
+	case "$ON_OS" in
+	android*) ;;
+	*)
 		DIR_SUFFIXES+=('computer')
-	fi
+		;;
+	esac
 
 	case "${ON_OS}" in
-	linux | mac | android)
-		DIR_SUFFIXES+=("${ON_OS}")
+	linux* | mac* | android*)
+		DIR_SUFFIXES+=("$(on_machine '%o')")
 		;;
 	*)
 		printf 'Unknown ON_OS variable: %s\n' "${ON_OS}"
