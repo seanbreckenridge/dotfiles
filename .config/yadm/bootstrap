@@ -177,19 +177,12 @@ npm_install_from_pkg_list() {
 	done < <(spkglist "${package_list}")
 }
 
-unmangled_npm_path() {
-	NPM_LOC="$1"
-	grep -q 'npm-packages' <<<"$NPM_LOC" && return 0
-	grep -q '/usr/bin/npm' <<<"$NPM_LOC" && return 0
-	return 1
-}
-
 havecmd npm || exit $?
 # install npm packages
 export NPM_CONFIG_PREFIX="${XDG_DATA_HOME}/npm-packages"
 echo "Installing global npm packages..."
 NPM_LOC="$(command -v npm)"
-if unmangled_npm_path "$NPM_LOC"; then
+if is_npm_path_unmangled "$NPM_LOC"; then
 	# create the npm directory and make sure we own the directory to fix permission issues
 	[[ ! -d "${NPM_CONFIG_PREFIX}" ]] && mkdir -p "${NPM_CONFIG_PREFIX}" && sudo chown -R "$(whoami)" "${NPM_CONFIG_PREFIX}"
 	# get a list of installed packages

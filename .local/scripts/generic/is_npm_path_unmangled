@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+declare -a LOCATIONS
+LOCATIONS=('npm-packages' '/usr/bin/npm' '/usr/local/bin/npm')
+
+# this is to make sure global npm is in some location I expect it to be
+# I want to be using the globally installed npm when installing packages, so that
+# this doesnt interfere with other virtual environments or mangled (asdf/nvm) paths
+NPM_LOC="${1:-$(command -v npm)}"
+for pth in "${LOCATIONS[@]}"; do
+	grep -q "${pth}" <<<"${NPM_LOC}" && exit 0
+done
+exit 1
