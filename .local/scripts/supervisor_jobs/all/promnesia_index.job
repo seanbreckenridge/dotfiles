@@ -3,13 +3,10 @@
 # run the promnesia indexer
 
 case "$ON_OS" in
-windows*)
+windows*|android*)
 	exit 0
 	;;
 esac
-
-# if promnesia not available, exit
-hash promnesia || exit 0
 
 evry 6 hours -promnesia_index && {
 	printlog "promnesia_index:running index..."
