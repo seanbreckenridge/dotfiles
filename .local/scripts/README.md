@@ -19,7 +19,7 @@ On Linux, I can spawn this by 'exec'ing at the OS level (i.e. on Arch/i3, i3-exe
 
 The [`super`](https://sean.fish/d/super?dark) script is the entrypoint to this folder, it uses the [`supervisord.conf`](https://sean.fish/d/supervisord.conf?dark) file to determine how to run each of the background processes
 
-[`run-jobs`](https://sean.fish/d/run-jobs?dark) uses [`bgproc`](https://github.com/seanbreckenridge/bgproc), which is an anacron-like script I use to schedule tasks periodically, uses a config file to set which directories to check, see <https://sean.fish/d/run-jobs.conf?dark>
+See [`bgproc`](https://github.com/seanbreckenridge/bgproc) and [`on_machine`](https://github.com/seanbreckenridge/on_machine) for more information
 
 ```
 $ super --ctl status

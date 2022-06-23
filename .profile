@@ -124,3 +124,5 @@ export TODO_DIR="${HPIDATA}/todo" # todo.txt
 # https://github.com/seanbreckenridge/mpv-history-daemon
 export MPV_HISTORY_DAEMON_SCAN_TIME='5'
 export CALCURSE_DIR="${HPIDATA}/calcurse"
+# $PATH for bgproc directories, for background processes
+export BGPROC_PATH="${HPIDATA}/jobs:${HOME}/.local/scripts/supervisor_jobs:${REPOS}/HPI-personal/jobs"

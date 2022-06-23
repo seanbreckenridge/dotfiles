@@ -2,6 +2,7 @@
 # update https://github.com/seanbreckenridge/oh-my-stars
 
 wait-for-internet -q --timeout 10 || exit 0
+hash mystars || exit 0
 
 evry 6 hours -update_my_stars && {
 	printlog "mystars:updating oh-my-stars..."

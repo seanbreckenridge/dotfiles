@@ -3,9 +3,8 @@
 # tasks that run periodically
 
 # run bgproc jobs
-# https://github.com/seanbreckenridge/dotfiles/tree/master/.local/scripts/supervisor
 # https://github.com/seanbreckenridge/bgproc
-evry 1 hour -run_android_jobs && run-jobs -o
+evry 1 hour -run_android_jobs && bgproc_on_machine -o
 
 # sync HPI config from syncthing dir to ~/.config so I have access to synced secrets
 evry 1 hour -sync_hpi_config && sync_hpi_config
