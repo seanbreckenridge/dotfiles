@@ -29,7 +29,7 @@ feed_update_partials() {
 		partial_listenbrainz_scrobbles; do
 		rm -vf "$(evry location -"$tag")"
 	done
-	run-jobs -oq
+	bgproc_on_machine -oq
 	MALEXPORT_EPISODE_LIMIT=0 malexport update history -u $MAL_USERNAME -o anime -c 5
 	housekeeping
 }
