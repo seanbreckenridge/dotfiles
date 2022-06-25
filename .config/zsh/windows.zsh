@@ -1,7 +1,7 @@
 #!/usr/bin/env zsh
 # run bgproc jobs once every 2 hours
 # https://github.com/seanbreckenridge/bgproc
-evry 1 hour -run_windows_jobs && run-jobs -o
+evry 1 hour -run_windows_jobs && bgproc_on_machine -on
 
 # sync HPI config from syncthing directory to WSL .config/my directory
 evry 10 minutes -sync_hpi_config && sync_hpi_config

@@ -4,7 +4,7 @@
 
 # run bgproc jobs
 # https://github.com/seanbreckenridge/bgproc
-evry 1 hour -run_android_jobs && bgproc_on_machine -o
+evry 1 hour -run_android_jobs && bgproc_on_machine -on
 
 # sync HPI config from syncthing dir to ~/.config so I have access to synced secrets
 evry 1 hour -sync_hpi_config && sync_hpi_config
