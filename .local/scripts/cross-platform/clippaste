@@ -9,6 +9,9 @@ linux*)
 mac*)
 	exec pbpaste
 	;;
+android_termux*)
+	exec termux-clipboard-get
+	;;
 *)
 	echo 'No Clipboard Access?' >&2
 	exit 1

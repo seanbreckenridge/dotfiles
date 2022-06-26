@@ -17,6 +17,9 @@ mac*)
 windows*)
 	printf '%s' "${STDIN}" | clip.exe
 	;;
+android_termux*)
+	printf '%s' "${STDIN}" | termux-clipboard-set
+	;;
 *)
 	echo "No Clipboard Access?" >&2
 	printf '%s' "${STDIN}"
