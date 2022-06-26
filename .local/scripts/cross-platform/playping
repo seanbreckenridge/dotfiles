@@ -11,5 +11,8 @@ mac*)
 windows*)
 	exec powershell.exe -c '(New-Object Media.SoundPlayer "C:\Windows\Media\ding.wav").PlaySync();'
 	;;
+android_termux*)
+	exec termux-vibrate
+	;;
 *) ;;
 esac
