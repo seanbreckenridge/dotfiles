@@ -3,7 +3,7 @@
 # run the promnesia indexer
 
 case "$ON_OS" in
-windows*|android*)
+windows* | android*)
 	exit 0
 	;;
 esac
