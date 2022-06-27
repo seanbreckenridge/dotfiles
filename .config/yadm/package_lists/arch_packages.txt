@@ -241,7 +241,7 @@ zsh-you-should-use
 # gui applications
 
 balena-etcher
-chromium
+chromedriver
 czkawka-gui-bin
 filezilla
 firefox-developer-edition

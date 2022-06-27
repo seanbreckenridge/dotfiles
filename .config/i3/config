@@ -329,6 +329,7 @@ bindsym $mod+Shift+Return exec --no-startup-id ttt firefox-developer-edition --n
 # move chromedriver (webscraping) instances to 9
 assign [class="Chromium-browser"] 9
 assign [class="Chromium"] 9
+assign [class="Google-chrome"] 9
 
 # IM/Chat to 5
 for_window [class="Slack"] move to workspace 5
