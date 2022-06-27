@@ -20,6 +20,12 @@ mac*)
 	[[ -z "$RESP" ]] && exit 1
 	printf '%s' "$RESP"
 	;;
+android_termux*)
+	RESP="$(termux-dialog -t "$1")"
+	CODE="$(jq -r .code <<<"$RESP")"
+	[[ "$CODE" != -1 ]] && exit 1
+	jq -r .text <<<"$RESP"
+	;;
 *)
 	printf '%s' "$1"
 	read -r RESP
