@@ -115,8 +115,8 @@ describe-evry-json() {
 }
 alias run-jobs=bgproc_on_machine
 run-jobs-info() {
-	run-jobs -qo
-	EVRY_JSON=1 run-jobs -qo | describe-evry-json
+	run-jobs -qo "$@"
+	EVRY_JSON=1 run-jobs -qo "$@" | describe-evry-json
 }
 alias rj=run-jobs-info
 
