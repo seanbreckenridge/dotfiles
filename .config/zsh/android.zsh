@@ -16,7 +16,7 @@ syncfiles() {
 		backup_images; do
 		rm -f "$(evry location -"$tag")"
 	done
-	run-jobs -o
+	bgproc_on_machine -on
 }
 alias sf=syncfiles
 
