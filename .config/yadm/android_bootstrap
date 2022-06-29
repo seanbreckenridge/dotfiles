@@ -66,6 +66,9 @@ fi
 # manually install some commands
 havecmd cargo || exit $?           # needed to build some packages
 havecmd evry || cargo install evry # task scheduling
+CARGO_INSTALLED_PACKAGES="$(cargo install --list | sed -E -e '/^\s+/d; s|\s.*||')"
+grep -q 'cargo-update' <<<"$CARGO_INSTALLED_PACKAGES" || cargo install cargo-update
+
 havecmd shfmt || GO111MODULE=on go install mvdan.cc/sh/v3/cmd/shfmt@latest
 havecmd arctee || python3 -m pip install git+https://github.com/karlicoss/arctee
 
