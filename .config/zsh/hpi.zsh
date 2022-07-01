@@ -30,6 +30,6 @@ feed_update_partials() {
 		rm -vf "$(evry location -"$tag")"
 	done
 	bgproc_on_machine -oq
-	MALEXPORT_EPISODE_LIMIT=0 malexport update history -u $MAL_USERNAME -o anime -c 5
+	MALEXPORT_EPISODE_LIMIT=0 malexport update history --driver-type firefox -u $MAL_USERNAME -o anime -c 5
 	housekeeping
 }
