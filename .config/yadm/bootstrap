@@ -132,7 +132,7 @@ function install_python_personal() {
 install_python_personal "mystars" "https://github.com/seanbreckenridge/oh-my-stars"
 install_python_personal "shortcuts" "https://github.com/seanbreckenridge/shortcuts"
 
-PIPX_INSTALLED="$(pipx list --json | jq '.venvs | keys[]' -r)"
+PIPX_INSTALLED="$(pipx list --json 2>/dev/null | jq '.venvs | keys[]' -r)"
 while read -r pipx_pkg; do
 	if ! grep -qx "${pipx_pkg}" <<<"${PIPX_INSTALLED}"; then
 		printf "Installing %s\n" "$pipx_pkg"
