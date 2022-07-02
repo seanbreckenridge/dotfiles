@@ -1,6 +1,4 @@
 #!/usr/bin/env bash
-# In other words, things that should get run
-# on computers (linux/mac), but not on android
 
 set -u
 shared_user_dirs=("Repos" "Documents" "Downloads" "Shared" "Music" "data")
@@ -31,6 +29,7 @@ esac
 set +u
 
 echo "Installing scientific python packages..."
+declare -rx SCIPYTHON_PACKAGE_LIST="${PACKAGE_DIR}/scientific_python.txt" # probably don't have to install on android
 python3 -m pip install --user -q -r "${SCIPYTHON_PACKAGE_LIST}"
 
 install_python_personal "plus1" "https://github.com/seanbreckenridge/plus1"
@@ -50,6 +49,7 @@ done < <(spkglist "${GLOBAL_GEM_LIST}")
 
 havecmd cargo || exit $?
 echo "Installing global cargo packages..."
+CARGO_PACKAGE_LIST="${PACKAGE_DIR}/cargo_packages.txt"
 CARGO_INSTALLED_PACKAGES="$(cargo install --list | sed -E -e '/^\s+/d; s|\s.*||')"
 while read -r cargopkg; do
 	if ! grep -qx "${cargopkg}" <<<"${CARGO_INSTALLED_PACKAGES}"; then
@@ -59,6 +59,7 @@ while read -r cargopkg; do
 done < <(spkglist "${CARGO_PACKAGE_LIST}")
 
 havecmd go || exit $?
+GO_PACKAGE_LIST="${PACKAGE_DIR}/go_packages.txt"
 # takes a line from "$GO_PACKAGE_LIST"
 # binary -> package source
 # and installs it if the binary isn't already on your path
@@ -85,6 +86,7 @@ if [[ ! -d "${HOME}/.emacs.d/" ]]; then
 	"${HOME}/.emacs.d/bin/doom" sync
 fi
 
+DART_PACKAGE_LIST="${PACKAGE_DIR}/dart_packages.txt"
 havecmd dart && {
 	echo "Installing global dart packages..."
 	DART_INSTALLED_PACKAGES="$(dart pub global list | cut -d" " -f1)"
@@ -96,6 +98,7 @@ havecmd dart && {
 	done < <(spkglist "${DART_PACKAGE_LIST}")
 }
 
+MIX_PACKAGE_LIST="${PACKAGE_DIR}/mix_archive_packages.txt"
 havecmd mix && {
 	echo "Installing global pheonix mix archives..."
 	MIX_ARCHIVE_LIST="$(mix archive | tac | sed -e '1d; s/^* //; s/-.*//')"
@@ -106,6 +109,7 @@ havecmd mix && {
 	done < <(spkglist "${MIX_PACKAGE_LIST}")
 }
 
+GH_PACKAGE_LIST="${PACKAGE_DIR}/gh_extension_packages.txt"
 havecmd gh && {
 	GH_INSTALLED_PACKAGES="$(gh extension list | awk '{print $3}')"
 	while read -r gh_pkg; do

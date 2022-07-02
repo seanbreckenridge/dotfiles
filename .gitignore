@@ -228,6 +228,7 @@ __pycache__
 /.config/github-copilot/
 /.config/godot/
 /.config/google-chrome
+/.config/google-chrome-beta
 /.config/gtk-*
 /.config/hub
 /.config/imgur_uploader

@@ -45,39 +45,23 @@ havecmd havecmd || {
 	read -r || exit $?
 }
 
-set -u
-printf 'Running bootstrap for: %s\n' "${ON_OS}"
-set +u
+ON_OS="${ON_OS:=$(on_machine)}"
+declare -rx ON_OS
 
-# dispatch on os type
-case "$ON_OS" in
-mac*)
-	bash "${YADM_DIR}/mac_bootstrap" || exit $?
-	;;
-linux*)
-	bash "${YADM_DIR}/linux_bootstrap" || exit $?
-	;;
-android*)
-	bash "${YADM_DIR}/android_bootstrap" || exit $?
-	;;
-windows*)
-	bash "${YADM_DIR}/windows_bootstrap" || exit $?
-	;;
-esac
+# match files in ~/.config/yadm, run based on OS
+# https://github.com/seanbreckenridge/on_machine
+# e.g. run the android_bootstrap, linux_bootstrap, mac_bootstrap files
+while read -r -d $'\0' bootstrap_script; do
+	printf 'Executing %s\n' "$bootstrap_script"
+	bash "$bootstrap_script" || exit $?
+done < <(on_machine -cmd match -print0 -filter file -base "${YADM_DIR}" '%o_bootstrap')
 
 declare -rx PYTHON_PACKAGE_LIST="${PACKAGE_DIR}/python3_packages.txt"
-declare -rx SCIPYTHON_PACKAGE_LIST="${PACKAGE_DIR}/scientific_python.txt" # probably don't have to install on android
 declare -rx PIPX_PACKAGE_LIST="${PACKAGE_DIR}/pipx_packages.txt"
 declare -rx GLOBAL_GEM_LIST="${PACKAGE_DIR}/ruby_packages.txt"
 declare -rx NPM_PACKAGE_LIST="${PACKAGE_DIR}/npm_packages.txt"
 declare -rx COMPUTER_NPM_PACKAGE_LIST="${PACKAGE_DIR}/computer_npm_packages.txt"
-declare -rx DART_PACKAGE_LIST="${PACKAGE_DIR}/dart_packages.txt"
-declare -rx CARGO_PACKAGE_LIST="${PACKAGE_DIR}/cargo_packages.txt"
-declare -rx GO_PACKAGE_LIST="${PACKAGE_DIR}/go_packages.txt"
-declare -rx HASKELL_PACKAGE_LIST="${PACKAGE_DIR}/haskell_packages.txt"
-declare -rx MIX_PACKAGE_LIST="${PACKAGE_DIR}/mix_archive_packages.txt"
 declare -rx BASH_PACKAGE_LIST="${PACKAGE_DIR}/bash_packages.txt"
-declare -rx GH_PACKAGE_LIST="${PACKAGE_DIR}/gh_extension_packages.txt"
 
 # make sure personal aliases file exists so that zshrc souces fine
 [[ ! -f "${ZDOTDIR}/aliases/personal_aliases" ]] && touch "${ZDOTDIR}/aliases/personal_aliases"
@@ -162,12 +146,11 @@ done < <(spkglist "${PIPX_PACKAGE_LIST}")
 # tab completion nicer
 HAVECMD_REPORT='' havecmd speedtest-cli && rm "$(command -v speedtest-cli)"
 
-case "$ON_OS" in
-android*) ;;
-*)
+# stuff to install on computers (linux/mac/windows), but not on android
+[[ "$ON_OS" =~ ^android.* ]] || {
+	printf 'Executing %s\n' "${YADM_DIR}/computer_bootstrap"
 	bash "${YADM_DIR}/computer_bootstrap" || exit $?
-	;;
-esac
+}
 
 npm_install_from_pkg_list() {
 	local npm_installed="$1"
@@ -214,7 +197,6 @@ havecmd "wait-for-internet" || cargo install --git "https://github.com/seanbreck
 
 # use bpkg to automate make installs
 havecmd bpkg || curl -Lo- "https://raw.githubusercontent.com/bpkg/bpkg/master/setup.sh" | bash
-
 havecmd bpkg || exit $?
 
 set -e
