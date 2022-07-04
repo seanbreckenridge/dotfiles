@@ -110,9 +110,6 @@ alias d="kitty +kitten diff"
 # background jobs
 alias sctl='super --ctl'
 alias slogs='super --logs'
-describe-evry-json() {
-	jq -r '.[] | select((.type == "tag_name") or .type == "till_next_pretty") | .body' | paste -d " " - - | sed -e 's/ / - /'
-}
 
 # shorthands to edit files
 alias td='editor "$TODO_DIR"/todo.txt'     # todos

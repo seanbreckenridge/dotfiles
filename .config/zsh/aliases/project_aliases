@@ -136,10 +136,7 @@ job-reset() {
 	cd -
 }
 # https://github.com/seanbreckenridge/bgproc
-rj() {
-	bgproc_on_machine -qo "$@"
-	EVRY_JSON=1 bgproc_on_machine -qo "$@" | describe-evry-json
-}
+alias rj='bgproc_on_machine -p'
 
 # search for cubing competitions near me
 # https://sean.fish/d/wca-comps?dark
