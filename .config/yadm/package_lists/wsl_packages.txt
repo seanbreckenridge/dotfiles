@@ -16,3 +16,4 @@ wget
 unar
 software-properties-common
 todotxt-cli
+gcc

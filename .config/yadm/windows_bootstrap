@@ -44,7 +44,8 @@ havecmd go || {
 	tar -xvf './go.tar.gz'
 	sudo mv go /usr/local
 }
-havecmd go || ln /usr/local/go/bin/go go
+mkdir -p ~/.local/bin
+havecmd go || ln /usr/local/go/bin/go ~/.local/bin
 install_go_cmds
 set +e
 
