@@ -3,7 +3,7 @@
 # Uses my 'evry' tool to handle how often to run tasks:
 # https://github.com/seanbreckenridge/evry
 
-wait-for-internet
+wait-for-internet --quiet
 
 # make sure commands exist
 export HAVECMD_REPORT=1

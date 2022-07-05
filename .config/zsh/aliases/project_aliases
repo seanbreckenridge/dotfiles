@@ -135,6 +135,9 @@ job-reset() {
 	done
 	cd -
 }
+describe-evry-json() {
+	jq -r '.[] | select((.type == "tag_name") or .type == "till_next_pretty") | .body' | paste -d " " - - | sed -e 's/ / - /'
+}
 # https://github.com/seanbreckenridge/bgproc
 alias rj='bgproc_on_machine -p'
 
