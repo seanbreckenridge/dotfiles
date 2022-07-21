@@ -15,3 +15,34 @@ allow_mpv_prefixes: set[str] = {
     "/home/sean/Downloads/Sort/",
     "/Users/sean/Music",
 }
+
+from typing import Iterator, Callable, TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from my_feed.sources.model import FeedItem
+
+
+def sources() -> Iterator[Callable[[], Iterator["FeedItem"]]]:
+    from my_feed.sources import games
+
+    yield games.steam
+    yield games.osrs
+    yield games.game_center
+    yield games.grouvee
+    yield games.chess
+
+    from my_feed.sources import (
+        trakt,
+        listens,
+        nextalbums,
+        mal,
+        mpv,
+        facebook_spotify_listens,
+    )
+
+    yield trakt.history
+    yield listens.history
+    yield nextalbums.history
+    yield mal.history
+    yield mpv.history
+    yield facebook_spotify_listens.history
