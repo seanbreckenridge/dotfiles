@@ -6,7 +6,7 @@
 
 # incase it needs to prompt me for something, skip that
 # feed item for now -- I run this in
-# https://sean.fish/d/housekeeping-info?dark as well,
+# https://sean.fish/d/housekeeping?dark as well,
 # so it'll prompt me when I next do that
 export MY_FEED_BG=1
 
