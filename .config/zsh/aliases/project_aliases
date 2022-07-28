@@ -139,7 +139,7 @@ describe-evry-json() {
 	jq -r '.[] | select((.type == "tag_name") or .type == "till_next_pretty") | .body' | paste -d " " - - | sed -e 's/ / - /'
 }
 # https://github.com/seanbreckenridge/bgproc
-alias rj='bgproc_on_machine -p'
+alias rj='bgproc_on_machine -pn'
 
 # search for cubing competitions near me
 # https://sean.fish/d/wca-comps?dark
