@@ -248,6 +248,9 @@ class mpv:
 
         export_path: Paths = data("mpv/*.json")
 
+        # amount of song I should have listened to to qualify it as a listen (e.g. 0.5, 0.75)
+        require_percent = 0.5
+
 
 live_dbs: List[Path] = []
 try:
