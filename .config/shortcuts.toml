@@ -798,3 +798,6 @@ command='''
 SREMINDERS="$(sreminders)"
 notify "${SREMINDERS:-No sreminders}"
 '''
+
+[average]
+command = 'exec datamash mean 1'
