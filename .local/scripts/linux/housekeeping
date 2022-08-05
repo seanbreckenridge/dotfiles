@@ -45,7 +45,10 @@ evry 6 hours -google-drive && {
 	# if theres a new google takeout, unzip it
 	# https://github.com/seanbreckenridge/google_takeout_parser
 	# script from https://github.com/seanbreckenridge/HPI-personal
-	unzip_google_takeout "${HOME}/GoogleDrive/Takeout" && drive push
+	TAKEOUT_DIR="${HOME}/GoogleDrive/Takeout"
+	unzip_google_takeout "$TAKEOUT_DIR" && drive push
+	# remove takeout dir (only works if directory is empty)
+	[[ -e "$TAKEOUT_DIR" ]] && rmdir "${TAKEOUT_DIR}"
 }
 
 # https://github.com/seanbreckenridge/grouvee_export
@@ -84,7 +87,7 @@ bash "${HPIDATA}/malexport.job"
 # https://github.com/seanbreckenridge/my_feed
 # once a week, re-index to update any scores/metadata I've updated
 if evry 1 week -my-feed-re-index; then
-	"${REPOS}/my_feed/index" -r
+	FEED_REINDEX=1 "${REPOS}/my_feed/index"
 else
 	# if we didn't just re-index, do a regular index
 	evry 1 day -my-feed-index && "${REPOS}/my_feed/index"
