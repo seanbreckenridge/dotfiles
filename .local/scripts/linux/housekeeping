@@ -46,7 +46,7 @@ evry 6 hours -google-drive && {
 	# https://github.com/seanbreckenridge/google_takeout_parser
 	# script from https://github.com/seanbreckenridge/HPI-personal
 	TAKEOUT_DIR="${HOME}/GoogleDrive/Takeout"
-	unzip_google_takeout "$TAKEOUT_DIR" && drive push
+	[[ -e "$TAKEOUT_DIR" ]] && unzip_google_takeout "$TAKEOUT_DIR" && drive push
 	# remove takeout dir (only works if directory is empty)
 	[[ -e "$TAKEOUT_DIR" ]] && rmdir "${TAKEOUT_DIR}"
 }
