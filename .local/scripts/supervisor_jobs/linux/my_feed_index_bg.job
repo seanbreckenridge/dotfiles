@@ -24,4 +24,8 @@ evry 1 hours -my-feed-index-bg && {
 
 	printlog 'bg-feed-index:running my_feed index...'
 	"${REPOS}/my_feed/index" || send-error 'Error updating my_feed'
+
 }
+
+# check scrobbles every 5 minutes and push updates
+evry 5 minutes -my-feed-live-update && feed_live_update --listenbrainz-username seanbreckenridge --remote-base 'https://sean.fish/feed_api/data/'
