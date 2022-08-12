@@ -2,7 +2,7 @@
 
 case "${BLOCK_BUTTON}" in
 1)
-	notify "$(sreminders)"
+	sreminders-notify
 	;;
 esac
 
