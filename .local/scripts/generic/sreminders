@@ -15,14 +15,7 @@
 # this makes these reminders less obstrusive since I don't have to
 # feel like I have to do it when some notify-send is sent, but it still
 # reminds me to do things since the number sits there while I haven't
-#
-# any additional arguments are assumed to be additional sreminder
-# directories which include scripts. Can also create an array in
-# ~/.config/sreminder.conf (a bash script) which includes a line like:
-# export ADDITIONAL_SREMINDER_DIRS=("/path/to/more/sreminder/dirs" "/another/path")
 
-DEFAULT_SREMINDER_DIR="${HOME}/.local/scripts/sreminders"
-SREMINDER_CONFIG="${HOME}/.config/sreminder.conf"
 declare -a DIRS
 DIRS=()
 
@@ -32,29 +25,19 @@ find_execs() {
 	done
 }
 
-add_dir_if_exists() {
-	[[ -d "${1}" ]] && DIRS+=("$1")
-}
-
-# add all possible sreminder script directories
-iter_dirs() {
-	add_dir_if_exists "${DEFAULT_SREMINDER_DIR}"
-	# process args which contain additional directories
-	for arg in "$@"; do
-		add_dir_if_exists "${arg}"
-	done
-	# process config file which may additional directories
-	# shellcheck disable=SC1090
-	[[ -e "${SREMINDER_CONFIG}" ]] && source "${SREMINDER_CONFIG}"
-	if [[ -n "${ADDITIONAL_SREMINDER_DIRS[*]}" ]]; then
-		for arg in "${ADDITIONAL_SREMINDER_DIRS[@]}"; do
-			add_dir_if_exists "${arg}"
-		done
+split_sreminders_path() {
+	if [[ -z "$SREMINDERS_PATH" ]]; then
+		echo 'The SREMINDERS_PATH environment variable is not set. That should contain a colon-delimited list of directories which contain sreminder jobs. E.g., in your shell profile, set:' >&2
+		# shellcheck disable=SC2016
+		echo 'export SREMINDERS_PATH="${HOME}/.local/sreminders:${HOME}/data/sreminders"'
+		return 1
 	fi
+	IFS=: read -r -a DIRS <<<"$SREMINDERS_PATH"
+	unset IFS
 }
 
 main() {
-	iter_dirs "$@"
+	split_sreminders_path
 	while read -r -d $'\0' script; do
 		"${script}"
 		if (($? == 2)); then
