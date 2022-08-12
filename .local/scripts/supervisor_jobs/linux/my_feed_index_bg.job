@@ -27,5 +27,5 @@ evry 1 hours -my-feed-index-bg && {
 
 }
 
-# check scrobbles every 5 minutes and push updates
-evry 5 minutes -my-feed-live-update && feed_live_update --listenbrainz-username seanbreckenridge --remote-base 'https://sean.fish/feed_api/data/'
+# check scrobbles every 10 minutes and push updates
+evry 10 minutes -my-feed-live-update && feed_live_update --listenbrainz-username seanbreckenridge --remote-base 'https://sean.fish/feed_api/data/'
