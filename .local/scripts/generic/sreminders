@@ -1,20 +1,20 @@
 #!/usr/bin/env bash
 # 'sourced reminders'
 #
-# Instead of reminding me every 'n' duration to do something, this
-# uses local data to check if I've done it within that duration
-#
-# This works by calling a bunch of other scripts which return
-# a zero exit code if I've done the thing within the expected
-# duration, else exits with exit code '2'
-#
-# number of scripts which have expired gets displayed in my menu bar,
-# and if I click it it sends a notification with the script name,
-# which lets me know what I have left to do
-#
-# this makes these reminders less obstrusive since I don't have to
-# feel like I have to do it when some notify-send is sent, but it still
-# reminds me to do things since the number sits there while I haven't
+usage="Instead of reminding me every 'n' duration to do something, this
+uses local data to check if I've done it within that duration
+
+This works by calling a bunch of other executables which return
+a zero exit code if I've done the thing within the expected
+duration, else exits with exit code '2'
+
+number of scripts which have expired gets displayed in my menu bar,
+and if I click it it sends a notification with the script name,
+which lets me know what I have left to do
+
+this makes these reminders less obstrusive since I don't have to
+feel like I have to do it when some notify-send is sent, but it still
+reminds me to do things since the number sits there while I haven't"
 
 declare -a DIRS
 DIRS=()
@@ -36,14 +36,50 @@ split_sreminders_path() {
 	unset IFS
 }
 
+run_scripts() {
+	case "$1" in
+	count)
+		run_scripts run | wc -l
+		;;
+	esac
+	find_execs | while read -r -d $'\0' script; do
+		case "$1" in
+		list)
+			echo "$script"
+			;;
+		run)
+			"${script}"
+			if (($? == 2)); then
+				basename "${script}"
+			fi
+			;;
+		esac
+	done
+
+}
+
 main() {
+	local action='run'
+	while getopts 'lhc' opt; do
+		case "${opt}" in
+		l)
+			action='list'
+			;;
+		c)
+			action='count'
+			;;
+		h)
+			printf "Usage: sreminders [-h] [-lc]\n"
+			printf "	-l		List scripts which would be run\n"
+			printf "	-c		Print number of sreminders\n"
+			printf '\n%s\n' "$usage"
+			exit 0
+			;;
+		*) ;;
+		esac
+	done
 	split_sreminders_path
-	while read -r -d $'\0' script; do
-		"${script}"
-		if (($? == 2)); then
-			basename "${script}"
-		fi
-	done < <(find_execs)
+	run_scripts "$action"
 }
 
 main "$@"
