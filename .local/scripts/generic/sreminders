@@ -21,7 +21,7 @@ DIRS=()
 
 find_execs() {
 	for d in "${DIRS[@]}"; do
-		find -L "${d}" -type f -executable -print0
+		find -L "${d}" -type f '(' -executable -o -name '*.enabled' ')' -print0
 	done
 }
 
@@ -37,6 +37,7 @@ split_sreminders_path() {
 }
 
 run_scripts() {
+	local name
 	case "$1" in
 	count)
 		run_scripts run | wc -l
@@ -48,9 +49,12 @@ run_scripts() {
 			echo "$script"
 			;;
 		run)
+			# make executable incase it isnt
+			[[ -x "$script" ]] || chmod +x "$script"
 			"${script}"
 			if (($? == 2)); then
-				basename "${script}"
+				name="$(basename "${script}")"
+				echo "${name%%.*}"
 			fi
 			;;
 		esac
