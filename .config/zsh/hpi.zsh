@@ -28,8 +28,6 @@ feed_update_partials() {
 		rm -vf "$(evry location -"$tag")"
 	done
 	bgproc_on_machine -oq
-	# update export and 5 recent history items
-	malexport update export -u "$MAL_USERNAME"
-	MALEXPORT_EPISODE_LIMIT=0 malexport update history -u $MAL_USERNAME -o anime -c "${1:-5}"
+	malexport_partial_update "$@"
 	housekeeping
 }

@@ -84,6 +84,8 @@ evry 1 month -discord_download_attachments && discord_download_attachments
 # run malexport update https://github.com/seanbreckenridge/malexport/
 bash "${HPIDATA}/malexport.job"
 
+evry 3 hours -malexport_partial_update && malexport_partial_update
+
 # https://github.com/seanbreckenridge/my_feed
 # once a week, re-index to update any scores/metadata I've updated
 if evry 1 week -my-feed-re-index; then
