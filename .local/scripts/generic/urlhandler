@@ -15,7 +15,8 @@ if [ -z "${urls}" ]; then
 	exit 1
 fi
 
-chosen_url="$(echo "${urls}" | picker -p 'Pick a URL to open > ')"
+chosen_url="$urls"
+[ "$(echo "$urls" | wc -l)" = "1" ] || chosen_url="$(echo "${urls}" | picker -p 'Pick a URL to open > ')"
 if [ -n "${chosen_url}" ]; then
 	echo "${chosen_url}" | clipcopy
 	openurl "${chosen_url}"
