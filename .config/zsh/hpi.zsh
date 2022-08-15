@@ -24,10 +24,10 @@ sync_hpi_config() {
 feed_update_partials() {
 	for tag in \
 		backup_albums \
+		malexport_partial_update \
 		my-feed-index; do
 		rm -vf "$(evry location -"$tag")"
 	done
 	bgproc_on_machine -oq
-	malexport_partial_update "$@"
 	housekeeping
 }
