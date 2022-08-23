@@ -176,6 +176,7 @@ __pycache__
 /.thunderbird
 /.tool-versions
 /.tor-browser
+/.local/opt/tor-browser
 /.tox
 /.var
 /.vim

@@ -49,9 +49,12 @@ run_scripts() {
 			echo "$script"
 			;;
 		run)
-			# make executable incase it isnt
-			[[ -x "$script" ]] || chmod +x "$script"
-			"${script}"
+			# workaround for running scripts in linked directories
+			if hash run-script; then
+				run-script "${script}"
+			else
+				"${script}"
+			fi
 			if (($? == 2)); then
 				name="$(basename "${script}")"
 				echo "${name%%.*}"

@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+# workaround to handle running scripts in linked directories
+
+SCRIPT="${1?:Pass script as first argument}"
+JSON="$(rifleman -j -a run "$SCRIPT")" || exit $?
+CMD="$(jq <<<"$JSON" 'keys[]' -r)"
+
+case "$CMD" in
+'python3 '*)
+	exec python3 "$SCRIPT"
+	;;
+'bash '*)
+	exec bash "$SCRIPT"
+	;;
+'zsh '*)
+	exec zsh "$SCRIPT"
+	;;
+'sh '*)
+	exec sh "$SCRIPT"
+	;;
+*)
+	printf 'Dont know how to run %s\n' "$CMD" >&2
+	exit 1
+	;;
+esac
