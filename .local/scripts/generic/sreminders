@@ -50,6 +50,7 @@ run_scripts() {
 			;;
 		run)
 			# workaround for running scripts in linked directories
+			# https://sean.fish/d/run-script?dark
 			if hash run-script; then
 				run-script "${script}"
 			else

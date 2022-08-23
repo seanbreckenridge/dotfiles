@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 # workaround to handle running scripts in linked directories
+# uses https://github.com/seanbreckenridge/rifleman to detect script type
 
 SCRIPT="${1?:Pass script as first argument}"
 JSON="$(rifleman -j -a run "$SCRIPT")" || exit $?
