@@ -16,7 +16,10 @@ import pyperclip
 def url_filename(url: str) -> str:
     # get the basename of the path of the URL
     # ignoring any params/query/fragment
-    return os.path.basename(urlparse(url).path)
+    f = os.path.basename(urlparse(url).path)
+    if f.strip():
+        return f
+    return "image"
 
 
 def main() -> None:
