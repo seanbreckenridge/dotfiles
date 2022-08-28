@@ -14,8 +14,6 @@ for binary in "${required_binaries[@]}"; do
 	havecmd "${binary}" || exit $?
 done
 
-evry 1 day -check-music-extensions && check-music-extensions
-
 # approve guestbook comments on https://github.com/seanbreckenridge/glue
 APPROVE_SCRIPT="${REPOS}/vps/approve_comments"
 if [[ -r "${APPROVE_SCRIPT}" ]]; then
@@ -60,6 +58,13 @@ evry 2 months -twitch_cli && twitch token
 
 # update https://github.com/seanbreckenridge/mnu_gsheets
 evry 5 days -mnu && ssh vultr ~/vps/mnu
+
+# make sure all my music is mp3s
+evry 1 day -check-music-extensions && check-music-extensions
+
+# make sure none of my playlist paths are broken
+# https://github.com/seanbreckenridge/plaintext-playlist
+evry 1 day -plainplay-resolve && plainplay resolve
 
 # fix broken ID3 metadata on my music
 # https://github.com/seanbreckenridge/plaintext_playlist_py
