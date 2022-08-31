@@ -44,7 +44,7 @@ def filter_exists(pths: List[PathIsh]) -> List[Path]:
 
 # if the HPIDATA environment variable is set (which points to my data)
 # use that. Else, just default to ~/data
-PREFIX: Path = Path(environ.get("HPIDATA", path.join(environ["HOME"], "data")))
+PREFIX: Path = Path(environ.get("HPIDATA", path.expanduser("~/data")))
 
 
 def data(p: PathIsh) -> Path:
@@ -121,8 +121,10 @@ except ImportError:
 
 
 class core:
-    cache_dir: PathIsh = path.join(environ["HOME"], ".cache", "cachew")
-    tmp_dir: PathIsh = path.join(tempfile.gettempdir(), "HPI-tempdir")
+    cache_dir: PathIsh = path.expanduser("~/.cache/cachew")
+    tmp_dir: PathIsh = environ.get(
+        "HPI_TEMPDIR", path.join(tempfile.gettempdir(), "HPI-tempdir")
+    )
     enabled_modules: Sequence[str] = []
     disabled_modules: Sequence[str] = tuple(DISABLED_MODULES)
 
@@ -236,8 +238,8 @@ class commits:
     roots: Paths = filter_exists(
         [
             repo(""),
-            Path(environ["HOME"]) / "Documents/OldRepos",
-            Path(environ["HOME"]) / ".local/share/go/src/github.com/seanbreckenridge/",
+            path.expanduser("~/Documents/OldRepos"),
+            path.expanduser("~/.local/share/go/src/github.com/seanbreckenridge/"),
         ]
     )
 
