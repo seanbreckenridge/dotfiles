@@ -84,7 +84,12 @@ evry 2 hours -data-sync-conflicts && {
 	}
 }
 
+# download any discord attachments
 evry 1 month -discord_download_attachments && discord_download_attachments
+
+# remove redundant backups, merge browser history
+evry 2 weeks -bleanser-runall && bleanser-runall
+evry 12 weeks -merge-browser-history && merge-browser-history
 
 # run malexport update https://github.com/seanbreckenridge/malexport/
 bash "${HPIDATA}/malexport.job"

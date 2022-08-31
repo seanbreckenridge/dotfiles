@@ -21,6 +21,7 @@ export REPOS="${HOME}/Repos"
 export PATH="\
 ${XDG_DATA_HOME}/basher/cellar/bin:\
 ${REPOS}/HPI-personal/scripts:\
+${REPOS}/bleanser/bin:\
 ${REPOS}/my_feed/scripts:\
 ${XDG_DATA_HOME}/shortcuts:\
 ${HOME}/.local/bin:\
