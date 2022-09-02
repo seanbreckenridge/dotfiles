@@ -801,3 +801,6 @@ notify "${SREMINDERS:-No sreminders}"
 
 [average]
 command = 'exec datamash mean 1'
+
+[discord-suppress]
+command = "exec sed -e 's/^/</' -e 's/$/>/'"
