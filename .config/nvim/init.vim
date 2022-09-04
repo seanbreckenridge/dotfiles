@@ -38,7 +38,7 @@ Plug 'L3MON4D3/LuaSnip'
 " Plug 'github/copilot.vim'
 Plug 'windwp/nvim-autopairs'
 
-" langauges/syntax/snippets
+" languages/syntax/snippets
 Plug 'fladson/vim-kitty'
 Plug 'sbdchd/neoformat'
 Plug 'jceb/vim-orgmode'

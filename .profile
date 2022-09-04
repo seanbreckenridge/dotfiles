@@ -52,7 +52,7 @@ SCREENSHOTS="${XDG_PICTURES_DIR}/Screenshots"
 if hash on_machine; then
 	ON_OS="$(on_machine)"
 else
-	echo 'Warning: on_machine not avaiable, falling back to manual OS detection...' >&2
+	echo 'Warning: on_machine not available, falling back to manual OS detection...' >&2
 	ON_OS="$(manual_on_os)"
 fi
 export ON_OS

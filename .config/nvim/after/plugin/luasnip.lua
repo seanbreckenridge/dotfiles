@@ -9,7 +9,7 @@ ls.config.set_config {
 
 require("seanbreckenridge.snippets")
 
--- Temporarily prevent this from erroring on older verisons of neovim
+-- Temporarily prevent this from erroring on older versions of neovim
 -- I don't *need* to have snippets on my phone
 if vim.keymap then
     -- <c-k> is my expansion key

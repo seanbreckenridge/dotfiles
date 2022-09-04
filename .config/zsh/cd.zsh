@@ -22,8 +22,8 @@ bindkey '^[l' fzf-cd-widget
 # https://github.com/seanbreckenridge/chomp
 #
 # cd to some directory I use often
-# this generates/orders directores to jump
-# to, primarly using https://github.com/seanbreckenridge/ttt
+# this generates/orders directories to jump
+# to, primarily using https://github.com/seanbreckenridge/ttt
 # and a bunch of other shell tools to cache to speedup
 # load time
 #
