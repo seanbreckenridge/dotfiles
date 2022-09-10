@@ -1,3 +1,0 @@
-SOURCE_DIR=~/.cache
-BACKUP_DIR="${HPIDATA}/rofi_cache"
-COPY_FILES="rofi-3.runcache"
