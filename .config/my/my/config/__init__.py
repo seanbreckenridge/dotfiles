@@ -201,7 +201,7 @@ class reddit:
 
 # parses my zsh history and any backups
 class zsh:
-    export_path: Paths = data("zsh_history")
+    export_path: Paths = (data("zsh_history"), data("zsh_history_old"))
     live_file: Optional[PathIsh] = if_exists(
         path.join(environ["ZDOTDIR"], ".zsh_history")
     )
