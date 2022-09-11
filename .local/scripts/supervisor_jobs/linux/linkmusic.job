@@ -3,4 +3,4 @@
 # https://github.com/seanbreckenridge/plaintext-playlist
 # https://sean.fish/d/linkmusic?dark
 
-evry 1 hour -linkmusic && linkmusic ~/.local/share/musicsync/ --delete
+evry 30 minutes -linkmusic && linkmusic ~/.local/share/musicsync/ --delete
