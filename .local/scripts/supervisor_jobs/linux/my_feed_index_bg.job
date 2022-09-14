@@ -14,9 +14,6 @@ wait-for-internet -q --timeout 10 || exit 0
 
 evry 1 hours -my-feed-index-bg && {
 
-	# warm tz cache incase its expired
-	hpi doctor -S my.time.tz.via_location
-
 	# source personal shell files, to include
 	# tokens/envvars that may be required
 	source "$HPIDATA/personal_aliases" 2>/dev/null
