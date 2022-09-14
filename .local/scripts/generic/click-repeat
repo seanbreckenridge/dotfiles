@@ -12,7 +12,9 @@ def main(sleep_time: int) -> None:
     """
     clicks the mouse (cross-platform) every few seconds
     """
-    click.echo(f"Clicking the mouse every {sleep_time} seconds...")
+    click.echo(
+        f"Clicking the mouse every {sleep_time} second{'s' if sleep_time != 1 else ''}..."
+    )
     while True:
         pyautogui.click()
         time.sleep(sleep_time)
