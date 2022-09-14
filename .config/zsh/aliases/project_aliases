@@ -130,7 +130,7 @@ job-reset() {
 	local EVRY_DATA_DIR
 	EVRY_DATA_DIR="$(evry location - 2>/dev/null)"
 	cd "${EVRY_DATA_DIR}"
-	fzf -m | while read -r tag; do
+	fzf -q "$*" -m | while read -r tag; do
 		rm -v "${tag}"
 	done
 	cd -
