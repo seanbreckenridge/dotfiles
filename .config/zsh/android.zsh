@@ -16,6 +16,7 @@ syncfiles() {
 		backup_images; do
 		rm -f "$(evry location -"$tag")"
 	done
+	sync_hpi_config
 	bgproc_on_machine -onq
 }
 alias sf=syncfiles
