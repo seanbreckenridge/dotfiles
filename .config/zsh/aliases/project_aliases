@@ -140,6 +140,12 @@ describe-evry-json() {
 }
 # https://github.com/seanbreckenridge/bgproc
 alias rj='bgproc_on_machine -pn'
+# reset a job with job-reset, then run all jobs
+run-job() {
+	job-reset "$@"
+	bgproc_on_machine -on
+	housekeeping
+}
 
 # search for cubing competitions near me
 # https://sean.fish/d/wca-comps?dark
