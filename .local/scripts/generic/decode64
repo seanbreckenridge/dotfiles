@@ -11,6 +11,7 @@ If SUBSTR is a number, will decode HASH that many times
 import base64
 import docopt
 
+assert __doc__ is not None
 args = docopt.docopt(__doc__)
 hash = args["HASH"]
 
