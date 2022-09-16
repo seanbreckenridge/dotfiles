@@ -9,11 +9,12 @@ from typing import Sequence
 import click
 
 
-def openurl(url: str) -> None:
+def openurl(url: str, wait: int) -> None:
     u = url.strip()
     if not u:
         return
     subprocess.run(shlex.split(f'openurl "{u}"'))
+    time.sleep(wait)
 
 
 @click.command()
@@ -40,10 +41,9 @@ def main(wait: int, link: Sequence[str]) -> None:
     EOF (Ctrl+D), Ctrl+C to quit
     """
 
-    if link:
-        for l in link:
-            openurl(l)
-            time.sleep(wait)
+    for l in link:
+        openurl(l, wait)
+    if len(link) > 0:
         sys.exit(0)
 
     # open anything piped/as input
@@ -51,8 +51,7 @@ def main(wait: int, link: Sequence[str]) -> None:
         try:
             user_input = input()
             for line in user_input.splitlines():
-                openurl(line)
-                time.sleep(wait)
+                openurl(line, wait)
         except (EOFError, KeyboardInterrupt):
             sys.exit(0)
 
