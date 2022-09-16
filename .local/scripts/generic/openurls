@@ -1,34 +1,12 @@
 #!/usr/bin/env python3
 
-"""Usage:
-    openlinks LINKS... [--help]
-    openlinks
-
-Opens URLs in your default browser.
-
-Examples:
-
-    openlinks <<< "https://"
-    openlinks "https://" "http://"
-    echo "https://..." | openlinks
-    cat file_with_links.txt | openlinks
-
-If no links are given when called, i.e.:
-$ openlinks
-
-You can input/paste links; they'll be opened when you hit enter/return
-EOF (Ctrl+D), Ctrl+C to quit
-"""
-
 import sys
-import re
+import time
 import shlex
 import subprocess
+from typing import Sequence
 
-import docopt
-
-assert __doc__ is not None
-docopt.docopt(__doc__)
+import click
 
 
 def openurl(url: str) -> None:
@@ -38,18 +16,46 @@ def openurl(url: str) -> None:
     subprocess.run(shlex.split(f'openurl "{u}"'))
 
 
-# open anything given as a command line argument
-links = re.findall(r"(https?://\S+)", " ".join(sys.argv).strip())
-if links:
-    for link in links:
-        openurl(link)
-    sys.exit(0)
+@click.command()
+@click.option(
+    "-w", "--wait", default=0, type=int, help="Wait time between opening urls"
+)
+@click.argument("LINK", nargs=-1, required=False)
+def main(wait: int, link: Sequence[str]) -> None:
+    """
+    uses my underlying openurl script
 
-# open anything piped/as input
-while True:
-    try:
-        user_input = input()
-        for line in user_input.splitlines():
-            openurl(line)
-    except (EOFError, KeyboardInterrupt):
+    Examples:
+
+    \b
+    openlinks <<< "https://"
+    openlinks "https://" "http://"
+    echo "https://..." | openlinks
+    cat file_with_links.txt | openlinks
+
+    If no links are given when called, i.e.:
+    $ openlinks
+
+    You can input/paste links; they'll be opened when you hit enter/return
+    EOF (Ctrl+D), Ctrl+C to quit
+    """
+
+    if link:
+        for l in link:
+            openurl(l)
+            time.sleep(wait)
         sys.exit(0)
+
+    # open anything piped/as input
+    while True:
+        try:
+            user_input = input()
+            for line in user_input.splitlines():
+                openurl(line)
+                time.sleep(wait)
+        except (EOFError, KeyboardInterrupt):
+            sys.exit(0)
+
+
+if __name__ == "__main__":
+    main()
