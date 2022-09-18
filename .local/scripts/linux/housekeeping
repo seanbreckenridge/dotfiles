@@ -94,7 +94,7 @@ evry 12 weeks -merge-browser-history && merge-browser-history
 # run malexport update https://github.com/seanbreckenridge/malexport/
 bash "${HPIDATA}/malexport.job"
 
-evry 3 hours -malexport_partial_update && malexport_partial_update
+evry 6 hours -malexport_partial_update && malexport_partial_update
 
 # https://github.com/seanbreckenridge/my_feed
 # once a week, re-index to update any scores/metadata I've updated
