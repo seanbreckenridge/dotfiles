@@ -132,7 +132,7 @@ job-reset() {
 	cd "${data_dir}" || return $?
 	tags="$(fzf -q "$*" -m)" || {
 		cd -
-		return $?
+		return 1
 	}
 	while read -r tag; do
 		rm -v "${tag}"
