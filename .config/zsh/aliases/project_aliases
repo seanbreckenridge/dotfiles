@@ -127,12 +127,16 @@ alias optimg='rifleman -a image'
 # https://github.com/seanbreckenridge/evry
 # reset a job (remove the tag file) for an evry job
 job-reset() {
-	local EVRY_DATA_DIR
-	EVRY_DATA_DIR="$(evry location - 2>/dev/null)"
-	cd "${EVRY_DATA_DIR}"
-	fzf -q "$*" -m | while read -r tag; do
+	local data_dir tags
+	data_dir="$(evry location - 2>/dev/null)"
+	cd "${data_dir}" || return $?
+	tags="$(fzf -q "$*" -m)" || {
+		cd -
+		return $?
+	}
+	while read -r tag; do
 		rm -v "${tag}"
-	done
+	done <<<"$tags"
 	cd -
 }
 describe-evry-json() {
