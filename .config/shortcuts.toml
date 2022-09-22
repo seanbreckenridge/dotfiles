@@ -151,7 +151,7 @@ fd --type f | sed -e 's|\.\/||' | grep -iEv "\.(gif|accurip|jpg|png|cue|log|m3u|
 
 [list-videos]
 command='''
-fd '.*(mp4|avi|mov|vob|flv|mkv|webm)$' "$@"
+fd '.*(mp4|avi|mov|vob|flv|mkv|webm|unknown_video)$' "$@"
 '''
 link = 'list-movies'
 
