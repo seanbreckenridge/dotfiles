@@ -4,4 +4,4 @@
 set -e
 
 TOTAL_SECS="$(mduration "$@" | cut -d's' -f1 | datamash sum 1)"
-exec frinkconv "${TOTAL_SECS}sec -> min"
+echo "$((TOTAL_SECS / 60))"
