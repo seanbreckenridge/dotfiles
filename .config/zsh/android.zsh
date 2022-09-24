@@ -33,4 +33,5 @@ export CARGO_BUILD_TARGET=aarch64-linux-android
 export SODIUM_INSTALL=system
 
 alias dcim='R ~/storage/dcim/Camera'
+alias d=dcim
 alias sd='sf; dcim'
