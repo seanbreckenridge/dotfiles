@@ -16,6 +16,6 @@ source "${ALIAS_DIR}/git_aliases"     # Git aliases (from oh-my-zsh)
 source "${ALIAS_DIR}/project_aliases" # Aliases for my own projects
 source "${ALIAS_DIR}/lang_aliases"    # language/programming aliases
 # Personal Aliases (e.g. ssh to servers)
-SQ=1 source_if_exists "${ALIAS_DIR}/personal_aliases" || SQ=1 source_if_exists "${HPIDATA}/personal_aliases"
+source_if_exists "${HPIDATA}/personal_aliases"
 # Tokens for interacting with APIs etc
-SQ=1 source_if_exists "${ALIAS_DIR}/tokens" || SQ=1 source_if_exists "${HPIDATA}/tokens"
+source_if_exists "${HPIDATA}/tokens"
