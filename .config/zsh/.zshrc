@@ -1,4 +1,30 @@
 #!/bin/zsh
+
+# helper to optionally source files
+# if -q is passed as an option, this doesnt complain if the file isnt readable
+# otherwise, this warns
+source_if_exists() {
+	local quiet
+	quiet=0
+	while getopts 'q' opt; do
+		case "$opt" in
+		q)
+			quiet=1
+			;;
+		*) ;;
+		esac
+	done
+	shift "$((OPTIND - 1))"
+	if [[ -r "$1" ]]; then
+		source "$1"
+	else
+		if ! ((quiet)); then
+			printf "Could not source %s\n" "$1"
+			return 1
+		fi
+	fi
+}
+
 # source each zsh config file
 # source zsh config
 source "${ZDOTDIR}/env_config.zsh"              # History/Application configuration
@@ -10,15 +36,6 @@ source "${ZDOTDIR}/lazy.zsh"                    # lazy load shell tools
 source "${ZDOTDIR}/progressive_enhancement.zsh" # slightly improve commands
 source "${ZDOTDIR}/updates.zsh"                 # update globally installed lang-specific packages
 source "${ZDOTDIR}/hpi.zsh"                     # handle syncing hpi config
-
-source_if_exists() {
-	if [[ -r "$1" ]]; then
-		source "$1"
-	else
-		[[ -z "$SQ" ]] && printf "Could not source %s\n" "$1"
-		return 1
-	fi
-}
 
 # source all aliases
 source "${ZDOTDIR}/source_aliases.zsh"
