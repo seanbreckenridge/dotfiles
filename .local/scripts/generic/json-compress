@@ -1,0 +1,53 @@
+#!/usr/bin/env python3
+
+import sys
+from typing import Sequence, Any
+from collections import defaultdict
+
+import click
+import orjson
+
+from pathlib import Path
+import click
+
+
+@click.command()
+@click.argument(
+    "PATH",
+    nargs=-1,
+    type=click.Path(allow_dash=True, path_type=Path),
+    required=True,
+)
+def main(path: Sequence[Path]) -> None:
+    """
+    pass files to compress, or '-' from STDIN
+    """
+    data: Any
+    print_sizes: bool = "-" not in {str(p) for p in path}
+    sizes: dict[Path, list[int]] = defaultdict(list)
+    for p in path:
+        if str(p) == "-":
+            data = sys.stdin.read()
+        else:
+            data = p.read_text()
+            sizes[p].append(p.stat().st_size)
+        data = orjson.loads(data)
+        compressed: bytes = orjson.dumps(data)
+        if str(p) == "-":
+            click.echo(compressed.decode("utf-8"))
+        else:
+            with open(p, "wb") as f:
+                f.write(compressed)
+            sizes[p].append(p.stat().st_size)
+            if print_sizes:
+                before = sizes[p][0]
+                after = sizes[p][1]
+                diff = before - after
+                if diff == 0:
+                    print(f"{p} size remained the same")
+                else:
+                    print(f"{p} reduced by {round(diff / before * 100, 4)}%")
+
+
+if __name__ == "__main__":
+    main()
