@@ -161,6 +161,7 @@ pastel
 patch
 perl-image-exiftool
 pkgfile
+primesieve
 pulsemixer
 pup
 qrencode

@@ -804,3 +804,6 @@ command = 'exec datamash mean 1'
 
 [discord-suppress]
 command = "exec sed -e 's/^/</' -e 's/$/>/'"
+
+[primes]
+command = 'exec primesieve "$@" -p'
