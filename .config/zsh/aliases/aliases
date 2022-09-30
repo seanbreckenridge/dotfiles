@@ -75,8 +75,6 @@ alias sz='mystarsfzf'
 alias sr='sreminders'
 alias nr='neomuttr'
 alias urban='udict'
-# nsxiv full screen image, fit full width
-alias nsxfull='nsxiv -s f -f'
 alias calc='eva' # https://github.com/NerdyPepper/eva
 alias 'countdown=termdown'
 # shorthand for copying to clipboard
@@ -88,21 +86,6 @@ alias 'timer=countdown'
 alias 'ml=mailsync-loop'
 alias 'confirm=fzf -m'
 alias 'up=TERM=xterm up'
-
-# linux
-alias reboot='sudo systemctl reboot'
-alias poweroff='sudo systemctl poweroff'
-alias halt='sudo systemctl halt'
-alias shutdown='poweroff'
-# Non-standard
-alias syserrors='sudo journalctl -p 3 -xb'
-alias sysderrors='sudo systemctl --failed'
-# remove packages that arent being used for anything
-alias list-orphans='pacman -Qtdq'
-alias remove-orphans='sudo pacman -Rns $(list-orphans)'
-# clear yay tar.gz cache
-alias yay-clear-cache='yay -Syu && yay -Sc'
-alias rnm='sudo systemctl restart NetworkManager' # restart networkmanager
 
 # kitty
 alias d="kitty +kitten diff"

@@ -1,7 +1,0 @@
-#!/bin/zsh
-
-housekeeping-info() {
-	housekeeping
-	housekeeping
-	EVRY_JSON=1 housekeeping | describe-evry-json
-}

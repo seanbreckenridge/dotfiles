@@ -57,6 +57,7 @@ linux*)
 	asdf-enable() {
 		source_if_exists /opt/asdf-vm/asdf.sh
 	}
+	source "${ZDOTDIR}/linux.zsh"
 	;;
 mac*)
 	# Setup fzf

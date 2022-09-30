@@ -144,7 +144,6 @@ describe-evry-json() {
 }
 # https://github.com/seanbreckenridge/bgproc
 alias rj='bgproc_on_machine -pn'
-alias hi='housekeeping-info'
 # reset a job with job-reset, then run all jobs
 run-job() {
 	job-reset "$@" || return $?
