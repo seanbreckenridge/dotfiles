@@ -36,6 +36,10 @@ alias 'discogs-update=nextalbums discogs-update'
 source_if_exists "${REPOS}/HPI/scripts/functions.sh"
 source_if_exists "${REPOS}/HPI-personal/scripts/functions.sh"
 source_if_exists "${REPOS}/my_feed/scripts/functions.sh"
+# https://github.com/seanbreckenridge/HPI-personal
+wq() {
+	where-on query "$*" --url
+}
 
 # https://github.com/seanbreckenridge/frinkconv
 conv() {
