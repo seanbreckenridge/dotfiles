@@ -8,7 +8,6 @@ from typing import Sequence, Any
 from collections import defaultdict
 
 import orjson
-
 import click
 
 
