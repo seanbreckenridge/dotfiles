@@ -87,14 +87,10 @@ evry 2 hours -data-sync-conflicts && {
 # download any discord attachments
 evry 1 month -discord_download_attachments && discord_download_attachments
 
-# remove redundant backups, merge browser history
+# remove redundant backups, merge browser/mpv history
 evry 1 week -bleanser-runall && bleanser-runall
-evry 12 weeks -merge-browser-history && merge-browser-history
-
-# not that it should matter, but just to be safe, only run if mpv is not open
-pgrep -x mpv >/dev/null || {
-	evry 1 week -merge-mpv-history && merge-mpv-history
-}
+evry 5 weeks -merge-browser-history && merge-browser-history
+evry 1 week -merge-mpv-history && merge-mpv-history
 
 # run malexport update https://github.com/seanbreckenridge/malexport/
 bash "${HPIDATA}/malexport.job"
