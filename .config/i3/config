@@ -114,9 +114,6 @@ bindsym $mod+r exec --no-startup-id rofi -show run -display-run "run > "
 # rofi switch window menu
 bindsym $mod+Tab exec --no-startup-id rofi -show window -display-window "window > "
 
-# network manager interface
-bindsym $mod+n exec --no-startup-id ttt networkmanager_dmenu
-
 # take a screenshot (select rectangle with cursor)
 bindsym --release Print exec --no-startup-id ttt screenshot
 # take a screenshot of the entire screen
