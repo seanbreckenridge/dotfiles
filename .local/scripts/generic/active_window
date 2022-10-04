@@ -3,20 +3,43 @@
 
 ON_OS="${ON_OS:=$(on_machine)}"
 
-# dont run on windows
-case "$ON_OS" in
-windows*) exit 1 ;;
-*) ;;
-esac
-
-set -e
-set -x
+declare datadir
+datadir="${HOME}/.local/share/window_watcher"
 
 timestamp_filename() {
-	printf '%s/%s_%s.csv' "${HOME}/data/window_watcher" "$(epoch)" "$ON_OS"
+	printf '%s/%s_%s.csv' "${datadir}" "$(epoch)" "$ON_OS"
 }
-# wait for a bit before starting so X server is ready?
-# not sure if this fixes the issue of it not recognizing the window
-sleep 5
 
-exec window_watcher -d "$(timestamp_filename)" -p 5 -i '\(Private Browsing\)'
+run_watcher() {
+	# dont run on windows
+	case "$ON_OS" in
+	windows*) exit 1 ;;
+	*) ;;
+	esac
+
+	set -e
+	set -x
+
+	# wait for a bit before starting so X server is ready?
+	# not sure if this fixes the issue of it not recognizing the window
+	sleep 5
+	mkdir -p "$datadir"
+
+	exec window_watcher -d "$(timestamp_filename)" -p 3 -i '\(Private Browsing\)'
+}
+
+syncfiles() {
+	rsync -Pavh "${datadir}"/ "$(backup_to window_watcher)"
+}
+
+case "$1" in
+run)
+	run_watcher
+	;;
+sync)
+	syncfiles
+	;;
+*)
+	run_watcher
+	;;
+esac
