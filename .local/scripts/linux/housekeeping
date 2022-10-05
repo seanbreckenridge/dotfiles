@@ -88,7 +88,7 @@ evry 2 hours -data-sync-conflicts && {
 evry 1 month -discord_download_attachments && discord_download_attachments
 
 # remove redundant backups, merge browser/mpv history
-evry 1 week -bleanser-runall && bleanser-runall
+evry 1 day -bleanser-runall && bleanser-runall
 evry 5 weeks -merge-browser-history && merge-browser-history
 evry 1 week -merge-mpv-history && merge-mpv-history
 
