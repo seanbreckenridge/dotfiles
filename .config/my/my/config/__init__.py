@@ -10,7 +10,7 @@ import tempfile
 from os import environ, path
 from typing import Optional, Callable, List, Sequence, Union, Tuple, Set
 from pathlib import Path
-from datetime import datetime, date
+from datetime import datetime, date, timedelta
 
 from my.core.common import PathIsh, Paths
 
@@ -489,6 +489,14 @@ class location:
         home = home
     except ImportError:
         pass
+
+    class where_db:
+        accuracy_filter = 300
+        new_point_distance = 75
+        accurate_date_cutoff = date(2020, 10, 15)
+        previous_accurate_for_days = 7
+        new_point_distance = timedelta(hours=2)
+        database_location = "~/data/where_db.json"
 
     class gpslogger:
         """.gpx files from https://github.com/mendhak/gpslogger"""

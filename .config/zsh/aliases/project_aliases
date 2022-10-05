@@ -38,7 +38,7 @@ source_if_exists "${REPOS}/HPI-personal/scripts/functions.sh"
 source_if_exists "${REPOS}/my_feed/scripts/functions.sh"
 # https://github.com/seanbreckenridge/HPI-personal
 wq() {
-	where-on query "$*" --url
+	python3 -m my.location.where_db "$*" --url
 }
 
 # https://github.com/seanbreckenridge/frinkconv
