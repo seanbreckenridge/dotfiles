@@ -495,7 +495,7 @@ class location:
         new_point_distance = 75
         accurate_date_cutoff = date(2020, 10, 15)
         previous_accurate_for_days = 7
-        new_point_distance = timedelta(hours=2)
+        new_point_duration = timedelta(hours=2)
         database_location = "~/data/where_db.json"
 
     class gpslogger:
