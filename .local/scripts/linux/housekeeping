@@ -91,6 +91,7 @@ evry 1 month -discord_download_attachments && discord_download_attachments
 evry 1 day -bleanser-runall && bleanser-runall
 evry 5 weeks -merge-browser-history && merge-browser-history
 evry 1 week -merge-mpv-history && merge-mpv-history
+evry 1 week -review-removed-dir && review-removed-dir
 
 # run malexport update https://github.com/seanbreckenridge/malexport/
 bash "${HPIDATA}/malexport.job"
