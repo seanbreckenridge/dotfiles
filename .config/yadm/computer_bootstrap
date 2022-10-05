@@ -119,6 +119,7 @@ havecmd gh && {
 	done < <(spkglist "${GH_PACKAGE_LIST}")
 }
 
+# manual js installs
 # install largechar
 if ! havecmd largechar; then
 	LARGECHAR_LOCATION="${REPOS:-${HOME}/Repos}/largechar"
@@ -128,3 +129,5 @@ if ! havecmd largechar; then
 	make
 	set +e
 fi
+
+havecmd mapscii-at || yarn global add git+https://github.com/seanbreckenridge/mapscii-at
