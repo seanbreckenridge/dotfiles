@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+evry 1 day -bleanser-runall && {
+	printlog 'bleanser-runall:running bleanser...'
+	# pipe through cat to remove term colors
+	bleanser-runall 2>&1 | cat >/tmp/bleanser.log
+}
