@@ -89,7 +89,7 @@ evry 1 month -discord_download_attachments && discord_download_attachments
 
 # remove redundant backups, merge browser/mpv history
 # https://github.com/seanbreckenridge/bleanser
-evry 5 weeks -merge-browser-history && merge-browser-history
+evry 1 week -merge-browser-history && merge-browser-history
 evry 1 week -merge-mpv-history && merge-mpv-history
 evry 1 day -review-removed-dir && review-removed-dir
 
