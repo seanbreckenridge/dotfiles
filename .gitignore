@@ -98,6 +98,7 @@ __pycache__
 /.clojure_history
 /.config/MongoDB Compass/
 /.config/discord
+/.config/keepassxc/keepassxc.ini
 /.config/discordcanary/
 /.config/kwalletrc
 /.config/CrossCode
