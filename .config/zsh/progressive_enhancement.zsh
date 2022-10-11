@@ -74,22 +74,31 @@ alias icat='kitty +kitten icat'
 # else, use bat
 cat() {
 	local all_images=1
+	local all_dirs=1
 
 	if [[ -z "$1" ]]; then
 		all_images=0
+		all_dirs=0
 	else
 		# loop through arguments
 		# if its not an image, break -- and use bat instead
 		# if I'm in tmux -- kitty cant print images, so fallback
-		for arg in "${@}"; do
+		for arg in "$@"; do
 			[[ -z "$TMUX" && -f "$arg" && "$(file-mime "$1")" =~ '^image/' ]] && continue
 			all_images=0
 			break
 		done
+
+		for arg in "$@"; do
+			if [[ ! -d "$arg" ]]; then
+				all_dirs=0
+				break
+			fi
+		done
 	fi
 
-	if [[ -d "$1" ]]; then
-		exa "$1"
+	if ((all_dirs)); then
+		exa "$@"
 	elif ((all_images)); then
 		icat "$@"
 	else
