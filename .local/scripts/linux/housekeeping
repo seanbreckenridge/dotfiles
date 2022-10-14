@@ -32,7 +32,7 @@ fi
 
 # make sure my pythonanywhere website doesnt expire:
 # https://github.com/seanbreckenridge/pythonanywhere-3-months
-evry 2 months -pythonanywhere && python3 -m pythonanywhere_3_months -Hc "$(which chromedriver)"
+evry 2 months -pythonanywhere && python3 -m pythonanywhere_3_months -c "$(which chromedriver)"
 
 # run https://github.com/odeke-em/drive to pull/push from google drive
 evry 6 hours -google-drive && {
