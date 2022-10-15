@@ -1,6 +1,11 @@
 # backup files
 *.bak
 
+# video files
+*.mkv
+*.mp4
+*.webm
+
 # Emacs
 *~
 \#*\#
