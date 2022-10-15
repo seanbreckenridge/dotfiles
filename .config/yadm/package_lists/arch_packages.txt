@@ -19,7 +19,8 @@ networkmanager
 nss-mdns
 pacman-contrib
 picom
-pulseaudio
+pipewire-pulse
+pipewire-alsa
 reflector
 unclutter
 wpa_supplicant
