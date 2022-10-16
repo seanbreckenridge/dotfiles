@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+set -o pipefail
+
+main() {
+	save_to="$(backup_to "cubing/cstimer")"
+	mkdir -p "$save_to"
+	exec cstimer-save-server -save-to "$save_to" -timestamped "$save_to"
+}
+
+main || exit $?

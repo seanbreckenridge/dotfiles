@@ -343,6 +343,7 @@ exec --no-startup-id nm-applet
 exec --no-startup-id bash "${REPOS}/todotxt_deadline_notify/copy_todotxt_to_server"
 # start supervisor background processes
 exec --no-startup-id super --daemon
+exec --no-startup-id --no-startup-id cstimer-server
 
 # enable tap to click
 exec --no-startup-id trackpad-tap-to-click enable
