@@ -9,7 +9,7 @@ from typing import Sequence
 import click
 
 
-def openurl(url: str, wait: int) -> None:
+def openurl(url: str, wait: float) -> None:
     u = url.strip()
     if not u:
         return
@@ -19,10 +19,10 @@ def openurl(url: str, wait: int) -> None:
 
 @click.command()
 @click.option(
-    "-w", "--wait", default=0, type=int, help="Wait time between opening urls"
+    "-w", "--wait", default=0, type=float, help="Wait time between opening urls"
 )
 @click.argument("LINK", nargs=-1, required=False)
-def main(wait: int, link: Sequence[str]) -> None:
+def main(wait: float, link: Sequence[str]) -> None:
     """
     uses my underlying openurl script
 
