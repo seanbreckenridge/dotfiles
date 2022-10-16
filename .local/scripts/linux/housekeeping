@@ -87,6 +87,14 @@ evry 2 hours -data-sync-conflicts && {
 # download any discord attachments
 evry 1 month -discord_download_attachments && discord_download_attachments
 
+# https://github.com/seanbreckenridge/cstimer-save-server
+# open cstimer, so that my solves are saved
+evry 1 week -launch-cstimer && {
+	setsid -f "$BROWSER"
+	sleep 2
+	openurl 'https://cstimer.net'
+}
+
 # remove redundant backups, merge browser/mpv history
 # https://github.com/seanbreckenridge/bleanser
 evry 1 week -merge-browser-history && merge-browser-history
