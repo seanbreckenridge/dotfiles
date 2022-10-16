@@ -1,10 +1,8 @@
 #!/usr/bin/env bash
 # https://github.com/seanbreckenridge/cstimer-save-server
 
-set -o pipefail
-
 main() {
-	save_to="$(backup_to "cubing/cstimer")"
+	save_to="$(backup_to "cubing/cstimer")" || return $?
 	mkdir -p "$save_to"
 	exec cstimer-save-server -save-to "$save_to" -timestamped "$save_to"
 }
