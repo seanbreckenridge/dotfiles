@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# https://github.com/seanbreckenridge/cstimer-save-server
 
 set -o pipefail
 
