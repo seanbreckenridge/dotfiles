@@ -3,6 +3,8 @@
 
 main() {
 	save_to="$(backup_to "cubing/cstimer")" || return $?
+	secret="$(cat "${HPIDATA}/cstimer_secret.txt")" || return $?
+	export CSTIMER_SECRET="$secret"
 	mkdir -p "$save_to"
 	exec cstimer-save-server -save-to "$save_to" -timestamped
 }
