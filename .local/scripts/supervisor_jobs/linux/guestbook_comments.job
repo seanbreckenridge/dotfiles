@@ -2,8 +2,6 @@
 # saves the number of unapproved comments to a cache file
 # this is for my guest book on https://sean.fish/
 
-set -u
-
 wait-for-internet -q --timeout 10 || exit 0
 
 get_count() {

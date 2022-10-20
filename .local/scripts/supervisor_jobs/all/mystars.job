@@ -1,7 +1,5 @@
-#!/bin/bash
+#!/bin/sh
 # update https://github.com/seanbreckenridge/oh-my-stars
-
-set -u
 
 wait-for-internet -q --timeout "${WFI_TIMEOUT:-10}" || exit 0
 case "$ON_OS" in

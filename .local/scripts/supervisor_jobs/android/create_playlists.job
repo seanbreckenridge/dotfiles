@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-set -u
-
 evry 1 day -create_playlists && {
 	printlog 'creating playlists...'
 	find "$PLAINTEXT_PLAYLIST_MUSIC_DIR" -maxdepth 1 -type f -name '*.m3u8' -delete

@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-set -u
-
 STORAGE="${HOME}/storage/"
 
 IMAGE_DIRS=(
