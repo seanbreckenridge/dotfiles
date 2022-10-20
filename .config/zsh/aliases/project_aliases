@@ -148,7 +148,7 @@ alias rj='bgproc_on_machine -pn'
 run-job() {
 	job-reset "$@" || return $?
 	bgproc_on_machine -on
-	housekeeping
+	havecmd housekeeping && housekeeping
 }
 
 # search for cubing competitions near me
