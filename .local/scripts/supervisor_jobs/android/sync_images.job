@@ -7,10 +7,11 @@ IMAGE_DIRS=(
 	"${STORAGE}/pictures/Screenshots/"
 )
 
-evry 1 hour -backup_images && {
+evry 5 minutes -backup_images && {
 	BACKUP_TO="$(backup_to phone_pictures)"
 	for idir in "${IMAGE_DIRS[@]}"; do
 		[[ -d "${idir}" ]] || continue
-		rsync -Pavh --exclude=".*" "${idir}" "${BACKUP_TO}/$(basename "${idir}")"
+		rsync -Pavh --exclude=".*" "${idir}" "${BACKUP_TO}/$(basename "${idir}")" &&
+			find "${idir}" -type f -mtime +7 -print -delete
 	done
 }
