@@ -2,6 +2,8 @@
 # https://github.com/karlicoss/promnesia
 # run the promnesia indexer
 
+set -u
+
 case "$ON_OS" in
 windows* | android*)
 	exit 0

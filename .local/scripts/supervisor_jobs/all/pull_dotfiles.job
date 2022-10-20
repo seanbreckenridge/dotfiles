@@ -2,6 +2,8 @@
 # pull dotfiles repo in $REPOS so commits are accurate in
 # https://github.com/karlicoss/HPI/blob/master/my/coding/commits.py
 
+set -u
+
 wait-for-internet -q --timeout "${WFI_TIMEOUT:-10}" || exit 0
 
 evry 1 day -pull-dotfiles && {
