@@ -1,2 +1,2 @@
 #!/bin/sh
-fd '.*(png|jpeg|jpg)' "$@"
+fd '.*(png|jpeg|jpg)$' "$@"

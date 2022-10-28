@@ -156,7 +156,7 @@ fd '.*(mp4|avi|mov|vob|flv|mkv|webm|unknown_video)$' "$@"
 link = 'list-movies'
 
 [list-images]
-command='''fd '.*(png|jpeg|jpg)' "$@"'''
+command='''fd '.*(png|jpeg|jpg)$' "$@"'''
 
 [play-music]
 command='''
