@@ -7,7 +7,6 @@ housekeeping-info() {
 }
 
 alias hi='housekeeping-info'
-alias u='hi;rj'
 # nsxiv full screen image, fit full width
 alias nsxfull='nsxiv -s f -f'
 

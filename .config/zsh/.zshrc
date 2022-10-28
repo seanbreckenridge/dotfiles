@@ -40,6 +40,8 @@ source "${ZDOTDIR}/hpi.zsh"                     # handle syncing hpi config
 # source all aliases
 source "${ZDOTDIR}/source_aliases.zsh"
 
+# the 'u' alias runs periodic jobs, depending on the OS
+alias u='rj'
 # zsh plugins
 case "$ON_OS" in
 linux*)
@@ -58,6 +60,7 @@ linux*)
 		source_if_exists /opt/asdf-vm/asdf.sh
 	}
 	source "${ZDOTDIR}/linux.zsh"
+	alias u='hi;rj'
 	;;
 mac*)
 	# Setup fzf
@@ -81,6 +84,7 @@ android*)
 
 	source_if_exists "${HOME}/.local/share/zsh_plugins/zsh-autosuggestions/zsh-autosuggestions.zsh"
 	source "${ZDOTDIR}/android.zsh"
+	alias u='sf'
 	;;
 windows*)
 	source_if_exists /usr/share/doc/fzf/examples/completion.zsh
