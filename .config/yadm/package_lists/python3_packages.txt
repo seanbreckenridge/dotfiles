@@ -40,7 +40,6 @@ termdown
 termgraph
 thefuck
 toml
-twine
 urlextract
 vimbuffer
 youtube-dl

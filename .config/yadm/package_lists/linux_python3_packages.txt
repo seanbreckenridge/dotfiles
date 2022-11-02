@@ -3,3 +3,4 @@ python-xlib
 python-language-server
 ueberzug
 pyautogui
+twine
