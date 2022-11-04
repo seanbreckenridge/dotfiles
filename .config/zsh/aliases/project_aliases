@@ -124,6 +124,9 @@ alias mpv-percent='mpv-get-property "$(mpv-currently-playing --socket | tail -n1
 # https://github.com/seanbreckenridge/rifleman
 alias optimg='rifleman -a image'
 
+# https://github.com/seanbreckenridge/clone-repos
+alias cr="python3 -m pip install 'git+https://github.com/seanbreckenridge/clone-repos' && clone-repos"
+
 # https://github.com/seanbreckenridge/evry
 # reset a job (remove the tag file) for an evry job
 job-reset() {
