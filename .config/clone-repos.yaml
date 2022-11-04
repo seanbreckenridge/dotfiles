@@ -3,9 +3,9 @@
 "https://github.com/seanbreckenridge/mal-id-cache":
 "https://github.com/seanbreckenridge/albums":
   pip: editable
-"https://github.com/karlicoss/bleanser":
-  dirname: "bleanser-fork"
+"https://github.com/seanbreckenridge/bleanser-fork":
   pip: install
+  postinstall: 'git remote add upstream "https://github.com/karlicoss/bleanser"'
 "https://github.com/seanbreckenridge/bleanser":
   pip: install
 "https://github.com/seanbreckenridge/promnesia-fork":
