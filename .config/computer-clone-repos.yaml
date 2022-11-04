@@ -1,0 +1,26 @@
+"https://github.com/seanbreckenridge/chomp":
+  base: ~/.local/share/go/src/github.com/seanbreckenridge
+  symlink_to: ~/Repos
+"https://github.com/seanbreckenridge/darker_errors":
+  base: ~/.local/share/go/src/github.com/seanbreckenridge
+  symlink_to: ~/Repos
+"https://github.com/seanbreckenridge/fzfcache":
+  base: ~/.local/share/go/src/github.com/seanbreckenridge
+  symlink_to: ~/Repos
+"https://github.com/seanbreckenridge/keyvol":
+  base: ~/.local/share/go/src/github.com/seanbreckenridge
+  symlink_to: ~/Repos
+"https://github.com/seanbreckenridge/newest":
+  base: ~/.local/share/go/src/github.com/seanbreckenridge
+  symlink_to: ~/Repos
+"https://github.com/seanbreckenridge/on_machine":
+  base: ~/.local/share/go/src/github.com/seanbreckenridge
+  symlink_to: ~/Repos
+"https://github.com/seanbreckenridge/spkglist":
+  base: ~/.local/share/go/src/github.com/seanbreckenridge
+  symlink_to: ~/Repos
+"https://github.com/seanbreckenridge/twitchlive":
+  base: ~/.local/share/go/src/github.com/seanbreckenridge
+  symlink_to: ~/Repos
+"https://github.com/seanbreckenridge/largechar":
+  postinstall: make

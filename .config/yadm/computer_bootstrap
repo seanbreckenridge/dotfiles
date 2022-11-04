@@ -36,6 +36,7 @@ install_python_personal "plus1" "https://github.com/seanbreckenridge/plus1"
 install_python_personal "pythonanywhere_3_months" "https://github.com/seanbreckenridge/pythonanywhere-3-months"
 install_python_personal "calcurse_load" "https://github.com/seanbreckenridge/calcurse-load"
 install_python_personal "mpv-history-daemon" "https://github.com/seanbreckenridge/mpv-history-daemon"
+install_python_personal "clone-repos" "https://github.com/seanbreckenridge/clone-repos"
 
 havecmd gem || exit $?
 echo "Installing global ruby packages..."
@@ -119,15 +120,6 @@ havecmd gh && {
 	done < <(spkglist "${GH_PACKAGE_LIST}")
 }
 
-# manual js installs
-# install largechar
-if ! havecmd largechar; then
-	LARGECHAR_LOCATION="${REPOS:-${HOME}/Repos}/largechar"
-	[[ ! -e "$LARGECHAR_LOCATION" ]] && git clone 'https://github.com/seanbreckenridge/largechar' "$LARGECHAR_LOCATION"
-	set -e
-	cd "$LARGECHAR_LOCATION"
-	make
-	set +e
-fi
+clone-repos ~/.config/computer-clone-repos.yaml
 
 havecmd mapscii-at || yarn global add git+https://github.com/seanbreckenridge/mapscii-at
