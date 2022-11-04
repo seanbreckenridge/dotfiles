@@ -1,0 +1,22 @@
+"https://github.com/seanbreckenridge/ttally":
+  pip: install
+"https://github.com/seanbreckenridge/mal-id-cache":
+"https://github.com/seanbreckenridge/albums":
+  pip: editable
+"https://github.com/karlicoss/bleanser":
+  dirname: "bleanser-fork"
+  pip: install
+"https://github.com/seanbreckenridge/bleanser":
+  pip: install
+"https://github.com/seanbreckenridge/promnesia-fork":
+  pip: editable
+  postinstall: 'git remote add upstream "https://github.com/karlicoss/promnesia"'
+"https://github.com/seanbreckenridge/promnesia":
+  pip: editable
+"https://github.com/seanbreckenridge/HPI":
+  postinstall: "./install"
+"https://github.com/seanbreckenridge/HPI-personal":
+  postinstall: "./install"
+"https://github.com/seanbreckenridge/HPI-fork":
+  dirname: "HPI-karlicoss" # name of directory to clone into
+  postinstall: 'git remote add upstream "https://github.com/karlicoss/HPI"'
