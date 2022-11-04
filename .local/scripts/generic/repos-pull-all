@@ -1,0 +1,3 @@
+#!/bin/zsh
+fd -H --absolute-path --type d --regex "${REPOS}/[^/]+/\.git$" --full-path "$REPOS" | parallel -j 16 "cd {}/.. && has-git-remote && { git pull --quiet && printf '.' || { echo; pwd} }"
+echo
