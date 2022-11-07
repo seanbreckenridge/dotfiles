@@ -3,16 +3,22 @@
 Parses the upcoming WCA competitions page into JSON
 """
 
-from typing import Iterator
-from dataclasses import dataclass
+import json
+import dataclasses
+from typing import Iterator, Any
 
 import click
 import requests
-import orjson
 from bs4 import BeautifulSoup
 
 
-@dataclass
+def _default(obj: Any) -> Any:
+    if dataclasses.is_dataclass(obj):
+        return dataclasses.asdict(obj)
+    raise TypeError(f"{type(obj)}: {obj}")
+
+
+@dataclasses.dataclass
 class Competition:
     date: str
     name: str
@@ -35,7 +41,7 @@ def fetch_upcoming_competitions() -> Iterator[Competition]:
 
 @click.command(help=__doc__)
 def main() -> None:
-    print(orjson.dumps(list(fetch_upcoming_competitions())).decode("utf-8"))
+    print(json.dumps(list(fetch_upcoming_competitions()), default=_default))
 
 
 if __name__ == "__main__":
