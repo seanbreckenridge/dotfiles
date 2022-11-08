@@ -79,7 +79,7 @@ redis
 ruby
 ruby-bundler
 rust-racer
-rustup
+rust
 sbcl
 sbt
 scala
