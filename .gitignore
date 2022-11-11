@@ -101,17 +101,18 @@ __pycache__
 /.cargo
 /.cdk
 /.clojure_history
-/.config/MongoDB Compass/
-/.config/discord
-/.config/keepassxc/keepassxc.ini
-/.config/discordcanary/
-/.config/kwalletrc
 /.config/CrossCode
-/.config/libreoffice
+/.config/MongoDB Compass/
 /.config/beets
+/.config/discord
+/.config/discordcanary/
+/.config/keepassxc/keepassxc.ini
+/.config/kwalletrc
+/.config/libreoffice
 /.config/mpv/watch_later/
 /.config/netrc
 /.config/trackma
+/.config/zoom.conf
 /.cookiecutter_replay
 /.cookiecutters/
 /.credentials
@@ -138,6 +139,7 @@ __pycache__
 /.lesshst
 /.lftp
 /.lldb
+/.local/opt/tor-browser
 /.m2
 /.mal-id-cache
 /.mapscii
@@ -183,11 +185,13 @@ __pycache__
 /.thunderbird
 /.tool-versions
 /.tor-browser
-/.local/opt/tor-browser
 /.tox
 /.var
 /.vim
 /.viminfo
+/.vpython
+/.vpython-root
+/.vpython_cipd_cache
 /.vscode-oss/
 /.vscode/
 /.w3m
