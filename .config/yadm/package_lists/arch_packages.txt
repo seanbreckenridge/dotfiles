@@ -19,8 +19,9 @@ networkmanager
 nss-mdns
 pacman-contrib
 picom
-pipewire-pulse
 pipewire-alsa
+pipewire-pulse
+rebuild-detector
 reflector
 unclutter
 wpa_supplicant
@@ -78,8 +79,8 @@ rebar3-git
 redis
 ruby
 ruby-bundler
-rust-racer
 rust
+rust-racer
 sbcl
 sbt
 scala
