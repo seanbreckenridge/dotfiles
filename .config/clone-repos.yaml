@@ -5,18 +5,20 @@
   pip: editable
 "https://github.com/seanbreckenridge/bleanser-fork":
   pip: install
-  postinstall: 'git remote add upstream "https://github.com/karlicoss/bleanser"'
+  postinstall: git remote add upstream "https://github.com/karlicoss/bleanser"
 "https://github.com/seanbreckenridge/bleanser":
   pip: install
 "https://github.com/seanbreckenridge/promnesia-fork":
   pip: editable
-  postinstall: 'git remote add upstream "https://github.com/karlicoss/promnesia"'
+  postinstall: git remote add upstream "https://github.com/karlicoss/promnesia"
 "https://github.com/seanbreckenridge/promnesia":
   pip: editable
 "https://github.com/seanbreckenridge/HPI":
-  postinstall: "./install"
+  postinstall: ./install
 "https://github.com/seanbreckenridge/HPI-personal":
-  postinstall: "./install"
+  postinstall: ./install
 "https://github.com/seanbreckenridge/HPI-fork":
   dirname: "HPI-karlicoss" # name of directory to clone into
-  postinstall: 'git remote add upstream "https://github.com/karlicoss/HPI"'
+  postinstall:
+    - python3 -c 'import my.config'
+    - git remote add upstream "https://github.com/karlicoss/HPI"
