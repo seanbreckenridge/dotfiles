@@ -1,0 +1,212 @@
+[
+  {
+    "source_class_name": "scramble_history.twistytimer.Solve",
+    "source_fields_match": {
+      "puzzle": "333",
+      "category": "Normal"
+    },
+    "transformed_puzzle": "333",
+    "transformed_event_code": "WCA",
+    "transformed_event_description": "3x3 CFOP"
+  },
+  {
+    "source_class_name": "scramble_history.twistytimer.Solve",
+    "source_fields_match": {
+      "puzzle": "333",
+      "category": "Roux"
+    },
+    "transformed_puzzle": "333",
+    "transformed_event_code": "WCA",
+    "transformed_event_description": "3x3 Roux"
+  },
+  {
+    "source_class_name": "scramble_history.twistytimer.Solve",
+    "source_fields_match": {
+      "puzzle": "333",
+      "category": "OH"
+    },
+    "transformed_puzzle": "333",
+    "transformed_event_code": "OH",
+    "transformed_event_description": "3x3 CFOP OH"
+  },
+  {
+    "source_class_name": "scramble_history.twistytimer.Solve",
+    "source_fields_match": {
+      "puzzle": "444",
+      "category": "Normal"
+    },
+    "transformed_puzzle": "444",
+    "transformed_event_code": "WCA",
+    "transformed_event_description": "4x4"
+  },
+  {
+    "source_class_name": "scramble_history.twistytimer.Solve",
+    "source_fields_match": {
+      "puzzle": "222",
+      "category": "Normal"
+    },
+    "transformed_puzzle": "222",
+    "transformed_event_code": "WCA",
+    "transformed_event_description": "2x2"
+  },
+  {
+    "source_class_name": "scramble_history.cstimer.Solve",
+    "source_fields_match": {
+      "name": "3x3",
+      "raw_scramble_type": "333"
+    },
+    "transformed_puzzle": "333",
+    "transformed_event_code": "WCA",
+    "transformed_event_description": "3x3 CFOP"
+  },
+  {
+    "source_class_name": "scramble_history.cstimer.Solve",
+    "source_fields_match": {
+      "name": "2x2",
+      "raw_scramble_type": "222so"
+    },
+    "transformed_puzzle": "222",
+    "transformed_event_code": "WCA",
+    "transformed_event_description": "2x2"
+  },
+  {
+    "source_class_name": "scramble_history.twistytimer.Solve",
+    "source_fields_match": {
+      "category": "2-GEN",
+      "puzzle": "333"
+    },
+    "transformed_puzzle": "333",
+    "transformed_event_code": "2-GEN RU",
+    "transformed_event_description": "3x3 2-GEN <RU>"
+  },
+  {
+    "source_class_name": "scramble_history.twistytimer.Solve",
+    "source_fields_match": {
+      "puzzle": "333",
+      "category": "LSE"
+    },
+    "transformed_puzzle": "333",
+    "transformed_event_code": "LSE",
+    "transformed_event_description": "3x3 LSE"
+  },
+  {
+    "source_class_name": "scramble_history.twistytimer.Solve",
+    "source_fields_match": {
+      "puzzle": "333",
+      "category": "F2L"
+    },
+    "transformed_puzzle": "333",
+    "transformed_event_code": "F2L",
+    "transformed_event_description": "3x3 F2L"
+  },
+  {
+    "source_class_name": "scramble_history.twistytimer.Solve",
+    "source_fields_match": {
+      "puzzle": "skewb",
+      "category": "Normal"
+    },
+    "transformed_puzzle": "skewb",
+    "transformed_event_code": "WCA",
+    "transformed_event_description": "Skewb"
+  },
+  {
+    "source_class_name": "scramble_history.twistytimer.Solve",
+    "source_fields_match": {
+      "puzzle": "pyra",
+      "category": "Normal"
+    },
+    "transformed_puzzle": "pyra",
+    "transformed_event_code": "WCA",
+    "transformed_event_description": "Pyraminx"
+  },
+  {
+    "source_class_name": "scramble_history.twistytimer.Solve",
+    "source_fields_match": {
+      "puzzle": "333",
+      "category": "CFOP"
+    },
+    "transformed_puzzle": "333",
+    "transformed_event_code": "WCA",
+    "transformed_event_description": "3x3 CFOP"
+  },
+  {
+    "source_class_name": "scramble_history.twistytimer.Solve",
+    "source_fields_match": {
+      "puzzle": "pyra",
+      "category": ""
+    },
+    "transformed_puzzle": "pyra",
+    "transformed_event_code": "WCA",
+    "transformed_event_description": "Pyraminx"
+  },
+  {
+    "source_class_name": "scramble_history.twistytimer.Solve",
+    "source_fields_match": {
+      "puzzle": "skewb",
+      "category": ""
+    },
+    "transformed_puzzle": "skewb",
+    "transformed_event_code": "WCA",
+    "transformed_event_description": "Skewb"
+  },
+  {
+    "source_class_name": "scramble_history.twistytimer.Solve",
+    "source_fields_match": {
+      "puzzle": "222",
+      "category": ""
+    },
+    "transformed_puzzle": "222",
+    "transformed_event_code": "WCA",
+    "transformed_event_description": "2x2"
+  },
+  {
+    "source_class_name": "scramble_history.twistytimer.Solve",
+    "source_fields_match": {
+      "puzzle": "444",
+      "category": ""
+    },
+    "transformed_puzzle": "444",
+    "transformed_event_code": "WCA",
+    "transformed_event_description": "4x4"
+  },
+  {
+    "source_class_name": "scramble_history.twistytimer.Solve",
+    "source_fields_match": {
+      "puzzle": "333",
+      "category": ""
+    },
+    "transformed_puzzle": "333",
+    "transformed_event_code": "WCA",
+    "transformed_event_description": "3x3 CFOP"
+  },
+  {
+    "source_class_name": "scramble_history.twistytimer.Solve",
+    "source_fields_match": {
+      "puzzle": "444",
+      "category": "Yau"
+    },
+    "transformed_puzzle": "444",
+    "transformed_event_code": "WCA",
+    "transformed_event_description": "4x4"
+  },
+  {
+    "source_class_name": "scramble_history.twistytimer.Solve",
+    "source_fields_match": {
+      "puzzle": "333 ",
+      "category": ""
+    },
+    "transformed_puzzle": "333 ",
+    "transformed_event_code": "WCA",
+    "transformed_event_description": "3x3 CFOP"
+  },
+  {
+    "source_class_name": "scramble_history.twistytimer.Solve",
+    "source_fields_match": {
+      "puzzle": "333",
+      "category": "OH Roux"
+    },
+    "transformed_puzzle": "333 ",
+    "transformed_event_code": "OH",
+    "transformed_event_description": "3x3 Roux OH"
+  }
+]
