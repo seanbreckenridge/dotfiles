@@ -1,0 +1,6 @@
+cstimer:
+  - ~/data/cubing/cstimer/*.json
+twistytimer:
+  - ~/data/cubing/manual.csv
+  - ~/data/cubing/phone_twistytimer/*.txt
+  - ~/data/cubing/cubers_io/*.txt

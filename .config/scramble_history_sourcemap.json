@@ -195,7 +195,7 @@
       "puzzle": "333 ",
       "category": ""
     },
-    "transformed_puzzle": "333 ",
+    "transformed_puzzle": "333",
     "transformed_event_code": "WCA",
     "transformed_event_description": "3x3 CFOP"
   },
@@ -205,7 +205,7 @@
       "puzzle": "333",
       "category": "OH Roux"
     },
-    "transformed_puzzle": "333 ",
+    "transformed_puzzle": "333",
     "transformed_event_code": "OH",
     "transformed_event_description": "3x3 Roux OH"
   }
