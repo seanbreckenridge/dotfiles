@@ -192,16 +192,6 @@
   {
     "source_class_name": "scramble_history.twistytimer.Solve",
     "source_fields_match": {
-      "puzzle": "333 ",
-      "category": ""
-    },
-    "transformed_puzzle": "333",
-    "transformed_event_code": "WCA",
-    "transformed_event_description": "3x3 CFOP"
-  },
-  {
-    "source_class_name": "scramble_history.twistytimer.Solve",
-    "source_fields_match": {
       "puzzle": "333",
       "category": "OH Roux"
     },
