@@ -89,6 +89,9 @@ evry 1 month -discord_download_attachments && discord_download_attachments
 
 # https://github.com/seanbreckenridge/HPI-personal/blob/master/scripts/backup-cubing
 backup-cubing
+# check for new formats in normalizing solves into a single schema
+# https://github.com/seanbreckenridge/scramble-history
+evry 3 hours -check-scramble-formats && python3 -m scramble_history merge --check
 
 # remove redundant backups, merge browser/mpv history
 # https://github.com/seanbreckenridge/bleanser
