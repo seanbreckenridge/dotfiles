@@ -358,6 +358,12 @@ class old_forums:
     export_path: Paths = data("old_forums")
 
 
+class scramble:
+    class history:
+        config = "~/.config/scramble_history.yaml"
+        sourcemap = "~/.config/scramble_history_sourcemap.json"
+
+
 class project_euler:
     export_path: Paths = data("project_euler")
 
