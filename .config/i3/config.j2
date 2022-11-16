@@ -24,6 +24,12 @@ bindsym $mod+Shift+Escape {{ ex }} ttt lock-screen
 # use picom for display compositing
 {{ ex }} picom -b
 
+# redshift using gpslogger to grab recent location
+{{ ex }} redshift-loc
+
+# autotiling
+exec_always --no-startup-id autotiling
+
 # warn battery daemon
 {{ ex }} warn-battery BAT0
 

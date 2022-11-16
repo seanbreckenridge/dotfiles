@@ -2,6 +2,7 @@
 
 arandr
 autorandr
+autotiling
 avahi
 cups
 cups-pdf
@@ -22,6 +23,7 @@ picom
 pipewire-alsa
 pipewire-pulse
 rebuild-detector
+redshift
 reflector
 unclutter
 wpa_supplicant

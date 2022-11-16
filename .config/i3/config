@@ -24,6 +24,12 @@ exec --no-startup-id lock-screen -b
 # use picom for display compositing
 exec --no-startup-id picom -b
 
+# redshift using gpslogger to grab recent location
+exec --no-startup-id redshift-loc
+
+# autotiling
+exec_always --no-startup-id autotiling
+
 # warn battery daemon
 exec --no-startup-id warn-battery BAT0
 
