@@ -122,9 +122,13 @@ alias 'import=printf "Use /usr/bin/import instead\n"'
 
 loopcmd() {
 	local contents ecmd
-	contents="$(clippaste)"
+	if [[ ! -e '/tmp/loopcmd' ]]; then
+		echo 'No loopcmd tempfile found' >&2
+		return 1
+	fi
+	contents="$(cat '/tmp/loopcmd')"
 	if [[ -z "$contents" ]]; then
-		echo 'Nothing on your clipboard' >&2
+		echo 'Did not receive a command' >&2
 		return 1
 	fi
 	ecmd="$(printf 'while sleep 3; do %s; done' "$contents")"
@@ -135,4 +139,4 @@ loopcmd() {
 }
 
 # Alt+L (loop) to run the last command you just did, but as a loop
-bindkey -s '\el' '^uecho "!!" | clipcopy; loopcmd^M'
+bindkey -s '\el' '^uecho "!!" >/tmp/loopcmd; loopcmd^M'
