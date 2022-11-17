@@ -218,5 +218,15 @@
     "transformed_puzzle": "444",
     "transformed_event_code": "L8E",
     "transformed_event_description": "4x4 Last 8 Edges"
+  },
+  {
+    "source_class_name": "scramble_history.twistytimer.Solve",
+    "source_fields_match": {
+      "puzzle": "444",
+      "category": "L8E"
+    },
+    "transformed_puzzle": "444",
+    "transformed_event_code": "L8E",
+    "transformed_event_description": "4x4 Last 8 Edges"
   }
 ]
