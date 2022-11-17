@@ -119,3 +119,20 @@ alias httpbin='docker run -p 80:80 kennethreitz/httpbin'
 
 # stop import from crashing my system for some reason
 alias 'import=printf "Use /usr/bin/import instead\n"'
+
+loopcmd() {
+	local contents ecmd
+	contents="$(clippaste)"
+	if [[ -z "$contents" ]]; then
+		echo 'Nothing on your clipboard' >&2
+		return 1
+	fi
+	ecmd="$(printf 'while sleep 3; do %s; done' "$contents")"
+	echo "Going to run: '$ecmd'"
+	printf 'Run? '
+	read || return
+	eval "$ecmd"
+}
+
+# Alt+L (loop) to run the last command you just did, but as a loop
+bindkey -s '\el' '^uecho "!!" | clipcopy; loopcmd^M'
