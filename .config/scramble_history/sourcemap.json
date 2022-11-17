@@ -208,5 +208,15 @@
     "transformed_puzzle": "444",
     "transformed_event_code": "WCA",
     "transformed_event_description": "4x4"
+  },
+  {
+    "source_class_name": "scramble_history.cstimer.Solve",
+    "source_fields_match": {
+      "name": "4x4 - Last 8 Edges",
+      "raw_scramble_type": "444wca"
+    },
+    "transformed_puzzle": "444",
+    "transformed_event_code": "L8E",
+    "transformed_event_description": "4x4 Last 8 Edges"
   }
 ]
