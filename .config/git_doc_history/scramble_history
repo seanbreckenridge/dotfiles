@@ -1,3 +1,0 @@
-SOURCE_DIR=~/.cache
-BACKUP_DIR="${HPIDATA}/cube_scramble_cli_history"
-COPY_FILES="scramble_history"
