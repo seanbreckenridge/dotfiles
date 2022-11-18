@@ -6,22 +6,29 @@ alias pnsh='pipenv shell'
 alias pnd='pipenv run dev'
 
 gh-item-fzf() {
-	local URLS URL_COUNT
+	local urls_json picked cmd
 	in-gitdir || {
 		echo 'Not in a git directory...' 1>&2
 		return 1
 	}
-	URLS="$(gh "${1:-pr}" list --json 'title,url' --jq '.[] | "\(.url)|\(.title)"')"
-	case "$(wc -l <<<"$URLS")" in
+	cmd="${1:-pr}"
+	[[ -n "$*" ]] && shift
+	urls_json="$(gh "$cmd" list "$@" --json 'title,url')"
+	urls="$(jq -r '.[] | "\(.url)|\(.title)"' <<<"$urls_json")"
+	case "$(jq 'length' <<<"$urls_json")" in
 	0)
 		echo 'No issues for this repository...' >&2
 		;;
-	1)
-		cut -d"|" -f1 <<<"$URLS" | openurl
-		;;
 	*)
-		if PICKED="$(fzf <<<"$URLS")"; then
-			echo "$PICKED" | cut -d"|" -f1 | openurl
+		if picked="$(fzf <<<"$urls")"; then
+			picked="$(echo "$picked" | cut -d"|" -f1)"
+			if [[ -n "$PRINT_ID" ]]; then
+				rcut -d'/' -f1 <<<"$picked"
+			elif [[ -n "$PRINT_URL" ]]; then
+				echo "$picked"
+			else
+				openurl <<<"$picked"
+			fi
 		fi
 		;;
 	esac
@@ -34,4 +41,11 @@ gh-pr-fzf() {
 
 gh-issue-fzf() {
 	gh-item-fzf 'issue'
+}
+
+gh-issue-close-fzf() {
+	local id
+	id="$(PRINT_ID=1 gh-issue-fzf)"
+	[[ -z "$id" ]] && return
+	gh issue close "$id" "$@"
 }
