@@ -164,9 +164,16 @@ wca-local() {
 	wca-comps | jq -r '.[] | "\(.date) - \(.name) - \(.location)"' | grep -i "${state}"
 }
 # https://github.com/seanbreckenridge/scramble-history
-cube-stats() {
-	scramble_history merge -g event_description -q 'event_description?=["3x3 CFOP", "3x3 CFOP OH", "2x2", "4x4"]' -a stats "$@"
+_cube-stats-f() {
+	scramble_history merge -g event_description -a stats "$@"
 }
+cube-stats() {
+	_cube-stats-f -q 'event_description?=["3x3 CFOP", "3x3 CFOP OH", "2x2", "4x4"]' "$@"
+}
+alias cube-stats-graphs='cube-stats -G --graph-opt kitty-print'
+alias cube-stats-all=_cube-stats-f
+alias cube-stats-all-graphs='cube-stats-all -G --graph-opt kitty-print'
+
 
 # random
 alias malup='while true; do; clear; sleep 60; date; [ "$(curl -s -o /dev/null -I -w "%{http_code}" "https://myanimelist.net")" = "200" ] && notify-send "MAL is up"; done'
