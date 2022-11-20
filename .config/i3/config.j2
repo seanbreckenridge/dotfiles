@@ -306,7 +306,11 @@ for_window [class="Microsoft Teams - Preview"] move to workspace 5
 # start supervisor background processes
 {{ ex }} super --daemon
 # https://sean.fish/d/cstimer-server?dark
-{{ ex }} --no-startup-id cstimer-server
+{{ ex }} cstimer-server
+
+# Run cstimer on my machine locally
+# https://sean.fish/d/cstimer?dark
+{{ ex }} cstimer
 
 # enable tap to click
 {{ ex }} trackpad-tap-to-click enable

@@ -350,7 +350,11 @@ exec --no-startup-id bash "${REPOS}/todotxt_deadline_notify/copy_todotxt_to_serv
 # start supervisor background processes
 exec --no-startup-id super --daemon
 # https://sean.fish/d/cstimer-server?dark
-exec --no-startup-id --no-startup-id cstimer-server
+exec --no-startup-id cstimer-server
+
+# Run cstimer on my machine locally
+# https://sean.fish/d/cstimer?dark
+exec --no-startup-id cstimer
 
 # enable tap to click
 exec --no-startup-id trackpad-tap-to-click enable
