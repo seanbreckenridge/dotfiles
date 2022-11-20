@@ -11,7 +11,7 @@ main() {
 	[[ -e "$clone_loc" ]] || git clone 'https://github.com/seanbreckenridge/cstimer' "$clone_loc"
 	cd "$clone_loc" || exit 1
 	echo 'Running on port 4633...' >&2
-	exec make server
+	make server || openurl 'http://localhost:4633'
 }
 
 main || exit $?
