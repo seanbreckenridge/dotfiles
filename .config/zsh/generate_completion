@@ -13,7 +13,6 @@ for cmd in hpi \
 	listenbrainz_export \
 	lolexport \
 	malexport \
-	budget \
 	mpv-history-daemon \
 	my_feed \
 	reorder_editable \
@@ -30,6 +29,8 @@ for cmd in hpi \
 	id3stuff \
 	piazza_scraper \
 	shebang \
+	clone-repos \
+	scramble_history \
 	url_cache; do
 	havecmd "${cmd}" || continue
 	var="$(printf '_%s_COMPLETE' "$(echo "${cmd}" | upper | sed -e 's/-/_/g')")"
