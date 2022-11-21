@@ -11,3 +11,4 @@ aliases:
   co: pr checkout
   rc: repo create
   prc: pr create
+  rcl: repo clone
