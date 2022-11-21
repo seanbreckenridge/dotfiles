@@ -49,3 +49,10 @@ gh-issue-close-fzf() {
 	[[ -z "$id" ]] && return
 	gh issue close "$id" "$@"
 }
+
+# 'git issue id'
+gisid() {
+	local id
+	id="$(PRINT_ID=1 gh-issue-fzf)"
+	echo "$id"
+}
