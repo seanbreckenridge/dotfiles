@@ -23,7 +23,6 @@ sync_hpi_config() {
 # and then run an index for https://github.com/seanbreckenridge/my_feed
 feed_update_partials() {
 	for tag in \
-		backup_albums \
 		malexport_partial_update \
 		my-feed-index; do
 		rm -vf "$(evry location -"$tag")"
