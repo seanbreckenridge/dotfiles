@@ -1,7 +1,7 @@
 # https://github.com/seanbreckenridge/ttally
 
 from datetime import datetime
-from typing import NamedTuple
+from typing import NamedTuple, Optional
 
 
 class Weight(NamedTuple):
@@ -31,8 +31,8 @@ class Event(NamedTuple):
     event_type: str
     when: datetime
     description: str
-    score: int | None
-    comments: str | None
+    score: Optional[int]
+    comments: Optional[str]
 
     @staticmethod
     def attr_validators() -> dict:
