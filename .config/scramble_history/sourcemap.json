@@ -228,5 +228,15 @@
     "transformed_puzzle": "444",
     "transformed_event_code": "L8E",
     "transformed_event_description": "4x4 Last 8 Edges"
+  },
+  {
+    "source_class_name": "scramble_history.cstimer.Solve",
+    "source_fields_match": {
+      "name": "3x3 OH",
+      "raw_scramble_type": "333"
+    },
+    "transformed_puzzle": "333",
+    "transformed_event_code": "OH",
+    "transformed_event_description": "3x3 CFOP OH"
   }
 ]
