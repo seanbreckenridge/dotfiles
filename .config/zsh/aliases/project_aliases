@@ -101,6 +101,13 @@ if [[ ! -e "${TTALLY_ALIASES}" ]]; then
 	fi
 fi
 [[ -e "${TTALLY_ALIASES}" ]] && source "${TTALLY_ALIASES}"
+# after adding something with 'cz', update the ttally cache
+[[ "$ON_OS" =~ ^linux_arch ]] && {
+	cz() {
+		command cz || return $?
+		i3-msg exec --no-startup-id ttally update-cache >/dev/null 2>&1
+	}
+}
 alias 'czd=PROMPT_DATETIME=1 cz'
 alias 'czl=while cz; do; done'
 alias 'ca=food-now'
