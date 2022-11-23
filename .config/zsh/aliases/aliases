@@ -53,7 +53,6 @@ alias ecl='editor -c' # editor with client in background
 
 # Shorthands, or adding some default flags to utilities
 alias 'xargsl=xargs -I {} sh -c' # line-based xargs
-alias 'rm=rm -v'
 alias 'cp=cp -v'
 alias 'curl=curl -s'
 alias 'less=less -i'
@@ -86,6 +85,10 @@ alias 'timer=countdown'
 alias 'ml=mailsync-loop'
 alias 'confirm=fzf -m'
 alias 'up=TERM=xterm up'
+
+# trash-cli/rmtrash
+alias rm='rmtrash -v'
+alias rmdir='rmdirtrash'
 
 # kitty
 alias d="kitty +kitten diff"
