@@ -401,7 +401,10 @@ class twitch:
 class ipython:
     """parses backups of my ipython history"""
 
-    export_path: Paths = data("ipython/*.sqlite")
+    export_path: Paths = (
+        data("ipython_default/*.sqlite"),
+        data("ipython_calculator/*.sqlite"),
+    )
 
 
 class google:
