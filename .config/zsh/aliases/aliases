@@ -87,8 +87,11 @@ alias 'confirm=fzf -m'
 alias 'up=TERM=xterm up'
 
 # trash-cli/rmtrash
-alias rm='rmtrash -v'
-alias rmdir='rmdirtrash'
+# dont alias on android
+[[ "$ON_OS" =~ ^android.* ]] || {
+	alias rm='rmtrash -v'
+	alias rmdir='rmdirtrash'
+}
 
 # kitty
 alias d="kitty +kitten diff"
