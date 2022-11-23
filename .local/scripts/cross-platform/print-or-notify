@@ -1,17 +1,12 @@
-#!/bin/sh
+#!/usr/bin/env bash
 # if on a terminal, just print what the user passed
 # as arguments or from STDIN. otherwise, use the notify script
 # here to send a notification
 
-TEXT="$*"
-
-# read from stdin if empty
-if [ -z "${TEXT}" ]; then
-	TEXT="$(cat)"
-fi
+TEXT="${*:-$(cat)}"
 
 if attached-to-terminal; then
-	printf '%s\n' "${TEXT}"
+	echo "$TEXT"
 else
 	notify "${TEXT}"
 fi
