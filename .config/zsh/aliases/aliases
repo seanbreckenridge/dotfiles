@@ -75,7 +75,7 @@ alias sz='mystarsfzf'
 alias sr='sreminders'
 alias nr='neomuttr'
 alias urban='udict'
-alias calc='ipython --profile=calculator'
+alias calc='ipython3 --profile=calculator'
 alias 'countdown=termdown'
 # shorthand for copying to clipboard
 alias cl='clipcopy'
