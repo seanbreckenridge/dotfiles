@@ -18,7 +18,7 @@ class Food(NamedTuple):
 
     @staticmethod
     def attr_validators() -> dict:
-        # https://sean.fish/d/ttally_types.py?dark
+        # https://sean.fish/d/ttally_types.py?redirect
         from seanb.ttally_types import prompt_float_default
 
         # if I don't supply a quantity, default to 1
@@ -36,7 +36,6 @@ class Event(NamedTuple):
 
     @staticmethod
     def attr_validators() -> dict:
-        # https://sean.fish/d/ttally_types.py?redirect
         from seanb.ttally_types import edit_in_vim
 
         return {"comments": edit_in_vim}
