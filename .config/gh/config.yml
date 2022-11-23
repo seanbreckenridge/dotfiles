@@ -12,3 +12,4 @@ aliases:
   rc: repo create
   prc: pr create
   rcl: repo clone
+  ci: run watch
