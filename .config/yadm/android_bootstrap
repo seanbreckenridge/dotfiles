@@ -81,9 +81,9 @@ havecmd todo.sh || basher install todotxt/todo.txt-cli
 
 # manually build some python packages which have C extensions
 INSTALLED_PYTHON_PACKAGES="$(python3 -m pip list --format=freeze | cut -d'=' -f1)"
-grep -xqi 'numpy' <<<"${INSTALLED_PYTHON_PACKAGES}" || LDFLAGS=" -lm -lcompiler_rt" pip install numpy --verbose
+# grep -xqi 'numpy' <<<"${INSTALLED_PYTHON_PACKAGES}" || LDFLAGS=" -lm -lcompiler_rt" pip install numpy --verbose
 grep -xqi 'cython' <<<"${INSTALLED_PYTHON_PACKAGES}" || LDFLAGS=" -lcompiler_rt" pip install cython --verbose
-grep -xqi 'pandas' <<<"${INSTALLED_PYTHON_PACKAGES}" || CFLAGS="-Wno-deprecated-declarations -Wno-unreachable-code" pip install pandas --verbose
+# grep -xqi 'pandas' <<<"${INSTALLED_PYTHON_PACKAGES}" || CFLAGS="-Wno-deprecated-declarations -Wno-unreachable-code" pip install pandas --verbose
 
 # Install zsh plugins manually
 
