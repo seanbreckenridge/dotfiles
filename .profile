@@ -23,6 +23,7 @@ ${XDG_DATA_HOME}/basher/cellar/bin:\
 ${REPOS}/HPI-personal/scripts:\
 ${REPOS}/bleanser/bin:\
 ${REPOS}/my_feed/scripts:\
+${REPOS}/ttally/bin:\
 ${XDG_DATA_HOME}/shortcuts:\
 ${HOME}/.local/bin:\
 ${XDG_DATA_HOME}/npm-packages/bin:\
