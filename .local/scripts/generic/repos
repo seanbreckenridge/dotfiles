@@ -1,0 +1,57 @@
+#!/usr/bin/env bash
+
+set -e
+set -o pipefail
+
+stars() {
+	mystars -3 2>/dev/null | jq -r '.items | .[].arg'
+}
+
+mine() {
+	local file="$REPOS/projects/cache.json"
+	[[ -e "$file" ]] || return
+	jq -r '.[] | .html_url' <"$file"
+}
+
+all() {
+	{
+		mine
+		stars
+		fzfcache active-browser-github
+	} | unique
+}
+
+main() {
+	local fzf short_url
+	fzf=0
+	short_url=0
+	while getopts "fs" OPT; do
+		case "$OPT" in
+		f)
+			fzf=1
+			;;
+		s)
+			short_url=1
+			;;
+		?)
+			printf "Unknown option '%s'\n" "$OPT"
+			exit 1
+			;;
+		esac
+	done
+	shift "$((OPTIND - 1))"
+	_run() {
+		if ((short_url)); then
+			all | cut -d'/' -f4-
+		else
+			all
+		fi
+	}
+	if ((fzf)); then
+		_run | fzf "$@"
+	else
+		_run
+	fi
+}
+
+main "$@" || exit $?
