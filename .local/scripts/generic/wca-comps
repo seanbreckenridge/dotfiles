@@ -6,5 +6,15 @@
 wca-upcoming-competitions --help 2>/dev/null 1>&2 || exit $?
 
 CACHE_FILE="${HOME}/.cache/wca.json"
-evry 1 week -wcacomps && wca-upcoming-competitions >"${CACHE_FILE}"
-cat <"${CACHE_FILE}"
+if wait-for-internet --quiet --timeout 5; then
+	evry 1 week -wcacomps && wca-upcoming-competitions >"${CACHE_FILE}"
+	cat <"$CACHE_FILE"
+else
+	# if we dont have internet and the cachefile exists, just print the old result
+	if [[ -e "$CACHE_FILE" ]]; then
+		cat <"${CACHE_FILE}"
+	else
+		echo 'wca-comps: No internet, and no cached result' >&2
+		exit 1
+	fi
+fi
