@@ -162,12 +162,12 @@ run-job() {
 }
 
 # search for cubing competitions near me
-# https://sean.fish/d/wca-comps?dark
+# https://sean.fish/d/wca-comps?redirect
 wca-local() {
 	local state
 	# use my IP address to fetch what state/region I'm currently in
 	# https://sean.fish/d/ipinfo?dark
-	state="$(ipinfo | grep 'region' | cut -d":" -f2- | chomp | lower)"
+	state="${1:-$(ipinfo | grep 'region' | cut -d":" -f2- | chomp | lower)}"
 	wca-comps | jq -r '.[] | "\(.date) - \(.name) - \(.location)"' | grep -i "${state}"
 }
 # https://github.com/seanbreckenridge/scramble-history
