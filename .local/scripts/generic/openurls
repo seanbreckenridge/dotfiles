@@ -41,8 +41,8 @@ def main(wait: float, link: Sequence[str]) -> None:
     EOF (Ctrl+D), Ctrl+C to quit
     """
 
-    for l in link:
-        openurl(l, wait)
+    for lnk in link:
+        openurl(lnk, wait)
     if len(link) > 0:
         sys.exit(0)
 
