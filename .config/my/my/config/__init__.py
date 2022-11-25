@@ -360,8 +360,7 @@ class old_forums:
 
 class scramble:
     class history:
-        config = "~/.config/scramble_history.yaml"
-        sourcemap = "~/.config/scramble_history_sourcemap.json"
+        config_dir = None  # use the default
 
 
 class project_euler:
