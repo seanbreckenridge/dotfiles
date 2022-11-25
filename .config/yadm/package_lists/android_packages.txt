@@ -31,6 +31,7 @@ gh
 rsync
 silversearcher-ag
 ripgrep
+python-cryptography
 
 termux-api  # clipboard interaction? not sure if it works
 
