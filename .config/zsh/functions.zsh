@@ -66,3 +66,24 @@ f-rg-nvim() {
 }
 zle -N f-rg-nvim
 bindkey '^[f' f-rg-nvim
+
+loopcmd() {
+	local contents ecmd
+	if [[ ! -e '/tmp/loopcmd' ]]; then
+		echo 'No loopcmd tempfile found' >&2
+		return 1
+	fi
+	contents="$(cat '/tmp/loopcmd')"
+	if [[ -z "$contents" ]]; then
+		echo 'Did not receive a command' >&2
+		return 1
+	fi
+	ecmd="$(printf 'while true; do %s; sleep 3; done' "$contents")"
+	echo "Going to run: '$ecmd'"
+	printf 'Run? '
+	read || return
+	eval "$ecmd"
+}
+
+# Alt+o to run the last command/function you just did, but as a loop
+bindkey -s '\eo' '^uecho "!!" >/tmp/loopcmd; loopcmd^M'
