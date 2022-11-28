@@ -75,6 +75,11 @@ call plug#end()
 
 lua require('impatient')
 
+
+" For plugins to load correctly
+filetype plugin indent on
+let g:do_filetype_lua = 1
+
 " load my lua configuration -- i.e. my init.lua
 lua require("seanbreckenridge")
 
@@ -87,8 +92,6 @@ lua require("seanbreckenridge")
 " Turn on syntax highlighting
 syntax on
 
-" For plugins to load correctly
-filetype plugin indent on
 let mapleader =" "
 
 " Don't execute arbitrary modelines
@@ -286,7 +289,7 @@ nnoremap <leader>_ :wincmd -<CR>
 map <leader>YO :Goyo<CR>
 
 " yadm-git
-let g:yadm_git_verbose = 1
+let g:yadm_git_verbose = 0
 let g:yadm_git_gitgutter_enabled = 0
 
 " undotree
