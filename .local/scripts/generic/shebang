@@ -15,7 +15,7 @@ shebangs = {
     "elixir": None,
     "node": None,
     "php": None,
-    "sh": "#!/bin/sh",  # use absolute path for compatability
+    "sh": "#!/bin/sh",  # use absolute path for compatibility
 }
 
 body = {

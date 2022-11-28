@@ -29,7 +29,7 @@ Element = Union[Tag, NavigableString, None]
 
 
 def find_one(item: Element, *args, **kwargs) -> str:
-    assert item is not None, f"find_one: recieved none as input {item} {args} {kwargs}"
+    assert item is not None, f"find_one: received none as input {item} {args} {kwargs}"
     res: Union[Element, int] = item.find(*args, **kwargs)
     assert not isinstance(res, int)
     assert res is not None, f"could not find {args} {kwargs} on {item}"
