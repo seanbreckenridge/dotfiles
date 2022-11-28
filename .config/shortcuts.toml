@@ -799,3 +799,25 @@ command = "exec sed -e 's/^/</' -e 's/$/>/'"
 
 [primes]
 command = 'exec primesieve "$@" -p'
+
+[text2html]
+command = 'exec pygmentize -f html "$@"'
+
+[tmpfile]
+command = '''
+ext="${1:-tmp}"
+echo "$(mktemp -d)/$(genpasswd -rsym -rnum).${ext}"
+'''
+
+[pipehtml]
+command = '''
+# given HTML on STDIN, create a tempfile with its contents
+tmpf="$(tmpfile html)"
+cat >"$tmpf"
+exec printf '%s\n' "$tmpf"
+'''
+
+[html-head-dark]
+command='''
+exec html-head -a css-dark-mode -a css-pre-wrap "$@"
+'''

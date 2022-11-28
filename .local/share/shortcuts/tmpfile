@@ -1,0 +1,3 @@
+#!/bin/sh
+ext="${1:-tmp}"
+echo "$(mktemp -d)/$(genpasswd -rsym -rnum).${ext}"

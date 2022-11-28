@@ -1,33 +1,8 @@
 #!/bin/zsh
 # random aliases for some of my projects/unrelated shorthands
 
-# https://github.com/seanbreckenridge/plaintext-playlist.git
-# --msg-level=file=error removes the 'reading from stdin...' info message
-alias mpv-from-stdin='mpv --playlist=- --no-audio-display --msg-level=file=error'
-alias mpv-shuffle='mpv-from-stdin --shuffle'
-alias cm='cd "${PLAINTEXT_PLAYLIST_MUSIC_DIR:-${XDG_MUSIC_DIR:-"${HOME}/Music"}}"'
-alias cdpl='cd "${PLAINTEXT_PLAYLIST_PLAYLISTS}"'
-alias play='plainplay'
-alias pplay='plainplay play'
-alias splay='plainplay shuffle'
-alias splayall='fd . "$PLAINTEXT_PLAYLIST_PLAYLISTS" -X plainplay shuffleall'
-playrg_f() {
-	cm
-	fd . "$(plainplay playlistdir)" --type file -X cat | rg -i "$*"
-}
-# play all paths that match whatever I pass as positional arguments
-playrg-_f() {
-	cm
-	playrg_f "$*" | mpv-from-stdin
-}
-# use aliases so that the 'cd' actually changes directory in the shell
-alias playrg='cm; playrg_f'
-alias 'playrg-=cm; playrg-_f'
-alias playfzf='cm; rg --color never --with-filename --no-heading "" "${PLAINTEXT_PLAYLIST_PLAYLISTS}/"*.txt | sed -e "s|^${PLAINTEXT_PLAYLIST_PLAYLISTS}/||" | fzf'
-alias 'playfzf-=playfzf | cut -d":" -f2- | mpv-from-stdin'
-
-bindkey -s '^P' "^uplay^M"
-alias "list-albums=cm; find -maxdepth 3 -type f -printf '%h\n' | sort -u | cut -d'/' -f2- | grep -vi twitch"
+# https://github.com/seanbreckenridge/plaintext-playlist
+source_if_exists -q "$REPOS/plaintext-playlist/functions.sh" || source_if_exists "${HOME}/.local/share/basher/cellar/packages/seanbreckenridge/plaintext-playlist/functions.sh"
 
 # https://github.com/seanbreckenridge/albums
 alias 'discogs-update=nextalbums discogs-update'
@@ -47,27 +22,7 @@ alias calcurse=calcursed
 
 # vps related
 # https://github.com/seanbreckenridge/vps
-alias vultr='ssh vultr'
-alias vultr_logs='vultr "~/vps/logs"'
-alias shorten='${REPOS}/vps/shorten'
-alias remsync='${REPOS}/vps/remsync'
-alias remsync-public='REMSYNC_PUBLIC=1 ${REPOS}/vps/remsync' # to push to /p/ (public index)
-# to use ranger to quickly remove/add files
-alias remsync-ranger='ranger "${HOME}/Documents/remsync" && remsync'
-alias remsync-public-ranger='ranger "${HOME}/Documents/remsync_public" && remsync-public'
-alias playlist='${REPOS}/vps/playlist'
-alias approve-comments='${REPOS}/vps/approve_comments'
-alias print-new-comments='${REPOS}/vps/approve_comments --print-new-comments'
-
-export CUBING_JSON="${REPOS}/glue/cubing.json"
-alias restart-glue='ssh vultr "cd ./code/glue && git pull && ~/vps/super --ctl restart glue-server"'
-alias dotfiles-pull='ssh vultr "cd ./.dotfiles && git pull"'
-alias page-hits="curl -s 'https://sean.fish/api/page_hit' | jq '.count'"
-alias gb-comments="curl 'https://sean.fish/api/gb_comment' | jq 'reverse'"
-# print/select open shortened urls
-# https://github.com/seanbreckenridge/no-db-static-shorturl
-alias shorturls="ssh vultr 'ls shorturls'"
-alias shz="shorturls | fzf | sed -e 's|^|https://sean.fish/s/|' | tee /dev/tty | clipcopy"
+source_if_exists -q "$REPOS/vps/functions.sh"
 
 # Alt+Shift+L to print live twitch channels
 # https://github.com/seanbreckenridge/twitchlive
