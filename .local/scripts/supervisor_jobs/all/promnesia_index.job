@@ -9,6 +9,8 @@ windows* | android*)
 esac
 
 evry 6 hours -promnesia_index && {
+	# source environment variables that may be needed (e.g. ipinfo token)
+	source "$HPIDATA/tokens"
 	printlog "promnesia_index:running index..."
 	promnesia index --overwrite >>/tmp/promnesia_index.log 2>&1 || send-error "promnesia index failed..."
 }

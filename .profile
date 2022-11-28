@@ -118,6 +118,7 @@ export URL_CACHE_DIR="${HPIDATA}/url_cache"
 export OH_MY_STARS_NETRC="${XDG_CONFIG_HOME}/netrc"
 # https://github.com/seanbreckenridge/malexport
 export MALEXPORT_DIR="${HPIDATA}/malexport"
+export MALEXPORT_USE_MERGED_FILE=1
 # https://github.com/seanbreckenridge/plaintext-playlist
 export PLAINTEXT_PLAYLIST_MUSIC_DIR="${XDG_MUSIC_DIR}"
 # https://github.com/seanbreckenridge/ipgeocache
