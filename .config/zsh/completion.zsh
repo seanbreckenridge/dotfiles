@@ -70,3 +70,4 @@ compdef _playlist_files splay pplay
 compdef _binary_completion which-cat launch vic havecmd
 compdef _editor e
 compdef _todo.sh todo bookmark
+compdef _pygmentize text2html

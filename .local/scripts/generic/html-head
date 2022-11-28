@@ -67,8 +67,8 @@ def main(
         soup.body.insert_before(head)
     else:
         head = maybe_head
-    assert soup.head is not None
-    meta_tags = soup.find_all("meta")
+    assert head is not None
+    meta_tags = head.find_all("meta")
     if not any(("charset" in getattr(tag, "attrs", {}) for tag in meta_tags)):
         head.append(soup.new_tag("meta", attrs={"charset": _charset}))
     if not any(("viewport" in getattr(tag, "attrs", {}) for tag in meta_tags)):
