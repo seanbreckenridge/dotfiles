@@ -828,3 +828,6 @@ command='''
 style="$(pygmentize-styles | fzf)" || exit $?
 exec pygmentize -P style="$style" -O noclasses=True -f html "$@"
 '''
+
+[repos]
+command = 'exec repos-list -f'
