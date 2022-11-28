@@ -1,0 +1,5 @@
+#!/bin/sh
+# given HTML on STDIN, create a tempfile with its contents
+tmpf="$(tmpfile html)"
+cat >"$tmpf"
+exec printf '%s\n' "$tmpf"

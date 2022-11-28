@@ -1,0 +1,2 @@
+#!/bin/sh
+exec html-head -a css-dark-mode -a css-pre-wrap "$@"
