@@ -11,7 +11,7 @@
 # has been restarted.
 
 print_error() {
-	notify -u critical "bootstrap error" "$1"
+	havecmd notify 2>/dev/null && notify -u critical "bootstrap error" "$1"
 	printf '%s%s%s\n' "$(tput setaf 1)" "$1" "$(tput sgr0)" 1>&2
 } && export -f print_error
 
@@ -41,7 +41,7 @@ export HAVECMD_REPORT=1
 havecmd havecmd || {
 	# optionally let me continue - this may be the first time I'm running this
 	# on android and I need to install zsh/setup defaults
-	printf 'Continue anyways [Ctrl+C to Cancel] ?'
+	printf 'No havecmd; continue anyways? [Ctrl+C to Cancel] '
 	read -r || exit $?
 }
 

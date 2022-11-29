@@ -1,13 +1,71 @@
-#!/bin/sh
-# extends command -v to optionally (set $HAVECMD_REPORT) report errors
+#!/bin/bash
 # Often used like:
-# havecmd some_command || exit $?
+# havecmd -V 'Install from github.com/...' some_command || exit $?
 # To exit in my shell scripts if a required command isn't found
+#
+# this extends 'command -v' to optionally report errors
 
-BINARY="${1:?Must provide command to check}"
-if command -v "${BINARY}" >/dev/null 2>&1; then
-	exit 0
-else
-	[ -n "${HAVECMD_REPORT}" ] && printf "Could not find '%s' on your \$PATH\n" "${BINARY}"
-	exit 1
-fi
+set -e
+
+main() {
+	local usage missing_command_text report_missing
+	# shellcheck disable=SC2016
+	usage='havecmd [-v] [-V MISSING_COMMAND_TEXT] COMMAND
+
+Provide [-v] (verbose) to report to the user if the
+COMMAND is not found on their $PATH
+
+If the COMMAND is not found, -V MISSING_COMMAND_TEXT can be provided
+to provide a custom error to the user (e.g. describe how to install/configure)
+
+To enable verbose through a environment variable:
+
+export HAVECMD_REPORT=1
+
+havecmd awk || exit $?
+havecmd evry -V "Install from ..." || exit $?
+'
+
+	report_missing=0
+	missing_command_text=''
+
+	[[ -n "$HAVECMD_REPORT" ]] && report_missing=1
+
+	while getopts "hV:v" opt; do
+		case "$opt" in
+		h)
+			printf "%s\n" "$usage"
+			exit 10
+			;;
+		V)
+			report_missing=1
+			missing_command_text="$OPTARG"
+			;;
+		v)
+			report_missing=1
+			;;
+		?)
+			printf 'Unknown flag: %s\n' "$opt"
+			printf "\n%s\n" "$usage"
+			return 10
+			;;
+		esac
+	done
+	shift "$((OPTIND - 1))"
+	COMMAND="${1:?Must provide COMMAND to check as argument}"
+	if command -v "${COMMAND}" >/dev/null 2>&1; then
+		exit 0
+	else
+		if ((report_missing)); then
+			printf "havecmd: Could not find '%s' on your \$PATH." "$COMMAND" >&2
+			if [[ -n "$missing_command_text" ]]; then
+				echo -e " ${missing_command_text}" >&2
+			else
+				echo # fix cursor location
+			fi
+		fi
+		exit 2
+	fi
+}
+
+main "$@" || exit $?
