@@ -109,14 +109,7 @@ python3 -m pip install --user -q -r "${PYTHON_PACKAGE_LIST}"
 # install random personal stuff I want importable from anywhere
 
 install_personal_pkg() {
-	if havecmd reorder_editable; then
-		if reorder_editable cat | grep -q "${HOME}/.config/seanb"; then
-			# shellcheck disable=SC2088
-			echo '~/.config/seanb already installed as editable'
-			return
-		fi
-	fi
-	python3 -m pip install --user -e "${HOME}/.config/seanb"
+	python3 -m pip install --user "${HOME}/.config/seanb"
 }
 
 install_personal_pkg
