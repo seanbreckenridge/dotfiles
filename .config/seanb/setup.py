@@ -12,7 +12,7 @@ def main() -> None:
     setup(
         name="seanb-personal",
         packages=find_namespace_packages("src"),
-        url=f"https://github.com/seanbreckenridge/seanb-coreutils",
+        url="https://github.com/seanbreckenridge/seanb-core",
         author="Sean Breckenridge",
         author_email="seanbrecke@gmail.com",
         python_requires=">=3.8",
