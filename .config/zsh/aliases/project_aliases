@@ -60,7 +60,7 @@ fi
 [[ "$ON_OS" =~ ^linux_arch ]] && {
 	cz() {
 		command cz || return $?
-		i3-msg exec --no-startup-id ttally update-cache >/dev/null 2>&1
+		i3-msg exec --no-startup-id ttally update-cache >/dev/null 2>&1 || true
 	}
 }
 alias 'czd=PROMPT_DATETIME=1 cz'
