@@ -358,17 +358,6 @@ command='exec date +"%B" | lower'
 [year]
 command='exec date +"%Y"'
 
-[upper]
-command="exec awk '{print toupper($0)}'"
-
-[capitalize]
-shebang="#!/usr/bin/env bash"
-command="""
-# capitalizes the first character of a word from STDIN
-s="$(lower)"
-echo "$(upper <<<"${s:0:1}")${s:1}"
-"""
-
 [lastpic]
 shebang = "#!/usr/bin/env bash"
 command='''
