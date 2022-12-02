@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # Often used like:
 # havecmd -V 'Install from github.com/...' some_command || exit $?
 # To exit in my shell scripts if a required command isn't found
@@ -23,8 +23,7 @@ To enable verbose through a environment variable:
 export HAVECMD_REPORT=1
 
 havecmd awk || exit $?
-havecmd evry -V "Install from ..." || exit $?
-'
+havecmd evry -V "Install from ..." || exit $?'
 
 	report_missing=0
 	missing_command_text=''
@@ -37,12 +36,12 @@ havecmd evry -V "Install from ..." || exit $?
 			printf "%s\n" "$usage"
 			exit 10
 			;;
+		v)
+			report_missing=1
+			;;
 		V)
 			report_missing=1
 			missing_command_text="$OPTARG"
-			;;
-		v)
-			report_missing=1
 			;;
 		?)
 			printf 'Unknown flag: %s\n' "$opt"

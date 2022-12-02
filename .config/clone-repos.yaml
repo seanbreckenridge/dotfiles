@@ -1,6 +1,8 @@
 "https://github.com/seanbreckenridge/ttally":
   pip: install
   postinstall: git pull
+"https://github.com/seanbreckenridge/seanb-core":
+  postinstall: make install
 "https://github.com/seanbreckenridge/albums":
   pip: editable
 "https://github.com/seanbreckenridge/bleanser-fork":

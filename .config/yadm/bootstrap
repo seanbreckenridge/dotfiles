@@ -108,11 +108,7 @@ python3 -m pip list --format=freeze | cut -d "=" -f1 | grep -qx "wheel" || pytho
 python3 -m pip install --user -q -r "${PYTHON_PACKAGE_LIST}"
 # install random personal stuff I want importable from anywhere
 
-install_personal_pkg() {
-	python3 -m pip install --user "${HOME}/.config/seanb"
-}
-
-install_personal_pkg
+python3 -m pip install --user "${HOME}/.config/seanb"
 
 # Install personal python packages
 # If command "$1" doesn't exist, install from $2
@@ -122,6 +118,9 @@ function install_python_personal() {
 
 install_python_personal "mystars" "https://github.com/seanbreckenridge/oh-my-stars"
 install_python_personal "shortcuts" "https://github.com/seanbreckenridge/shortcuts"
+install_python_personal "clone-repos" "https://github.com/seanbreckenridge/clone-repos"
+
+clone-repos ~/.config/clone-repos.yaml || true
 
 PIPX_INSTALLED="$(pipx list --json 2>/dev/null | jq '.venvs | keys[]' -r)"
 while read -r pipx_pkg; do
