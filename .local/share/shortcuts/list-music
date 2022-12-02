@@ -1,6 +1,5 @@
 #!/bin/sh
-# list music files (try to ignore cue/log/album artwork files) in the current directory
-# dont include the './' prefix, print a relative path assuming current directory
-# confirm this is ignoring the correct files by running:
-# list-music | grep -Ev "mp3$"
-fd --type f | sed -e 's|\.\/||' | grep -iEv "\.(gif|accurip|jpg|png|cue|log|m3u|m3u8|nfo|md5|txt|html|rtf|jpeg|sfv|pdf|ffp|pls)$" | sort -n
+# to generate list of file formats:
+# curl -sL https://en.wikipedia.org/wiki/Audio_file_format | pup '.wikitable td:first-of-type a text{}' | tr -d '.' | tr ',' '\n' | chomp | tr '\n' '|'
+
+exec fd --type f '.*\.(3gp|aa|aac|aax|act|aiff|alac|amr|ape|au|awb|dss|flac|gsm|m4a|m4b|m4p|mp3|mpc|ogg|oga|mogg|opus|ra|rm|raw|rf64|sln|tta|voc|vox|wav|wma|wv|webm|8svx|cda)$' "$@"
