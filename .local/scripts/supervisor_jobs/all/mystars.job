@@ -3,7 +3,7 @@
 
 wait-for-internet -q --timeout "${WFI_TIMEOUT:-10}" || exit 0
 case "$ON_OS" in
-windows* | android*)
+windows*)
 	exit 0
 	;;
 esac
