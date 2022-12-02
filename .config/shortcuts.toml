@@ -621,17 +621,6 @@ printf '%s' "${CONTENTS}" | largechar -c
 [syncgui]
 command = "exec openurl 'localhost:8384'"
 
-[tq]
-command='''
-# convert a TOML file to JSON, usually piped into jq
-import sys
-import json
-import toml
-
-print(json.dumps(toml.loads(sys.stdin.read())))
-'''
-shebang = "#!/usr/bin/env python3"
-
 [sqlitebrowser-]
 command='''
 # on linux, call the binary directly
