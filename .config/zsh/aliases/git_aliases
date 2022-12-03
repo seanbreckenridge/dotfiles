@@ -349,10 +349,3 @@ gclcd() {
 	gcl "${1:?Provide something to git clone}"
 	cd "$(newest -include-dirs)"
 }
-
-# for https://github.com/paulirish/git-open
-gitopen() {
-	local url
-	url="$(g open --print)" || return $?
-	openurl "$url"
-}
