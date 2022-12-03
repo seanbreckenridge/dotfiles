@@ -140,20 +140,6 @@ clp <<<"${pw}"
 printf '\n'
 '''
 
-[list-music]
-command='''
-# to generate list of file formats:
-# curl -sL https://en.wikipedia.org/wiki/Audio_file_format | pup '.wikitable td:first-of-type a text{}' | tr -d '.' | tr ',' '\n' | chomp | tr '\n' '|'
-
-exec fd --type f '.*\.(3gp|aa|aac|aax|act|aiff|alac|amr|ape|au|awb|dss|flac|gsm|m4a|m4b|m4p|mp3|mpc|ogg|oga|mogg|opus|ra|rm|raw|rf64|sln|tta|voc|vox|wav|wma|wv|webm|8svx|cda)$' "$@"
-'''
-
-[list-videos]
-command='''
-exec fd '.*\.(mp4|avi|mov|vob|flv|mkv|webm|unknown_video)$' "$@"
-'''
-link = 'list-movies'
-
 [list-images]
 command='''exec fd '.*\.(png|jpeg|jpg)$' "$@"'''
 
@@ -717,9 +703,6 @@ command = 'echo "$PATH" | tr ":" "\n"'
 command='''
 tail -n "${1:-100}" /tmp/bgproc.log | epochguess -d":"
 '''
-
-[tally]
-command = 'sort | uniq -c | sort -n'
 
 [yh]
 command='''

@@ -1,5 +1,0 @@
-#!/bin/sh
-# to generate list of file formats:
-# curl -sL https://en.wikipedia.org/wiki/Audio_file_format | pup '.wikitable td:first-of-type a text{}' | tr -d '.' | tr ',' '\n' | chomp | tr '\n' '|'
-
-exec fd --type f '.*\.(3gp|aa|aac|aax|act|aiff|alac|amr|ape|au|awb|dss|flac|gsm|m4a|m4b|m4p|mp3|mpc|ogg|oga|mogg|opus|ra|rm|raw|rf64|sln|tta|voc|vox|wav|wma|wv|webm|8svx|cda)$' "$@"

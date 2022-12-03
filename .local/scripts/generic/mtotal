@@ -1,7 +1,0 @@
-#!/usr/bin/env bash
-# given a bunch of media files, gives the total duration in minutes
-
-set -e
-
-TOTAL_SECS="$(mduration "$@" | cut -d's' -f1 | datamash sum 1)"
-echo "$((TOTAL_SECS / 60))"

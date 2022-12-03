@@ -1,7 +1,7 @@
 "https://github.com/seanbreckenridge/ttally":
   pip: install
   postinstall: git pull
-"https://github.com/seanbreckenridge/seanb-core":
+"https://github.com/seanbreckenridge/core":
   postinstall: make install
 "https://github.com/seanbreckenridge/albums":
   pip: editable

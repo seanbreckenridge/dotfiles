@@ -1,2 +1,0 @@
-#!/bin/sh
-exec fd '.*\.(mp4|avi|mov|vob|flv|mkv|webm|unknown_video)$' "$@"
