@@ -1,6 +1,6 @@
 # dotfiles
 
-I have a separate repository [`seanb-core`](https://github.com/seanbreckenridge/seanb-core) I sync scripts up to make them easier to install -- this repository is more application configuration and very personal scripts
+I have a separate repository ([`core`](https://github.com/seanbreckenridge/core)) I sync scripts up to make them easier to install -- this repository is more application configuration and very personal scripts
 
 This was originally linux-only, but over the months and years I've added a compatability layer of sorts; A global `ON_OS` variable which uses [on_machine](https://github.com/seanbreckenridge/on_machine) to figure out which machine/operating system I'm on. (`linux_arch`, `mac`, `android` ([termux](https://termux.com/)) or `windows` (WSL)) is set on X server/terminal launch. The bootstrap scripts in [`.config/yadm`](.config/yadm) dispatch against that to install different packages
 
