@@ -1,6 +1,0 @@
-#!/bin/sh
-# whenever a format (md/latex) file is saved, re-compile it
-# compile refreshes mupdf if its active
-
-FILE="${1:?Pass an file to render as the first argument.}"
-find "${FILE}" | entr compile "${FILE}"
