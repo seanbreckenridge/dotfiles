@@ -53,6 +53,9 @@ command = '''
 exec date "+%m/%d/%y"
 '''
 
+[tstamp]
+command="exec date +'%Y%m%d%H%M%S'"
+
 [gi]
 command = '''
 # get gitignores for different languages
@@ -241,64 +244,12 @@ exec launch ranger "$pics"
 shebang='#!/usr/bin/env bash'
 link='camera'
 
-[image-dimensions]
-command='''
-# print the image dimensions for one or more images
-for f in "$@"; do
-	img_size="$(exiftool "$f" | grep "Image Size")"
-	[ -z "$img_size" ] && printf "Could not get 'Image Size' for %s" "$f" 1>&2 || printf "%s %s\n" "${img_size#*: }" "$f"
-done
-'''
-
-[remove-extension]
-command='''
-# remove the extension from a filename
-FILEPATH="${1:?You must provide a filepath to remove the extension for.}"
-echo "${FILEPATH%%.*}"
-'''
-
-[replace-extension]
-command='''
-# replace the extension for a filename
-FILEPATH="${1:?Have to provide a filepath to replace the extension for}"
-REPLACE_EXTENSION="${2:?Must provide extension to replace extension with}"
-echo "${FILEPATH%%.*}.${REPLACE_EXTENSION#.}"
-'''
-
-[get-extension]
-command='''
-# remove the extension from a filename
-FILEPATH="${1:?You must provide a filepath to remove the extension for.}"
-echo "${FILEPATH##*.}"
-'''
-
-[to-png]
-command='''
-# convert an image to png
-FILEPATH=${1:?Must provide image to convert}
-exec convert "$FILEPATH" "$(replace-extension "$FILEPATH" png)"
-'''
-
-[to-jpeg]
-command='''
-# convert an image to png
-FILEPATH=${1:?Must provide image to convert}
-exec convert "$FILEPATH" "$(replace-extension "$FILEPATH" jpg)"
-'''
-link = "to-jpg"
-
 [to-icon]
 command='''
 # convert an image to a 16x16 icon - to favicon size
 FILEPATH=${1:?Must provide image to convert}
 NEW_FILEPATH="$(remove-extension "${FILEPATH}")-icon.png"
 exec convert -resize x16 -gravity center -crop 16x16+0+0 -flatten -colors 256 "${FILEPATH}" "${NEW_FILEPATH}"
-'''
-
-[rotate-img]
-command='''
-FILEPATH=${1:?Must provide image to convert}
-exec convert "${FILEPATH}" -rotate 90 "${FILEPATH}"
 '''
 
 [file-mime]
@@ -317,32 +268,6 @@ command='''
 # clp, but accepts input as arguments
 echo "$*" | clp
 '''
-
-# lots of date shorthands
-
-[tstamp]
-command="exec date +'%Y%m%d%H%M%S'"
-
-[daystamp]
-command='exec date "+%Y-%m-%d"'
-
-["daystamp_"]
-command='exec date "+%Y_%m_%d"'
-
-[now]
-command='exec date +"%A, %B %e, %Y, %l:%M:%S%p"'
-
-[epoch]
-command='exec date +"%s"'
-
-[weekday]
-command='exec date +"%A" | lower'
-
-[month]
-command='exec date +"%B" | lower'
-
-[year]
-command='exec date +"%Y"'
 
 [lastpic]
 shebang = "#!/usr/bin/env bash"
@@ -415,12 +340,6 @@ exec curl -s "https://cheat.sh/$*"
 
 [speedtest]
 command='wait-for-internet --text "Waiting for internet..." && exec python3 -m speedtest "$@"'
-
-[rcut]
-command='''
-# cut, but indexing from the right
-rev | cut "$@" | rev
-'''
 
 [mpv-corner]
 command='''
@@ -690,15 +609,6 @@ command='''
 exec listens --desc "$@"
 '''
 
-[unique]
-command='''
-# filter the text from something piped into this to unique lines
-exec awk '!seen[$0]++'
-'''
-
-[path]
-command = 'echo "$PATH" | tr ":" "\n"'
-
 [bglogs]
 command='''
 tail -n "${1:-100}" /tmp/bgproc.log | epochguess -d":"
@@ -750,9 +660,6 @@ command='''
 SREMINDERS="$(sreminders)"
 notify "${SREMINDERS:-No sreminders}"
 '''
-
-[average]
-command = 'exec datamash mean 1'
 
 [discord-suppress]
 command = "exec sed -e 's/^/</' -e 's/$/>/'"

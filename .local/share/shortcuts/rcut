@@ -1,3 +1,0 @@
-#!/bin/sh
-# cut, but indexing from the right
-rev | cut "$@" | rev

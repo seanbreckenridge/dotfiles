@@ -1,4 +1,0 @@
-#!/bin/sh
-# convert an image to png
-FILEPATH=${1:?Must provide image to convert}
-exec convert "$FILEPATH" "$(replace-extension "$FILEPATH" png)"
