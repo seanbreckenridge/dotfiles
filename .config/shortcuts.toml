@@ -688,7 +688,10 @@ exec printf '%s\n' "$tmpf"
 command='exec html-head -a css-dark-mode -a css-pre-wrap "$@"'
 
 [pygmentize-styles]
-command="pygmentize -L styles | grep '* ' | cut -c3- | sed -e 's/:$//'"
+command="""
+# shellcheck disable=SC2063
+pygmentize -L styles | grep '* ' | cut -c3- | sed -e 's/:$//'
+"""
 
 [pygmentize-html-style]
 command='''

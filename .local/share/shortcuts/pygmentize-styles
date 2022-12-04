@@ -1,2 +1,3 @@
 #!/bin/sh
+# shellcheck disable=SC2063
 pygmentize -L styles | grep '* ' | cut -c3- | sed -e 's/:$//'
