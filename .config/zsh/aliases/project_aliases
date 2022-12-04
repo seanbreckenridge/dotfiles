@@ -101,7 +101,7 @@ job-reset() {
 		return 1
 	}
 	while read -r tag; do
-		rm -v "${tag}"
+		command rm -v "${tag}"
 	done <<<"$tags"
 	cd -
 }
