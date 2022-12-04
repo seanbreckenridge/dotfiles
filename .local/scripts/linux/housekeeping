@@ -107,7 +107,7 @@ evry 1 hour -check-scramble-history-formats && python3 -m scramble_history merge
 evry 1 week -merge-browser-history && merge-browser-history
 evry 1 week -merge-mpv-history && merge-mpv-history
 evry 1 day -review-removed-dir && review-removed-dir
-evry 3 days -last-export-dates && last-export-dates
+evry 3 days -last-export-dates && echo 'checking last-export-dates...' && last-export-dates
 
 # run malexport update https://github.com/seanbreckenridge/malexport/
 bash "${HPIDATA}/malexport.job"
