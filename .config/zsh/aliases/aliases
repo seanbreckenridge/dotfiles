@@ -89,7 +89,7 @@ alias 'up=TERM=xterm up'
 # trash-cli/rmtrash
 # dont alias on android
 [[ "$ON_OS" =~ ^android.* ]] || {
-	alias rm='rmtrash -v'
+	alias rm='rmtrash'
 	alias rmdir='rmdirtrash'
 }
 
