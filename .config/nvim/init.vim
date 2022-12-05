@@ -62,7 +62,7 @@ Plug 'hrsh7th/cmp-cmdline'
 Plug 'hrsh7th/cmp-path'
 
 " lsp - icons
-Plug 'onsails/lspkind-nvim'
+Plug 'onsails/lspkind.nvim'
 
 " lsp - snippets
 Plug 'saadparwaiz1/cmp_luasnip'
