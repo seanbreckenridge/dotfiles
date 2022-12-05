@@ -3,7 +3,7 @@
 evry 3 minutes -update-ttally-cache && {
 	printlog "ttally:updating ttally cache..."
 	if ttally update-cache; then
-		[[ "$(on_machine)" =~ ^linux_* ]] && json-compress ~/.cache/ttally/*.json
+		[[ "$ON_OS:-$(on_machine)" =~ ^linux_* ]] && json-compress ~/.cache/ttally/*.json
 	else
 		(($? != 2)) && send-error "error updating ttally cache"
 	fi
