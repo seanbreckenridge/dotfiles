@@ -20,8 +20,8 @@ source_if_exists() {
 	else
 		if ! ((quiet)); then
 			printf "Could not source %s\n" "$1"
-			return 1
 		fi
+		return 1
 	fi
 }
 
