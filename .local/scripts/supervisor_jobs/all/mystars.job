@@ -10,5 +10,5 @@ esac
 
 evry 6 hours -update_my_stars && {
 	printlog "mystars:updating oh-my-stars..."
-	mystars -u -c=never >>/tmp/mystars_update.log 2>&1 || send-error "mystars update failed"
+	mystars -u -c=never >>"${TMPDIR:-/tmp}"/mystars_update.log 2>&1 || send-error "mystars update failed"
 }
