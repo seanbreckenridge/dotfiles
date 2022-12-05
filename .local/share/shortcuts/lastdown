@@ -1,2 +1,0 @@
-#!/bin/sh
-exec newest "$@" "${XDG_DOWNLOAD_DIR:?No XDG_DOWNLOAD_DIR environment variable set}"

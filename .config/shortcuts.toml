@@ -296,15 +296,6 @@ img-download "$@" || exit $?
 rifle "$(clippaste)"
 '''
 
-[lastdown]
-command='exec newest "$@" "${XDG_DOWNLOAD_DIR:?No XDG_DOWNLOAD_DIR environment variable set}"'
-
-[mvlast]
-command='''
-FILE="$(lastdown)" || exit 1
-exec mv -v "${FILE}" "./$1"
-'''
-
 [mvlastpic]
 command='''
 FILE="$(lastpic)" || exit 1
