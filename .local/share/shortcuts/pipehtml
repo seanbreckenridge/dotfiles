@@ -1,5 +1,5 @@
 #!/bin/sh
 # given HTML on STDIN, create a tempfile with its contents
-tmpf="$(tmpfile html)"
+tmpf="$(tmpfile html "$1")"
 cat >"$tmpf"
 exec printf '%s\n' "$tmpf"

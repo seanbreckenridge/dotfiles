@@ -664,13 +664,14 @@ command = 'exec pygmentize -f html "$@"'
 [tmpfile]
 command = '''
 ext="${1:-tmp}"
-echo "$(mktemp -d)/$(genpasswd -rsym -rnum).${ext}"
+filename="${2:-$(genpasswd -rsym -rnum)}"
+echo "$(mktemp -d)/${filename}.${ext}"
 '''
 
 [pipehtml]
 command = '''
 # given HTML on STDIN, create a tempfile with its contents
-tmpf="$(tmpfile html)"
+tmpf="$(tmpfile html "$1")"
 cat >"$tmpf"
 exec printf '%s\n' "$tmpf"
 '''
