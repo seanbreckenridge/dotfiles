@@ -238,5 +238,35 @@
     "transformed_puzzle": "333",
     "transformed_event_code": "OH",
     "transformed_event_description": "3x3 CFOP OH"
+  },
+  {
+    "source_class_name": "scramble_history.twistytimer.Solve",
+    "source_fields_match": {
+      "puzzle": "444",
+      "category": "OH"
+    },
+    "transformed_puzzle": "444",
+    "transformed_event_code": "OH",
+    "transformed_event_description": "4x4 OH"
+  },
+  {
+    "source_class_name": "scramble_history.cstimer.Solve",
+    "source_fields_match": {
+      "name": "3x3 - Petrus",
+      "raw_scramble_type": "333"
+    },
+    "transformed_puzzle": "333",
+    "transformed_event_code": "WCA",
+    "transformed_event_description": "3x3 Petrus"
+  },
+  {
+    "source_class_name": "scramble_history.cstimer.Solve",
+    "source_fields_match": {
+      "name": "3x3 - Roux",
+      "raw_scramble_type": "333"
+    },
+    "transformed_puzzle": "333",
+    "transformed_event_code": "WCA",
+    "transformed_event_description": "3x3 Roux"
   }
 ]
