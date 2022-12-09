@@ -20,12 +20,6 @@ setopt EXTENDED_HISTORY   # save time/duration to history file
 
 export CDPATH=".:${REPOS}"
 
-# Set environment variables to change default cache/config file locations
-
-# Change npm install dir from /usr/local/bin (which requires sudo)
-export NPM_CONFIG_PREFIX="${XDG_DATA_HOME}/npm-packages"
-export NODE_PATH="${NPM_CONFIG_PREFIX}/lib/node_modules:${NODE_PATH}"
-
 # Go
 export GOPATH="${XDG_DATA_HOME}/go"
 export GOBIN="${GOPATH}/bin"

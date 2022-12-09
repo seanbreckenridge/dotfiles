@@ -45,7 +45,7 @@ Similar to Termux, does an `apt`-based install. Installs a bunch of languages/pr
 
 - [.local/scripts/supervisor_jobs](.local/scripts/supervisor_jobs/) has jobs using [`supervisor`](https://github.com/Supervisor/supervisor) to daemonize, so I dont have to write plists or systemd scripts, and background processes work mac, linux, windows and android. That uses [`bgproc`](https://github.com/seanbreckenridge/bgproc) as an anacron replacement, and [`on_machine`](https://github.com/seanbreckenridge/on_machine) to figure out which jobs to run on each system/distribution
 - [`ttt`](https://github.com/seanbreckenridge/ttt/) is sprinkled throughout lots of my scripts, it acts as an extension to my shell history, saving commands from `i3` `bindsym`s, or `ranger` commands. [Lets me `cd`](.config/zsh/cd.zsh) to one of those directories quickly using `fzf`
-- [.config/yadm](.config/yadm) includes lists of global packages to install for pacman/apt/brew, python, ruby, npm, dart, rust, go, elixir and bash
+- [.config/yadm](.config/yadm) includes lists of global packages to install for pacman/apt/brew, python, ruby, node, dart, rust, go, elixir and bash
 - [.config/shortcuts.toml](.config/shortcuts.toml) - describes basic shell scripts that are created by [shortcuts](https://github.com/seanbreckenridge/shortcuts)
 - [.local/scripts/generic](.local/scripts/generic) - lots of my scripts; e.g.
   - media related, [mduration](.local/scripts/generic/mduration) to get media length, [gifme](.local/scripts/generic/gifme) to convert video to gifs, lots of audio/video format conversion scripts

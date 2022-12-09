@@ -59,8 +59,8 @@ done < <(on_machine -cmd match -print0 -filter file -base "${YADM_DIR}" '%o_boot
 declare -rx PYTHON_PACKAGE_LIST="${PACKAGE_DIR}/python3_packages.txt"
 declare -rx PIPX_PACKAGE_LIST="${PACKAGE_DIR}/pipx_packages.txt"
 declare -rx GLOBAL_GEM_LIST="${PACKAGE_DIR}/ruby_packages.txt"
-declare -rx NPM_PACKAGE_LIST="${PACKAGE_DIR}/npm_packages.txt"
-declare -rx COMPUTER_NPM_PACKAGE_LIST="${PACKAGE_DIR}/computer_npm_packages.txt"
+declare -rx NODE_PACKAGE_LIST="${PACKAGE_DIR}/node_packages.txt"
+declare -rx COMPUTER_NODE_PACKAGE_LIST="${PACKAGE_DIR}/computer_node_packages.txt"
 declare -rx BASH_PACKAGE_LIST="${PACKAGE_DIR}/bash_packages.txt"
 
 # make sure personal aliases file exists so that zshrc souces fine
@@ -142,40 +142,33 @@ HAVECMD_REPORT='' havecmd speedtest-cli && rm "$(command -v speedtest-cli)"
 	bash "${YADM_DIR}/computer_bootstrap" || exit $?
 }
 
-npm_install_from_pkg_list() {
-	local npm_installed="$1"
+yarn_install_from_pkglist() {
+	local node_installed="$1"
 	local package_list="$2"
 	while read -r npkg; do
-		if ! grep -qx "${npkg}" <<<"${npm_installed}"; then
+		if ! grep -qx "${npkg}" <<<"${node_installed}"; then
 			printf "Installing %s\n" "$npkg"
-			npm install --global "${npkg}"
+			yarn global add "${npkg}"
 		fi
 	done < <(spkglist "${package_list}")
 }
 
-havecmd npm || exit $?
-# install npm packages
-export NPM_CONFIG_PREFIX="${XDG_DATA_HOME}/npm-packages"
-echo "Installing global npm packages..."
-NPM_LOC="$(command -v npm)"
-if is_npm_path_unmangled "$NPM_LOC"; then
-	# create the npm directory and make sure we own the directory to fix permission issues
-	[[ ! -d "${NPM_CONFIG_PREFIX}" ]] && mkdir -p "${NPM_CONFIG_PREFIX}" && sudo chown -R "$(whoami)" "${NPM_CONFIG_PREFIX}"
+install_yarn_packages() {
 	# get a list of installed packages
-	NPM_INSTALLED="$(npm ls -g --json | jq '.dependencies | keys[]' -r)"
-	npm_install_from_pkg_list "$NPM_INSTALLED" "$NPM_PACKAGE_LIST"
-	# computer-only npm packages
+	YARN_INSTALLED="$(yarn global list 2>&1 | awk '$1 ~ /^\s*-/ {gsub("^\\s*- ", ""); print $1}')"
+	yarn_install_from_pkglist "$YARN_INSTALLED" "$NODE_PACKAGE_LIST"
+	# computer-only node packages
 	case "$ON_OS" in
 	android*) ;;
 	*)
-		npm_install_from_pkg_list "$NPM_INSTALLED" "$COMPUTER_NPM_PACKAGE_LIST"
+		yarn_install_from_pkglist "$YARN_INSTALLED" "$COMPUTER_NODE_PACKAGE_LIST"
 		;;
 	esac
-else
-	printf "NPM path not where expected (%s), skipping package install...\n" "$NPM_LOC"
-	# incase this is the first time this has happened, update npm globally so it gets put into "$NPM_CONFIG_PREFIX"
-	npm install --global npm
-fi
+}
+
+havecmd yarn || exit $?
+# install yarn packages
+install_yarn_packages
 
 # install pistol manually
 havecmd pistol || env GO111MODULE=on go install -v 'github.com/doronbehar/pistol/cmd/pistol@latest'

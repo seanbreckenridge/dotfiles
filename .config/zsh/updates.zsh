@@ -6,13 +6,9 @@ update_nvim() {
 	nvim +PlugUpdate +qall
 }
 
-update_npm() {
-	echo "Updating global npm packages..."
-	if is_npm_path_unmangled; then
-		npm update -g
-	else
-		echo 'npm path has been mangled (e.g. by nvm/asdf), skipping update...'
-	fi
+update_node() {
+	echo "Updating global node packages..."
+	yarn global upgrade
 }
 
 update_gem() {
@@ -45,7 +41,7 @@ update_basher() {
 
 update_lang_all() {
 	update_nvim
-	update_npm
+	update_node
 	update_gem
 	update_pip
 	update_cargo

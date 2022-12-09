@@ -1,6 +1,7 @@
 python3-pip
 tree
 npm
+yarn
 libicu-dev
 libmagic-dev
 silversearcher-ag

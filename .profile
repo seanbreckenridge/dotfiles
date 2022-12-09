@@ -26,7 +26,6 @@ ${REPOS}/my_feed/scripts:\
 ${REPOS}/ttally/bin:\
 ${XDG_DATA_HOME}/shortcuts:\
 ${HOME}/.local/bin:\
-${XDG_DATA_HOME}/npm-packages/bin:\
 ${HOME}/.local/scripts/mac:\
 ${HOME}/.local/scripts/cross-platform:\
 ${HOME}/.local/scripts/generic:\
