@@ -268,5 +268,15 @@
     "transformed_puzzle": "333",
     "transformed_event_code": "WCA",
     "transformed_event_description": "3x3 Roux"
+  },
+  {
+    "source_class_name": "scramble_history.cstimer.Solve",
+    "source_fields_match": {
+      "name": "5x5",
+      "raw_scramble_type": "555wca"
+    },
+    "transformed_puzzle": "555",
+    "transformed_event_code": "WCA",
+    "transformed_event_description": "5x5"
   }
 ]
