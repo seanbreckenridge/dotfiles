@@ -7,7 +7,7 @@
     },
     "transformed_puzzle": "333",
     "transformed_event_code": "WCA",
-    "transformed_event_description": "3x3 CFOP"
+    "transformed_event_description": "3x3"
   },
   {
     "source_class_name": "scramble_history.twistytimer.Solve",
@@ -27,7 +27,7 @@
     },
     "transformed_puzzle": "333",
     "transformed_event_code": "OH",
-    "transformed_event_description": "3x3 CFOP OH"
+    "transformed_event_description": "3x3 OH"
   },
   {
     "source_class_name": "scramble_history.twistytimer.Solve",
@@ -57,7 +57,7 @@
     },
     "transformed_puzzle": "333",
     "transformed_event_code": "WCA",
-    "transformed_event_description": "3x3 CFOP"
+    "transformed_event_description": "3x3"
   },
   {
     "source_class_name": "scramble_history.cstimer.Solve",
@@ -127,7 +127,7 @@
     },
     "transformed_puzzle": "333",
     "transformed_event_code": "WCA",
-    "transformed_event_description": "3x3 CFOP"
+    "transformed_event_description": "3x3"
   },
   {
     "source_class_name": "scramble_history.twistytimer.Solve",
@@ -177,7 +177,7 @@
     },
     "transformed_puzzle": "333",
     "transformed_event_code": "WCA",
-    "transformed_event_description": "3x3 CFOP"
+    "transformed_event_description": "3x3"
   },
   {
     "source_class_name": "scramble_history.twistytimer.Solve",
@@ -237,7 +237,7 @@
     },
     "transformed_puzzle": "333",
     "transformed_event_code": "OH",
-    "transformed_event_description": "3x3 CFOP OH"
+    "transformed_event_description": "3x3 OH"
   },
   {
     "source_class_name": "scramble_history.twistytimer.Solve",
@@ -274,6 +274,16 @@
     "source_fields_match": {
       "name": "5x5",
       "raw_scramble_type": "555wca"
+    },
+    "transformed_puzzle": "555",
+    "transformed_event_code": "WCA",
+    "transformed_event_description": "5x5"
+  },
+  {
+    "source_class_name": "scramble_history.twistytimer.Solve",
+    "source_fields_match": {
+      "puzzle": "555",
+      "category": "Normal"
     },
     "transformed_puzzle": "555",
     "transformed_event_code": "WCA",
