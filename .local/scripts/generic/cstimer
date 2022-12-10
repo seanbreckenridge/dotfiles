@@ -6,12 +6,17 @@ set -o pipefail
 
 main() {
 	local clone_loc cache_dir
-	cache_dir="${XDG_CACHE_DIR:-${HOME}/.cache}"
-	clone_loc="${cache_dir}/cstimer"
-	[[ -e "$clone_loc" ]] || git clone 'https://github.com/seanbreckenridge/cstimer' "$clone_loc"
-	cd "$clone_loc" || exit 1
-	echo 'Running on port 4633...' >&2
-	make server || openurl 'http://localhost:4633'
+	# if cstimer server is already running, then open in browser
+	if curl --silent http://localhost:4633 >/dev/null; then
+		openurl 'http://localhost:4633'
+	else
+		# otherwise run the server
+		cache_dir="${XDG_CACHE_DIR:-${HOME}/.cache}"
+		clone_loc="${cache_dir}/cstimer"
+		[[ -e "$clone_loc" ]] || git clone 'https://github.com/seanbreckenridge/cstimer' "$clone_loc"
+		cd "$clone_loc" || exit 1
+		make server
+	fi
 }
 
 main || exit $?
