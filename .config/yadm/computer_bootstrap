@@ -121,4 +121,4 @@ havecmd gh && {
 
 clone-repos ~/.config/computer-clone-repos.yaml
 
-havecmd mapscii-at || yarn global add git+https://github.com/seanbreckenridge/mapscii-at
+havecmd mapscii-at || yarn global add --prefix "${HOME}/.local" git+https://github.com/seanbreckenridge/mapscii-at

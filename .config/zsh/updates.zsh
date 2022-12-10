@@ -8,7 +8,7 @@ update_nvim() {
 
 update_node() {
 	echo "Updating global node packages..."
-	yarn global upgrade
+	yarn global --prefix "${HOME}/.local/" upgrade
 }
 
 update_gem() {

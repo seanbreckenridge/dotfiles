@@ -148,14 +148,22 @@ yarn_install_from_pkglist() {
 	while read -r npkg; do
 		if ! grep -qx "${npkg}" <<<"${node_installed}"; then
 			printf "Installing %s\n" "$npkg"
-			yarn global add "${npkg}"
+			# install to ~/.local/bin
+			yarn global add --prefix "${HOME}/.local" "${npkg}"
 		fi
 	done < <(spkglist "${package_list}")
 }
 
+yarn_installed() {
+	local yarn_package_json="${HOME}/.local/share/yarn/global/package.json"
+	if [[ -e "${yarn_package_json}" ]]; then
+		jq <"${yarn_package_json}" '.dependencies | keys[]' -r
+	fi
+}
+
 install_yarn_packages() {
 	# get a list of installed packages
-	YARN_INSTALLED="$(yarn global list 2>&1 | awk '$1 ~ /^\s*-/ {gsub("^\\s*- ", ""); print $1}')"
+	YARN_INSTALLED="$(yarn_installed)"
 	yarn_install_from_pkglist "$YARN_INSTALLED" "$NODE_PACKAGE_LIST"
 	# computer-only node packages
 	case "$ON_OS" in
@@ -169,6 +177,7 @@ install_yarn_packages() {
 havecmd yarn || exit $?
 # install yarn packages
 install_yarn_packages
+rm -f "${HOME}/.local/bin/yarn.lock"
 
 # install pistol manually
 havecmd pistol || env GO111MODULE=on go install -v 'github.com/doronbehar/pistol/cmd/pistol@latest'

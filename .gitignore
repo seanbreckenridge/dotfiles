@@ -200,6 +200,7 @@ __pycache__
 /.wget-hsts
 /.xsession-errors*
 /.yarnrc
+/.yarn
 /.zoom
 
 # Top level config/local files to ignore
