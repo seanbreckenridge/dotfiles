@@ -288,5 +288,15 @@
     "transformed_puzzle": "555",
     "transformed_event_code": "WCA",
     "transformed_event_description": "5x5"
+  },
+  {
+    "source_class_name": "scramble_history.cstimer.Solve",
+    "source_fields_match": {
+      "name": "megaminx",
+      "raw_scramble_type": "mgmp"
+    },
+    "transformed_puzzle": "megaminx",
+    "transformed_event_code": "WCA",
+    "transformed_event_description": "Megaminx"
   }
 ]
