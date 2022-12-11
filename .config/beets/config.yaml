@@ -1,13 +1,30 @@
 directory: ~/Music
-library: ~/data/beet.db
+library: ~/Documents/beet.db
 
 import:
-  incremental: yes
   copy: no
-plugins: scrub zero lastgenre yearfixer
+  incremental: yes
+  incremental_skip_later: yes
+plugins:
+  - convert
+  - info
+  - export
+  - ftintitle
+  - discogs
+  - scrub
+  - zero
+  - lastgenre
+  - yearfixer
+  - edit
+original_date: yes
 
 # plugin config
 zero:
   fields: genre comments
   comments: [EAC, LAME, support, from.+collection, bandcamp, "ripped by"]
   update_database: true
+
+# automatically convert non mp3 files to mp3 during import
+convert:
+  auto: yes
+  extension: mp3
