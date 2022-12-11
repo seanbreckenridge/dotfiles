@@ -37,18 +37,6 @@ alias exoo='cd "${REPOS}/exobrain"; ranger --cmd="shell ./exosearch -o"'
 # https://github.com/seanbreckenridge/greasyfork_repo_generator
 alias greasyfork_generate='cd ${REPOS}/greasyfork_repo_generator && mix escript.build && greasyfork_archive 96096 --output-file scraped_data.json && ./greasyfork_repo_generator -j scraped_data.json --output-dir ../greasyfork --ignore-ids 37826 && cd ../greasyfork && git status'
 
-# https://github.com/seanbreckenridge/mint
-alias budget-history='budget accounts --graph'
-# to edit the account/transaction map information
-alias 'budget-config=fd -IH conf.py --full-path ${REPOS}/mint | fzf | xargs -r -I {} editor {}'
-budget-summary() {
-	if [[ -z "$1" ]]; then
-		budget summary | glow -
-	else
-		budget summary "$@"
-	fi
-}
-
 # https://github.com/seanbreckenridge/ttally
 TTALLY_ALIASES="${HOME}/.cache/ttally_aliases"
 if [[ ! -e "${TTALLY_ALIASES}" ]]; then
@@ -128,6 +116,3 @@ cube-stats() {
 alias cube-stats-graphs='cube-stats -G --graph-opt kitty-print'
 alias cube-stats-all=_cube-stats-merge
 alias cube-stats-all-graphs='cube-stats-all -G --graph-opt kitty-print'
-
-# random
-alias malup='while true; do; clear; sleep 60; date; [ "$(curl -s -o /dev/null -I -w "%{http_code}" "https://myanimelist.net")" = "200" ] && notify-send "MAL is up"; done'
