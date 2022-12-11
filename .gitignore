@@ -44,11 +44,7 @@ Brewfile.lock.json
 .zsh_history
 .zsh_sessions
 .zshrc.zwc
-/.config/zsh/aliases/personal_aliases
-/.config/zsh/aliases/tokens
-/.zshenv
-directory_aliases
-secrets
+.zshenv
 
 # bash
 .bash_logout
@@ -103,7 +99,6 @@ __pycache__
 /.clojure_history
 /.config/CrossCode
 /.config/MongoDB Compass/
-/.config/beets
 /.config/discord
 /.config/discordcanary/
 /.config/keepassxc/keepassxc.ini
@@ -289,7 +284,6 @@ __pycache__
 # exclusions to the .config ignores
 !/.config/todo/config
 !/.config/bookmark.txt/config
-
 
 # stuff to ignore in ~/.local
 /.local/*.md

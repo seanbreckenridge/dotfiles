@@ -1,0 +1,13 @@
+directory: ~/Music
+library: ~/data/beet.db
+
+import:
+  incremental: yes
+  copy: no
+plugins: scrub zero lastgenre yearfixer
+
+# plugin config
+zero:
+  fields: genre comments
+  comments: [EAC, LAME, support, from.+collection, bandcamp, "ripped by"]
+  update_database: true
