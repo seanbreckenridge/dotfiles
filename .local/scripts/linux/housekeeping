@@ -71,8 +71,9 @@ evry 1 day -plainplay-resolve && plainplay resolve
 
 # fix broken ID3 metadata on my music, add songs to my car playlist
 # https://github.com/seanbreckenridge/plaintext_playlist_py
-evry 1 week -id3stuff && id3stuff
+evry 3 weeks -id3stuff && id3stuff --remove-embedded-album-art
 evry 1 day -car-playlist && car-playlist
+evry 2 weeks -lastgenre && beet lastgenre
 
 # https://github.com/seanbreckenridge/HPI-personal/blob/master/scripts/mpv_clean_priv_frames
 evry 1 day -list-priv-frames && {

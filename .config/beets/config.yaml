@@ -28,3 +28,9 @@ zero:
 convert:
   auto: yes
   extension: mp3
+
+ftintitle:
+  auto: yes
+
+lastgenre:
+  auto: yes
