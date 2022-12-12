@@ -14,7 +14,6 @@ plugins:
   - scrub
   - zero
   - lastgenre
-  - yearfixer
   - edit
 original_date: yes
 

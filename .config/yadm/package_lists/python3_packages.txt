@@ -1,5 +1,4 @@
 beets
-beets-yearfixer
 black
 cookiecutter
 csvkit
