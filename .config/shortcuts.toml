@@ -693,3 +693,6 @@ exec pygmentize -P style="$style" -O noclasses=True -f html "$@"
 
 [repos]
 command = 'exec repos-list -f'
+
+[realbasename]
+command = 'exec basename "$(realpath "$(pwd)")"'
