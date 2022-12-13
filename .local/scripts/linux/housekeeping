@@ -77,7 +77,7 @@ evry 1 day -car-playlist && car-playlist
 # https://github.com/seanbreckenridge/HPI-personal/blob/master/scripts/mpv_clean_priv_frames
 evry 1 day -list-priv-frames && {
 	echo 'Checking priv mpv frames...'
-	mpv_clean_priv_frames list
+	mpv_clean_priv_frames clean
 }
 
 # https://github.com/seanbreckenridge/albums
