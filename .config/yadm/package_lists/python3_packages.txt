@@ -1,4 +1,5 @@
 beets
+beets-copyfileartifacts
 black
 cookiecutter
 csvkit

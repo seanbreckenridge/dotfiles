@@ -6,6 +6,7 @@ import:
   incremental: yes
   incremental_skip_later: yes
 plugins:
+  - copyfileartifacts
   - convert
   - info
   - export
@@ -16,6 +17,14 @@ plugins:
   - lastgenre
   - edit
 original_date: yes
+
+paths:
+  filename:cover.jpg: $albumpath/cover
+
+copyfileartifacts:
+  extensions: .cue .log .jpg .lrc
+  filename: "cover.jpg"
+  print_ignored: yes
 
 # plugin config
 zero:
