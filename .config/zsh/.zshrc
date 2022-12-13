@@ -93,6 +93,9 @@ windows*)
 	;;
 esac
 
+# override the CTRL+R widget using my hpi zsh history
+source_if_exists "${REPOS}/HPI-personal/scripts/fzf_history_widget.zsh"
+
 havecmd basher && eval "$(basher init - zsh)"
 
 source "${ZDOTDIR}/cache_aliases.zsh"
