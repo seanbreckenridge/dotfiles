@@ -2,6 +2,7 @@ python  # installs as python3
 openssh
 ncurses-utils  # tput
 man
+moreutils
 exa
 bat
 rust
