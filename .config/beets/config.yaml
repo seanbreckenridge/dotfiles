@@ -8,6 +8,7 @@ import:
 plugins:
   - copyfileartifacts
   - convert
+  - fetchart
   - info
   - export
   - ftintitle
@@ -21,12 +22,12 @@ original_date: yes
 paths:
   filename:cover.jpg: $albumpath/cover
 
+# plugin config
 copyfileartifacts:
-  extensions: .cue .log .jpg .lrc
+  extensions: .png .jpg
   filename: "cover.jpg"
   print_ignored: yes
 
-# plugin config
 zero:
   fields: genre comments
   comments: [EAC, LAME, support, from.+collection, bandcamp, "ripped by"]
@@ -42,3 +43,13 @@ ftintitle:
 
 lastgenre:
   auto: yes
+
+fetchart:
+  sources:
+    - filesystem
+    - coverart: release
+    - coverart: releasegroup
+    - itunes
+    - amazon
+    - albumart
+  maxwidth: 600
