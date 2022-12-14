@@ -1,0 +1,8 @@
+#!/bin/bash
+
+set -e
+set -o pipefail
+
+housekeeping
+housekeeping
+EVRY_JSON=1 housekeeping | describe-evry-json

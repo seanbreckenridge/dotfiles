@@ -73,24 +73,8 @@ alias cr="python3 -m pip install 'git+https://github.com/seanbreckenridge/clone-
 alias cr-hpi='clone-repos ~/.config/hpi-clone-repos.yaml'
 
 # https://github.com/seanbreckenridge/evry
-# reset a job (remove the tag file) for an evry job
-job-reset() {
-	local data_dir tags
-	data_dir="$(evry location - 2>/dev/null)"
-	cd "${data_dir}" || return $?
-	tags="$(fzf -q "$*" -m)" || {
-		cd -
-		return 1
-	}
-	while read -r tag; do
-		command rm -v "${tag}"
-	done <<<"$tags"
-	cd -
-}
-describe-evry-json() {
-	jq -r '.[] | select((.type == "tag_name") or .type == "till_next_pretty") | .body' | paste -d " " - - | sed -e 's/ / - /'
-}
 # https://github.com/seanbreckenridge/bgproc
+source "${REPOS}/evry/functions.sh"
 alias rj='bgproc_on_machine -pn'
 # reset a job with job-reset, then run all jobs
 run-job() {

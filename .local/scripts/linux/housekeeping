@@ -3,7 +3,14 @@
 # Uses my 'evry' tool to handle how often to run tasks:
 # https://github.com/seanbreckenridge/evry
 
-wait-for-internet --quiet
+declare -a wfi_args=()
+if [[ -z "$1" ]]; then
+	wfi_args+=("--quiet")
+else
+	wfi_args+=("$@")
+fi
+
+wait-for-internet "${wfi_args[@]}"
 
 # make sure commands exist
 export HAVECMD_REPORT=1

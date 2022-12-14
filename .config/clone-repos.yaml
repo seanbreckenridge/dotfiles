@@ -3,6 +3,7 @@
   postinstall: git pull
 "https://github.com/seanbreckenridge/core":
   postinstall: make install
+"https://github.com/seanbreckenridge/evry":
 "https://github.com/seanbreckenridge/albums":
   pip: editable
 "https://github.com/seanbreckenridge/bleanser-fork":

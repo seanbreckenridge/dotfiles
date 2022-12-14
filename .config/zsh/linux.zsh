@@ -1,11 +1,5 @@
 #!/bin/zsh
 
-housekeeping-info() {
-	housekeeping
-	housekeeping
-	EVRY_JSON=1 housekeeping | describe-evry-json
-}
-
 alias hi='housekeeping-info'
 # nsxiv full screen image, fit full width
 alias nsxfull='nsxiv -s f -f'
