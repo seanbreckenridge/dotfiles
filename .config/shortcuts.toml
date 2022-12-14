@@ -696,3 +696,6 @@ command = 'exec repos-list -f'
 
 [realbasename]
 command = 'exec basename "$(realpath "$(pwd)")"'
+
+[google-chrome-wifi-captive]
+command = "google-chrome-stable 'http://clients3.google.com/generate_204'"
