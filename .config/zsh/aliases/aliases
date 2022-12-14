@@ -91,6 +91,7 @@ alias 'up=TERM=xterm up'
 [[ "$ON_OS" =~ ^android.* ]] || {
 	alias rm='rmtrash'
 	alias rmdir='rmdirtrash'
+	alias rrm='command rm'
 }
 
 # kitty
