@@ -3,7 +3,7 @@
 # any new data lastfm may have
 # https://beets.readthedocs.io/en/stable/plugins/lastgenre.html
 
-wait-for-internet --quiet --timeout 5 || exit 0
+wait-for-internet --quiet --timeout "${WFI_TIMEOUT:-5}" || exit 0
 
 evry 4 weeks -fetch_lastfm_genres && {
 	printlog 'lastgenre: fetching lastfm genres for music collection...'

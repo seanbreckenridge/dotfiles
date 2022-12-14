@@ -2,7 +2,7 @@
 # saves the number of unapproved comments to a cache file
 # this is for my guest book on https://sean.fish/
 
-wait-for-internet -q --timeout 10 || exit 0
+wait-for-internet -q --timeout "${WFI_TIMEOUT:-10}" || exit 0
 
 get_count() {
 	local SSH_OUTPUT COUNT_LINE
