@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+set -o pipefail
+
+main() {
+    jq -r '.[] | select((.type == "tag_name") or .type == "till_next_pretty") | .body' | paste -d " " - - | sed -e 's/ / - /' || return $?
+}
+
+main || exit $?
