@@ -1,6 +1,7 @@
 python  # installs as python3
 openssh
 ncurses-utils  # tput
+yq
 man
 moreutils
 exa
