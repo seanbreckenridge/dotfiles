@@ -13,20 +13,14 @@ export MY_FEED_BG=1
 wait-for-internet -q --timeout "${WFI_TIMEOUT:-10}" || exit 0
 
 evry 1 hours -my-feed-index-bg && {
-
-	# source personal shell files, to include
-	# tokens/envvars that may be required
-	source "$HPIDATA/personal_aliases" 2>/dev/null
-	source "$HPIDATA/tokens"
-
 	printlog 'bg-feed-index:running my_feed index...'
-	"${REPOS}/my_feed/index" || send-error 'Error updating my_feed'
+	with-secrets "${REPOS}/my_feed/index" || send-error 'Error updating my_feed'
 
 }
 
 # check scrobbles every 10 minutes and push updates
 evry 10 minutes -my-feed-live-update && {
-	feed_live_update --remote-base 'https://sean.fish/feed_api/data/' \
+	with-secrets feed_live_update --remote-base 'https://sean.fish/feed_api/data/' \
 		--trakt-username purplepinapples \
 		--chessdotcom-username seanbreckenridge \
 		--listenbrainz-username seanbreckenridge
