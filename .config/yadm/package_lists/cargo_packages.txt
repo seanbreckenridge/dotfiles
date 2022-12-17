@@ -6,3 +6,4 @@ eva           # ls replacement
 diskonaut     # disk visualizer
 kondo         # removes node_module/build directories
 so            # stackoverflow
+wait-for-internet

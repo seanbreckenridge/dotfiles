@@ -66,6 +66,7 @@ fi
 # manually install some commands
 havecmd cargo || exit $?           # needed to build some packages
 havecmd evry || cargo install evry # task scheduling
+havecmd wait-for-internet || cargo install wait-for-internet
 CARGO_INSTALLED_PACKAGES="$(cargo install --list | sed -E -e '/^\s+/d; s|\s.*||')"
 grep -q 'cargo-update' <<<"$CARGO_INSTALLED_PACKAGES" || cargo install cargo-update
 

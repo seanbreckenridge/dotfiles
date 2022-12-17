@@ -184,9 +184,6 @@ havecmd pistol || env GO111MODULE=on go install -v 'github.com/doronbehar/pistol
 
 echo "Installing personal tools/scripts..."
 
-# install git-only cargo repos
-havecmd "wait-for-internet" || cargo install --git "https://github.com/seanbreckenridge/wait-for-internet"
-
 # use bpkg to automate make installs
 havecmd bpkg || curl -Lo- "https://raw.githubusercontent.com/bpkg/bpkg/master/setup.sh" | bash
 havecmd bpkg || exit $?
