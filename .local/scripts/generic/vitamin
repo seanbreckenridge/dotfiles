@@ -1,16 +1,22 @@
 #!/usr/bin/env bash
-# add a vitamin to my food tracker
+# add my vitamins to my food tracker
 # https://github.com/seanbreckenridge/ttally
 
+set -eu
+set -o pipefail
+
+tf=$(mktemp)
+trap 'rm -vf "$tf"' EXIT
+
 add_to_food() {
-	local JSON_DATA TEMPFILE
-	JSON_DATA="$(jq -n \
-		--arg TIMESTAMP "$(epoch)" \
-		'[{"when" :$TIMESTAMP | tonumber, "food": "daily multivitamin", "calories": 0, "water": 0, "quantity": 1}]')" || return $?
-	TEMPFILE="$(mktemp)"
-	printf '%s' "${JSON_DATA}" >"${TEMPFILE}"
-	python3 -m ttally from-json food -f "${TEMPFILE}"
-	rm "${TEMPFILE}"
+	local SOURCE_FILE="$HPIDATA/vitamin.json" || return $?
+	if [[ ! -e "$SOURCE_FILE" ]]; then
+		printf 'Source file %s does not exist\n' "$SOURCE_FILE" >&2
+		return 1
+	fi
+	jq --arg TIMESTAMP "$(epoch)" '[.[] + {"when": $TIMESTAMP | tonumber}]' <"$HPIDATA/vitamin.json" |
+		tee "$tf" | jq '.[] | .food' -r | surround "'" | prefix 'added ' || return $?
+	python3 -m ttally from-json food -f "${tf}" || return $?
 }
 
-add_to_food
+add_to_food || exit $?
