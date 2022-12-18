@@ -6,7 +6,7 @@ set -eu
 set -o pipefail
 
 tf=$(mktemp)
-trap 'rm -vf "$tf"' EXIT
+trap 'rm -f "$tf"' EXIT
 
 add_to_food() {
 	local SOURCE_FILE="$HPIDATA/vitamin.json" || return $?
