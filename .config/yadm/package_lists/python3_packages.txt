@@ -6,6 +6,7 @@ csvkit
 cube-scramble-cli
 currencyconverter
 cython
+dunk
 eyeD3
 flake8
 full-todotxt
