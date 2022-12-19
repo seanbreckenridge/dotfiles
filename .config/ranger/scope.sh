@@ -19,6 +19,8 @@
 # 6    | image      | success. display the image $cached points to as an image preview
 # 7    | image      | success. display the file directly as an image
 
+# shellcheck disable=SC2317
+
 # Meaningful aliases for arguments:
 path="$1" # Full path of the selected file
 #width="$2"           # Width of the preview pane (number of fitting characters)
