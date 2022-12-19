@@ -699,3 +699,7 @@ command = 'exec basename "$(realpath "$(pwd)")"'
 
 [google-chrome-wifi-captive]
 command = "google-chrome-stable 'http://clients3.google.com/generate_204'"
+
+[update-forks]
+command = 'clone-repos ~/.config/clone-repos/update-forks.yaml'
+link = "uf"

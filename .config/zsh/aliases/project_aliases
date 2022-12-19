@@ -70,7 +70,7 @@ alias optimg='rifleman -a image'
 
 # https://github.com/seanbreckenridge/clone-repos
 alias cr="python3 -m pip install 'git+https://github.com/seanbreckenridge/clone-repos' && clone-repos"
-alias cr-hpi='clone-repos ~/.config/hpi-clone-repos.yaml'
+alias cr-hpi='clone-repos ~/.config/clone-repos/hpi-clone-repos.yaml'
 
 # https://github.com/seanbreckenridge/evry
 # https://github.com/seanbreckenridge/bgproc

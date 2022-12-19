@@ -119,6 +119,6 @@ havecmd gh && {
 	done < <(spkglist "${GH_PACKAGE_LIST}")
 }
 
-clone-repos ~/.config/computer-clone-repos.yaml
+clone-repos ~/.config/clone-repos/computer-clone-repos.yaml
 
 havecmd mapscii-at || yarn global add --prefix "${HOME}/.local" git+https://github.com/seanbreckenridge/mapscii-at
