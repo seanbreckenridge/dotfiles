@@ -60,7 +60,7 @@ linux*)
 		source_if_exists /opt/asdf-vm/asdf.sh
 	}
 	source "${ZDOTDIR}/linux.zsh"
-	alias u='hi;rj'
+	alias u='housekeeping-info;rj'
 	;;
 mac*)
 	# Setup fzf
@@ -84,7 +84,7 @@ android*)
 
 	source_if_exists "${HOME}/.local/share/zsh_plugins/zsh-autosuggestions/zsh-autosuggestions.zsh"
 	source "${ZDOTDIR}/android.zsh"
-	alias u='sf'
+	alias u=syncfiles
 	;;
 windows*)
 	source_if_exists /usr/share/doc/fzf/examples/completion.zsh

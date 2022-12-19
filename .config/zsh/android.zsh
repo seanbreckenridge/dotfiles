@@ -26,6 +26,11 @@ syncfiles() {
 }
 alias sf=syncfiles
 
+uu() {
+	syncfiles
+	repos-pull-all
+}
+
 # for building rust/ffi python packages
 export CARGO_BUILD_TARGET=aarch64-linux-android
 
