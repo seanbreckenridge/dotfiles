@@ -702,4 +702,3 @@ command = "google-chrome-stable 'http://clients3.google.com/generate_204'"
 
 [update-forks]
 command = 'clone-repos ~/.config/clone-repos/update-forks.yaml'
-link = "uf"

@@ -1,2 +1,0 @@
-#!/bin/sh
-clone-repos ~/.config/clone-repos/update-forks.yaml
