@@ -45,6 +45,16 @@ ycp() {
 		yadm commit -m "$*" && yadm push
 	fi
 }
+ydsd() {
+	yds "$@" | dunk | less -R
+}
+
+ydd() {
+	yd "$@" | dunk | less -R
+}
+ydhd() {
+	ydh "$@" | dunk | less -R
+}
 
 # editor aliases
 alias e='editor'
