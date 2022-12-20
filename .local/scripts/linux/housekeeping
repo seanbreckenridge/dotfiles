@@ -10,7 +10,7 @@ else
 	wfi_args+=("$@")
 fi
 
-wait-for-internet "${wfi_args[@]}"
+wait-for-internet "${wfi_args[@]}" || exit $?
 
 # make sure commands exist
 export HAVECMD_REPORT=1

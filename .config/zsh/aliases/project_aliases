@@ -76,7 +76,6 @@ alias uf=update-forks
 # https://github.com/seanbreckenridge/evry
 # https://github.com/seanbreckenridge/bgproc
 source "${REPOS}/evry/functions.sh"
-alias rj='bgproc_on_machine -pn'
 # reset a job with job-reset, then run all jobs
 run-job() {
 	job-reset "$@" || return $?

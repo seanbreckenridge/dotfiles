@@ -1,0 +1,7 @@
+#!/bin/sh
+if wait-for-internet --quiet --timeout 0; then
+	exec bgproc_on_machine -pn
+else
+	export WFI_TIMEOUT=0
+	exec bgproc_on_machine -on
+fi
