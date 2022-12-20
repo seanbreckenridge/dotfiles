@@ -60,7 +60,7 @@ linux*)
 		source_if_exists /opt/asdf-vm/asdf.sh
 	}
 	source "${ZDOTDIR}/linux.zsh"
-	alias u='housekeeping-info;rj'
+	alias u='housekeeping-offline;rj'
 	;;
 mac*)
 	# Setup fzf
