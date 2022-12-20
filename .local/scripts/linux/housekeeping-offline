@@ -1,0 +1,10 @@
+#!/bin/bash
+
+set -e
+set -o pipefail
+
+if wait-for-internet --timeout 5 --text 'Running housekeeping...'; then
+	housekeeping-info
+else
+	echo 'Offline, exiting...' >&2
+fi
