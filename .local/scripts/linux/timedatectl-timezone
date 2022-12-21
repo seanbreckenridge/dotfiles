@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+set -e
+set -o pipefail
+
+main() {
+	local tz
+	tz="$(timedatectl | grep 'Time zone' | cut -d':' -f2- | awk '{print $1}')"
+	[[ -z "$tz" ]] && {
+		echo 'Failed to get timezone from timedatectl' >&2
+		return 1
+	}
+	printf '%s\n' "$tz"
+}
+
+main || exit $?
