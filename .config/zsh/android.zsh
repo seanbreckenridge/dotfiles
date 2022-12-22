@@ -2,10 +2,10 @@
 # this is mostly handling anacron-like
 # tasks that run periodically
 
-# jobs in bgproc should only wait 2 seconds before timeout
+# jobs in bgproc shouldnt wait before timeout
 # otherwise when terminal opens its waiting ~30 seconds
 # before the shell finishes opening when I don't have internet
-export WFI_TIMEOUT=2
+export WFI_TIMEOUT=0
 
 # run bgproc jobs
 # https://github.com/seanbreckenridge/bgproc
