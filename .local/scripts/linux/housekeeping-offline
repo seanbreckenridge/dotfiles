@@ -7,4 +7,5 @@ if wait-for-internet --timeout 5 --text 'Running housekeeping...'; then
 	housekeeping-info
 else
 	echo 'Offline, exiting...' >&2
+	exit 1
 fi

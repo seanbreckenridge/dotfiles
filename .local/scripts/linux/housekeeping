@@ -15,12 +15,6 @@ wait-for-internet "${wfi_args[@]}" || exit $?
 # make sure commands exist
 export HAVECMD_REPORT=1
 
-declare -a required_binaries
-required_binaries=(evry pythonanywhere_3_months unzip_google_takeout)
-for binary in "${required_binaries[@]}"; do
-	havecmd "${binary}" || exit $?
-done
-
 # approve guestbook comments on https://github.com/seanbreckenridge/glue
 APPROVE_SCRIPT="${REPOS}/vps/approve_comments"
 if [[ -r "${APPROVE_SCRIPT}" ]]; then
@@ -128,7 +122,7 @@ if evry 1 week -my-feed-re-index; then
 else
 	# if we didn't just re-index, do a regular index
 	evry 1 day -my-feed-index && "${REPOS}/my_feed/index"
-	evry 6 hours -update-tz && {
+	evry 6 hours -set-timezone-if-changed && {
 		# if timezone changed, need to fix datetimes so they dont shift 'n' hours on my_feed
 		set-timezone-if-changed && rm "$(evry location -my-reed-re-index)"
 	}

@@ -4,7 +4,7 @@ set -o pipefail
 
 main() {
 	local geotz curtz
-	hpi doctor -S my.time.tz.via_location 2>/dev/null
+	flock ~/.local/tz-lock with-secrets hpi doctor -S my.time.tz.via_location 2>/dev/null
 	geotz="$(current-timezone)" || return $?
 	curtz="$(timedatectl-timezone)" || return $?
 	if [[ "${geotz}" != "${curtz}" ]]; then
