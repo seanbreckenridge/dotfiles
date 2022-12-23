@@ -8,7 +8,8 @@ main() {
 	local clone_loc cache_dir
 	# if cstimer server is already running, then open in browser
 	if curl --silent http://localhost:4633 >/dev/null; then
-		openurl 'http://localhost:4633'
+		rm "$(evry location -open-cstimer)"
+		backup-cubing
 	else
 		# otherwise run the server
 		cache_dir="${XDG_CACHE_DIR:-${HOME}/.cache}"
