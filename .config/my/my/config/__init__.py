@@ -500,10 +500,10 @@ class location:
 
     class where_db:
         accuracy_filter = 300
-        new_point_distance = 75
+        new_point_distance = 60
         accurate_date_cutoff = date(2020, 10, 15)
         previous_accurate_for_days = 7
-        new_point_duration = timedelta(hours=1)
+        new_point_duration = timedelta(minutes=30)
         database_location = "~/data/where_db.json"
 
     class gpslogger:
