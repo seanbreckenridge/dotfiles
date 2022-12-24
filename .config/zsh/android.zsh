@@ -18,6 +18,7 @@ evry 1 hour -sync_hpi_config && sync_hpi_config
 syncfiles() {
 	for tag in \
 		twistytimer \
+		aw-window \
 		backup_images; do
 		rm -f "$(evry location -"$tag")"
 	done
