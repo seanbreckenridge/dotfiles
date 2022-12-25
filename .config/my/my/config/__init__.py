@@ -421,11 +421,15 @@ class ttt:
     export_path: Paths = data("ttt/*.csv")
 
 
-class window_watcher:
+class activitywatch:
     """https://github.com/seanbreckenridge/aw-watcher-window"""
 
-    export_path: Paths = data("window_watcher/*.csv")
-    force_individual: Optional[List[str]] = ["Alacritty"]
+    class active_window:
+        export_path: Paths = (
+            data("window_watcher/*.csv"),
+            data("aw-window/phone/*.json"),
+            data("aw-window/windows/*.json"),
+        )
 
 
 class smscalls:
