@@ -52,4 +52,4 @@ fetchart:
     - itunes
     - amazon
     - albumart
-  maxwidth: 600
+  maxwidth: 800
