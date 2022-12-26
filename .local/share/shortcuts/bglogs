@@ -1,2 +1,0 @@
-#!/bin/sh
-tail -n "${1:-100}" /tmp/bgproc.log | epochguess -d":"

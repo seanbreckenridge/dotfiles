@@ -600,11 +600,6 @@ command='''
 exec listens --desc "$@"
 '''
 
-[bglogs]
-command='''
-tail -n "${1:-100}" /tmp/bgproc.log | epochguess -d":"
-'''
-
 [yh]
 command='''
 cd ~/.local/share/yadm/repo.git/ || exit $?
