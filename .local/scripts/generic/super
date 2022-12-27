@@ -6,6 +6,8 @@ SUPERVISOR_LOGS='/tmp/supervisor'
 export SUPERVISOR_LOGS
 mkdir -p "${SUPERVISOR_LOGS}"
 
+export MPV_DAEMON_SLEEP_TIME='3m'
+
 LINUX_TASK_SCRIPT=$(which false) # if not on linux, fail fast
 case "$ON_OS" in
 linux_arch*)
