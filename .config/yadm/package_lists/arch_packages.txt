@@ -104,6 +104,7 @@ boxes
 bzip2
 calcurse
 chafa
+chromaprint
 coreutils
 croc
 cronie

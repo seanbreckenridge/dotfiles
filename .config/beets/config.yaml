@@ -2,12 +2,14 @@ directory: ~/Music
 library: ~/Documents/beet.db
 
 import:
-  copy: no
+  write: yes #  write ID3/data to files
+  copy: no # by default dont move files
   incremental: yes
   incremental_skip_later: yes
 plugins:
   - copyfileartifacts
   - convert
+  - chroma
   - fetchart
   - info
   - export
