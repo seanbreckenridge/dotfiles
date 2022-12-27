@@ -5,6 +5,34 @@
 source_if_exists -q "$REPOS/plaintext-playlist/functions.sh" || source_if_exists "${HOME}/.local/share/basher/cellar/packages/seanbreckenridge/plaintext-playlist/functions.sh"
 bindkey -s '^P' "^uplay^M"
 
+# adds a directory to the '___tolisten' playlist, which I use to sync entire albums to my phone temporarily so I can listen to them
+tolisten() {
+	local mdir="${1:?pass directory as first argument}"
+	mdir="$(realpath "$mdir")"
+	mdir="$(sed -e "s|^${PLAINTEXT_PLAYLIST_MUSIC_DIR%/}/||" -e "s|^${mdir%/}/||" <<<"$mdir")"
+	(
+		cd "$PLAINTEXT_PLAYLIST_MUSIC_DIR"
+		find "$mdir" -type f -iname '*.mp3' | sort -n | play - add ___tolisten
+	)
+	linkmusic ~/.local/share/musicsync --delete
+}
+
+donelistening() {
+	local query="$*"
+	local playlistfile
+	playlistfile="$(plainplay playlistdir)/___tolisten.txt"
+	[[ -e "$playlistfile" ]] || {
+		echo '___tolisten playlist does not exist' >&2
+		return 1
+	}
+	[[ -z "$query" ]] && {
+		echo "no query given, cant remove matching paths..." >&2
+		return 1
+	}
+	grep -vi "$query" <"$playlistfile" | sponge "$playlistfile"
+	linkmusic ~/.local/share/musicsync --delete
+}
+
 # https://github.com/seanbreckenridge/albums
 alias 'discogs-update=nextalbums discogs-update'
 
