@@ -1,2 +1,2 @@
 #!/bin/sh
-google-chrome-stable 'http://clients3.google.com/generate_204'
+exec google-chrome-stable 'http://clients3.google.com/generate_204'

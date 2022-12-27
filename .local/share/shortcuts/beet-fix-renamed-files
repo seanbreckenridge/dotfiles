@@ -1,0 +1,2 @@
+#!/bin/sh
+exec beet update -F=path "$@"

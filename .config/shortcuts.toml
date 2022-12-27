@@ -693,10 +693,10 @@ command = 'exec repos-list -f'
 command = 'exec basename "$(realpath "$(pwd)")"'
 
 [google-chrome-wifi-captive]
-command = "google-chrome-stable 'http://clients3.google.com/generate_204'"
+command = "exec google-chrome-stable 'http://clients3.google.com/generate_204'"
 
 [update-forks]
-command = 'clone-repos ~/.config/clone-repos/update-forks.yaml'
+command = 'exec clone-repos ~/.config/clone-repos/update-forks.yaml'
 
 [rj]  # 'run-jobs'
 command ='''
@@ -707,3 +707,6 @@ else
 	exec bgproc_on_machine -on
 fi
 '''
+
+[beet-fix-renamed-files]
+command = 'exec beet update -F=path "$@"'
