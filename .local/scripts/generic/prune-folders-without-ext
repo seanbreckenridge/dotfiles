@@ -1,0 +1,52 @@
+#!/usr/bin/env python
+
+from pathlib import Path
+import click
+
+
+@click.command()
+@click.option("--run/--dry-run", default=False, is_flag=True)
+@click.option("--ext", default="mp3", type=str)
+@click.argument("BASE", type=click.Path(exists=True, path_type=Path), required=True)
+def main(run: bool, ext: str, base: Path) -> None:
+    """
+    used this to remove any folders which didnt include mp3 files in my
+    music folder. not sure if it'd be useful for anything else but
+    sort of particular so might as well sync
+    """
+    _run(run, ext, base)
+
+
+def _run(run: bool, ext: str, base: Path) -> None:
+    for d in base.iterdir():
+        if d.is_dir():
+            _run(run, ext, d)
+            # recursively run on subdirectories
+            for dd in filter(lambda p: p.is_dir(), d.iterdir()):
+                _run(run, ext, dd)
+            # if this still has children directories (after things have been unlinked), dont run
+            dirs = list(filter(lambda p: p.is_dir(), d.iterdir()))
+            if len(dirs) > 0:
+                continue
+            ext_files = [f for f in d.iterdir() if f.suffix.strip(".") == ext]
+            non_ext_files = [f for f in d.iterdir() if f.suffix.strip(".") != ext]
+            # if this has any ext (mp3) files, leave it
+            if len(ext_files) > 0:
+                continue
+            # this has only non extension files, remove these files
+            if len(non_ext_files) > 0:
+                if not run:
+                    click.echo(f"removing {list(d.iterdir())}")
+                    click.echo(f"removing {d}")
+                else:
+                    for to_rm in non_ext_files:
+                        click.echo(f"unlinking {to_rm}...")
+                        to_rm.unlink()
+                    try:
+                        d.rmdir()
+                    except:
+                        pass
+
+
+if __name__ == "__main__":
+    main()
