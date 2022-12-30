@@ -44,7 +44,7 @@ def _run(run: bool, ext: str, base: Path) -> None:
                         to_rm.unlink()
                     try:
                         d.rmdir()
-                    except:
+                    except OSError:
                         pass
 
 

@@ -710,3 +710,6 @@ fi
 
 [beet-fix-renamed-files]
 command = 'exec beet update -F=path "$@"'
+
+[beet-export-all]
+command = 'exec beet export "" "$@"'
