@@ -41,7 +41,7 @@ class Event(NamedTuple):
         return {"comments": edit_in_vim}
 
 
-from seanb.ttally_self import SelfTypes
+from my.config.seanb.ttally_self import SelfTypes
 
 
 class Self(NamedTuple):
