@@ -29,6 +29,7 @@ alias sf=syncfiles
 
 uu() {
 	syncfiles
+	yl
 	repos-pull-all
 }
 
