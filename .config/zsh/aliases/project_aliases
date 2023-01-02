@@ -14,6 +14,7 @@ tolisten() {
 		cd "$PLAINTEXT_PLAYLIST_MUSIC_DIR"
 		find "$mdir" -type f -iname '*.mp3' | sort -n | play - add ___tolisten
 	)
+	play unique ___tolisten
 	linkmusic ~/.local/share/musicsync --delete
 }
 
