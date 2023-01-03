@@ -9,3 +9,9 @@ evry 1 hour -sync-window-watcher && {
 	[[ -e "${FROM}" ]] || exit 0
 	run_window_watcher sync || send-error 'couldnt sync window_watcher files'
 }
+
+evry 1 hour -sync-ttt && {
+	FROM="${HOME}/.local/share/ttt"
+	[[ -e "${FROM}" ]] || exit 0
+	rsync -Pavh "$FROM/" "$(backup_to ttt)"
+}

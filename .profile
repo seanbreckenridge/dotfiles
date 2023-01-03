@@ -110,7 +110,9 @@ export TTALLY_DATA_DIR="${HPIDATA}/ttally"
 # https://github.com/seanbreckenridge/mint
 export MINT_DATA="${HPIDATA}/mint"
 # https://github.com/seanbreckenridge/ttt
-export TTT_HISTFILE="${HPIDATA}/ttt/${SHELL_BOOT_TIME}.csv"
+TTT_DATADIR="${XDG_DATA_HOME}/ttt"
+mkdir -p "$TTT_DATADIR"
+export TTT_HISTFILE="${TTT_DATADIR}/${SHELL_BOOT_TIME}.csv"
 # https://github.com/seanbreckenridge/url_cache
 export URL_CACHE_DIR="${HPIDATA}/url_cache"
 # https://github.com/seanbreckenridge/oh-my-stars
