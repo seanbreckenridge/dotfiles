@@ -47,10 +47,10 @@ from enum import Enum
 
 SelfTypes = Enum(
     "SelfTypes",
-    open(os.path.join(os.environ["HPIDATA"], "self_types.txt"))
-    .read()
-    .upper()
-    .splitlines(),
+    [
+        s.rstrip().upper()
+        for s in open(os.path.join(os.environ["HPIDATA"], "self_types.txt"))
+    ],
 )
 
 

@@ -3,7 +3,7 @@
 set -o pipefail
 
 declare LOGCOUNT
-LOGCOUNT="$(hpi query -r 23h ttally.funcs.food -s | jq 'select(.food == "daily multivitamin")' | jq -s length)" || notify "vitamin: hpi query failed"
+LOGCOUNT="$(hpi query -r 23h ttally.__main__.food -s | jq 'select(.food == "daily multivitamin")' | jq -s length)" || notify "vitamin: hpi query failed"
 
 [[ "${LOGCOUNT}" == '0' ]] && exit 2
 exit 0

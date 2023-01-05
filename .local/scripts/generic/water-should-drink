@@ -4,5 +4,5 @@
 set -e
 set -o pipefail
 
-CURRENT_WEIGHT="$(hpi query ttally.funcs.weight --order-key when --limit 1 --reverse -s | jq .pounds)"
+CURRENT_WEIGHT="$(hpi query ttally.__main__.weight --order-key when --limit 1 --reverse -s | jq .pounds)"
 perl -E "say int(14.8 * ${CURRENT_WEIGHT})"
