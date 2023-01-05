@@ -41,9 +41,19 @@ class Event(NamedTuple):
         return {"comments": edit_in_vim}
 
 
-from my.config.seanb.ttally_self import SelfTypes
+import os
+from enum import Enum
+
+
+SelfTypes = Enum(
+    "SelfTypes",
+    open(os.path.join(os.environ["HPIDATA"], "self_types.txt"))
+    .read()
+    .upper()
+    .splitlines(),
+)
 
 
 class Self(NamedTuple):
     when: datetime
-    what: SelfTypes
+    what: SelfTypes  # type: ignore
