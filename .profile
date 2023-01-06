@@ -73,13 +73,18 @@ mac*)
 android*)
 	HPIDATA="${HOME}/storage/shared/data"
 	XDG_MUSIC_DIR="${HOME}/storage/music"
+	XDG_DOWNLOAD_DIR="${HOME}/storage/downloads"
+	XDG_DOCUMENTS_DIR="${HOME}/storage/shared/Documents"
+	XDG_PICTURES_DIR="${HOME}/storage/pictures"
+	XDG_VIDEOS_DIR="${HOME}/storage/shared/Movies"
+	SCREENSHOTS="${XDG_PICTURES_DIR}/Screenshots"
 	;;
 windows*)
 	BROWSER='/mnt/c/Program Files/Mozilla Firefox/firefox.exe'
 	;;
 esac
 
-export HPIDATA BROWSER XDG_MUSIC_DIR PATH SCREENSHOTS
+export HPIDATA BROWSER XDG_MUSIC_DIR PATH SCREENSHOTS XDG_DOWNLOAD_DIR XDG_DOCUMENTS_DIR XDG_PICTURES_DIR XDG_VIDEOS_DIR
 export PLAINTEXT_PLAYLIST_PLAYLISTS="${HPIDATA}/playlists"
 
 # some system wide defaults
