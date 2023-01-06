@@ -18,6 +18,10 @@ for cmd in hpi \
 	reorder_editable \
 	shortcuts \
 	sqlite_backup \
+	json-compress \
+	prompt_type \
+	click-repeat \
+	to-json-objects \
 	traktexport \
 	termdown \
 	pipenv \

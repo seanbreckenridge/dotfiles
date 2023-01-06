@@ -25,7 +25,7 @@ def main(prompt: str, coerce_type: str) -> None:
     if coerce_type == "int":
         _prompt_and_echo(prompt or "Enter Integer", type=int)
     elif coerce_type == "float":
-        _prompt_and_echo(prompt or "Enter Float", typ=float)
+        _prompt_and_echo(prompt or "Enter Float", type=float)
     elif coerce_type == "path":
         _prompt_and_echo(prompt or "Enter Path", type=click.Path())
     elif coerce_type == "path_exists":
