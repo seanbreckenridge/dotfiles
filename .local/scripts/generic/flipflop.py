@@ -1,5 +1,24 @@
 #!/usr/bin/env python3
 
+"""
+toggeable todos with the ability to flip back/forth easily
+
+$ flipflop.py status
+ What            | On
+-----------------+-------
+ refill_lotion   | False
+ refill_vitamins | False
+
+$ flipflop.py flip
+'what' (str) > refill_vitamins
+
+$ flipflop.py status
+ What            | On
+-----------------+-------
+ refill_lotion   | False
+ refill_vitamins | True
+"""
+
 import os
 import json
 from typing import NamedTuple, Dict
@@ -10,6 +29,7 @@ import click
 from ttally.core import Extension
 
 
+# create enum from environment variable
 FlipTypes = Enum("FlipTypes", os.environ["FLIPFLOP_CHOICES"].split(":"))
 
 
@@ -23,6 +43,7 @@ def extension() -> Extension:
     return Extension(
         name="flipflop",
         config_module_name="flipflop.config",
+        # use this file as the config file - the Flip namedtuple
         config_file=__file__,
         cache_dir=os.path.expanduser("~/.cache/flipflop"),
         data_dir=os.path.join(os.environ["HPIDATA"], "flipflop"),
