@@ -85,6 +85,13 @@ b-() {
 }
 alias sn='self-now'
 alias snl='while self-now; do; done'
+alias fl='flipflop.py'
+alias fls='fl status'
+alias fle
+flf() {
+	fl flip
+	fls
+}
 
 # https://github.com/seanbreckenridge/tts
 alias tts-say='tts -d /tmp/tts.ogg && plaympeg /tmp/tts.ogg'
