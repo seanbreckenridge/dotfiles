@@ -29,6 +29,10 @@ for cmd in hpi \
 	cookiecutter \
 	black \
 	epochdisplay \
+	epochguess \
+	img-download \
+	html-head \
+	openurls \
 	linkmusic \
 	id3stuff \
 	piazza_scraper \
