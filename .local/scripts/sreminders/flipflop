@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+set -o pipefail
+
+declare OUTPUT
+OUTPUT="$(with-secrets flipflop.py status -fo plain)" || notify "flipflop failed to run"
+
+[[ -n "$OUTPUT" ]] && exit 2

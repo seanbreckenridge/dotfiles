@@ -70,15 +70,22 @@ def main() -> None:
         help="only show items which are on",
     )
     @click.option(
-        "-j", "--json", "_json", is_flag=True, default=False, help="print as JSON"
+        "-o",
+        "--output",
+        type=click.Choice(["table", "plain", "json"]),
+        default="table",
+        help="output format to print",
     )
-    def status(_json: bool, filter_on: bool) -> None:
+    def status(output: str, filter_on: bool) -> None:
 
         statuses = compute_current_statuses()
         if filter_on:
             statuses = {k: v for k, v in statuses.items() if v}
-        if _json:
+        if output == "json":
             click.echo(json.dumps(statuses))
+        elif output == "plain":
+            for k, v in statuses.items():
+                print("{}\t{}".format(k, v))
         else:
             from tabulate import tabulate
 
