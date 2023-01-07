@@ -691,6 +691,7 @@ command = 'exec repos-list -f'
 
 [realbasename]
 command = 'exec basename "$(realpath "$(pwd)")"'
+link = "curdir"
 
 [google-chrome-wifi-captive]
 command = "exec google-chrome-stable 'http://clients3.google.com/generate_204'"
