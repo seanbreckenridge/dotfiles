@@ -6,7 +6,8 @@ uses local data to check if I've done it within that duration
 
 This works by calling a bunch of other executables which return
 a zero exit code if I've done the thing within the expected
-duration, else exits with exit code '2'
+duration, else exits with exit code 2 or 3 (2 meaning print
+the name of the script, 3 meaning print the output of the script)
 
 number of scripts which have expired gets displayed in my menu bar,
 and if I click it it sends a notification with the script name,
@@ -37,7 +38,7 @@ split_sreminders_path() {
 }
 
 run_scripts() {
-	local name
+	local name exitcode output
 	case "$1" in
 	count)
 		run_scripts run | wc -l
@@ -52,14 +53,20 @@ run_scripts() {
 			# workaround for running scripts in linked directories
 			# https://sean.fish/d/run-script?dark
 			if hash run-script; then
-				run-script "${script}"
+				output="$(run-script "${script}")"
 			else
-				"${script}"
+				output="$("${script}")"
 			fi
-			if (($? == 2)); then
+			exitcode="$?"
+			case "$exitcode" in
+			2)
 				name="$(basename "${script}")"
 				echo "${name%%.*}"
-			fi
+				;;
+			3)
+				echo "$output"
+				;;
+			esac
 			;;
 		esac
 	done

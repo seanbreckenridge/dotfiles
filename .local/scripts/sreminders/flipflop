@@ -3,6 +3,10 @@
 set -o pipefail
 
 declare OUTPUT
-OUTPUT="$(with-secrets flipflop.py status -fo plain)" || notify "flipflop failed to run"
+OUTPUT="$(with-secrets flipflop.py status -fo json | jq 'keys[]' -r)" || notify "flipflop failed to run"
 
-[[ -n "$OUTPUT" ]] && exit 2
+[[ -n "$OUTPUT" ]] && {
+	echo "$OUTPUT"
+	exit 3
+}
+exit 0
