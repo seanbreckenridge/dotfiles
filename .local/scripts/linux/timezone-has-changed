@@ -9,7 +9,7 @@ main() {
 	curtz="$(timedatectl-timezone)" || return $?
 	if [[ "${geotz}" != "${curtz}" ]]; then
 		printf 'Set timezone %s and current timezone %s do not match!\n' "${curtz}" "${geotz}" >&2
-		timedatectl set-timezone "${curtz}" && return 0
+		return 0
 	else
 		printf 'System and Geolocated timezones match: %s\n' "${curtz}" >&2
 	fi
