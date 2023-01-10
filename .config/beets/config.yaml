@@ -35,7 +35,7 @@ filetote:
   print_ignored: yes
 
 zero:
-  fields: genre comments
+  fields: comments
   comments: [EAC, LAME, support, from.+collection, bandcamp, "ripped by"]
   update_database: true
 
@@ -49,6 +49,9 @@ ftintitle:
 
 lastgenre:
   auto: yes
+  count: 1
+  fallback: ""
+  source: album
 
 fetchart:
   sources:
