@@ -1,8 +1,30 @@
-#!/usr/bin/env bash
-# Basic script to extract an exif attribute from a file
-set -e
-set -o pipefail
+#!/usr/bin/env python3
 
-FPATH="${1:?Must provide path to grab attribute from}"
-EXIFATTR="${2:?Must provide EXIF attribute}"
-exiftool -j "${FPATH}" | jq -r ".[] | .${EXIFATTR}"
+import sys
+import json
+import subprocess
+
+import click
+
+
+@click.command()
+@click.argument("PATH", type=click.Path(exists=True), required=True)
+@click.argument("EXIF_ATTR", type=str)
+def main(path: str, exif_attr: str) -> None:
+    proc = subprocess.run(
+        ["exiftool", "-j", path], stdout=subprocess.PIPE, stderr=subprocess.PIPE
+    )
+    assert proc.returncode == 0, f"stdout: {proc.stdout}, stderr: {proc.stderr}"
+
+    output = proc.stdout.decode("utf-8").strip()
+    data = json.loads(output)[0]
+
+    if exif_attr not in data:
+        click.echo(f"Could not find {exif_attr} in {list(data)}", err=True)
+        sys.exit(1)
+
+    click.echo(data[exif_attr])
+
+
+if __name__ == "__main__":
+    main()
