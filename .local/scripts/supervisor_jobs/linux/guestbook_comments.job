@@ -4,17 +4,18 @@
 
 wait-for-internet -q --timeout "${WFI_TIMEOUT:-10}" || exit 0
 
-get_count() {
-	local SSH_OUTPUT COUNT_LINE
-	SSH_OUTPUT="$("${REPOS}/vps/approve_comments" --print-count 2>/dev/null)" || return $?
-	COUNT_LINE="$(grep -m1 -P '^COUNT:\d+' <<<"$SSH_OUTPUT")" || {
-		echo "Couldn't find 'COUNT' in ssh output" 1>&2
-		return 1
-	}
-	echo -e "$COUNT_LINE" | cut -d":" -f2 || return $?
-}
-
 evry 15 minutes -guestbook_comments && {
+
+	get_count() {
+		local SSH_OUTPUT COUNT_LINE
+		SSH_OUTPUT="$("${REPOS}/vps/approve_comments" --print-count 2>/dev/null)" || return $?
+		COUNT_LINE="$(grep -m1 -P '^COUNT:\d+' <<<"$SSH_OUTPUT")" || {
+			echo "Couldn't find 'COUNT' in ssh output" 1>&2
+			return 1
+		}
+		echo -e "$COUNT_LINE" | cut -d":" -f2 || return $?
+	}
+
 	printlog 'guestbook:updating cache file...'
 	readonly CACHE_FILE="${XDG_CACHE_HOME:-${HOME}/.cache}/guestbook-comments"
 	COUNT="$(get_count)" || send-error "guestbook Couldn't update cache file"
