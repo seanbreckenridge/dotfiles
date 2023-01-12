@@ -48,7 +48,7 @@ evry 6 hours -google-drive && {
 	# https://github.com/seanbreckenridge/google_takeout_parser
 	# script from https://github.com/seanbreckenridge/HPI-personal
 	TAKEOUT_DIR="${HOME}/GoogleDrive/Takeout"
-	[[ -e "$TAKEOUT_DIR" ]] && unzip_google_takeout "$TAKEOUT_DIR" && drive push
+	[[ -e "$TAKEOUT_DIR" ]] && unzip-google-takeout "$TAKEOUT_DIR" && drive push
 	# remove takeout dir (only works if directory is empty)
 	[[ -e "$TAKEOUT_DIR" ]] && rmdir "${TAKEOUT_DIR}"
 }
@@ -78,7 +78,7 @@ evry 1 day -car-playlist && car-playlist
 # https://github.com/seanbreckenridge/HPI-personal/blob/master/scripts/mpv_clean_priv_frames
 evry 1 day -clean-mpv-priv-frames && {
 	echo 'Checking priv mpv frames...'
-	mpv_clean_priv_frames clean
+	mpv-clean-priv-frames clean
 }
 
 # https://github.com/seanbreckenridge/albums
@@ -96,7 +96,7 @@ evry 2 hours -data-sync-conflicts && {
 }
 
 # download any discord attachments
-evry 1 month -discord_download_attachments && discord_download_attachments
+evry 1 month -discord-download-attachments && discord-download-attachments
 
 # https://github.com/seanbreckenridge/HPI-personal/blob/master/scripts/backup-cubing
 backup-cubing

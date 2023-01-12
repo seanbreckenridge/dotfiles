@@ -5,8 +5,8 @@ set -o pipefail
 main() {
 	declare loc
 	declare -a args=()
-	# https://github.com/seanbreckenridge/HPI-personal/blob/master/scripts/last_gps_location
-	loc="$(last_gps_location -d ":")"
+	# https://github.com/seanbreckenridge/HPI-personal/blob/master/scripts/last-gps-location
+	loc="$(last-gps-location -d ":")"
 	if [[ -n "$loc" ]]; then
 		args+=(-l "$loc")
 	fi
