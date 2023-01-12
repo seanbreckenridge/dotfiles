@@ -106,3 +106,4 @@ require"lspconfig".sumneko_lua.setup {
     }
 }
 
+vim.g.copilot_node_command = "~/.asdf/installs/nodejs/17.0.1/bin/node"

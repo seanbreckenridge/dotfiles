@@ -27,5 +27,5 @@ nnoremap <silent> K :call ShowDocumentation()<CR>
 " copilot
 " remove tab mapping -- map to alt+c
 " to swap between choices, use alt+] and alt+[
-" imap <silent><script><expr> <M-c> copilot#Accept("\<CR>")
-" let g:copilot_no_tab_map = v:true
+imap <silent><script><expr> <M-c> copilot#Accept("\<CR>")
+let g:copilot_no_tab_map = v:true
