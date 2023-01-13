@@ -23,7 +23,7 @@ original_date: yes
 
 paths:
   default: $albumartist/$album%aunique{}/$disc-$track $title
-  singleton: $albumartist/Non-Album/%aunique{}$artist - $title
+  singleton: $albumartist/Non-Album/$album%aunique{}/%aunique{}$artist - $title
   comp: Various_Artist/$album%aunique{}/$disc-$track $title
   albumtype:soundtrack: Soundtracks/$album%aunique{}/$disc-$track $title
   filename:cover.jpg: $albumpath/cover
