@@ -1,9 +1,11 @@
 "https://github.com/seanbreckenridge/HPI-fork":
   dirname: "HPI-karlicoss"
+  preinstall: git pull
   postinstall:
     - git pull upstream master
     - git push
 "https://github.com/seanbreckenridge/promnesia-fork":
+  preinstall: git pull
   postinstall:
     - git pull upstream master
     - git push
