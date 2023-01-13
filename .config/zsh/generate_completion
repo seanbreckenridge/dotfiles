@@ -13,6 +13,7 @@ for cmd in hpi \
 	listenbrainz_export \
 	lolexport \
 	malexport \
+	mal-order \
 	mpv-history-daemon \
 	my_feed \
 	reorder_editable \
