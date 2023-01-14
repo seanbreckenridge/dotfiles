@@ -95,8 +95,8 @@ flf() {
 
 # https://github.com/seanbreckenridge/server_clipboard
 # sync clipboard
-alias scl='server_clipboard copy'
-alias scp='server_clipboard paste'
+alias sc='server_clipboard copy'
+alias sp='server_clipboard paste'
 
 # https://github.com/seanbreckenridge/tts
 alias tts-say='tts -d /tmp/tts.ogg && plaympeg /tmp/tts.ogg'
