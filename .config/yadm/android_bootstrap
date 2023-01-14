@@ -77,6 +77,7 @@ havecmd arctee || python3 -m pip install git+https://github.com/karlicoss/arctee
 havecmd newest || go install github.com/seanbreckenridge/newest@latest
 havecmd chomp || go install github.com/seanbreckenridge/chomp@latest
 havecmd fzfcache || go install github.com/seanbreckenridge/fzfcache@latest
+havecmd server_clipboard || github.com/seanbreckenridge/server_clipboard/cmd/server_clipboard@latest
 
 havecmd todo.sh || basher install todotxt/todo.txt-cli
 
