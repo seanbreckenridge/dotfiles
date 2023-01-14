@@ -8,6 +8,8 @@ cmp.setup({
     mapping = {
         ["<C-u>"] = cmp.mapping.scroll_docs(-4),
         ["<C-d>"] = cmp.mapping.scroll_docs(4),
+        ['<C-n>'] = cmp.mapping(cmp.mapping.select_next_item(), { 'i', 'c' }),
+        ['<C-p>'] = cmp.mapping(cmp.mapping.select_prev_item(), { 'i', 'c' }),
         ["<C-e>"] = cmp.mapping.close(),
         ["<c-y>"] = cmp.mapping(cmp.mapping.confirm {
             behavior = cmp.ConfirmBehavior.Insert,
@@ -87,6 +89,9 @@ require("lspconfig").gopls.setup {}
 
 -- elixir
 require'lspconfig'.elixirls.setup {cmd = {vim.fn.exepath("elixir-ls")}}
+
+-- rust
+require'lspconfig'.rust_analyzer.setup {}
 
 -- lua
 local runtime_path = vim.split(package.path, ";")
