@@ -201,6 +201,7 @@ unzip
 up
 util-linux
 vi
+viddy
 vim
 w3m
 wget
