@@ -97,17 +97,6 @@ __pycache__
 /.cargo
 /.cdk
 /.clojure_history
-/.config/CrossCode
-/.config/MongoDB Compass/
-/.config/discord
-/.config/discordcanary/
-/.config/keepassxc/keepassxc.ini
-/.config/kwalletrc
-/.config/libreoffice
-/.config/mpv/watch_later/
-/.config/netrc
-/.config/trackma
-/.config/zoom.conf
 /.cookiecutter_replay
 /.cookiecutters/
 /.credentials
@@ -119,6 +108,7 @@ __pycache__
 /.emacs.d/
 /.gem
 /.ghc/ghci_history
+/.giget
 /.git-stats
 /.gitconfig
 /.gnome/apps/chrome-*
@@ -194,28 +184,30 @@ __pycache__
 /.weechat
 /.wget-hsts
 /.xsession-errors*
-/.yarnrc
 /.yarn
+/.yarnrc
 /.zoom
 
 # Top level config/local files to ignore
 /.config/*/zoom.conf
 /.config/3T
-/.config/asciinema/
 /.config/BraveSoftware/
-/.config/twitch-cli/
 /.config/Code - OSS/
+/.config/CrossCode
 /.config/Electron
 /.config/GIMP
 /.config/Microsoft Teams - Preview/
 /.config/Microsoft/
+/.config/MongoDB Compass/
 /.config/Pinta
 /.config/Postman/
 /.config/QtProject.conf
 /.config/Slack
 /.config/StardewValley
+/.config/astro
 /.config/Thunar
 /.config/VirtualBox/
+/.config/asciinema/
 /.config/autostart
 /.config/balena-etcher
 /.config/bookmark.txt/*
@@ -228,11 +220,14 @@ __pycache__
 /.config/configstore
 /.config/czkawka
 /.config/dconf
+/.config/discord
+/.config/discordcanary/
 /.config/enchant
 /.config/filezilla
 /.config/fontforge
 /.config/gh/hosts.yml
 /.config/gh/state.yml
+/.config/giget
 /.config/github-copilot/
 /.config/godot/
 /.config/google-chrome
@@ -240,14 +235,19 @@ __pycache__
 /.config/gtk-*
 /.config/hub
 /.config/imgur_uploader
+/.config/keepassxc/keepassxc.ini
 /.config/kid3rc
+/.config/kwalletrc
 /.config/largechar
+/.config/libreoffice
 /.config/light
 /.config/malexport
 /.config/menus
 /.config/mimeapps.list
 /.config/mono.addins
+/.config/mpv/watch_later/
 /.config/neofetch
+/.config/netrc
 /.config/newsboat/cache.db
 /.config/newsboat/urls
 /.config/nextjs-nodejs
@@ -268,8 +268,10 @@ __pycache__
 /.config/syncthing
 /.config/teams/
 /.config/todo/*
+/.config/trackma
 /.config/transmission/
 /.config/trashrc
+/.config/twitch-cli/
 /.config/twitchlive
 /.config/visualboyadvance-m/
 /.config/vivaldi
@@ -277,6 +279,7 @@ __pycache__
 /.config/wireshark
 /.config/xbuild
 /.config/xfce4/
+/.config/zoom.conf
 /.config/zoomus.conf
 /.pscale/
 /.todo
