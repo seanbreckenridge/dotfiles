@@ -716,3 +716,10 @@ command = 'exec beet update -F=path "$@"'
 
 [beet-export-all]
 command = 'exec beet export "" "$@"'
+
+[sort-by-line-length]
+shebang = "#!/usr/bin/env bash"
+command = """
+set -o pipefail
+awk '{ print length, $0 }' | sort -n | cut -d' ' -f2-
+"""

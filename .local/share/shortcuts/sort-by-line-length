@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+set -o pipefail
+awk '{ print length, $0 }' | sort -n | cut -d' ' -f2-
