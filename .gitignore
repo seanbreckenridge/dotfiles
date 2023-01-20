@@ -150,6 +150,7 @@ __pycache__
 /.pylint.d/*
 /.python_history
 /.rbenv
+/.rnd
 /.rustup
 /.sbt
 /.sc-iminfo
