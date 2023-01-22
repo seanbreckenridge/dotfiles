@@ -126,6 +126,7 @@ export OH_MY_STARS_NETRC="${XDG_CONFIG_HOME}/netrc"
 export MALEXPORT_DIR="${HPIDATA}/malexport"
 export MALEXPORT_USE_MERGED_FILE=1
 export MALEXPORT_ZIP_BACKUPS="${HPIDATA}/malexport_backups"
+export MAL_ID_CACHE_DIR="${REPOS}/dbsentinel/data/mal-id-cache"
 # https://github.com/seanbreckenridge/plaintext-playlist
 export PLAINTEXT_PLAYLIST_MUSIC_DIR="${XDG_MUSIC_DIR}"
 # https://github.com/seanbreckenridge/ipgeocache
