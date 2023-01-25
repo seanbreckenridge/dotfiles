@@ -21,3 +21,5 @@ misspell github.com/client9/misspell/cmd/misspell
 up github.com/akavel/up
 xurls github.com/mvdan/xurls/cmd/xurls
 udict github.com/genuinetools/udict
+timer github.com/caarlos0/timer
+gum github.com/charmbracelet/gum
