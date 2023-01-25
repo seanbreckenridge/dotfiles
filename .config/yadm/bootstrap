@@ -179,6 +179,26 @@ rm -f "${HOME}/.local/bin/yarn.lock"
 # install pistol manually
 havecmd pistol || env GO111MODULE=on go install -v 'github.com/doronbehar/pistol/cmd/pistol@latest'
 
+havecmd go || exit $?
+GO_PACKAGE_LIST="${PACKAGE_DIR}/go_packages.txt"
+# takes a line from "$GO_PACKAGE_LIST"
+# binary -> package source
+# and installs it if the binary isn't already on your path
+function install_go_package() {
+	local -a packageinfo
+	read -ra packageinfo <<<"${1}"
+	havecmd "${packageinfo[0]}" || {
+		# fails to build fsnotify on wsl
+		[[ "${packageinfo[0]}" == 'twitchlive' && "${ON_OS}" =~ ^windows.* ]] && return
+		go install -v "${packageinfo[1]}@latest"
+	}
+}
+
+echo "Installing global go packages..."
+while IFS= read -r go_line; do
+	install_go_package "${go_line}"
+done < <(spkglist "${GO_PACKAGE_LIST}")
+
 echo "Installing personal tools/scripts..."
 
 # use bpkg to automate make installs
