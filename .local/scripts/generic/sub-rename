@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+# rename a subtitle file to match the video file so that
+# it automatically gets loaded by mpv/video player
+
+declare video subs
+
+video="$(fzf +m --prompt='Pick video file: ')" || exit $?
+subs="$(fzf +m --prompt='Pick subtitle file: ')" || exit $?
+
+# rename the subtitle file to match the video file
+cp -v "$subs" "${video%.*}.srt"
