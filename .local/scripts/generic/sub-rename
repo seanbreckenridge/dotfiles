@@ -8,4 +8,4 @@ video="$(fzfp +m --prompt='Pick video file: ')" || exit $?
 subs="$(fzfp +m --prompt='Pick subtitle file: ')" || exit $?
 
 # rename the subtitle file to match the video file
-cp -v "$subs" "${video%.*}.srt"
+cp -v "$subs" "$(remove-extension "$video").srt"
