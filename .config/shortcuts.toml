@@ -505,7 +505,7 @@ moby "${word}" | grep ',' | sed 's/,/\n/g' | chomp
 '''
 
 [fzfp]
-command = 'fzf --preview="${HOME}/.config/fzf_preview {}" "$@"'
+command = 'exec fzf --preview="${HOME}/.config/fzf_preview {}" "$@"'
 
 [largechar-clipboard]
 command='''
@@ -526,10 +526,10 @@ exec open -a DB\ Browser\ for\ SQLite "$@"
 '''
 
 [clr]
-command = '''print-or-notify "$(ttally recent food "$@")"'''
+command = '''exec print-or-notify "$(ttally recent food "$@")"'''
 
 [clrs]
-command = '''clr -r calories "$@"'''
+command = '''exec clr -r calories "$@"'''
 
 [mz]
 command = '''
@@ -543,7 +543,7 @@ command = '''
 # wait for internet, sync my mail, then launch neomutt
 wait-for-internet && mailsync
 i3blocks-refresh-mk mail
-neomutt
+neomutt || return $?
 i3blocks-refresh-mk mail
 '''
 
@@ -644,7 +644,7 @@ command = 'exec less -i "$@"'
 [sreminders-notify]
 command='''
 SREMINDERS="$(sreminders)"
-notify "${SREMINDERS:-No sreminders}"
+exec notify "${SREMINDERS:-No sreminders}"
 '''
 
 [discord-suppress]

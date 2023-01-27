@@ -1,2 +1,2 @@
 #!/bin/sh
-print-or-notify "$(ttally recent food "$@")"
+exec print-or-notify "$(ttally recent food "$@")"
