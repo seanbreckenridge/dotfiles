@@ -172,6 +172,7 @@ __pycache__
 /.tool-versions
 /.tor-browser
 /.tox
+/.ts_node_repl_history
 /.var
 /.vim
 /.viminfo
