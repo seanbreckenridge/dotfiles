@@ -309,6 +309,7 @@ class mal:
         """https://github.com/seanbreckenridge/malexport"""
 
         export_path: PathIsh = data("malexport")
+        zip_backup_path: PathIsh = data("malexport_backups")
 
 
 class grouvee:
