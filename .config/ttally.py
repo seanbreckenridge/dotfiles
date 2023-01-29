@@ -44,14 +44,8 @@ class Event(NamedTuple):
 import os
 from enum import Enum
 
-
-SelfTypes = Enum(
-    "SelfTypes",
-    [
-        s.rstrip().upper()
-        for s in open(os.path.join(os.environ["HPIDATA"], "self_types.txt"))
-    ],
-)
+with open(os.path.join(os.environ["HPIDATA"], "self_types.txt")) as f:
+    SelfTypes = Enum("SelfTypes", [s.rstrip().upper() for s in f])
 
 
 class Self(NamedTuple):
