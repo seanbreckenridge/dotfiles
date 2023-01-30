@@ -27,6 +27,9 @@ exec --no-startup-id picom -b
 # redshift using gpslogger to grab recent location
 exec --no-startup-id redshift-loc
 
+# discord
+exec --no-startup-id discord
+
 # autotiling
 exec_always --no-startup-id autotiling
 
