@@ -26,15 +26,15 @@ function run_super() {
 		run_super --ctl "shutdown"
 		;;
 	--daemon)
-		supervisord --configuration="${SUPERVISOR_CONF}"
+		with-secrets supervisord --configuration="${SUPERVISOR_CONF}"
 		;;
 	--foreground)
 		# run supervisor
-		supervisord --configuration="${SUPERVISOR_CONF}" -n
+		with-secrets supervisord --configuration="${SUPERVISOR_CONF}" -n
 		;;
 	--ctl)
 		shift # remove '--ctl' from arg list
-		supervisorctl --configuration="${SUPERVISOR_CONF}" "$@"
+		with-secrets supervisorctl --configuration="${SUPERVISOR_CONF}" "$@"
 		;;
 	--logs)
 		tail -f "$SUPERVISOR_LOGS"/*.log
