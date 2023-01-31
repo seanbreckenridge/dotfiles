@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 # https://github.com/seanbreckenridge/currently_listening
-with-secrets python3 -m currently_listening_py discord-presence --server-url wss://sean.fish/currently_listening/ws || true
+with-secrets currently_listening_py discord-presence --server-url wss://sean.fish/currently_listening/ws || true
 wait-for-internet
 sleep 3m
