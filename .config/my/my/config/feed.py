@@ -2,11 +2,12 @@
 Config file for https://github.com/seanbreckenridge/my_feed
 """
 
-from .feed_secret import broken_tags  # noqa
+from .feed_secret import broken_tags, ignore_specific_files  # noqa
 
 ignore_mpv_prefixes: set[str] = {
     "/home/sean/Repos/",
     "/home/sean/Downloads",
+    "/home/sean/Documents",
 }
 
 allow_mpv_prefixes: set[str] = {
@@ -15,6 +16,8 @@ allow_mpv_prefixes: set[str] = {
     "/home/sean/Downloads/Sort/",
     "/Users/sean/Music",
 }
+
+ignore_mpv_prefixes.update(ignore_specific_files)
 
 from typing import Iterator, Callable, TYPE_CHECKING
 
