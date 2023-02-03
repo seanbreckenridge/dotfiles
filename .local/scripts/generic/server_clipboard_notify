@@ -1,0 +1,42 @@
+#!/usr/bin/env bash
+
+set -o pipefail
+
+usage() {
+	printf "Pass 'copy' or 'paste' as the first argument\n" >&2
+}
+
+main() {
+	local tfile
+	tfile="$(mktemp)"
+	# shellcheck disable=SC2064
+	trap "rm -vf '$tfile'" EXIT
+
+	arg="$1"
+	if [[ -z "$arg" ]]; then
+		usage
+		return 1
+	fi
+	case "$arg" in
+	copy | paste)
+		case "$arg" in
+		copy)
+			notify "Copying to server clipboard..."
+			;;
+		paste)
+			notify "Pasting from server clipboard..."
+			;;
+		esac
+		server_clipboard "$@" 2>"$tfile"
+		resp="$(cat "$tfile")"
+		[[ -n "$resp" ]] && notify "$resp"
+		;;
+	*)
+		echo "Unknown command: $arg"
+		usage
+		return 1
+		;;
+	esac
+}
+
+main "$@" || exit $?
