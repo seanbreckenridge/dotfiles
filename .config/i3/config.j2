@@ -223,7 +223,7 @@ bindsym $mod+Shift+space {{ ex }} i3-picture-in-picture
 # bindsym $mod+space focus mode_toggle
 
 # toggle a window to be sticky and float
-bindsym $mod+s {{ ex }} i3-sticky
+# bindsym $mod+s {{ ex }} i3-sticky
 
 # focus the parent container
 bindsym $mod+a focus parent
@@ -279,6 +279,15 @@ mode "launcher" {
     bindsym Return mode "default"
 }
 
+# server clipboard mode
+
+bindsym $mod+s mode "server_clipboard"
+mode "server_clipboard" {
+    bindsym c {{ ex }} with-secrets server_clipboard_notify copy; mode "default"
+    bindsym v {{ ex }} with-secrets server_clipboard_notify paste; mode "default"
+    bindsym Escape mode "default"
+    bindsym Return mode "default"
+}
 
 # keyboard shortcut to check if I have a remote internet connection
 bindsym $mod+Shift+w {{ ex }} wfi
