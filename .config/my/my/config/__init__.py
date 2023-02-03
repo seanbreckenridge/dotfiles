@@ -102,17 +102,6 @@ DISABLED_MODULES = [
 ]
 
 
-# https://github.com/seanbreckenridge/mint
-# If I can't import the 'budget' module that is installed by mint
-# add `my.money` (the dependent module) to disabled, so it doesn't
-# clutter hpi doctor on devices that don't have it installed
-# e.g., on my phone (termux), where installing pandas/numpy/scipy/matplotlib
-# doesnt work
-try:
-    import budget  # noqa
-except ImportError:
-    DISABLED_MODULES.append("my.mint")
-
 # albums may not work on some versions of python
 try:
     from nextalbums import __main__ as _m  # noqa
