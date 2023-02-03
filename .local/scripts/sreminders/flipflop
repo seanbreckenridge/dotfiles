@@ -2,6 +2,8 @@
 
 set -o pipefail
 
+with-secrets flipflop.py update-cache >/dev/null 2>&1
+
 declare OUTPUT
 OUTPUT="$(with-secrets flipflop.py status -fo json | jq 'keys[]' -r)" || notify "flipflop failed to run"
 
