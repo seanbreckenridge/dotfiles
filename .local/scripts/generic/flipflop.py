@@ -51,7 +51,6 @@ def extension() -> Extension:
 
 
 def main() -> None:
-
     ext = extension()
 
     def compute_current_statuses() -> Dict[str, bool]:
@@ -77,7 +76,6 @@ def main() -> None:
         help="output format to print",
     )
     def status(output: str, filter_on: bool) -> None:
-
         statuses = compute_current_statuses()
         if filter_on:
             statuses = {k: v for k, v in statuses.items() if v}

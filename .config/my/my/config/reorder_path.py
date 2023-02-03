@@ -16,7 +16,6 @@ from .common import repo
 
 
 def seanbreckenridge_reorder_path():
-
     try:
         # https://github.com/seanbreckenridge/reorder_editable
         # if my easy-install.pth file was ordered wrong, fix it and exit!

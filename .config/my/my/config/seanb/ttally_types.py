@@ -33,6 +33,5 @@ def prompt_float_default(attr: str, default: float = 1.0) -> float:
 
 
 def edit_in_vim() -> Optional[str]:
-
     m = click.edit(text=None, editor="nvim")
     return m if m is None else m.strip()
