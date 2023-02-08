@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+
+set -e
+set -o pipefail
+
+main() {
+    local shebang
+    # print help, if requested
+    if [[ "$1" == '--help' ]] || [[ "$1" == '-h' ]]; then
+        printf 'usage: env-shebangs [--shebang SHEBANG] FILE [FILE ...]\n\n'
+        printf 'converts any scripts passed as arguments to use #!/usr/bin/env bash instead of #!/bin/bash\n'
+        printf 'can also pass the --shebang option with a required argument to override the shebang to search for\n'
+        printf 'e.g., env-shebangs --shebang perl ./scripts/*\n'
+        printf 'e.g., env-shebangs --shebang python3 ./scripts/*\n'
+        exit 0
+    fi
+    # get '--shebang' option with required argument, if present
+    # this overrides 'bash' as the shebang to search for
+    if [[ "$1" == '--shebang' ]]; then
+        shift
+        shebang="$1"
+        shift
+    else
+        shebang='bash'
+    fi
+    for file in "$@"; do
+        [[ -f "$file" ]] || continue
+        # e.g. if first line has '#!/bin/bash', convert to '#!/usr/bin/env bash'
+        if head -n 1 "$file" | grep -q "^#!/bin/$shebang"; then
+            printf 'env-shebangs: converting %s to use #!/usr/bin/env %s\n' "$file" "$shebang" >&2
+            sed -i "1s|^#!/bin/${shebang}|#!/usr/bin/env ${shebang}|" "$file"
+        fi
+    done
+}
+
+main "$@" || exit $?
