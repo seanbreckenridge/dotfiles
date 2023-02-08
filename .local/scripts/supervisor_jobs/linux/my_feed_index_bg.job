@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # indexes local data and publishes it to my feed
 # https://github.com/seanbreckenridge/my_feed
 

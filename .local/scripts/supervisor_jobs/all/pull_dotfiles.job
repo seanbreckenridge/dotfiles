@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # pull dotfiles repo in $REPOS so commits are accurate in
 # https://github.com/karlicoss/HPI/blob/master/my/coding/commits.py
 

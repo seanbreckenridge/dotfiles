@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 for i in {0..255}; do
 	# shellcheck disable=SC2059
 	printf "\x1b[38;5;${i}mcolour${i}\n"

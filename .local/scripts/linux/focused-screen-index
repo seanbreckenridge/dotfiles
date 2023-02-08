@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # if there is more than one monitor connected, uses
 # xdotool to get current mouse location and infer the
 # which monitor is currently being used.

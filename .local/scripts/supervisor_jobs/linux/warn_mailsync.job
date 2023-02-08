@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 evry 10 minutes -warn_mailsync && {
 	# dont warn if obs is open

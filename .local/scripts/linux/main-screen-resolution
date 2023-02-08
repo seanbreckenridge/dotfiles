@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # gets the first screen from xrandr and prints
 # the resolution. I use this sometimes instead
 # of the focused-screen-resolution because it

@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # saves the number of unapproved comments to a cache file
 # this is for my guest book on https://sean.fish/
 

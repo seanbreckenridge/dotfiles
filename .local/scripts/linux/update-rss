@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # updates my rss feed, if I don't already have it open
 # If newsboat is not open, this reloads all items and
 # saves how many items are unread to ~/.cache/rss-unread

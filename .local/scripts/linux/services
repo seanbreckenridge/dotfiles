@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # starts/stops services that are used sometimes
 # e.g. for testing webservers I have postgres/mariadb/docker,
 # but those are used infrequently

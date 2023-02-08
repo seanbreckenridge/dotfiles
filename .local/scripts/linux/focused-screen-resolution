@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # uses focused-screen-index to get the currently
 # focused monitor, and prints the resolution
 # using xrandr

@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Parses the i3 config file for binding modes
 # From block in i3-config:

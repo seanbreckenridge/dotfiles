@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # wrapper script to handle sonic-pi on arch with pulseaudio
 # see https://exobrain.sean.fish/devlog/sonic_pi/
 # for an explanation

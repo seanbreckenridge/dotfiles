@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # exit code 0 if the window is floating, 1 if its tiling
 # accepts a window ID as the first argument, else
 # uses the currently focused window

@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # open mpv to save a picture (using webcam) in ~/Pictures/pics
 
 declare pics

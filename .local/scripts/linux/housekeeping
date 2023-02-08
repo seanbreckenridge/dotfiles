@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # A script for unrelated tasks I want to run every so often
 # Uses my 'evry' tool to handle how often to run tasks:
 # https://github.com/seanbreckenridge/evry

@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 evry 3 minutes -update-ttally-cache && {
 	printlog "ttally:updating ttally cache..."

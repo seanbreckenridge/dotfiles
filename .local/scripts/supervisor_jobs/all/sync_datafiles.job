@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # sync from local datadir ~/.local/share/window_watcher/
 # to ~/data
 # otherwise this is constantly writing to ~/data/ and

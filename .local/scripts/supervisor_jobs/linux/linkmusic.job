@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # sync music in playlists to my phone
 # https://github.com/seanbreckenridge/plaintext-playlist
 # https://sean.fish/d/linkmusic?dark

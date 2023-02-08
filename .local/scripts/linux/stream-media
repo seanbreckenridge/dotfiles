@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # grab URL from clipboard and stream using mpv
 # additional arguments are passed onto mpvf, which passes them to mpv
 # e.g. doing stream-media --no-video streams audio from a link
