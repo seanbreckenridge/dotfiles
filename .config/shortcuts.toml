@@ -723,3 +723,27 @@ command = """
 set -o pipefail
 awk '{ print length, $0 }' | sort -n | cut -d' ' -f2-
 """
+
+[shortest-video]
+command = '''
+set -e
+set -o pipefail
+file="$(list-movies -X mduration | sort -n | head -n 1 | cut -d'|' -f3-)"
+if [[ -n "$file" ]]; then
+	echo "$file"
+else
+	echo "No videos found" >&2
+	exit 1
+fi
+'''
+shebang = "#!/usr/bin/env bash"
+
+[play-shortest-video]
+command = '''
+set -e
+set -o pipefail
+if file="$(shortest-video)"; then
+	exec rifle "$file"
+fi
+exit 1
+'''
