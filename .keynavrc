@@ -47,6 +47,7 @@ semicolon warp
 1 click 1
 2 click 2
 3 click 3
+backslash click 1
 #1 cell-select 1x1,warp,end
 #2 cell-select 1x2,warp,end
 #3 cell-select 2x1,warp,end
