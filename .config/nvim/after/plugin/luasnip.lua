@@ -35,7 +35,7 @@ if vim.keymap then
                    "<cmd>source ~/.config/nvim/after/plugin/luasnip.lua<CR>")
 end
 
--- Extend with vs-code style snippets (https://github.com/rafamadriz/friendly-snippets)
+-- Extend with https://github.com/rafamadriz/friendly-snippets
 ls.filetype_extend("html", {})
 ls.filetype_extend("shell", {})
 ls.filetype_extend("gitcommit", {})

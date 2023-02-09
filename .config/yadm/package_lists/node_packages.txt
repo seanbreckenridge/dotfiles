@@ -16,7 +16,6 @@ yaml-language-server
 html-minifier
 vscode-langservers-extracted
 cssmodules-language-server
-pyright
 @tailwindcss/language-server
 typescript-language-server
 typescript

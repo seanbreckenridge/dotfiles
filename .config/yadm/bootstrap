@@ -174,7 +174,7 @@ install_yarn_packages() {
 havecmd yarn || exit $?
 # install yarn packages
 install_yarn_packages
-rm -f "${HOME}/.local/bin/yarn.lock"
+command rm -f "${HOME}/.local/bin/yarn.lock"
 
 # install pistol manually
 havecmd pistol || env GO111MODULE=on go install -v 'github.com/doronbehar/pistol/cmd/pistol@latest'
