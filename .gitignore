@@ -298,9 +298,7 @@ __pycache__
 /.local/*lock
 /.local/etc/bash_completion.d
 /.local/include
-/.local/lib/pkgconfig/*
-/.local/lib/python*
-/.local/lib/vivaldi
+/.local/lib
 /.local/man
 /.local/pipx
 /.local/share/*
