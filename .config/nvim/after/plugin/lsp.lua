@@ -112,3 +112,18 @@ require"lspconfig".sumneko_lua.setup {
 }
 
 vim.g.copilot_node_command = "~/.asdf/installs/nodejs/17.0.1/bin/node"
+
+-- https://www.reddit.com/r/neovim/comments/w2exp5/comment/j1lbogi/?utm_source=share&utm_medium=web2x&context=3
+local copilot_on = true
+vim.api.nvim_create_user_command("CopilotToggle", function()
+    if copilot_on then
+        vim.cmd("Copilot disable")
+        print("Copilot OFF")
+    else
+        vim.cmd("Copilot enable")
+        print("Copilot ON")
+    end
+    copilot_on = not copilot_on
+end, {nargs = 0})
+vim.keymap.set("", "<M-\\>", ":CopilotToggle<CR>",
+               {noremap = true, silent = true})
