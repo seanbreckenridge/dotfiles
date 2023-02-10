@@ -1,7 +1,7 @@
 import os
 
 from promnesia.common import Source
-from promnesia.sources import reddit, twitter, auto, github, smscalls, takeout
+from promnesia.sources import reddit, twitter, auto, github, smscalls, takeout, browser
 
 from promnesia_sean.sources import (
     facebook,
@@ -11,7 +11,6 @@ from promnesia_sean.sources import (
     mal,
     albums,
     discord,
-    browsing,
     mpv,
     newsboat,
     old_forums,
@@ -25,6 +24,7 @@ from promnesia_sean.sources import (
 )
 
 SOURCES = [
+    browser,
     takeout,
     twitter,
     Source(
@@ -71,7 +71,6 @@ SOURCES = [
     old_forums,
     ttt,
     zsh,
-    browsing,
 ]
 
 CACHE_DIR = os.path.join(os.environ["HOME"], ".cache", "promnesia")
