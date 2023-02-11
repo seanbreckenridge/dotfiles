@@ -741,7 +741,6 @@ shebang = "#!/usr/bin/env bash"
 [play-shortest-video]
 command = '''
 set -e
-set -o pipefail
 if file="$(shortest-video)"; then
 	exec rifle "$file"
 fi

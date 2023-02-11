@@ -1,0 +1,50 @@
+#!/usr/bin/env bash
+# Find the shortest video in a directory, caching the results so that
+# the script doesn't have to calculate the length of each video every time
+#
+# uses mduration and list-movies from https://github.com/seanbreckenridge/core
+
+set -o pipefail
+
+# file cache target
+function cache_file_target() {
+	echo ".cache_$(basename "${1?:No file passed}").txt"
+}
+
+# Function to calculate the video length and update the cache file
+function calc_length() {
+	local cache_file length
+	length="$(mduration "$1" | cut -d's' -f1)"
+	if [[ -z "$length" ]]; then
+		echo "Error calculating length of $1" >&2
+		return 1
+	fi
+	cache_file="$(cache_file_target "$1")"
+	echo "$length" >"$cache_file"
+	echo "$length"
+}
+
+# Loop through each movie in the directory
+shortest_length=99999999999
+shortest_movie=""
+while read -r movie; do
+	# Check if the cache file for the movie exists
+	cache_file_name="$(cache_file_target "$movie")"
+	if [[ -f "$cache_file_name" ]]; then
+		length=$(cat "$cache_file_name")
+	else
+		length="$(calc_length "$movie")"
+	fi
+
+	# Check if the current movie is shorter than the previous shortest movie
+	if [[ "$length" -lt "$shortest_length" ]]; then
+		shortest_length="$length"
+		shortest_movie="$movie"
+	fi
+done < <(list-movies)
+
+if [[ -z "$shortest_movie" ]]; then
+	echo "No movies found" >&2
+	exit 1
+fi
+echo "$shortest_movie"

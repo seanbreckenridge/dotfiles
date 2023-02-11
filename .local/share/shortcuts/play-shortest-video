@@ -1,6 +1,5 @@
 #!/bin/sh
 set -e
-set -o pipefail
 if file="$(shortest-video)"; then
 	exec rifle "$file"
 fi
