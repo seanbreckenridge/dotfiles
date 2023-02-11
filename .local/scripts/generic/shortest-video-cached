@@ -33,7 +33,7 @@ while read -r movie; do
 	if [[ -f "$cache_file_name" ]]; then
 		length=$(cat "$cache_file_name")
 	else
-		length="$(calc_length "$movie")"
+		length="$(calc_length "$movie")" || continue
 	fi
 
 	# Check if the current movie is shorter than the previous shortest movie
