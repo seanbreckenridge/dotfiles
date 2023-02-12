@@ -7,3 +7,4 @@
   postinstall:
     - python3 -c 'import my.config'
     - git remote add upstream "https://github.com/karlicoss/HPI"
+  pipefail: false # don't fail if the postinstall commands fail
