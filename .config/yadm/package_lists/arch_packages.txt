@@ -36,6 +36,7 @@ xorg-xwininfo
 # language support
 
 asdf-vm
+bc
 cabal-install
 ccls
 checkbashisms
