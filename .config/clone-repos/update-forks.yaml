@@ -2,10 +2,12 @@
   dirname: "HPI-karlicoss"
   preinstall: git pull
   postinstall:
+    - git checkout master
     - git pull upstream master
     - git push
 "https://github.com/seanbreckenridge/promnesia-fork":
   preinstall: git pull
   postinstall:
+    - git checkout master
     - git pull upstream master
     - git push
