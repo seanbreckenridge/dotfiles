@@ -11,5 +11,6 @@ esac
 evry 6 hours -promnesia_index && {
 	# source environment variables that may be needed (e.g. ipinfo token)
 	printlog "promnesia_index:running index..."
+	with-secrets remove-broken-sms-files
 	with-secrets promnesia index --overwrite >>/tmp/promnesia_index.log 2>&1 || send-error "promnesia index failed..."
 }
