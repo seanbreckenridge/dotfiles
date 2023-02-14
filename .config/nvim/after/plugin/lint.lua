@@ -1,3 +1,4 @@
+-- https://github.com/mfussenegger/nvim-lint
 local flake8 = require 'lint.linters.flake8'
 flake8.cmd = 'flake8c'
 
