@@ -17,8 +17,9 @@ Plug 'lewis6991/impatient.nvim'
 
 " utility/feature plugins
 Plug 'junegunn/goyo.vim'
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
+Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.1' }
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
 Plug 'tpope/vim-fugitive'
 Plug 'mbbill/undotree'
 Plug 'kevinhwang91/rnvimr'
@@ -47,6 +48,7 @@ Plug 'rafamadriz/friendly-snippets'
 Plug 'honza/vim-snippets'
 
 " appearance
+" statusline
 Plug 'itchyny/lightline.vim'
 " startup
 Plug 'kyazdani42/nvim-web-devicons'
@@ -68,7 +70,7 @@ Plug 'onsails/lspkind.nvim'
 Plug 'saadparwaiz1/cmp_luasnip'
 
 " lsp - language/syntax specific
-Plug 'neovim/nvim-lspconfig' " community config
+Plug 'neovim/nvim-lspconfig' " community config for lsp servers, loaded in ./after/plugin/lsp.lua
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'tamago324/cmp-zsh'
 call plug#end()
@@ -130,6 +132,7 @@ set ttyfast
 
 " Status bar
 set laststatus=2
+let g:lightline = { 'colorscheme': 'catppuccin' }
 
 " Last line
 set showmode
@@ -295,13 +298,19 @@ let g:yadm_git_gitgutter_enabled = 0
 " undotree
 nnoremap <leader>u :UndotreeToggle<CR>
 
-" fzf
-map <leader>b :Buffers<CR>
-map <leader>f :Files<CR>
-map <leader>l :Lines<CR>
-map <C-p> :GitFiles<CR>
-" match all lines/files recursively using the_silver_searcher
-map <leader>r :Ag<CR>
+" telescope (fuzzy finder)
+nnoremap <leader>ff <cmd>lua require('telescope.builtin').find_files()<cr>
+nnoremap <leader>fg <cmd>lua require('telescope.builtin').live_grep()<cr>
+nnoremap <leader>fr <cmd>lua require('telescope.builtin').lsp_references()<cr>
+nnoremap <leader>fb <cmd>lua require('telescope.builtin').buffers()<cr>
+nnoremap <leader>fh <cmd>lua require('telescope.builtin').help_tags()<cr>
+" Ctrl+q while in telescope to send to quickfix list
+nnoremap <leader>fj <cmd>lua require('telescope.builtin').quickfix()<cr>
+" diagnostic (builtin nvim lsp) list
+nnoremap <leader>fd <cmd>lua require('telescope.builtin').loclist()<cr>
+
+nnoremap <leader>fb <cmd>Telescope buffers<cr>
+map <C-p> :lua require('telescope.builtin').git_files()<CR>
 
 lua require('nvim-autopairs').setup{}
 
@@ -310,8 +319,7 @@ if executable('rg')
 endif
 
 " seanbreckenridge (personal functions/plugins)
-map <leader>c :Ec<CR>
-map <leader><C-c> :Jump<CR>
+map <leader>c :lua require('seanbreckenridge.edit_config').edit_config()<CR>
 
 """""""""""""
 "           "

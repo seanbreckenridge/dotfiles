@@ -76,7 +76,7 @@ require("lspconfig").tailwindcss.setup {}
 require("lspconfig").tsserver.setup {}
 
 -- python
-require("lspconfig").jedi_language_server.setup {}
+require("lspconfig").pyright.setup {}
 
 -- yaml
 require("lspconfig").yamlls.setup {}

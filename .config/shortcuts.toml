@@ -611,14 +611,14 @@ command='''
 exec calcurse -D "$CALCURSE_DIR" -C ~/.config/calcurse "$@"
 '''
 
-[set-kitty-theme]
+[kitty-set-theme]
 command='''exec kitty +kitten themes --reload-in=all "${1:?Must provide theme as kwarg}"'''
 
 [light-theme]
-command = 'exec set-kitty-theme Light'
+command = 'exec kitty-set-theme Light'
 
 [dark-theme]
-command = 'exec set-kitty-theme Dark'
+command = 'exec kitty-set-theme Dark'
 
 [cl-quickfix]
 command = '''

@@ -1,35 +1,36 @@
 # language support
 @elm-tooling/elm-language-server
+@prettier/plugin-php
+@tailwindcss/language-server
 bash-language-server
 coffeescript
+cssmodules-language-server
+eslint
+html-minifier
 js-beautify
 jsonlint
 node-cljfmt
-uglifycss
-prettier
-@prettier/plugin-php
-prettier-plugin-toml
 npm
+prettier
+prettier-plugin-toml
+pyright
 stylelint
-vscode-html-languageserver-bin
-yaml-language-server
-html-minifier
-vscode-langservers-extracted
-cssmodules-language-server
-@tailwindcss/language-server
-typescript-language-server
 typescript
-eslint
+typescript-language-server
+uglifycss
+vscode-html-languageserver-bin
+vscode-langservers-extracted
+yaml-language-server
 
 # web tools/packages
 serve
 vercel
 
 # other tools
-moby
-mapscii
-sqleton
 @jamen/lorem
-readability-cli
-mintable
 git-stats
+mapscii
+mintable
+moby
+readability-cli
+sqleton
