@@ -37,6 +37,7 @@ Plug 'tpope/vim-speeddating'
 Plug 'numToStr/Comment.nvim'
 Plug 'L3MON4D3/LuaSnip'
 Plug 'github/copilot.vim'
+Plug 'norcalli/nvim-colorizer.lua'
 Plug 'windwp/nvim-autopairs'
 
 " languages/syntax/snippets
@@ -319,7 +320,11 @@ if executable('rg')
 endif
 
 " seanbreckenridge (personal functions/plugins)
-map <leader>c :lua require('seanbreckenridge.edit_config').edit_config()<CR>
+map <leader>cc :lua require('seanbreckenridge.edit_config').edit_config()<CR>
+
+" colors
+map <leader>ca :ColorizerAttachToBuffer<CR>
+map <leader>cd :ColorizerDetachFromBuffer<CR>
 
 """""""""""""
 "           "
