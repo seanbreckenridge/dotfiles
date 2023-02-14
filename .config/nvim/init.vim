@@ -231,7 +231,7 @@ nnoremap <leader>e :wincmd v<bar> :Explore <bar> :vertical resize 30<CR>
 " open netrw full screen
 nnoremap <leader>E :Explore<CR>
 " resource config
-nnoremap <Leader><CR> :so ~/.config/nvim/init.vim<CR>
+nnoremap <Leader><CR> :so ~/.config/nvim/init.vim<CR>:lua require('seanbreckenridge.colors').setup_theme()<CR>
 
 " quickfix lists
 nnoremap <leader>gj :cnext<CR>zz
