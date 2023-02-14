@@ -2,6 +2,7 @@ local M = {}
 
 function M.edit_config()
     require('telescope.builtin').find_files({
+        shorten_path = true,
         prompt_title = 'Edit Config',
         cwd = '~/',
         find_command = {"list-config"},

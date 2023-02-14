@@ -48,7 +48,6 @@ Similar to Termux, does an `apt`-based install. Installs a bunch of languages/pr
 - [.config/yadm](.config/yadm) includes lists of global packages to install for pacman/apt/brew, python, ruby, node, dart, rust, go, elixir and bash
 - [.config/shortcuts.toml](.config/shortcuts.toml) - describes basic shell scripts that are created by [shortcuts](https://github.com/seanbreckenridge/shortcuts)
 - [.local/scripts/generic](.local/scripts/generic) - lots of my scripts; e.g.
-  - media related, [mduration](.local/scripts/generic/mduration) to get media length, [gifme](.local/scripts/generic/gifme) to convert video to gifs, lots of audio/video format conversion scripts
   - [qr](.local/scripts/generic/qr) - create a QR code from a string and display it full screen
   - [misspell-context](.local/scripts/generic/misspell-context) - finds common spelling mistakes using [misspell](https://github.com/client9/misspell) recursively, prompt me with the words in context so I can correct them
 

@@ -19,6 +19,7 @@ Plug 'lewis6991/impatient.nvim'
 Plug 'junegunn/goyo.vim'
 Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.1' }
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
 Plug 'tpope/vim-fugitive'
 Plug 'mbbill/undotree'
@@ -320,7 +321,7 @@ if executable('rg')
 endif
 
 " seanbreckenridge (personal functions/plugins)
-map <leader>ce :lua require('seanbreckenridge.edit_config').edit_config()<CR>
+map <leader>ce <cmd>:lua require('seanbreckenridge.edit_config').edit_config()<CR>
 
 " colors
 map <leader>ca :ColorizerAttachToBuffer<CR>
