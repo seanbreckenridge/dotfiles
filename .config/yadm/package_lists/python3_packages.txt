@@ -18,7 +18,6 @@ ipdb
 ipython
 isort
 j2cli
-jedi-language-server
 logzero
 mutagen
 mypy
