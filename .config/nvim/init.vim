@@ -305,7 +305,7 @@ nnoremap <leader>fr <cmd>lua require('telescope.builtin').lsp_references()<cr>
 nnoremap <leader>fb <cmd>lua require('telescope.builtin').buffers()<cr>
 nnoremap <leader>fh <cmd>lua require('telescope.builtin').help_tags()<cr>
 " Ctrl+q while in telescope to send to quickfix list
-nnoremap <leader>fj <cmd>lua require('telescope.builtin').quickfix()<cr>
+nnoremap <leader>fq <cmd>lua require('telescope.builtin').quickfix()<cr>
 " diagnostic (builtin nvim lsp) list
 nnoremap <leader>fd <cmd>lua require('telescope.builtin').loclist()<cr>
 
