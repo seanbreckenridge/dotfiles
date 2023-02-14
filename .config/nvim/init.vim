@@ -320,7 +320,7 @@ if executable('rg')
 endif
 
 " seanbreckenridge (personal functions/plugins)
-map <leader>cc :lua require('seanbreckenridge.edit_config').edit_config()<CR>
+map <leader>ce :lua require('seanbreckenridge.edit_config').edit_config()<CR>
 
 " colors
 map <leader>ca :ColorizerAttachToBuffer<CR>
