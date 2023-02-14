@@ -3,6 +3,10 @@
 -- ends up having issues with the background/text combination, but
 -- using a colorscheme from nvim instead of relying on the default
 -- seems to fix that
+--
+-- TODO: could check envvar set by kitty theme to set the background
+--       to light/dark by checking some file in ~/.config/kitty/
+--       see :h background
 require("catppuccin").setup({
     flavour = "macchiato", -- latte, frappe, macchiato, mocha
     background = { -- :h background
