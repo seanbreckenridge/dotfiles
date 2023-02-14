@@ -23,6 +23,10 @@ main() {
 	else
 		shebang='bash'
 	fi
+	if [[ -z "$shebang" ]]; then
+		printf 'env-shebangs: error: --shebang option requires an argument\n' >&2
+		exit 1
+	fi
 	for file in "$@"; do
 		[[ -f "$file" ]] || continue
 		# e.g. if first line has '#!/bin/bash', convert to '#!/usr/bin/env bash'
