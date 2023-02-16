@@ -270,7 +270,7 @@ endfun
 " window/buffers
 
 " swap to previous buffer
-" map <leader><leader> :bprevious<CR>
+map <leader><b> :bprevious<CR>
 
 " nicer binding for window management
 map <leader>w <C-W>
