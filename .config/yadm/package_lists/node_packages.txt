@@ -13,6 +13,8 @@ node-cljfmt
 npm
 prettier
 prettier-plugin-toml
+prettier-plugin-prisma
+@prisma/language-server
 pyright
 stylelint
 typescript
