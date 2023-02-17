@@ -1,5 +1,3 @@
-" Template from: https://gist.github.com/simonista/8703722
-
 " Don't try to be vi compatible
 set nocompatible
 
@@ -93,9 +91,7 @@ lua require("seanbreckenridge")
 "           "
 """""""""""""
 
-" Turn on syntax highlighting
 syntax on
-
 let mapleader =" "
 
 " Don't execute arbitrary modelines
