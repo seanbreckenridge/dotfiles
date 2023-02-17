@@ -74,6 +74,7 @@ require("lspconfig").eslint.setup {}
 require("lspconfig").cssmodules_ls.setup {}
 require("lspconfig").tailwindcss.setup {}
 require("lspconfig").tsserver.setup {}
+require("lspconfig").prismals.setup {}
 
 -- python
 require("lspconfig").pyright.setup {}

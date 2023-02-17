@@ -269,8 +269,8 @@ endfun
 
 " window/buffers
 
-" swap to previous buffer
-map <leader><b> :bprevious<CR>
+" swap between buffers
+nnoremap <leader>b <C-^><CR>
 
 " nicer binding for window management
 map <leader>w <C-W>
