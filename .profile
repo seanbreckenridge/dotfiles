@@ -17,9 +17,14 @@ export XDG_DATA_HOME="${HOME}/.local/share"
 
 export REPOS="${HOME}/Repos"
 
+# https://github.com/seanbreckenridge/HPI
+# the 'root data directory' for HPI
+HPIDATA="${HOME}/data"
+
 # common path modifications
 export PATH="\
 ${XDG_DATA_HOME}/basher/cellar/bin:\
+${HPIDATA}/bin:\
 ${REPOS}/HPI-personal/scripts:\
 ${REPOS}/bleanser/bin:\
 ${REPOS}/my_feed/scripts:\
@@ -40,9 +45,6 @@ ${PATH}"
 # temporarily export $PATH
 export PATH
 
-# https://github.com/seanbreckenridge/HPI
-# the 'root data directory' for HPI
-HPIDATA="${HOME}/data"
 
 # defaults, some of these are overwrriten in the case below
 XDG_MUSIC_DIR="${HOME}/Music"
