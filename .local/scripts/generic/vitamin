@@ -5,7 +5,7 @@
 set -eu
 set -o pipefail
 
-tf=$(mktemp)
+tf="$(mktemp)"
 trap 'rm -f "$tf"' EXIT
 
 add_to_food() {
