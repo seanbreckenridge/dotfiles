@@ -42,7 +42,8 @@ shift+y move-left,move-up
 shift+u move-right,move-up
 shift+b move-left,move-down
 shift+n move-right,move-down
-space warp,click 1,end
+space click 1
+period warp,click 1,end
 semicolon warp
 1 click 1
 2 click 2
