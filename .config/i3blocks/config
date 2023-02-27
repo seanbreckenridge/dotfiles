@@ -32,6 +32,11 @@ command=b-mail
 interval=60
 signal=6
 
+[towatch]
+command=b-to-watch
+interval=120
+label=🎬
+
 [sreminders]
 command=b-sreminders
 interval=300
