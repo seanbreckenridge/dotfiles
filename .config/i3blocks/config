@@ -34,7 +34,7 @@ signal=6
 
 [towatch]
 command=b-to-watch
-interval=120
+interval=600
 label=🎬
 
 [sreminders]
