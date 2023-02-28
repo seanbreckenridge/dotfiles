@@ -506,7 +506,7 @@ class location:
         export_path: Paths = data("gpslogger")
 
     class via_ip:
-        accuracy: float = 10_000
+        accuracy: float = 15_000
 
 
 class time:
