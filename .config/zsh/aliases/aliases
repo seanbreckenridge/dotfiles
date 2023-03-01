@@ -95,12 +95,12 @@ alias 'ml=mailsync-loop'
 alias 'confirm=fzf -m'
 alias 'up=TERM=xterm up'
 
+alias rrm='command rm'
 # trash-cli/rmtrash
-# dont alias on android
+# dont use trash-cli/rmtrash on android, doesnt work
 [[ "$ON_OS" =~ ^android.* ]] || {
 	alias rm='rmtrash'
 	alias rmdir='rmdirtrash'
-	alias rrm='command rm'
 }
 
 # kitty
