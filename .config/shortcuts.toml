@@ -750,3 +750,6 @@ if file="$(shortest-video)"; then
 fi
 exit 1
 '''
+
+[list-videos]
+command = 'exec list-movies "$@"'
