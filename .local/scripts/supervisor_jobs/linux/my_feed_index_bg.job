@@ -18,8 +18,8 @@ evry 1 hours -my-feed-index-bg && {
 
 }
 
-# check recently updated data every 5 minutes to push updates
-evry 5 minutes -my-feed-live-update && {
+# check recently updated data every 10 minutes to push updates
+evry 10 minutes -my-feed-live-update && {
 	with-secrets feed_live_update --remote-base 'https://sean.fish/feed_api/data/' \
 		--trakt-username purplepinapples \
 		--chessdotcom-username seanbreckenridge \
