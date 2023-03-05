@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+TEXT="$(cat)"
+if [[ -z "$TEXT" ]]; then
+	TEXT="$(clippaste)"
+fi
+exec openurl "https://www.google.com/search?q=${TEXT// /+}"

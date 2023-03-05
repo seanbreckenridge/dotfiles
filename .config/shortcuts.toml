@@ -753,3 +753,13 @@ exit 1
 
 [list-videos]
 command = 'exec list-movies "$@"'
+
+[google-search]
+command = '''
+TEXT="$(cat)"
+if [[ -z "$TEXT" ]]; then
+	TEXT="$(clippaste)"
+fi
+exec openurl "https://www.google.com/search?q=${TEXT// /+}"
+'''
+shebang = "#!/usr/bin/env bash"
