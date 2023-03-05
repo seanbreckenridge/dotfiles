@@ -505,6 +505,14 @@ class location:
 
         export_path: Paths = data("gpslogger")
 
+    class google_takeout_semantic:
+        # a value between 0 and 100, 100 being the most confident
+        # set to 0 to include all locations
+        semantic_require_confidence: int = 40
+        # default accuracy for semantic locations
+        accuracy: float = 100
+
+
     class via_ip:
         accuracy: float = 15_000
 
