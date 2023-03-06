@@ -10,21 +10,14 @@ declare ON_OS
 ON_OS="${ON_OS:-$(on_machine)}" || exit $?
 
 rmargs() {
-	local arg cmd
-	cmd="$RM_CMD"
+	local cmd="$RM_CMD"
 	if [[ -z "$cmd" ]]; then
 		echo "No cmd (rm/rmtrash) passed" >&2
 	fi
 	if not havecmd "$cmd"; then
 		echo "Could not find command: $cmd" >&2
 	fi
-	for arg in "$@"; do
-		if [[ -d "${arg}" ]]; then
-			"$cmd" -ir "${arg}" || return $?
-		else
-			"$cmd" -i "${arg}" || return $?
-		fi
-	done
+	"$cmd" -ir "$@" || return $?
 }
 
 main() {
