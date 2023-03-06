@@ -512,7 +512,6 @@ class location:
         # default accuracy for semantic locations
         accuracy: float = 100
 
-
     class via_ip:
         accuracy: float = 15_000
 
