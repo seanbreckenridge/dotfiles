@@ -1,0 +1,45 @@
+#!/usr/bin/env bash
+# use rmtrash if available, otherwise use rm
+# Usage: saferm [file1] [file2] [dir1] ...
+#
+# This provides similar behaviour to 'rm -i'
+
+set -o pipefail
+
+declare ON_OS
+ON_OS="${ON_OS:-$(on_machine)}" || exit $?
+
+rmargs() {
+	local arg cmd
+	cmd="$RM_CMD"
+	if [[ -z "$cmd" ]]; then
+		echo "No cmd (rm/rmtrash) passed" >&2
+	fi
+	if not havecmd "$cmd"; then
+		echo "Could not find command: $cmd" >&2
+	fi
+	for arg in "$@"; do
+		if [[ -d "${arg}" ]]; then
+			"$cmd" -ir "${arg}" || return $?
+		else
+			"$cmd" -i "${arg}" || return $?
+		fi
+	done
+}
+
+main() {
+	case "${ON_OS}" in
+	android*)
+		# dont use rmtrash on android
+		;;
+	*)
+		havecmd rmtrash && {
+			RM_CMD='rmtrash' rmargs "$@" || return $?
+			return 0
+		}
+		;;
+	esac
+	RM_CMD='rm' rmargs "$@" || return $?
+}
+
+main "$@" || exit $?

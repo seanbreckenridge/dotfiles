@@ -98,8 +98,8 @@ alias 'up=TERM=xterm up'
 alias rrm='command rm'
 # trash-cli/rmtrash
 # dont use trash-cli/rmtrash on android, doesnt work
+alias rm='saferm'
 [[ "$ON_OS" =~ ^android.* ]] || {
-	alias rm='rmtrash'
 	alias rmdir='rmdirtrash'
 }
 
