@@ -211,6 +211,8 @@ havecmd exists || bpkg install -g seanbreckenridge/exists
 havecmd genpasswd || bpkg install -g seanbreckenridge/genpasswd
 set +e
 
+havecmd m3u-shuf || cargo install --git 'https://github.com/seanbreckenridge/m3u-shuf'
+
 echo 'Installing basher/shell scripts...'
 
 BASHER_ROOT="${XDG_DATA_HOME}/basher"
