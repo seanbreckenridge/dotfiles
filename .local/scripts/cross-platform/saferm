@@ -13,9 +13,11 @@ rmargs() {
 	local cmd="$RM_CMD"
 	if [[ -z "$cmd" ]]; then
 		echo "No cmd (rm/rmtrash) passed" >&2
+		return 1
 	fi
-	if not havecmd "$cmd"; then
+	if ! havecmd "$cmd"; then
 		echo "Could not find command: $cmd" >&2
+		return 1
 	fi
 	"$cmd" -ir "$@" || return $?
 }
