@@ -76,6 +76,7 @@ fi
 [[ -e "${TTALLY_ALIASES}" ]] && source "${TTALLY_ALIASES}"
 alias 'czd=PROMPT_DATETIME=1 cz'
 alias 'czl=while cz; do; done'
+alias 'cze=ttally edit-recent food -l'
 alias 'ca=food-now'
 b-() {
 	echo -n "cals: "

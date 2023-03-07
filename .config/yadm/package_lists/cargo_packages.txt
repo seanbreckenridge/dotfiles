@@ -2,7 +2,6 @@ cargo-license # list licenses
 cargo-update  # to update these packages
 evry          # my task scheduler
 procs         # ps replacement
-eva           # ls replacement
 diskonaut     # disk visualizer
 kondo         # removes node_module/build directories
 so            # stackoverflow
