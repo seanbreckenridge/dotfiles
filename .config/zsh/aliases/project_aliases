@@ -118,10 +118,13 @@ alias uf=update-forks
 # https://github.com/seanbreckenridge/bgproc
 source "${REPOS}/evry/functions.sh"
 # reset a job with job-reset, then run all jobs
-run-job() {
+job-run() {
 	job-reset "$@" || return $?
 	bgproc_on_machine -on
 	havecmd housekeeping && housekeeping
+}
+job-edit() {
+	bgproc_on_machine -j | fzf-edit
 }
 
 # search for cubing competitions near me

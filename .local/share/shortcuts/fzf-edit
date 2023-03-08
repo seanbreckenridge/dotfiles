@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+STDIN="$(cat)"
+FILE="$(fzfp +m -q "$*" <<<"$STDIN")"
+if [[ -n "$FILE" ]]; then
+	editor "$FILE"
+else
+	echo "No file selected" >&2
+	exit 1
+fi

@@ -17,7 +17,7 @@ command = '''
 command = '''
 cd ~ || exit $?
 # fuzzy match list-config names, open one to edit (Edit Config)
-fzfcache list-config | sed "s#^$HOME/##g" | fzf +m -q "$*" | xargs -r -I {} editor "$HOME/{}"
+fzfcache list-config | sed "s#^$HOME/##g" | fzf-edit
 '''
 
 [dotfiles]
@@ -761,5 +761,18 @@ if [[ -z "$TEXT" ]]; then
 	TEXT="$(clippaste)"
 fi
 exec openurl "https://www.google.com/search?q=${TEXT// /+}"
+'''
+shebang = "#!/usr/bin/env bash"
+
+[fzf-edit]
+command = '''
+STDIN="$(cat)"
+FILE="$(fzfp +m -q "$*" <<<"$STDIN")"
+if [[ -n "$FILE" ]]; then
+	editor "$FILE"
+else
+	echo "No file selected" >&2
+	exit 1
+fi
 '''
 shebang = "#!/usr/bin/env bash"
