@@ -82,11 +82,7 @@ require("lspconfig").pyright.setup {}
 -- yaml
 require("lspconfig").yamlls.setup {
     capabilities = capabilities,
-    settings = {
-        yaml = {
-            keyOrdering = false,
-        }
-    }
+    settings = {yaml = {keyOrdering = false}}
 }
 
 -- shell
