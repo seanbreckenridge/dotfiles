@@ -1,2 +1,10 @@
 #!/bin/sh
-exec print-or-notify "$(ttally recent food "$@")"
+# I need to spell this out with 'attached-to-terminal' even though print-or-notify does that exact thing because:
+# - if I pipe, then the pipe causes print-or-notify to always send a notification because stdin is not a tty or something
+# - if I send it like the notify below, if the data returned by ttally recent food is too long in the terminal, it will
+#   fail since the argument list is too long
+if attached-to-terminal; then
+	ttally recent food "$@"
+else
+	notify "$(ttally recent food "$@")"
+fi
