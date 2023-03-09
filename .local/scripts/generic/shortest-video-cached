@@ -25,8 +25,8 @@ function calc_length() {
 }
 
 # Loop through each movie in the directory
-shortest_length=99999999999
-shortest_movie=""
+shortest_length=
+shortest_movie=
 while read -r movie; do
 	# Check if the cache file for the movie exists
 	cache_file_name="$(cache_file_target "$movie")"
@@ -37,7 +37,7 @@ while read -r movie; do
 	fi
 
 	# Check if the current movie is shorter than the previous shortest movie
-	if [[ "$length" -lt "$shortest_length" ]]; then
+	if [[ -z "$shortest_length" ]] || [[ "$length" -lt "$shortest_length" ]]; then
 		shortest_length="$length"
 		shortest_movie="$movie"
 	fi
