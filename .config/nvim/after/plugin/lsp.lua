@@ -80,7 +80,14 @@ require("lspconfig").prismals.setup {}
 require("lspconfig").pyright.setup {}
 
 -- yaml
-require("lspconfig").yamlls.setup {}
+require("lspconfig").yamlls.setup {
+    capabilities = capabilities,
+    settings = {
+        yaml = {
+            keyOrdering = false,
+        }
+    }
+}
 
 -- shell
 require("lspconfig").bashls.setup {}
