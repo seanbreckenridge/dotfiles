@@ -77,7 +77,21 @@ require("lspconfig").tsserver.setup {}
 require("lspconfig").prismals.setup {}
 
 -- python
-require("lspconfig").pyright.setup {}
+-- hmm -- not able to figure out how to configure
+-- the type diagnostic options, which require a config file?
+-- https://github.com/microsoft/pyright/blob/main/docs/configuration.md
+require("lspconfig").pyright.setup {
+    capabilities = capabilities,
+    settings = {
+        python = {
+            analysis = {
+                autoSearchPaths = true,
+                useLibraryCodeForTypes = true,
+                diagnosticMode = "workspace"
+            }
+        }
+    }
+}
 
 -- yaml
 require("lspconfig").yamlls.setup {
