@@ -786,3 +786,10 @@ else
 fi
 '''
 shebang = "#!/usr/bin/env bash"
+
+[playping-loop]
+command = '''
+# I use this as a pleasant sounding alarm often, e.g.
+# timer 15m && playping-loop
+watch playping
+'''
