@@ -33,6 +33,12 @@ donelistening() {
 	grep -vi "$query" <"$playlistfile" | sponge "$playlistfile"
 	linkmusic ~/.local/share/musicsync --delete
 }
+bz() {
+	local chosen
+	chosen="$(beet-search "$@")"
+	[[ -z "$chosen" ]] && return 1
+	cd "$(dirname "$chosen")"
+}
 
 # https://github.com/seanbreckenridge/albums
 alias 'discogs-update=nextalbums discogs-update'

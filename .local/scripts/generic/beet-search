@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+
+set -o pipefail
+set -e
+
+search_with_key() {
+	local key="${1?:must provide key}"
+	shift
+	beet ls "${key}:$*" --path
+}
+
+search() {
+	search_with_key 'albumartist_sort' "$@" || return $?
+	search_with_key 'artist_sort' "$@" || return $?
+	search_with_key 'album' "$@" || return $?
+	search_with_key 'title' "$@" || return $?
+	search_with_key 'composer_sort' "$@" || return $?
+}
+
+main() {
+	if [[ -z "$*" ]]; then
+		echo "Usage: beet-fzf <query>" >&2
+		return 1
+	fi
+	search "$@" | unique | fzf --preview 'beet info {}' --preview-window=right:50%
+}
+
+main "$@" || exit $?
