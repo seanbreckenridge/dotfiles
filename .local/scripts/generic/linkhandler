@@ -29,7 +29,8 @@ case "$1" in
 	;;
 *png | *jpg | *jpe | *jpeg | *gif)
 	fname="$(echo "$1" | sed "s/.*\///")"
-	curl -sL "$1" >"/tmp/${fname}" && nsxiv -a "/tmp/${fname}" >/dev/null 2>&1 &
+	mkdir -p /tmp/linkhandler
+	curl -sL "$1" >"/tmp/linkhandler/${fname}" && nsxiv -a "/tmp/linkhandler/${fname}" >/dev/null 2>&1 &
 	;;
 *mp3 | *flac | *opus | *mp3?source*)
 	# stream with stream-audio (wraps stream-link, like stream-corner)
