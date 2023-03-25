@@ -9,17 +9,28 @@
 
 readonly BATTERY_NAME="${1:?Must provide battery name (e.g. BAT0) as first argument}"
 declare BATTERY_PERC
-declare WARNED=0
+declare WARNED=0 # state machine
 
-battery_perc() {
-	BATTERY_PERC=$(cat /sys/class/power_supply/"$1"/capacity) || return 1
+set_battery_perc() {
+	BATTERY_PERC=$(cat /sys/class/power_supply/"$BATTERY_NAME"/capacity) || return 1
+}
+
+is_charging() {
+	local status
+	status=$(cat /sys/class/power_supply/"$BATTERY_NAME"/status) || return 1
+	[[ "$status" == 'Charging' ]]
 }
 
 # make sure that we can get the battery percentage
-battery_perc "${BATTERY_NAME}" || exit $?
+set_battery_perc "${BATTERY_NAME}" || exit $?
 
 while true; do
-	battery_perc "${BATTERY_NAME}"
+	# if already charging, skip check
+	is_charging && {
+		WARNED=0
+		sleep 60 && continue
+	}
+	set_battery_perc "${BATTERY_NAME}"
 	if ((WARNED == 0)); then
 		# hasnt been warned, check if battery is under 10%
 		((BATTERY_PERC <= 10)) && notify -u critical 'Battery low!' && WARNED=1
