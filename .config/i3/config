@@ -329,6 +329,7 @@ bindsym $mod+s mode "server_clipboard"
 mode "server_clipboard" {
     bindsym c exec --no-startup-id with-secrets server_clipboard_notify copy; mode "default"
     bindsym v exec --no-startup-id with-secrets server_clipboard_notify paste; mode "default"
+    bindsym p exec --no-startup-id with-secrets server_clipboard_notify paste; mode "default"
     bindsym Escape mode "default"
     bindsym Return mode "default"
 }

@@ -285,6 +285,7 @@ bindsym $mod+s mode "server_clipboard"
 mode "server_clipboard" {
     bindsym c {{ ex }} with-secrets server_clipboard_notify copy; mode "default"
     bindsym v {{ ex }} with-secrets server_clipboard_notify paste; mode "default"
+    bindsym p {{ ex }} with-secrets server_clipboard_notify paste; mode "default"
     bindsym Escape mode "default"
     bindsym Return mode "default"
 }
