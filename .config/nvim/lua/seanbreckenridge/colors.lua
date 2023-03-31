@@ -11,12 +11,10 @@ function M.load_current_theme()
     local kitty_theme_file = io.open(os.getenv("HOME") ..
                                          "/.cache/kitty-theme-name", "r")
     if kitty_theme_file ~= nil then
-        local kitty_theme = kitty_theme_file:read()
+        local kitty_theme = string.lower(kitty_theme_file:read())
         kitty_theme_file:close()
-        if kitty_theme == "Dark" then
-            return "dark"
-        elseif kitty_theme == "Light" then
-            return "light"
+        if kitty_theme == "dark" or kitty_theme == "light" then
+            return kitty_theme
         end
     end
     return "dark" -- default to dark
