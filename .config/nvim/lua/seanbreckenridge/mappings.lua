@@ -1,3 +1,4 @@
+-- disable arrow keys
 vim.api.nvim_set_keymap('', '<Down>', '<Nop>', {noremap = true})
 vim.api.nvim_set_keymap('', '<Left>', '<Nop>', {noremap = true})
 vim.api.nvim_set_keymap('', '<Right>', '<Nop>', {noremap = true})
@@ -45,6 +46,16 @@ vim.api.nvim_set_keymap('n', '<leader>-', ':vertical resize -5<CR>',
 
 vim.api.nvim_set_keymap('n', '<leader>+', ':wincmd +<CR>', {noremap = true})
 vim.api.nvim_set_keymap('n', '<leader>_', ':wincmd -<CR>', {noremap = true})
+
+-- disable capital Q (:ex mode)
+vim.api.nvim_set_keymap('n', 'Q', '<Nop>', {noremap = true})
+
+-- make current script executable
+vim.api.nvim_set_keymap('n', '<leader>x', ':!chmod +x %<CR>', {noremap = true})
+
+-- move items while text is highlighted
+vim.api.nvim_set_keymap('v', 'J', ':move \'>+1<CR>gv=gv', {noremap = true})
+vim.api.nvim_set_keymap('v', 'K', ':move \'<-2<CR>gv=gv', {noremap = true})
 
 -- quickfix lists
 vim.api.nvim_set_keymap('n', '<leader>gj', ':cnext<CR>zz', {noremap = true})

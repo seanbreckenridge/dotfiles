@@ -17,6 +17,7 @@ require('packer').startup(function(use)
     use {'nvim-telescope/telescope.nvim', tag = '0.1.1'}
     use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
     use 'nvim-treesitter/playground'
+    use 'nvim-treesitter/nvim-treesitter-context'
     use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make'}
     use {"catppuccin/nvim", as = "catppuccin"}
     use 'tpope/vim-fugitive'

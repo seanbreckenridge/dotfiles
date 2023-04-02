@@ -2,29 +2,29 @@
 local os = require('os')
 local home = os.getenv('HOME')
 -- GLOBAL OPTIONS
-vim.o.syntax = 'on'
+vim.opt.syntax = 'on'
 vim.g.mapleader = ' '
 
 -- Don't execute arbitrary modelines
-vim.o.modelines = 0
-vim.wo.number = true
-vim.wo.relativenumber = true -- line number
+vim.opt.modelines = 0
+vim.opt.number = true
+vim.opt.relativenumber = true -- line number
 -- Blink cursor on error instead of beeping
-vim.o.visualbell = true
+vim.opt.visualbell = true
 
 -- Encoding
-vim.o.encoding = 'utf-8'
+vim.opt.encoding = 'utf-8'
 
 -- Whitespace
-vim.o.wrap = true
-vim.o.textwidth = 0 -- stop line wrapping
+vim.opt.wrap = true
+vim.opt.textwidth = 0 -- stop line wrapping
 vim.o.formatoptions = 'tcqrn1'
 vim.o.tabstop = 2
-vim.o.shiftwidth = 2
-vim.o.softtabstop = 2
+vim.opt.shiftwidth = 2
+vim.opt.softtabstop = 2
 
 -- cursor motion
-vim.opt.scrolloff = 3
+vim.opt.scrolloff = 8
 vim.opt.backspace = 'indent,eol,start'
 vim.opt.matchpairs:append('<:>')
 vim.cmd('runtime! macros/matchit.vim')
