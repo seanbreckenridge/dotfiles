@@ -145,3 +145,12 @@ vim.api.nvim_create_user_command("CopilotToggle", function()
 end, {nargs = 0})
 vim.keymap.set("", "<M-\\>", ":CopilotToggle<CR>",
                {noremap = true, silent = true})
+
+-- disable lsp diagnostics for .env files
+local lsp_grp = vim.api.nvim_create_augroup("lsp_disable", {clear = true})
+vim.api.nvim_create_autocmd({"BufEnter", "BufNewFile"}, {
+    group = lsp_grp,
+    pattern = {".env", ".env.*"},
+    callback = function() vim.diagnostic.disable(0) end
+})
+

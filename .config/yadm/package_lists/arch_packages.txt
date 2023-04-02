@@ -152,7 +152,6 @@ man-db
 mlocate
 moreutils
 neovim-git
-neovim-plug-git
 net-tools
 networkmanager-dmenu-git
 newsboat

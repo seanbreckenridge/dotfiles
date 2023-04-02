@@ -243,6 +243,9 @@ dir-aliases-ranger
 # setup nvim packages
 havecmd nvim || exit $?
 echo "Installing nvim packages..."
-nvim +PlugInstall +qall
+packer_dir="${HOME}/.local/share/nvim/site/pack/packer/start"
+[[ ! -d "${packer_dir}" ]] && mkdir -p "${packer_dir}"
+git clone --depth 1 https://github.com/wbthomason/packer.nvim "${packer_dir}/packer.nvim"
+nvim +PackerSync +qall
 
 echo "Finished bootstrapping!"

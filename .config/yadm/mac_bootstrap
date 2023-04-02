@@ -64,11 +64,6 @@ Y | y)
 	;;
 esac
 
-havecmd curl && [[ ! -r "${HOME}/.local/share/nvim/site/autoload/plug.vim" ]] && {
-	printf "Installing vim-plug..."
-	curl -fLo "${HOME}/.local/share/nvim/site/autoload/plug.vim" --create-dirs "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
-}
-
 brew tap 'homebrew/bundle'
 brew tap 'homebrew/homebrew-cask'
 brew tap 'homebrew/cask-fonts'

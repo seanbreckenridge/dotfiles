@@ -3,7 +3,7 @@
 
 update_nvim() {
 	echo "Updating nvim..."
-	nvim +PlugUpdate +qall
+	nvim +PackerSync
 }
 
 update_node() {
@@ -40,7 +40,6 @@ update_basher() {
 }
 
 update_lang_all() {
-	update_nvim
 	update_node
 	update_gem
 	update_pip
