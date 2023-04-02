@@ -139,3 +139,7 @@ export BGPROC_PATH="${REPOS}/HPI-personal/jobs:${HPIDATA}/jobs:${HOME}/.local/sc
 export BGPROC_DATE_FMT='+%Y-%m-%dT%H-%M-%S'
 # $PATH for sreminder directories
 export SREMINDERS_PATH="${HPIDATA}/sreminders:${HOME}/.local/scripts/sreminders"
+# https://github.com/seanbreckenridge/my_feed
+export TMDB_CACHE_DIR="${XDG_DOCUMENTS_DIR}/feed_tmdb_cache"
+# https://github.com/seanbreckenridge/albums
+export DISCOGS_CACHE_DIR="${XDG_DOCUMENTS_DIR}/discogs_cache"
