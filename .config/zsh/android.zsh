@@ -29,8 +29,10 @@ alias sf=syncfiles
 
 uu() {
 	syncfiles
-	yl
-	repos-pull-all
+	wait-for-internet --timeout 1 --quiet && {
+		yl
+		repos-pull-all
+	}
 }
 
 # for building rust/ffi python packages
