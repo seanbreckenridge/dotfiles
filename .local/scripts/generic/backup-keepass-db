@@ -21,7 +21,13 @@ if [[ ! -d "${gdrive_loc}" ]]; then
 	exit 1
 fi
 
+backup_dir="${gdrive_loc}/keepass-backups"
+mkdir -p "${backup_dir}"
+
 # backup to google drive with tar
-tar -czf "${gdrive_loc}/keepass-db.tar.gz" "${db_loc}" && (
-	cd "$gdrive_loc" && drive push -no-prompt keepass-db.tar.gz
+tar -czf "${backup_dir}/$(epoch).tar.gz" "${db_loc}" && (
+	cd "$gdrive_loc" && drive push -no-prompt
 )
+
+# remove backups older than a month
+find "${backup_dir}" -type f -mtime +30 -print -exec mv -t /tmp {} +
