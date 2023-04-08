@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+# Backup the Keepass database to google drive
+
+set -eu
+set -o pipefail
+
+# The location of the Keepass database
+db_loc="${KEEPASS_DB?:Keepass database location not set}"
+
+if [[ ! -f "${db_loc}" ]]; then
+	echo "Keepass database not found at ${db_loc}" >&2
+	exit 1
+fi
+
+# location of local google drive sync
+
+gdrive_loc="${HOME}/GoogleDrive"
+
+if [[ ! -d "${gdrive_loc}" ]]; then
+	echo "Google drive not found at ${gdrive_loc}" >&2
+	exit 1
+fi
+
+# backup to google drive with tar
+tar -czf "${gdrive_loc}/keepass-db.tar.gz" "${db_loc}" && (
+	cd "$gdrive_loc" && drive push -no-prompt keepass-db.tar.gz
+)
