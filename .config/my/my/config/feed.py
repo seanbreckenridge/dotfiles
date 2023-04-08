@@ -3,6 +3,7 @@ Config file for https://github.com/seanbreckenridge/my_feed
 """
 
 from .feed_secret import broken_tags, ignore_specific_files  # noqa
+from .seanb.feed_transform_secret import TRANSFORMS  # noqa
 
 ignore_mpv_prefixes: set[str] = {
     "/home/sean/Repos/",
@@ -27,6 +28,7 @@ if TYPE_CHECKING:
 
 def sources() -> Iterator[Callable[[], Iterator["FeedItem"]]]:
     from my_feed.sources import games
+    from my_feed.transform import transform
 
     yield games.steam
     yield games.osrs
@@ -44,9 +46,9 @@ def sources() -> Iterator[Callable[[], Iterator["FeedItem"]]]:
     )
 
     yield trakt.history
-    yield listens.history
     yield nextalbums.history
     yield mal.history
     yield mal.deleted_history
-    yield mpv.history
-    yield facebook_spotify_listens.history
+    yield transform(listens.history)
+    yield transform(mpv.history)
+    yield transform(facebook_spotify_listens.history)
