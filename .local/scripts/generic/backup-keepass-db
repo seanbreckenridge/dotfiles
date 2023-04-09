@@ -25,7 +25,7 @@ backup_dir="${gdrive_loc}/keepass-backups"
 mkdir -p "${backup_dir}"
 
 # backup to google drive with tar
-tar -czf "${backup_dir}/$(epoch).tar.gz" "${db_loc}" && (
+tar -czf "${backup_dir}/$(tstamp).tar.gz" "${db_loc}" && (
 	cd "$gdrive_loc" && drive push -no-prompt
 )
 
