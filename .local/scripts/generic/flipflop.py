@@ -82,10 +82,16 @@ def main() -> None:
         if output == "json":
             click.echo(json.dumps(statuses))
         elif output == "plain":
+            if len(statuses) == 0:
+                click.echo("No items are on.", err=True)
             for k, v in statuses.items():
                 print("{}\t{}".format(k, v))
         else:
             from tabulate import tabulate
+
+            if len(statuses) == 0:
+                click.echo("No items are on.", err=True)
+                return
 
             click.echo(
                 tabulate(
