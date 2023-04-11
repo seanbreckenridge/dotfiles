@@ -215,6 +215,7 @@ __pycache__
 /.config/Thunar
 /.config/VirtualBox/
 /.config/asciinema/
+/.config/gpxsee/
 /.config/autostart
 /.config/balena-etcher
 /.config/bookmark.txt/*

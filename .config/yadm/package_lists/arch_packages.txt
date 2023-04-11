@@ -256,6 +256,7 @@ firefox-developer-edition
 gimp
 google-chrome
 gparted
+gpxsee
 keepassxc
 mpv
 mupdf-gl
