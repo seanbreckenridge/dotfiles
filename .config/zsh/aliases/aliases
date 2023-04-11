@@ -35,6 +35,7 @@ alias yp='yadm push'
 alias yl='yadm pull --recurse-submodules'
 alias yrh='yadm reset'
 alias yrhh='yadm reset --hard'
+alias ylols='yadm log --graph --pretty='\''%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%ar) %C(bold blue)<%an>%Creset'\'' --stat'
 ydh() {
 	yadm diff HEAD~"${1:-1}"
 }
