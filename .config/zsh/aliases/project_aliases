@@ -3,6 +3,16 @@
 
 # https://github.com/seanbreckenridge/plaintext-playlist
 source_if_exists -q "$REPOS/plaintext-playlist/functions.sh" || source_if_exists "${HOME}/.local/share/basher/cellar/packages/seanbreckenridge/plaintext-playlist/functions.sh"
+# print cover images for a playlist
+play-covers() {
+	cm
+	play list "$@" | rcut -d'/' -f2- | unique | tr '\n' '\0' | xargs -0 -I{} find {} -name 'cover.*'
+}
+# preview cover images for a playlist in nsxiv
+play-covers-preview() {
+	cm
+	play-covers "$@" | nsxiv -t -
+}
 bindkey -s '^P' "^uplay^M"
 
 # adds a directory to the '___tolisten' playlist, which I use to sync entire albums to my phone temporarily so I can listen to them
