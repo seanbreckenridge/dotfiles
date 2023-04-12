@@ -63,7 +63,7 @@ glow() {
 	fi
 }
 
-alias icat='kitty +kitten icat'
+alias icat='kitten icat'
 
 # https://github.com/sharkdp/bat
 # https://github.com/ogham/exa
