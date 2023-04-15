@@ -28,7 +28,7 @@ exec --no-startup-id picom -b
 exec --no-startup-id redshift-loc
 
 # discord
-exec --no-startup-id discord
+exec --no-startup-id wait-for-internet && discord
 
 # autotiling
 exec_always --no-startup-id autotiling
