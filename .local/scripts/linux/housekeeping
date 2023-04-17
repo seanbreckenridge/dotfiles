@@ -131,6 +131,6 @@ if evry 1 week -my-feed-re-index; then
 	FEED_REINDEX=1 "${REPOS}/my_feed/index"
 else
 	# if we didn't just re-index, do a regular index
-	evry 1 day -my-feed-index && "${REPOS}/my_feed/index"
+	evry 1 day -my-feed-index && "${REPOS}/my_feed/index" || true
 	#evry 6 hours -timezone-has-changed && timezone-has-changed && timedatectl set-timezone "$(current-timezone)"
 fi
