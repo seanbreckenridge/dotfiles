@@ -1,0 +1,91 @@
+#!/usr/bin/env python3
+
+import os
+import time
+import zipfile
+import shutil
+from tempfile import TemporaryDirectory
+from pathlib import Path
+from typing import Sequence, Union
+
+import click
+
+
+compression_type = int(
+    getattr(zipfile, os.environ.get("RECOMPRESS_ZIP_COMPRESSION", "ZIP_DEFLATED"))
+)
+
+
+cache_dir = Path.home() / ".cache" / "recompress-zip"
+if not cache_dir.exists():
+    cache_dir.mkdir(parents=True)
+
+removed_dir = Path.home() / ".cache" / "removed" / "recompress-zip"
+if not removed_dir.exists():
+    removed_dir.mkdir(parents=True)
+
+
+def _zipdir(path: Union[str, Path], ziph: zipfile.ZipFile):
+    for root, dirs, files in os.walk(path):
+        for file in files:
+            click.echo(f"Adding {os.path.join(root, file)}...", err=True)
+            ziph.write(
+                os.path.join(root, file),
+                os.path.relpath(os.path.join(root, file), os.path.join(path, ".")),
+            )
+
+def _no_overwrite_copy(src: Path, dst: Path) -> None:
+    if not dst.exists():
+        shutil.copy(src, dst)
+        click.echo(f"Copying {src} to {dst}...", err=True)
+        return
+    # modify path to add integer suffix
+    i = 0
+    while dst.exists():
+        i += 1
+        dst = dst.with_name(f"{dst.stem}.{i}{dst.suffix}")
+        click.echo(f"Copying {src} to {dst}...", err=True)
+
+
+def _run_recompress(zip: Path) -> None:
+    before = zip.stat().st_size
+    click.echo(f"Recompressing {zip}...", err=True)
+    with TemporaryDirectory(dir=cache_dir) as tmpdir:
+        tdir = Path(tmpdir)
+        with zipfile.ZipFile(zip, "r") as zz:
+            zz.extractall(tdir)
+
+        with TemporaryDirectory(dir=cache_dir) as zipfile_tmpdir:
+            new_zipfile = Path(zipfile_tmpdir) / zip.name
+            click.echo(f"Creating {new_zipfile}...", err=True)
+            with zipfile.ZipFile(
+                str(new_zipfile),
+                mode="w",
+                compression=compression_type,
+                allowZip64=True,
+                compresslevel=9,
+            ) as zipnew:
+                _zipdir(tdir, zipnew)
+
+            click.echo(f"Overwriting {zip}...", err=True)
+            # copy old zipfile to removed dir
+            _no_overwrite_copy(zip, removed_dir / f"{int(time.time())}-{zip.name}")
+            # overwrite old zipfile with new zipfile
+            _no_overwrite_copy(new_zipfile, zip)
+            after = zip.stat().st_size
+
+        click.echo(f"Recompressed {zip} from {before} to {after} bytes.", err=True)
+
+
+
+@click.command()
+@click.argument(
+    "ZIP", nargs=-1, type=click.Path(exists=True, path_type=Path), required=True
+)
+def main(zip: Sequence[Path]) -> None:
+    for zz in zip:
+        _run_recompress(zz)
+
+
+if __name__ == "__main__":
+    main(prog_name="recompress-zip")
