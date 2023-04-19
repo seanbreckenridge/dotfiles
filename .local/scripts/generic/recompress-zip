@@ -34,6 +34,7 @@ def _zipdir(path: Union[str, Path], ziph: zipfile.ZipFile):
                 os.path.relpath(os.path.join(root, file), os.path.join(path, ".")),
             )
 
+
 def _no_overwrite_copy(src: Path, dst: Path) -> None:
     if not dst.exists():
         shutil.copy(src, dst)
@@ -75,7 +76,6 @@ def _run_recompress(zip: Path) -> None:
             after = zip.stat().st_size
 
         click.echo(f"Recompressed {zip} from {before} to {after} bytes.", err=True)
-
 
 
 @click.command()
