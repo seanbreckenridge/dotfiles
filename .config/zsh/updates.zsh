@@ -46,4 +46,5 @@ update_lang_all() {
 	update_cargo
 	update_golang
 	update_basher
+	update_nvim
 }
