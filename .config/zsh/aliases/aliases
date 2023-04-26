@@ -8,8 +8,8 @@ alias -s {md,html,txt}=nvim
 alias lsplain='command ls --color=never'
 # alias ls to exa
 case "$ON_OS" in
-mac*)
-	# icons dont work on mac?
+mac* | android*)
+	# icons dont work some operating systems
 	alias ls='exa'
 	;;
 *)
