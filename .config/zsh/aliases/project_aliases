@@ -157,6 +157,6 @@ alias _cube-stats-merge='scramble_history merge -g event_description -a stats "$
 cube-stats() {
 	_cube-stats-merge -q 'event_description?=["3x3", "3x3 OH", "2x2", "4x4", "5x5"]' "$@"
 }
-alias cube-stats-graphs='cube-stats -G --graph-opt kitty-print'
+alias cube-stats-graphs='cube-stats -G'
 alias cube-stats-all=_cube-stats-merge
-alias cube-stats-all-graphs='cube-stats-all -G --graph-opt kitty-print'
+alias cube-stats-all-graphs='cube-stats-all -G'
