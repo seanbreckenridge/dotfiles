@@ -198,6 +198,8 @@ __pycache__
 /.config/lazygit
 /.config/age
 /.config/sops
+/.config/flameshot
+/.config/Vampire_Survivors*
 /.config/BraveSoftware/
 /.config/Code - OSS/
 /.config/CrossCode
