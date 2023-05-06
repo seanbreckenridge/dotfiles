@@ -113,8 +113,6 @@ function install_python_personal() {
 	havecmd "${1}" || python3 -m pip install --user "git+${2}"
 } && export -f install_python_personal
 
-install_python_personal "mystars" "https://github.com/seanbreckenridge/oh-my-stars"
-install_python_personal "shortcuts" "https://github.com/seanbreckenridge/shortcuts"
 install_python_personal "clone-repos" "https://github.com/seanbreckenridge/clone-repos"
 
 clone-repos ~/.config/clone-repos.yaml
