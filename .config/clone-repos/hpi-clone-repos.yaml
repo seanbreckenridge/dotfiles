@@ -5,6 +5,7 @@
 "https://github.com/seanbreckenridge/HPI-fork":
   dirname: "HPI-karlicoss" # name of directory to clone into
   postinstall:
+    - pip install pyfzf_iter logzero cachew
     - python3 -c 'import my.config'
     - git remote add upstream "https://github.com/karlicoss/HPI"
   pipefail: false # don't fail if the postinstall commands fail
