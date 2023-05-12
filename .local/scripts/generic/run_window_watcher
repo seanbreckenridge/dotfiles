@@ -25,7 +25,7 @@ run_watcher() {
 	sleep 5
 	mkdir -p "$datadir"
 
-	exec window_watcher -d "$(timestamp_filename)" -p 3 -i '\(Private Browsing\)'
+	exec window_watcher -d "$(timestamp_filename)" -p 3 -i 'Private Browsing'
 }
 
 syncfiles() {
