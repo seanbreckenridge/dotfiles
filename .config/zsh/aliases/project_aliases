@@ -139,6 +139,13 @@ job-run() {
 	bgproc_on_machine -on
 	havecmd housekeeping && housekeeping
 }
+_job-run() {
+	local tags
+	tags="$(find "$(evry location - 2>/dev/null)" | awk -F'/' '{printf $NF " "}')"
+	_arguments "*:tags:(${tags})"
+}
+compdef _job-run job-run run-job job-reset
+
 job-edit() {
 	bgproc_on_machine -j | fzf-edit
 }
