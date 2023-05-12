@@ -618,7 +618,7 @@ exec gh "$@"
 
 [calcursed]
 command='''
-exec calcurse -D "$CALCURSE_DIR" -C ~/.config/calcurse "$@"
+exec calcurse -D "$CALCURSE_DIR" "$@"
 '''
 
 [kitty-set-theme]
