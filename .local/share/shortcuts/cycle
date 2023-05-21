@@ -1,0 +1,2 @@
+#!/bin/sh
+exec awk '{ for (i = 2; i <= NF; i++) printf $i " " ; print $1 }'
