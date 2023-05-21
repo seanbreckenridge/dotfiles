@@ -2,6 +2,6 @@
 
 evry 10 minutes -check-fish-server && {
 	printlog 'checking sean.fish...'
-	HTTP_CODE="$(curl -so /dev/null -w "%{http_code}" 'https://sean.fish')"
+	HTTP_CODE="$(curl -L -so /dev/null -w "%{http_code}" 'https://sean.fish')"
 	[[ "$HTTP_CODE" != "200" ]] && send-error "sean.fish is down"
 }

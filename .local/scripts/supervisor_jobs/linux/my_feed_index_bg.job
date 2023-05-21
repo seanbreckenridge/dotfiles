@@ -12,14 +12,14 @@ export MY_FEED_BG=1
 
 wait-for-internet -q --timeout "${WFI_TIMEOUT:-10}" || exit 0
 
-evry 2 hours -my-feed-index-bg && {
+evry 3 hours -my-feed-index-bg && {
 	printlog 'bg-feed-index:running my_feed index...'
 	with-secrets "${REPOS}/my_feed/index" || send-error 'Error updating my_feed'
 
 }
 
-# check recently updated data every 30 minutes to push updates
-evry 30 minutes -my-feed-live-update && {
+# check recently updated data every 15 minutes to push updates
+evry 15 minutes -my-feed-live-update && {
 	with-secrets feed_live_update --remote-base 'https://sean.fish/feed_api/data/' \
 		--trakt-username purplepinapples \
 		--chessdotcom-username seanbreckenridge \
