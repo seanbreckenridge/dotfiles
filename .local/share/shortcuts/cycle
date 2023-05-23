@@ -1,2 +1,3 @@
 #!/bin/sh
+# moves the first argument to the end of the list
 exec awk '{ for (i = 2; i <= NF; i++) printf $i " " ; print $1 }'
