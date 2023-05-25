@@ -25,6 +25,8 @@ function calc_length() {
 }
 
 # Loop through each movie in the directory
+longest_length=
+longest_movie=
 shortest_length=
 shortest_movie=
 while read -r movie; do
@@ -41,10 +43,18 @@ while read -r movie; do
 		shortest_length="$length"
 		shortest_movie="$movie"
 	fi
+	if [[ -z "$longest_length" ]] || [[ "$length" -gt "$longest_length" ]]; then
+		longest_length="$length"
+		longest_movie="$movie"
+	fi
 done < <(list-movies)
 
 if [[ -z "$shortest_movie" ]]; then
 	echo "No movies found" >&2
 	exit 1
 fi
-echo "$shortest_movie"
+if [[ -n "$LONGEST" ]]; then
+	echo "$longest_movie"
+else
+	echo "$shortest_movie"
+fi
