@@ -797,5 +797,8 @@ watch playping
 [cycle]
 command = '''
 # moves the first argument to the end of the list
-exec awk '{ for (i = 2; i <= NF; i++) printf $i " " ; print $1 }'
+exec awk '{ for (i = 2; i <= NF; i++) printf $i "\t" ; print $1 }'
 '''
+
+[longest-video-cached]
+command='LONGEST=1 exec shortest-video-cached'

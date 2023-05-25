@@ -1,0 +1,2 @@
+#!/bin/sh
+LONGEST=1 exec shortest-video-cached
