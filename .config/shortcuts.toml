@@ -802,3 +802,9 @@ exec awk '{ for (i = 2; i <= NF; i++) printf $i "\t" ; print $1 }'
 
 [longest-video-cached]
 command='LONGEST=1 exec shortest-video-cached'
+
+[img-download-drag]
+command = '''
+img-download "$@" || exit $?
+dragon-drop -x "$(clippaste)"
+'''
