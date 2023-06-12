@@ -1,0 +1,47 @@
+#!/usr/bin/env python3
+
+"""
+Rename images from mpv screenshots, retaining the timestamp in the name, but removing the original filename
+
+\b
+My mpv config has the following line:
+screenshot-template="%f-%wH.%wM.%wS.%wT"
+
+\b
+That creates images with names like:
+some-long-filename-here-12.34.56.789.jpg
+
+\b
+This script renames them to:
+name-12.34.56.789.jpg
+"""
+
+from pathlib import Path
+from typing import Sequence
+
+import click
+
+
+@click.command(help=__doc__)
+@click.option("--name", prompt=True, type=str, help="prefix for images")
+@click.argument(
+    "IMAGES", type=click.Path(exists=True, path_type=Path), required=True, nargs=-1
+)
+def main(name: str, images: Sequence[Path]) -> None:
+    if not name.strip():
+        raise click.BadParameter("name cannot be empty")
+    for image in images:
+        if "-" not in image.stem:
+            click.echo(f"Skipping {image}, no '-' specifying timestamp")
+            continue
+        timestamp = image.stem.rsplit("-")[1]
+        if not timestamp.strip():
+            click.echo(f"Skipping {image}, no timestamp")
+            continue
+
+        new_name = f"{name}-{timestamp}{image.suffix}"
+        image.rename(new_name)
+
+
+if __name__ == "__main__":
+    main()
