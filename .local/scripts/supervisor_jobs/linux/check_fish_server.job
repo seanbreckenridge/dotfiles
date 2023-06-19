@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 
-evry 10 minutes -check-fish-server && {
+wait-for-internet -q --timeout "${WFI_TIMEOUT:-10}" || exit 0
+
+evry 30 minutes -check-fish-server && {
 	printlog 'checking sean.fish...'
 	HTTP_CODE="$(curl -L -so /dev/null -w "%{http_code}" 'https://sean.fish')"
 	[[ "$HTTP_CODE" != "200" ]] && send-error "sean.fish is down"
