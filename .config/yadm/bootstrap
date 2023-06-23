@@ -102,15 +102,15 @@ havecmd python3 || exit $?
 # enough scripting here that its worth it
 echo "Installing global python site-packages..."
 # upgrade pip
-python3 -m pip install --user -U pip
+python3 -m pip install --user -U --break-system-packages pip
 # install wheel
-python3 -m pip list --format=freeze | cut -d "=" -f1 | grep -qx "wheel" || python3 -m pip install --user wheel
-python3 -m pip install --user -q -r "${PYTHON_PACKAGE_LIST}"
+python3 -m pip list --format=freeze | cut -d "=" -f1 | grep -qx "wheel" || python3 -m pip install --user --break-system-packages wheel
+python3 -m pip install --user -q --break-system-packages -r "${PYTHON_PACKAGE_LIST}"
 
 # Install personal python packages
 # If command "$1" doesn't exist, install from $2
 function install_python_personal() {
-	havecmd "${1}" || python3 -m pip install --user "git+${2}"
+	havecmd "${1}" || python3 -m pip install --user --break-system-packages "git+${2}"
 } && export -f install_python_personal
 
 install_python_personal "clone-repos" "https://github.com/seanbreckenridge/clone-repos"

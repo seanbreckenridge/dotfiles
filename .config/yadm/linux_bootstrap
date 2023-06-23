@@ -51,7 +51,7 @@ done
 # install linux related python packages
 havecmd python3 || exit $?
 echo "Installing linux-specific python packages..."
-python3 -m pip install -q --user -r "${LINUX_PYTHON_PACKAGE_LIST}"
+python3 -m pip install -q --user --break-system-packages -r "${LINUX_PYTHON_PACKAGE_LIST}"
 
 # check if a systemd service is running
 check_service() {

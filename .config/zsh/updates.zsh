@@ -18,7 +18,7 @@ update_gem() {
 
 update_pip() {
 	echo "Updating python packages..."
-	python -m pip install --user -U -r "${XDG_CONFIG_HOME}/yadm/package_lists/python3_packages.txt"
+	python -m pip install --user -U --break-system-packages -r "${XDG_CONFIG_HOME}/yadm/package_lists/python3_packages.txt"
 }
 
 update_cargo() {

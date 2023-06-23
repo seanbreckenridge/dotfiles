@@ -30,7 +30,7 @@ set +u
 
 echo "Installing scientific python packages..."
 declare -rx SCIPYTHON_PACKAGE_LIST="${PACKAGE_DIR}/scientific_python.txt" # probably don't have to install on android
-python3 -m pip install --user -q -r "${SCIPYTHON_PACKAGE_LIST}"
+python3 -m pip install --user --break-system-packages -q -r "${SCIPYTHON_PACKAGE_LIST}"
 
 install_python_personal "plus1" "https://github.com/seanbreckenridge/plus1"
 install_python_personal "pythonanywhere_3_months" "https://github.com/seanbreckenridge/pythonanywhere-3-months"
