@@ -808,3 +808,10 @@ command = '''
 img-download "$@" || exit $?
 dragon-drop -x "$(clippaste)"
 '''
+
+[mpv-logfile]
+command = '''
+MPV_LOGFILE_TMPDIR="${TMPDIR:-/tmp}/mpv-logs"
+mkdir -p "$MPV_LOGFILE_TMPDIR"
+exec mpv --log-file="$MPV_LOGFILE_TMPDIR/$(date +%s%N).log" "$@"
+'''
