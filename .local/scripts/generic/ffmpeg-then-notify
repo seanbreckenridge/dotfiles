@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+ffmpeg "$@" >>/tmp/mpv-ffmpeg.log 2>&1 || {
+	notify -u critical "ffmpeg failed, check log"
+	exit 1
+}
+notify "done encoding"
