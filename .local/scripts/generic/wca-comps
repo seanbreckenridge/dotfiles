@@ -2,19 +2,14 @@
 # a cached version of wca-upcoming-competitions to make sure
 # I only hit worldcubeassosiation once a week
 
+CACHE_FILE="$HOME/.cache/wca-comps"
 # make sure script works (no imports fail)
-wca-upcoming-competitions --help 2>/dev/null 1>&2 || exit $?
+evry 1 week -wcacomps && wait-for-internet --quiet --timeout 5 && wca-upcoming-competitions >"${CACHE_FILE}"
 
-CACHE_FILE="${HOME}/.cache/wca.json"
-if wait-for-internet --quiet --timeout 5; then
-	evry 1 week -wcacomps && wca-upcoming-competitions >"${CACHE_FILE}"
-	cat <"$CACHE_FILE"
+# if we dont have internet and the cachefile exists, just print the old result
+if [[ -e "$CACHE_FILE" ]]; then
+	cat <"${CACHE_FILE}"
 else
-	# if we dont have internet and the cachefile exists, just print the old result
-	if [[ -e "$CACHE_FILE" ]]; then
-		cat <"${CACHE_FILE}"
-	else
-		echo 'wca-comps: No internet, and no cached result' >&2
-		exit 1
-	fi
+	echo 'wca-comps: No internet, and no cached result' >&2
+	exit 1
 fi

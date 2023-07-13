@@ -4,10 +4,9 @@ TMPDIR="${TMPDIR:-/tmp}/mpv-logs"
 LOGFILE="$(newest "$TMPDIR")" || exit 1
 LINE="$(grep '\[encode\] ffmpeg' "$LOGFILE" | tail -n 1)"
 if [[ -z "$LINE" ]]; then
-		echo "No ffmpeg command found in $LOGFILE" >&2
-		exit 1
+	echo "No ffmpeg command found in $LOGFILE" >&2
+	exit 1
 fi
 
 # remove everything before [encode]
 echo "ffmpeg ${LINE#*\[encode\] ffmpeg }"
-
