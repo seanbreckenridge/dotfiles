@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+
+DIR=CONVERTED_MP4
+helpmsg() {
+	printf "%s\n" "desc: hardsub mp4 into video"
+	printf "%s\n" "depend: ffmpeg x264 faac"
+	printf "\n"
+	printf "%s\n" "usage: ${0##*/} [file]"
+	printf "\n"
+	printf "%s\n" "  $ ${0##*/} file.avi"
+	printf "%s\n" "  $ ${0##*/} file1.avi file2.avi file3.avi"
+	printf "%s\n" "  $ ${0##*/} *.avi"
+}
+if [ $# -lt 1 ]; then
+	helpmsg
+	exit 1
+elif [ "$1" = -h ] || [ "$1" = --help ]; then
+	helpmsg
+	exit 0
+else
+	mkdir -p "$DIR"
+	myArray=("$@")
+	for arg in "${myArray[@]}"; do
+		if [[ -f "$arg" && ! -f "$DIR/${arg%.*}.mp4" ]]; then
+			tmpfile=$(mktemp /tmp/XXXXXXXXXX.srt)
+			# extract subtitles from video
+			ffmpeg -y -i "$arg" -map 0:s:0 "$tmpfile" || exit 1
+			ffmpeg -y -i "$arg" -vf "subtitles=$tmpfile" -codec:v libx264 -preset medium -crf 22 -codec:a aac -qscale:a 6 -strict experimental "$DIR/${arg%.*}.mp4"
+			command rm "$tmpfile"
+		else
+			printf "%s\n" "$arg is invalid or output file already exist"
+			exit 1
+		fi
+	done
+fi
