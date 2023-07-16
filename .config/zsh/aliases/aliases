@@ -97,6 +97,7 @@ alias spell='misspell-context'
 alias 'ml=mailsync-loop'
 alias 'confirm=fzf -m'
 alias 'up=TERM=xterm up'
+alias screens='cd $SCREENSHOTS'
 
 alias rrm='command rm'
 # trash-cli/rmtrash

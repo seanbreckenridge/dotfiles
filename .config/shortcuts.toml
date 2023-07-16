@@ -462,8 +462,10 @@ URL="$(echo "${PICKED}" | urlextract)"
 '''
 shebang="#!/usr/bin/env bash"
 
-[screens]
-command='exec nsxiv -t "${SCREENSHOTS}"'
+[screenshots]
+command='''
+exec nsxiv -t "${SCREENSHOTS}"
+'''
 
 [up-live]
 command='TERM=xterm exec up --unsafe-full-throttle'
