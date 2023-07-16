@@ -12,6 +12,6 @@ evry 5 minutes -backup_images && {
 	for idir in "${IMAGE_DIRS[@]}"; do
 		[[ -d "${idir}" ]] || continue
 		rsync -Pavh --exclude=".*" "${idir}" "${BACKUP_TO}/$(basename "${idir}")" &&
-			find "${idir}" -type f -mtime +7 -print -delete
+			find "${idir}" -type f -mtime +28 -print -delete
 	done
 }
