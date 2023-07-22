@@ -13,20 +13,18 @@ mine() {
 	jq -r '.[] | .html_url' <"$file"
 }
 
-browser-github() {
+browser-github-urls() {
 	local cache="$HOME/.cache/repos.cache"
 	evry 1 week -browser-github && browser-github --all >"$cache"
-	{
-		[[ -e "$cache" ]] && cat "$cache"
-		fzfcache browser-github --active
-	} | unique
+	[[ -e "$cache" ]] && cat "$cache"
+	fzfcache browser-github --active
 }
 
 all() {
 	{
-		browser-github
 		mine
 		stars
+		browser-github-urls
 	} | unique
 }
 
