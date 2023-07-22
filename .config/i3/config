@@ -294,6 +294,7 @@ mode "launcher" {
     
     bindsym a exec --no-startup-id ttt kitty -1; mode "default"
     bindsym f exec --no-startup-id ttt firefox-developer-edition; mode "default"
+    bindsym g exec --no-startup-id openurl https://sean.fish/feed/; mode "default"
     bindsym t exec --no-startup-id trakt-progress; mode "default"
     bindsym y exec --no-startup-id mal-recent; mode "default"
     bindsym d exec --no-startup-id ttt discord; mode "default"

@@ -1,4 +1,5 @@
 #!/bin/sh
 EXECUTABLE="${1:?No Executable provided}"
 LOCATION="$(command -v "${EXECUTABLE}")" || exit $?
-exec editor "${LOCATION}"
+cd "$(dirname "${LOCATION}")" || exit $?
+exec editor "$(basename "${LOCATION}")"

@@ -4,14 +4,26 @@
 # https://github.com/seanbreckenridge/plaintext-playlist
 source_if_exists -q "$REPOS/plaintext-playlist/functions.sh" || source_if_exists "${HOME}/.local/share/basher/cellar/packages/seanbreckenridge/plaintext-playlist/functions.sh"
 # print cover images for a playlist
+covers-for-mp3s() {
+	cm
+	rcut -d'/' -f2- | unique | tr '\n' '\0' | xargs -0 -I{} find {} -name 'cover.*'
+}
 play-covers() {
 	cm
-	play list "$@" | rcut -d'/' -f2- | unique | tr '\n' '\0' | xargs -0 -I{} find {} -name 'cover.*'
+	play list "$@" | covers-for-mp3s
 }
 # preview cover images for a playlist in nsxiv
 play-covers-preview() {
 	cm
 	play-covers "$@" | nsxiv -t -
+}
+play-covers-all() {
+	cm
+	playrg | unique | covers-for-mp3s
+}
+play-covers-all-preview() {
+	cm
+	play-covers-all | nsxiv -t -
 }
 bindkey -s '^P' "^uplay^M"
 

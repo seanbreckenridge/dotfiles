@@ -306,7 +306,8 @@ exec mv -v "${FILE}" "./$1"
 command='''
 EXECUTABLE="${1:?No Executable provided}"
 LOCATION="$(command -v "${EXECUTABLE}")" || exit $?
-exec editor "${LOCATION}"
+cd "$(dirname "${LOCATION}")" || exit $?
+exec editor "$(basename "${LOCATION}")"
 '''
 
 [list-config-no-hist]
@@ -703,7 +704,7 @@ exec pygmentize -P style="$style" -O noclasses=True -f html "$@"
 '''
 
 [repos]
-command = 'exec repos-list -f'
+command = 'exec repos-list -f "$@"'
 
 [realbasename]
 command = 'exec basename "$(realpath "$(pwd)")"'

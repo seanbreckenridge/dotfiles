@@ -1,6 +1,8 @@
 beets
 beets-filetote
 black
+click
+colorlog
 cookiecutter
 csvkit
 cube-scramble-cli

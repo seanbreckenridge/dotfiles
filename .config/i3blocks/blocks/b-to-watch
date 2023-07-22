@@ -1,3 +1,5 @@
 #!/usr/bin/env bash
 
+[[ "$BLOCK_BUTTON" == 1 ]] && notify "$(to-watch duration) minutes"
+
 to-watch || true

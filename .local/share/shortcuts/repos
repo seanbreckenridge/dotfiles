@@ -1,2 +1,2 @@
 #!/bin/sh
-exec repos-list -f
+exec repos-list -f "$@"
