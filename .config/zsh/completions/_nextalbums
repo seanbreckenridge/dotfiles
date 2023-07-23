@@ -31,5 +31,11 @@ _nextalbums_completion() {
     fi
 }
 
-compdef _nextalbums_completion nextalbums;
+if [[ $zsh_eval_context[-1] == loadautofunc ]]; then
+    # autoload from fpath, call function directly
+    _nextalbums_completion "$@"
+else
+    # eval/source/. command, register function for later
+    compdef _nextalbums_completion nextalbums
+fi
 

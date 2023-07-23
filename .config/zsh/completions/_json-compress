@@ -31,5 +31,11 @@ _json_compress_completion() {
     fi
 }
 
-compdef _json_compress_completion json-compress;
+if [[ $zsh_eval_context[-1] == loadautofunc ]]; then
+    # autoload from fpath, call function directly
+    _json_compress_completion "$@"
+else
+    # eval/source/. command, register function for later
+    compdef _json_compress_completion json-compress
+fi
 

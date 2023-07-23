@@ -31,5 +31,11 @@ _piazza_scraper_completion() {
     fi
 }
 
-compdef _piazza_scraper_completion piazza_scraper;
+if [[ $zsh_eval_context[-1] == loadautofunc ]]; then
+    # autoload from fpath, call function directly
+    _piazza_scraper_completion "$@"
+else
+    # eval/source/. command, register function for later
+    compdef _piazza_scraper_completion piazza_scraper
+fi
 

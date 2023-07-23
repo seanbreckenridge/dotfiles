@@ -31,5 +31,11 @@ _to_json_objects_completion() {
     fi
 }
 
-compdef _to_json_objects_completion to-json-objects;
+if [[ $zsh_eval_context[-1] == loadautofunc ]]; then
+    # autoload from fpath, call function directly
+    _to_json_objects_completion "$@"
+else
+    # eval/source/. command, register function for later
+    compdef _to_json_objects_completion to-json-objects
+fi
 

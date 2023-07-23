@@ -31,5 +31,11 @@ _id3stuff_completion() {
     fi
 }
 
-compdef _id3stuff_completion id3stuff;
+if [[ $zsh_eval_context[-1] == loadautofunc ]]; then
+    # autoload from fpath, call function directly
+    _id3stuff_completion "$@"
+else
+    # eval/source/. command, register function for later
+    compdef _id3stuff_completion id3stuff
+fi
 

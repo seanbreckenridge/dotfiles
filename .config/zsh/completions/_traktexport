@@ -31,5 +31,11 @@ _traktexport_completion() {
     fi
 }
 
-compdef _traktexport_completion traktexport;
+if [[ $zsh_eval_context[-1] == loadautofunc ]]; then
+    # autoload from fpath, call function directly
+    _traktexport_completion "$@"
+else
+    # eval/source/. command, register function for later
+    compdef _traktexport_completion traktexport
+fi
 

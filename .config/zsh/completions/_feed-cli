@@ -1,12 +1,12 @@
-#compdef chess_export
+#compdef feed-cli
 
-_chess_export_completion() {
+_feed_cli_completion() {
     local -a completions
     local -a completions_with_descriptions
     local -a response
-    (( ! $+commands[chess_export] )) && return 1
+    (( ! $+commands[feed-cli] )) && return 1
 
-    response=("${(@f)$(env COMP_WORDS="${words[*]}" COMP_CWORD=$((CURRENT-1)) _CHESS_EXPORT_COMPLETE=zsh_complete chess_export)}")
+    response=("${(@f)$(env COMP_WORDS="${words[*]}" COMP_CWORD=$((CURRENT-1)) _FEED_CLI_COMPLETE=zsh_complete feed-cli)}")
 
     for type key descr in ${response}; do
         if [[ "$type" == "plain" ]]; then
@@ -33,9 +33,9 @@ _chess_export_completion() {
 
 if [[ $zsh_eval_context[-1] == loadautofunc ]]; then
     # autoload from fpath, call function directly
-    _chess_export_completion "$@"
+    _feed_cli_completion "$@"
 else
     # eval/source/. command, register function for later
-    compdef _chess_export_completion chess_export
+    compdef _feed_cli_completion feed-cli
 fi
 

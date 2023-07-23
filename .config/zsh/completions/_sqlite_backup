@@ -31,5 +31,11 @@ _sqlite_backup_completion() {
     fi
 }
 
-compdef _sqlite_backup_completion sqlite_backup;
+if [[ $zsh_eval_context[-1] == loadautofunc ]]; then
+    # autoload from fpath, call function directly
+    _sqlite_backup_completion "$@"
+else
+    # eval/source/. command, register function for later
+    compdef _sqlite_backup_completion sqlite_backup
+fi
 

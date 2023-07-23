@@ -31,5 +31,11 @@ _epochguess_completion() {
     fi
 }
 
-compdef _epochguess_completion epochguess;
+if [[ $zsh_eval_context[-1] == loadautofunc ]]; then
+    # autoload from fpath, call function directly
+    _epochguess_completion "$@"
+else
+    # eval/source/. command, register function for later
+    compdef _epochguess_completion epochguess
+fi
 

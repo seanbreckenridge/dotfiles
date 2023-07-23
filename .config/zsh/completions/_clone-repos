@@ -31,5 +31,11 @@ _clone_repos_completion() {
     fi
 }
 
-compdef _clone_repos_completion clone-repos;
+if [[ $zsh_eval_context[-1] == loadautofunc ]]; then
+    # autoload from fpath, call function directly
+    _clone_repos_completion "$@"
+else
+    # eval/source/. command, register function for later
+    compdef _clone_repos_completion clone-repos
+fi
 

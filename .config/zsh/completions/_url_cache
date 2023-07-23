@@ -31,5 +31,11 @@ _url_cache_completion() {
     fi
 }
 
-compdef _url_cache_completion url_cache;
+if [[ $zsh_eval_context[-1] == loadautofunc ]]; then
+    # autoload from fpath, call function directly
+    _url_cache_completion "$@"
+else
+    # eval/source/. command, register function for later
+    compdef _url_cache_completion url_cache
+fi
 

@@ -31,5 +31,11 @@ _browserexport_completion() {
     fi
 }
 
-compdef _browserexport_completion browserexport;
+if [[ $zsh_eval_context[-1] == loadautofunc ]]; then
+    # autoload from fpath, call function directly
+    _browserexport_completion "$@"
+else
+    # eval/source/. command, register function for later
+    compdef _browserexport_completion browserexport
+fi
 

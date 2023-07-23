@@ -40,6 +40,7 @@ for cmd in hpi \
 	shebang \
 	clone-repos \
 	scramble_history \
+	feed-cli \
 	url_cache; do
 	havecmd "${cmd}" || continue
 	var="$(printf '_%s_COMPLETE' "$(echo "${cmd}" | upper | sed -e 's/-/_/g')")"

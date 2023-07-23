@@ -31,5 +31,11 @@ _prompt_type_completion() {
     fi
 }
 
-compdef _prompt_type_completion prompt_type;
+if [[ $zsh_eval_context[-1] == loadautofunc ]]; then
+    # autoload from fpath, call function directly
+    _prompt_type_completion "$@"
+else
+    # eval/source/. command, register function for later
+    compdef _prompt_type_completion prompt_type
+fi
 

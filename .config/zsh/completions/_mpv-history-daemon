@@ -31,5 +31,11 @@ _mpv_history_daemon_completion() {
     fi
 }
 
-compdef _mpv_history_daemon_completion mpv-history-daemon;
+if [[ $zsh_eval_context[-1] == loadautofunc ]]; then
+    # autoload from fpath, call function directly
+    _mpv_history_daemon_completion "$@"
+else
+    # eval/source/. command, register function for later
+    compdef _mpv_history_daemon_completion mpv-history-daemon
+fi
 

@@ -31,5 +31,11 @@ _openurls_completion() {
     fi
 }
 
-compdef _openurls_completion openurls;
+if [[ $zsh_eval_context[-1] == loadautofunc ]]; then
+    # autoload from fpath, call function directly
+    _openurls_completion "$@"
+else
+    # eval/source/. command, register function for later
+    compdef _openurls_completion openurls
+fi
 

@@ -31,5 +31,11 @@ _shortcuts_completion() {
     fi
 }
 
-compdef _shortcuts_completion shortcuts;
+if [[ $zsh_eval_context[-1] == loadautofunc ]]; then
+    # autoload from fpath, call function directly
+    _shortcuts_completion "$@"
+else
+    # eval/source/. command, register function for later
+    compdef _shortcuts_completion shortcuts
+fi
 
