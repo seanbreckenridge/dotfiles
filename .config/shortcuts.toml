@@ -743,17 +743,14 @@ awk '{ print length, $0 }' | sort -n | cut -d' ' -f2-
 
 [shortest-video]
 command = '''
-set -e
-set -o pipefail
-file="$(list-movies -X mduration | sort -n | head -n 1 | cut -d'|' -f3-)"
-if [[ -n "$file" ]]; then
+file="$(list-movies -X medialength -o min -d path "$@")"
+if [ -n "$file" ]; then
 	echo "$file"
 else
-	echo "No videos found" >&2
+	echo "No media found" >&2
 	exit 1
 fi
 '''
-shebang = "#!/usr/bin/env bash"
 
 [play-shortest-video]
 command = '''
@@ -803,8 +800,8 @@ command = '''
 exec awk '{ for (i = 2; i <= NF; i++) printf $i "\t" ; print $1 }'
 '''
 
-[longest-video-cached]
-command='LONGEST=1 exec shortest-video-cached'
+[longest-video]
+command='exec shortest-video -o max "$@"'
 
 [img-download-drag]
 command = '''

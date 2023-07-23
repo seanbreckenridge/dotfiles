@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+# check each directory in $PATH for script name
+# if found, print full path to script and exit
+
+declare script_name="${1?missing script name}"
+declare target
+for dir in ${PATH//:/ }; do
+	target="${dir}/${script_name}"
+	if [[ -f "${target}" ]]; then
+		echo "${target}"
+		if [[ ! -x "${target}" ]]; then
+			echo "Warning: ${target} is not executable" >&2
+		fi
+	fi
+done

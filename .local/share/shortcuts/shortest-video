@@ -1,10 +1,8 @@
-#!/usr/bin/env bash
-set -e
-set -o pipefail
-file="$(list-movies -X mduration | sort -n | head -n 1 | cut -d'|' -f3-)"
-if [[ -n "$file" ]]; then
+#!/bin/sh
+file="$(list-movies -X medialength -o min -d path "$@")"
+if [ -n "$file" ]; then
 	echo "$file"
 else
-	echo "No videos found" >&2
+	echo "No media found" >&2
 	exit 1
 fi
