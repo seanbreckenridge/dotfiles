@@ -196,6 +196,7 @@ __pycache__
 /.config/3T
 /.config/kdiff3rc
 /.config/lazygit
+/.config/audacity
 /.config/age
 /.config/sops
 /.config/flameshot
