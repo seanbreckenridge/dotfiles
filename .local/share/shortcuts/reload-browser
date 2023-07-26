@@ -1,4 +1,2 @@
 #!/bin/sh
-# reload firefox (Navigator is firefox's WM_CLASS)
-
 exec xvkbd -window Navigator -text "i\Cr"

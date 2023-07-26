@@ -39,11 +39,11 @@ command='''
 # prompt i3 bindings w/ rofi and run one of the commands
 i3-msg "$(i3binds | rofi -dmenu -width 50 -lines 30 -location 5 -p "Pick a command to run > " | sed 's/--no-startup-id //g' | cut -d" " -f 2-)"'''
 
-[reload-browser]
-command='''
 # reload firefox (Navigator is firefox's WM_CLASS)
 # the i is to enter insert mode in firefox (I use vimium)
 # \C is control, r is r, to refresh
+[reload-browser]
+command='''
 exec xvkbd -window Navigator -text "i\Cr"
 '''
 
@@ -273,12 +273,12 @@ echo "$*" | clp
 shebang = "#!/usr/bin/env bash"
 command='''
 case "$ON_OS" in
-	linux*)
-		exec newest "$@" "${SCREENSHOTS:?No SCREENSHOTS environment variable set}"
-		;;
-	mac*)
-		find "${HOME}/Desktop" -iname 'screen shot*' | tail -n1 || exit $?
-		;;
+linux*)
+	exec newest "$@" "${SCREENSHOTS:?No SCREENSHOTS environment variable set}"
+	;;
+mac*)
+	find "${HOME}/Desktop" -iname 'screen shot*' | tail -n1 || exit $?
+	;;
 esac
 '''
 
@@ -719,9 +719,9 @@ command = 'exec clone-repos ~/.config/clone-repos/update-forks.yaml'
 [rj]  # 'run-jobs'
 command ='''
 if [[ "$1" == "-o" ]]; then
-	:  # skip internet check, just run the loop once
+	: # skip internet check, just run the loop once
 elif wait-for-internet --quiet --timeout 0; then
-	 exec bgproc_on_machine -pn
+	exec bgproc_on_machine -pn
 fi
 export WFI_TIMEOUT=0
 exec bgproc_on_machine -on
