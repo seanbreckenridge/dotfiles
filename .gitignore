@@ -195,6 +195,8 @@ __pycache__
 /.config/*/zoom.conf
 /.config/3T
 /.config/kdiff3rc
+/.config/kconf_updaterc
+/.config/kdeglobals
 /.config/lazygit
 /.config/audacity
 /.config/age
