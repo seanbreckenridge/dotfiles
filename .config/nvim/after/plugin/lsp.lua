@@ -129,8 +129,8 @@ require"lspconfig".lua_ls.setup {
     }
 }
 
--- if asdf install exists, use it
-if exists("~/.asdf/installs/nodejs") then
+-- if asdf install file exists, use it
+if vim.fn.filereadable("~/.asdf/installs/nodejs") == 1 then
     -- use asdf nodejs for copilot
     -- TODO: check if it exists or use asdfs system installed nodejs in bin?
     vim.g.copilot_node_command = "~/.asdf/installs/nodejs/17.0.1/bin/node"
