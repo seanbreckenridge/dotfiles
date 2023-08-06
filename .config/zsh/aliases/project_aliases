@@ -137,6 +137,10 @@ alias mpv-percent='mpv-get-property "$(mpv-currently-playing --socket | tail -n1
 # https://github.com/seanbreckenridge/rifleman
 alias optimg='rifleman -a image'
 
+# https://github.com/seanbreckenridge/malexport
+alias ma='malexport manual-history'
+alias mal-manual='malexport parse manual-history -o markdown | glow'
+
 # https://github.com/seanbreckenridge/clone-repos
 alias cr="python3 -m pip install --break-system-packages 'git+https://github.com/seanbreckenridge/clone-repos' && clone-repos -B"
 alias cr-hpi='clone-repos -B ~/.config/clone-repos/hpi-clone-repos.yaml'
