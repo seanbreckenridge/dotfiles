@@ -480,6 +480,11 @@ class stackexchange:
     # stexport: Optional[PathIsh] = repo("stexport")
 
 
+class offline:
+    class listens:
+        export_path: Paths = data("offline_listens/*.yaml")
+
+
 DateIsh = Union[datetime, date, str]
 LatLon = Tuple[float, float]
 
