@@ -42,9 +42,11 @@ def sources() -> Iterator[Callable[[], Iterator["FeedItem"]]]:
         nextalbums,
         mal,
         mpv,
+        offline_listens,
         facebook_spotify_listens,
     )
 
+    yield offline_listens.history
     yield transform(trakt.history)
     yield nextalbums.history
     yield mal.history
