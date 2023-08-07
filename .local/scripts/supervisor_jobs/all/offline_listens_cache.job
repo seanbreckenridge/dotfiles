@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+evry 4 weeks -update-offline-listens-cache && {
+	printlog "offline_listens:updating cache..."
+	python3 -m offline_listens update-cache
+	dust --no-colors ~/.cache/offline-listens.json
+}

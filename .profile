@@ -144,5 +144,5 @@ export TMDB_CACHE_DIR="${XDG_DOCUMENTS_DIR}/feed_tmdb_cache"
 # https://github.com/seanbreckenridge/albums
 export DISCOGS_CACHE_DIR="${XDG_DOCUMENTS_DIR}/discogs_cache"
 # https://github.com/seanbreckenridge/offline_listens
-export OFFLINE_LISTENS_COMMANDS='fzfcache offline-listens-source'
+export OFFLINE_LISTENS_COMMANDS='offline-listens-source'
 export OFFLINE_LISTENS_FILE="${HPIDATA}/offline_listens/${ON_OS}.yaml"
