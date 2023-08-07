@@ -15,6 +15,7 @@ import warnings
 
 warnings.filterwarnings("ignore", "The localize method is no longer necessary")
 
+
 @click.command()
 @click.option(
     "-f", "--format", default="%Y-%m-%d %H:%M:%S", help="format to print dates in"
