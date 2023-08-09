@@ -96,6 +96,7 @@ __pycache__
 /.cache
 /.cargo
 /.cdk
+/.openshot_qt/
 /.clojure_history
 /.cookiecutter_replay
 /.cookiecutters/
