@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+for vid in "$@"; do
+	rotation="$(exifattr "$vid" Rotation)" || exit $?
+	mkdir -p "$rotation"
+	mv -vn "$vid" "$rotation"
+done

@@ -1,0 +1,42 @@
+#!/usr/bin/env bash
+
+DIR=ROTATED_MP4
+helpmsg() {
+	printf "%s\n" "desc: convert to mp4 video (x264)"
+	printf "%s\n" "depend: ffmpeg x264 faac"
+	printf "\n"
+	printf "%s\n" "usage: ${0##*/} [90|180|270] [file]"
+	printf "\n"
+	printf "%s\n" "  $ ${0##*/} 90 file.avi"
+	printf "%s\n" "  $ ${0##*/} 180 file1.avi file2.avi file3.avi"
+	printf "%s\n" "  $ ${0##*/} 270 *.avi"
+}
+if [ $# -lt 1 ]; then
+	helpmsg
+	exit 1
+elif [ "$1" = -h ] || [ "$1" = --help ]; then
+	helpmsg
+	exit 0
+else
+	mkdir -p "$DIR"
+	degrees="$1"
+	shift
+	case "$degrees" in
+	90) filter="transpose=1" ;;
+	180) filter="transpose=2,transpose=2" ;;
+	270) filter="transpose=2" ;;
+	*)
+		printf "%s\n" "invalid degrees"
+		exit 1
+		;;
+	esac
+	myArray=("$@")
+	for arg in "${myArray[@]}"; do
+		if [[ -f "$arg" && ! -f "$DIR/${arg%.*}.mp4" ]]; then
+			ffmpeg -i "$arg" -vf "$filter" -codec:v libx264 -preset medium -crf 22 -codec:a aac -qscale:a 6 -strict experimental "$DIR/${arg%.*}.mp4"
+		else
+			printf "%s\n" "$arg is invalid or output file already exist"
+			continue
+		fi
+	done
+fi

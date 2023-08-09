@@ -1,7 +1,17 @@
 #!/usr/bin/env bash
-# AUTHOR: gotbletu (@gmail|twitter|youtube|github|lbry)
 
 DIR=CONVERTED_MP4
+
+is_vertical_video() {
+	local rotation
+	rotation="$(exifattr "$1" Rotation)"
+	if [[ "$rotation" = 90 || "$rotation" = 270 ]]; then
+		return 0
+	else
+		return 1
+	fi
+}
+
 helpmsg() {
 	printf "%s\n" "desc: convert to mp4 video (x264)"
 	printf "%s\n" "depend: ffmpeg x264 faac"
@@ -23,7 +33,15 @@ else
 	myArray=("$@")
 	for arg in "${myArray[@]}"; do
 		if [[ -f "$arg" && ! -f "$DIR/${arg%.*}.mp4" ]]; then
-			ffmpeg -i "$arg" -codec:v libx264 -preset medium -crf 22 -codec:a aac -qscale:a 6 -strict experimental "$DIR/${arg%.*}.mp4"
+			scale='1080:-1'
+			if is_vertical_video "$arg"; then
+				scale='-1:1080'
+			fi
+			ffmpeg -i "$arg" -vf scale="$scale" -codec:v libx264 -preset medium -crf 23 -codec:a aac -qscale:a 6 -strict normal "$DIR/${arg%.*}.mp4"
+			oldsize="$(du -h "$arg" | awk '{print $1}')"
+			newsize="$(du -h "$DIR/${arg%.*}.mp4" | awk '{print $1}')"
+			echo "old size: $oldsize"
+			echo "new size: $newsize"
 		else
 			printf "%s\n" "$arg is invalid or output file already exist"
 			continue
