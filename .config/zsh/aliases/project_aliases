@@ -141,8 +141,21 @@ alias mpv-percent='mpv-get-property "$(mpv-currently-playing --socket | tail -n1
 alias optimg='rifleman -a image'
 
 # https://github.com/seanbreckenridge/malexport
-alias ma='malexport manual-history'
-alias mal-manual='malexport parse manual-history -o markdown | glow'
+mal-manual-all() {
+	_filter() {
+		if [[ -n "$1" ]]; then
+			tail -n "$((2 * $1))"
+		else
+			cat
+		fi
+	}
+	malexport parse manual-history -o markdown | _filter "$@" | glow
+}
+alias mal-manual='mal-manual-all 10'
+ma() {
+	malexport manual-history "$@" --at "$(epoch)"
+	mal-manual
+}
 
 # https://github.com/seanbreckenridge/clone-repos
 alias cr="python3 -m pip install --break-system-packages 'git+https://github.com/seanbreckenridge/clone-repos' && clone-repos -B"
