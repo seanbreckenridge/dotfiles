@@ -63,6 +63,7 @@ local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 
 capabilities.textDocument.completion.completionItem.snippetSupport = true
+-- capabilities.workspace.didChangeWatchedFiles.dynamicRegistration = false
 
 -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
 
@@ -82,12 +83,13 @@ require("lspconfig").prismals.setup {}
 -- https://github.com/microsoft/pyright/blob/main/docs/configuration.md
 require("lspconfig").pyright.setup {
     capabilities = capabilities,
+    flags = {debounce_text_changes = 150},
     settings = {
         python = {
             analysis = {
-                autoSearchPaths = true,
-                useLibraryCodeForTypes = true,
-                diagnosticMode = "workspace"
+                autoSearchPaths = false,
+                useLibraryCodeForTypes = false,
+                diagnosticMode = "openFilesOnly"
             }
         }
     }
