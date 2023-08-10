@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
 
 import sys
-from datetime import datetime
+import json
+from datetime import datetime, timezone
+from typing import Tuple, Optional, Any, Literal
 
 import click
 import dateparser
@@ -10,30 +12,115 @@ import arrow
 
 def parse_date(date: str) -> datetime:
     try:
-        return datetime.fromisoformat(date)
+        dt = datetime.fromisoformat(date)
+        if dt.tzinfo is not None:
+            return dt
+        else:
+            return dt.astimezone()
     except ValueError:
         pass
 
     try:
-        return datetime.fromtimestamp(int(date))
+        return datetime.fromtimestamp(int(date), tz=timezone.utc)
     except ValueError:
         pass
 
     try:
         if parsed := dateparser.parse(date):
-            return parsed
+            # If the date is naive, assume it's in the local timezone
+            if parsed.tzinfo is None:
+                return parsed.astimezone()
+            else:
+                return parsed
     except ValueError:
         pass
 
     raise ValueError(f"Could not parse date: {date}")
 
 
+ParseType = Literal["epoch", "json", "delimeter", "space", "non-date"]
+
+
+def parse_line(
+    line: str, delimeter: str, json_key: Optional[str]
+) -> Tuple[Optional[datetime], ParseType, Any]:
+    if json_key is not None:
+        try:
+            obj = json.loads(line)
+            dt = parse_date(str(obj[json_key]))
+            return dt, "json", obj
+        except json.JSONDecodeError:
+            pass
+        except KeyError:
+            pass
+
+    if line.strip().isnumeric():
+        return parse_date(line.strip()), "epoch", "\n"
+
+    items = line.split(delimeter, 1)
+
+    if len(items) == 2:
+        return parse_date(items[0]), "delimeter", items[1]
+
+    items = line.split(" ", 1)
+
+    if len(items) == 2:
+        return parse_date(items[0]), "space", items[1]
+
+    return None, "non-date", line
+
+
 @click.command()
-def main() -> None:
+@click.option(
+    "-d",
+    "--delimeter",
+    default="\t",
+    show_default=True,
+    help="Delimeter to use between date and rest of line",
+)
+@click.option(
+    "-k",
+    "--json-key",
+    default=None,
+    help="If each line is a JSON object, use this key to extract the date",
+)
+def main(delimeter: str, json_key: str) -> None:
+    """
+    Given input from stdin, parse each line as a date and print the date in
+    human-readable format followed by the rest of the line.
+
+    This attempts lots of strategies to find the date; trying
+    to parse the entire line, the first token of the line
+    (split by whitespace or --delimeter (tab by default)),
+    or the value of the JSON key specified by --json-key, if lines are
+    JSON objects.
+
+    If the date cannot be parsed, the line is printed as-is.
+    """
     for line in iter(sys.stdin.readline, ""):
-        token, rest = line.split("\t", 1)
-        date = parse_date(token)
-        click.echo(f"{arrow.get(date).humanize()}\t{rest}", nl=False)
+        try:
+            dt, parse_type, rest = parse_line(line, delimeter, json_key)
+        except ValueError:
+            dt = None
+            parse_type = "non-date"
+            rest = line
+        if dt:
+            dth = arrow.get(dt).humanize()
+            match parse_type:
+                case "epoch":
+                    print(f"{dth}{rest}", end="")
+                case "json":
+                    assert isinstance(rest, dict)
+                    rest[json_key] = dth
+                    print(json.dumps(rest, separators=(",", ":")))
+                case "delimeter":
+                    print(f"{dth}{delimeter}{rest}", end="")
+                case "space":
+                    print(f"{dth} {rest}", end="")
+                case "non-date":
+                    print(line, end="")
+        else:
+            print(line, end="")
 
 
 if __name__ == "__main__":
