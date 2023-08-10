@@ -144,12 +144,12 @@ alias optimg='rifleman -a image'
 mal-manual-all() {
 	_filter() {
 		if [[ -n "$1" ]]; then
-			tail -n "$((2 * $1))"
+			tail -n "$1"
 		else
 			cat
 		fi
 	}
-	malexport parse manual-history -o markdown | _filter "$@" | glow
+	malexport parse manual-history -o jsonl | jq '"\(.at)\t\(.title)\t\(.number)"' -r | sort -n | _filter "$@" | localize-datetimes | awk -F'\t' '{print "# " $2 "\n" $1 " - Episode " $3 }' | glow
 }
 alias mal-manual='mal-manual-all 10'
 ma() {
