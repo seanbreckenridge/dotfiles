@@ -63,7 +63,7 @@ bz() {
 }
 
 # https://github.com/seanbreckenridge/offline_listens
-alias 'ol=offline_listens listen'
+alias 'of=offline_listens listen'
 
 # https://github.com/seanbreckenridge/albums
 alias 'discogs-update=nextalbums discogs-update'
