@@ -2,4 +2,4 @@
 
 import datetime
 
-print(datetime.date.today().strftime("%V"))
+print(int(datetime.date.today().strftime("%U")))
