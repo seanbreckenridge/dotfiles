@@ -81,19 +81,23 @@ require("lspconfig").prismals.setup {}
 -- hmm -- not able to figure out how to configure
 -- the type diagnostic options, which require a config file?
 -- https://github.com/microsoft/pyright/blob/main/docs/configuration.md
-require("lspconfig").pyright.setup {
-    capabilities = capabilities,
-    flags = {debounce_text_changes = 150},
-    settings = {
-        python = {
-            analysis = {
-                autoSearchPaths = false,
-                useLibraryCodeForTypes = false,
-                diagnosticMode = "openFilesOnly"
-            }
-        }
-    }
-}
+--
+-- this hangs and actually uses so much CPU it crashes my machine in a few minutes unless I sigkill it
+-- require("lspconfig").pyright.setup {
+--     capabilities = capabilities,
+--     flags = {debounce_text_changes = 150},
+--     settings = {
+--         python = {
+--             analysis = {
+--                 autoSearchPaths = false,
+--                 useLibraryCodeForTypes = false,
+--                 diagnosticMode = "openFilesOnly"
+--             }
+--         }
+--     }
+-- }
+
+require'lspconfig'.jedi_language_server.setup{}
 
 -- yaml
 require("lspconfig").yamlls.setup {

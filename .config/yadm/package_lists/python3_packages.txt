@@ -20,6 +20,7 @@ ipdb
 ipython
 isort
 j2cli
+jedi-language-server
 logzero
 mutagen
 mypy
@@ -47,6 +48,7 @@ supervisor
 termdown
 termgraph
 thefuck
+time-in
 toml
 trash-cli
 urlextract
