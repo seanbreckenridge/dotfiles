@@ -71,7 +71,11 @@ evry 2 months -grouvee-export && python3 -m grouvee_export export
 evry 2 months -twitch_cli && twitch token
 
 # update https://github.com/seanbreckenridge/mnu_gsheets
-evry 1 day -mnu && ssh vultr ~/vps/mnu
+evry 1 day -mnu && {
+	ssh vultr ~/vps/mnu
+	# sync from remote to local so it remains synced
+	"$REPOS/vps/sync_mnu"
+}
 
 # make sure all my music is mp3s
 evry 1 day -check-music-extensions && check-music-extensions
