@@ -26,10 +26,7 @@ fi
 # backup cache/tokens/logs from my server
 BACKUP_SERVER_SCRIPT="${REPOS}/vps/backup_server"
 if [[ -r "${BACKUP_SERVER_SCRIPT}" ]]; then
-	evry 3 days -backup_fish_server && {
-		"${BACKUP_SERVER_SCRIPT}"
-		"$REPOS/vps/sync_nginx_log"
-	}
+	evry 3 days -backup_fish_server && "${BACKUP_SERVER_SCRIPT}"
 else
 	printf 'Expected backup script to exist at %s\n' "${BACKUP_SERVER_SCRIPT}" >&2
 fi
