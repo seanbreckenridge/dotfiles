@@ -16,20 +16,10 @@ wait-for-internet "${wfi_args[@]}" || exit $?
 export HAVECMD_REPORT=1
 
 # approve guestbook comments on https://github.com/seanbreckenridge/glue
-APPROVE_SCRIPT="${REPOS}/vps/approve_comments"
-if [[ -r "${APPROVE_SCRIPT}" ]]; then
-	evry 3 hours -approve-comments && "${APPROVE_SCRIPT}" 2>/dev/null
-else
-	printf 'Expected approve script to exist at %s\n' "${APPROVE_SCRIPT}" >&2
-fi
+evry 3 hours -approve-comments && approve_comments
 
 # backup cache/tokens/logs from my server
-BACKUP_SERVER_SCRIPT="${REPOS}/vps/backup_server"
-if [[ -r "${BACKUP_SERVER_SCRIPT}" ]]; then
-	evry 3 days -backup_fish_server && "${BACKUP_SERVER_SCRIPT}"
-else
-	printf 'Expected backup script to exist at %s\n' "${BACKUP_SERVER_SCRIPT}" >&2
-fi
+evry 3 days -backup_fish_server && vps_backup_server
 
 evry 1 day -sreminders-notify && sreminders-notify
 
@@ -72,9 +62,7 @@ evry 2 months -twitch_cli && twitch token
 
 # update https://github.com/seanbreckenridge/mnu_gsheets
 evry 1 day -mnu && {
-	ssh vultr ~/vps/mnu
-	# sync from remote to local so it remains synced
-	"$REPOS/vps/sync_mnu"
+	ssh vultr ~/vps/bin/mnu update && mnu sync
 }
 
 # make sure all my music is mp3s

@@ -23,6 +23,7 @@ HPIDATA="${HOME}/data"
 
 # common path modifications
 export PATH="\
+${REPOS}/vps/bin:\
 ${XDG_DATA_HOME}/basher/cellar/bin:\
 ${HPIDATA}/bin:\
 ${REPOS}/HPI-personal/scripts:\

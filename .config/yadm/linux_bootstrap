@@ -86,15 +86,6 @@ done
 # Setup mariadb by following: https://wiki.archlinux.org/index.php/MariaDB
 # Check for manually installed binaries, installed at /usr/local/bin
 
-# make symbolic links for proxying (ssh into server and youtube-dl/ffmpeg) media on my server
-# see mediaproxy scripts here https://github.com/seanbreckenridge/vps
-proxyscripts=("mediaproxyvideo" "mediaproxyaudio")
-for script in "${proxyscripts[@]}"; do
-	HAVECMD_REPORT='' havecmd "${script}" || {
-		ln -s "${REPOS}/vps/${script}" ~/.local/bin
-	}
-done
-
 # make sure https://github.com/seanbreckenridge/bgproc is running
 # shellcheck disable=SC2009
 ps -ef | grep "bgproc" | grep -q bash || print_error "bgproc isn't running!"
