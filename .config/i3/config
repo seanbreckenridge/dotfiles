@@ -358,9 +358,6 @@ exec --no-startup-id nm-applet
 
 # background processes unrelated to i3/window manager
 
-# copy my todo.txt to my server when it changes, so I can be sent reminders
-# https://github.com/seanbreckenridge/todotxt_deadline_notify
-exec --no-startup-id bash "${REPOS}/todotxt_deadline_notify/copy_todotxt_to_server"
 # start supervisor background processes
 exec --no-startup-id super --daemon
 # https://sean.fish/d/cstimer-server?dark
