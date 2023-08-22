@@ -137,9 +137,7 @@ export MPV_HISTORY_DAEMON_SCAN_TIME='5'
 export CALCURSE_DIR="${HPIDATA}/calcurse"
 # $PATH for bgproc directories, for background processes
 # https://github.com/seanbreckenridge/bgproc
-BGPROC_PATH="${REPOS}/HPI-personal/jobs:${HPIDATA}/jobs:${HOME}/.local/scripts/supervisor_jobs"
-[ -e "${REPOS}/vps/jobs" ] && BGPROC_PATH="${BGPROC_PATH}:${REPOS}/vps/jobs"
-export BGPROC_PATH
+export BGPROC_PATH="${REPOS}/HPI-personal/jobs:${HPIDATA}/jobs:${HOME}/.local/scripts/supervisor_jobs:${REPOS}/vps/jobs"
 export BGPROC_DATE_FMT='+%Y-%m-%dT%H-%M-%S'
 # $PATH for sreminder directories
 export SREMINDERS_PATH="${HPIDATA}/sreminders:${HOME}/.local/scripts/sreminders"
