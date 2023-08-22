@@ -137,6 +137,11 @@ alias tts-say='tts -d /tmp/tts.ogg && plaympeg /tmp/tts.ogg'
 alias mpv-cd-currently-playing='cd "$(dirname "$(mpv-currently-playing)")"'
 alias mpv-percent='mpv-get-property "$(mpv-currently-playing --socket | tail -n1)" percent-pos'
 
+# https://github.com/seanbreckenridge/currently_listening
+curplaying() {
+	python3 -m currently_listening_py print --server-url 'wss://sean.fish/currently_listening/ws' -o text
+}
+
 # https://github.com/seanbreckenridge/rifleman
 alias optimg='rifleman -a image'
 
