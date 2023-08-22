@@ -1,0 +1,17 @@
+#!/usr/bin/env zsh
+# adds the passed directory or the current directory to your $PATH
+
+add-to-path() {
+	local toadd
+	toadd="${1:-$(pwd)}"
+	if [[ ! -d "$toadd" ]]; then
+		echo "Not a directory: $toadd" >&2
+		return 1
+	fi
+	# check if already in path
+	if [[ ":$PATH:" == *":$toadd:"* ]]; then
+		echo "$toadd already in path" >&2
+		return 1
+	fi
+	export PATH="$toadd:$PATH"
+}
