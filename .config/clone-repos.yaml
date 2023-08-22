@@ -13,6 +13,10 @@
 "https://github.com/seanbreckenridge/oh-my-stars":
   pip: install
 "https://github.com/seanbreckenridge/evry":
+"https://github.com/seanbreckenridge/vps":
+"https://github.com/seanbreckenridge/currently_listening":
+  postinstall:
+    - pip install --user --break-system-packages ./currently_listening_py
 "https://github.com/seanbreckenridge/albums":
   pip: editable
 "https://github.com/seanbreckenridge/bleanser-fork":
