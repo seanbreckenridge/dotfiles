@@ -4,6 +4,16 @@ vim.cmd('filetype off')
 -- needs to be before the plugin is loaded
 vim.g.polyglot_disabled = {'org'}
 
+-- https://github.com/neovim/neovim/issues/23725#issuecomment-1561364086
+-- https://github.com/neovim/neovim/issues/23291
+--
+-- watchfiles implementation crashes my machine if there are too many files in the project
+local ok, wf = pcall(require, "vim.lsp._watchfiles")
+if ok then
+    -- disable lsp watcher. Too slow on linux
+    wf._watchfunc = function() return function() end end
+end
+
 -- load plugins/lua
 vim.cmd [[packadd packer.nvim]]
 require('packer').startup(function(use)
