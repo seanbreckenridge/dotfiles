@@ -31,7 +31,7 @@ show_context() {
 
 while IFS= read -r misspelled_line; do
 	show_context "$misspelled_line"
-done < <(fd "$@" -x misspell)
+done < <(fd --type f "$@" -x misspell)
 
 if [[ "${#MISSPELLED[@]}" == 0 ]]; then
 	echo "No misspelled words found!"
@@ -73,7 +73,7 @@ select choice in replace list ignore exit; do
 	esac
 done
 
-COMMAND=(fd)
+COMMAND=(fd --type f)
 COMMAND+=("${@}") # fd args passed by user
 COMMAND+=(-x misspell -w)
 [[ -n "$IGNORE_STR" ]] && COMMAND+=(-i "$IGNORE_STR")
