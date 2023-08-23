@@ -19,3 +19,11 @@ alias remove-orphans='sudo pacman -Rns $(list-orphans)'
 # clear yay tar.gz cache
 alias yay-clear-cache='yay -Syu && yay -Sc'
 alias rnm='sudo systemctl restart NetworkManager' # restart networkmanager
+
+clean-cache() {
+	gem cleanup
+	pip cache purge
+	kondo ~/data ~/Pictures ~/Movies ~/Music ~/Documents ~/Downloads
+	yay && yay -Sc --noconfirm
+	du -h --summarize ~/.cache/yarn ~/.cache/pip ~/.npm | boxes
+}

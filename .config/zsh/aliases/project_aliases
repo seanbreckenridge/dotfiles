@@ -155,8 +155,13 @@ mal-manual-all() {
 		fi
 	}
 	malexport parse manual-history -o jsonl | jq '"\(.at)\t\(.title)\t\(.number)"' -r | sort -n | _filter "$@" | localize-datetimes | awk -F'\t' '{print "# " $2 "\n" $1 " - Episode " $3 }' | glow
+	unfunction _filter
 }
-alias mal-manual='mal-manual-all 10'
+mal-manual() {
+	local count
+	count="$(is-integer "$1")"
+	mal-manual-all "${count:-10}"
+}
 ma() {
 	malexport manual-history "$@" --at "$(epoch)"
 	mal-manual
