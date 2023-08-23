@@ -1,6 +1,7 @@
 -- nvim-cmp
 local cmp = require("cmp")
 
+-- icons
 local lspkind = require("lspkind")
 lspkind.init()
 
@@ -63,7 +64,14 @@ local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 
 capabilities.textDocument.completion.completionItem.snippetSupport = true
--- capabilities.workspace.didChangeWatchedFiles.dynamicRegistration = false
+capabilities.workspace = {
+    didChangeWatchedFiles = {
+        -- https://github.com/neovim/neovim/issues/23725#issuecomment-1561364086
+        -- https://github.com/neovim/neovim/issues/23291
+        -- disable watchfiles for lsp, runs slow on linux
+        dynamicRegistration = false
+    }
+}
 
 -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
 
@@ -71,17 +79,17 @@ capabilities.textDocument.completion.completionItem.snippetSupport = true
 require("lspconfig").jsonls.setup {capabilities = capabilities}
 require("lspconfig").cssls.setup {capabilities = capabilities}
 require("lspconfig").html.setup {capabilities = capabilities}
-require("lspconfig").eslint.setup {}
-require("lspconfig").cssmodules_ls.setup {}
-require("lspconfig").tailwindcss.setup {}
-require("lspconfig").tsserver.setup {}
-require("lspconfig").prismals.setup {}
+require("lspconfig").eslint.setup {capabilities = capabilities}
+require("lspconfig").cssmodules_ls.setup {capabilities = capabilities}
+require("lspconfig").tailwindcss.setup {capabilities = capabilities}
+require("lspconfig").tsserver.setup {capabilities = capabilities}
+require("lspconfig").prismals.setup {capabilities = capabilities}
 
 -- python
 -- https://github.com/microsoft/pyright/blob/main/docs/configuration.md
 require("lspconfig").pyright.setup {
     capabilities = capabilities,
-    flags = {debounce_text_changes = 100},
+    flags = {debounce_text_changes = 100}
 }
 
 -- yaml
@@ -91,16 +99,19 @@ require("lspconfig").yamlls.setup {
 }
 
 -- shell
-require("lspconfig").bashls.setup {}
+require("lspconfig").bashls.setup {capabilities = capabilities}
 
 -- golang
-require("lspconfig").gopls.setup {}
+require("lspconfig").gopls.setup {capabilities = capabilities}
 
 -- elixir
-require'lspconfig'.elixirls.setup {cmd = {vim.fn.exepath("elixir-ls")}}
+require'lspconfig'.elixirls.setup {
+    cmd = {vim.fn.exepath("elixir-ls")},
+    capabilities = capabilities
+}
 
 -- rust
-require'lspconfig'.rust_analyzer.setup {}
+require'lspconfig'.rust_analyzer.setup {capabilities = capabilities}
 
 -- lua
 local runtime_path = vim.split(package.path, ";")
@@ -108,6 +119,7 @@ table.insert(runtime_path, "lua/?.lua")
 table.insert(runtime_path, "lua/?/init.lua")
 
 require"lspconfig".lua_ls.setup {
+    capabilities = capabilities,
     settings = {
         Lua = {
             runtime = {version = "LuaJIT", path = runtime_path},
