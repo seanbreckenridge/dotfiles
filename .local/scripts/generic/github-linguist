@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+# This script is used to run github-linguist in a docker container.
+# The native extensions never seem to work for me, so this is a workaround
+#
+# to reset, run:
+# 'docker image rm -f linguist'
+# 'git pull'
+# and then re-run this script
+
+# check if docker daemon is running
+docker ps >/dev/null 2>&1 || {
+	echo "Docker daemon is not running. Please start docker daemon first." >&2
+	exit 1
+}
+
+set -e
+
+curpwd="$(pwd)"
+cd ~/.cache || exit
+[[ ! -d ./linguist ]] && git clone https://github.com/github-linguist/linguist
+cd ./linguist || exit
+
+if [[ -z "$(docker images -q linguist)" ]]; then
+	docker build -t linguist .
+fi
+cd "$curpwd" || exit
+exec docker run --user "$(id -u)" -v "$(pwd)":"$(pwd)" -w "$(pwd)" -t linguist
