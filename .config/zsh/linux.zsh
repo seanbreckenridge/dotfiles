@@ -23,7 +23,8 @@ alias rnm='sudo systemctl restart NetworkManager' # restart networkmanager
 clean-cache() {
 	gem cleanup
 	pip cache purge
+	pipenv --clear
 	kondo ~/data ~/Pictures ~/Movies ~/Music ~/Documents ~/Downloads
 	yay && yay -Sc --noconfirm
-	du -h --summarize ~/.cache/yarn ~/.cache/pip ~/.npm | boxes
+	du -h --summarize ~/.cache/yarn ~/.cache/pip ~/.npm 2>/dev/null | boxes
 }

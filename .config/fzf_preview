@@ -72,7 +72,12 @@ application/json)
 		exit 0
 	}
 	;;
-# Syntax highlight for text files:
+application/javascript)
+	try highlight --out-format=ansi "$path" && {
+		dump
+		exit 5
+	}
+	;;
 text/* | */xml)
 	try pistol "$path" && {
 		dump

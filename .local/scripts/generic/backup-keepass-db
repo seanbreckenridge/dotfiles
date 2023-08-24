@@ -26,7 +26,7 @@ mkdir -p "${backup_dir}"
 
 # backup to google drive with tar
 tar -czf "${backup_dir}/$(tstamp).tar.gz" "${db_loc}"
-# remove backups older than a month
-find "${backup_dir}" -type f -mtime +30 -print -exec mv -t /tmp {} +
+# remove backups older than 3 weeks
+find "${backup_dir}" -name '*.tar.gz' -type f -mtime +21 -print -exec mv -t /tmp {} +
 # push
 (cd "$gdrive_loc" && drive push -no-prompt)
