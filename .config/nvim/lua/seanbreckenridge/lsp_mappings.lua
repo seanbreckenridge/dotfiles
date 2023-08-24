@@ -22,7 +22,7 @@ function ShowDocumentation()
     end
 end
 
-vim.api.nvim_set_keymap('n', 'K', ":call ShowDocumentation()<CR>",
+vim.api.nvim_set_keymap('n', 'K', "<cmd>lua ShowDocumentation()<CR>",
                         {silent = true})
 
 -- diagnostics
