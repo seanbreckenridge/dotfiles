@@ -105,10 +105,13 @@ require("lspconfig").bashls.setup {capabilities = capabilities}
 require("lspconfig").gopls.setup {capabilities = capabilities}
 
 -- elixir
-require'lspconfig'.elixirls.setup {
-    cmd = {vim.fn.exepath("elixir-ls")},
-    capabilities = capabilities
-}
+local elixir_ls_bin = vim.fn.exepath("elixir-ls")
+if elixir_ls_bin ~= "" then
+    require'lspconfig'.elixirls.setup {
+        cmd = {elixir_ls_bin},
+        capabilities = capabilities
+    }
+end
 
 -- rust
 require'lspconfig'.rust_analyzer.setup {capabilities = capabilities}
