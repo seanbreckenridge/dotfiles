@@ -23,4 +23,5 @@ ranger() {
 	_call_ranger "${ranger_args[@]}"
 	[[ -f "$tempfile" ]] && cd -- "$(cat "$tempfile")"
 	command rm -f "$tempfile"
+	unfunction _call_ranger
 }
