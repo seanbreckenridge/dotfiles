@@ -1,3 +1,14 @@
 snippet bash_this_dir
 	THIS_DIR="$(realpath "$(dirname "\${BASH_SOURCE[0]}")")"
 	cd "\${THIS_DIR}" || exit $?
+
+# https://github.com/seanbreckenridge/bgproc
+snippet bgproc_job
+	#!/usr/bin/env bash
+
+	wait-for-internet -q --timeout "\${WFI_TIMEOUT:-10}" || exit 0
+
+	evry $1 -$2 && {
+		printlog '$2:'
+		$0
+	}
