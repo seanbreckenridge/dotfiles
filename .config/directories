@@ -9,7 +9,8 @@ b ~/Documents/Books
 d ~/Downloads
 m ~/Music
 n ~/Documents/Notes
-p ~/.local/share/plaintext_playlist
+p ~/data/playlists
+P ~/Pictures
 r ~/Repos
 s ~/Downloads/Sort
 y ~/.config/yadm
