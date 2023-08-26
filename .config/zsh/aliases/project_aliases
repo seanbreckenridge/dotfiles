@@ -137,14 +137,30 @@ alias tts-say='tts -d /tmp/tts.ogg && plaympeg /tmp/tts.ogg'
 alias mpv-cd-currently-playing='cd "$(dirname "$(mpv-currently-playing)")"'
 alias mpv-currently-playing-image='rr "$(dirname "$(mpv-currently-playing)")"/cover.jpg'
 alias mpv-percent='mpv-get-property "$(mpv-currently-playing --socket | tail -n1)" percent-pos'
+mpv-currently-playing-mark-nsfw() {
+	local playing_path playing_dir
+	playing_path="$(mpv-currently-playing)"
+	[[ -z "$playing_path" ]] && return 1
+	playing_dir="$(dirname "$playing_path")"
+	touch "${playing_dir}/.nsfw"
+	echo "marked as NSFW: ${playing_dir}"
+}
+
+curplaying-text() {
+	python3 -m currently_listening_py print --server-url 'wss://sean.fish/currently_listening/ws' -o text
+}
 
 # https://github.com/seanbreckenridge/currently_listening
+curplaying-image() {
+	python3 -m currently_listening_py print --server-url 'wss://sean.fish/currently_listening/ws' -o image 2>/dev/null &&
+		kitty icat --align=left ~/.cache/currently-listening-py/currently_listening.jpg
+}
+
 curplaying() {
 	if [[ "$TERM" == 'xterm-kitty' ]]; then
-		python3 -m currently_listening_py print --server-url 'wss://sean.fish/currently_listening/ws' -o image >/dev/null || return $?
-		kitten icat --align left ~/.cache/currently_listening.jpg
+		curplaying-image
 	else
-		python3 -m currently_listening_py print --server-url 'wss://sean.fish/currently_listening/ws' -o text
+		curplaying-text
 	fi
 }
 
