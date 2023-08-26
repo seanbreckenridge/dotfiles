@@ -41,6 +41,9 @@ for cmd in hpi \
 	clone-repos \
 	scramble_history \
 	feed-cli \
+	currently_listening_py \
+	medialength \
+	time-in \
 	url_cache; do
 	havecmd "${cmd}" || continue
 	var="$(printf '_%s_COMPLETE' "$(echo "${cmd}" | upper | sed -e 's/-/_/g')")"
