@@ -1,4 +1,7 @@
 #!/usr/bin/env bash
+# fd | rifleman-extract 'black'  # since we format python with black
+# prints all the python files that are in the directory (including
+# ones that have a shebang line)
 
 if [[ -z "$1" ]]; then
 	echo "Usage: $(basename 0) <rifleman prefix>"
