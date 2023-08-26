@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+if [[ -z "$1" ]]; then
+	echo "Usage: $(basename 0) <rifleman prefix>"
+	exit 1
+fi
+
+jq_str="$(printf 'to_entries[] | select(.key | startswith("%s")) | .value | .[]' "$1")"
+rifleman - -j | jq -r "$jq_str"
