@@ -144,7 +144,7 @@ printf '\n'
 '''
 
 [list-images]
-command='''exec fd '.*\.(png|jpeg|jpg)$' "$@"'''
+command='''exec fd '.*\.(png|jpeg|jpg|heic)$' "$@"'''
 
 [play-music]
 command='''
