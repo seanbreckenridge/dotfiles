@@ -227,7 +227,7 @@ class commits:
     roots: Paths = filter_exists(
         [
             repo(""),
-            path.expanduser("~/Documents/OldRepos"),
+            path.expanduser("~/Files/OldRepos"),
             path.expanduser("~/.local/share/go/src/github.com/seanbreckenridge/"),
         ]
     )
@@ -461,8 +461,8 @@ class minecraft:
 
 class pdfs:
     paths: Paths = [
-        "~/Documents/Books/",
-        "~/Documents/Notes/",
+        "~/Files/Books/",
+        "~/Files/Notes/",
     ]
 
 

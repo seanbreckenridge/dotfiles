@@ -15,6 +15,12 @@ export XDG_CONFIG_HOME="${HOME}/.config"
 export XDG_CACHE_HOME="${HOME}/.cache"
 export XDG_DATA_HOME="${HOME}/.local/share"
 
+# I want a separate Files directory that has more backup-like
+# files that I dont need on all my machines
+#
+# that way I can nicely sync my ~/Documents across machines
+export FILES="${HOME}/Files"
+
 export REPOS="${HOME}/Repos"
 
 # https://github.com/seanbreckenridge/HPI
@@ -142,9 +148,9 @@ export BGPROC_DATE_FMT='+%Y-%m-%dT%H-%M-%S'
 # $PATH for sreminder directories
 export SREMINDERS_PATH="${HPIDATA}/sreminders:${HOME}/.local/scripts/sreminders"
 # https://github.com/seanbreckenridge/my_feed
-export TMDB_CACHE_DIR="${XDG_DOCUMENTS_DIR}/feed_tmdb_cache"
+export TMDB_CACHE_DIR="${FILES}/feed_tmdb_cache"
 # https://github.com/seanbreckenridge/albums
-export DISCOGS_CACHE_DIR="${XDG_DOCUMENTS_DIR}/discogs_cache"
+export DISCOGS_CACHE_DIR="${FILES}/discogs_cache"
 # https://github.com/seanbreckenridge/offline_listens
 export OFFLINE_LISTENS_COMMANDS='offline-listens-source'
 export OFFLINE_LISTENS_FILE="${HPIDATA}/offline_listens/${ON_OS}.yaml"

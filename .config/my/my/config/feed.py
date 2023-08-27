@@ -9,6 +9,7 @@ ignore_mpv_prefixes: set[str] = {
     "/home/sean/Repos/",
     "/home/sean/Downloads",
     "/home/sean/Documents",
+    "/home/sean/Files",
 }
 
 allow_mpv_prefixes: set[str] = {

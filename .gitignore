@@ -327,6 +327,7 @@ __pycache__
 # default user directories
 /Repos
 /Documents
+/Files
 /Postman
 /Shared
 /shared

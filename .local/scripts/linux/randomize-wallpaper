@@ -1,3 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
+set -u
 # Randomize the wallpaper using feh
-exec feh --randomize --bg-fill --no-fehbg "${XDG_DOCUMENTS_DIR}/wallpapers"
+exec feh --randomize --bg-fill --no-fehbg "${FILES}/wallpapers"

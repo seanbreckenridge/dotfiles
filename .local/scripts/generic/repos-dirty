@@ -1,0 +1,9 @@
+#!/usr/bin/env zsh
+# prints the absolute path of all git repos in the given directory that have uncommitted changes/untracked files
+
+in_dir="${1:-$REPOS}"
+if [[ -z "$in_dir" ]]; then
+		echo "Usage: repos-dirty <dir>"
+		exit 1
+fi
+fd -H --absolute-path --type d --regex "$in_dir/[^/]+/\.git$" --full-path "$in_dir" | parallel -j+0 "cd {}/.. && has-git-remote && git-is-dirty && pwd "
