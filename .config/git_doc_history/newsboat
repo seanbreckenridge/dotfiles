@@ -1,3 +1,3 @@
 SOURCE_DIR=~/.config/newsboat
-BACKUP_DIR="${HPIDATA}/newsboat_git"
+BACKUP_DIR="${HPIDATA}/doc/newsboat_git"
 COPY_FILES="urls"
