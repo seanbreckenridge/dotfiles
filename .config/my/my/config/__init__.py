@@ -204,14 +204,14 @@ class bash:
 # parses current/done http://todotxt.org/
 class todotxt:
     class git_history:
-        export_path: Path = data("todo_git_history")
+        export_path: Path = data("doc/todo_git_history")
 
 
 # parses the history of me adding/removing rss feeds
 class rss:
     class newsboat:
         class git_history:
-            export_path: Path = data("newsboat_git")
+            export_path: Path = data("doc/newsboat_git")
 
 
 # parses information from git repositories which match my emails
