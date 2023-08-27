@@ -82,7 +82,7 @@ rgi() {
 }
 alias ft='full_todotxt'
 alias rr='rifle'
-alias optipng='optipng -o7'
+alias optipng='optipng -o5'
 alias R=ranger
 alias sz='mystarsfzf'
 alias sr='sreminders'
