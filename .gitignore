@@ -164,6 +164,7 @@ __pycache__
 /.ssr
 /.stack
 /.steam
+/.SteamCloud/
 /.steampath
 /.steampid
 /.subversion
