@@ -96,6 +96,12 @@ application/zip)
 		exit 5
 	}
 	;;
+application/gzip)
+	try tar -tzf "$path" && {
+		dump
+		exit 5
+	}
+	;;
 *)
 	case "$path" in
 	*.zip)
