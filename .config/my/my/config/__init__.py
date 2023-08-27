@@ -321,7 +321,7 @@ class steam:
     class scraper:
         """https://github.com/seanbreckenridge/steamscraper"""
 
-        export_path: Paths = data("steam.json")
+        export_path: Paths = data("steam/*.json")
 
 
 class piazza:
