@@ -55,7 +55,6 @@ Brewfile.lock.json
 
 # secret python config files
 .config/my/**/*secret*
-.config/seanb/**/*secret*
 
 # Ignore README - handled by git hooks -- see .config/yadm/yadm-with-README.md 
 /README.md
