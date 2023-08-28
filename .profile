@@ -148,6 +148,7 @@ export BGPROC_DATE_FMT='+%Y-%m-%dT%H-%M-%S'
 export SREMINDERS_PATH="${HPIDATA}/sreminders:${HOME}/.local/scripts/sreminders"
 # https://github.com/seanbreckenridge/my_feed
 export TMDB_CACHE_DIR="${FILES}/feed_tmdb_cache"
+export GIANTBOMB_CACHE_DIR="${FILES}/feed_giantbomb_cache"
 # https://github.com/seanbreckenridge/albums
 export DISCOGS_CACHE_DIR="${FILES}/discogs_cache"
 # https://github.com/seanbreckenridge/offline_listens
