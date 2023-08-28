@@ -1,3 +1,9 @@
 #!/usr/bin/env bash
 
-exec fd --base-directory "${1:-$PWD}" -L -H --type d '^.git$' --absolute-path -x echo '{//}'
+DIR="$1"
+if [[ -z "$DIR" ]]; then
+	echo "Usage: list-git-dirs <dir>" >&2
+	exit 1
+fi
+
+exec fd --base-directory "${DIR}" -L -H --type d '^.git$' --absolute-path -x echo '{//}'

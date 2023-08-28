@@ -99,7 +99,7 @@ export LC_ALL='en_US.UTF-8'
 
 # Set default applications
 export VISUAL='nvim'   # e.g. for edit-command-line in ~/.zshrc, to prompt in current terminal
-export EDITOR='editor'  # basic nvim wrapper
+export EDITOR='editor' # basic nvim wrapper
 export PAGER='less'
 export TERMINAL='alacritty'
 export READER='okular'
