@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+exec fd --base-directory "${1:-$PWD}" -L -H --type d '^.git$' --absolute-path -x echo '{//}'
