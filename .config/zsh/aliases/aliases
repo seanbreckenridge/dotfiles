@@ -57,10 +57,7 @@ ydhd() {
 	ydh "$@" | dunk | less -R
 }
 
-# editor aliases
 alias e='editor'
-alias ee='editor -e'  # edit with emacs
-alias ecl='editor -c' # editor with client in background
 
 # Shorthands, or adding some default flags to utilities
 alias 'xargsl=xargs -I {} sh -c' # line-based xargs

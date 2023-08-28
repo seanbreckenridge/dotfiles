@@ -78,7 +78,7 @@ for serv in "${SERVICES[@]}"; do
 done
 
 # user services, dont start till my user logs in
-USER_SERVICES=("syncthing") # emacs
+USER_SERVICES=("syncthing")
 for serv in "${USER_SERVICES[@]}"; do
 	check_service "${serv}" --user
 done

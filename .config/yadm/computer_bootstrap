@@ -58,15 +58,6 @@ while read -r cargopkg; do
 	fi
 done < <(spkglist "${CARGO_PACKAGE_LIST}")
 
-if ! havecmd emacs; then
-	# Install doom emacs
-	if [[ ! -d "${HOME}/.emacs.d/" ]]; then
-		git clone https://github.com/hlissner/doom-emacs "${HOME}/.emacs.d"
-		"${HOME}/.emacs.d/bin/doom" install
-		"${HOME}/.emacs.d/bin/doom" sync
-	fi
-fi
-
 DART_PACKAGE_LIST="${PACKAGE_DIR}/dart_packages.txt"
 havecmd dart && {
 	echo "Installing global dart packages..."

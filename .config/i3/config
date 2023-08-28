@@ -94,9 +94,6 @@ bindsym $mod+Shift+p exec --no-startup-id picom -b && notify "Restarting picom..
 # automatically click the 'save in password manager' and 'ok' buttons for the gpg dialog
 bindsym $alt+p exec --no-startup-id notify "searching for gpg dialog..." && gpg_autoclick
 
-# start the emacs server
-exec --no-startup-id systemctl --user start emacs
-
 # Use pactl to adjust volume in PulseAudio.
 bindsym XF86AudioRaiseVolume exec --no-startup-id volume up
 bindsym XF86AudioLowerVolume exec --no-startup-id volume down

@@ -1,95 +1,17 @@
 #!/usr/bin/env bash
 
-readonly usage="Usage: editor [OPTION] FILE...
-Opens an editor. If no options are provided,
-opens the file(s) with nvim
+set -e
 
-Options:
-
-  -h                 Print this message and exit
-  -e                 Opens with emacs
-  -c                 Opens the emacs client
-"
-
-# define enum
-readonly EMACS=0
-readonly EMACS_CLIENT=1
-readonly NVIM=2
-
-# default action
-declare ACTION=$NVIM
-
-while getopts "hec" OPT; do
-	case "$OPT" in
-	h)
-		printf "%s" "$usage"
-		exit 0
-		;;
-	e)
-		ACTION="$EMACS"
-		;;
-	c)
-		ACTION="$EMACS_CLIENT"
-		;;
-	?)
-		printf "%s" "$usage"
-		exit 1
-		;;
-	esac
-done
-shift "$((OPTIND - 1))"
-
-# perform action
-case "$ACTION" in
-"$NVIM")
-	if (($# == 0)); then
-		ttt nvim +Explore
+if (($# == 0)); then
+	exec ttt nvim +Explore
+else
+	if [[ -e "$1" ]]; then
+		if [[ -d "$1" ]]; then
+			exec ttt nvim +Explore "$@"
+		else
+			exec ttt nvim "$@"
+		fi
 	else
-		if [[ -e "$1" ]]; then
-			if [[ -d "$1" ]]; then
-				ttt nvim +Explore "$@"
-			else
-				ttt nvim "$@"
-			fi
-		else
-			ttt nvim "$@"
-		fi
+		exec ttt nvim "$@"
 	fi
-	;;
-"$EMACS")
-	case "$ON_OS" in
-	linux*)
-		ttt setsid emacs "$@" &
-		;;
-	mac*)
-		ttt emacs "$@" # alacritty can handle this in terminal
-		;;
-	*)
-		if hash emacs; then
-			ttt emacs "$@"
-		else
-			echo 'No emacs?' >&2
-			exit 1
-		fi
-		;;
-	esac
-	;;
-"$EMACS_CLIENT")
-	case "$ON_OS" in
-	linux*)
-		ttt setsid emacsclient -c "$@" &
-		;;
-	mac*)
-		ttt emacs "$@" # dont use emacsclient on mac
-		;;
-	*)
-		if hash emacs; then
-			ttt emacsclient -c "$@"
-		else
-			echo 'No emacs?' >&2
-			exit 1
-		fi
-		;;
-	esac
-	;;
-esac
+fi
