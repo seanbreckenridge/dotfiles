@@ -1,2 +1,2 @@
 #!/bin/sh
-exec ssh-keygen -t rsa -b 4096 -o -a 100
+exec ssh-keygen -t ed25519
