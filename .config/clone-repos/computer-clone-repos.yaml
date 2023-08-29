@@ -22,7 +22,7 @@
 "https://github.com/seanbreckenridge/twitchlive":
   base: ~/.local/share/go/src/github.com/seanbreckenridge
   symlink_to: ~/Repos
-"https://github.com/seanbreckenridge/currently_listening":
+"https://github.com/seanbreckenridge/is-integer":
   base: ~/.local/share/go/src/github.com/seanbreckenridge
   symlink_to: ~/Repos
 "https://github.com/seanbreckenridge/server_clipboard":

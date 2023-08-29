@@ -15,8 +15,9 @@
 "https://github.com/seanbreckenridge/evry":
 "https://github.com/seanbreckenridge/vps":
 "https://github.com/seanbreckenridge/currently_listening":
-  postinstall:
-    - pip install --user --break-system-packages ./currently_listening_py
+  base: ~/.local/share/go/src/github.com/seanbreckenridge
+  symlink_to: ~/Repos
+  postinstall: pip install --user --break-system-packages ./currently_listening_py
 "https://github.com/seanbreckenridge/albums":
   pip: editable
 "https://github.com/seanbreckenridge/bleanser-fork":

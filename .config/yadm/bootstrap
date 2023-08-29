@@ -192,6 +192,10 @@ function install_go_package() {
 	}
 }
 
+if [[ ! -e "${HOME}/.local/share/go/src/github.com/seanbreckenridge" ]]; then
+	mkdir -p "${HOME}/.local/share/go/src/github.com/seanbreckenridge"
+fi
+
 echo "Installing global go packages..."
 while IFS= read -r go_line; do
 	install_go_package "${go_line}"
