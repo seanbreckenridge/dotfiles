@@ -1,25 +1,25 @@
 -- telescope (fuzzy finder)
-vim.api.nvim_set_keymap('n', '<leader>ff',
-                        '<cmd>lua require("telescope.builtin").find_files()<cr>',
-                        {})
-vim.api.nvim_set_keymap('n', '<leader>fg',
-                        '<cmd>lua require("telescope.builtin").live_grep()<cr>',
-                        {})
-vim.api.nvim_set_keymap('n', '<leader>fr',
-                        '<cmd>lua require("telescope.builtin").lsp_references()<cr>',
-                        {})
-vim.api.nvim_set_keymap('n', '<leader>fb',
-                        '<cmd>lua require("telescope.builtin").buffers()<cr>',
-                        {})
-vim.api.nvim_set_keymap('n', '<leader>fh',
-                        '<cmd>lua require("telescope.builtin").help_tags()<cr>',
-                        {})
-vim.api.nvim_set_keymap('n', '<leader>fq',
-                        '<cmd>lua require("telescope.builtin").quickfix()<cr>',
-                        {})
-vim.api.nvim_set_keymap('n', '<leader>fd',
-                        '<cmd>lua require("telescope.builtin").loclist()<cr>',
-                        {})
-vim.api.nvim_set_keymap('n', '<leader>fb', '<cmd>Telescope buffers<cr>', {})
-vim.api.nvim_set_keymap('n', '<C-p>',
-                        ':lua require("telescope.builtin").git_files()<CR>', {})
+local wk = require('which-key')
+local builtin = require('telescope.builtin')
+
+wk.register({
+    f = {
+        f = {builtin.find_files, 'find files'},
+        g = {builtin.live_grep, 'grep'},
+        r = {builtin.lsp_references, 'references'},
+        b = {builtin.buffers, 'buffers'},
+        H = {builtin.help_tags, 'help'},
+        q = {builtin.quickfix, 'quickfix'},
+        l = {builtin.loclist, 'loclist'},
+        p = {builtin.git_files, 'git files'},
+        o = {builtin.oldfiles, 'old files'},
+        c = {builtin.commands, 'commands'},
+        s = {builtin.spell_suggest, 'spell suggest'},
+        m = {builtin.marks, 'marks'},
+        M = {builtin.man_pages, 'man pages'},
+        h = {builtin.command_history, 'command history'},
+        k = {builtin.keymaps, 'keymaps'},
+        d = {builtin.diagnostics, 'diagnostics'},
+        L = {builtin.reloader, 'reload lua'}
+    }
+}, {prefix = '<leader>'})

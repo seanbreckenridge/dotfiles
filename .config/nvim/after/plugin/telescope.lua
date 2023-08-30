@@ -5,6 +5,7 @@ require('telescope').setup {
         -- config_key = value,
         mappings = {
             i = {
+                -- fzf-like up/down (remember, can also switch to normal mode and use j/k)
                 ["<C-j>"] = require("telescope.actions").move_selection_next,
                 ["<C-k>"] = require("telescope.actions").move_selection_previous
             }

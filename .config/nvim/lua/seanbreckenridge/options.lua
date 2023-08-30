@@ -9,6 +9,8 @@ vim.g.mapleader = ' '
 vim.o.timeout = true
 vim.o.timeoutlen = 300
 
+vim.opt.updatetime = 250 -- decreate update time
+
 -- Don't execute arbitrary modelines
 vim.opt.modelines = 0
 vim.opt.number = true
@@ -50,20 +52,31 @@ vim.opt.showcmd = true
 -- searching
 vim.api.nvim_set_keymap('n', '/', '/\\v', {noremap = true})
 vim.api.nvim_set_keymap('v', '/', '/\\v', {noremap = true})
-vim.opt.hlsearch = true
+vim.opt.hlsearch = true -- highlight on search
 vim.opt.incsearch = true
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
 vim.opt.showmatch = true
 
--- visualize tabs and newlines
+-- spacing/tabs/newlines
 vim.opt.list = true
 vim.opt.listchars:append({tab = '▸ ', eol = '¬'})
+vim.opt.breakindent = true -- wrapped lines indent
+vim.opt.signcolumn = 'yes'
 
 -- prevents truncated yanks, deletes, etc.
 -- makes sure that you can have lots of lines across
 -- files/vim instances without truncating the buffer
 vim.opt.viminfo = "'20,<1000,s1000"
+
+-- See `:help vim.highlight.on_yank()`
+local highlight_group = vim.api.nvim_create_augroup('YankHighlight',
+                                                    {clear = true})
+vim.api.nvim_create_autocmd('TextYankPost', {
+    callback = function() vim.highlight.on_yank() end,
+    group = highlight_group,
+    pattern = '*'
+})
 
 -- enable persistent undo (save undo history across file closes) if possible
 if vim.fn.has("persistent_undo") == 1 then
@@ -75,6 +88,7 @@ end
 vim.opt.path:append('**')
 vim.opt.wildmenu = true
 vim.opt.wildmode = {'longest', 'list', 'full'}
+vim.opt.completeopt = 'menuone,noselect'
 vim.opt.wildignore:append({
     '*__pycache__/*', '*.mypy_cache/*', '*.pytest_cache/*', '*egg-info/*',
     '*_build/*', '**/coverage/*', '**/node_modules/*', '**/dist/*',

@@ -17,10 +17,13 @@ vim.api.nvim_set_keymap('v', '<Down>', '<Nop>', {noremap = true})
 -- disable capital Q (:ex mode)
 vim.api.nvim_set_keymap('n', 'Q', '<Nop>', {noremap = true})
 
+-- sync clipboard with system clipboard
+vim.opt.clipboard = 'unnamedplus'
+
 -- copy visual selection to clipboard
-vim.api.nvim_set_keymap('v', '<leader>c', '"+y', {noremap = true})
-vim.api.nvim_set_keymap('v', '<leader>y', '"+y', {noremap = true})
-wk.register({y = {'V"+y', 'copy to clipboard'}}, {prefix = '<leader>'})
+-- vim.api.nvim_set_keymap('v', '<leader>c', '"+y', {noremap = true})
+-- vim.api.nvim_set_keymap('v', '<leader>y', '"+y', {noremap = true})
+-- vim.api.nvim_set_keymap('n', '<leader>y', 'V"+y', {noremap = true})
 
 -- move items while text is highlighted
 vim.api.nvim_set_keymap('v', 'J', ':move \'>+1<CR>gv=gv', {noremap = true})
@@ -28,9 +31,9 @@ vim.api.nvim_set_keymap('v', 'K', ':move \'<-2<CR>gv=gv', {noremap = true})
 
 -- misc
 wk.register({
-    -- reminer, can use 'P' in netrw to open in right tab
+    -- reminder, can use 'P' in netrw to open in right tab
     e = {':wincmd v<bar> :Explore <bar> :vertical resize 30<CR>', 'netrw'},
-    E = {':Explore<CR>', 'netrw full screen'},
+    s = {':set spell!<CR>', 'toggle spell'},
     ["S"] = {
         ':so ~/.config/nvim/init.lua<CR>:lua require("seanbreckenridge.colors").setup_theme()<CR>',
         'reload config'
@@ -65,7 +68,7 @@ wk.register({
         name = 'quickfix',
         j = {'qj', 'next'},
         k = {'qk', 'prev'},
-        q = {':lua ToggleQFList(1)<CR>', 'toggle'}
+        q = {function() ToggleQFList(1) end, 'toggle'}
     }
 }, {prefix = '<leader>'})
 
@@ -79,7 +82,7 @@ wk.register({
         name = 'loc list',
         j = {'lj', 'next'},
         k = {'lk', 'prev'},
-        l = {':lua ToggleQFList(0)<CR>', 'toggle'}
+        l = {function() ToggleQFList(0) end, 'toggle'}
     }
 }, {prefix = '<leader>'})
 

@@ -1,23 +1,26 @@
 -- git related bindings
 -- fugitive (git) using which-key.nvim
 local wk = require('which-key')
+local tb = require('telescope.builtin')
+
 wk.register({
     g = {
         name = "git",
-        g = {':Git<CR>:wincmd _<CR>', 'console'},
-        s = {':Git<CR>:wincmd _<CR>', 'console'},
-        p = {':Git push<CR>', 'push'},
-        l = {':Git pull<CR>', 'pull'},
-        o = {':Git log<CR>', 'log'},
-        c = {':Git commit<CR>:wincmd _<CR>', 'commit'},
-        d = {':Git diff<CR>:wincmd _<CR>', 'diff'},
-        S = {':Git diff --staged<CR>:wincmd _<CR>', 'diff staged'},
-        h = {':Git diff HEAD~1 HEAD<CR>:wincmd _<CR>', 'diff head'},
-        u = {':Git add -u<CR>', 'add update'},
-        a = {':Git add --all<CR>', 'add all'},
-        P = {':Git add --all --patch<CR>', 'add patch'},
-        t = {':Git status<CR>', 'status'},
-        r = {':Git reset<CR>', 'reset'}
+        g = {'<cmd>:Git<CR>:wincmd _<CR>', 'console'},
+        s = {'<cmd>:Git<CR>:wincmd _<CR>', 'console'},
+        p = {'<cmd>:Git push<CR>', 'push'},
+        l = {'<cmd>:Git pull<CR>', 'pull'},
+        o = {'<cmd>:Git log<CR>', 'log'},
+        c = {'<cmd>:Git commit<CR>:wincmd _<CR>', 'commit'},
+        d = {'<cmd>:Git diff<CR>:wincmd _<CR>', 'diff'},
+        S = {'<cmd>:Git diff --staged<CR>:wincmd _<CR>', 'diff staged'},
+        h = {'<cmd>:Git diff HEAD~1 HEAD<CR>:wincmd _<CR>', 'diff head'},
+        u = {'<cmd>:Git add -u<CR>', 'add update'},
+        a = {'<cmd>:Git add --all<CR>', 'add all'},
+        P = {'<cmd>:Git add --all --patch<CR>', 'add patch'},
+        t = {'<cmd>:Git status<CR>', 'status'},
+        r = {'<cmd>:Git reset<CR>', 'reset'},
+        b = {tb.git_branches, 'telescope branch'}
     }
 }, {prefix = "<leader>"})
 

@@ -1,19 +1,5 @@
 -- lsp bindings
-vim.api.nvim_set_keymap('n', ']w', "<cmd>lua vim.diagnostic.goto_next()<CR>",
-                        {silent = true})
-vim.api.nvim_set_keymap('n', '[w', "<cmd>lua vim.diagnostic.goto_prev()<CR>",
-                        {silent = true})
-
-vim.api.nvim_set_keymap('n', 'gd', "<cmd>lua vim.lsp.buf.definition()<CR>",
-                        {silent = true})
-vim.api.nvim_set_keymap('n', 'gr', "<cmd>lua vim.lsp.buf.references()<CR>",
-                        {silent = true})
-vim.api.nvim_set_keymap('n', 'rn', "<cmd>lua vim.lsp.buf.rename()<CR>",
-                        {silent = true})
-
 local wk = require('which-key')
-wk.register({T = {"<cmd>lua vim.lsp.buf.code_action()<CR>", "code action"}},
-            {prefix = "<leader>"})
 
 function ShowDocumentation()
     if vim.tbl_contains({'vim', 'help'}, vim.bo.filetype) then
@@ -23,8 +9,20 @@ function ShowDocumentation()
     end
 end
 
-vim.api.nvim_set_keymap('n', 'K', "<cmd>lua ShowDocumentation()<CR>",
-                        {silent = true})
+-- lsp commands with leader prefix
+wk.register({
+    T = {vim.lsp.buf.code_action, "code action"},
+    rn = {vim.lsp.buf.rename, "rename"}
+}, {prefix = "<leader>"})
+
+-- lsp commands in normal mode
+wk.register({
+    [']w'] = {vim.diagnostic.goto_next, "next diagnostic"},
+    ['[w'] = {vim.diagnostic.goto_prev, "prev diagnostic"},
+    gd = {vim.lsp.buf.definition, "goto definition"},
+    gr = {vim.lsp.buf.references, "goto references"},
+    K = {ShowDocumentation, "show documentation"}
+})
 
 -- diagnostics
 vim.cmd([[

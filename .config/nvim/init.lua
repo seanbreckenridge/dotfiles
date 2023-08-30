@@ -31,7 +31,6 @@ require('packer').startup(function(use)
     use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make'}
     use {"catppuccin/nvim", as = "catppuccin"}
     use 'tpope/vim-fugitive'
-    -- use 'tpope/vim-sleuth'
     use 'mbbill/undotree'
     use {'mg979/vim-visual-multi', branch = 'master'} -- for tutorial: 'nvim -Nu .local/plugged/vim-visual-multi/tutorialrc'
     use 'airblade/vim-rooter'
@@ -82,6 +81,7 @@ require('packer').startup(function(use)
     use 'neovim/nvim-lspconfig'
     use 'hrsh7th/cmp-nvim-lsp'
     use 'tamago324/cmp-zsh'
+    use 'folke/neodev.nvim'
 
     use 'folke/which-key.nvim'
 end)

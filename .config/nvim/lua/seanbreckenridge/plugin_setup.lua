@@ -13,10 +13,7 @@ if vim.fn.executable('rg') == 1 then vim.g.rg_derive_root = 'true' end
 -- seanbreckenridge (personal functions/plugins)
 wk.register({
     -- can change this to a different prefix if something ever conflicts
-    c = {
-        '<cmd>lua require("seanbreckenridge.edit_config").edit_config()<CR>',
-        'edit config'
-    }
+    c = {require("seanbreckenridge.edit_config").edit_config, 'edit config'}
 }, {prefix = '<leader>'})
 
 -- https://github.com/norcalli/nvim-colorizer.lua
@@ -30,4 +27,6 @@ wk.register({
     }
 }, {prefix = '<leader>'})
 
-require'Comment'.setup() -- gcc/gbc to comment/uncomment, gcA and gco, gcO as expected
+require('Comment').setup() -- gcc/gbc to comment/uncomment, gcA and gco, gcO as expected
+
+require('neodev').setup()
