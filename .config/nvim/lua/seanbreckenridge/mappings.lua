@@ -20,7 +20,7 @@ vim.api.nvim_set_keymap('n', 'Q', '<Nop>', {noremap = true})
 -- copy visual selection to clipboard
 vim.api.nvim_set_keymap('v', '<leader>c', '"+y', {noremap = true})
 vim.api.nvim_set_keymap('v', '<leader>y', '"+y', {noremap = true})
-vim.api.nvim_set_keymap('n', '<leader>y', 'V"+y', {noremap = true})
+wk.register({y = {'V"+y', 'copy to clipboard'}}, {prefix = '<leader>'})
 
 -- move items while text is highlighted
 vim.api.nvim_set_keymap('v', 'J', ':move \'>+1<CR>gv=gv', {noremap = true})

@@ -5,6 +5,7 @@ wk.register({
     g = {
         name = "git",
         g = {':Git<CR>:wincmd _<CR>', 'console'},
+        s = {':Git<CR>:wincmd _<CR>', 'console'},
         p = {':Git push<CR>', 'push'},
         l = {':Git pull<CR>', 'pull'},
         o = {':Git log<CR>', 'log'},
@@ -13,7 +14,7 @@ wk.register({
         S = {':Git diff --staged<CR>:wincmd _<CR>', 'diff staged'},
         h = {':Git diff HEAD~1 HEAD<CR>:wincmd _<CR>', 'diff head'},
         u = {':Git add -u<CR>', 'add update'},
-        A = {':Git add --all<CR>', 'add all'},
+        a = {':Git add --all<CR>', 'add all'},
         P = {':Git add --all --patch<CR>', 'add patch'},
         t = {':Git status<CR>', 'status'},
         r = {':Git reset<CR>', 'reset'}
