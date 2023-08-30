@@ -29,10 +29,6 @@ if vim.keymap then
     vim.keymap.set("i", "<c-l>", function()
         if ls.choice_active() then ls.change_choice(1) end
     end)
-
-    -- shortcut to source my luasnips file again, which will reload my snippets
-    vim.keymap.set("n", "<leader>S",
-                   "<cmd>source ~/.config/nvim/after/plugin/luasnip.lua<CR>")
 end
 
 -- Extend with https://github.com/rafamadriz/friendly-snippets

@@ -5,6 +5,10 @@ local home = os.getenv('HOME')
 vim.opt.syntax = 'on'
 vim.g.mapleader = ' '
 
+-- for which-key
+vim.o.timeout = true
+vim.o.timeoutlen = 300
+
 -- Don't execute arbitrary modelines
 vim.opt.modelines = 0
 vim.opt.number = true

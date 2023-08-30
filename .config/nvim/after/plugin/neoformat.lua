@@ -4,4 +4,6 @@ vim.g.neoformat_enabled_javascript = {'prettier'}
 vim.g.neoformat_enabled_typescript = {'prettier'}
 vim.g.neoformat_enabled_json = {'prettier'}
 
-vim.api.nvim_set_keymap('n', '<leader>t', ':Neoformat<CR>', {noremap = true})
+local wk = require('which-key')
+
+wk.register({t = {':Neoformat<CR>', 'format'}}, {prefix = '<leader>'})

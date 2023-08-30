@@ -1,3 +1,5 @@
+local wk = require('which-key')
+
 -- disable arrow keys
 vim.api.nvim_set_keymap('', '<Down>', '<Nop>', {noremap = true})
 vim.api.nvim_set_keymap('', '<Left>', '<Nop>', {noremap = true})
@@ -12,62 +14,74 @@ vim.api.nvim_set_keymap('n', '<Left>', '<Nop>', {noremap = true})
 vim.api.nvim_set_keymap('n', '<Right>', '<Nop>', {noremap = true})
 vim.api.nvim_set_keymap('n', '<Up>', '<Nop>', {noremap = true})
 vim.api.nvim_set_keymap('v', '<Down>', '<Nop>', {noremap = true})
+-- disable capital Q (:ex mode)
+vim.api.nvim_set_keymap('n', 'Q', '<Nop>', {noremap = true})
 
 -- copy visual selection to clipboard
 vim.api.nvim_set_keymap('v', '<leader>c', '"+y', {noremap = true})
 vim.api.nvim_set_keymap('v', '<leader>y', '"+y', {noremap = true})
 vim.api.nvim_set_keymap('n', '<leader>y', 'V"+y', {noremap = true})
 
--- open netrw like a sidebar file manager
-vim.api.nvim_set_keymap('n', '<leader>e',
-                        ':wincmd v<bar> :Explore <bar> :vertical resize 30<CR>',
-                        {noremap = true})
--- open netrw full screen
-vim.api.nvim_set_keymap('n', '<leader>E', ':Explore<CR>', {noremap = true})
--- resource config
-vim.api.nvim_set_keymap('n', '<Leader><CR>',
-                        ':so ~/.config/nvim/init.lua<CR>:lua require("seanbreckenridge.colors").setup_theme()<CR>',
-                        {noremap = true})
-
--- nicer bindings for moving between windows
--- window/buffers
-
--- swap between buffers
-vim.api.nvim_set_keymap('n', '<leader>b', '<C-^><CR>', {noremap = true})
-
--- nicer binding for window management
-vim.api.nvim_set_keymap('n', '<leader>w', '<C-W>', {noremap = true})
--- can use <leader>w+ and <leader>w- to increase
--- vertical resizing
-vim.api.nvim_set_keymap('n', '<leader>=', ':vertical resize +5<CR>',
-                        {noremap = true})
-vim.api.nvim_set_keymap('n', '<leader>-', ':vertical resize -5<CR>',
-                        {noremap = true})
-
-vim.api.nvim_set_keymap('n', '<leader>+', ':wincmd +<CR>', {noremap = true})
-vim.api.nvim_set_keymap('n', '<leader>_', ':wincmd -<CR>', {noremap = true})
-
--- disable capital Q (:ex mode)
-vim.api.nvim_set_keymap('n', 'Q', '<Nop>', {noremap = true})
-
--- make current script executable
-vim.api.nvim_set_keymap('n', '<leader>x', ':!chmod +x %<CR>', {noremap = true})
-
 -- move items while text is highlighted
 vim.api.nvim_set_keymap('v', 'J', ':move \'>+1<CR>gv=gv', {noremap = true})
 vim.api.nvim_set_keymap('v', 'K', ':move \'<-2<CR>gv=gv', {noremap = true})
 
--- quickfix lists
-vim.api.nvim_set_keymap('n', '<leader>gj', ':cnext<CR>zz', {noremap = true})
-vim.api.nvim_set_keymap('n', '<leader>gk', ':cprev<CR>zz', {noremap = true})
-vim.api.nvim_set_keymap('n', '<leader>j', ':lnext<CR>zz', {noremap = true})
-vim.api.nvim_set_keymap('n', '<leader>k', ':lprev<CR>zz', {noremap = true})
+-- misc
+wk.register({
+    -- reminer, can use 'P' in netrw to open in right tab
+    e = {':wincmd v<bar> :Explore <bar> :vertical resize 30<CR>', 'netrw'},
+    E = {':Explore<CR>', 'netrw full screen'},
+    ["S"] = {
+        ':so ~/.config/nvim/init.lua<CR>:lua require("seanbreckenridge.colors").setup_theme()<CR>',
+        'reload config'
+    },
+    x = {':!chmod +x %<CR>', 'make executable'}
+}, {prefix = '<space>'})
+
+-- nicer bindings for moving between windows
+-- window/buffers
+
+wk.register({b = {'<C-^><CR>', 'swap buffers'}, w = {'<C-W>', 'window'}},
+            {prefix = '<leader>'})
+
+-- separating these into separate register calls let me use the name
+wk.register({
+    W = {
+        name = "window/buffers",
+        ["="] = {':vertical resize +5<CR>', 'vertical increase window size'},
+        ["-"] = {':vertical resize -5<CR>', 'vertical decrease window size'},
+        ["s"] = {'<C-W>s', 'horizontal split'},
+        ["v"] = {'<C-W>v', 'vertical split'}
+    }
+}, {prefix = '<leader>'})
 
 -- function to toggle quickfix lists
 vim.api.nvim_set_keymap('n', '<C-q>', ':lua ToggleQFList(1)<CR>',
                         {noremap = true})
-vim.api.nvim_set_keymap('n', '<leader>q', ':lua ToggleQFList(0)<CR>',
+
+-- quickfix list mappings
+wk.register({
+    q = {
+        name = 'quickfix',
+        j = {'qj', 'next'},
+        k = {'qk', 'prev'},
+        q = {':lua ToggleQFList(1)<CR>', 'toggle'}
+    }
+}, {prefix = '<leader>'})
+
+-- function to toggle loc list
+vim.api.nvim_set_keymap('n', '<C-l>', ':lua ToggleQFList(0)<CR>',
                         {noremap = true})
+
+-- loc list mappings
+wk.register({
+    l = {
+        name = 'loc list',
+        j = {'lj', 'next'},
+        k = {'lk', 'prev'},
+        l = {':lua ToggleQFList(0)<CR>', 'toggle'}
+    }
+}, {prefix = '<leader>'})
 
 vim.g.seanbreckenridge_qf_l = 0
 vim.g.seanbreckenridge_qf_g = 0

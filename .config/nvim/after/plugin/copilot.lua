@@ -5,3 +5,4 @@ vim.api.nvim_create_autocmd({"BufEnter", "BufNewFile"}, {
     pattern = {".env", ".env.*"},
     callback = function(_) vim.b['copilot_enabled'] = 0 end
 })
+

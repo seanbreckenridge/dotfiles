@@ -10,9 +10,10 @@ vim.api.nvim_set_keymap('n', 'gr', "<cmd>lua vim.lsp.buf.references()<CR>",
                         {silent = true})
 vim.api.nvim_set_keymap('n', 'rn', "<cmd>lua vim.lsp.buf.rename()<CR>",
                         {silent = true})
-vim.api.nvim_set_keymap('n', '<leader>T',
-                        "<cmd>lua vim.lsp.buf.code_action()<CR>",
-                        {silent = true})
+
+local wk = require('which-key')
+wk.register({T = {"<cmd>lua vim.lsp.buf.code_action()<CR>", "code action"}},
+            {prefix = "<leader>"})
 
 function ShowDocumentation()
     if vim.tbl_contains({'vim', 'help'}, vim.bo.filetype) then

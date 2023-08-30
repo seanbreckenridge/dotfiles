@@ -1,34 +1,31 @@
 -- git related bindings
--- fugitive (git)
-vim.api.nvim_set_keymap('n', '<leader>G', ':G<CR>:wincmd _<CR>',
-                        {noremap = true})
-vim.api.nvim_set_keymap('n', '<leader>ip', ':Git push<CR>', {noremap = true})
-vim.api.nvim_set_keymap('n', '<leader>ill', ':Git pull<CR>', {noremap = true})
-vim.api.nvim_set_keymap('n', '<leader>ilo', ':Git log<CR>', {noremap = true})
-vim.api.nvim_set_keymap('n', '<leader>ic', ':Git commit<CR>:wincmd _<CR>',
-                        {noremap = true})
-vim.api.nvim_set_keymap('n', '<leader>idd', ':Git diff<CR>:wincmd _<CR>',
-                        {noremap = true})
-vim.api.nvim_set_keymap('n', '<leader>ids',
-                        ':Git diff --staged<CR>:wincmd _<CR>', {noremap = true})
-vim.api.nvim_set_keymap('n', '<leader>idh',
-                        ':Git diff HEAD~1 HEAD<CR>:wincmd _<CR>',
-                        {noremap = true})
-vim.api.nvim_set_keymap('n', '<leader>iaa', ':Git add -u<CR>', {noremap = true})
-vim.api.nvim_set_keymap('n', '<leader>iaA', ':Git add --all<CR>',
-                        {noremap = true})
-vim.api.nvim_set_keymap('n', '<leader>iap', ':Git add --all --patch<CR>',
-                        {noremap = true})
-vim.api.nvim_set_keymap('n', '<leader>ist', ':Git status<CR>', {noremap = true})
-vim.api.nvim_set_keymap('n', '<leader>isu', ':Git status -u<CR>',
-                        {noremap = true})
-vim.api.nvim_set_keymap('n', '<leader>irs', ':Git reset<CR>', {noremap = true})
-vim.api.nvim_set_keymap('n', '<leader>irhh', ':Git reset --hard HEAD<CR>',
-                        {noremap = true})
+-- fugitive (git) using which-key.nvim
+local wk = require('which-key')
+wk.register({
+    g = {
+        name = "git",
+        s = {':Git<CR>:wincmd _<CR>', 'console'},
+        p = {':Git push<CR>', 'push'},
+        l = {':Git pull<CR>', 'pull'},
+        o = {':Git log<CR>', 'log'},
+        c = {':Git commit<CR>:wincmd _<CR>', 'commit'},
+        d = {':Git diff<CR>:wincmd _<CR>', 'diff'},
+        ds = {':Git diff --staged<CR>:wincmd _<CR>', 'diff staged'},
+        dh = {':Git diff HEAD~1 HEAD<CR>:wincmd _<CR>', 'diff head'},
+        u = {':Git add -u<CR>', 'add update'},
+        A = {':Git add --all<CR>', 'add all'},
+        P = {':Git add --all --patch<CR>', 'add patch'},
+        t = {':Git status<CR>', 'status'},
+        r = {':Git reset<CR>', 'reset'}
+    }
+}, {prefix = "<leader>"})
 
 -- for picking which files to merge from while resolving merge conflicts
 -- middle is what the final merged file is
 -- gj to pick hunk from the right (under right index)
 -- gf to pick hunk form the left (under left index)
-vim.api.nvim_set_keymap('n', '<leader>ij', ':diffget //3<CR>', {noremap = true})
-vim.api.nvim_set_keymap('n', '<leader>if', ':diffget //2<CR>', {noremap = true})
+wk.register({
+    name = "git merge",
+    j = {':diffget //3<CR>', 'diffget //3'},
+    f = {':diffget //2<CR>', 'diffget //2'}
+}, {prefix = "<leader>i"})
