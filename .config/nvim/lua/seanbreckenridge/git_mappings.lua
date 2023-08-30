@@ -4,14 +4,14 @@ local wk = require('which-key')
 wk.register({
     g = {
         name = "git",
-        s = {':Git<CR>:wincmd _<CR>', 'console'},
+        g = {':Git<CR>:wincmd _<CR>', 'console'},
         p = {':Git push<CR>', 'push'},
         l = {':Git pull<CR>', 'pull'},
         o = {':Git log<CR>', 'log'},
         c = {':Git commit<CR>:wincmd _<CR>', 'commit'},
         d = {':Git diff<CR>:wincmd _<CR>', 'diff'},
-        ds = {':Git diff --staged<CR>:wincmd _<CR>', 'diff staged'},
-        dh = {':Git diff HEAD~1 HEAD<CR>:wincmd _<CR>', 'diff head'},
+        S = {':Git diff --staged<CR>:wincmd _<CR>', 'diff staged'},
+        h = {':Git diff HEAD~1 HEAD<CR>:wincmd _<CR>', 'diff head'},
         u = {':Git add -u<CR>', 'add update'},
         A = {':Git add --all<CR>', 'add all'},
         P = {':Git add --all --patch<CR>', 'add patch'},
