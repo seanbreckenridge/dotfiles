@@ -69,6 +69,16 @@ vim.opt.signcolumn = 'yes'
 -- files/vim instances without truncating the buffer
 vim.opt.viminfo = "'20,<1000,s1000"
 
+-- https://github.com/seanbreckenridge/on_machine
+vim.g.on_os = os.getenv('ON_OS')
+
+-- sync clipboard with system clipboard, if im not on android (takes too long on there and sends system notifications that are annoying)
+if string.find(vim.g.on_os, 'android') then
+    vim.opt.clipboard = ''
+else
+    vim.opt.clipboard = 'unnamedplus'
+end
+
 -- See `:help vim.highlight.on_yank()`
 local highlight_group = vim.api.nvim_create_augroup('YankHighlight',
                                                     {clear = true})

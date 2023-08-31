@@ -17,9 +17,6 @@ vim.api.nvim_set_keymap('v', '<Down>', '<Nop>', {noremap = true})
 -- disable capital Q (:ex mode)
 vim.api.nvim_set_keymap('n', 'Q', '<Nop>', {noremap = true})
 
--- sync clipboard with system clipboard
-vim.opt.clipboard = 'unnamedplus'
-
 -- copy visual selection to clipboard
 -- vim.api.nvim_set_keymap('v', '<leader>c', '"+y', {noremap = true})
 -- vim.api.nvim_set_keymap('v', '<leader>y', '"+y', {noremap = true})
