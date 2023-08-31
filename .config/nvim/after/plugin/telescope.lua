@@ -1,5 +1,6 @@
 local cached_repo_bases = function()
     -- cache/roots.txt gets populated by a bgproc job
+    -- https://sean.fish/d/cache_repos.job?dark
     local home = os.getenv('HOME')
     local cache_file = home .. '/.cache/roots.txt'
     local f = io.open(cache_file, 'r')
@@ -20,6 +21,19 @@ require('telescope').setup {
                 ["<C-j>"] = require("telescope.actions").move_selection_next,
                 ["<C-k>"] = require("telescope.actions").move_selection_previous
             }
+        },
+        -- ignore some directory caches with lots of file results
+        file_ignore_patterns = {
+            '/discogs_cache/', '/feed_giantbomb_cache/', '/feed_tmdb_cache/'
+        },
+        results_title = false, -- don't show results title
+        prompt_title = false, -- don't show prompt title
+        -- TODO: continue looking through telescope.setup docs at file_previewer
+        preview = {
+            check_mime_type = true, -- check mime type before opening previewer
+            filesize_limit = 2, -- limit previewer to files under 2MB
+            timeout = 500, -- timeout previewer after 500 ms
+            treesitter = true -- use treesitter when available
         }
     },
     pickers = {

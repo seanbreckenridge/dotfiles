@@ -1,15 +1,15 @@
 local M = {}
 
 function M.edit_config()
-    require('telescope.builtin').find_files({
+    local builtin = require('telescope.builtin')
+    builtin.find_files({
         shorten_path = true,
         prompt_title = 'Edit Config',
         cwd = '~/',
         find_command = {"list-config"},
         hidden = false,
-        preview = require('telescope.previewers').vim_buffer_cat.new,
-        layout_strategy = 'vertical',
-        layout_config = {height = 0.9, width = 0.9, preview_cutoff = 120}
+        -- use my default settings from telescope setup
+        preview = require('telescope.config').values.preview
     })
 end
 
