@@ -7,7 +7,7 @@ wk.register({
     g = {
         name = "git",
         g = {'<cmd>:Git<CR>:wincmd _<CR>', 'console'},
-        s = {'<cmd>:Git<CR>:wincmd _<CR>', 'console'},
+        s = {'<cmd>:Git<CR>:wincmd _<CR>', 'status'},
         p = {'<cmd>:Git push<CR>', 'push'},
         l = {'<cmd>:Git pull<CR>', 'pull'},
         o = {'<cmd>:Git log<CR>', 'log'},
