@@ -4,6 +4,7 @@ local builtin = require('telescope.builtin')
 
 wk.register({
     f = {
+        name = "telescope",
         f = {builtin.find_files, 'find files'},
         g = {builtin.live_grep, 'grep'},
         r = {builtin.lsp_references, 'references'},

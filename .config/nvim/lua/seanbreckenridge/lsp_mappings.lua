@@ -11,8 +11,8 @@ end
 
 -- lsp commands with leader prefix
 wk.register({
-    T = {vim.lsp.buf.code_action, "code action"},
-    rn = {vim.lsp.buf.rename, "rename"}
+    T = {vim.lsp.buf.code_action, "lsp code action"},
+    r = {vim.lsp.buf.rename, "lsp rename"}
 }, {prefix = "<leader>"})
 
 -- lsp commands in normal mode

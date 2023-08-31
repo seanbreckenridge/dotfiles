@@ -13,7 +13,11 @@ if vim.fn.executable('rg') == 1 then vim.g.rg_derive_root = 'true' end
 -- seanbreckenridge (personal functions/plugins)
 wk.register({
     -- can change this to a different prefix if something ever conflicts
-    c = {require("seanbreckenridge.edit_config").edit_config, 'edit config'}
+    c = {
+        name = "change files",
+        e = {require("seanbreckenridge.pick").edit_config, 'edit config'},
+        r = {require("telescope").extensions.repo.list, 'switch repo'}
+    }
 }, {prefix = '<leader>'})
 
 -- https://github.com/norcalli/nvim-colorizer.lua

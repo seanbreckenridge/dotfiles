@@ -1,3 +1,14 @@
+local cached_repo_bases = function()
+    -- cache/roots.txt gets populated by a bgproc job
+    local home = os.getenv('HOME')
+    local cache_file = home .. '/.cache/roots.txt'
+    local f = io.open(cache_file, 'r')
+    if f == nil then return {} end
+    local roots = {}
+    for line in f:lines() do table.insert(roots, line) end
+    return roots
+end
+
 -- https://github.com/nvim-telescope/telescope.nvim#pickers
 require('telescope').setup {
     defaults = {
@@ -26,8 +37,16 @@ require('telescope').setup {
             override_generic_sorter = true, -- override the generic sorter
             override_file_sorter = true, -- override the file sorter
             case_mode = "smart_case" -- or "ignore_case" or "respect_case"
+        },
+        repo = {
+            list = {
+                fd_opts = {},
+                search_dirs = cached_repo_bases(),
+                previewer = false
+            }
         }
     }
 }
 
 require('telescope').load_extension('fzf')
+require('telescope').load_extension('repo')

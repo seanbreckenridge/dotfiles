@@ -24,7 +24,8 @@ require('packer').startup(function(use)
 
     -- utility/feature plugins
     use 'junegunn/goyo.vim'
-    use {'nvim-telescope/telescope.nvim', tag = '0.1.1'}
+    use {'nvim-telescope/telescope.nvim', tag = '0.1.2'}
+    use 'cljoly/telescope-repo.nvim'
     use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
     use 'nvim-treesitter/playground'
     use 'nvim-treesitter/nvim-treesitter-context'
