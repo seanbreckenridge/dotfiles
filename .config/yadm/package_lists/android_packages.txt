@@ -11,6 +11,7 @@ golang
 elixir
 luarocks
 curl
+lua-language-server
 neovim
 yarn
 glow

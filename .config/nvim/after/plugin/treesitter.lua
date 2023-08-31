@@ -1,6 +1,6 @@
 -- https://github.com/nvim-treesitter/nvim-treesitter
 require'nvim-treesitter.configs'.setup {
-    ignore_install = {"haskell"},
+    ignore_install = {},
     sync_install = false,
     auto_install = true,
     ensure_installed = {

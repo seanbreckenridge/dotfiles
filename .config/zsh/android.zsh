@@ -44,4 +44,4 @@ export SODIUM_INSTALL=system
 alias dcim='R ~/storage/dcim/Camera'
 alias d=dcim
 alias sd='sf; dcim'
-alias dd='cd "$XDG_DOWNLOAD_DIR"'
+alias D='cd "$XDG_DOWNLOAD_DIR"'
