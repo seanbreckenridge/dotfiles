@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+evry 1 week -cached-repo-bases && {
+	printlog 'cached-repo-bases:caching locations of my git repos'
+	python3 -c 'import my.config; print("\n".join(map(str, my.config.commits.roots)))' >"${XDG_CACHE_HOME?:No cache dir set}/repo_bases.txt"
+}

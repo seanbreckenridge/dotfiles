@@ -1,10 +1,4 @@
--- source thsese in a specific order
+-- source these in a specific order
 require "seanbreckenridge.options"
-require "seanbreckenridge.helpers"
-require "seanbreckenridge.mappings"
-require "seanbreckenridge.git_mappings"
-require "seanbreckenridge.lsp_mappings"
-require "seanbreckenridge.telescope_mappings"
 require "seanbreckenridge.plugin_setup"
-require "seanbreckenridge.spelling"
 require "seanbreckenridge.colors"
