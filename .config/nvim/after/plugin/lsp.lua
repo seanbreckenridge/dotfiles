@@ -74,35 +74,36 @@ capabilities.workspace = {
 }
 
 -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
+local lspconf = require("lspconfig")
 
 -- web stuff
-require("lspconfig").jsonls.setup {capabilities = capabilities}
-require("lspconfig").cssls.setup {capabilities = capabilities}
-require("lspconfig").html.setup {capabilities = capabilities}
-require("lspconfig").eslint.setup {capabilities = capabilities}
-require("lspconfig").cssmodules_ls.setup {capabilities = capabilities}
-require("lspconfig").tailwindcss.setup {capabilities = capabilities}
-require("lspconfig").tsserver.setup {capabilities = capabilities}
-require("lspconfig").prismals.setup {capabilities = capabilities}
+lspconf.jsonls.setup {capabilities = capabilities}
+lspconf.cssls.setup {capabilities = capabilities}
+lspconf.html.setup {capabilities = capabilities}
+lspconf.eslint.setup {capabilities = capabilities}
+lspconf.cssmodules_ls.setup {capabilities = capabilities}
+lspconf.tailwindcss.setup {capabilities = capabilities}
+lspconf.tsserver.setup {capabilities = capabilities}
+lspconf.prismals.setup {capabilities = capabilities}
 
 -- python
 -- https://github.com/microsoft/pyright/blob/main/docs/configuration.md
-require("lspconfig").pyright.setup {
+lspconf.pyright.setup {
     capabilities = capabilities,
     flags = {debounce_text_changes = 100}
 }
 
 -- yaml
-require("lspconfig").yamlls.setup {
+lspconf.yamlls.setup {
     capabilities = capabilities,
     settings = {yaml = {keyOrdering = false}}
 }
 
 -- shell
-require("lspconfig").bashls.setup {capabilities = capabilities}
+lspconf.bashls.setup {capabilities = capabilities}
 
 -- golang
-require("lspconfig").gopls.setup {capabilities = capabilities}
+lspconf.gopls.setup {capabilities = capabilities}
 
 -- elixir
 local elixir_ls_bin = vim.fn.exepath("elixir-ls")

@@ -7,3 +7,10 @@ vim.api.nvim_create_autocmd({"BufEnter", "BufNewFile"}, {
     pattern = {"*.job", "*.job.disabled"},
     callback = function(_) vim.cmd("set filetype=sh") end
 })
+
+-- check spelling when writing a git commit
+vim.cmd [[
+augroup seanbreckenridge_spelling
+    autocmd!
+    autocmd! BufRead,BufNewFile gitcommit | set spell
+augroup END]]

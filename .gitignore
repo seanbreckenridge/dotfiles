@@ -199,6 +199,7 @@ __pycache__
 /.config/kconf_updaterc
 /.config/kdeglobals
 /.config/lazygit
+/.config/nvim/lazy-lock.json
 /.config/audacity
 /.config/age
 /.config/sops

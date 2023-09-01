@@ -1,12 +1,4 @@
 -- automatically compile/run commands when I edit particular [config] files
-
-local ft_grp = vim.api.nvim_create_augroup("bgproc_jobs", {clear = true})
-vim.api.nvim_create_autocmd({"BufEnter", "BufNewFile"}, {
-    group = ft_grp,
-    pattern = {"*.job", "*.job.disabled"},
-    callback = function(_) vim.cmd("set filetype=sh") end
-})
-
 vim.cmd [[
   augroup seanbreckenridge_autocompile
     autocmd!
