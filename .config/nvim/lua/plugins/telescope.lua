@@ -13,23 +13,9 @@ return {
     cmd = 'Telescope',
     keys = {"<leader>f", "<leader>c", "<leader>g"},
     config = function()
-        local repo_bases = function()
-            -- cache/roots.txt gets populated by a bgproc job
-            -- https://sean.fish/d/cached_repo_bases.job?dark
-            local cache_dir = os.getenv('XDG_CACHE_HOME')
-            local cache_file = cache_dir .. '/repo_bases.txt'
-            local f = io.open(cache_file, 'r')
-            if f == nil then return {} end
-            local roots = {}
-            for line in f:lines() do table.insert(roots, line) end
-            return roots
-        end
-
-        local bases = repo_bases()
-
         local tl = require('telescope')
+        local builtin = require('telescope.builtin')
         local actions = require('telescope.actions')
-
         local previewers = require('telescope.previewers')
 
         -- this is a no-op for now, just here incase I want to modify things
@@ -42,6 +28,7 @@ return {
         -- https://github.com/nvim-telescope/telescope.nvim#pickers
         tl.setup {
             defaults = {
+                path_display = {'smart'},
                 -- Default configuration for telescope goes here:
                 -- config_key = value,
                 mappings = {
@@ -102,20 +89,24 @@ return {
             c = {
                 name = "change files",
                 e = {
-                    require("seanbreckenridge.edit_config").edit_config,
-                    'edit config'
+                    function()
+                        require("seanbreckenridge.telescope").edit_config()
+                    end, 'edit config'
+                },
+                g = {
+                    function()
+                        require("seanbreckenridge.telescope").grep_config()
+                    end, 'grep config'
                 },
                 r = {
                     function()
-                        tl.extensions.repo.list {search_dirs = bases}
+                        local repo_bases = require("seanbreckenridge.telescope").repo_bases_cached()
+                        tl.extensions.repo.list {search_dirs = repo_bases}
                     end, 'switch repo'
                 },
                 p = {'<cmd>:Telescope projects<CR>', 'switch projects'}
             }
         }, {prefix = '<leader>'})
-
-        -- builtin telescope mappings
-        local builtin = require('telescope.builtin')
 
         wk.register({
             f = {
@@ -124,7 +115,11 @@ return {
                 g = {builtin.live_grep, 'grep'},
                 r = {builtin.lsp_references, 'references'},
                 b = {builtin.buffers, 'buffers'},
-                H = {builtin.help_tags, 'help'},
+                H = {
+                    function()
+                        require('seanbreckenridge.telescope').grep_help()
+                    end, 'help'
+                },
                 q = {builtin.quickfix, 'quickfix'},
                 l = {builtin.loclist, 'loclist'},
                 p = {builtin.git_files, 'git files'},
