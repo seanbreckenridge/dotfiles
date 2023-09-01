@@ -1,16 +1,18 @@
--- hmm I cant get this working
+-- hmm I cant get this working...
 -- vim.filetype.add {pattern = {[".*/.*%.job$"] = "sh"}}
 -- use autocmd for now...
 local ft_grp = vim.api.nvim_create_augroup("filetype_cmds", {clear = true})
+
 vim.api.nvim_create_autocmd({"BufEnter", "BufNewFile"}, {
     group = ft_grp,
     pattern = {"*.job", "*.job.disabled"},
     callback = function(_) vim.cmd("set filetype=sh") end
 })
 
--- check spelling when writing a git commit
-vim.cmd [[
-augroup seanbreckenridge_spelling
-    autocmd!
-    autocmd! BufRead,BufNewFile gitcommit | set spell
-augroup END]]
+vim.api.nvim_create_autocmd({"BufRead", "BufNewFile"}, {
+    group = ft_grp,
+    pattern = {"COMMIT_EDITMSG"},
+    callback = function(_)
+        vim.cmd("set spell")
+    end
+})
