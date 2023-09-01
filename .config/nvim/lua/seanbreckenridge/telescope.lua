@@ -6,16 +6,16 @@ function M.edit_config()
         shorten_path = true,
         prompt_title = 'Edit Config',
         cwd = '~/',
-        find_command = {"list-config"},
+        find_command = {"list-config-no-hist"},
         hidden = false,
         -- use my default settings from telescope setup
         preview = require('telescope.config').values.preview
     })
 end
 
--- get the output of the list-config command in a table
+-- get the output of the list-config-no-hist command in a table
 function M.list_config()
-    local handle = io.popen("list-config")
+    local handle = io.popen("list-config-no-hist")
     if handle == nil then return {} end
     local result = handle:read("*a")
     handle:close()
