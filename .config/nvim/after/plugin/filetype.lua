@@ -12,7 +12,5 @@ vim.api.nvim_create_autocmd({"BufEnter", "BufNewFile"}, {
 vim.api.nvim_create_autocmd({"BufRead", "BufNewFile"}, {
     group = ft_grp,
     pattern = {"COMMIT_EDITMSG"},
-    callback = function(_)
-        vim.cmd("set spell")
-    end
+    callback = function(_) vim.cmd("set spell") end
 })
