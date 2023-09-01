@@ -1,11 +1,6 @@
 #!/bin/zsh
 # move these into language specific functions, so I'm not updating everything all the time
 
-update_nvim() {
-	echo "Updating nvim..."
-	nvim +PackerSync
-}
-
 update_node() {
 	echo "Updating global node packages..."
 	yarn global --prefix "${HOME}/.local/" upgrade
@@ -46,5 +41,4 @@ update_lang_all() {
 	update_cargo
 	update_golang
 	update_basher
-	update_nvim
 }

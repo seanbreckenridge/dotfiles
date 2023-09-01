@@ -242,15 +242,4 @@ fi
 # setup directory for ranger
 dir-aliases-ranger
 
-# setup nvim packages
-havecmd nvim || exit $?
-echo "Installing nvim packages..."
-packer_dir="${HOME}/.local/share/nvim/site/pack/packer/start"
-packer_git_dir="${packer_dir}/packer.nvim"
-[[ ! -d "${packer_dir}" ]] && mkdir -p "${packer_dir}"
-[[ ! -d "${packer_git_dir}" ]] && {
-	git clone --depth 1 https://github.com/wbthomason/packer.nvim "${packer_git_dir}"
-	nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
-}
-
 echo "Finished bootstrapping!"

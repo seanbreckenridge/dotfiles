@@ -19,5 +19,5 @@ require('lazy').setup 'plugins'
 -- set filetype to on after plugins are loaded  to prevent possible errors
 vim.cmd 'filetype plugin indent on'
 
--- load lua configuration, contains basic vim settings and coloscheme
+-- load my lua options/colorscheme
 require 'seanbreckenridge'

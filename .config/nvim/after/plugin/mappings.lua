@@ -55,12 +55,6 @@ wk.register({
     }
 }, {prefix = '<leader>'})
 
--- seems that vim.lsp.buf.format() that requires a language server to have an opinion on formatting
--- which is not always the case
-wk.register({':Neoformat<CR>', 'format'}, {prefix = '<leader>t'})
-
-wk.register({u = {':UndotreeToggle<CR>', 'undo tree'}}, {prefix = '<leader>'})
-
 -- function to toggle quickfix lists
 vim.api.nvim_set_keymap('n', '<C-q>', ':lua ToggleQFList(1)<CR>',
                         {noremap = true})
@@ -112,42 +106,6 @@ function ToggleQFList(global)
     end
 end
 
--- plugins
-wk.register({u = {'<cmd>UndotreeToggle<cr>', 'undotree'}}, {prefix = '<leader>'})
-
--- https://github.com/norcalli/nvim-colorizer.lua
--- colors hex codes/html colors etc #000000
-wk.register({
-    ["C"] = {
-        name = 'hex colors',
-        a = {'<cmd>ColorizerAttachToBuffer<CR>', 'attach'},
-        e = {'<cmd>ColorizerAttachToBuffer<CR>', 'enable'},
-        d = {'<cmd>ColorizerDetachFromBuffer<CR>', 'disable'}
-    }
-}, {prefix = '<leader>'})
-
--- git (fugitive)
-wk.register({
-    g = {
-        name = "git",
-        g = {'<cmd>:Git<CR>:wincmd _<CR>', 'console'},
-        s = {'<cmd>:Git<CR>:wincmd _<CR>', 'status'},
-        p = {'<cmd>:Git push<CR>', 'push'},
-        l = {'<cmd>:Git pull<CR>', 'pull'},
-        o = {'<cmd>:Git log<CR>', 'log'},
-        c = {'<cmd>:Git commit<CR>:wincmd _<CR>', 'commit'},
-        d = {'<cmd>:Git diff<CR>:wincmd _<CR>', 'diff'},
-        S = {'<cmd>:Git diff --staged<CR>:wincmd _<CR>', 'diff staged'},
-        h = {'<cmd>:Git diff HEAD~1 HEAD<CR>:wincmd _<CR>', 'diff head'},
-        u = {'<cmd>:Git add -u<CR>', 'add update'},
-        a = {'<cmd>:Git add --all<CR>', 'add all'},
-        P = {'<cmd>:Git add --all --patch<CR>', 'add patch'},
-        t = {'<cmd>:Git status<CR>', 'status'},
-        r = {'<cmd>:Git reset<CR>', 'reset'}
-        -- b = {tb.git_branches, 'telescope branch'}
-    }
-}, {prefix = "<leader>"})
-
 -- for picking which files to merge from while resolving merge conflicts
 -- middle is what the final merged file is
 -- gj to pick hunk from the right (under right index)
@@ -157,39 +115,6 @@ wk.register({
     j = {':diffget //3<CR>', 'diffget //3'},
     f = {':diffget //2<CR>', 'diffget //2'}
 }, {prefix = "<leader>i"})
-
--- lsp bindings
-
-function ShowDocumentation()
-    if vim.tbl_contains({'vim', 'help'}, vim.bo.filetype) then
-        vim.cmd('h ' .. vim.fn.expand('<cword>'))
-    else
-        vim.lsp.buf.hover()
-    end
-end
-
--- lsp commands with leader prefix
-wk.register({
-    T = {vim.lsp.buf.code_action, "lsp code action"},
-    r = {vim.lsp.buf.rename, "lsp rename"}
-}, {prefix = "<leader>"})
-
--- lsp commands in normal mode
-wk.register({
-    [']w'] = {vim.diagnostic.goto_next, "next diagnostic"},
-    ['[w'] = {vim.diagnostic.goto_prev, "prev diagnostic"},
-    gd = {vim.lsp.buf.definition, "goto definition"},
-    gr = {vim.lsp.buf.references, "goto references"},
-    K = {ShowDocumentation, "show documentation"}
-})
-
--- use loclist for lsp diagnostics
-vim.cmd([[
-augroup seanbreckenridge_lsp
-  autocmd!
-  autocmd! BufWrite,BufEnter,InsertLeave * lua vim.diagnostic.setloclist({open=false, severity = {min=vim.diagnostic.severity.HINT}})
-augroup END
-]])
 
 -- copilot
 vim.cmd([[

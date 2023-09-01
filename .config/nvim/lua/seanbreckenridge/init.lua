@@ -68,6 +68,9 @@ vim.opt.signcolumn = 'yes'
 -- files/vim instances without truncating the buffer
 vim.opt.viminfo = "'20,<1000,s1000"
 
+-- marks
+vim.opt.shada = "'1000,f1,<100"
+
 -- https://github.com/seanbreckenridge/on_machine
 vim.g.on_os = os.getenv('ON_OS')
 

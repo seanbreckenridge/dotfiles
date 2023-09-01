@@ -1,7 +1,8 @@
 return {
     'lewis6991/gitsigns.nvim',
+    event = {"BufReadPost", "VeryLazy"},
     dependencies = {'nvim-lua/plenary.nvim'},
-    config = {
+    opts = {
         signs = {
             add = {text = '+'},
             change = {text = '~'},
