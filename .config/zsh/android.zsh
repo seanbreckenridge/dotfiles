@@ -44,4 +44,10 @@ export SODIUM_INSTALL=system
 alias dcim='R ~/storage/dcim/Camera'
 alias d=dcim
 alias sd='sf; dcim'
-alias D='cd "$XDG_DOWNLOAD_DIR"'
+
+C() {
+	local picked
+	# let user pick directory or link that can be cd'd do
+	picked="$(find . -mindepth 1 -maxdepth 1 -type d -o -type l | fzf)"
+	[[ -e "$picked" ]] && cd "$picked"
+}
