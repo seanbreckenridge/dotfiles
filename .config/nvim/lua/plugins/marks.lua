@@ -42,6 +42,7 @@ return {
 
         wk.register({
             m = {
+                name = 'marks',
                 n = {marks.next, 'next mark'},
                 p = {marks.prev, 'previous mark'},
                 d = {marks.delete_line, 'delete mark'},
