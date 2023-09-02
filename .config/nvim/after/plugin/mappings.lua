@@ -34,8 +34,7 @@ wk.register({
     ["S"] = {
         ':so ~/.config/nvim/init.lua<CR>:lua require("seanbreckenridge.colors").setup_theme()<CR>',
         'reload config'
-    },
-    x = {':!chmod +x %<CR>', 'make executable'}
+    }
 }, {prefix = '<space>'})
 
 -- nicer bindings for moving between windows
@@ -61,10 +60,10 @@ vim.api.nvim_set_keymap('n', '<C-q>', ':lua ToggleQFList(1)<CR>',
 
 -- quickfix list mappings
 wk.register({
-    q = {
+    j = {
         name = 'quickfix',
-        j = {'qj', 'next'},
-        k = {'qk', 'prev'},
+        j = {':cnext<CR>', 'next'},
+        k = {':cprev<CR>', 'prev'},
         q = {function() ToggleQFList(1) end, 'toggle'}
     }
 }, {prefix = '<leader>'})
@@ -83,26 +82,12 @@ wk.register({
     }
 }, {prefix = '<leader>'})
 
-vim.g.seanbreckenridge_qf_l = 0
-vim.g.seanbreckenridge_qf_g = 0
-
 function ToggleQFList(global)
+    -- quickfix
     if global == 1 then
-        if vim.g.seanbreckenridge_qf_g == 1 then
-            vim.g.seanbreckenridge_qf_g = 0
-            vim.cmd('cclose')
-        else
-            vim.g.seanbreckenridge_qf_g = 1
-            vim.cmd('copen')
-        end
-    else
-        if vim.g.seanbreckenridge_qf_l == 1 then
-            vim.g.seanbreckenridge_qf_l = 0
-            vim.cmd('lclose')
-        else
-            vim.g.seanbreckenridge_qf_l = 1
-            vim.cmd('lopen')
-        end
+        require("trouble").toggle("quickfix")
+    else -- loclist
+        require("trouble").toggle("loclist")
     end
 end
 

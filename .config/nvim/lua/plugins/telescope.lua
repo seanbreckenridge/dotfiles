@@ -17,6 +17,7 @@ return {
         local builtin = require('telescope.builtin')
         local actions = require('telescope.actions')
         local previewers = require('telescope.previewers')
+        local trouble = require('trouble.providers.telescope')
 
         -- this is a no-op for now, just here incase I want to modify things
         -- https://github.com/nvim-telescope/telescope.nvim/wiki/Configuration-Recipes#previewers
@@ -35,7 +36,8 @@ return {
                     i = {
                         -- fzf-like up/down (remember, can also switch to normal mode and use j/k)
                         ["<C-j>"] = actions.move_selection_next,
-                        ["<C-k>"] = actions.move_selection_previous
+                        ["<C-k>"] = actions.move_selection_previous,
+                        ["<C-t>"] = trouble.open_with_trouble
                     }
                 },
                 -- ignore some directory caches with lots of file results
@@ -125,6 +127,7 @@ return {
                 l = {builtin.loclist, 'loclist'},
                 p = {builtin.git_files, 'git files'},
                 o = {builtin.oldfiles, 'old files'},
+                t = {":TodoTrouble<CR>", 'todos'},
                 c = {builtin.commands, 'commands'},
                 s = {builtin.spell_suggest, 'spell suggest'},
                 m = {builtin.marks, 'marks'},
