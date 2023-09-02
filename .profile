@@ -19,7 +19,7 @@ export XDG_DATA_HOME="${HOME}/.local/share"
 # files that I dont need on all my machines
 #
 # that way I can nicely sync my ~/Documents across machines
-export FILES="${HOME}/Files"
+export FILES_DIR="${HOME}/Files"
 
 export REPOS="${HOME}/Repos"
 

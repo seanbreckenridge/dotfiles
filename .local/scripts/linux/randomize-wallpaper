@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 set -u
 # Randomize the wallpaper using feh
-exec feh --randomize --bg-fill --no-fehbg "${FILES}/wallpapers"
+exec feh --randomize --bg-fill --no-fehbg "${FILES_DIR}/wallpapers"
