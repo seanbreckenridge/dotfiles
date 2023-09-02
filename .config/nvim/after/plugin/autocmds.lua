@@ -24,13 +24,20 @@ local ft_grp = vim.api.nvim_create_augroup("filetype_cmds", {clear = true})
 vim.api.nvim_create_autocmd({"BufEnter", "BufNewFile"}, {
     group = ft_grp,
     pattern = {"*.job", "*.job.disabled"},
-    callback = function(_) vim.cmd("set filetype=sh") end
+    callback = function(_) vim.bo.filetype = "sh" end
 })
 
 vim.api.nvim_create_autocmd({"BufRead", "BufNewFile"}, {
     group = ft_grp,
     pattern = {"COMMIT_EDITMSG"},
     callback = function(_) vim.cmd("set spell") end
+})
+
+vim.api.nvim_create_autocmd({"BufRead", "BufNewFile"}, {
+    group = ft_grp,
+    pattern = {"todo.txt", "done.txt", "bookmarks.txt"},
+    -- set filetype to todotxt
+    callback = function(_) vim.bo.filetype = "todotxt" end
 })
 
 -- use loclist for lsp diagnostics

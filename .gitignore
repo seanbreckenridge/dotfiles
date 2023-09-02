@@ -134,6 +134,8 @@ __pycache__
 /.mongodb
 /.moonchild productions/
 /.mozilla
+/.librewolf
+/.floorp
 /.mupdf.history
 /.netrc
 /.node-gyp

@@ -100,7 +100,8 @@ return {
                 },
                 r = {
                     function()
-                        local repo_bases = require("seanbreckenridge.telescope").repo_bases_cached()
+                        local repo_bases =
+                            require("seanbreckenridge.telescope").repo_bases_cached()
                         tl.extensions.repo.list {search_dirs = repo_bases}
                     end, 'switch repo'
                 },
