@@ -1,4 +1,5 @@
 python  # installs as python3
+python-pip
 openssh
 ncurses-utils  # tput
 yq
