@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# convert gron output to csv
+# replace the = with a comma, remove the trailing semicolon
+#
+# need to re-add those if you want to convert back to json
+
+input="${1:?Please provide input file}"
+gron --monochrome "$input" | sed -e 's/;$//' -e 's/ = /,/'
