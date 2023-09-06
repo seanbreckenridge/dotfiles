@@ -6,7 +6,7 @@ return {
         flake8.cmd = 'flake8c'
 
         -- would add mypy here, but doesnt work great with imports
-        -- pylint is good enough at that and typically faster
+        -- pyright is good enough at that and typically faster
 
         require'lint'.linters_by_ft = {python = {"flake8"}}
 
