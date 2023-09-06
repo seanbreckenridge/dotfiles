@@ -308,5 +308,14 @@
     "transformed_puzzle": "444",
     "transformed_event_code": "F3E",
     "transformed_event_description": "4x4 First 3 Edges"
+  },
+  {
+    "source_class_name": "scramble_history.twistytimer.Solve",
+    "source_fields_match": {
+      "puzzle": "mega"
+    },
+    "transformed_puzzle": "megaminx",
+    "transformed_event_code": "WCA",
+    "transformed_event_description": "Megaminx"
   }
 ]
