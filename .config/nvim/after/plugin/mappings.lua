@@ -31,6 +31,7 @@ wk.register({
     -- reminder, can use 'P' in netrw to open in right tab
     e = {':wincmd v<bar> :Explore <bar> :vertical resize 30<CR>', 'netrw'},
     s = {':set spell!<CR>', 'toggle spell'},
+    X = {':!chmod +x %<CR>', 'chmod +x'},
     ["S"] = {
         ':so ~/.config/nvim/init.lua<CR>:lua require("seanbreckenridge.colors").setup_theme()<CR>',
         'reload config'
