@@ -17,7 +17,7 @@ return {
     {'tpope/vim-speeddating', keys = {"<C-a>", "<C-x>"}}, -- increment/decrement dates
     {'windwp/nvim-autopairs', event = "InsertEnter", opts = {}}, -- auto pair brackets
     -- all the comment.nvim mappings start with 'g', so don't load anything till I press 'g'
-    {'numToStr/Comment.nvim', opts = {}, keys = {"g", mode = "n"}}, -- language aware comment/uncomment lines
+    {'numToStr/Comment.nvim', opts = {}, event = "VeryLazy"}, -- language aware comment/uncomment lines
     -- languages/syntax
     {'fladson/vim-kitty', ft = 'kitty'}, -- kitty config file
     {'jceb/vim-orgmode', ft = 'org', dependencies = {"tpope/vim-speeddating"}}, -- orgmode
