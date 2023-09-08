@@ -8,7 +8,7 @@ windows* | android*)
 	;;
 esac
 
-evry 6 hours -promnesia_index && {
+evry 1 day -promnesia_index && {
 	# source environment variables that may be needed (e.g. ipinfo token)
 	printlog "promnesia_index:running index..."
 	with-secrets remove-broken-sms-files
