@@ -66,7 +66,7 @@ glow() {
 alias icat='kitten icat'
 
 # https://github.com/sharkdp/bat
-# https://github.com/ogham/exa
+# https://github.com/eza-community/eza
 # https://sw.kovidgoyal.net/kitty/kittens/icat/
 #
 # if trying to 'cat' all images -- use kitty to print the image directly in the terminal
@@ -98,7 +98,7 @@ cat() {
 	fi
 
 	if ((all_dirs)); then
-		exa "$@"
+		eza "$@"
 	elif ((all_images)); then
 		icat "$@"
 	else

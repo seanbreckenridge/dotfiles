@@ -10,10 +10,10 @@ alias lsplain='command ls --color=never'
 case "$ON_OS" in
 mac* | android*)
 	# icons dont work some operating systems
-	alias ls='exa'
+	alias ls='eza'
 	;;
 *)
-	alias ls='exa --icons'
+	alias ls='eza --icons'
 	;;
 esac
 alias ll='ls -hl --git'

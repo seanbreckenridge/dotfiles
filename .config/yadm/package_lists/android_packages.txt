@@ -5,7 +5,6 @@ ncurses-utils  # tput
 yq
 man
 moreutils
-exa
 bat
 rust
 golang
