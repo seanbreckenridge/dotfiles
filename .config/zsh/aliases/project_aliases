@@ -223,7 +223,11 @@ wca-local() {
 	state="${1:-$(ipinfo | grep 'region' | cut -d":" -f2- | chomp | lower)}"
 	wca-comps | jq -r '.[] | "\(.date) - \(.name) - \(.location)"' | grep -i "${state}"
 }
+
 # https://github.com/seanbreckenridge/scramble-history
+cube-event-descriptions() {
+	scramble_history merge -a json | jq '.[].event_description' -r | unique
+}
 alias _cube-stats-merge='scramble_history merge -g event_description -a stats "$@"'
 cube-stats() {
 	_cube-stats-merge -q 'event_description?=["3x3", "3x3 OH", "2x2", "4x4", "5x5"]' "$@"
@@ -231,3 +235,12 @@ cube-stats() {
 alias cube-stats-graphs='cube-stats -G'
 alias cube-stats-all=_cube-stats-merge
 alias cube-stats-all-graphs='cube-stats-all -G'
+cube-stats-for() {
+	local chosen
+	chosen="$(cube-event-descriptions | fzf -q "$*")"
+	[[ -z "$chosen" ]] && return 1
+	shift $#
+
+	echo "Running: scramble_history merge -g event_description -a stats -q 'event_description?=[\"${chosen}\"]'" >&2
+	scramble_history merge -g event_description -a stats -q "event_description?=[\"${chosen}\"]"
+}
