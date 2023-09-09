@@ -19,6 +19,8 @@ imgur-uploader
 ipdb
 ipython
 isort
+pysrt
+srt
 j2cli
 jedi-language-server
 logzero

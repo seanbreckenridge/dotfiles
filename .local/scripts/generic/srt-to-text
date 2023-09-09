@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+# given a file, extract subtitles as an srt file, then remove any HTML artifacts
+# and convert to a plain text file (no timestamps)
+#
+# requires the srt and pysrt python packages
+# python3 -m pip install -U srt pysrt
+
+input="${1?:No input file specified}"
+shift
+
+tmpdir="$(mktemp -d -t srt-to-text.XXXXXX)" || exit 1
+
+# extract subtitles as an srt file
+ffmpeg -i "$input" "$@" "$tmpdir/subs.srt" >&2 || exit 1
+
+# remove HTML artifacts
+srt-process -i "$tmpdir/subs.srt" -m re -f 'lambda sub: re.sub(r"<[^>]*>", "", sub)' >"$tmpdir/subs-clean.srt"
+
+# convert to plain text
+python3 <<EOF
+import pysrt
+
+subs = pysrt.open("$tmpdir/subs-clean.srt")
+for sub in subs:
+	print(sub.text)
+EOF
