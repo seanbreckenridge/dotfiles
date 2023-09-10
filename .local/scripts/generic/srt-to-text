@@ -24,3 +24,6 @@ subs = pysrt.open("$tmpdir/subs-clean.srt")
 for sub in subs:
 	print(sub.text)
 EOF
+
+command rm -f "$tmpdir/subs.srt" "$tmpdir/subs-clean.srt"
+command rmdir "$tmpdir"

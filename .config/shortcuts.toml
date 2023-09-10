@@ -818,3 +818,6 @@ exec mpv --log-file="$MPV_LOGFILE_TMPDIR/$(date +%s%N).log" "$@"
 
 [tz]
 command = 'exec time-in tz "$@"'
+
+[unlines]
+command = 'exec paste -sd " "'
