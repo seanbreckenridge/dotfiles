@@ -19,4 +19,4 @@ tttlist_cached() {
 {
 	tttlist_cached
 	hpi query my.coding.commits.repos -s | jq -r
-} | grep -v '^/tmp' || exit $?
+} | grep -v '^/tmp' | unique || exit $?
