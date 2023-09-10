@@ -47,7 +47,7 @@ return {
                 }
             }, {prefix = '<leader>', buffer = bufnr})
         end,
-        -- yadm
-        yadm = {enable = true}
+        -- yadm, if it is installed
+        yadm = {enable = vim.fn.executable('yadm') == 1}
     }
 }
