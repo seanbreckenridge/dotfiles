@@ -1,0 +1,7 @@
+# Path: archlinux.yml
+- name: Install golang
+  community.general.pacman:
+    name: go
+    state: present
+
+- include_tasks: install_personal_go.yaml

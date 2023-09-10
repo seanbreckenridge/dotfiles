@@ -1,0 +1,17 @@
+- name: set GOPATH
+  set_fact:
+    go_path: "{{ ansible_env.HOME }}/.local/share/go"
+
+- name: install spkglist from github.com/seanbreckenridge/spkglist/cmd/spkglist@latest
+  ansible.builtin.command: go install github.com/seanbreckenridge/spkglist/cmd/spkglist@latest
+  args:
+    creates: "{{ go_path }}/bin/spkglist"
+  environment:
+    GOPATH: "{{ go_path }}"
+
+- name: install on_machine from github.com/seanbreckenridge/on_machine/cmd/on_machine@latest
+  ansible.builtin.command: go install github.com/seanbreckenridge/on_machine/cmd/on_machine@latest
+  args:
+    creates: "{{ go_path }}/bin/on_machine"
+  environment:
+    GOPATH: "{{ go_path }}"

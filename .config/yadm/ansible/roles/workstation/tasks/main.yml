@@ -1,0 +1,4 @@
+---
+# include tasks in ./archlinux.yml when running on Arch Linux
+- include_tasks: archlinux.yml
+  when: ansible_distribution == 'Archlinux'

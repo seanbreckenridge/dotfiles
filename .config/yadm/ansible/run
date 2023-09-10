@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+THIS_DIR="$(realpath "$(dirname "${BASH_SOURCE[0]}")")"
+cd "${THIS_DIR}" || exit $?
+
+
+ansible-playbook "$@" -i hosts ./local.yml --ask-become-pass
