@@ -72,7 +72,7 @@ vim.opt.viminfo = "'20,<1000,s1000"
 vim.opt.shada = "'1000,f1,<100"
 
 -- https://github.com/seanbreckenridge/on_machine
-vim.g.on_os = os.getenv('ON_OS')
+vim.g.on_os = os.getenv('ON_OS') or 'unknown'
 
 -- sync clipboard with system clipboard, if im not on android (takes too long on there and sends system notifications that are annoying)
 if string.find(vim.g.on_os, 'android') then
