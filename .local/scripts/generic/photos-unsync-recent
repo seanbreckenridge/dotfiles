@@ -15,11 +15,11 @@ list-photos() {
 	find "$from" -type f -mtime "$days" "$@"
 }
 
-list-photos
+list-photos >&2
 printf "delete %d synced files from the last %.1f days? (y/N) " "$(list-photos | wc -l)" "$(cut -c2- <<<"$days")"
 
 read -r answer
 [[ "$answer" == [yY]* ]] || exit 0
 
-echo "deleting..."
-list-photos -print -delete
+echo "deleting..." >&2
+list-photos -print -delete >&2
