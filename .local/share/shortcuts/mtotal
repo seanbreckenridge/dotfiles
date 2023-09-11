@@ -1,0 +1,2 @@
+#!/bin/sh
+exec mlength -o sum -d m "$@"

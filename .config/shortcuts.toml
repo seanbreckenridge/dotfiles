@@ -743,7 +743,7 @@ awk '{ print length, $0 }' | sort -n | cut -d' ' -f2-
 
 [shortest-video]
 command = '''
-file="$(list-movies -X medialength -o min -d path "$@")"
+file="$(list-movies -X mlength -o min -d path "$@")"
 if [ -n "$file" ]; then
 	echo "$file"
 else
@@ -763,6 +763,9 @@ exit 1
 
 [list-videos]
 command = 'exec list-movies "$@"'
+
+[mtotal]
+command = 'exec mlength -o sum -d m "$@"'
 
 [google-search]
 command = '''

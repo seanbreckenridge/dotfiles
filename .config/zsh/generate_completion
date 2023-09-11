@@ -42,7 +42,7 @@ for cmd in hpi \
 	scramble_history \
 	feed-cli \
 	currently_listening_py \
-	medialength \
+	mlength \
 	time-in \
 	url_cache; do
 	havecmd "${cmd}" || continue

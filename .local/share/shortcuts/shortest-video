@@ -1,5 +1,5 @@
 #!/bin/sh
-file="$(list-movies -X medialength -o min -d path "$@")"
+file="$(list-movies -X mlength -o min -d path "$@")"
 if [ -n "$file" ]; then
 	echo "$file"
 else

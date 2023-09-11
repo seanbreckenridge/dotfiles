@@ -1,12 +1,12 @@
-#compdef medialength
+#compdef mlength
 
-_medialength_completion() {
+_mlength_completion() {
     local -a completions
     local -a completions_with_descriptions
     local -a response
-    (( ! $+commands[medialength] )) && return 1
+    (( ! $+commands[mlength] )) && return 1
 
-    response=("${(@f)$(env COMP_WORDS="${words[*]}" COMP_CWORD=$((CURRENT-1)) _MEDIALENGTH_COMPLETE=zsh_complete medialength)}")
+    response=("${(@f)$(env COMP_WORDS="${words[*]}" COMP_CWORD=$((CURRENT-1)) _MLENGTH_COMPLETE=zsh_complete mlength)}")
 
     for type key descr in ${response}; do
         if [[ "$type" == "plain" ]]; then
@@ -33,9 +33,9 @@ _medialength_completion() {
 
 if [[ $zsh_eval_context[-1] == loadautofunc ]]; then
     # autoload from fpath, call function directly
-    _medialength_completion "$@"
+    _mlength_completion "$@"
 else
     # eval/source/. command, register function for later
-    compdef _medialength_completion medialength
+    compdef _mlength_completion mlength
 fi
 
