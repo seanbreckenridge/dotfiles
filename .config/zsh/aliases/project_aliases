@@ -130,7 +130,7 @@ flf() {
 alias sc='server_clipboard'
 
 # https://github.com/seanbreckenridge/tts
-alias tts-say='tts -d /tmp/tts.ogg && plaympeg /tmp/tts.ogg'
+alias tts-say='tts -d /tmp/tts.mpeg && plaympeg /tmp/tts.mpeg'
 
 # https://github.com/seanbreckenridge/mpv-sockets
 # cd to the directory where the current piece of media is playing from
