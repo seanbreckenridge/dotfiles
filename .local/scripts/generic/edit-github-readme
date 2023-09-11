@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+# Edit a GitHub README in a temporary directory and open a PR
+
+set -e
+
+# Create a temporary directory and cd into it
+TEMP_DIR="$(mktemp -d)"
+cd "$TEMP_DIR" || exit
+
+# First argument is the repo URL, second is the file to edit
+# defaults to README.md
+REPO="${1?Pass the repo URL as the first argument}"
+FILE="${2:-README.md}"
+
+# Clone the repo, cd into it
+git clone "$REPO"
+cd "$(basename "$REPO")" || exit
+
+# Prompt for branch name, create it
+read -rp "Branch name: " BRANCH
+[[ -z "$BRANCH" ]] && exit 1 # exit if the branch name is empty
+git checkout -b "$BRANCH"
+
+# open the file in my editor
+"${EDITOR:-nano}" "$FILE"
+
+# Commit the changes
+git add "$FILE"
+git commit
+
+# open a PR, will fork if needed
+exec gh pr create
