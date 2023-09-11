@@ -15,6 +15,7 @@ mine() {
 
 browser-github-urls() {
 	local cache="$HOME/.cache/repos.cache"
+	[[ "$ON_OS" =~ ^android ]] && return 0
 	evry 1 week -browser-github && browser-github --all >"$cache"
 	[[ -e "$cache" ]] && cat "$cache"
 	fzfcache browser-github --active
