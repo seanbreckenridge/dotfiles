@@ -229,7 +229,6 @@ mutt-wizard
 neomutt
 notmuch
 pass
-urlscan
 
 # battery performance
 

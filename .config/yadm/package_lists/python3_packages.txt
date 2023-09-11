@@ -54,6 +54,7 @@ time-in
 toml
 trash-cli
 urlextract
+urlscan
 vimbuffer
 youtube-dl
 yt-dlp
