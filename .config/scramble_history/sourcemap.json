@@ -317,5 +317,15 @@
     "transformed_puzzle": "megaminx",
     "transformed_event_code": "WCA",
     "transformed_event_description": "Megaminx"
+  },
+  {
+    "source_class_name": "scramble_history.cstimer.Solve",
+    "source_fields_match": {
+      "raw_scramble_type": "skbso",
+      "name": "skewb"
+    },
+    "transformed_puzzle": "skewb",
+    "transformed_event_code": "WCA",
+    "transformed_event_description": "Skewb"
   }
 ]
