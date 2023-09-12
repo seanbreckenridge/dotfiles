@@ -7,7 +7,7 @@ return {
     }, -- treesitter context
     {"catppuccin/nvim", name = "catppuccin", priority = 1000}, -- colorscheme, 1000 makes it load early
     {'mg979/vim-visual-multi', branch = 'master', event = "VeryLazy"}, -- for tutorial: 'nvim -Nu .local/plugged/vim-visual-multi/tutorialrc'
-    {'seanbreckenridge/yadm-git.vim', event = "VeryLazy"}, -- yadm integration
+    {'seanbreckenridge/yadm-git.vim', cond = vim.g.has_yadm}, -- yadm integration (needs to be loaded early since uses BufWinEnter to detect)
     {'tpope/vim-surround', event = "VeryLazy"}, -- surround text objects
     {'tpope/vim-unimpaired', event = "VeryLazy"}, -- pairs of handy bracket mappings
     {'tpope/vim-repeat', event = "VeryLazy"}, -- repeat plugin commands

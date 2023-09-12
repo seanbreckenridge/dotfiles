@@ -9,6 +9,9 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
+-- save if yadm is installed as a global
+vim.g.has_yadm = vim.fn.executable('yadm') == 1
+
 -- setup leader for lazy
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '

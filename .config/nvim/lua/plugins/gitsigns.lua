@@ -48,6 +48,6 @@ return {
             }, {prefix = '<leader>', buffer = bufnr})
         end,
         -- yadm, if it is installed
-        yadm = {enable = vim.fn.executable('yadm') == 1}
+        yadm = {enable = vim.g.has_yadm},
     }
 }
