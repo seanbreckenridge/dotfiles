@@ -19,10 +19,9 @@ imgur-uploader
 ipdb
 ipython
 isort
-pysrt
-srt
 j2cli
 logzero
+mpv-history-daemon
 mutagen
 mypy
 pillow
@@ -37,6 +36,7 @@ pylast
 pynvim
 pyperclip
 pypyp
+pysrt
 pytest
 reorder_editable
 requests
@@ -45,6 +45,7 @@ rsa
 selenium
 setuptools
 speedtest-cli
+srt
 supervisor
 termdown
 termgraph
