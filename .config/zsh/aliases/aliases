@@ -6,18 +6,19 @@ alias -s {md,html,txt}=nvim
 
 # save ls so it can be used elsewhere if I want
 alias lsplain='command ls --color=never'
+alias eza-defaults='eza --git --octal-permissions --header --group-directories-first'
 # alias ls to exa
 case "$ON_OS" in
 mac* | android*)
 	# icons dont work some operating systems
-	alias ls='eza --git'
+	alias ls='eza-defaults'
 	;;
 *)
-	alias ls='eza --icons --git'
+	alias ls='eza-defaults --icons'
 	;;
 esac
 alias treel='ls -T --git-ignore'
-alias ll='ls -hl --git'
+alias ll='ls -hl'
 alias la='ll -a'
 alias sl='ls'
 alias dc='cd' # never going to use the reverse-polish calculator, is *always* a typo
@@ -86,6 +87,7 @@ alias sz='mystarsfzf'
 alias sr='sreminders'
 alias nr='neomuttr'
 alias urban='udict'
+alias xxd='hexyl'
 alias calc='ipython3 --profile=calculator'
 alias 'countdown=termdown'
 # shorthand for copying to clipboard
