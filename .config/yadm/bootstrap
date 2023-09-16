@@ -114,6 +114,7 @@ function install_python_personal() {
 } && export -f install_python_personal
 
 install_python_personal "clone-repos" "https://github.com/seanbreckenridge/clone-repos"
+install_python_personal "mlength" "https://github.com/seanbreckenridge/mlength"
 
 clone-repos ~/.config/clone-repos.yaml
 

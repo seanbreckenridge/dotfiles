@@ -35,7 +35,6 @@ python3 -m pip install --user --break-system-packages -q -r "${SCIPYTHON_PACKAGE
 install_python_personal "plus1" "https://github.com/seanbreckenridge/plus1"
 install_python_personal "pythonanywhere_3_months" "https://github.com/seanbreckenridge/pythonanywhere-3-months"
 install_python_personal "calcurse_load" "https://github.com/seanbreckenridge/calcurse-load"
-install_python_personal "mlength" "https://github.com/seanbreckenridge/mlength"
 
 havecmd gem || exit $?
 echo "Installing global ruby packages..."

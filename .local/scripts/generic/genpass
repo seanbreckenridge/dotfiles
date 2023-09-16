@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+
+set -e
+set -o pipefail
+
+# generates a password and puts it on your clipboard
+# uses https://github.com/seanbreckenridge/genpasswd
+# or 'pip install diceware'
+generate() {
+	if [[ -n "$USE_DICEWARE" ]]; then
+		if [[ -n "$1" ]]; then
+			diceware "$@"
+		else
+			diceware -d '_' -n 5 "$@"
+		fi
+	else
+		genpasswd "$@" || return $?
+	fi
+}
+
+pw="$(generate "$@")" || exit $?
+echo "$pw"
+echo "$pw" | clipcopy
+echo 'Copied password to clipboard'
+notify 'Copied password to clipboard'
