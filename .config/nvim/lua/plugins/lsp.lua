@@ -61,6 +61,9 @@ return {
             }
         end
 
+        -- ocaml
+        require'lspconfig'.ocamllsp.setup {capabilities = capabilities}
+
         -- rust
         lspconf.rust_analyzer.setup {capabilities = capabilities}
 

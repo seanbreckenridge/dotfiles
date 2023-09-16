@@ -69,6 +69,7 @@ mypy
 npm
 nvm
 ocaml
+opam
 perl
 perl-test-perltidy
 php
