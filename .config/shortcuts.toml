@@ -143,6 +143,21 @@ clp <<<"${pw}"
 printf '\n'
 '''
 
+[genpass-phrase]
+shebang = "#!/usr/bin/env bash"
+command = '''
+# generates a password and puts it on your clipboard
+# uses 'pip install diceware'
+if ! pw=$(diceware -d '_'); then
+	echo "$pw" >&2
+	exit 1
+fi
+pw="$(head -n 1 <<<"$pw")"
+# send notification and copy to clipboard
+clp <<<"${pw}"
+printf '\n'
+'''
+
 [list-images]
 command='''exec fd '.*\.(png|jpeg|jpg|heic)$' "$@"'''
 

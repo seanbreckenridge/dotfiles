@@ -4,6 +4,7 @@ black
 click
 colorlog
 cookiecutter
+diceware
 csvkit
 cube-scramble-cli
 currencyconverter
