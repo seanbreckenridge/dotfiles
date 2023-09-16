@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # generates a password and puts it on your clipboard
 # uses 'pip install diceware'
-if ! pw=$(diceware -d '_'); then
+if ! pw=$(diceware -d '_' "$@"); then
 	echo "$pw" >&2
 	exit 1
 fi
