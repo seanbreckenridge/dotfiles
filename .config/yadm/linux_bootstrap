@@ -40,7 +40,7 @@ done
 install_go_cmds || exit $?
 
 # yay/pacman to install packages from arch repos
-echo "Checking ~/.config/yadm/packages.txt for any packages to install..."
+echo "Checking ~/.config/yadm/package_lists/arch_packages.txt for any packages to install..."
 # have to use for loop, while loop times out instantly
 for lib in $(spkglist "${PACKAGE_LIST}"); do
 	if [[ ! $(yay -Q "${lib}" 2>/dev/null) ]]; then # if package isn't installed

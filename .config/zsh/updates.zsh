@@ -34,11 +34,19 @@ update_basher() {
 	basher-upgrade-all
 }
 
+update_opam() {
+	echo "Updating opam packages..."
+	eval "$(opam env)"
+	opam update
+	opam upgrade
+}
+
 update_lang_all() {
 	update_node
 	update_gem
 	update_pip
 	update_cargo
 	update_golang
+	update_opam
 	update_basher
 }

@@ -1,0 +1,7 @@
+dune
+merlin
+ocaml-lsp-server
+odoc
+ocamlformat
+utop
+dune-release

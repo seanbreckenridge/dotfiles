@@ -1,7 +1,6 @@
 return {
     'sbdchd/neoformat',
     event = "VeryLazy",
-    keys = {"<leader>t"},
     config = function()
 
         local wk = require("which-key")

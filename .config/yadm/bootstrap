@@ -60,6 +60,7 @@ declare -rx PYTHON_PACKAGE_LIST="${PACKAGE_DIR}/python3_packages.txt"
 declare -rx PIPX_PACKAGE_LIST="${PACKAGE_DIR}/pipx_packages.txt"
 declare -rx GLOBAL_GEM_LIST="${PACKAGE_DIR}/ruby_packages.txt"
 declare -rx NODE_PACKAGE_LIST="${PACKAGE_DIR}/node_packages.txt"
+declare -rx OCAML_PACKAGE_LIST="${PACKAGE_DIR}/ocaml_packages.txt"
 declare -rx COMPUTER_NODE_PACKAGE_LIST="${PACKAGE_DIR}/computer_node_packages.txt"
 declare -rx BASH_PACKAGE_LIST="${PACKAGE_DIR}/bash_packages.txt"
 
@@ -101,10 +102,7 @@ havecmd python3 || exit $?
 # Install python packages -- even when on android, I use this enough/do
 # enough scripting here that its worth it
 echo "Installing global python site-packages..."
-# upgrade pip
-python3 -m pip install --user -U --break-system-packages pip
-# install wheel
-python3 -m pip list --format=freeze | cut -d "=" -f1 | grep -qx "wheel" || python3 -m pip install --user --break-system-packages wheel
+python3 -m pip install --user --break-system-packages pip wheel virtualenv
 python3 -m pip install --user -q --break-system-packages -r "${PYTHON_PACKAGE_LIST}"
 
 # Install personal python packages
@@ -116,7 +114,7 @@ function install_python_personal() {
 install_python_personal "clone-repos" "https://github.com/seanbreckenridge/clone-repos"
 install_python_personal "mlength" "https://github.com/seanbreckenridge/mlength"
 
-clone-repos ~/.config/clone-repos.yaml
+# clone-repos ~/.config/clone-repos.yaml
 
 PIPX_INSTALLED="$(pipx list --json 2>/dev/null | jq '.venvs | keys[]' -r)"
 while read -r pipx_pkg; do
@@ -232,6 +230,18 @@ havecmd basher && {
 			basher install "${bash_pkg}"
 		fi
 	done < <(spkglist "${BASH_PACKAGE_LIST}")
+}
+
+havecmd opam && {
+	eval "$(opam env)"
+	# install opam packages
+	OPAM_INSTALLED="$(opam list -s --columns=name)"
+	while read -r opam_pkg; do
+		if ! grep -xq "${opam_pkg}" <<<"${OPAM_INSTALLED}"; then
+			printf "Installing %s\n" "$opam_pkg"
+			opam install -y "${opam_pkg}"
+		fi
+	done < <(spkglist "${OCAML_PACKAGE_LIST}")
 }
 
 if havecmd reshortcuts; then
