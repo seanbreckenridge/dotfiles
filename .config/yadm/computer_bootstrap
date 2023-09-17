@@ -90,6 +90,18 @@ havecmd gh && {
 	done < <(spkglist "${GH_PACKAGE_LIST}")
 }
 
+declare -rx OCAML_PACKAGE_LIST="${PACKAGE_DIR}/ocaml_packages.txt"
+havecmd opam && {
+	eval "$(opam env)"
+	# install opam packages
+	OPAM_INSTALLED="$(opam list -s --columns=name)"
+	while read -r opam_pkg; do
+		if ! grep -xq "${opam_pkg}" <<<"${OPAM_INSTALLED}"; then
+			printf "Installing %s\n" "$opam_pkg"
+			opam install -y "${opam_pkg}"
+		fi
+	done < <(spkglist "${OCAML_PACKAGE_LIST}")
+}
 clone-repos ~/.config/clone-repos/computer-clone-repos.yaml
 
 havecmd mapscii-at || yarn global add --prefix "${HOME}/.local" git+https://github.com/seanbreckenridge/mapscii-at
