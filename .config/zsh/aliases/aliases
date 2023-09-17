@@ -89,6 +89,7 @@ alias nr='neomuttr'
 alias urban='udict'
 alias xxd='hexyl'
 alias calc='ipython3 --profile=calculator'
+alias c=calc_ans_rlwrap
 alias 'countdown=termdown'
 # shorthand for copying to clipboard
 alias cl='clipcopy'
