@@ -47,6 +47,5 @@ update_lang_all() {
 	update_pip
 	update_cargo
 	update_golang
-	update_opam
 	update_basher
 }
