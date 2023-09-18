@@ -97,6 +97,9 @@ export LESSHISTFILE='-'
 # gnupg
 export GNUPGHOME="${XDG_DATA_HOME}/gnupg"
 
+# inputrc
+export INPUTRC="${XDG_CONFIG_HOME}/inputrc"
+
 # Corrections
 # aliases that fix the config/history path of commands
 alias irb='ruby "${XDG_CONFIG_HOME}/irbrc"'
