@@ -46,6 +46,9 @@ return {
             settings = {yaml = {keyOrdering = false}}
         }
 
+        -- c/c++
+        lspconf.clangd.setup {capabilities = capabilities}
+
         -- shell
         lspconf.bashls.setup {capabilities = capabilities}
 
