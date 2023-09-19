@@ -1,30 +1,30 @@
 "https://github.com/seanbreckenridge/chomp":
   base: ~/.local/share/go/src/github.com/seanbreckenridge
-  symlink_to: ~/Repos
+  symlink_to: ~/Files/OldRepos/
 "https://github.com/seanbreckenridge/darker_errors":
   base: ~/.local/share/go/src/github.com/seanbreckenridge
-  symlink_to: ~/Repos
+  symlink_to: ~/Files/OldRepos/
 "https://github.com/seanbreckenridge/fzfcache":
   base: ~/.local/share/go/src/github.com/seanbreckenridge
-  symlink_to: ~/Repos
+  symlink_to: ~/Files/OldRepos/
 "https://github.com/seanbreckenridge/keyvol":
   base: ~/.local/share/go/src/github.com/seanbreckenridge
-  symlink_to: ~/Repos
+  symlink_to: ~/Files/OldRepos/
 "https://github.com/seanbreckenridge/newest":
   base: ~/.local/share/go/src/github.com/seanbreckenridge
-  symlink_to: ~/Repos
+  symlink_to: ~/Files/OldRepos/
 "https://github.com/seanbreckenridge/on_machine":
   base: ~/.local/share/go/src/github.com/seanbreckenridge
   symlink_to: ~/Repos
 "https://github.com/seanbreckenridge/spkglist":
   base: ~/.local/share/go/src/github.com/seanbreckenridge
-  symlink_to: ~/Repos
+  symlink_to: ~/Files/OldRepos/
 "https://github.com/seanbreckenridge/twitchlive":
   base: ~/.local/share/go/src/github.com/seanbreckenridge
-  symlink_to: ~/Repos
+  symlink_to: ~/Files/OldRepos/
 "https://github.com/seanbreckenridge/is-integer":
   base: ~/.local/share/go/src/github.com/seanbreckenridge
-  symlink_to: ~/Repos
+  symlink_to: ~/Files/OldRepos/
 "https://github.com/seanbreckenridge/server_clipboard":
   base: ~/.local/share/go/src/github.com/seanbreckenridge
   symlink_to: ~/Repos
