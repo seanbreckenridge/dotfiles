@@ -1,0 +1,70 @@
+#!/usr/bin/env python3
+# split a gpx file into multiple by accepting some limit of trkpt per file
+# name them like input-000.gpx, input-001.gpx, etc.
+
+from typing import TextIO, Iterator
+from pathlib import Path
+
+import click
+import gpxpy.gpx
+
+
+def yield_trkpts(input: TextIO) -> Iterator[gpxpy.gpx.GPXTrackPoint]:
+    gpx = gpxpy.parse(input)
+    for track in gpx.tracks:
+        for segment in track.segments:
+            for point in segment.points:
+                yield point
+
+
+@click.command()
+@click.option("-l", "--limit", type=int, default=10_000, help="Limit of trkpt per file")
+@click.option(
+    "-o",
+    "--output",
+    type=click.Path(path_type=Path),
+    help="Output directory",
+    required=True,
+)
+@click.argument("PATH", type=click.Path(path_type=Path, allow_dash=True), required=True)
+def main(limit: int, output: Path, path: Path) -> None:
+    if not output.exists():
+        output.mkdir(parents=True)
+    elif not output.is_dir():
+        raise click.UsageError(f"{output} is not a directory")
+    points: list[gpxpy.gpx.GPXTrackPoint] = []
+    if path == "-":
+        input = click.get_text_stream("stdin")
+        click.echo(
+            "Reading from stdin, splitting into files with {limit} trkpts", err=True
+        )
+        points = list(yield_trkpts(input))
+    else:
+        if not path.exists():
+            raise click.FileError(str(path), hint="File does not exist")
+        click.echo(
+            f"Reading from {path}, splitting into files with {limit} trkpts", err=True
+        )
+        with path.open() as input:
+            points = list(yield_trkpts(input))
+
+    click.echo(f"Read {len(points)} trackpoints", err=True)
+    if len(points) == 0:
+        raise click.UsageError("No trackpoints found in file")
+
+    for i in range(0, len(points), limit):
+        gpx = gpxpy.gpx.GPX()
+        gpx_track = gpxpy.gpx.GPXTrack()
+        gpx.tracks.append(gpx_track)
+        gpx_segment = gpxpy.gpx.GPXTrackSegment()
+        gpx_track.segments.append(gpx_segment)
+        for point in points[i : i + limit]:
+            gpx_segment.points.append(point)
+        output_path = output.joinpath(f"{path.stem}-{i//limit:03d}{path.suffix}")
+        with output_path.open("w") as output_file:
+            click.echo(f"Writing to {output_path}")
+            output_file.write(gpx.to_xml())
+
+
+if __name__ == "__main__":
+    main(prog_name="gpxsplit")
