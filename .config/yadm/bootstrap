@@ -63,9 +63,6 @@ declare -rx NODE_PACKAGE_LIST="${PACKAGE_DIR}/node_packages.txt"
 declare -rx COMPUTER_NODE_PACKAGE_LIST="${PACKAGE_DIR}/computer_node_packages.txt"
 declare -rx BASH_PACKAGE_LIST="${PACKAGE_DIR}/bash_packages.txt"
 
-# make sure personal aliases file exists so that zshrc souces fine
-[[ ! -f "${ZDOTDIR}/aliases/personal_aliases" ]] && touch "${ZDOTDIR}/aliases/personal_aliases"
-
 # data directory for https://github.com/seanbreckenridge/HPI
 [[ -n "${HPIDATA}" && ! -d "${HPIDATA}" ]] && mkdir -p "${HPIDATA}"
 
