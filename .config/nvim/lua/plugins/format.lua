@@ -12,7 +12,6 @@ return {
         -- local util = require('formatter.util')
 
         local prettier = require('formatter.defaults.prettier')
-        local python = require('formatter.filetypes.python')
         local shfmt = require('formatter.filetypes.sh').shfmt
         local fixjson = require('formatter.filetypes.json').fixjson
         local clang = require('formatter.defaults.clangformat')
@@ -38,7 +37,7 @@ return {
                 yaml = prettier,
                 toml = prettier,
                 php = prettier,
-                python = {python.isort, python.black},
+                python = require('formatter.filetypes.python').black,
                 lua = require('formatter.filetypes.lua').luaformat,
                 rust = require('formatter.filetypes.rust').rustfmt,
                 go = {go.goimports, go.gofmt},
