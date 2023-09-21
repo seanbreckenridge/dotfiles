@@ -1,20 +1,21 @@
 # language support
 @elm-tooling/elm-language-server
 @prettier/plugin-php
+@prisma/language-server
 @tailwindcss/language-server
 bash-language-server
 coffeescript
 cssmodules-language-server
 eslint
+fixjson
 html-minifier
 js-beautify
 jsonlint
 node-cljfmt
 npm
 prettier
-prettier-plugin-toml
 prettier-plugin-prisma
-@prisma/language-server
+prettier-plugin-toml
 pyright
 stylelint
 typescript

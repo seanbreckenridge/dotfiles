@@ -110,14 +110,6 @@ vim.opt.wildignore:append({
 -- plugins
 -- yadm-git
 vim.g.yadm_git_verbose = 0
-vim.g.yadm_git_gitgutter_enabled = 0
-
--- formatting
-vim.g.neoformat_enabled_python = {'black'}
-vim.g.neoformat_enabled_html = {'prettier'}
-vim.g.neoformat_enabled_javascript = {'prettier'}
-vim.g.neoformat_enabled_typescript = {'prettier'}
-vim.g.neoformat_enabled_json = {'prettier'}
-vim.g.neoformat_enabled_ocaml = {'ocamlformat'}
+vim.g.yadm_git_gitgutter_enabled = 0 -- I use gitsigns instead
 
 require "seanbreckenridge.catppuccin" -- source colorscheme
