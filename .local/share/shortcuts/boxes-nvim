@@ -1,2 +1,2 @@
 #!/bin/sh
-boxes-python | tr '#' '"'
+exec boxes -dada-box -pv1h2

@@ -582,7 +582,9 @@ exec boxes -dshell -pv1h2 "$@"
 
 [boxes-vim]
 command="""boxes-python | tr '#' '\"'"""
-link = "boxes-nvim"
+
+[boxes-nvim]
+command="exec boxes -dada-box -pv1h2"
 
 [flake8c]
 command='''
