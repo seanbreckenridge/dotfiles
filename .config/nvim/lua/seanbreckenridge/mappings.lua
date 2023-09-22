@@ -64,7 +64,7 @@ vnoremap('F', 'y:%s/<C-r>"//gc' .. leftn(3), 'search and replace')
 -- in normal mode, use the next word as the search term
 nnoremap('F', 'yiw:%s/<C-r>"//gc' .. leftn(3), 'search and replace')
 -- just start a search/replace and move me to where I can start typing
--- note: overwrites default <C-f> (foward one page)
+-- note: overwrites default <C-f> (forward one page)
 nnoremap('<C-f>', ':%s///gcI' .. leftn(5), 'empty search and replace')
 
 local reload_config = function()
