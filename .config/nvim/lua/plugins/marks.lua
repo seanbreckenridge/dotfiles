@@ -15,7 +15,7 @@ return {
             -- how often (in ms) to redraw signs/recompute mark positions.
             -- higher values will have better performance but may cause visual lag,
             -- while lower values may cause performance penalties. default 150.
-            refresh_interval = 1000,
+            refresh_interval = 1500,
             -- sign priorities for each type of mark - builtin marks, uppercase marks, lowercase
             -- marks, and bookmarks.
             -- can be either a table with all/none of the keys, or a single number, in which case
@@ -38,11 +38,15 @@ return {
             mappings = {}
         })
 
+        -- disable signs by default
+        marks.toggle_signs()
+
         local wk = require('which-key')
 
         wk.register({
             m = {
                 name = 'marks',
+                m = {marks.toggle_signs, 'toggle marks'},
                 n = {marks.next, 'next mark'},
                 p = {marks.prev, 'previous mark'},
                 d = {marks.delete_line, 'delete mark'},

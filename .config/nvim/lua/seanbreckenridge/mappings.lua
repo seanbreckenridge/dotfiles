@@ -61,8 +61,9 @@ nnoremap('!B', ':.!bash<CR>', 'run shell command')
 vnoremap('!B', ':.!bash<CR>', 'run shell command')
 
 vnoremap('J', ':move \'>+1<CR>gv=gv', 'move selected text down')
--- disable, dont really use (and K is used for lsp)
--- vnoremap('K', ':move \'<-2<CR>gv=gv', 'move selected text up')
+vnoremap('K', ':move \'<-2<CR>gv=gv', 'move selected text up')
+
+nnoremap('J', "mzJ`z", 'append to line')
 
 -- click to start a :%s/ search with the selected text, prompting for the replacement
 vnoremap('<C-n>', 'y:%s/<C-r>"//gc<Left><Left><Left>', 'search and replace')
