@@ -1,10 +1,5 @@
-return {
-    "mbbill/undotree",
-    cmd = {"UndotreeToggle"},
-    keys = {"<leader>u"},
-    config = function()
-        local wk = require("which-key")
+local wk = require("which-key")
 
-        wk.register({["<leader>u"] = {"<cmd>UndotreeToggle<cr>", "undotree"}})
-    end
-}
+wk.register({["<leader>u"] = {"<cmd>UndotreeToggle<cr>", "undotree"}})
+
+return {"mbbill/undotree", cmd = {"UndotreeToggle"}, keys = {"<leader>u"}}

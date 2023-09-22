@@ -1,13 +1,11 @@
+local wk = require("which-key")
+wk.register({':Format<CR>', 'format'}, {prefix = '<leader>t'})
+
 return {
     'mhartington/formatter.nvim',
     keys = {'<leader>t'},
     cmd = {'Format', 'FormatWrite', 'FormatLock', 'FormatWriteLock'},
     config = function()
-        local wk = require("which-key")
-
-        -- seems that vim.lsp.buf.format() that requires a language server to have an opinion on formatting
-        -- which is not always the case
-        wk.register({':Format<CR>', 'format'}, {prefix = '<leader>t'})
 
         local fmt = require('formatter')
         -- local util = require('formatter.util')

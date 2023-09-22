@@ -6,13 +6,15 @@ return {
         dependencies = {"nvim-treesitter/nvim-treesitter"}
     }, -- treesitter context
     {"catppuccin/nvim", name = "catppuccin", priority = 1000}, -- colorscheme, 1000 makes it load early
-    {'seanbreckenridge/yadm-git.vim', enabled = vim.g.has_yadm}, -- yadm integration (needs to be loaded early since uses BufWinEnter to detect)
-    {"machakann/vim-sandwich", event = "VeryLazy"}, -- operations on selected text
+    -- yadm integration (needs to be loaded early since uses BufWinEnter to detect)
+    -- if yadm is not installed, this will be disabled
+    {'seanbreckenridge/yadm-git.vim', enabled = vim.g.has_yadm},
+    {"machakann/vim-sandwich", keys = {"sa", "sr", "sd"}}, -- surround text (e.g. quotes/brackets)
     -- vim-unimpaired reminders:
     -- []f to go to next/prev file
     -- []q quickfix, , []Space to add newlines, []e to swap lines
     -- []xx to encode/decode HTML, []uu to encode/decode URLs, []y to do C-style escaping
-    {'tpope/vim-unimpaired', event = "VeryLazy"},
+    {'tpope/vim-unimpaired', keys = {"]", "["}},
     {'tpope/vim-repeat', event = "VeryLazy"}, -- repeat plugin commands
     {'tpope/vim-sleuth'}, -- detect indentation
     -- '-' to go up, '~' to go home, y. to yank filename, . to put file on command line

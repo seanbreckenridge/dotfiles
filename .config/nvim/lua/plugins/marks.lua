@@ -1,3 +1,16 @@
+local wk = require('which-key')
+
+wk.register({
+    m = {
+        name = 'marks',
+        m = {function() require("marks").toggle_signs() end, 'toggle marks'},
+        n = {function() require("marks").next() end, 'next mark'},
+        p = {function() require("marks").prev() end, 'previous mark'},
+        d = {function() require("marks").delete_line() end, 'delete mark'},
+        c = {':delmarks!<CR>', 'clear marks'}
+    }
+}, {prefix = '<leader>'})
+
 return {
     'chentoast/marks.nvim',
     keys = {'<leader>m'},
@@ -37,19 +50,5 @@ return {
             },
             mappings = {}
         })
-
-        local wk = require('which-key')
-
-        wk.register({
-            m = {
-                name = 'marks',
-                m = {marks.toggle_signs, 'toggle marks'},
-                n = {marks.next, 'next mark'},
-                p = {marks.prev, 'previous mark'},
-                d = {marks.delete_line, 'delete mark'},
-                c = {':delmarks!<CR>', 'clear marks'}
-            }
-        }, {prefix = '<leader>'})
-
     end
 }

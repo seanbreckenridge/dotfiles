@@ -27,7 +27,6 @@ map_key('<Down>', '<Nop>', 'disable arrow keys', {'i', 'n', 'x'})
 map_key('<Left>', '<Nop>', 'disable arrow keys', {'i', 'n', 'x'})
 map_key('<Right>', '<Nop>', 'disable arrow keys', {'i', 'n', 'x'})
 map_key('<Up>', '<Nop>', 'disable arrow keys', {'i', 'n', 'x'})
-nnoremap(';', ':', 'use ; for :')
 -- gq is used for formatting, e.g. gqip to format a paragraph, gqq to format a line
 map_key('Q', 'gq', 'reformat lines', {'n', 'v'})
 
