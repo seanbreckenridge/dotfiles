@@ -17,7 +17,7 @@ vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
 -- load plugins from the 'lua/plugins' directory
-require('lazy').setup 'plugins'
+require'lazy'.setup 'plugins'
 
 -- set filetype to on after plugins are loaded  to prevent possible errors
 vim.cmd 'filetype plugin indent on'

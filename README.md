@@ -19,7 +19,7 @@ I use [`syncthing`](https://github.com/syncthing/syncthing) to sync my files/dat
 
 On Arch:
 
-- [`i3-gaps`](https://github.com/Airblader/i3) - window manager; [config file](.config/i3/config) - [`i3-notify-launcher`](https://sean.fish/d/i3-notify-launcher?dark) reminds me of [my bindings for my launcher mode](https://i.imgur.com/m6q3L37.png)
+- [`i3-gaps`](https://github.com/Airblader/i3) - window manager; [config file](.config/i3/config) - [`i3-launcher`](https://sean.fish/d/i3-launcher?dark) reminds me of [my bindings for my launcher mode](https://i.imgur.com/m6q3L37.png)
 - [`rofi`](https://github.com/davatorium/rofi) - application launcher
 - [`i3lock`](https://i3wm.org/i3lock/) for screen lock; [`daemon process`](.local/scripts/cross-platform/lock-screen) caches pixelated version of screen to speed up start time
 - [`dunst`](https://dunst-project.org/) for notifications
@@ -57,7 +57,7 @@ For a summary of tools I use often, see [here](https://exobrain.sean.fish/tools/
 
     # on mac, run `xcode-select --install`
     yadm clone https://gitlab.com/seanbreckenridge/dotfiles
-    # restart the computer so that ~/.profile/zsh is setup properly
+    # restart the computer so that ~/.profile and zsh is setup properly
     # so OS detection can be done to install the correct packages
     yadm bootstrap
 
