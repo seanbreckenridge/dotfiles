@@ -23,13 +23,13 @@ local nnoremap = function(key, cmd, desc) map_key(key, cmd, desc, 'n') end
 ---@param desc string the description to show in which-key
 local vnoremap = function(key, cmd, desc) map_key(key, cmd, desc, 'v') end
 
--- disable arrow keys, use vim.keymap.set so I can set all modes at oncec
 map_key('<Down>', '<Nop>', 'disable arrow keys', {'i', 'n', 'x'})
 map_key('<Left>', '<Nop>', 'disable arrow keys', {'i', 'n', 'x'})
 map_key('<Right>', '<Nop>', 'disable arrow keys', {'i', 'n', 'x'})
 map_key('<Up>', '<Nop>', 'disable arrow keys', {'i', 'n', 'x'})
 nnoremap(';', ':', 'use ; for :')
-nnoremap('Q', '<Nop>', 'disable ex mode')
+-- gq is used for formatting, e.g. gqip to format a paragraph, gqq to format a line
+map_key('Q', 'gq', 'reformat lines', {'n', 'v'})
 
 nnoremap('/', '/\\v', 'incremental search')
 nnoremap('/', '/\\v', 'incremental search')

@@ -52,8 +52,8 @@ vim.opt.showmode = true
 vim.opt.showcmd = true
 
 -- searching
-vim.opt.hlsearch = true -- highlight on search
-vim.opt.incsearch = true
+vim.opt.hlsearch = true -- highlight results on search
+vim.opt.incsearch = true -- highlight as you type
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
 vim.opt.showmatch = true
