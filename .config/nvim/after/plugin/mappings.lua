@@ -1,67 +1,66 @@
 local wk = require('which-key')
 
-local nnoremap = function(lhs, rhs, opts)
-    vim.api.nvim_set_keymap('n', lhs, rhs, opts)
+---@param key string the key to map
+---@param cmd string the command to run
+---@param opts table|nil the options to pass to vim.keymap.set
+local nnoremap = function(key, cmd, opts)
+    opts = opts or {noremap = true}
+    vim.keymap.set('n', key, cmd, opts)
 end
 
-local inoremap = function(lhs, rhs, opts)
-    vim.api.nvim_set_keymap('i', lhs, rhs, opts)
-end
-
-local vnoremap = function(lhs, rhs, opts)
+---@param key string the key to map
+---@param cmd string the command to run
+---@param opts table|nil the options to pass to vim.keymap.set
+local vnoremap = function(key, cmd, opts)
     -- should use 'x' instead of 'v' for visual mode
     -- so that the commands don't apply to select mode
-    vim.api.nvim_set_keymap('x', lhs, rhs, opts)
+    opts = opts or {noremap = true}
+    vim.keymap.set('x', key, cmd, opts)
 end
 
--- disable arrow keys in all modes, loop over in lua
-for _, mode in ipairs({'', 'i', 'n', 'x'}) do
-    vim.keymap.set(mode, '<Down>', '<Nop>')
-    vim.keymap.set(mode, '<Left>', '<Nop>')
-    vim.keymap.set(mode, '<Right>', '<Nop>')
-    vim.keymap.set(mode, '<Up>', '<Nop>')
-end
+-- disable arrow keys
+vim.keymap.set({'i', 'n', 'x'}, '<Down>', '<Nop>')
+vim.keymap.set({'i', 'n', 'x'}, '<Left>', '<Nop>')
+vim.keymap.set({'i', 'n', 'x'}, '<Right>', '<Nop>')
+vim.keymap.set({'i', 'n', 'x'}, '<Up>', '<Nop>')
 
 -- disable capital Q (:ex mode)
-vim.api.nvim_set_keymap('n', 'Q', '<Nop>', {noremap = true})
+nnoremap('Q', '<Nop>')
 
 -- incremental search, showing results as you type
-vim.api.nvim_set_keymap('n', '/', '/\\v', {noremap = true})
-vim.api.nvim_set_keymap('v', '/', '/\\v', {noremap = true})
+nnoremap('/', '/\\v')
+nnoremap('/', '/\\v')
 
 -- copy visual selection to clipboard
-vim.api.nvim_set_keymap('v', '<leader>c', '"+y', {noremap = true})
-vim.api.nvim_set_keymap('v', '<leader>y', '"+y', {noremap = true})
-vim.api.nvim_set_keymap('n', '<leader>y', 'V"+y', {noremap = true})
+nnoremap('<leader>y', 'V"+y')
+
 -- swap wrapped lines behavior;
 -- j/k moves a wrapped line, gj/gk moves the full line
-vim.api.nvim_set_keymap('n', 'j', 'gj', {noremap = true})
-vim.api.nvim_set_keymap('n', 'k', 'gk', {noremap = true})
-vim.api.nvim_set_keymap('n', 'gj', 'j', {noremap = true})
-vim.api.nvim_set_keymap('n', 'gk', 'k', {noremap = true})
+nnoremap('j', 'gj')
+nnoremap('k', 'gk')
+nnoremap('gj', 'j')
+nnoremap('gk', 'k')
 
 -- keep cursor in the middle when using <C-u/d>
-vim.api.nvim_set_keymap('n', '<C-u>', '<C-u>zz', {noremap = true})
-vim.api.nvim_set_keymap('n', '<C-d>', '<C-d>zz', {noremap = true})
+nnoremap('<C-u>', '<C-u>zz')
+nnoremap('<C-d>', '<C-d>zz')
 
 -- keep search term in the middle when searching
-vim.api.nvim_set_keymap('n', 'n', 'nzz', {noremap = true})
-vim.api.nvim_set_keymap('n', 'N', 'Nzz', {noremap = true})
+nnoremap('n', 'nzz')
+nnoremap('N', 'Nzz')
 
 -- when I press !B (holding shift for both), send the current line to bash, used to run shell commands
-vim.api.nvim_set_keymap('n', '!B', ':.!bash<CR>', {noremap = true})
-vim.api.nvim_set_keymap('x', '!B', ':.!bash<CR>', {noremap = true})
+nnoremap('!B', ':.!bash<CR>')
+vnoremap('!B', ':.!bash<CR>')
 
 -- move items while text is highlighted
-vim.api.nvim_set_keymap('x', 'J', ':move \'>+1<CR>gv=gv', {noremap = true})
-vim.api.nvim_set_keymap('x', 'K', ':move \'<-2<CR>gv=gv', {noremap = true})
+vnoremap('J', ':move \'>+1<CR>gv=gv')
+vnoremap('K', ':move \'<-2<CR>gv=gv')
 
 -- click to start a :%s/ search with the selected text, prompting for the replacement
-vim.api.nvim_set_keymap('x', '<C-n>', 'y:%s/<C-r>"//gc<Left><Left><Left>',
-                        {noremap = true})
+vnoremap('<C-n>', 'y:%s/<C-r>"//gc<Left><Left><Left>')
 -- in normal mode, use the next word as the search term
-vim.api.nvim_set_keymap('n', '<C-n>', 'yiw:%s/<C-r>"//gc<Left><Left><Left>',
-                        {noremap = true})
+nnoremap('<C-n>', 'yiw:%s/<C-r>"//gc<Left><Left><Left>')
 
 -- misc
 wk.register({
@@ -93,8 +92,7 @@ wk.register({
 }, {prefix = '<leader>'})
 
 -- function to toggle quickfix lists
-vim.api.nvim_set_keymap('n', '<C-q>', ':lua ToggleQFList(1)<CR>',
-                        {noremap = true})
+nnoremap('<C-q>', ':lua ToggleQFList(1)<CR>')
 
 -- quickfix list mappings
 wk.register({
@@ -107,8 +105,7 @@ wk.register({
 }, {prefix = '<leader>'})
 
 -- function to toggle loc list
-vim.api.nvim_set_keymap('n', '<C-l>', ':lua ToggleQFList(0)<CR>',
-                        {noremap = true})
+nnoremap('<C-l>', ':lua ToggleQFList(0)<CR>')
 
 -- loc list mappings
 wk.register({
