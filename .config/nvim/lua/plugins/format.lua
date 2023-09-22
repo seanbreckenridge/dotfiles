@@ -42,8 +42,8 @@ return {
                 rust = require('formatter.filetypes.rust').rustfmt,
                 go = {go.goimports, go.gofmt},
                 elixir = require('formatter.defaults.mixformat'),
+                sh = shfmt,
                 bash = shfmt,
-                shell = shfmt,
                 c = clang,
                 cpp = clang,
 
