@@ -1,6 +1,7 @@
 return {
     "mbbill/undotree",
-    event = "VeryLazy",
+    cmd = {"UndotreeToggle"},
+    keys = {"<leader>u"},
     config = function()
         local wk = require("which-key")
 

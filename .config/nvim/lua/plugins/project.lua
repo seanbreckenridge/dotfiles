@@ -1,6 +1,6 @@
 return {
     "ahmedkhalf/project.nvim",
-    event = "VeryLazy",
+    keys = {"<leader>c"},
     config = function()
         local pr = require("project_nvim")
         pr.setup({

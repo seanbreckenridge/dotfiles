@@ -10,8 +10,8 @@ return {
         }, {'cljoly/telescope-repo.nvim', lazy = true}
     },
     event = "VeryLazy",
-    cmd = 'Telescope',
-    keys = {"<leader>f", "<leader>c", "<leader>g"},
+    -- cmd = 'Telescope',
+    -- keys = {"<leader>f", "<leader>c", "<leader>g"},
     config = function()
         local tl = require('telescope')
         local builtin = require('telescope.builtin')

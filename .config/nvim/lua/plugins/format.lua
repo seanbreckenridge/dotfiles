@@ -1,6 +1,7 @@
 return {
     'mhartington/formatter.nvim',
-    event = "VeryLazy",
+    keys = {'<leader>t'},
+    cmd = {'Format', 'FormatWrite', 'FormatLock', 'FormatWriteLock'},
     config = function()
         local wk = require("which-key")
 

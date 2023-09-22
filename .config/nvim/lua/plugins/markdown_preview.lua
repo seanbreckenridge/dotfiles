@@ -1,14 +1,13 @@
 return {
     "iamcco/markdown-preview.nvim",
     build = "cd app && yarn install",
-    -- only load when a markdown file is opened
+    -- only load when filetype is markdown
     ft = "markdown",
     config = function()
-        -- leader p to preview
         local wk = require("which-key")
+        -- load plugin file so MarkdownPreview can be called
 
-        wk.register({
-            ["<leader>p"] = {"<cmd>MarkdownPreview<cr>", "preview markdown"}
-        })
+        wk.register({["p"] = {"<cmd>MarkdownPreview<cr>", "preview markdown"}},
+                    {prefix = "<leader>"})
     end
 }

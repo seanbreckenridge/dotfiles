@@ -3,10 +3,8 @@ return {
     event = "VeryLazy",
     keys = {"<leader>g"},
     config = function()
-
         local wk = require("which-key")
 
-        -- git (fugitive)
         wk.register({
             g = {
                 name = "git",

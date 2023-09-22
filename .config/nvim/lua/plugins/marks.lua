@@ -1,6 +1,6 @@
 return {
     'chentoast/marks.nvim',
-    event = "VeryLazy",
+    keys = {'<leader>m'},
     config = function()
         local marks = require('marks')
         marks.setup({
@@ -37,9 +37,6 @@ return {
             },
             mappings = {}
         })
-
-        -- disable signs by default
-        marks.toggle_signs()
 
         local wk = require('which-key')
 
