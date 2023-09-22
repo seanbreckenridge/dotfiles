@@ -15,7 +15,7 @@ dir="$(dirname "$curplaying")"
 filename="$(basename "$curplaying")"
 cd "$dir" || exit 1
 
-declare -a listened_to_secs=()
+declare -a listened_to_files=()
 
 declare -a all_files=()
 
@@ -27,11 +27,11 @@ for file in "${all_files[@]}"; do
 	if [[ "$file" == "$filename" ]]; then
 		break
 	fi
-	listened_to_secs+=("$file")
+	listened_to_files+=("$file")
 done
 
 listened_to="$({
-	mlength "${listened_to_secs[@]}" -d s
+	mlength "${listened_to_files[@]}" -d s
 
 	# get current playback time in seconds
 	mpv-get-property "$(mpv-active-sockets)" 'playback-time'
