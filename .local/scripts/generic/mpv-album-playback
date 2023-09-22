@@ -1,0 +1,43 @@
+#!/usr/bin/env bash
+# use https://github.com/seanbreckenridge/mpv-sockets
+# to get the currently playing file
+#
+# this assumes I'm playing through the whole album, and tells
+# me what percentage of the album I've listened to like
+# 00:45:42 / 01:01:23
+
+set -e
+set -o pipefail
+
+curplaying="$(mpv-currently-playing)" || exit 1
+[ -z "$curplaying" ] && exit 1
+dir="$(dirname "$curplaying")"
+filename="$(basename "$curplaying")"
+cd "$dir" || exit 1
+
+declare -a listened_to_secs=()
+
+declare -a all_files=()
+
+while read -r line; do
+	all_files+=("$line")
+done < <(list-music)
+
+for file in "${all_files[@]}"; do
+	if [[ "$file" == "$filename" ]]; then
+		break
+	fi
+	listened_to_secs+=("$file")
+done
+
+listened_to="$({
+	mlength "${listened_to_secs[@]}" -d s
+
+	# get current playback time in seconds
+	mpv-get-property "$(mpv-active-sockets)" 'playback-time'
+} | datamash sum 1)"
+
+# get total length of album in seconds
+total="$(mlength "${all_files[@]}" -d s -o sum)"
+
+printf '%s / %s\n' "$(date -d@"$listened_to" -u +%H:%M:%S)" "$(date -d@"$total" -u +%H:%M:%S)"
