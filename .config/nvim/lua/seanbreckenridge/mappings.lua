@@ -1,7 +1,7 @@
 local wk = require('which-key')
 
 ---@param key string the key to map
----@param cmd string the command to run
+---@param cmd string|function the command to run
 ---@param opts table|nil the options to pass to vim.keymap.set
 local nnoremap = function(key, cmd, opts)
     opts = opts or {noremap = true}
@@ -9,7 +9,7 @@ local nnoremap = function(key, cmd, opts)
 end
 
 ---@param key string the key to map
----@param cmd string the command to run
+---@param cmd string|function the command to run
 ---@param opts table|nil the options to pass to vim.keymap.set
 local vnoremap = function(key, cmd, opts)
     -- should use 'x' instead of 'v' for visual mode
@@ -31,8 +31,9 @@ nnoremap('Q', '<Nop>')
 nnoremap('/', '/\\v')
 nnoremap('/', '/\\v')
 
--- copy visual selection to clipboard
+-- copy to clipboard. if in normal mode, copy the whole line
 nnoremap('<leader>y', 'V"+y')
+vnoremap('<leader>y', '"+y')
 
 -- swap wrapped lines behavior;
 -- j/k moves a wrapped line, gj/gk moves the full line
@@ -62,16 +63,19 @@ vnoremap('<C-n>', 'y:%s/<C-r>"//gc<Left><Left><Left>')
 -- in normal mode, use the next word as the search term
 nnoremap('<C-n>', 'yiw:%s/<C-r>"//gc<Left><Left><Left>')
 
+local reload_config = function()
+    vim.cmd(':source ~/.config/nvim/lua/seanbreckenridge/init.lua')
+    vim.cmd(':source ~/.config/nvim/lua/seanbreckenridge/mappings.lua')
+    require('seanbreckenridge.catppuccin').setup_theme()
+end
+
 -- misc
 wk.register({
     -- reminder, can use 'P' in netrw to open in right tab
     e = {':wincmd v<bar> :Explore <bar> :vertical resize 30<CR>', 'netrw'},
     s = {':set spell!<CR>', 'toggle spell'},
     X = {':!chmod +x %<CR>', 'chmod +x'},
-    ["S"] = {
-        ':so ~/.config/nvim/init.lua<CR>:lua require("seanbreckenridge.colors").setup_theme()<CR>',
-        'reload config'
-    }
+    ["S"] = {reload_config, 'reload config'}
 }, {prefix = '<space>'})
 
 -- nicer bindings for moving between windows

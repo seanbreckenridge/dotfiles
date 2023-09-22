@@ -112,4 +112,6 @@ vim.opt.wildignore:append({
 vim.g.yadm_git_verbose = 0
 vim.g.yadm_git_gitgutter_enabled = 0 -- I use gitsigns instead
 
-require "seanbreckenridge.catppuccin" -- source colorscheme
+require "seanbreckenridge.mappings"
+require "seanbreckenridge.autocmds"
+require "seanbreckenridge.catppuccin" -- colorscheme

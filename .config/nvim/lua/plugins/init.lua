@@ -7,7 +7,7 @@ return {
     }, -- treesitter context
     {"catppuccin/nvim", name = "catppuccin", priority = 1000}, -- colorscheme, 1000 makes it load early
     {'seanbreckenridge/yadm-git.vim', enabled = vim.g.has_yadm}, -- yadm integration (needs to be loaded early since uses BufWinEnter to detect)
-    {"machakann/vim-sandwich", event = "VeryLazy" }, -- operations on selected text
+    {"machakann/vim-sandwich", event = "VeryLazy"}, -- operations on selected text
     {'tpope/vim-unimpaired', event = "VeryLazy"}, -- pairs of handy bracket mappings
     {'tpope/vim-repeat', event = "VeryLazy"}, -- repeat plugin commands
     {'tpope/vim-sleuth'}, -- detect indentation
