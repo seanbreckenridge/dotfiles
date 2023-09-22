@@ -51,6 +51,8 @@ vim.opt.showcmd = true
 -- searching
 vim.api.nvim_set_keymap('n', '/', '/\\v', {noremap = true})
 vim.api.nvim_set_keymap('v', '/', '/\\v', {noremap = true})
+-- click f to start a :%s/ search with the selected text, prompting for the replacement
+vim.api.nvim_set_keymap('v', 'f', 'y:%s/<C-r>"//gc<Left><Left><Left>', {noremap = true})
 vim.opt.hlsearch = true -- highlight on search
 vim.opt.incsearch = true
 vim.opt.ignorecase = true

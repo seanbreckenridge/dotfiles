@@ -6,7 +6,6 @@ return {
         dependencies = {"nvim-treesitter/nvim-treesitter"}
     }, -- treesitter context
     {"catppuccin/nvim", name = "catppuccin", priority = 1000}, -- colorscheme, 1000 makes it load early
-    {'mg979/vim-visual-multi', branch = 'master', event = "VeryLazy"}, -- for tutorial: 'nvim -Nu .local/plugged/vim-visual-multi/tutorialrc'
     {'seanbreckenridge/yadm-git.vim', enabled = vim.g.has_yadm}, -- yadm integration (needs to be loaded early since uses BufWinEnter to detect)
     {"machakann/vim-sandwich", event = "VeryLazy" }, -- operations on selected text
     {'tpope/vim-unimpaired', event = "VeryLazy"}, -- pairs of handy bracket mappings
