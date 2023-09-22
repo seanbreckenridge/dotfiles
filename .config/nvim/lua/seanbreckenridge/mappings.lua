@@ -2,20 +2,22 @@ local wk = require('which-key')
 
 ---@param key string the key to map
 ---@param cmd string|function the command to run
+---@param desc string the description to show in which-key
 ---@param opts table|nil the options to pass to vim.keymap.set
-local nnoremap = function(key, cmd, opts)
+local nnoremap = function(key, cmd, desc, opts)
     opts = opts or {noremap = true}
-    vim.keymap.set('n', key, cmd, opts)
+    wk.register({[key] = {cmd, desc}}, {mode = 'n'})
 end
 
 ---@param key string the key to map
 ---@param cmd string|function the command to run
+---@param desc string the description to show in which-key
 ---@param opts table|nil the options to pass to vim.keymap.set
-local vnoremap = function(key, cmd, opts)
+local vnoremap = function(key, cmd, desc, opts)
     -- should use 'x' instead of 'v' for visual mode
     -- so that the commands don't apply to select mode
     opts = opts or {noremap = true}
-    vim.keymap.set('x', key, cmd, opts)
+    wk.register({[key] = {cmd, desc}}, {mode = 'x'})
 end
 
 -- disable arrow keys
@@ -25,43 +27,41 @@ vim.keymap.set({'i', 'n', 'x'}, '<Right>', '<Nop>')
 vim.keymap.set({'i', 'n', 'x'}, '<Up>', '<Nop>')
 
 -- disable capital Q (:ex mode)
-nnoremap('Q', '<Nop>')
+nnoremap('Q', '<Nop>', 'disable ex mode')
 
 -- incremental search, showing results as you type
-nnoremap('/', '/\\v')
-nnoremap('/', '/\\v')
+nnoremap('/', '/\\v', 'incremental search')
+nnoremap('/', '/\\v', 'incremental search')
 
 -- copy to clipboard. if in normal mode, copy the whole line
-nnoremap('<leader>y', 'V"+y')
-vnoremap('<leader>y', '"+y')
+nnoremap('<leader>y', 'V"+y', 'copy to clipboard')
+vnoremap('<leader>y', '"+y', 'copy to clipboard')
 
 -- swap wrapped lines behavior;
 -- j/k moves a wrapped line, gj/gk moves the full line
-nnoremap('j', 'gj')
-nnoremap('k', 'gk')
-nnoremap('gj', 'j')
-nnoremap('gk', 'k')
+nnoremap('j', 'gj', 'move wrapped line down')
+nnoremap('k', 'gk', 'move wrapped line up')
+nnoremap('gj', 'j', 'move line down')
+nnoremap('gk', 'k', 'move line up')
 
--- keep cursor in the middle when using <C-u/d>
-nnoremap('<C-u>', '<C-u>zz')
-nnoremap('<C-d>', '<C-d>zz')
+-- zz keeps the cursor in the middle of the screen
+nnoremap('<C-u>', '<C-u>zz', 'centered page up')
+nnoremap('<C-d>', '<C-d>zz', 'centered page down')
+nnoremap('n', 'nzz', 'centered next')
+nnoremap('N', 'Nzz', 'centered prev')
 
--- keep search term in the middle when searching
-nnoremap('n', 'nzz')
-nnoremap('N', 'Nzz')
-
--- when I press !B (holding shift for both), send the current line to bash, used to run shell commands
-nnoremap('!B', ':.!bash<CR>')
-vnoremap('!B', ':.!bash<CR>')
+-- when I press !B (holding shift for both)
+nnoremap('!B', ':.!bash<CR>', 'run shell command')
+vnoremap('!B', ':.!bash<CR>', 'run shell command')
 
 -- move items while text is highlighted
-vnoremap('J', ':move \'>+1<CR>gv=gv')
-vnoremap('K', ':move \'<-2<CR>gv=gv')
+vnoremap('J', ':move \'>+1<CR>gv=gv', 'move selected text down')
+vnoremap('K', ':move \'<-2<CR>gv=gv', 'move selected text up')
 
 -- click to start a :%s/ search with the selected text, prompting for the replacement
-vnoremap('<C-n>', 'y:%s/<C-r>"//gc<Left><Left><Left>')
+vnoremap('<C-n>', 'y:%s/<C-r>"//gc<Left><Left><Left>', 'search and replace')
 -- in normal mode, use the next word as the search term
-nnoremap('<C-n>', 'yiw:%s/<C-r>"//gc<Left><Left><Left>')
+nnoremap('<C-n>', 'yiw:%s/<C-r>"//gc<Left><Left><Left>', 'search and replace')
 
 local reload_config = function()
     vim.cmd(':source ~/.config/nvim/lua/seanbreckenridge/init.lua')
@@ -95,10 +95,7 @@ wk.register({
     }
 }, {prefix = '<leader>'})
 
--- function to toggle quickfix lists
-nnoremap('<C-q>', ':lua ToggleQFList(1)<CR>')
-
--- quickfix list mappings
+nnoremap('<C-q>', ':lua ToggleQFList(1)<CR>', 'toggle quickfix list')
 wk.register({
     j = {
         name = 'quickfix',
@@ -108,10 +105,7 @@ wk.register({
     }
 }, {prefix = '<leader>'})
 
--- function to toggle loc list
-nnoremap('<C-l>', ':lua ToggleQFList(0)<CR>')
-
--- loc list mappings
+nnoremap('<C-l>', ':lua ToggleQFList(0)<CR>', 'toggle loc list')
 wk.register({
     l = {
         name = 'loc list',
@@ -121,9 +115,9 @@ wk.register({
     }
 }, {prefix = '<leader>'})
 
-function ToggleQFList(global)
+function ToggleQFList(quickfix)
     -- quickfix
-    if global == 1 then
+    if quickfix == 1 then
         require("trouble").toggle("quickfix")
     else -- loclist
         require("trouble").toggle("loclist")
