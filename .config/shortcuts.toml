@@ -404,6 +404,9 @@ exec stream-corner-480
 [discord-browser]
 command="exec openurl 'https://discord.com/login'"
 
+[feed-open]
+command="exec openurl 'https://sean.fish/feed/'"
+
 [newsboat-force]
 command='''
 # if another instance of newsboat is open, kill it and open one here

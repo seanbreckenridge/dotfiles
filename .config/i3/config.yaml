@@ -2,7 +2,7 @@
 launcher:
   a: "ttt kitty -1"
   f: "ttt firefox-developer-edition"
-  g: "openurl https://sean.fish/feed/"
+  g: "feed-open"
   t: "trakt-progress"
   y: "mal-recent"
   d: "ttt discord"
