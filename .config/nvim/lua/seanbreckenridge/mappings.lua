@@ -81,11 +81,10 @@ wk.register({
     ["S"] = {reload_config, 'reload config'}
 }, {prefix = '<space>'})
 
--- nicer bindings for moving between windows
 -- window/buffers
-
 wk.register({b = {'<C-^><CR>', 'swap buffers'}, w = {'<C-W>', 'window'}},
             {prefix = '<leader>'})
+nnoremap('<leader><C-n>', ':enew<CR>', 'new file')
 
 -- separating these into separate register calls let me use the name
 wk.register({

@@ -23,6 +23,9 @@ alias la='ll -a'
 alias sl='ls'
 alias dc='cd' # never going to use the reverse-polish calculator, is *always* a typo
 
+# https://github.com/neovim/neovim/issues/1808
+alias killall-nvim='killall -9 nvim'
+
 alias ccat='/bin/cat'
 
 # yadm aliases to work like git aliases, to manage dotfiles
