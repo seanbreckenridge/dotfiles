@@ -1,41 +1,33 @@
 local wk = require('which-key')
 
+-- shorter helper w/ types to warn me for mapping keys
+-- tried to use which-key but doesnt always work (e.g. for
+-- incremental search and search/replace with selected text)
 
 ---@param key string the key to map
 ---@param cmd string|function the command to run
 ---@param desc string the description to show in which-key
----@param mode string|nil the mode to map to, defaults to 'n'
----@param opts table|nil the options to pass to vim.keymap.set
-local map_key = function(key, cmd, desc, mode, opts)
-    opts = opts or {}
-    opts.noremap = true
-    opts.nowait = false
-    opts.mode = mode or 'n'
-    vim.keymap.set(opts.mode, key, cmd, {noremap = true, nowait = false, desc = desc})
-end
-
-
----@param key string the key to map
----@param cmd string|function the command to run
----@param desc string the description to show in which-key
----@param opts table|nil the options to pass to vim.keymap.set
-local nnoremap = function(key, cmd, desc, opts)
-    map_key(key, cmd, desc, 'n', opts)
+---@param mode string|table the mode to map to, defaults to 'n'
+local map_key = function(key, cmd, desc, mode)
+    vim.keymap
+        .set(mode, key, cmd, {noremap = true, nowait = false, desc = desc})
 end
 
 ---@param key string the key to map
 ---@param cmd string|function the command to run
 ---@param desc string the description to show in which-key
----@param opts table|nil the options to pass to vim.keymap.set
-local vnoremap = function(key, cmd, desc, opts)
-    map_key(key, cmd, desc, 'v', opts)
-end
+local nnoremap = function(key, cmd, desc) map_key(key, cmd, desc, 'n') end
 
--- disable arrow keys, use vim.keymap.set so I can set all modes at once
-vim.keymap.set({'i', 'n', 'x'}, '<Down>', '<Nop>')
-vim.keymap.set({'i', 'n', 'x'}, '<Left>', '<Nop>')
-vim.keymap.set({'i', 'n', 'x'}, '<Right>', '<Nop>')
-vim.keymap.set({'i', 'n', 'x'}, '<Up>', '<Nop>')
+---@param key string the key to map
+---@param cmd string|function the command to run
+---@param desc string the description to show in which-key
+local vnoremap = function(key, cmd, desc) map_key(key, cmd, desc, 'v') end
+
+-- disable arrow keys, use vim.keymap.set so I can set all modes at oncec
+map_key('<Down>', '<Nop>', 'disable arrow keys', {'i', 'n', 'x'})
+map_key('<Left>', '<Nop>', 'disable arrow keys', {'i', 'n', 'x'})
+map_key('<Right>', '<Nop>', 'disable arrow keys', {'i', 'n', 'x'})
+map_key('<Up>', '<Nop>', 'disable arrow keys', {'i', 'n', 'x'})
 
 nnoremap('Q', '<Nop>', 'disable ex mode')
 
@@ -65,7 +57,7 @@ vnoremap('K', ':move \'<-2<CR>gv=gv', 'move selected text up')
 
 nnoremap('J', "mzJ`z", 'append to line')
 
--- click to start a :%s/ search with the selected text, prompting for the replacement
+-- start a :%s/ search with the selected text, prompting for the replacement
 vnoremap('<C-n>', 'y:%s/<C-r>"//gc<Left><Left><Left>', 'search and replace')
 -- in normal mode, use the next word as the search term
 nnoremap('<C-n>', 'yiw:%s/<C-r>"//gc<Left><Left><Left>', 'search and replace')
@@ -108,7 +100,7 @@ wk.register({
         name = 'quickfix',
         j = {':cnext<CR>', 'next'},
         k = {':cprev<CR>', 'prev'},
-        q = {function() ToggleQFList(1) end, 'toggle'}
+        q = {function() ToggleQFList(1) end, 'toggle quickfix list'}
     }
 }, {prefix = '<leader>'})
 
@@ -118,7 +110,7 @@ wk.register({
         name = 'loc list',
         j = {'lj', 'next'},
         k = {'lk', 'prev'},
-        l = {function() ToggleQFList(0) end, 'toggle'}
+        l = {function() ToggleQFList(0) end, 'toggle loc list'}
     }
 }, {prefix = '<leader>'})
 
@@ -151,5 +143,6 @@ let g:copilot_no_tab_map = v:true
 
 let g:copilot_filetypes = {'*': v:true ,
   \ 'help': v:false,
+  \ 'markdown': v:false,
   \ }
   ]])
