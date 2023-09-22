@@ -1,12 +1,26 @@
 local wk = require('which-key')
 
+
+---@param key string the key to map
+---@param cmd string|function the command to run
+---@param desc string the description to show in which-key
+---@param mode string|nil the mode to map to, defaults to 'n'
+---@param opts table|nil the options to pass to vim.keymap.set
+local map_key = function(key, cmd, desc, mode, opts)
+    opts = opts or {}
+    opts.noremap = true
+    opts.nowait = false
+    opts.mode = mode or 'n'
+    vim.keymap.set(opts.mode, key, cmd, {noremap = true, nowait = false, desc = desc})
+end
+
+
 ---@param key string the key to map
 ---@param cmd string|function the command to run
 ---@param desc string the description to show in which-key
 ---@param opts table|nil the options to pass to vim.keymap.set
 local nnoremap = function(key, cmd, desc, opts)
-    opts = opts or {noremap = true}
-    wk.register({[key] = {cmd, desc}}, {mode = 'n'})
+    map_key(key, cmd, desc, 'n', opts)
 end
 
 ---@param key string the key to map
@@ -14,31 +28,23 @@ end
 ---@param desc string the description to show in which-key
 ---@param opts table|nil the options to pass to vim.keymap.set
 local vnoremap = function(key, cmd, desc, opts)
-    -- should use 'x' instead of 'v' for visual mode
-    -- so that the commands don't apply to select mode
-    opts = opts or {noremap = true}
-    wk.register({[key] = {cmd, desc}}, {mode = 'x'})
+    map_key(key, cmd, desc, 'v', opts)
 end
 
--- disable arrow keys
+-- disable arrow keys, use vim.keymap.set so I can set all modes at once
 vim.keymap.set({'i', 'n', 'x'}, '<Down>', '<Nop>')
 vim.keymap.set({'i', 'n', 'x'}, '<Left>', '<Nop>')
 vim.keymap.set({'i', 'n', 'x'}, '<Right>', '<Nop>')
 vim.keymap.set({'i', 'n', 'x'}, '<Up>', '<Nop>')
 
--- disable capital Q (:ex mode)
 nnoremap('Q', '<Nop>', 'disable ex mode')
 
--- incremental search, showing results as you type
 nnoremap('/', '/\\v', 'incremental search')
 nnoremap('/', '/\\v', 'incremental search')
-
--- copy to clipboard. if in normal mode, copy the whole line
 nnoremap('<leader>y', 'V"+y', 'copy to clipboard')
 vnoremap('<leader>y', '"+y', 'copy to clipboard')
 
--- swap wrapped lines behavior;
--- j/k moves a wrapped line, gj/gk moves the full line
+-- swap wrapped lines behavior:
 nnoremap('j', 'gj', 'move wrapped line down')
 nnoremap('k', 'gk', 'move wrapped line up')
 nnoremap('gj', 'j', 'move line down')
@@ -54,9 +60,9 @@ nnoremap('N', 'Nzz', 'centered prev')
 nnoremap('!B', ':.!bash<CR>', 'run shell command')
 vnoremap('!B', ':.!bash<CR>', 'run shell command')
 
--- move items while text is highlighted
 vnoremap('J', ':move \'>+1<CR>gv=gv', 'move selected text down')
-vnoremap('K', ':move \'<-2<CR>gv=gv', 'move selected text up')
+-- disable, dont really use (and K is used for lsp)
+-- vnoremap('K', ':move \'<-2<CR>gv=gv', 'move selected text up')
 
 -- click to start a :%s/ search with the selected text, prompting for the replacement
 vnoremap('<C-n>', 'y:%s/<C-r>"//gc<Left><Left><Left>', 'search and replace')
