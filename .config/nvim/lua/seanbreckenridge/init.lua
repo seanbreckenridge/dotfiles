@@ -1,14 +1,16 @@
 -- get home directory
+-- vim.o sets global options, vim.opt sets buffer-local options
 local os = require('os')
 local home = os.getenv('HOME')
 -- GLOBAL OPTIONS
 vim.opt.syntax = 'on'
+-- note: set nocompatible is just ignored in nvim
 
 -- for which-key
 vim.o.timeout = true
 vim.o.timeoutlen = 300
 
-vim.opt.updatetime = 250 -- decreate update time
+vim.opt.updatetime = 250 -- decrease update time
 
 -- Don't execute arbitrary modelines
 vim.opt.modelines = 0
@@ -32,7 +34,8 @@ vim.opt.softtabstop = 2
 vim.opt.scrolloff = 8
 vim.opt.backspace = 'indent,eol,start'
 vim.opt.matchpairs:append('<:>')
-vim.cmd('runtime! macros/matchit.vim')
+-- dont think I ever use this...
+-- vim.cmd('runtime! macros/matchit.vim')
 
 -- allow hidden buffers
 vim.opt.hidden = true
@@ -72,15 +75,6 @@ vim.opt.shada = "'1000,f1,<100"
 -- https://github.com/seanbreckenridge/on_machine
 vim.g.on_os = os.getenv('ON_OS') or 'unknown'
 
--- disabled this for now, having two different clipboards is good
---
--- sync clipboard with system clipboard, if im not on android (takes too long on there and sends system notifications that are annoying)
--- if string.find(vim.g.on_os, 'android') then
---     vim.opt.clipboard = ''
--- else
---     vim.opt.clipboard = 'unnamedplus'
--- end
-
 -- See `:help vim.highlight.on_yank()`
 local highlight_group = vim.api.nvim_create_augroup('YankHighlight',
                                                     {clear = true})
@@ -112,6 +106,7 @@ vim.opt.wildignore:append({
 vim.g.yadm_git_verbose = 0
 vim.g.yadm_git_gitgutter_enabled = 0 -- I use gitsigns instead
 
+-- load other configuration
 require "seanbreckenridge.mappings"
 require "seanbreckenridge.autocmds"
-require "seanbreckenridge.catppuccin" -- colorscheme
+require "seanbreckenridge.colorscheme"

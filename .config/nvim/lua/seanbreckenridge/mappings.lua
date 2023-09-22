@@ -70,7 +70,7 @@ nnoremap('<C-f>', ':%s///gcI' .. leftn(5), 'empty search and replace')
 local reload_config = function()
     vim.cmd(':source ~/.config/nvim/lua/seanbreckenridge/init.lua')
     vim.cmd(':source ~/.config/nvim/lua/seanbreckenridge/mappings.lua')
-    require('seanbreckenridge.catppuccin').setup_theme()
+    require('seanbreckenridge.colorscheme').setup_theme()
 end
 
 -- misc
