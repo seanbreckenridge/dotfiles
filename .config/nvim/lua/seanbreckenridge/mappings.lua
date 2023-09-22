@@ -28,7 +28,7 @@ map_key('<Down>', '<Nop>', 'disable arrow keys', {'i', 'n', 'x'})
 map_key('<Left>', '<Nop>', 'disable arrow keys', {'i', 'n', 'x'})
 map_key('<Right>', '<Nop>', 'disable arrow keys', {'i', 'n', 'x'})
 map_key('<Up>', '<Nop>', 'disable arrow keys', {'i', 'n', 'x'})
-
+nnoremap(';', ':', 'use ; for :')
 nnoremap('Q', '<Nop>', 'disable ex mode')
 
 nnoremap('/', '/\\v', 'incremental search')
@@ -57,10 +57,14 @@ vnoremap('K', ':move \'<-2<CR>gv=gv', 'move selected text up')
 
 nnoremap('J', "mzJ`z", 'append to line')
 
+local leftn = function(n) return string.rep('<Left>', n) end
+
 -- start a :%s/ search with the selected text, prompting for the replacement
-vnoremap('<C-n>', 'y:%s/<C-r>"//gc<Left><Left><Left>', 'search and replace')
+vnoremap('<C-n>', 'y:%s/<C-r>"//gc' .. leftn(3), 'search and replace')
 -- in normal mode, use the next word as the search term
-nnoremap('<C-n>', 'yiw:%s/<C-r>"//gc<Left><Left><Left>', 'search and replace')
+nnoremap('<C-n>', 'yiw:%s/<C-r>"//gc' .. leftn(3), 'search and replace')
+-- just start a search/replace and move me to where I can start typing
+nnoremap('<C-s>', ':%s///gcI' .. leftn(5), 'empty search and replace')
 
 local reload_config = function()
     vim.cmd(':source ~/.config/nvim/lua/seanbreckenridge/init.lua')
