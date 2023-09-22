@@ -49,10 +49,6 @@ vim.opt.showmode = true
 vim.opt.showcmd = true
 
 -- searching
-vim.api.nvim_set_keymap('n', '/', '/\\v', {noremap = true})
-vim.api.nvim_set_keymap('v', '/', '/\\v', {noremap = true})
--- click f to start a :%s/ search with the selected text, prompting for the replacement
-vim.api.nvim_set_keymap('v', 'f', 'y:%s/<C-r>"//gc<Left><Left><Left>', {noremap = true})
 vim.opt.hlsearch = true -- highlight on search
 vim.opt.incsearch = true
 vim.opt.ignorecase = true
@@ -76,12 +72,14 @@ vim.opt.shada = "'1000,f1,<100"
 -- https://github.com/seanbreckenridge/on_machine
 vim.g.on_os = os.getenv('ON_OS') or 'unknown'
 
+-- disabled this for now, having two different clipboards is good
+--
 -- sync clipboard with system clipboard, if im not on android (takes too long on there and sends system notifications that are annoying)
-if string.find(vim.g.on_os, 'android') then
-    vim.opt.clipboard = ''
-else
-    vim.opt.clipboard = 'unnamedplus'
-end
+-- if string.find(vim.g.on_os, 'android') then
+--     vim.opt.clipboard = ''
+-- else
+--     vim.opt.clipboard = 'unnamedplus'
+-- end
 
 -- See `:help vim.highlight.on_yank()`
 local highlight_group = vim.api.nvim_create_augroup('YankHighlight',
