@@ -410,7 +410,7 @@ command="exec openurl 'https://sean.fish/feed/'"
 [newsboat-force]
 command='''
 # if another instance of newsboat is open, kill it and open one here
-# specifically useful incase newsboat -x reload is going on in the background
+# specifically useful in case newsboat -x reload is going on in the background
 pgrep -x newsboat && pkill -x newsboat
 cd "${XDG_DOWNLOAD_DIR:-${HOME}/Downloads}" || exit 1
 newsboat

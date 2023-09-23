@@ -49,7 +49,7 @@ donelistening() {
 		return 1
 	}
 	[[ -z "$query" ]] && {
-		echo "no query given, cant remove matching paths..." >&2
+		echo "no query given, can't remove matching paths..." >&2
 		return 1
 	}
 	grep -vi "$query" <"$playlistfile" | sponge "$playlistfile"

@@ -3,7 +3,7 @@
 # post-commit moves the README.md back so as to not pollute $HOME
 
 # make sure there is no errors with my profile,
-# because this causes x11 issues if it cant be sourced
+# because this causes x11 issues if it can't be sourced
 sh ~/.profile || exit $?
 
 cd || exit $?

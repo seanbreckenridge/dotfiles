@@ -62,7 +62,7 @@ Y | y)
 	windows-ppas
 	;;
 *)
-	: # do nothing if user didnt respond Y/y
+	: # do nothing if user didn't respond Y/y
 	;;
 esac
 

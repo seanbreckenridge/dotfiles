@@ -10,7 +10,7 @@ kill_hanging_background_tasks() {
 
 trap 'kill_hanging_background_tasks' EXIT
 
-# 'LINUX_TASK' isnt really an argument to i3blocks-refresh-mk, it ignores extra arguments
+# 'LINUX_TASK' isn't really an argument to i3blocks-refresh-mk, it ignores extra arguments
 # its just so that this process can be grepped against when restarting
 echo "${TODO_DIR}/todo.txt" | entr -n i3blocks-refresh-mk todo LINUX_TASK &
 echo "${HOME}/.cache/rss-unread" | entr -n i3blocks-refresh-mk rss LINUX_TASK &

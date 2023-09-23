@@ -2,7 +2,7 @@
 
 # This is a script to copy configuration files from somewhere else on the system
 # These are not symlinks or hardlinks - they're duplicates of the files
-# These typically wont be changed, and aren't installed by 'yadm bootstrap' automatically
+# These typically won't be changed, and aren't installed by 'yadm bootstrap' automatically
 # They are synced as reference and for completeness
 
 # exit if on mac

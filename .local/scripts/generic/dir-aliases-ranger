@@ -16,7 +16,7 @@ readonly RangerDataDir="${XDG_DATA_HOME:-$HOME/.local/share}/ranger"
 }
 
 [[ ! -d "${RangerDataDir}" ]] && {
-	echo -e "Couldnt find ranger data directory at ${RangerDataDir}" >&2
+	echo -e "Couldn't find ranger data directory at ${RangerDataDir}" >&2
 	exit 1
 }
 

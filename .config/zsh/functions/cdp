@@ -1,11 +1,11 @@
 #!/bin/zsh
-# cd back to the top of the git repo youre in
+# cd back to the top of the git repo you're in
 
 cdp() {
 	local TEMP_PWD="$PWD"
 	while [[ ! -d ./.git ]]; do
 		cd ..
-		# if we werent in a git repo, and we hit root
+		# if we weren't in a git repo, and we hit root
 		if [[ $PWD == / ]]; then
 			echo "Could not find a git repo in the current tree..." >&2
 			cd "$TEMP_PWD"

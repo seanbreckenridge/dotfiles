@@ -10,7 +10,7 @@ import click
 @click.argument("BASE", type=click.Path(exists=True, path_type=Path), required=True)
 def main(run: bool, ext: str, base: Path) -> None:
     """
-    used this to remove any folders which didnt include mp3 files in my
+    used this to remove any folders which didn't include mp3 files in my
     music folder. not sure if it'd be useful for anything else but
     sort of particular so might as well sync
     """

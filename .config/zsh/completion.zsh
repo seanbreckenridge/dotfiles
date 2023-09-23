@@ -27,7 +27,7 @@ zstyle ':completion::*:(rm|nvim|e|ls):*' ignore-line true
 
 ### command completion
 # note: this file has to be loaded after functions.zsh
-# because else compinit hasnt been loaded to automatically
+# because else compinit hasn't been loaded to automatically
 # assign completions from $ZDOTDIR/completions
 
 autoload -Uz "$ZDOTDIR"/completions/*
@@ -63,7 +63,7 @@ compdef _gnu_generic \
 	up \
 	fzf \
 	super
-# manually source playlist file because top compdef declaration doesnt match alias names; autoload wont catch functions
+# manually source playlist file because top compdef declaration doesn't match alias names; autoload won't catch functions
 source "$ZDOTDIR"/completions/_plainplay
 compdef _plainplay plainplay play
 compdef _playlist_files splay pplay

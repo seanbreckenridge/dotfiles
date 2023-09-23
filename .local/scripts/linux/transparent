@@ -3,7 +3,7 @@
 # Usage:
 #     transparent <enable|disable> [target]
 # optionally, specify target to change the moues into a target -- the next click will target that application
-# target exists because some applications cant be 'moused over' (e.g. mpv)
+# target exists because some applications can't be 'moused over' (e.g. mpv)
 
 if [ "$1" = "enable" ]; then
 	if [ "$2" = "target" ]; then

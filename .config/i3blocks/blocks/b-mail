@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # https://github.com/LukeSmithxyz/voidrice/blob/master/.local/bin/statusbar/sb-mailbox
 
-# background job checks if mailsync hasnt run in a
+# background job checks if mailsync hasn't run in a
 # while and creates this file
 MAILSYNC_WARN_FILE="${HOME}/.cache/mailsync_warn"
 

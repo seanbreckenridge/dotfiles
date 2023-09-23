@@ -13,7 +13,7 @@ alias shutdown='poweroff'
 # Non-standard
 alias syserrors='sudo journalctl -p 3 -xb'
 alias sysderrors='sudo systemctl --failed'
-# remove packages that arent being used for anything
+# remove packages that aren't being used for anything
 alias list-orphans='pacman -Qtdq'
 alias remove-orphans='sudo pacman -Rns $(list-orphans)'
 # clear yay tar.gz cache

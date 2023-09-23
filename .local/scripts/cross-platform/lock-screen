@@ -1,7 +1,7 @@
 #!/bin/sh
 # Lock the screen
 # the daemon process creates the pixelated image every minute in the background
-# so that i3lock doesnt have to wait for the image to be generated when run
+# so that i3lock doesn't have to wait for the image to be generated when run
 
 case "$ON_OS" in
 mac*)

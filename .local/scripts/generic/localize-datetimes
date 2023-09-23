@@ -38,11 +38,11 @@ def parse_date(date: str) -> datetime:
     raise ValueError(f"Could not parse date: {date}")
 
 
-ParseType = Literal["epoch", "json", "delimeter", "space", "non-date"]
+ParseType = Literal["epoch", "json", "delimiter", "space", "non-date"]
 
 
 def parse_line(
-    line: str, delimeter: str, json_key: Optional[str]
+    line: str, delimiter: str, json_key: Optional[str]
 ) -> Tuple[Optional[datetime], ParseType, Any]:
     if json_key is not None:
         try:
@@ -57,10 +57,10 @@ def parse_line(
     if line.strip().isnumeric():
         return parse_date(line.strip()), "epoch", "\n"
 
-    items = line.split(delimeter, 1)
+    items = line.split(delimiter, 1)
 
     if len(items) == 2:
-        return parse_date(items[0]), "delimeter", items[1]
+        return parse_date(items[0]), "delimiter", items[1]
 
     items = line.split(" ", 1)
 
@@ -76,7 +76,7 @@ def parse_line(
     "--delimeter",
     default="\t",
     show_default=True,
-    help="Delimeter to use between date and rest of line",
+    help="Delimiter to use between date and rest of line",
 )
 @click.option(
     "-k",
@@ -84,7 +84,7 @@ def parse_line(
     default=None,
     help="If each line is a JSON object, use this key to extract the date",
 )
-def main(delimeter: str, json_key: str) -> None:
+def main(delimiter: str, json_key: str) -> None:
     """
     Given input from stdin, parse each line as a date and print the date in
     human-readable format followed by the rest of the line.
@@ -99,7 +99,7 @@ def main(delimeter: str, json_key: str) -> None:
     """
     for line in iter(sys.stdin.readline, ""):
         try:
-            dt, parse_type, rest = parse_line(line, delimeter, json_key)
+            dt, parse_type, rest = parse_line(line, delimiter, json_key)
         except ValueError:
             dt = None
             parse_type = "non-date"
@@ -113,8 +113,8 @@ def main(delimeter: str, json_key: str) -> None:
                     assert isinstance(rest, dict)
                     rest[json_key] = dth
                     print(json.dumps(rest, separators=(",", ":")))
-                case "delimeter":
-                    print(f"{dth}{delimeter}{rest}", end="")
+                case "delimiter":
+                    print(f"{dth}{delimiter}{rest}", end="")
                 case "space":
                     print(f"{dth} {rest}", end="")
                 case "non-date":

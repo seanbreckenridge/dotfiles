@@ -9,9 +9,9 @@ datadir = Path("~/.local/share/gpg_autoclick").expanduser()
 
 
 def locate_and_click(p: Path) -> None:
-    assert p.exists(), f"{p} doesnt exist!"
+    assert p.exists(), f"{p} doesn't exist!"
     locations = list(pyautogui.locateAllOnScreen(str(p)))
-    assert len(locations) > 0, f"Couldnt find {p}"
+    assert len(locations) > 0, f"Couldn't find {p}"
     pyautogui.click(locations[0])
 
 

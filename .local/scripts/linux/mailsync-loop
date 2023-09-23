@@ -11,7 +11,7 @@
 
 set -o pipefail
 
-# remove tag file on launch so this runs immedaitely
+# remove tag file on launch so this runs immediately
 rm -f "$(evry location -mailsync)"
 
 while true; do
@@ -21,11 +21,11 @@ while true; do
 		evry 5 minutes -mailsync && {
 			wait-for-internet
 			printf '%s: Running mailsync...\n' "$(date)"
-			# ignore Junk system flags warning -- spams the log a bunch. --quiet doesnt stop it as it uses
+			# ignore Junk system flags warning -- spams the log a bunch. --quiet doesn't stop it as it uses
 			# the error() function in isync instead of a warning which would be silenced by that...
 			# https://sourceforge.net/p/isync/mailman/isync-devel/thread/20191102164509.dxayakg3hrmozjnm%40carbon/#msg36798732
 			# seems apple as always is doing something non-standard and flagging with a Junk
-			# Flag message attribute when one doesnt exist according to the IETF standard
+			# Flag message attribute when one doesn't exist according to the IETF standard
 			# https://datatracker.ietf.org/doc/html/rfc3501#section-2.3.2
 			mailsync 2>&1 | grep -v '^IMAP warning: unknown system flag \\Junk$' && {
 				rm -f "${HOME}/.cache/mailsync_warn" # remove warning file -- mailsync has been run recently

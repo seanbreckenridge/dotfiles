@@ -16,7 +16,7 @@ TTT_DATADIR="${XDG_DATA_HOME}/ttt"
 
 # might be nice to move this check elsewhere, but ttt is built into
 # a lot of my keybindings so having this here just makes sure I'm
-# never in a situation where a keybinding fails if ttt doesnt work
+# never in a situation where a keybinding fails if ttt doesn't work
 if [ ! -d "$TTT_DATADIR" ]; then
 	mkdir -p "$TTT_DATADIR"
 fi

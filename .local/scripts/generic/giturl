@@ -1,5 +1,5 @@
 #!/bin/sh
-# if youre in a git directory, print the HTTPS git URL
+# if you're in a git directory, print the HTTPS git URL
 
 verify_giturlparse() {
 	/usr/bin/env python3 -c "import giturlparse"

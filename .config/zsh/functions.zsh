@@ -21,13 +21,13 @@ esac
 # autoload must be after modifying fpath to auto-load completions
 
 # -U ignores alias/shell expansion
-# -z forches zsh style autoloading over ksh, if thats set for some reason
+# -z forches zsh style autoloading over ksh, if that's set for some reason
 autoload -Uz compinit && compinit
 
 # Note: tried caching the result to compinit, using
 # zcompudmp (which calls compaudit)
 # to speed up start times by caching zcompdump,
-# ends up taking longer. Difference is resonable,
+# ends up taking longer. Difference is reasonable,
 # about ~0.1s. longer. This may change as zcompdump
 # size increases
 

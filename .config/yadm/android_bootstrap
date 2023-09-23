@@ -56,7 +56,7 @@ mkdir -vp "${REPOS}"
 set +u
 
 # dont want to go through all the cargo/golang package lists
-# I use on computers, since a lot of them arent useful here
+# I use on computers, since a lot of them aren't useful here
 
 # manually install some commands
 havecmd cargo || exit $?           # needed to build some packages

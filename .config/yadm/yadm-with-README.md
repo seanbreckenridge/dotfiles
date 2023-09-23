@@ -5,7 +5,7 @@ in order to have a README for this repo without polluting `$HOME` with a `README
 file, this uses hooks located at [.config/yadm/hooks](hooks) to temporarily copy
 the `README.md` to `$HOME` while committing, and then deleting it afterwards.
 
-Theres another hook that moves `~/README.md` to `~/.config/yadm/README.md` `post-merge`, so that
+There's another hook that moves `~/README.md` to `~/.config/yadm/README.md` `post-merge`, so that
 README changes done through the web interface stay updated locally.
 
 As long as you're on `git>=2.9`, you can use `core.hooksPath` to change the hooks dir.

@@ -41,7 +41,7 @@ inode/directory)
 	# shellcheck disable=SC2012
 	ls -1 "$path" | head -n "$((maxln - 1))" && exit 0
 	;;
-# cant display gifs in fzf preview using chafa, so extract the middle image
+# can't display gifs in fzf preview using chafa, so extract the middle image
 # from the gif to preview instead
 image/gif)
 	column_width=$(((COLUMNS / 2) - 2))

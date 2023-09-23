@@ -23,7 +23,7 @@ evry 3 days -backup_fish_server && vps_backup_server
 
 evry 1 day -sreminders-notify && sreminders-notify
 
-# make sure my pythonanywhere website doesnt expire:
+# make sure my pythonanywhere website doesn't expire:
 # https://github.com/seanbreckenridge/pythonanywhere-3-months
 evry 2 months -pythonanywhere && python3 -m pythonanywhere_3_months -c "$(which chromedriver)"
 
@@ -38,7 +38,7 @@ evry 6 hours -google-drive && {
 		echo "Syncing Google Drive..."
 		drive pull -ignore-conflict -no-prompt
 		drive push -no-prompt
-		# if theres a new google takeout, unzip it
+		# if there's a new google takeout, unzip it
 		# https://github.com/seanbreckenridge/google_takeout_parser
 		# script from https://github.com/seanbreckenridge/HPI-personal
 		TAKEOUT_DIR="${HOME}/GoogleDrive/Takeout"

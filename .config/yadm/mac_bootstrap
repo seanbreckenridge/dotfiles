@@ -60,7 +60,7 @@ Y | y)
 	bash "${YADM_DIR}/mac/set-macos-defaults"
 	;;
 *)
-	: # do nothing if user didnt respond Y/y
+	: # do nothing if user didn't respond Y/y
 	;;
 esac
 

@@ -74,7 +74,7 @@ video/* | audio/*)
 	;;
 # Syntax highlight for text files:
 # For json files that dont end with *.json
-# (wouldnt be recognized by highlight or pistol)
+# (wouldn't be recognized by highlight or pistol)
 application/json)
 	try safepipe print-json "$path" && {
 		dump

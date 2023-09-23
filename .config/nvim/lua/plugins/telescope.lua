@@ -98,7 +98,7 @@ return {
         local previewers = require('telescope.previewers')
         local trouble = require('trouble.providers.telescope')
 
-        -- this is a no-op for now, just here incase I want to modify things
+        -- this is a no-op for now, just here in case I want to modify things
         -- https://github.com/nvim-telescope/telescope.nvim/wiki/Configuration-Recipes#previewers
         local buffer_previewer = function(filepath, bufnr, opts)
             opts = opts or {}

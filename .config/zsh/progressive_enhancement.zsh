@@ -28,14 +28,14 @@ man() {
 drive() {
 	local defaultdrive="${HOME}/GoogleDrive"
 
-	# early exit if drive doesnt exist where I expect
+	# early exit if drive doesn't exist where I expect
 	[[ ! -r "${defaultdrive}" ]] && command drive "$@"
 
 	# if not trying to create another google drive instance
 	if [[ "$1" != 'init' ]]; then
 		if ! grep -q "${defaultdrive}" <<<"${PWD}"; then
 			cd "${defaultdrive}" || {
-				printf "Couldnt change directory to %s\n" "${defaultdrive}"
+				printf "Couldn't change directory to %s\n" "${defaultdrive}"
 			}
 		fi
 	fi
@@ -45,7 +45,7 @@ drive() {
 # https://github.com/charmbracelet/glow
 glow() {
 	# if passed with no arguments
-	# and theres only one .md file in this
+	# and there's only one .md file in this
 	# directory, automatically use it
 	if (($# == 0)); then
 		local -a MD_FILES
@@ -82,7 +82,7 @@ cat() {
 	else
 		# loop through arguments
 		# if its not an image, break -- and use bat instead
-		# if I'm in tmux -- kitty cant print images, so fallback
+		# if I'm in tmux -- kitty can't print images, so fallback
 		for arg in "$@"; do
 			[[ -z "$TMUX" && -f "$arg" && "$(file-mime "$1")" =~ '^image/' ]] && continue
 			all_images=0

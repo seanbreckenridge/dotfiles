@@ -224,7 +224,7 @@ function start_encoding(from, to, settings)
             cancellable = false
         })
         if res.status == 0 then
-            mp.osd_message("Finished encoding succesfully")
+            mp.osd_message("Finished encoding successfully")
         else
             mp.osd_message("Failed to encode, check the log")
         end

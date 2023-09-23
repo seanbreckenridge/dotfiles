@@ -15,7 +15,7 @@ TTY_OUT="$(tty)"
 # in the background
 #
 # awk cmd - if the first session matches my user, print the tty
-# if thats tty1, Aseems to signify this was launched with
+# if that's tty1, Aseems to signify this was launched with
 # startx? may be totally wrong, just what I've noticed so far
 [ '/dev/tty1' = "${TTY_OUT}" ] &&
 	[ "$(who | awk -v user="$(whoami)" 'NR == 1 && user == $1 { print $2 }')" = 'tty1' ] &&

@@ -4,5 +4,5 @@ readonly INPUT="${1:?Provide the .org file to convert from as the first argument
 readonly OUTPUT="${2:?Provide the output.md path as the second argument}"
 
 pandoc -t markdown "${INPUT}" >"${OUTPUT}"
-# doesnt convert quotes properly
+# doesn't convert quotes properly
 sed -i -e "s|\\\'|\'|g" "$2"
