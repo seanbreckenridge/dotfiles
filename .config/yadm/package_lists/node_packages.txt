@@ -33,7 +33,6 @@ vercel
 @jamen/lorem
 git-stats
 mapscii
-mintable
 moby
 readability-cli
 sqleton
