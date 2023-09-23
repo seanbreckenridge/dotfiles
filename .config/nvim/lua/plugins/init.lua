@@ -1,11 +1,6 @@
 return {
     {'folke/which-key.nvim', lazy = true}, -- keybindings
     {'junegunn/goyo.vim', cmd = "Goyo"}, -- distraction free writing
-    {
-        'nvim-treesitter/nvim-treesitter-context',
-        dependencies = {"nvim-treesitter/nvim-treesitter"}
-    }, -- treesitter context
-    {"catppuccin/nvim", name = "catppuccin", priority = 1000}, -- colorscheme, 1000 makes it load early
     -- yadm integration (needs to be loaded early since uses BufWinEnter to detect)
     -- if yadm is not installed, this will be disabled
     {'seanbreckenridge/yadm-git.vim', enabled = vim.g.has_yadm},
@@ -19,17 +14,18 @@ return {
     {'tpope/vim-sleuth'}, -- detect indentation
     -- '-' to go up, '~' to go home, y. to yank filename, . to put file on command line
     {'tpope/vim-vinegar', event = "VeryLazy"}, -- nicer netrw commands
-    {'github/copilot.vim', event = "VeryLazy"},
+    {'github/copilot.vim', event = "InsertEnter"},
     {'tpope/vim-speeddating', keys = {"<C-a>", "<C-x>"}}, -- increment/decrement dates
     {'windwp/nvim-autopairs', event = "InsertEnter", opts = {}}, -- auto pair brackets
     {'numToStr/Comment.nvim', opts = {}, event = "VeryLazy"}, -- language aware comment/uncomment lines
+
     -- languages/syntax
     {'fladson/vim-kitty', ft = 'kitty'}, -- kitty config file
     {'jceb/vim-orgmode', ft = 'org', dependencies = {"tpope/vim-speeddating"}}, -- orgmode
+
     -- Appearance
-    -- Statusline
+    {"catppuccin/nvim", name = "catppuccin", priority = 1000}, -- colorscheme, 1000 makes it load early
     'itchyny/lightline.vim', -- statusline
     {'folke/neodev.nvim', opts = {}, event = "VeryLazy"}, -- lsp hover documentation
-    -- Startup
-    {'kyazdani42/nvim-web-devicons', event = "VeryLazy"}, -- icons
+    {'kyazdani42/nvim-web-devicons', event = "VeryLazy"} -- icons
 }

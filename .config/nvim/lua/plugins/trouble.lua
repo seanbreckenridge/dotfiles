@@ -94,7 +94,8 @@ return {
                     function()
                         require("trouble").toggle("lsp_references")
                     end, "toggle lsp references"
-                }
+                },
+                t = {'<Cmd>:TodoTrouble<CR>', "show todos"}
             }
         }, {prefix = "<leader>"})
     end

@@ -1,3 +1,84 @@
+local wk = require('which-key')
+
+-- project/config mappings
+-- seanbreckenridge (personal functions/plugins)
+wk.register({
+    -- can change this to a different prefix if something ever conflicts
+    c = {
+        name = "change files",
+        e = {
+            function()
+                require("seanbreckenridge.telescope").edit_config()
+            end, 'edit config'
+        },
+        g = {
+            function()
+                require("seanbreckenridge.telescope").grep_config()
+            end, 'grep config'
+        },
+        r = {
+            function()
+                local repo_bases =
+                    require("seanbreckenridge.telescope").repo_bases_cached()
+                require('telescope').extensions.repo.list {
+                    search_dirs = repo_bases
+                }
+            end, 'switch repo'
+        },
+        p = {'<cmd>:Telescope projects<CR>', 'switch projects'}
+    }
+}, {prefix = '<leader>'})
+
+wk.register({
+    f = {
+        name = "telescope",
+        f = {
+            function() require('telescope.builtin').find_files() end,
+            'find files'
+        },
+        g = {function() require('telescope.builtin').live_grep() end, 'grep'},
+        r = {
+            function() require('telescope.builtin').lsp_references() end,
+            'references'
+        },
+        b = {function() require('telescope.builtin').buffers() end, 'buffers'},
+        H = {
+            function()
+                require('seanbreckenridge.telescope').grep_help()
+            end, 'help'
+        },
+        q = {function() require('telescope.builtin').quickfix() end, 'quickfix'},
+        l = {function() require('telescope.builtin').loclist() end, 'loclist'},
+        p = {
+            function() require('telescope.builtin').git_files() end, 'git files'
+        },
+        o = {
+            function() require('telescope.builtin').oldfiles() end, 'old files'
+        },
+        c = {function() require('telescope.builtin').commands() end, 'commands'},
+        s = {
+            function() require('telescope.builtin').spell_suggest() end,
+            'spell suggest'
+        },
+        m = {function() require('telescope.builtin').marks() end, 'marks'},
+        M = {
+            function() require('telescope.builtin').man_pages() end, 'man pages'
+        },
+        h = {
+            function() require('telescope.builtin').command_history() end,
+            'command history'
+        },
+        k = {function() require('telescope.builtin').keymaps() end, 'keymaps'},
+        d = {
+            function() require('telescope.builtin').diagnostics() end,
+            'diagnostics'
+        },
+        L = {
+            function() require('telescope.builtin').reloader() end, 'reload lua'
+        }
+    }
+}, {prefix = '<leader>'})
+
 return {
     'nvim-telescope/telescope.nvim',
     tag = '0.1.2',
@@ -9,12 +90,10 @@ return {
             lazy = true
         }, {'cljoly/telescope-repo.nvim', lazy = true}
     },
-    event = "VeryLazy",
-    -- cmd = 'Telescope',
-    -- keys = {"<leader>f", "<leader>c", "<leader>g"},
+    cmd = 'Telescope',
+    keys = {"<leader>f", "<leader>c", "<leader>g"},
     config = function()
         local tl = require('telescope')
-        local builtin = require('telescope.builtin')
         local actions = require('telescope.actions')
         local previewers = require('telescope.previewers')
         local trouble = require('trouble.providers.telescope')
@@ -80,64 +159,5 @@ return {
         tl.load_extension('projects')
         -- to try:
         -- https://github.com/pwntester/octo.nvim
-
-        -- setup mappings for telescope
-        local wk = require('which-key')
-
-        -- project/config mappings
-        -- seanbreckenridge (personal functions/plugins)
-        wk.register({
-            -- can change this to a different prefix if something ever conflicts
-            c = {
-                name = "change files",
-                e = {
-                    function()
-                        require("seanbreckenridge.telescope").edit_config()
-                    end, 'edit config'
-                },
-                g = {
-                    function()
-                        require("seanbreckenridge.telescope").grep_config()
-                    end, 'grep config'
-                },
-                r = {
-                    function()
-                        local repo_bases =
-                            require("seanbreckenridge.telescope").repo_bases_cached()
-                        tl.extensions.repo.list {search_dirs = repo_bases}
-                    end, 'switch repo'
-                },
-                p = {'<cmd>:Telescope projects<CR>', 'switch projects'}
-            }
-        }, {prefix = '<leader>'})
-
-        wk.register({
-            f = {
-                name = "telescope",
-                f = {builtin.find_files, 'find files'},
-                g = {builtin.live_grep, 'grep'},
-                r = {builtin.lsp_references, 'references'},
-                b = {builtin.buffers, 'buffers'},
-                H = {
-                    function()
-                        require('seanbreckenridge.telescope').grep_help()
-                    end, 'help'
-                },
-                q = {builtin.quickfix, 'quickfix'},
-                l = {builtin.loclist, 'loclist'},
-                p = {builtin.git_files, 'git files'},
-                o = {builtin.oldfiles, 'old files'},
-                t = {":TodoTrouble<CR>", 'todos'},
-                c = {builtin.commands, 'commands'},
-                s = {builtin.spell_suggest, 'spell suggest'},
-                m = {builtin.marks, 'marks'},
-                M = {builtin.man_pages, 'man pages'},
-                h = {builtin.command_history, 'command history'},
-                k = {builtin.keymaps, 'keymaps'},
-                d = {builtin.diagnostics, 'diagnostics'},
-                L = {builtin.reloader, 'reload lua'}
-            }
-        }, {prefix = '<leader>'})
-
     end
 }

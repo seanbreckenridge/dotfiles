@@ -21,7 +21,11 @@ return {
                 P = {'<cmd>:Git add --all --patch<CR>', 'add patch'},
                 t = {'<cmd>:Git status<CR>', 'status'},
                 r = {'<cmd>:Git reset<CR>', 'reset'},
-                b = {"<cmd>:Telescope git_branches<CR>", 'telescope branch'}
+                b = {
+                    function()
+                        require("telescope.builtin").git_branches()
+                    end, 'telescope branch'
+                }
             }
         }, {prefix = "<leader>"})
     end
