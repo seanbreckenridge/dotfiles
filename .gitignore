@@ -313,6 +313,7 @@ __pycache__
 /.local/*.md
 /.local/bin
 /.local/etc
+/.local/libexec
 /.local/src
 /.local/*lock
 /.local/etc/bash_completion.d
