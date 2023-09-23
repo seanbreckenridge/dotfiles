@@ -77,3 +77,5 @@ M.setup_theme = function()
 end
 
 M.setup_theme()
+
+return M

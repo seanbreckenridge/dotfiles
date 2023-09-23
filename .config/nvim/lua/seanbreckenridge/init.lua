@@ -49,9 +49,6 @@ vim.opt.ttyfast = true
 vim.opt.pumblend = 10
 vim.opt.winblend = 10
 
--- status bar
-vim.g.lightline = {colorscheme = 'catppuccin'}
-
 -- last line
 vim.opt.showmode = true
 vim.opt.showcmd = true

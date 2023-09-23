@@ -1,7 +1,18 @@
 return {
     {'junegunn/goyo.vim', cmd = "Goyo"},
-    {"catppuccin/nvim", name = "catppuccin", priority = 1000}, -- colorscheme, 1000 makes it load early
-    'itchyny/lightline.vim', -- statusline
-    {'folke/neodev.nvim', opts = {}, event = "VeryLazy"}, -- lsp hover documentation
-    {'kyazdani42/nvim-web-devicons', event = "VeryLazy"} -- icons
+    -- colorscheme, 1000 makes things load early
+    {
+        "catppuccin/nvim",
+        name = "catppuccin",
+        priority = 1000,
+        config = function()
+            require'seanbreckenridge.colorscheme'.setup_catppuccin()
+        end
+    }, {
+        'nvim-lualine/lualine.nvim',
+        priority = 1000,
+        depends = {'nvim-tree/nvim-web-devicons'},
+        opts = {options = {theme = 'dracula'}}
+    }, -- lsp hover documentation
+    {'folke/neodev.nvim', opts = {}, event = "VeryLazy"}
 }
