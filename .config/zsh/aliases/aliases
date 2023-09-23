@@ -17,9 +17,9 @@ mac* | android*)
 	alias ls='eza-defaults --icons'
 	;;
 esac
-alias treel='ls -T --git-ignore'
-alias ll='ls -hl'
-alias la='ll -a'
+alias treel='ls --tree --git-ignore'
+alias ll='ls --header --long'
+alias la='ll --all'
 alias sl='ls'
 alias dc='cd' # never going to use the reverse-polish calculator, is *always* a typo
 
@@ -67,20 +67,20 @@ alias e='editor'
 # Shorthands, or adding some default flags to utilities
 alias 'xargsl=xargs -I {} sh -c' # line-based xargs
 alias 'cp=cp -v'
-alias 'curl=curl -s'
-alias 'less=less -i'
-alias 'lessansi=less -R'
-alias 'taill=tail -n 50'
+alias 'curl=curl --silent'
+alias 'less=less --ignore-case'
+alias 'lessansi=less --RAW-CONTROL-CHARS'
+alias 'taill=tail --lines 50'
 alias dr='dragon-drop'
-alias drx='dragon-drop -x'
-alias du='du -hL'
-alias df='df -h'
-alias jq='jq -M'
+alias drx='dragon-drop --and-exit'
+alias du='du --human-readable --deference'
+alias df='df --human-readable'
+alias jq='jq --monochrome-output'
 alias history='history 0'
 alias todo='todo.sh'
-alias free='free -h'
+alias free='free --human'
 rgi() {
-	rg -i "$*"
+	rg --ignore-case "$*"
 }
 alias ft='full_todotxt'
 alias rr='rifle'
@@ -97,13 +97,13 @@ alias 'countdown=termdown'
 # shorthand for copying to clipboard
 alias cl='clipcopy'
 spell-list() {
-	fd --type f "$@" -X codespell-conf
+	fd --type f "$@" --exec-batch codespell-conf
 }
 spell() {
-	fd --type f "$@" -X codespell-conf -w -i 3
+	fd --type f "$@" --exec-batch codespell-conf --write-changes --interactive 3
 }
 alias 'ml=mailsync-loop'
-alias 'confirm=fzf -m'
+alias 'confirm=fzf --multi'
 alias 'up=TERM=xterm up'
 alias screens='cd $SCREENSHOTS'
 
