@@ -1,0 +1,6 @@
+# this is not an official location for the codespell config file,
+# I just have a wrapper script that does:
+# codespell --config-file ~/.config/codespell/codespell.toml
+# https://sean.fish/d/codespell-conf?dark
+[codespell]
+skip = *.lock
