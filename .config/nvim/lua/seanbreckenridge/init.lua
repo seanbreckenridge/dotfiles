@@ -40,11 +40,16 @@ vim.opt.matchpairs:append('<:>')
 -- allow hidden buffers
 vim.opt.hidden = true
 
+-- only show status line for last window
+vim.opt.laststatus = 3
+
 -- rendering
 vim.opt.ttyfast = true
+-- transparency
+vim.opt.pumblend = 10
+vim.opt.winblend = 10
 
 -- status bar
-vim.opt.laststatus = 2
 vim.g.lightline = {colorscheme = 'catppuccin'}
 
 -- last line

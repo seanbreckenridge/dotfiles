@@ -2,13 +2,14 @@ beets
 beets-filetote
 black
 click
+codespell
 colorlog
 cookiecutter
-diceware
 csvkit
 cube-scramble-cli
 currencyconverter
 cython
+diceware
 dunk
 eyeD3
 flake8
