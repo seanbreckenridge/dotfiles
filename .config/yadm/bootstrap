@@ -98,7 +98,16 @@ havecmd python3 || exit $?
 # Install python packages -- even when on android, I use this enough/do
 # enough scripting here that its worth it
 echo "Installing global python site-packages..."
-python3 -m pip install --user --break-system-packages pip wheel virtualenv
+INSTALLED_PYTHON_PACKAGES="$(python3 -m pip list --format=freeze | cut -d'=' -f1)"
+python_install_missing() {
+	local -r pkg="$1"
+	if ! grep -qx "${pkg}" <<<"${INSTALLED_PYTHON_PACKAGES}"; then
+		printf "Installing %s\n" "$pkg"
+		python3 -m pip install --user --break-system-packages "${pkg}"
+	fi
+} && export -f python_install_missing
+python_install_missing wheel
+python_install_missing virtualenv
 python3 -m pip install --user -q --break-system-packages -r "${PYTHON_PACKAGE_LIST}"
 
 # Install personal python packages

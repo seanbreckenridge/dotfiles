@@ -18,10 +18,10 @@ windows*)
 *)
 	# otherwise
 	default_user_dirs=("${shared_user_dirs[@]}")
-	default_user_dirs+=("Pictures/Screenshots" ".local/bin" ".cache" ".credentials")
+	default_user_dirs+=("Pictures/Screenshots" ".local/bin" ".cache" ".credentials" ".local/share/Public" ".local/share/Templates")
 	for d_name in "${default_user_dirs[@]}"; do
 		if [[ ! -d "${HOME}/${d_name}" ]]; then
-			mkdir -p "${HOME}/${d_name}"
+			mkdir -pv "${HOME}/${d_name}"
 		fi
 	done
 	;;
