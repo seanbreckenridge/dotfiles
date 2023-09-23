@@ -6,7 +6,7 @@
 # They are synced as reference and for completeness
 
 # exit if on mac
-[[ "${ON_OS}" != 'linux' ]] && exit 1
+[[ "${ON_OS}" != 'linux_arch_io' ]] && exit 1
 
 # provide absolute paths to directories, ending with a forward slash
 declare dirs=("/etc/X11/xorg.conf.d/")
