@@ -33,6 +33,7 @@ pipenv
 pipx
 pyYAML
 pyacoustid
+pyflyby
 pygments
 pylast
 pynvim

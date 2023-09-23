@@ -77,6 +77,10 @@ export GEM_HOME="${XDG_DATA_HOME}/gem"
 # julia
 export JULIA_DEPOT_PATH="${XDG_DATA_HOME}/julia"
 
+# https://github.com/deshaw/pyflyby
+# '-' is the default locations
+export PYFLYBY_PATH="${XDG_CONFIG_HOME}/pyflyby:-"
+
 # shortcuts: https://github.com/seanbreckenridge/shortcuts
 export SHORTCUTS_DIR="${XDG_DATA_HOME}/shortcuts"
 
