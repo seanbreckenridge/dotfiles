@@ -99,20 +99,16 @@ wk.register({
 
 nnoremap('<C-q>', ':lua ToggleQFList(1)<CR>', 'toggle quickfix list')
 wk.register({
-    j = {
-        name = 'quickfix',
-        j = {':cnext<CR>', 'next'},
-        k = {':cprev<CR>', 'prev'},
-        q = {function() ToggleQFList(1) end, 'toggle quickfix list'}
-    }
+    j = {':cnext<CR>', 'qf next'},
+    k = {':cprev<CR>', 'qf prev'},
 }, {prefix = '<leader>'})
 
 nnoremap('<C-l>', ':lua ToggleQFList(0)<CR>', 'toggle loc list')
 wk.register({
     l = {
         name = 'loc list',
-        j = {'lj', 'next'},
-        k = {'lk', 'prev'},
+        j = {':lnext', 'next'},
+        k = {':lprev', 'prev'},
         l = {function() ToggleQFList(0) end, 'toggle loc list'}
     }
 }, {prefix = '<leader>'})

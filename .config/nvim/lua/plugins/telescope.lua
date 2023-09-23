@@ -108,11 +108,15 @@ return {
         -- https://github.com/nvim-telescope/telescope.nvim#pickers
         tl.setup {
             defaults = {
+                winblend = 20, -- transparency
                 path_display = {'smart'},
                 -- Default configuration for telescope goes here:
                 -- config_key = value,
                 mappings = {
                     i = {
+                        -- esc to exit in insert mode, I never really use normal mode
+                        -- just use <C-j> and <C-k> to move up/down, <C-q> to send to quickfix
+                        ["<Esc>"] = actions.close,
                         -- fzf-like up/down (remember, can also switch to normal mode and use j/k)
                         ["<C-j>"] = actions.move_selection_next,
                         ["<C-k>"] = actions.move_selection_previous,
@@ -154,7 +158,7 @@ return {
             }
         }
 
-        tl.load_extension('fzf')
+        tl.load_extension('fzf') -- native fzf
         tl.load_extension('repo')
         tl.load_extension('projects')
         -- to try:
