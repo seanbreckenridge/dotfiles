@@ -7,10 +7,34 @@ from datetime import datetime, timedelta, timezone
 from glob import glob
 from pprint import pprint
 from itertools import chain, combinations, groupby, islice, product
-from more_itertools import ilen, last, first, nth, take, seekable, tail, unique_everseen, unique_justseen
+from more_itertools import (
+    ilen,
+    last,
+    first,
+    nth,
+    take,
+    seekable,
+    tail,
+    unique_everseen,
+    unique_justseen,
+)
 from functools import partial, reduce
 from operator import itemgetter, attrgetter, methodcaller
-from typing import Any, Callable, Dict, Iterable, Iterator, List, Optional, Sequence, Set, Tuple, TypeVar, Union, cast
+from typing import (
+    Any,
+    Callable,
+    Dict,
+    Iterable,
+    Iterator,
+    List,
+    Optional,
+    Sequence,
+    Set,
+    Tuple,
+    TypeVar,
+    Union,
+    cast,
+)
 
 import os
 import sys

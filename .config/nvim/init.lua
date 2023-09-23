@@ -9,7 +9,8 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
--- save if yadm is installed as a global
+-- save if yadm is installed as a global to disable
+-- some plugins if I'm not using yadm
 vim.g.has_yadm = vim.fn.executable('yadm') == 1
 
 -- setup leader for lazy
@@ -19,8 +20,5 @@ vim.g.maplocalleader = ' '
 -- load plugins from the 'lua/plugins' directory
 require'lazy'.setup 'plugins'
 
--- set filetype to on after plugins are loaded  to prevent possible errors
-vim.cmd 'filetype plugin indent on'
-
--- load my lua options/colorscheme
+-- load my lua options/mappings/colorscheme
 require 'seanbreckenridge'

@@ -1,6 +1,5 @@
 return {
     {'folke/which-key.nvim', lazy = true}, -- keybindings
-    {'junegunn/goyo.vim', cmd = "Goyo"}, -- distraction free writing
     -- yadm integration (needs to be loaded early since uses BufWinEnter to detect)
     -- if yadm is not installed, this will be disabled
     {'seanbreckenridge/yadm-git.vim', enabled = vim.g.has_yadm},
@@ -17,15 +16,5 @@ return {
     {'github/copilot.vim', event = "InsertEnter"},
     {'tpope/vim-speeddating', keys = {"<C-a>", "<C-x>"}}, -- increment/decrement dates
     {'windwp/nvim-autopairs', event = "InsertEnter", opts = {}}, -- auto pair brackets
-    {'numToStr/Comment.nvim', opts = {}, event = "VeryLazy"}, -- language aware comment/uncomment lines
-
-    -- languages/syntax
-    {'fladson/vim-kitty', ft = 'kitty'}, -- kitty config file
-    {'jceb/vim-orgmode', ft = 'org', dependencies = {"tpope/vim-speeddating"}}, -- orgmode
-
-    -- Appearance
-    {"catppuccin/nvim", name = "catppuccin", priority = 1000}, -- colorscheme, 1000 makes it load early
-    'itchyny/lightline.vim', -- statusline
-    {'folke/neodev.nvim', opts = {}, event = "VeryLazy"}, -- lsp hover documentation
-    {'kyazdani42/nvim-web-devicons', event = "VeryLazy"} -- icons
+    {'numToStr/Comment.nvim', opts = {}, event = "VeryLazy"} -- language aware comment/uncomment lines
 }
