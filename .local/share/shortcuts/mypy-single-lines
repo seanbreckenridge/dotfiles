@@ -1,0 +1,2 @@
+#!/bin/sh
+mypy --show-column-numbers --hide-error-codes --hide-error-context --no-color-output --no-error-summary --no-pretty "$@"

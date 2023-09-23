@@ -818,3 +818,12 @@ command = 'exec time-in tz "$@"'
 
 [unlines]
 command = 'exec paste -sd " "'
+
+[codespell-conf]
+command = '''
+# re-use my nvim spellfile for codespell
+exec codespell -I ~/.config/nvim/spell/en.utf-8.add "$@"
+'''
+
+[mypy-single-lines]
+command = 'mypy --show-column-numbers --hide-error-codes --hide-error-context --no-color-output --no-error-summary --no-pretty "$@"'

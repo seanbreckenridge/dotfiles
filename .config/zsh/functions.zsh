@@ -87,3 +87,6 @@ loopcmd() {
 
 # Alt+o to run the last command/function you just did, but as a loop
 bindkey -s '\eo' '^uecho "!!" >/tmp/loopcmd; loopcmd^M'
+
+# Alt+q to run the last command I did, but pass the input to a quickfix list in nvim
+bindkey -s '\eq' '^uqf <(!!)^M'
