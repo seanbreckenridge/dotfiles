@@ -1,7 +1,24 @@
 #!/usr/bin/env bash
+# this is for mac/linux
+# on android, it comes with a patched nerd font out of the box when using https://f-droid.org/packages/com.termux.styling/
+# pass -f to redownload
 
 PATCHED_SOURCE_CODE_PRO_MEDIUM="https://raw.githubusercontent.com/ryanoasis/nerd-fonts/master/patched-fonts/SourceCodePro/Medium/SauceCodeProNerdFont-Medium.ttf"
+TARGET_FILE="$HOME/.local/share/fonts/SauceCodeProNerdFont-Medium.ttf"
 
-mkdir -p ~/.local/share/fonts
-cd ~/.local/share/fonts && curl -fLo "SauceCodeProNerdFont-Medium.ttf" $PATCHED_SOURCE_CODE_PRO_MEDIUM
-havecmd fc-cache && fc-cache -fv ~/.local/share/fonts
+install_font() {
+	mkdir -p ~/.local/share/fonts
+	echo "Downloading patched nerd font to $TARGET_FILE"
+	cd ~/.local/share/fonts && curl -fLo "$TARGET_FILE" "$PATCHED_SOURCE_CODE_PRO_MEDIUM"
+	havecmd fc-cache && fc-cache -fv ~/.local/share/fonts
+}
+
+if [[ "$1" == "-f" ]]; then
+	install_font
+else
+	if [[ -f "$TARGET_FILE" ]]; then
+		echo "File $TARGET_FILE already exists. Pass -f to reinstall_font." >&2
+	else
+		install_font
+	fi
+fi

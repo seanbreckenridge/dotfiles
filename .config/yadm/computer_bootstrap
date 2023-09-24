@@ -104,4 +104,7 @@ havecmd opam && {
 }
 clone-repos ~/.config/clone-repos/computer-clone-repos.yaml
 
+# https://sean.fish/d/download-nerd-font?dark
+download-nerd-font
+
 havecmd mapscii-at || yarn global add --prefix "${HOME}/.local" git+https://github.com/seanbreckenridge/mapscii-at
