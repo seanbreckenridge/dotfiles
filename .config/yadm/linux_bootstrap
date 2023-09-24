@@ -44,7 +44,7 @@ echo "Checking ~/.config/yadm/package_lists/arch_packages.txt for any packages t
 # have to use for loop, while loop times out instantly
 for lib in $(spkglist "${PACKAGE_LIST}"); do
 	if [[ ! $(yay -Q "${lib}" 2>/dev/null) ]]; then # if package isn't installed
-		yay -S "${lib}"
+		yay -S --noconfirm "${lib}"
 	fi
 done
 

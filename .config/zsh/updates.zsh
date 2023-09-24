@@ -41,6 +41,10 @@ update_opam() {
 	opam upgrade
 }
 
+update_ranger_plugins() {
+	clone-repos "${HOME}/.config/clone-repos/ranger-plugins.yaml"
+}
+
 update_lang_all() {
 	update_node
 	update_gem
@@ -48,4 +52,5 @@ update_lang_all() {
 	update_cargo
 	update_golang
 	update_basher
+	update_ranger_plugins
 }

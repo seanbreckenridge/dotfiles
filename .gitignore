@@ -212,6 +212,7 @@ __pycache__
 /.config/Vampire_Survivors*
 /.config/BraveSoftware/
 /.config/Code - OSS/
+/.config/ranger/plugins
 /.config/CrossCode
 /.config/Electron
 /.config/GIMP

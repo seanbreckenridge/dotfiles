@@ -117,6 +117,7 @@ drive-bin
 dust
 emacs
 entr
+espanso
 exa
 fd
 feh

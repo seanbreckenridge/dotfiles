@@ -246,4 +246,8 @@ fi
 # setup directory for ranger
 dir-aliases-ranger
 
+# setup plugins
+mkdir "${HOME}/.config/ranger/plugins"
+clone-repos "$HOME/.config/clone-repos/ranger-plugins.yaml"
+
 echo "Finished bootstrapping!"

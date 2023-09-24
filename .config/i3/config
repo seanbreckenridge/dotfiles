@@ -39,6 +39,9 @@ exec --no-startup-id warn-battery BAT0
 # hide mouse after 2 seconds
 exec --no-startup-id unclutter --timeout 2
 
+# text expander
+exec --no-startup-id espanso service start --unmanaged
+
 # keynav
 exec --no-startup-id keynav
 
