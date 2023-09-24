@@ -13,6 +13,5 @@ return {
         priority = 1000,
         depends = {'nvim-tree/nvim-web-devicons'},
         opts = {options = {theme = 'dracula'}}
-    }, -- lsp hover documentation
-    {'folke/neodev.nvim', opts = {}, event = "VeryLazy"}
+    }
 }

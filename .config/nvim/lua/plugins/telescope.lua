@@ -161,7 +161,6 @@ return {
         tl.load_extension('fzf') -- native fzf
         tl.load_extension('repo')
         tl.load_extension('projects')
-        -- to try:
-        -- https://github.com/pwntester/octo.nvim
+        -- TODO: try https://github.com/pwntester/octo.nvim
     end
 }
