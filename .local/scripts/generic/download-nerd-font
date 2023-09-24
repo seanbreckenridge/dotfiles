@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+PATCHED_SOURCE_CODE_PRO_MEDIUM="https://raw.githubusercontent.com/ryanoasis/nerd-fonts/master/patched-fonts/SourceCodePro/Medium/SauceCodeProNerdFont-Medium.ttf"
+
+mkdir -p ~/.local/share/fonts
+cd ~/.local/share/fonts && curl -fLo "SauceCodeProNerdFont-Medium.ttf" $PATCHED_SOURCE_CODE_PRO_MEDIUM
+havecmd fc-cache && fc-cache -fv ~/.local/share/fonts

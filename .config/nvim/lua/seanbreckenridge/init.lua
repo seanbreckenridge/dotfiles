@@ -74,9 +74,6 @@ vim.opt.viminfo = "'20,<1000,s1000"
 -- marks
 vim.opt.shada = "'1000,f1,<100"
 
--- https://github.com/seanbreckenridge/on_machine
-vim.g.on_os = os.getenv('ON_OS') or 'unknown'
-
 -- See `:help vim.highlight.on_yank()`
 local highlight_group = vim.api.nvim_create_augroup('YankHighlight',
                                                     {clear = true})
