@@ -9,8 +9,8 @@ alias lsplain='command ls --color=never'
 alias eza-defaults='eza --git --octal-permissions --header --group-directories-first'
 # alias ls to exa
 case "$ON_OS" in
-mac* | android*)
-	# icons dont work some operating systems
+# disable icons on:
+mac*)
 	alias ls='eza-defaults'
 	;;
 *)
