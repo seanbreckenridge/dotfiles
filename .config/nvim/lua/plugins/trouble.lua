@@ -11,6 +11,12 @@ return {
         wk.register({
             x = {
                 name = "trouble",
+                -- git diff file with gitsigns (opens in trouble if installed)
+                D = {
+                    function()
+                        require("gitsigns").setqflist()
+                    end, "git diff"
+                },
                 x = {
                     function() require("trouble").toggle() end, "toggle trouble"
                 },
