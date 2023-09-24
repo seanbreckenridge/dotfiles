@@ -99,9 +99,12 @@ alias cl='clipcopy'
 spell-list() {
 	fd --type f "$@" --exec-batch codespell-conf
 }
+spell-interactive() {
+	fd --type f "$@" --exec-batch codespell-conf --write-changes --interactive 3
+}
 spell() {
 	spell-list
-	fd --type f "$@" --exec-batch codespell-conf --write-changes --interactive 3
+	spell-interactive "$@"
 }
 alias 'ml=mailsync-loop'
 alias 'confirm=fzf --multi'
