@@ -10,13 +10,8 @@ return {
 
         require'lint'.linters_by_ft = {python = {"flake8"}}
 
-        -- run lint on save
-        vim.api.nvim_create_autocmd({"BufWritePost"}, {
-            callback = function() require("lint").try_lint() end
-        })
-
-        -- run lint if lsp connects
-        vim.api.nvim_create_autocmd({"LspAttach"}, {
+        -- run lint on save, or when lsp attaches
+        vim.api.nvim_create_autocmd({"BufWritePost", "LspAttach"}, {
             callback = function() require("lint").try_lint() end
         })
     end
