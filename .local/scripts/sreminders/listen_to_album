@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# if I haven't listened to a new album in the past week, notify me
 
 set -o pipefail
 

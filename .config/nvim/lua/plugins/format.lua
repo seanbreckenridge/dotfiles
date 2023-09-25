@@ -3,7 +3,8 @@ wk.register({':Format<CR>', 'format'}, {prefix = '<leader>t'})
 
 return {
     'mhartington/formatter.nvim',
-    keys = {'<leader>t'},
+    -- hmm: using <leader>t as lazy load doesn't seem to work
+    event = "VeryLazy",
     cmd = {'Format', 'FormatWrite', 'FormatLock', 'FormatWriteLock'},
     config = function()
 

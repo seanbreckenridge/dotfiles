@@ -1,99 +1,154 @@
-#!/usr/bin/env bash
-# 'sourced reminders'
-#
-usage="Instead of reminding me every 'n' duration to do something, this
-uses local data to check if I've done it within that duration
+#!/usr/bin/env python3
+import sys
+import os
+import time
+import subprocess
+import logging
+from typing import TextIO, Iterator
+from concurrent.futures import ThreadPoolExecutor, Future, as_completed
 
-This works by calling a bunch of other executables which return
-a zero exit code if I've done the thing within the expected
-duration, else exits with exit code 2 or 3 (2 meaning print
-the name of the script, 3 meaning print the output of the script)
+import click
 
-number of scripts which have expired gets displayed in my menu bar,
-and if I click it it sends a notification with the script name,
-which lets me know what I have left to do
+USAGE = """\
+Instead of reminding me every 'n' duration to do something, this uses local
+data to check if I've done it within that duration
 
-this makes these reminders less obstrusive since I don't have to
-feel like I have to do it when some notify-send is sent, but it still
-reminds me to do things since the number sits there while I haven't"
+This works by calling a bunch of other bash scripts which return a zero exit
+code if I've done the thing within the expected duration, else exits with exit
+code 2 or 3 (2 meaning print the name of the script, 3 meaning print the output
+of the script)
 
-declare -a DIRS
-DIRS=()
+Number of scripts which have expired gets displayed in my menu bar, and if
+I click it it sends a notification with the script name, which lets me know
+what I have left to do
 
-find_execs() {
-	for d in "${DIRS[@]}"; do
-		find -L "${d}" -type f '(' -executable -o -name '*.enabled' ')' -print0
-	done
-}
+This makes these reminders less obtrusive since I don't have to feel like
+I have to do it when some notify-send is sent, but it still reminds me to do
+things since the number sits there while I haven't
 
-split_sreminders_path() {
-	if [[ -z "$SREMINDERS_PATH" ]]; then
-		echo 'The SREMINDERS_PATH environment variable is not set. That should contain a colon-delimited list of directories which contain sreminder jobs. E.g., in your shell profile, set:' >&2
-		# shellcheck disable=SC2016
-		echo 'export SREMINDERS_PATH="${HOME}/.local/sreminders:${HOME}/data/sreminders"'
-		return 1
-	fi
-	IFS=: read -r -a DIRS <<<"$SREMINDERS_PATH"
-	unset IFS
-}
+This runs all scripts as bash, though you could wrap another language in a bash
+script if you wanted to use something else
 
-run_scripts() {
-	local name exitcode output
-	case "$1" in
-	count)
-		run_scripts run | wc -l
-		;;
-	esac
-	find_execs | while read -r -d $'\0' script; do
-		case "$1" in
-		list)
-			echo "$script"
-			;;
-		run)
-			# workaround for running scripts in linked directories
-			# https://sean.fish/d/run-script?dark
-			if hash run-script; then
-				output="$(run-script "${script}")"
-			else
-				output="$("${script}")"
-			fi
-			exitcode="$?"
-			case "$exitcode" in
-			2)
-				name="$(basename "${script}")"
-				echo "${name%%.*}"
-				;;
-			3)
-				echo "$output"
-				;;
-			esac
-			;;
-		esac
-	done
-}
+To disable a script, make it non executable, or add a .disabled to the end of
+the filename. To enable it, make it executable or add a .enabled to the end of
+the filename
 
-main() {
-	local action='run'
-	while getopts 'lhc' opt; do
-		case "${opt}" in
-		l)
-			action='list'
-			;;
-		c)
-			action='count'
-			;;
-		h)
-			printf "Usage: sreminders [-h] [-lc]\n"
-			printf "	-l		List scripts which would be run\n"
-			printf "	-c		Print number of sreminders\n"
-			printf '\n%s\n' "$usage"
-			exit 0
-			;;
-		*) ;;
-		esac
-	done
-	split_sreminders_path
-	run_scripts "$action"
-}
+\b For examples of the scripts, you can see mine here:
+https://github.com/seanbreckenridge/dotfiles/tree/master/.local/scripts/sreminders
+"""
 
-main "$@"
+
+def executable(path: str) -> bool:
+    return os.access(path, os.X_OK)
+
+
+def find_execs() -> Iterator[str]:
+    dirs = os.environ.get("SREMINDERS_PATH")
+    if not dirs:
+        click.echo(
+            "The SREMINDERS_PATH environment variable is not set. "
+            "It should contain a colon-delimited list of directories "
+            "that contain sreminder jobs. "
+            "For example, in your shell profile, set:\n"
+            'export SREMINDERS_PATH="${HOME}/.local/sreminders:${HOME}/data/sreminders"'
+        )
+        return
+    for d in dirs.rstrip(":").split(":"):
+        logging.debug(f"Searching {d}")
+        if not os.path.isdir(d):
+            click.echo(f"Error: {d} is not a directory", err=True)
+            continue
+        for root, _, files in os.walk(d, followlinks=True):
+            for file in files:
+                abspath = os.path.join(root, file)
+                if file.endswith(".disabled"):
+                    continue
+                if executable(abspath) or file.endswith(".enabled"):
+                    yield abspath
+
+        logging.debug(f"Finished searching {d}")
+
+
+INTERPRETER = os.environ.get("SREMINDERS_INTERPRETER", "bash")
+
+
+def script_name(script: str) -> str:
+    path = os.path.basename(script)
+    return os.path.splitext(path)[0]
+
+
+def run_script(script: str) -> tuple[str, int, str]:
+    name = script_name(script)
+    logging.debug(f"{name}: Starting {repr(script)}")
+    start = time.perf_counter()
+    proc = subprocess.Popen(
+        [INTERPRETER, script],
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE,
+        universal_newlines=True,
+    )
+    exitcode = proc.wait()
+
+    output = proc.stdout.read() if proc.stdout else ""
+
+    assert proc.stderr is not None, "stderr should be a pipe"
+    for line in proc.stderr:
+        logging.warning(f"{name}: {line.rstrip()}")
+
+    logging.debug(
+        f"Finished: {name} (took {time.perf_counter() - start}) with exit code {exitcode} and output {repr(output.strip())}"
+    )
+    return name, exitcode, output
+
+
+def run_parallel_scripts(
+    executables: Iterator[str],
+) -> list[Future[tuple[str, int, str]]]:
+    cpu_count = os.cpu_count()
+    logging.debug(f"Running scripts with {cpu_count} threads")
+    with ThreadPoolExecutor(max_workers=cpu_count) as executor:
+        return [executor.submit(run_script, script) for script in executables]
+
+
+def write_results(futures, out: TextIO) -> None:
+    for future in as_completed(futures):
+        name, exitcode, output = future.result()
+        match exitcode:
+            case 0:
+                pass
+            case 1:
+                logging.error(f"{name}: failed. Pass -d for more information")
+            case 2:
+                out.write(name)
+                out.write("\n")
+            case 3:
+                out.write(output.rstrip("\n"))
+                out.write("\n")
+
+
+FORMAT = "%(asctime)s %(levelname)s - %(message)s"
+
+
+@click.command(help=USAGE, context_settings={"help_option_names": ["-h", "--help"]})
+@click.option("-d", "--debug", is_flag=True, help="print debug information")
+@click.option(
+    "-l", "--list", "list_scripts", is_flag=True, help="list scripts which would be run"
+)
+def main(list_scripts: bool, debug: bool) -> None:
+    if debug:
+        logging.basicConfig(level=logging.DEBUG, format=FORMAT)
+    else:
+        logging.basicConfig(level=logging.INFO, format=FORMAT)
+
+    executables = find_execs()
+
+    if list_scripts:
+        click.echo("\n".join(list(executables)))
+    else:
+        futures = run_parallel_scripts(executables)
+        write_results(futures, sys.stdout)
+        sys.stdout.flush()
+
+
+if __name__ == "__main__":
+    main()
