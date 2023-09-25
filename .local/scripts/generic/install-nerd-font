@@ -19,7 +19,6 @@ get_url() {
 	printf 'https://github.com/ryanoasis/nerd-fonts/releases/download/%s/%s\n' "$TAG" "$FILENAME"
 }
 
-
 install_font() {
 	local url
 	url="$(get_url)"

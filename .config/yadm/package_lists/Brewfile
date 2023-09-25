@@ -67,7 +67,7 @@ brew 'rlwrap'
 brew 'ffmpeg'
 brew 'ffmpegthumbnailer'
 brew 'hub'
-brew 'graphviz'  # for sqleton
+brew 'graphviz' # for sqleton
 brew 'thefuck'
 brew 'php'
 brew 'ytop'
@@ -136,8 +136,8 @@ cask 'alacritty'
 cask 'kitty'
 cask 'chromedriver'   # for webscraping
 cask 'mysqlworkbench' # easy mysql interface
-cask 'adoptopenjdk/openjdk/adoptopenjdk8'  # java
-cask 'zoom'         # for stupid video confrencing
+cask 'adoptopenjdk/openjdk/adoptopenjdk8' # java
+cask 'zoom'
 cask 'visual-studio-code'
 cask 'microsoft-teams'
 cask 'steam'          # video games

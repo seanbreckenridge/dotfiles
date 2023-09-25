@@ -1,4 +1,2 @@
 # lsp/linting
-rdoc
 rubocop
-solargraph

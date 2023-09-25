@@ -47,7 +47,6 @@ update_ranger_plugins() {
 
 update_lang_all() {
 	update_node
-	update_gem
 	update_pip
 	update_cargo
 	update_golang
