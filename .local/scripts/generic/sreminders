@@ -4,7 +4,7 @@ import os
 import time
 import subprocess
 import logging
-from typing import TextIO, Iterator
+from typing import TextIO, Iterable
 from concurrent.futures import ThreadPoolExecutor, Future, as_completed
 
 import click
@@ -13,8 +13,12 @@ USAGE = """\
 Instead of reminding me every 'n' duration to do something, this uses local
 data to check if I've done it within that duration
 
-This works by calling a bunch of other bash scripts which return a zero exit
-code if I've done the thing within the expected duration, else exits with exit
+e.g., whenever I have my vitamins, I log that with
+https://github.com/seanbreckenridge/ttally, and this script checks if I've
+taken them within the last 24 hours
+
+This works by calling other bash scripts which return a zero exit
+code if I've done the thing recently, else exits with an exit
 code 2 or 3 (2 meaning print the name of the script, 3 meaning print the output
 of the script)
 
@@ -42,7 +46,7 @@ def executable(path: str) -> bool:
     return os.access(path, os.X_OK)
 
 
-def find_execs() -> Iterator[str]:
+def find_execs() -> Iterable[str]:
     dirs = os.environ.get("SREMINDERS_PATH")
     if not dirs:
         click.echo(
@@ -77,7 +81,10 @@ def script_name(script: str) -> str:
     return os.path.splitext(path)[0]
 
 
-def run_script(script: str) -> tuple[str, int, str]:
+Result = tuple[str, int, str]
+
+
+def run_script(script: str) -> Result:
     name = script_name(script)
     logging.debug(f"{name}: Starting {repr(script)}")
     start = time.perf_counter()
@@ -102,28 +109,31 @@ def run_script(script: str) -> tuple[str, int, str]:
 
 
 def run_parallel_scripts(
-    executables: Iterator[str],
-) -> list[Future[tuple[str, int, str]]]:
+    executables: Iterable[str],
+) -> Iterable[Future[Result]]:
     cpu_count = os.cpu_count()
     logging.debug(f"Running scripts with {cpu_count} threads")
     with ThreadPoolExecutor(max_workers=cpu_count) as executor:
-        return [executor.submit(run_script, script) for script in executables]
+        for script in executables:
+            yield executor.submit(run_script, script)
 
 
-def write_results(futures, out: TextIO) -> None:
+def print_result(res: Result, out: TextIO) -> None:
+    name, exitcode, output = res
+    match exitcode:
+        case 0:
+            pass
+        case 1:
+            logging.error(f"{name}: failed. Pass -d for more information")
+        case 2:
+            out.write(name + "\n")
+        case 3:
+            out.write(output.rstrip("\n") + "\n")
+
+
+def write_results(futures: Iterable[Future[Result]], out: TextIO) -> None:
     for future in as_completed(futures):
-        name, exitcode, output = future.result()
-        match exitcode:
-            case 0:
-                pass
-            case 1:
-                logging.error(f"{name}: failed. Pass -d for more information")
-            case 2:
-                out.write(name)
-                out.write("\n")
-            case 3:
-                out.write(output.rstrip("\n"))
-                out.write("\n")
+        print_result(future.result(), out)
 
 
 FORMAT = "%(asctime)s %(levelname)s - %(message)s"
@@ -145,8 +155,7 @@ def main(list_scripts: bool, debug: bool) -> None:
     if list_scripts:
         click.echo("\n".join(list(executables)))
     else:
-        futures = run_parallel_scripts(executables)
-        write_results(futures, sys.stdout)
+        write_results(run_parallel_scripts(executables), sys.stdout)
         sys.stdout.flush()
 
 
