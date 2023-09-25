@@ -1,0 +1,2 @@
+#!/bin/sh
+exec fd --type f "$@" --exec-batch codespell-conf --write-changes --interactive 3

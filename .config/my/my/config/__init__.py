@@ -335,7 +335,7 @@ class blizzard:
     """https://github.com/seanbreckenridge/blizzard_gdpr_parser"""
 
     class gdpr:
-        export_path: Paths = data("blizzard/parsed.json")
+        export_path: Paths = data("gdpr/blizzard/parsed.json")
 
 
 environ["OLD_FORUMS_SELECTORS"] = str(data("old_forum_selectors.json"))
@@ -364,12 +364,12 @@ class skype:
 
 class facebook:
     class gdpr:
-        gdpr_dir: PathIsh = data("facebook_gdpr")
+        gdpr_dir: PathIsh = data("gdpr/facebook")
 
 
 class spotify:
     class gdpr:
-        gdpr_dir: PathIsh = data("spotify")
+        gdpr_dir: PathIsh = data("gdpr/spotify")
 
 
 class twitch:
@@ -434,12 +434,12 @@ class photos:
 
 class apple:
     class privacy_export:
-        gdpr_dir: PathIsh = data("apple")
+        gdpr_dir: PathIsh = data("gdpr/apple")
 
 
 class linkedin:
     class privacy_export:
-        gdpr_dir: PathIsh = data("linkedin")
+        gdpr_dir: PathIsh = data("gdpr/linkedin")
 
 
 class discord:
@@ -468,11 +468,11 @@ class pdfs:
 
 class zulip:
     class organization:
-        export_path: Paths = data("zulip/organization")
+        export_path: Paths = data("gdpr/zulip/organization")
 
 
 class twitter_archive:
-    export_path: Paths = data("twitter/archive.zip")
+    export_path: Paths = data("gdpr/twitter/archive.zip")
 
 
 class stackexchange:

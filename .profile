@@ -101,7 +101,7 @@ export LC_ALL='en_US.UTF-8'
 export VISUAL='nvim'   # e.g. for edit-command-line in ~/.zshrc, to prompt in current terminal
 export EDITOR='editor' # basic nvim wrapper
 export PAGER='less'
-export TERMINAL='alacritty'
+export TERMINAL='kitty'
 export READER='okular'
 
 # define where ZDOTDIR (rest of zsh configuration) is
@@ -111,5 +111,6 @@ export ZDOTDIR="${XDG_CONFIG_HOME}/zsh"
 # environment since they could be referenced without opening a terminal
 # e.g. from my menu bar/window manager/run launcher
 if [ -f "${ZDOTDIR}/global_env.sh" ]; then
+	# shellcheck disable=SC1091
 	. "${ZDOTDIR}/global_env.sh"
 fi

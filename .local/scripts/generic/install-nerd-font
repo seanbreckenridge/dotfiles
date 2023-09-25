@@ -1,0 +1,38 @@
+#!/usr/bin/env bash
+# this is for mac/linux
+# on android, it comes with a patched nerd font
+# out of the box when using https://f-droid.org/packages/com.termux.styling/
+
+set -e
+
+FILENAME='NerdFontsSymbolsOnly.tar.xz'
+TARGET_DIR="$HOME/.local/share/fonts"
+
+get_url() {
+	local TAG
+	echo 'Fetching latest release from github api...' >&2
+	TAG="$(curl -s https://api.github.com/repos/ryanoasis/nerd-fonts/releases/latest | jq -r '.tag_name')" || {
+		echo "Failed to get latest version from github api..." >&2
+		exit 1
+	}
+	echo "Latest release: $TAG" >&2
+	printf 'https://github.com/ryanoasis/nerd-fonts/releases/download/%s/%s\n' "$TAG" "$FILENAME"
+}
+
+
+install_font() {
+	local url
+	url="$(get_url)"
+	echo "Installing nerd font from $url" >&2
+	mkdir -p "$TARGET_DIR"
+	cd "$TARGET_DIR" || exit 1
+	echo "Downloading patched nerd font to ~/.local/share/fonts" >&2
+	wget "$url" -O "$FILENAME"
+	tar -xvf "$FILENAME"
+	echo 'Cleaning up...' >&2
+	rm -v "$FILENAME"
+	find "$TARGET_DIR" \( -iname 'readme.md' -o -name 'LICENSE*' \) -print -delete
+	havecmd fc-cache && fc-cache -fv ~/.local/share/fonts
+}
+
+install_font

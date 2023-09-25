@@ -1,8 +1,8 @@
 -- get home directory
 -- vim.o sets global options, vim.opt sets buffer-local options
 -- see :help vim-differences for some defaults set in nvim
--- for :help snytax, treesitter will disable this for filetypes it knows, otherwise
--- syntax hightlighting is enabled by default
+-- for :help syntax, treesitter will disable this for filetypes it knows, otherwise
+-- syntax highlighting is enabled by default
 -- for which-key
 vim.o.timeout = true
 vim.o.timeoutlen = 300

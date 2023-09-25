@@ -96,16 +96,6 @@ alias c=calc_ans_rlwrap
 alias 'countdown=termdown'
 # shorthand for copying to clipboard
 alias cl='clipcopy'
-spell-list() {
-	fd --type f "$@" --exec-batch codespell-conf
-}
-spell-interactive() {
-	fd --type f "$@" --exec-batch codespell-conf --write-changes --interactive 3
-}
-spell() {
-	spell-list
-	spell-interactive "$@"
-}
 alias 'ml=mailsync-loop'
 alias 'confirm=fzf --multi'
 alias 'up=TERM=xterm up'

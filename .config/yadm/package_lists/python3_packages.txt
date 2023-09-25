@@ -22,6 +22,7 @@ ipdb
 ipython
 isort
 j2cli
+jedi
 logzero
 mpv-history-daemon
 mutagen

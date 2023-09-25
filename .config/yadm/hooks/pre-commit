@@ -4,8 +4,15 @@
 
 # make sure there is no errors with my profile,
 # because this causes x11 issues if it can't be sourced
-sh ~/.profile || exit $?
+sh ~/.profile || {
+	echo 'Error in sourcing ~/.profile' >&2
+	exit 1
+}
 
 cd || exit $?
+
+# check for spelling errors in my dotfiles
+dotfiles-spelling || exit $?
+
 cp ~/.config/yadm/README.md ~/README.md
 yadm add -f ~/README.md

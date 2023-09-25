@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # fzf all file contents recursively with rg, open the line
-# the ser selects
+# the user selects
 declare RG_OUT
 declare -a RG_PARTS
 RG_OUT="$(rg-lines)" || exit $?

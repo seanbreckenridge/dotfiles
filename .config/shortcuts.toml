@@ -593,13 +593,22 @@ exec flake8 --config ~/.config/flake8 "$@"
 '''
 
 [yadm-format]
-shebang = "#!/bin/zsh"
 command='''
-# format and lint all my dotfiles
+# autoformat all my dotfiles
+set -o pipefail
 cd
 yadm list | exists | rifleman -
+'''
+shebang = "#!/usr/bin/env zsh"
+
+[yadm-lint]
+command='''
+# run linters on all my dotfiles
+set -o pipefail
+cd
 yadm list | exists | rifleman - -a lint
 '''
+shebang = "#!/usr/bin/env zsh"
 
 [listens-desc]
 command='''
@@ -829,3 +838,17 @@ command = 'exec fd --type=file "$@"'
 
 [mypy-single-lines]
 command = 'exec mypy --show-column-numbers --hide-error-codes --hide-error-context --no-color-output --no-error-summary --no-pretty "$@"'
+
+[spell-list]
+command = 'exec fd --type f "$@" --exec-batch codespell-conf'
+
+[spell-interactive]
+command = 'exec fd --type f "$@" --exec-batch codespell-conf --write-changes --interactive 3'
+
+[spell]
+command = '''
+set -e
+spell-list || true
+spell-interactive "$@"
+'''
+shebang = "#!/usr/bin/env bash"

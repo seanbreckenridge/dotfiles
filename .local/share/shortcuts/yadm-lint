@@ -1,0 +1,5 @@
+#!/usr/bin/env zsh
+# run linters on all my dotfiles
+set -o pipefail
+cd
+yadm list | exists | rifleman - -a lint

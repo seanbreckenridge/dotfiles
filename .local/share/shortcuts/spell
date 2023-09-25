@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+set -e
+spell-list || true
+spell-interactive "$@"
