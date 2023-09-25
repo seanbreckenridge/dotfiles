@@ -47,6 +47,7 @@ requests
 rifleman
 rsa
 selenium
+setup-cfg-fmt
 setuptools
 speedtest-cli
 srt
