@@ -10,7 +10,6 @@ local cfg_format = function()
             args = {"--include-version-classifiers"}
         }
     else
-        print("Not a setup.cfg file")
         return nil
     end
 end
