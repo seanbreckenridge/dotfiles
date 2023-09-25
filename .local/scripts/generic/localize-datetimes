@@ -73,10 +73,10 @@ def parse_line(
 @click.command()
 @click.option(
     "-d",
-    "--delimeter",
+    "--delimiter",
     default="\t",
     show_default=True,
-    help="Delimiter to use between date and rest of line",
+    help="delimiter to use between date and rest of line",
 )
 @click.option(
     "-k",
@@ -91,7 +91,7 @@ def main(delimiter: str, json_key: str) -> None:
 
     This attempts lots of strategies to find the date; trying
     to parse the entire line, the first token of the line
-    (split by whitespace or --delimeter (tab by default)),
+    (split by whitespace or --delimiter (tab by default)),
     or the value of the JSON key specified by --json-key, if lines are
     JSON objects.
 
