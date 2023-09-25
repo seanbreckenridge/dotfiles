@@ -3,10 +3,11 @@
 
 set -o pipefail
 
-with-secrets flipflop.py update-cache >/dev/null 2>&1
+# shellcheck disable=SC1091
+source "$HPIDATA/tokens"
 
 declare OUTPUT
-OUTPUT="$(with-secrets flipflop.py status -fo json | jq 'keys[]' -r)" || notify "flipflop failed to run"
+OUTPUT="$(flipflop.py status -fo json | jq 'keys[]' -r)" || notify "flipflop failed to run"
 
 [[ -n "$OUTPUT" ]] && {
 	echo "$OUTPUT"
