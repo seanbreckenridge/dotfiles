@@ -1,6 +1,20 @@
 local wk = require("which-key")
 wk.register({':Format<CR>', 'format'}, {prefix = '<leader>t'})
 
+local cfg_format = function()
+    local util = require('formatter.util')
+    if util.get_current_buffer_file_name() == "setup.cfg" then
+        return {
+            exe = "setup-cfg-fmt-tempfile",
+            stdin = true,
+            args = {"--include-version-classifiers"}
+        }
+    else
+        print("Not a setup.cfg file")
+        return nil
+    end
+end
+
 return {
     'mhartington/formatter.nvim',
     -- hmm: using <leader>t as lazy load doesn't seem to work
@@ -28,6 +42,7 @@ return {
                 html = prettier,
                 json = fixjson,
                 typescript = prettier,
+                cfg = cfg_format,
                 javascript = prettier,
                 typescriptreact = prettier,
                 javascriptreact = prettier,

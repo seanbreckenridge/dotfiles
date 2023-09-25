@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+set -e
+tfile="$(mktemp -t setup.cfg.XXXXXX)"
+cat >"$tfile"
+setup-cfg-fmt "$@" "$tfile" >&2 || true
+cat "$tfile"
+command rm -f "$tfile"

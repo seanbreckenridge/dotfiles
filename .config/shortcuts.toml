@@ -858,3 +858,14 @@ spell-list || true
 spell-interactive "$@"
 '''
 shebang = "#!/usr/bin/env bash"
+
+[setup-cfg-fmt-tempfile]
+command = '''
+set -e
+tfile="$(mktemp -t setup.cfg.XXXXXX)"
+cat >"$tfile"
+setup-cfg-fmt "$@" "$tfile" >&2 || true
+cat "$tfile"
+command rm -f "$tfile"
+'''
+shebang = "#!/usr/bin/env bash"
