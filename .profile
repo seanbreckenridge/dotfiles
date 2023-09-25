@@ -34,6 +34,7 @@ ${XDG_DATA_HOME}/basher/cellar/bin:\
 ${HPIDATA}/bin:\
 ${REPOS}/HPI-personal/scripts:\
 ${REPOS}/bleanser/bin:\
+${REPOS}/plaintext_playlist_py/bin:\
 ${REPOS}/my_feed/scripts:\
 ${REPOS}/ttally/bin:\
 ${XDG_DATA_HOME}/shortcuts:\
