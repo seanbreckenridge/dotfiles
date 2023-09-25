@@ -830,8 +830,14 @@ command = 'exec paste -sd " "'
 
 [codespell-conf]
 command = '''
-exec codespell --config ~/.config/codespell/codespell.conf --ignore-words ~/.config/nvim/spell/en.utf-8.add "$@"
+declare -a args=()
+if [[ -n "$NVIM_SPELLFILE" ]];
+then
+	args+=("--ignore-words=$NVIM_SPELLFILE")
+fi
+exec codespell --config ~/.config/codespell/codespell.conf "${args[@]}" "$@"
 '''
+shebang = "#!/usr/bin/env bash"
 
 [fdf]
 command = 'exec fd --type=file "$@"'

@@ -1,8 +1,0 @@
-#!/usr/bin/env bash
-
-evry 2 weeks -backup-nvim-spell-file && {
-	printlog 'backup-nvim-spell-file:backing up spelling history'
-	to_dir="$HOME/Files/Backups/nvim-spell"
-	mkdir -p "$to_dir"
-	gzip --best <"$HOME/.config/nvim/spell/en.utf-8.add" >"$to_dir/$(tstamp).txt.gz"
-}

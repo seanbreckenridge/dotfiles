@@ -77,7 +77,6 @@ DISABLED_MODULES = [
     "my.rss.common",
     "my.rss.feedbin",
     "my.rss.feedly",
-    "my.photos",
     "my.calendar",
     "my.taplog",
     "my.runnerup",
@@ -86,6 +85,7 @@ DISABLED_MODULES = [
     "my.pocket",
     "my.lastfm",
     "my.kobo",
+    "my.hackernews*",
     "my.instapaper",
     "my.hypothesis",
     "my.foursquare",
@@ -100,13 +100,6 @@ DISABLED_MODULES = [
     "my.hackernews",
     "my.zotero",  # temporarily? till I start using it
 ]
-
-
-# albums may not work on some versions of python
-try:
-    from nextalbums import __main__ as _m  # noqa
-except ImportError:
-    DISABLED_MODULES.append("my.nextalbums")
 
 
 class core:
@@ -426,12 +419,6 @@ class smscalls:
     export_path: Paths = data("SMSBackups")
 
 
-class photos:
-    paths: List[PathIsh] = ["~/Pictures/iCloudPhotos/", data("google_takeout")]
-    # dont ignore anything
-    ignored: Callable[[Path], bool] = lambda _p: False
-
-
 class apple:
     class privacy_export:
         gdpr_dir: PathIsh = data("gdpr/apple")
@@ -462,7 +449,7 @@ class minecraft:
 class pdfs:
     paths: Paths = [
         "~/Files/Books/",
-        "~/Files/Notes/",
+        "~/Documents/Notes/",
     ]
 
 
@@ -503,7 +490,7 @@ class location:
         accurate_date_cutoff = date(2020, 10, 15)
         previous_accurate_for_days = 7
         new_point_duration = timedelta(minutes=30)
-        database_location = "~/data/where_db.json"
+        database_location = "~/data/.where_db.json"
 
     class gpslogger:
         """.gpx files from https://github.com/mendhak/gpslogger"""

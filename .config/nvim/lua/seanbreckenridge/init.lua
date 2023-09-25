@@ -32,6 +32,11 @@ vim.opt.matchpairs:append('<:>')
 -- dont think I ever use this...
 -- vim.cmd('runtime! macros/matchit.vim')
 
+-- save spellfile to my Documents
+local os = require('os')
+local spellfile = os.getenv('NVIM_SPELLFILE')
+if spellfile then vim.o.spellfile = spellfile end
+
 -- only show status line for last window
 vim.opt.laststatus = 3
 

@@ -243,6 +243,10 @@ else
 	printf "Created %d shortcuts\n" "$(python3 -m shortcuts create --debug | wc -l)"
 fi
 
+if [[ -n "$NVIM_SPELLFILE" ]]; then
+	mkdir -p "$(dirname "$NVIM_SPELLFILE")"
+fi
+
 # setup directory for ranger
 dir-aliases-ranger
 
