@@ -10,7 +10,7 @@ sh ~/.profile || {
 }
 
 # check for spelling errors in my dotfiles
-dotfiles-spelling || exit $?
+spell-dotfiles || exit $?
 
 # Copy README for git repo to $HOME so that the github repo README will be updated
 # post-commit moves the README.md back so as to not pollute $HOME
