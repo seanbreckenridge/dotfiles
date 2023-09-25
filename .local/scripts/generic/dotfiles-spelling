@@ -2,4 +2,5 @@
 
 list-config-no-hist |
 	grep -vE 'alacritty|system-config|lynx' |
-	exists | tr '\n' '\0' | xargs -0 codespell-conf -I ~/.config/yadm/dotfiles_ignore_words.txt "$@"
+	exists | tr '\n' '\0' |
+	xargs -0 codespell-conf -I ~/.config/yadm/dotfiles_ignore_words.txt "$@"
