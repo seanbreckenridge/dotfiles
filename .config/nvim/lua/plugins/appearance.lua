@@ -6,7 +6,9 @@ return {
         name = "catppuccin",
         priority = 1000,
         config = function()
-            require'seanbreckenridge.colorscheme'.setup_catppuccin()
+            local clr = require 'seanbreckenridge.colorscheme'
+            clr.setup_catppuccin()
+            clr.setup_theme()
         end
     }, {
         'nvim-lualine/lualine.nvim',

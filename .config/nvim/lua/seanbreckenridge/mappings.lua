@@ -70,6 +70,7 @@ local reload_config = function()
     vim.cmd(':source ~/.config/nvim/lua/seanbreckenridge/init.lua')
     vim.cmd(':source ~/.config/nvim/lua/seanbreckenridge/mappings.lua')
     require('seanbreckenridge.colorscheme').setup_theme()
+    print('Reloaded config')
 end
 
 -- misc

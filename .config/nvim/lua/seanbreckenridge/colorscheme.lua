@@ -76,6 +76,4 @@ M.setup_theme = function()
     vim.cmd.colorscheme 'catppuccin'
 end
 
-M.setup_theme()
-
 return M
