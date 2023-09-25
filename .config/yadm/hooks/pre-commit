@@ -12,7 +12,7 @@ sh ~/.profile || {
 cd || exit $?
 
 # check for spelling errors in my dotfiles
-dotfiles-spelling -i 3 -w || exit $?
+dotfiles-spelling || exit $?
 
 cp ~/.config/yadm/README.md ~/README.md
 yadm add -f ~/README.md
