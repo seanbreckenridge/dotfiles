@@ -783,8 +783,7 @@ shebang = "#!/usr/bin/env bash"
 
 [fzf-edit]
 command = '''
-STDIN="$(cat)"
-FILE="$(fzfp +m -q "$*" <<<"$STDIN")"
+FILE="$(fzfp +m -q "$*")"
 if [[ -n "$FILE" ]]; then
 	editor "$FILE"
 else
