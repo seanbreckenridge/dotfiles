@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+update-my-stars
 # https://github.com/seanbreckenridge/oh-my-stars
 PICKED="$(fzfcache mystars "$@" | fzf --ansi)" || exit $?
 printf '%s\n' "${PICKED}"
