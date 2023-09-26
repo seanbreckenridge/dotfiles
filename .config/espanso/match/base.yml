@@ -20,5 +20,7 @@ matches:
             - "i see"
             - "understood"
             - "gotcha"
+  - trigger: ":adi"
+    replace: "added MAL ID"
 
   # NOTE: espanso uses YAML to define matches, so pay attention to the indentation!
