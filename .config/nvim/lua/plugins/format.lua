@@ -7,7 +7,10 @@ local cfg_format = function()
         return {
             exe = "setup-cfg-fmt-tempfile",
             stdin = true,
-            args = {"--include-version-classifiers"}
+            args = {
+                util.escape_path(vim.fn.expand("%:p")),
+                "--include-version-classifiers"
+            }
         }
     else
         return nil

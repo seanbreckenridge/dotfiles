@@ -1,6 +1,18 @@
 #!/usr/bin/env bash
 set -e
-tfile="$(mktemp -t setup.cfg.XXXXXX)"
+# first arg is the setup.cfg file
+# rest of the arguments are passed on to
+# https://github.com/asottile/setup-cfg-fmt/
+# STDIN should be the contents of the file
+# this accepts both the filename and the contents
+# since setup-cfg-fmt uses the directory of the file
+# to find related (README/LICENSE) files, but
+# we want to be able to pipe the current buffer (disregarding
+# if its saved or not) to the formatter
+setup_cfg_file="$1"
+shift
+dname="$(dirname "$setup_cfg_file")"
+tfile="$(mktemp -t setup.cfg.XXXXXX -p "$dname")"
 cat >"$tfile"
 setup-cfg-fmt "$@" "$tfile" >&2 || true
 cat "$tfile"
