@@ -25,7 +25,8 @@ return {
                     function()
                         require("telescope.builtin").git_branches()
                     end, 'telescope branch'
-                }
+                },
+                B = {'<cmd>:Git blame<CR>', 'blame'}
             }
         }, {prefix = "<leader>"})
     end
