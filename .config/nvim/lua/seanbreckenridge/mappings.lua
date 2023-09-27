@@ -83,22 +83,13 @@ wk.register({
 }, {prefix = '<space>'})
 
 -- window/buffers
-wk.register({b = {'<C-^><CR>', 'swap buffers'}, w = {'<C-W>', 'window'}},
-            {prefix = '<leader>'})
+wk.register({b = {'<C-^><CR>', 'swap buffers'}}, {prefix = '<leader>'})
+-- use WhichKey so I can see the mappings
+nnoremap('<leader>w', function() require('which-key').show_command('<C-w>') end,
+         'window')
 nnoremap('<leader><C-n>', ':enew<CR>', 'new file')
 
--- separating these into separate register calls let me use the name
-wk.register({
-    W = {
-        name = "window/buffers",
-        ["="] = {':vertical resize +5<CR>', 'vertical increase window size'},
-        ["-"] = {':vertical resize -5<CR>', 'vertical decrease window size'},
-        ["s"] = {'<C-W>s', 'horizontal split'},
-        ["v"] = {'<C-W>v', 'vertical split'}
-    }
-}, {prefix = '<leader>'})
-
-nnoremap('<C-q>', ':lua ToggleQFList(1)<CR>', 'toggle quickfix list')
+nnoremap('<C-q>', ':lua ToggleQFList(0)<CR>', 'toggle quickfix list')
 wk.register({j = {':cnext<CR>', 'qf next'}, k = {':cprev<CR>', 'qf prev'}},
             {prefix = '<leader>'})
 
@@ -112,9 +103,9 @@ wk.register({
     }
 }, {prefix = '<leader>'})
 
-function ToggleQFList(quickfix)
+function ToggleQFList(is_quickfix)
     -- quickfix
-    if quickfix == 1 then
+    if is_quickfix == 1 then
         require("trouble").toggle("quickfix")
     else -- loclist
         require("trouble").toggle("loclist")

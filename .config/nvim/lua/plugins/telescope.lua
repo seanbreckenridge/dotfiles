@@ -120,7 +120,7 @@ return {
                         -- fzf-like up/down (remember, can also switch to normal mode and use j/k)
                         ["<C-j>"] = actions.move_selection_next,
                         ["<C-k>"] = actions.move_selection_previous,
-                        ["<C-t>"] = trouble.open_with_trouble
+                        ["<C-x>"] = trouble.open_with_trouble
                     }
                 },
                 -- ignore some directory caches with lots of file results

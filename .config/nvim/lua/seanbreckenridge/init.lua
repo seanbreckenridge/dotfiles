@@ -85,11 +85,6 @@ vim.opt.wildignore:append({
     '**/build/*', '**/.git/*'
 })
 
--- plugins
--- yadm-git
-vim.g.yadm_git_verbose = 0
-vim.g.yadm_git_gitgutter_enabled = 0 -- I use gitsigns instead
-
 -- load other configuration
 require "seanbreckenridge.mappings"
 require "seanbreckenridge.autocmds"

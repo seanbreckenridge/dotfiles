@@ -2,8 +2,14 @@ return {
     {'folke/which-key.nvim', lazy = true}, -- keybindings
     -- yadm integration (needs to be loaded early since uses BufWinEnter to detect)
     -- if yadm is not installed, this will be disabled
-    {'seanbreckenridge/yadm-git.vim', enabled = vim.g.has_yadm},
-    {"machakann/vim-sandwich", keys = {"sa", "sr", "sd"}}, -- surround text (e.g. quotes/brackets)
+    {
+        'seanbreckenridge/yadm-git.vim',
+        enabled = vim.g.has_yadm,
+        config = function()
+            vim.g.yadm_git_verbose = 0
+            vim.g.yadm_git_gitgutter_enabled = 0 -- I use gitsigns instead
+        end
+    }, {"machakann/vim-sandwich", keys = {"sa", "sr", "sd"}}, -- surround text (e.g. quotes/brackets)
     -- vim-unimpaired reminders:
     -- []f to go to next/prev file
     -- []q quickfix, , []Space to add newlines, []e to swap lines

@@ -12,6 +12,7 @@ return {
                 p = {'<cmd>:Git push<CR>', 'push'},
                 l = {'<cmd>:Git pull<CR>', 'pull'},
                 o = {'<cmd>:Git log<CR>', 'log'},
+                O = {'<cmd>:Git open<CR>', 'open in browser'}, -- using https://github.com/paulirish/git-open
                 c = {'<cmd>:Git commit<CR>:wincmd _<CR>', 'commit'},
                 d = {'<cmd>:Git diff<CR>:wincmd _<CR>', 'diff'},
                 S = {'<cmd>:Git diff --staged<CR>:wincmd _<CR>', 'diff staged'},
