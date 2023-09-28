@@ -98,13 +98,13 @@ evry 2 hours -data-sync-conflicts && {
 }
 
 # download any discord attachments
-evry 1 month -discord-download-attachments && discord-download-attachments
+evry 3 days -discord-download-attachments && discord-download-attachments
 
 # https://github.com/seanbreckenridge/HPI-personal/blob/master/scripts/backup-cubing
 backup-cubing
 # check for new formats in normalizing solves into a single schema
 # https://github.com/seanbreckenridge/scramble-history
-evry 1 hour -check-scramble-history-formats && {
+evry 1 day -check-scramble-history-formats && {
 	python3 -m scramble_history merge --check
 	rifleman "$XDG_CONFIG_HOME/scramble_history/sourcemap.json"
 }
