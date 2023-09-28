@@ -54,6 +54,7 @@ erlang
 ghc
 go
 gopls
+goreleaser-bin
 graphviz
 inotify-tools
 java-environment-common

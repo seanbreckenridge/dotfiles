@@ -91,7 +91,7 @@ return {
         }, {'cljoly/telescope-repo.nvim', lazy = true}
     },
     cmd = 'Telescope',
-    keys = {"<leader>f", "<leader>c", "<leader>g"},
+    event = {"BufReadPre", "BufNewFile"},
     config = function()
         local tl = require('telescope')
         local actions = require('telescope.actions')

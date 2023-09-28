@@ -881,3 +881,6 @@ cat "$tfile"
 command rm -f "$tfile"
 '''
 shebang = "#!/usr/bin/env bash"
+
+[rgqf]
+command = 'exec rg --no-heading --with-filename --line-number "$@"'

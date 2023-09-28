@@ -82,6 +82,10 @@ alias free='free --human'
 rgi() {
 	rg --ignore-case "$*"
 }
+# rg, for working with quickfix lists
+rgqf() {
+	rg --no-heading --with-filename --line-number "$@"
+}
 alias ft='full_todotxt'
 alias rr='rifle'
 alias optipng='optipng -o5'

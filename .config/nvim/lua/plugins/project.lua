@@ -1,15 +1,14 @@
 return {
     "ahmedkhalf/project.nvim",
-    keys = {"<leader>c"},
+    lazy = true,
     config = function()
-        local pr = require("project_nvim")
-        pr.setup({
+        require'project_nvim'.setup({
             -- All the patterns used to detect root dir, when **"pattern"** is in
             -- detection_methods
             patterns = {
                 ".git", "_darcs", ".hg", ".bzr", ".svn", "Makefile",
                 "package.json", "node_modules", "Cargo.toml", "go.mod",
-                "setup.cfg"
+                "setup.cfg", "setup.py"
             },
 
             -- Don't calculate root dir on specific directories
