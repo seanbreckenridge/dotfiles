@@ -3,4 +3,4 @@
 set -u
 
 cd "$REPOS" || return 1
-list-git-dirs "$REPOS" | parallel --line-buffered -j 16 "cd {} && has-git-remote && { git pull && pwd }"
+list-git-dirs "$REPOS" | parallel --line-buffered -j+0 "cd {} && has-git-remote && { git pull && pwd }"
