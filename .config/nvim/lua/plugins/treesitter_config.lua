@@ -1,6 +1,9 @@
 return {
     'nvim-treesitter/nvim-treesitter',
-    dependencies = {'nvim-treesitter/nvim-treesitter-context'},
+    dependencies = {
+        'nvim-treesitter/nvim-treesitter-context',
+        'JoosepAlviste/nvim-ts-context-commentstring'
+    },
     build = ':TSUpdate',
     config = function()
         require'nvim-treesitter.configs'.setup {
@@ -66,7 +69,8 @@ return {
                     swap_next = {['<leader>a'] = '@parameter.inner'},
                     swap_previous = {['<leader>A'] = '@parameter.inner'}
                 }
-            }
+            },
+            context_commentstring = {enable = true}
         }
     end
 }

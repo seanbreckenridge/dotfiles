@@ -59,12 +59,13 @@ nnoremap('J', "mzJ`z", 'append to line')
 local leftn = function(n) return string.rep('<Left>', n) end
 
 -- start a :%s/ search with the selected text, prompting for the replacement
-vnoremap('F', 'y:%s/<C-r>"//gc' .. leftn(3), 'search and replace')
+vnoremap('<C-n>', 'y:%s/<C-r>"//gc' .. leftn(3), 'search and replace')
 -- in normal mode, use the next word as the search term
-nnoremap('F', 'yiw:%s/<C-r>"//gc' .. leftn(3), 'search and replace')
+nnoremap('<C-n>', 'yiw:%s/<C-r>"//gc' .. leftn(3), 'search and replace')
 -- just start a search/replace and move me to where I can start typing
 -- note: overwrites default <C-f> (forward one page)
 nnoremap('<C-f>', ':%s///gcI' .. leftn(5), 'empty search and replace')
+vnoremap('<C-f>', ':s///gcI' .. leftn(5), 'empty search and replace on selection')
 
 local reload_config = function()
     vim.cmd(':source ~/.config/nvim/lua/seanbreckenridge/init.lua')

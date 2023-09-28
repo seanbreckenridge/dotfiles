@@ -3,11 +3,6 @@
 -- see :help vim-differences for some defaults set in nvim
 -- for :help syntax, treesitter will disable this for filetypes it knows, otherwise
 -- syntax highlighting is enabled by default
--- for which-key
-vim.o.timeout = true
-vim.o.timeoutlen = 300
-
-vim.opt.updatetime = 250 -- decrease update time
 
 -- Don't execute arbitrary modelines
 vim.opt.modelines = 0
