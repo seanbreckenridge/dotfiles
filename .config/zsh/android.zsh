@@ -7,11 +7,15 @@
 # before the shell finishes opening when I don't have internet
 export WFI_TIMEOUT=0
 
+uqf() {
+	bgproc_on_machine -onq -F 4
+}
+
 # run bgproc jobs
 # https://github.com/seanbreckenridge/bgproc
 evry 1 hour -run_android_jobs && {
 	echo 'running jobs...'
-	bgproc_on_machine -onq -F 4
+	uqf
 }
 
 # sync HPI config from syncthing dir to ~/.config so I have access to synced secrets
@@ -26,7 +30,7 @@ syncfiles() {
 		rm -f "$(evry location -"$tag")"
 	done
 	sync_hpi_config
-	bgproc_on_machine -onq
+	uqf
 }
 alias sf=syncfiles
 
