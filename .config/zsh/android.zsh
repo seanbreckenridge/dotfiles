@@ -29,9 +29,8 @@ syncfiles() {
 		backup_images; do
 		rm -f "$(evry location -"$tag")"
 	done
-	sync_hpi_config &
-	uqf &
-	wait
+	sync_hpi_config
+	uqf
 }
 alias sf=syncfiles
 
