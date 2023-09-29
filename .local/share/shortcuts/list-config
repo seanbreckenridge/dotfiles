@@ -1,8 +1,10 @@
 #!/bin/zsh
 # list all of my configuration files, by matching combining
 # yadm list and a couple search commands
+cd # home
 {
-	cd && yadm list | sed "s#^#$HOME/#"
+	yadm list | sed "s#^#$HOME/#"
+	echo "$HOME/.config/yadm/README.md"
 	echo "$HPIDATA/personal_aliases"
 	fd --type=file -H -E '__pycache__' -E '.mypy_cache' --full-path "${HOME}" "${XDG_CONFIG_HOME}/todo" "${XDG_CONFIG_HOME}/bookmark.txt" "${ZDOTDIR}"
 } | grep -v "system-config" | exists | sort -u

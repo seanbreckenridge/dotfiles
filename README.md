@@ -11,8 +11,9 @@ In general:
 - [`kitty`](https://github.com/kovidgoyal/kitty) as terminal, [`alacritty`](https://github.com/alacritty/alacritty) on windows
 - [`firefox-developer-edition`](https://www.archlinux.org/packages/community/x86_64/firefox-developer-edition/) - browser, addons listed in [`firefox_addons.txt`](./.local/share/firefox_addons.txt)
 - [`neomutt`](https://github.com/neomutt/neomutt) for email
-- [`nvim`](https://neovim.io/) (LSP with with [`nvim-cmp`](https://github.com/hrsh7th/nvim-cmp), [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim))
+- [`nvim`](https://neovim.io/) (with LSP, completion, the typical modern plugins, see [`.config/nvim`](.config/nvim))
 - [`todotxt`](http://todotxt.org/) for todos, with a [`rofi-interface`](.local/scripts/generic/todo-prompt) as GUI
+- [`calcurse`](https://github.com/lfos/calcurse) as a calendar, with [some hooks](https://github.com/seanbreckenridge/calcurse-load) to source other events. [menu bar icon](.config/i3blocks/blocks/b-calendar) displays what I have going on today
 - [`ranger`](https://github.com/ranger/ranger) - terminal file manager, with a few [custom commands](.config/ranger/commands.py) to integrate [`fzf`](https://github.com/junegunn/fzf), lots of [additional bindings](.config/ranger/rc.conf)/an [extensive preview script](.config/ranger/scope.sh), a [shell function](https://sean.fish/d/functions/ranger?dark) so `cd`ing in ranger changes my shell directory
 
 I use [`syncthing`](https://github.com/syncthing/syncthing) to sync my files/data across my computers.
@@ -43,13 +44,14 @@ Similar to Termux, does an `apt`-based install. Installs a bunch of languages/pr
 
 ---
 
-- [.local/scripts/supervisor_jobs](.local/scripts/supervisor_jobs/) has jobs using [`supervisor`](https://github.com/Supervisor/supervisor) to daemonize, so I dont have to write plists or systemd scripts, and background processes work mac, linux, windows and android. That uses [`bgproc`](https://github.com/seanbreckenridge/bgproc) as an anacron replacement, and [`on_machine`](https://github.com/seanbreckenridge/on_machine) to figure out which jobs to run on each system/distribution
+- [.local/scripts/supervisor_jobs](.local/scripts/supervisor_jobs/) has jobs using [`supervisor`](https://github.com/Supervisor/supervisor) to daemonize, so I dont have to write plists or systemd scripts, and background processes work mac, linux, and windows. That uses [`bgproc`](https://github.com/seanbreckenridge/bgproc) as an anacron replacement, and [`on_machine`](https://github.com/seanbreckenridge/on_machine) to figure out which jobs to run on each system/distribution
 - [`ttt`](https://github.com/seanbreckenridge/ttt/) is sprinkled throughout lots of my scripts, it acts as an extension to my shell history, saving commands from `i3` `bindsym`s, or `ranger` commands. [Lets me `cd`](.config/zsh/cd.zsh) to one of those directories quickly using `fzf`
 - [.config/yadm](.config/yadm) includes lists of global packages to install for pacman/apt/brew, python, ruby, node, dart, rust, go, elixir and bash
 - [.config/shortcuts.toml](.config/shortcuts.toml) - describes basic shell scripts that are created by [shortcuts](https://github.com/seanbreckenridge/shortcuts)
-- [.local/scripts/generic](.local/scripts/generic) - lots of my scripts; e.g.
-  - [qr](.local/scripts/generic/qr) - create a QR code from a string and display it full screen
-  - [misspell-context](.local/scripts/generic/misspell-context) - finds common spelling mistakes using [misspell](https://github.com/client9/misspell) recursively, prompt me with the words in context so I can correct them
+- lots of other stuff in here:
+  - [.local/scripts/generic](.local/scripts/generic)
+  - [.local/scripts/linux](.local/scripts/linux)
+  - [.local/scripts/cross-platform](.local)
 
 For a summary of tools I use often, see [here](https://exobrain.sean.fish/tools/).
 
@@ -63,12 +65,12 @@ For a summary of tools I use often, see [here](https://exobrain.sean.fish/tools/
 
 #### LICENSE
 
-Unless where attributed, any customization and scripts are licensed under the MIT License:
+Unless where specified, this is all licensed under MIT:
 
 ```
 MIT License
 
-Copyright (c) 2019-22 Sean Breckenridge
+Copyright (c) 2019 Sean Breckenridge
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
