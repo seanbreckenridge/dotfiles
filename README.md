@@ -49,9 +49,9 @@ Similar to Termux, does an `apt`-based install. Installs a bunch of languages/pr
 - [.config/yadm](.config/yadm) includes lists of global packages to install for pacman/apt/brew, python, ruby, node, dart, rust, go, elixir and bash
 - [.config/shortcuts.toml](.config/shortcuts.toml) - describes basic shell scripts that are created by [shortcuts](https://github.com/seanbreckenridge/shortcuts)
 - lots of other stuff in here:
-  - [.local/scripts/generic](.local/scripts/generic)
-  - [.local/scripts/linux](.local/scripts/linux)
-  - [.local/scripts/cross-platform](.local)
+  - [.local/scripts/generic](.local/scripts/generic/)
+  - [.local/scripts/linux](.local/scripts/linux/)
+  - [.local/scripts/cross-platform](.local/scripts/cross-platform/)
 
 For a summary of tools I use often, see [here](https://exobrain.sean.fish/tools/).
 
