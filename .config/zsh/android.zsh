@@ -9,7 +9,10 @@ export WFI_TIMEOUT=0
 
 # run bgproc jobs
 # https://github.com/seanbreckenridge/bgproc
-evry 1 hour -run_android_jobs && bgproc_on_machine -on -F 4
+evry 1 hour -run_android_jobs && {
+	echo 'running jobs...'
+	bgproc_on_machine -onq -F 4
+}
 
 # sync HPI config from syncthing dir to ~/.config so I have access to synced secrets
 evry 1 hour -sync_hpi_config && sync_hpi_config
