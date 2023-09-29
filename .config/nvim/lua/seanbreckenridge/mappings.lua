@@ -65,7 +65,8 @@ nnoremap('<C-n>', 'yiw:%s/<C-r>"//gc' .. leftn(3), 'search and replace')
 -- just start a search/replace and move me to where I can start typing
 -- note: overwrites default <C-f> (forward one page)
 nnoremap('<C-f>', ':%s///gcI' .. leftn(5), 'empty search and replace')
-vnoremap('<C-f>', ':s///gcI' .. leftn(5), 'empty search and replace on selection')
+vnoremap('<C-f>', ':s///gcI' .. leftn(5),
+         'empty search and replace on selection')
 
 local reload_config = function()
     vim.cmd(':source ~/.config/nvim/lua/seanbreckenridge/init.lua')
