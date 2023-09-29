@@ -14,7 +14,7 @@ uqf() {
 # run bgproc jobs
 # https://github.com/seanbreckenridge/bgproc
 evry 1 hour -run_android_jobs && {
-	echo 'running jobs...'
+	echo 'running jobs...' >&2
 	uqf
 }
 
@@ -29,15 +29,16 @@ syncfiles() {
 		backup_images; do
 		rm -f "$(evry location -"$tag")"
 	done
-	sync_hpi_config
-	uqf
+	sync_hpi_config &
+	uqf &
+	wait
 }
 alias sf=syncfiles
 
 uu() {
 	syncfiles
 	wait-for-internet --timeout 1 --quiet && {
-		yl
+		yadm pull
 		repos-pull-all
 	}
 }
