@@ -1,27 +1,9 @@
 local wk = require('which-key')
 
--- shorter helper w/ types to warn me for mapping keys
--- tried to use which-key but doesn't always work (e.g. for
--- incremental search and search/replace with selected text)
-
----@param key string the key to map
----@param cmd string|function the command to run
----@param desc string the description to show in which-key
----@param mode string|table the mode to map to, defaults to 'n'
-local map_key = function(key, cmd, desc, mode)
-    vim.keymap
-        .set(mode, key, cmd, {noremap = true, nowait = false, desc = desc})
-end
-
----@param key string the key to map
----@param cmd string|function the command to run
----@param desc string the description to show in which-key
-local nnoremap = function(key, cmd, desc) map_key(key, cmd, desc, 'n') end
-
----@param key string the key to map
----@param cmd string|function the command to run
----@param desc string the description to show in which-key
-local vnoremap = function(key, cmd, desc) map_key(key, cmd, desc, 'v') end
+local mh = require('seanbreckenridge.mapping_helpers')
+local map_key = mh.map_key
+local nnoremap = mh.nnoremap
+local vnoremap = mh.vnoremap
 
 map_key('<Down>', '<Nop>', 'disable arrow keys', {'i', 'n', 'x'})
 map_key('<Left>', '<Nop>', 'disable arrow keys', {'i', 'n', 'x'})
@@ -46,6 +28,16 @@ nnoremap('<C-u>', '<C-u>zz', 'centered page up')
 nnoremap('<C-d>', '<C-d>zz', 'centered page down')
 nnoremap('n', 'nzz', 'centered next')
 nnoremap('N', 'Nzz', 'centered prev')
+nnoremap("G", "Gzz", "centered goto line")
+nnoremap("gg", "ggzz", "centered goto line")
+nnoremap("<C-i>", "<C-i>zz", "centered next jump")
+nnoremap("<C-o>", "<C-o>zz", "centered prev jump")
+nnoremap("%", "%zz", "centered match")
+nnoremap("*", "*zz", "centered match")
+nnoremap("#", "#zz", "centered match")
+
+-- U (opposite of u) for redo
+nnoremap('U', '<C-r>', 'redo')
 
 -- when I press !B (holding shift for both)
 nnoremap('!B', ':.!bash<CR>', 'run shell command')
@@ -67,6 +59,8 @@ nnoremap('<C-n>', 'yiw:%s/<C-r>"//gc' .. leftn(3), 'search and replace')
 nnoremap('<C-f>', ':%s///gcI' .. leftn(5), 'empty search and replace')
 vnoremap('<C-f>', ':s///gcI' .. leftn(5),
          'empty search and replace on selection')
+
+nnoremap('<leader>n', '<cmd> :nohlsearch<CR>', 'no highlight')
 
 local reload_config = function()
     vim.cmd(':source ~/.config/nvim/lua/seanbreckenridge/init.lua')

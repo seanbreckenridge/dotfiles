@@ -2,7 +2,7 @@ return {
     'nvim-treesitter/nvim-treesitter',
     dependencies = {
         'nvim-treesitter/nvim-treesitter-context',
-        'JoosepAlviste/nvim-ts-context-commentstring'
+        'JoosepAlviste/nvim-ts-context-commentstring', 'windwp/nvim-ts-autotag'
     },
     build = ':TSUpdate',
     config = function()
@@ -70,7 +70,8 @@ return {
                     swap_previous = {['<leader>A'] = '@parameter.inner'}
                 }
             },
-            context_commentstring = {enable = true}
+            context_commentstring = {enable = true},
+            autotag = {enable = true}
         }
     end
 }

@@ -145,9 +145,36 @@ return {
 
         -- lsp commands in normal mode
         wk.register({
-            [']w'] = {vim.diagnostic.goto_next, "next diagnostic"},
-            ['[w'] = {vim.diagnostic.goto_prev, "prev diagnostic"},
+            [']w'] = {
+                function()
+                    vim.diagnostic.goto_next()
+                    vim.api.nvim_feedkeys("zz", "n", false)
+                end, "next diagnostic"
+            },
+            ['[w'] = {
+                function()
+                    vim.diagnostic.goto_prev()
+                    vim.api.nvim_feedkeys("zz", "n", false)
+                end, "prev diagnostic"
+            },
+            [']e'] = {
+                function()
+                    vim.diagnostic.goto_next({
+                        severity = vim.diagnostic.severity.ERROR
+                    })
+                    vim.api.nvim_feedkeys("zz", "n", false)
+                end, "next error"
+            },
+            ['[e'] = {
+                function()
+                    vim.diagnostic.goto_prev({
+                        severity = vim.diagnostic.severity.ERROR
+                    })
+                    vim.api.nvim_feedkeys("zz", "n", false)
+                end, "prev error"
+            },
             gd = {vim.lsp.buf.definition, "goto definition"},
+            gt = {vim.lsp.buf.type_definition, "goto type definition"},
             gr = {vim.lsp.buf.references, "goto references"},
             K = {ShowDocumentation, "show documentation"}
         })

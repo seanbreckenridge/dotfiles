@@ -13,7 +13,7 @@ return {
     }, {
         'nvim-lualine/lualine.nvim',
         priority = 1000,
-        depends = {'nvim-tree/nvim-web-devicons'},
+        dependencies = {'nvim-tree/nvim-web-devicons'},
         opts = {options = {theme = 'dracula'}}
     }
 }

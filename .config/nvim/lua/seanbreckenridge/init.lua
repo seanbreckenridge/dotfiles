@@ -10,6 +10,9 @@ vim.opt.relativenumber = true -- line number
 -- Blink cursor on error instead of beeping
 vim.opt.visualbell = true
 
+-- disable intro message
+vim.opt.shortmess:append('I')
+
 -- Whitespace
 vim.opt.wrap = true
 vim.opt.textwidth = 0 -- stop line wrapping

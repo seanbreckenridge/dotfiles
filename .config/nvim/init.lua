@@ -13,7 +13,10 @@ vim.opt.rtp:prepend(lazypath)
 require 'seanbreckenridge.pre_init'
 
 -- load plugins from the 'lua/plugins' directory
-require'lazy'.setup 'plugins'
+require'lazy'.setup('plugins', {
+    browser = 'openurl',
+    change_detection = {enabled = false, notify = false}
+})
 
 -- load my lua options/mappings/colorscheme
 require 'seanbreckenridge'
