@@ -5,7 +5,7 @@
 - supervisor_jobs - jobs for supervisor background processes using [supervisor](https://github.com/Supervisor/supervisor), on mac and linux (see below)
 - sreminders - scripts to remind me to do something, see the description at the top of [sreminders](generic/sreminders)
 
----
+## supervisor
 
 supervisor is what I use to run background processes
 
