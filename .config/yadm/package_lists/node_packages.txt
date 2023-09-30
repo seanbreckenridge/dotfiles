@@ -21,7 +21,6 @@ stylelint
 typescript
 typescript-language-server
 uglifycss
-vscode-html-languageserver-bin
 vscode-langservers-extracted
 yaml-language-server
 

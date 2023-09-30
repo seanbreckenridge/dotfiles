@@ -65,7 +65,7 @@ return {
         end
 
         -- ocaml
-        require'lspconfig'.ocamllsp.setup {capabilities = capabilities}
+        lspconf.ocamllsp.setup {capabilities = capabilities}
 
         -- rust
         lspconf.rust_analyzer.setup {capabilities = capabilities}
@@ -92,9 +92,8 @@ return {
         }
 
         -- if asdf install file exists, use it
-        if vim.fn.filereadable("~/.asdf/installs/nodejs") == 1 then
+        if vim.fn.filereadable("~/.asdf/installs/nodejs/17.0.1/") == 1 then
             -- use asdf nodejs for copilot
-            -- TODO: check if it exists or use asdfs system installed nodejs in bin?
             vim.g.copilot_node_command =
                 "~/.asdf/installs/nodejs/17.0.1/bin/node"
         else

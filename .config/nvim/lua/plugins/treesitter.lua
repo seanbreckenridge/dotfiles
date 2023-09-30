@@ -2,6 +2,7 @@ return {
     'nvim-treesitter/nvim-treesitter',
     dependencies = {
         'nvim-treesitter/nvim-treesitter-context',
+        'nvim-treesitter/nvim-treesitter-textobjects',
         'JoosepAlviste/nvim-ts-context-commentstring', 'windwp/nvim-ts-autotag'
     },
     build = ':TSUpdate',
@@ -23,11 +24,12 @@ return {
             indent = {enable = true},
             incremental_selection = {
                 enable = true,
+                -- if you have some text visually selected, can use these keymaps to expand/reduce the selection
                 keymaps = {
                     init_selection = '<c-space>',
                     node_incremental = '<c-space>',
                     scope_incremental = '<c-s>',
-                    node_decremental = '<M-space>'
+                    node_decremental = '<c-backspace>'
                 }
             },
             textobjects = {

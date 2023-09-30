@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+# to list my currently unstarred nvim plugins
+# to star all of these:
+# unstarred-nvim-plugins | cut -d'/' -f4- | grep -v seanbreckenridge | parallel -j1 -k 'star {}'
+# uses the 'star' script in this directory which uses 'gh' internally
+
+lazy-plugins() {
+	list-git-dirs "${HOME}/.local/share/nvim/lazy" | parallel -j+0 'cd {}; giturl' | sed -e 's/.git$//' | sort
+}
+
+already-starred() {
+	mystars -3 | jq -r '.items | .[].arg' | sort
+}
+
+comm -23 <(lazy-plugins) <(already-starred)
