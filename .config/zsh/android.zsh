@@ -56,5 +56,10 @@ C() {
 	local picked
 	# let user pick directory or link that can be cd'd do
 	picked="$(find . -mindepth 1 -maxdepth 1 -type d -o -type l | fzf)"
-	[[ -e "$picked" ]] && cd "$picked"
+	if [[ -e "$picked" ]]; then
+		cd "$picked" || return 1
+	else
+		echo "no directory picked"
+		return 1
+	fi
 }
