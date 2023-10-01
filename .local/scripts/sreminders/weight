@@ -2,7 +2,6 @@
 
 set -o pipefail
 
-declare LOGCOUNT
 LOGCOUNT="$(hpi query -r 1w ttally.__main__.weight | jq length)" || notify "log_weight: hpi query failed"
 
 # if I haven't logged my weight in the last week, remind me to

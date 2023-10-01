@@ -79,7 +79,7 @@ wk.register({
 }, {prefix = '<space>'})
 
 -- window/buffers
-wk.register({b = {'<C-^><CR>', 'swap buffers'}}, {prefix = '<leader>'})
+wk.register({b = {'<C-^>', 'swap buffers'}}, {prefix = '<leader>'})
 -- use WhichKey so I can see the mappings
 nnoremap('<leader>w', function() require('which-key').show_command('<C-w>') end,
          'window')

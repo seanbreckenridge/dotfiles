@@ -3,8 +3,7 @@
 
 set -o pipefail
 
-declare LISTENCOUNT
 LISTENCOUNT="$(hpi query -r 1w my.nextalbums.history | jq 'length')" || notify "listen_to_album: hpi query failed"
 
-[[ "${LISTENCOUNT}" == '0' ]] && exit 2
-exit 0
+[[ "${LISTENCOUNT}" == '0' ]] && EXIT=2
+exit "${EXIT:-0}"

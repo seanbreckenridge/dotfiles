@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+# this checks https://github.com/seanbreckenridge/ttally to see if I've eaten
+# particular stuff within the last day, else prints what I haven't
+
+set -e
+set -o pipefail
+
+declare LOGCOUNT HPI_OUTPUT EXIT=0
+
+HPI_OUTPUT="$(hpi query -r 20h ttally.__main__.food -s)" || notify -u critical "vitamin: hpi query failed"
+
+for glob in '.*electrolyte.*' '.*multivitamin.*'; do
+	LOGCOUNT="$(jq "select(.food | test(\"$glob\"))" <<<"$HPI_OUTPUT" | jq -s length)"
+	if [[ "$LOGCOUNT" -eq 0 ]]; then
+		tr -d '.*' <<<"$glob"
+		EXIT=3
+	fi
+done
+
+exit "$EXIT"

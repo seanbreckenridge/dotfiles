@@ -77,8 +77,8 @@ INTERPRETER = os.environ.get("SREMINDERS_INTERPRETER", "bash")
 
 
 def script_name(script: str) -> str:
-    path = os.path.basename(script)
-    return os.path.splitext(path)[0]
+    name = os.path.basename(script)
+    return os.path.splitext(name)[0]
 
 
 Result = tuple[str, int, str]
@@ -100,7 +100,7 @@ def run_script(script: str) -> Result:
 
     assert proc.stderr is not None, "stderr should be a pipe"
     for line in proc.stderr:
-        logging.warning(f"{name}: {line.rstrip()}")
+        logging.debug(f"{name}: {line.rstrip()}")
 
     logging.debug(
         f"Finished: {name} (took {time.perf_counter() - start}) with exit code {exitcode} and output {repr(output.strip())}"

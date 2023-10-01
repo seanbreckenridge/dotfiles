@@ -502,10 +502,10 @@ class location:
         # set to 0 to include all locations
         semantic_require_confidence: int = 40
         # default accuracy for semantic locations
-        accuracy: float = 100
+        accuracy: float = 100.0
 
     class via_ip:
-        accuracy: float = 15_000
+        accuracy: float = 15_000.0
 
 
 class time:
@@ -514,4 +514,4 @@ class time:
 
         class via_location:
             fast: bool = True
-            require_accuracy: float = 5000
+            require_accuracy: float = 5000.0

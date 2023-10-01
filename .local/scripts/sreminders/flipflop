@@ -6,11 +6,10 @@ set -o pipefail
 # shellcheck disable=SC1091
 source "$HPIDATA/tokens"
 
-declare OUTPUT
 OUTPUT="$(flipflop.py status -fo json | jq 'keys[]' -r)" || notify "flipflop failed to run"
 
-[[ -n "$OUTPUT" ]] && {
+if [[ -n "$OUTPUT" ]]; then
 	echo "$OUTPUT"
-	exit 3
-}
-exit 0
+	EXIT=3
+fi
+exit "${EXIT:-0}"
