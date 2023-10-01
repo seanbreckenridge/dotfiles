@@ -35,6 +35,17 @@ from typing import (
     Union,
     cast,
 )
+from urllib.parse import (
+    urlparse,
+    urljoin,
+    parse_qs,
+    urlencode,
+    quote,
+    unquote,
+    urlsplit,
+    urlunsplit,
+    urlunparse,
+)
 
 import os
 import sys
