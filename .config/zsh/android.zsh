@@ -8,7 +8,7 @@
 export WFI_TIMEOUT=0
 
 uqf() {
-	bgproc_on_machine -nqF 4
+	bgproc_on_machine -nqoF 4
 }
 
 # run bgproc jobs
