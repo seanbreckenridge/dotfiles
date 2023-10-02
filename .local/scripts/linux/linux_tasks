@@ -5,20 +5,23 @@ set -o pipefail
 # when this process dies, kill the hanging entr processes
 kill_hanging_background_tasks() {
 	# shellcheck disable=SC2009
-	ps -ef | grep -P 'i3blocks-refresh-mk \S+ LINUX_TASK' | awk '{print $2}' | xargs kill
+	ps -ef | grep -P 'i3blocks-refresh-mk \S+ LINUX_TASK' | awk '{print $2}' | xargs kill || true
+	# shellcheck disable=SC2009
+	ps -ef | grep 'ttally update-cache' | awk '{print $2}' | xargs kill || true
 }
 
 trap 'kill_hanging_background_tasks' EXIT
 
 # 'LINUX_TASK' isn't really an argument to i3blocks-refresh-mk, it ignores extra arguments
 # its just so that this process can be grepped against when restarting
-echo "${TODO_DIR}/todo.txt" | entr -n i3blocks-refresh-mk todo LINUX_TASK &
-echo "${HOME}/.cache/rss-unread" | entr -n i3blocks-refresh-mk rss LINUX_TASK &
-echo "${HOME}/.cache/guestbook-comments" | entr -n i3blocks-refresh-mk comments LINUX_TASK &
-find "${TTALLY_DATA_DIR}" -type f | entr -n i3blocks-refresh-mk calories LINUX_TASK &
-find "${TTALLY_DATA_DIR}" -type f | entr -n i3blocks-refresh-mk water LINUX_TASK &
-find "${TTALLY_DATA_DIR}" "${HPIDATA}/flipflop/" -type f | entr -n i3blocks-refresh-mk sreminders LINUX_TASK &
-echo "${HOME}/.cache/mal_sources_watched_at" | entr -n i3blocks-refresh-mk sreminders LINUX_TASK &
+(echo "${TODO_DIR}/todo.txt" | entr -n i3blocks-refresh-mk todo LINUX_TASK) &
+(echo "${HOME}/.cache/rss-unread" | entr -n i3blocks-refresh-mk rss LINUX_TASK) &
+(echo "${HOME}/.cache/guestbook-comments" | entr -n i3blocks-refresh-mk comments LINUX_TASK) &
+(find "${TTALLY_DATA_DIR}" -type f | entr -n i3blocks-refresh-mk calories LINUX_TASK) &
+(find "${TTALLY_DATA_DIR}" -type f | entr -n i3blocks-refresh-mk water LINUX_TASK) &
+(find "${TTALLY_DATA_DIR}" "${HPIDATA}/flipflop/" -type f | entr -n i3blocks-refresh-mk sreminders LINUX_TASK) &
+(find "${TTALLY_DATA_DIR}" -type f | entr -n ttally update-cache) &
+(echo "${HOME}/.cache/mal_sources_watched_at" | entr -n i3blocks-refresh-mk sreminders LINUX_TASK) &
 
 # note: in ps -ef, it looks like this creates 2 processes, but its just the one
 if (($(procs i3blocks-watch-mpv-daemon-logs --no-header | grep -c bash) == 0)); then
@@ -27,3 +30,4 @@ fi
 
 # restarts once every hour, to pick up any new files found in TTALLY_DATA_DIR
 sleep 1h
+kill_hanging_background_tasks
