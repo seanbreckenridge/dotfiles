@@ -2,8 +2,9 @@
 
 set -o pipefail
 
-LOGCOUNT="$(hpi query -r 1w ttally.__main__.weight | jq length)" || notify "log_weight: hpi query failed"
+EXIT=0
+LOGCOUNT="$(ttally recent weight 1w | wc -l)" || notify "weight: ttally query failed"
 
 # if I haven't logged my weight in the last week, remind me to
-[[ "${LOGCOUNT}" == '0' ]] && exit 2
-exit 0
+[[ "${LOGCOUNT}" == '0' ]] && EXIT=2
+exit "$EXIT"

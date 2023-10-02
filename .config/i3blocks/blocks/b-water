@@ -2,6 +2,6 @@
 # how many water I've drank today
 
 {
-	hpi query ttally.__main__.food -r "${@:-1d}" -s | jq '(.quantity)*(.water)'
+	ttally recent food -o json "${@:-1d}" | jq '(.quantity)*(.water)'
 	echo 0
 } | datamash sum 1 | cut -d'.' -f1

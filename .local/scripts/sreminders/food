@@ -6,8 +6,7 @@ set -e
 set -o pipefail
 
 EXIT=0
-
-HPI_OUTPUT="$(hpi query -r 20h ttally.__main__.food -s)" || notify -u critical "vitamin: hpi query failed"
+TTALLY_OUTPUT="$(ttally recent food 20h -o json)" || notify -u critical "ttally query failed"
 
 declare -A matchers=()
 matchers[vitamin]='.*daily multivitamin.*'
@@ -15,7 +14,7 @@ matchers[electrolytes]='.*electrolyte.*'
 
 for name in "${!matchers[@]}"; do
 	glob="${matchers[$name]}"
-	LOGCOUNT="$(jq "select(.food | test(\"$glob\"))" <<<"$HPI_OUTPUT" | jq -s length)"
+	LOGCOUNT="$(jq "select(.food | test(\"$glob\"))" <<<"$TTALLY_OUTPUT" | jq -s length)"
 	if [[ "$LOGCOUNT" -eq 0 ]]; then
 		echo "$name"
 		EXIT=3

@@ -4,6 +4,6 @@
 [[ -n "$BLOCK_BUTTON" ]] && clrs
 
 {
-	hpi query ttally.__main__.food -r "${@:-1d}" -s | jq -r '(.quantity)*(.calories)'
+	ttally recent food -o json "${@:-1d}" | jq -r '(.quantity)*(.calories)'
 	echo 0
 } | datamash sum 1 | cut -d'.' -f1
