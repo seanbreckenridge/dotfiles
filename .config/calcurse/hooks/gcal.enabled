@@ -1,4 +1,0 @@
-#!/bin/sh
-# to disable this file, rename it to gcal.disabled
-
-[ "$1" = 'preload' ] && python3 -m calcurse_load --pre-load gcal

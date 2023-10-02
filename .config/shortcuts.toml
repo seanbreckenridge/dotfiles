@@ -627,7 +627,8 @@ exec gh "$@"
 
 [calcursed]
 command='''
-exec calcurse -D "$CALCURSE_DIR" "$@"
+# use the same directory for config and data
+exec calcurse --datadir "$CALCURSE_DIR" --confdir "$CALCURSE_DIR" "$@"
 '''
 
 [kitty-set-theme]
