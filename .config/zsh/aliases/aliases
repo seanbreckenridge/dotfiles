@@ -86,7 +86,8 @@ rgi() {
 rgqf() {
 	rg --no-heading --with-filename --line-number "$@"
 }
-alias ft='full_todotxt'
+alias ft='full_todotxt -p'
+alias tp='todo-prompt'
 alias rr='rifle'
 alias optipng='optipng -o5'
 alias R=ranger

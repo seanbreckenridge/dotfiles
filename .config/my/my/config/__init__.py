@@ -199,6 +199,9 @@ class todotxt:
     class git_history:
         export_path: Path = data("doc/todo_git_history")
 
+    class active:
+        export_path: Path = data("todo")
+
 
 # parses the history of me adding/removing rss feeds
 class rss:
