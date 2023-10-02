@@ -1,0 +1,6 @@
+"https://git.sr.ht/~proycon/todotxt-more":
+  base: ~/.local/share/todotxt-actions
+  preinstall: git pull
+  postinstall:
+    - pip install -r ./requirements.txt
+    - todotxt_more_copy # helper script that copies the files where I want them, hard to specify in here because of environment variables

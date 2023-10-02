@@ -1,0 +1,6 @@
+#!/bin/sh
+if attached-to-terminal; then
+	exec todo.sh fzf
+else
+	exec todo.sh rofi
+fi

@@ -125,10 +125,6 @@ flf() {
 	fls
 }
 
-# https://github.com/seanbreckenridge/server_clipboard
-# sync clipboard
-alias sc='server_clipboard'
-
 # https://github.com/seanbreckenridge/tts
 alias tts-say='tts -d /tmp/tts.mpeg && plaympeg /tmp/tts.mpeg'
 

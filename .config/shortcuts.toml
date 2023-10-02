@@ -887,3 +887,12 @@ shebang = "#!/usr/bin/env bash"
 
 [rgqf]
 command = 'exec rg --no-heading --with-filename --line-number "$@"'
+
+[todo-interactive]
+command = '''
+if attached-to-terminal; then
+	exec todo.sh fzf
+else
+	exec todo.sh rofi
+fi
+'''

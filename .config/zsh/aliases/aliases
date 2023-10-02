@@ -77,7 +77,6 @@ alias du='du -h'
 alias df='df -h'
 alias jq='jq --monochrome-output'
 alias history='history 0'
-alias todo='todo.sh'
 alias free='free --human'
 rgi() {
 	rg --ignore-case "$*"
@@ -86,8 +85,12 @@ rgi() {
 rgqf() {
 	rg --no-heading --with-filename --line-number "$@"
 }
+# todo.txt
+alias todo='todo.sh'
 alias ft='full_todotxt -p'
-alias tp='todo-prompt'
+alias ti='todo-interactive'
+alias td='todo edit'
+
 alias rr='rifle'
 alias optipng='optipng -o5'
 alias R=ranger
@@ -119,11 +122,8 @@ alias d="kitty +kitten diff"
 
 # background jobs
 alias sctl='super --ctl'
+alias sc=sctl
 alias slogs='super --logs'
-
-# shorthands to edit files
-alias td='editor "$TODO_DIR"/todo.txt'     # todos
-alias rss='editor ~/.config/newsboat/urls' # rss feeds
 
 # custom non-standard stuff
 # shorthand for reverse of https://sean.fish/d/star?dark

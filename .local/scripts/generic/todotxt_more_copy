@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+set -eux
+set -o pipefail
+base="$(clone-repos -P ~/.config/clone-repos/todotxt-actions.yaml | jq '.base' -r)"
+tmore="$base/todotxt-more"
+
+cd "$tmore"
+mkdir -p "$TODO_DIR/actions"
+rsync -Pavh ./todo.actions.d/ "$TODO_DIR/actions/"

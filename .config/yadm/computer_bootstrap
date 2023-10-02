@@ -104,4 +104,12 @@ havecmd opam && {
 }
 clone-repos ~/.config/clone-repos/computer-clone-repos.yaml
 
+# only need to run this on my computer, as it syncs files into my data directory,
+# which then gets synced to my other computers
+if [[ -e "$HPIDATA/todo" ]]; then
+	mkdir -p "$HPIDATA/todo/actions/"
+	mkdir -p "$HOME/.local/share/todotxt-actions/"
+	clone-repos "$HOME/.config/clone-repos/todotxt-actions.yaml"
+fi
+
 havecmd mapscii-at || yarn global add --prefix "${HOME}/.local" git+https://github.com/seanbreckenridge/mapscii-at

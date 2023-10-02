@@ -104,7 +104,8 @@ bindsym XF86AudioMute {{ ex }} volume mute
 bindsym XF86AudioMicMute {{ ex }} volume micmute
 
 # todo list - mark as complete with rofi
-bindsym $mod+t {{ ex }} todo-prompt list
+# https://git.sr.ht/~proycon/todotxt-more
+bindsym $mod+t {{ ex }} todo-interactive
 bindsym $mod+Shift+t {{ ex }} launch 'python3 -m full_todotxt -p'
 
 # bookmark list - add/open with rofi
