@@ -3,7 +3,7 @@ return {
     event = {"InsertEnter"},
     dependencies = {
         "hrsh7th/cmp-buffer", "hrsh7th/cmp-path", "onsails/lspkind.nvim",
-        "saadparwaiz1/cmp_luasnip"
+        "hrsh7th/cmp-nvim-lua", "saadparwaiz1/cmp_luasnip"
     },
     config = function()
         local cmp = require('cmp')
@@ -39,6 +39,7 @@ return {
             -- order ranks priority in completion drop-down -- higher has more priority
             sources = {
                 {name = "nvim_lsp"}, -- update neovim lsp capabilities https://github.com/hrsh7th/cmp-nvim-lsp
+                {name = "nvim_lua", keyword_length = 2}, -- lua completion for nvim-specific stuff
                 {name = "luasnip", keyword_length = 2}, -- snippets
                 {name = "path"}, -- complete names of files
                 {name = "buffer", keyword_length = 4}

@@ -254,4 +254,7 @@ dir-aliases-ranger
 mkdir -p "${HOME}/.config/ranger/plugins"
 clone-repos "$HOME/.config/clone-repos/ranger-plugins.yaml"
 
+mkdir -p "$HOME/.local/share/todotxt-addons/"
+clone-repos "$HOME/.config/clone-repos/todotxt-actions.yaml"
+
 echo "Finished bootstrapping!"
