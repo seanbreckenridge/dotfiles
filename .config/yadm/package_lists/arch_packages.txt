@@ -154,7 +154,7 @@ maim
 man-db
 mlocate
 moreutils
-neovim-git
+neovim
 net-tools
 networkmanager-dmenu-git
 newsboat

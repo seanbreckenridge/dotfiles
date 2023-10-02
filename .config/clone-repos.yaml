@@ -6,7 +6,7 @@
 "https://github.com/seanbreckenridge/ttally":
   pip: install
   preinstall: git pull
-"https://github.com/seanbreckenridge/core":
+"https://github.com/seanbreckenridge/seanb-utils":
   postinstall: make install
 "https://github.com/seanbreckenridge/calcurse-load":
   pip: install
