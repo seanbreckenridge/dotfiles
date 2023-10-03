@@ -62,4 +62,5 @@ urlextract
 urlscan
 vimbuffer
 youtube-dl
+watchfiles
 yt-dlp
