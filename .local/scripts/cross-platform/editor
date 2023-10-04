@@ -5,13 +5,11 @@ set -e
 if (($# == 0)); then
 	exec ttt nvim +Explore
 else
-	if [[ -e "$1" ]]; then
-		if [[ -d "$1" ]]; then
-			exec ttt nvim +Explore "$@"
-		else
-			exec ttt nvim "$@"
-		fi
-	else
-		exec ttt nvim "$@"
+	# if the first argument is a directory and there are no other arguments
+	# then open the directory in the vim file explorer
+	if [[ -d "$1" && -z "$2" ]]; then
+		exec ttt nvim +Explore "$@"
 	fi
+	# otherwise, just track in ttt and run whatever command was passed
+	exec ttt nvim "$@"
 fi
