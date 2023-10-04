@@ -1,0 +1,12 @@
+#!/bin/sh
+# sends a signal to the mpv_history_daemon to check
+# if new sockets have been added or any mpv instances
+# have quit
+#
+# https://github.com/seanbreckenridge/mpv-history-daemon
+
+pkill -f 'python3 -m mpv_history_daemon daemon' -RTMIN || true
+
+# if you launch like 'mpv-history-daemon daemon' then
+# you can use this instead
+# pkill -f 'mpv_history_daemon daemon' -RTMIN || true
