@@ -51,6 +51,7 @@ export SODIUM_INSTALL=system
 alias dcim='R ~/storage/dcim/Camera'
 alias d=dcim
 alias sd='sf; dcim'
+alias sc='server_clipboard'
 
 C() {
 	local picked

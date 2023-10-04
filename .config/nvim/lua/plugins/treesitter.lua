@@ -73,7 +73,11 @@ return {
                 }
             },
             context_commentstring = {enable = true},
-            autotag = {enable = true}
+            autotag = {
+                enable = true,
+                -- disable for tsx/more complex stuff till https://github.com/windwp/nvim-ts-autotag/issues/125
+                filetypes = {'html', 'javascript', 'typescript'}
+            }
         }
     end
 }
