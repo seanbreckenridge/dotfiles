@@ -3,6 +3,7 @@
 # the user selects in my editor
 
 set -e
+set -o pipefail
 
 rg_lines() {
 	PICKED_LINE="$(rg --no-heading --with-filename --line-number --color ansi "$*" | fzf --ansi)" || exit $?
@@ -10,10 +11,9 @@ rg_lines() {
 	printf '%s\n' "${PICKED_LINE}" | cut -d':' -f'1-2'
 }
 
-declare RG_OUT
 declare -a RG_PARTS
-RG_OUT="$(rg_lines "$@")" || exit $?
 # split into filename and line number
-readarray -t RG_PARTS < <(tr ':' '\n' <<<"${RG_OUT}")
-# arithmetic substitution removes extra newline
+readarray -d ':' -t RG_PARTS < <(rg_lines "$@")
+[[ -z "${RG_PARTS[*]}" ]] && exit 1
+# arithmetic substitution removes extra newline from number
 exec editor "+$((RG_PARTS[1]))" "${RG_PARTS[0]}"

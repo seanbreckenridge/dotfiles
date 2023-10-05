@@ -62,7 +62,8 @@ ydhd() {
 	ydh "$@" | dunk | less -R
 }
 
-alias e='editor'
+alias e=editor
+alias s=rg-nvim
 
 # Shorthands, or adding some default flags to utilities
 alias 'xargsl=xargs -I {} sh -c' # line-based xargs
