@@ -1,4 +1,10 @@
 #!/usr/bin/env bash
 # how many water I've drank today, out of how much I should
 
-printf '%d/%d\n' "$(b-water)" "$(water-should-drink)"
+WATER="$(b-water)"
+SHOULD="$(water-should-drink)"
+if [[ "$WATER" -lt "$SHOULD" ]]; then
+	printf '<span color="#8071f6">%d/%d</span>\n' "$WATER" "$SHOULD"
+else
+	printf '%d/%d\n' "$WATER" "$SHOULD"
+fi
