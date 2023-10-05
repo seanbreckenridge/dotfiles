@@ -9,13 +9,14 @@
 if attached-to-terminal; then
 	# execute the command in the current shell
 	sh -c "$@"
+	exit $?
 else
 	# open a new terminal, load zsh configuration (for zsh functions/environment), then launch the passed command
 	case "$ON_OS" in
 	linux* | mac*)
 		if havecmd kitty; then
 			kitty -e zsh -ic "$@"
-			exit 0
+			exit $?
 		fi
 		;;
 	esac

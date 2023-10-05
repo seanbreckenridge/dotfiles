@@ -1,2 +1,2 @@
 #!/bin/sh
-launch 'kitty +kitten unicode_input text'
+launch 'sh -c "kitty +kitten unicode_input text | clp"'

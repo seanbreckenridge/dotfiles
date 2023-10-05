@@ -896,3 +896,6 @@ else
 	exec todo.sh rofi
 fi
 '''
+
+[current-city]
+command = "ipinfo | grep -m1 city | cut -d':' -f2- | chomp"

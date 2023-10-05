@@ -1,0 +1,2 @@
+#!/bin/sh
+ipinfo | grep -m1 city | cut -d':' -f2- | chomp

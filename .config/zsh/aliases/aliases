@@ -86,6 +86,15 @@ rgi() {
 rgqf() {
 	rg --no-heading --with-filename --line-number "$@"
 }
+
+weather() {
+	local city cachefile
+	cachefile="$HOME/.cache/current_city"
+	evry 1h -current_city_cached && current-city >"$cachefile"
+	city="${*:-$(cat "$cachefile")}"
+	curl wttr.in/"$city"
+}
+
 # todo.txt
 alias todo='todo.sh'
 alias ft='full_todotxt -p'
