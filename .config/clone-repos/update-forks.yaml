@@ -15,3 +15,11 @@
     - git pull upstream master
     - git push
   pipefail: true
+"https://github.com/seanbreckenridge/bleanser-fork":
+  preinstall: git pull
+  postinstall:
+    - git checkout master
+    - git pull
+    - git pull upstream master
+    - git push
+  pipefail: true
