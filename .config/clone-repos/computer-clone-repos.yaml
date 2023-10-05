@@ -29,4 +29,5 @@
   base: ~/.local/share/go/src/github.com/seanbreckenridge
   symlink_to: ~/Repos
 "https://github.com/seanbreckenridge/largechar":
+  base: ~/.cache/
   postinstall: make install
