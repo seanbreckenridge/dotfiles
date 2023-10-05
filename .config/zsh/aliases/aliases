@@ -63,7 +63,7 @@ ydhd() {
 }
 
 alias e=editor
-alias s=rg-nvim
+alias t=rg-nvim
 
 # Shorthands, or adding some default flags to utilities
 alias 'xargsl=xargs -I {} sh -c' # line-based xargs
