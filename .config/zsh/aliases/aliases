@@ -92,6 +92,7 @@ alias ft='full_todotxt -p'
 alias ti='todo-interactive'
 alias td='todo edit'
 
+alias ghd='gh dash'
 alias rr='rifle'
 alias optipng='optipng -o5'
 alias R=ranger
