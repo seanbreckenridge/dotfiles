@@ -667,7 +667,7 @@ command = 'exec less -i "$@"'
 
 [sreminders-notify]
 command='''
-SREMINDERS="$(sreminders)"
+SREMINDERS="$(sreminders run)"
 exec notify "${SREMINDERS:-No sreminders}"
 '''
 

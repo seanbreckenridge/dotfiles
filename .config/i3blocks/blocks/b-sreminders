@@ -6,4 +6,4 @@ case "${BLOCK_BUTTON}" in
 	;;
 esac
 
-sreminders | wc -l | colorize_number
+sreminders run | wc -l | colorize_number

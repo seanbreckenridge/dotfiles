@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# remind me to log my weight once a week
 
 set -o pipefail
 

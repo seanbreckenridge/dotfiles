@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# remind me to drink water if I have not drank enough today
 
 set -e
 set -o pipefail
