@@ -30,12 +30,12 @@ from ttally.core import Extension
 
 
 # create enum from environment variable
-FlipTypes = Enum("FlipTypes", os.environ["FLIPFLOP_CHOICES"].split(":"))
+FlipT = Enum("FlipT", os.environ["FLIPFLOP_CHOICES"].split(":"))
 
 
 class Flip(NamedTuple):
     when: datetime
-    what: FlipTypes  # type: ignore
+    what: FlipT  # type: ignore
     on: bool
 
 
