@@ -43,8 +43,8 @@ export CALCURSE_DIR="${HPIDATA}/calcurse"
 # https://github.com/seanbreckenridge/bgproc
 export BGPROC_PATH="${REPOS}/HPI-personal/jobs:${HPIDATA}/jobs:${HOME}/.local/scripts/supervisor_jobs:${REPOS}/vps/jobs"
 export BGPROC_DATE_FMT='+%Y-%m-%dT%H-%M-%S'
-# $PATH for sreminder directories
-export SREMINDERS_PATH="${HPIDATA}/sreminders:${HOME}/.local/scripts/sreminders"
+# $PATH for https://github.com/seanbreckenridge/reminder-sink
+export REMINDER_SINK_PATH="${HPIDATA}/reminder-sink:${HOME}/.local/scripts/reminder-sink"
 # https://github.com/seanbreckenridge/my_feed
 export TMDB_CACHE_DIR="${FILES_DIR}/feed_tmdb_cache"
 export GIANTBOMB_CACHE_DIR="${FILES_DIR}/feed_giantbomb_cache"

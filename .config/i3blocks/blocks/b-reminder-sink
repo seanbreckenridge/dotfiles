@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+case "${BLOCK_BUTTON}" in
+1)
+	reminder-sink-notify
+	;;
+esac
+
+reminder-sink run | wc -l | colorize_number

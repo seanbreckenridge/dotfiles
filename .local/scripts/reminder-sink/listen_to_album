@@ -4,7 +4,10 @@
 set -o pipefail
 
 EXIT=0
-LISTENCOUNT="$(hpi query -r 1w my.nextalbums.history | jq 'length')" || notify "listen_to_album: hpi query failed"
+LISTENCOUNT="$(hpi query -r 1w my.nextalbums.history | jq 'length')" || {
+	notify "listen_to_album: hpi query failed"
+	exit 1
+}
 
 [[ "${LISTENCOUNT}" == '0' ]] && EXIT=2
 exit "$EXIT"

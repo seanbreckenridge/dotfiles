@@ -1,3 +1,0 @@
-#!/bin/sh
-SREMINDERS="$(sreminders run)"
-exec notify "${SREMINDERS:-No sreminders}"

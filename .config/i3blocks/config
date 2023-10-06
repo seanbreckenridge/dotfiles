@@ -38,8 +38,8 @@ interval=600
 label=🎬
 signal=11
 
-[sreminders]
-command=b-sreminders
+[reminder-sink]
+command=b-reminder-sink
 interval=300
 label=📗
 signal=5

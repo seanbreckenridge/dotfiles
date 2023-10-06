@@ -7,7 +7,10 @@ set -o pipefail
 source "$HPIDATA/tokens"
 
 EXIT=0
-OUTPUT="$(flipflop.py status -fo json | jq 'keys[]' -r)" || notify "flipflop failed to run"
+OUTPUT="$(flipflop.py status -fo json | jq 'keys[]' -r)" || {
+	notify "flipflop failed to run"
+	exit 1
+}
 
 if [[ -n "$OUTPUT" ]]; then
 	echo "$OUTPUT"

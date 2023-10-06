@@ -665,10 +665,10 @@ exec nvim -q "$@" +copen
 [lessi]
 command = 'exec less -i "$@"'
 
-[sreminders-notify]
+[reminder-sink-notify]
 command='''
-SREMINDERS="$(sreminders run)"
-exec notify "${SREMINDERS:-No sreminders}"
+SR="$(reminder-sink run)"
+exec notify "${SR:-No reminders}"
 '''
 
 [discord-suppress]

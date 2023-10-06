@@ -6,7 +6,10 @@ set -e
 set -o pipefail
 
 EXIT=0
-TTALLY_OUTPUT="$(ttally recent food 20h -o json)" || notify -u critical "ttally query failed"
+TTALLY_OUTPUT="$(ttally recent food 20h -o json)" || {
+	notify -u critical "ttally query failed"
+	exit 1
+}
 
 declare -A matchers=()
 matchers[vitamin]='.*daily multivitamin.*'

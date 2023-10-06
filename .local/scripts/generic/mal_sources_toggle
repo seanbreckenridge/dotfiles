@@ -2,7 +2,7 @@
 
 set -u
 
-declare SCRIPT="${HPIDATA}/sreminders/mal_sources"
+declare SCRIPT="${HPIDATA}/reminder-sink/mal_sources"
 
 [[ -e "$SCRIPT" ]] || {
 	printf 'Could not find script at %s\n' "$SCRIPT" 1>&2

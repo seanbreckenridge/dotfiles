@@ -1,9 +1,0 @@
-#!/usr/bin/env bash
-
-case "${BLOCK_BUTTON}" in
-1)
-	sreminders-notify
-	;;
-esac
-
-sreminders run | wc -l | colorize_number

@@ -1,0 +1,3 @@
+#!/bin/sh
+SR="$(reminder-sink run)"
+exec notify "${SR:-No reminders}"

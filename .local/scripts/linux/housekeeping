@@ -21,7 +21,7 @@ evry 6 hours -approve-comments && approve_comments
 # backup cache/tokens/logs from my server
 evry 3 days -backup_fish_server && vps_backup_server
 
-evry 1 day -sreminders-notify && sreminders-notify
+evry 1 day -reminders-notify && reminder-sink-notify
 
 # make sure my pythonanywhere website doesn't expire:
 # https://github.com/seanbreckenridge/pythonanywhere-3-months

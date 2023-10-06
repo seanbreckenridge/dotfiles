@@ -1,12 +1,11 @@
 #!/usr/bin/env bash
 # remind me to drink water if I have not drank enough today
 
-set -e
 set -o pipefail
 
 EXIT=0
-DRANK="$(b-water)"
-SHOULD="$(water-should-drink)"
+DRANK="$(b-water)" || exit 1
+SHOULD="$(water-should-drink)" || exit 1
 
 ((DRANK < SHOULD)) && EXIT=2
 exit "$EXIT"

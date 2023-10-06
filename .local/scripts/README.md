@@ -3,7 +3,7 @@
 - linux - scripts meant to be used on linux
 - cross-platform - scripts that check `$ON_OS`/`uname` to provide cross platform functionality (to interact with the clipboard, or send notifications)
 - supervisor_jobs - jobs for supervisor background processes using [supervisor](https://github.com/Supervisor/supervisor), on mac and linux (see below)
-- sreminders - scripts to remind me to do something, see the description at the top of [sreminders](generic/sreminders)
+- reminder-sink - scripts to remind me to do something, see [reminder-sink](https://github.com/seanbreckenridge/reminder-sink)
 
 ## supervisor
 
