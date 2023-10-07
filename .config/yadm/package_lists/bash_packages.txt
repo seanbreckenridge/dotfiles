@@ -9,5 +9,4 @@ seanbreckenridge/frinkconv
 paulirish/git-open
 dylanaraps/neofetch
 kadwanev/retry
-PhrozenByte/rmtrash
 kdheepak/panvimdoc
