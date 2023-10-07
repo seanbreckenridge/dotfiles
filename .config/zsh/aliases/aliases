@@ -121,12 +121,16 @@ alias 'up=TERM=xterm up'
 alias screens='cd $SCREENSHOTS'
 
 alias rrm='command rm'
-# trash-cli/rmtrash
-# dont use trash-cli/rmtrash on android, doesn't work
-alias rm='saferm'
-[[ "$ON_OS" =~ ^android.* ]] || {
-	alias rmdir='rmdirtrash'
-}
+
+# dont use rmtrash on android, doesn't work
+case "$ON_OS" in
+android*)
+	alias rm='rm -v'
+	;;
+*)
+	alias rm='trash-put -v'
+	;;
+esac
 
 # kitty
 alias d="kitty +kitten diff"
