@@ -15,7 +15,7 @@ uqf() {
 # https://github.com/seanbreckenridge/bgproc
 evry 1 hour -run_android_jobs && {
 	echo 'running jobs...' >&2
-	uqf
+	uqf || true
 }
 
 # sync HPI config from syncthing dir to ~/.config so I have access to synced secrets
@@ -35,10 +35,10 @@ syncfiles() {
 alias sf=syncfiles
 
 uu() {
-	syncfiles
+	syncfiles || true
 	wait-for-internet --timeout 1 --quiet && {
-		yadm pull
-		repos-pull-all
+		yadm pull || true
+		repos-pull-all || true
 	}
 }
 
