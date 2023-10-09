@@ -1,9 +1,10 @@
+#!/bin/sh
 # === EDIT FILE LOCATIONS BELOW ===
 
-# this is just here to redirect the config to ~/data/todo
-
 # Your todo.txt directory (this should be an absolute path)
-export TODO_DIR="${HPIDATA}/todo"
+if [ -z "$TODO_DIR" ]; then
+	export TODO_DIR="${HPIDATA}/todo"
+fi
 
 # Your todo/done/report.txt locations
 export TODO_FILE="$TODO_DIR/todo.txt"

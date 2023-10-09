@@ -899,3 +899,10 @@ fi
 
 [current-city]
 command = "ipinfo | grep -m1 city | cut -d':' -f2- | chomp"
+
+[eventually]
+command = '''
+# a long-term todo list, using todo.txt
+export TODO_DIR="${XDG_DOCUMENTS_DIR}/Notes/eventually"
+exec todo.sh "$@"
+'''
