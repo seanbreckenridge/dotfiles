@@ -57,6 +57,10 @@ evry 1 day -update-projects && {
 	(cd "$REPOS/projects" && ./update)
 }
 
+evry 1 week -sync-dbsentinel && {
+	(cd "$REPOS/dbsentinel" && ./scripts/sync_from_remote)
+}
+
 # https://github.com/seanbreckenridge/grouvee_export
 evry 2 months -grouvee-export && python3 -m grouvee_export export
 
