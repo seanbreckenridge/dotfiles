@@ -1,3 +1,6 @@
 #!/bin/sh
+# workaround for pre-load/post-save not being executable
+# when synced with syncthing
+chmod +x "$CALCURSE_DIR/hooks/pre-load" "$CALCURSE_DIR/hooks/post-save"
 # use the same directory for config and data
 exec calcurse --datadir "$CALCURSE_DIR" --confdir "$CALCURSE_DIR" "$@"
