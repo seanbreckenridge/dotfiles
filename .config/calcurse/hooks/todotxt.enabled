@@ -1,0 +1,17 @@
+#!/bin/sh
+# to disable this file, rename it to todotxt.disabled
+
+case "$1" in
+preload)
+	python3 -m calcurse_load --pre-load todotxt
+	;;
+
+postsave)
+	python3 -m calcurse_load --post-save todotxt
+	;;
+
+*)
+	echo "Argument provided wasn't 'preload' or 'postsave'!" 1>&2
+	exit 1
+	;;
+esac
