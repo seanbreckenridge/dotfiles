@@ -2,5 +2,4 @@
 
 cd "$(dirname "$0")" || exit 1
 
-# for each .enabled extension file, run preload
-find . -type f -name "*.enabled" -exec {} preload \;
+python3 -m calcurse_load --pre-load gcal --pre-load todotxt >/dev/null 2>&1

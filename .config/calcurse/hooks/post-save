@@ -2,5 +2,4 @@
 
 cd "$(dirname "$0")" || exit 1
 
-# for each .enabled extension file, run postsave
-find . -type f -name "*.enabled" -exec {} postsave \;
+python3 -m calcurse_load --post-save todotxt > /dev/null 2>&1

@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-exec calcurse --datadir "$CALCURSE_DIR" --confdir "$XDG_CONFIG_HOME/calcurse/" "$@"
+exec calcurse --datadir "$CALCURSE_DIR" --confdir "$XDG_CONFIG_HOME/calcurse" "$@"

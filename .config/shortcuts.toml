@@ -627,7 +627,7 @@ exec gh "$@"
 
 [calcursed]
 command='''
-exec calcurse --datadir "$CALCURSE_DIR" --confdir "$XDG_CONFIG_HOME/calcurse/" "$@"
+exec calcurse --datadir "$CALCURSE_DIR" --confdir "$XDG_CONFIG_HOME/calcurse" "$@"
 '''
 shebang = "#!/usr/bin/env bash"
 
