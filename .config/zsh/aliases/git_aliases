@@ -139,17 +139,6 @@ gclcd() {
 	cd "$(newest -include-dirs)"
 }
 
-# with dunk: https://github.com/darrenburns/dunk
-gdhd() {
-	gdh "$@" | dunk | less -R
-}
-gdd() {
-	gd "$@" | dunk | less -R
-}
-gdsd() {
-	gds "$@" | dunk | less -R
-}
-
 function gdnolock() {
 	git diff "$@" ":(exclude)package-lock.json" ":(exclude)*.lock"
 }

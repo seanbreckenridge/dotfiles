@@ -51,17 +51,6 @@ ycp() {
 		yadm commit -m "$*" && yadm push
 	fi
 }
-ydsd() {
-	yds "$@" | dunk | less -R
-}
-
-ydd() {
-	yd "$@" | dunk | less -R
-}
-ydhd() {
-	ydh "$@" | dunk | less -R
-}
-
 alias e=editor
 alias t=rg-nvim
 

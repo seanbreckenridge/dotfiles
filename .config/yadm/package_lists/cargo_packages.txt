@@ -7,4 +7,4 @@ kondo         # removes node_module/build directories
 so            # stackoverflow
 readenv       # renv, for executing a command with a modified environment
 wait-for-internet
-hexyl				 # hexdump
+hexyl				  # hexdump

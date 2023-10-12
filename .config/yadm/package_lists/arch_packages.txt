@@ -129,6 +129,7 @@ flameshot
 fzf
 gifsicle
 git
+git-delta
 git-extras
 github-cli
 glow

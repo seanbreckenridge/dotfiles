@@ -10,7 +10,6 @@ cube-scramble-cli
 currencyconverter
 cython
 diceware
-dunk
 eyeD3
 flake8
 full-todotxt
