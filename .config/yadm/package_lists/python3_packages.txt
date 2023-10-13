@@ -1,5 +1,3 @@
-beets
-beets-filetote
 black
 click
 codespell
@@ -8,7 +6,6 @@ cookiecutter
 csvkit
 cube-scramble-cli
 currencyconverter
-cython
 diceware
 eyeD3
 flake8
@@ -16,12 +13,9 @@ full-todotxt
 geopy
 greasyfork_archive
 idna
-imgur-uploader
 ipdb
 ipython
 isort
-j2cli
-jedi
 logzero
 mpv-history-daemon
 mutagen
@@ -32,11 +26,9 @@ pip-licenses
 pipenv
 pipx
 pyYAML
-pyacoustid
 pyflyby
 pygments
 pylast
-pynvim
 pyperclip
 pypyp
 pysrt
@@ -53,7 +45,6 @@ srt
 supervisor
 termdown
 termgraph
-thefuck
 time-in
 toml
 trash-cli

@@ -1,6 +1,14 @@
+beets
+beets-filetote
+cython
+imgur-uploader
 iwlib
-python-xlib
-python-language-server
-ueberzug
+j2cli
+pyacoustid
 pyautogui
+pynvim
+python-language-server
+python-xlib
+thefuck
 twine
+ueberzug
