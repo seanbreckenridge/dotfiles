@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+evry 1 week -android-empty-trash && {
+	printlog 'empty-trash:removing trash files manually on android'
+	rm -rvf ~/.local/share/Trash
+}
