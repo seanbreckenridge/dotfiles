@@ -1,0 +1,10 @@
+csvkit
+cookiecutter
+cube-scramble-cli
+currencyconverter
+diceware
+eyeD3
+greasyfork_archive
+Pygments
+time-in
+urlscan
