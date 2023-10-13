@@ -1,6 +1,4 @@
-click
 colorlog
-full-todotxt
 geopy
 idna
 ipdb
