@@ -86,7 +86,7 @@ weather() {
 
 # todo.txt
 alias todo='todo.sh'
-alias ft='full_todotxt -p'
+alias ft='full_todotxt -ps'
 alias ti='todo-interactive'
 alias td='todo edit'
 
