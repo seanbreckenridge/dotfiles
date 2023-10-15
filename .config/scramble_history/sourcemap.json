@@ -327,5 +327,15 @@
     "transformed_puzzle": "skewb",
     "transformed_event_code": "WCA",
     "transformed_event_description": "Skewb"
+  },
+  {
+    "source_class_name": "scramble_history.cstimer.Solve",
+    "source_fields_match": {
+      "raw_scramble_type": "pyrso",
+      "name": "pyra"
+    },
+    "transformed_puzzle": "pyra",
+    "transformed_event_code": "WCA",
+    "transformed_event_description": "Pyraminx"
   }
 ]
