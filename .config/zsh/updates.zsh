@@ -48,6 +48,7 @@ update_ranger_plugins() {
 update_lang_all() {
 	update_node
 	update_pip
+	pipx upgrade-all
 	update_cargo
 	update_golang
 	update_basher
