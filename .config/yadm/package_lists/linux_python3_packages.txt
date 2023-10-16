@@ -6,6 +6,7 @@ iwlib
 j2cli
 pyacoustid
 pyautogui
+pylast
 pynvim
 python-language-server
 python-xlib

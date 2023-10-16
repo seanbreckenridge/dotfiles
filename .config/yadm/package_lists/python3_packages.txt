@@ -1,16 +1,12 @@
-colorlog
 geopy
 idna
 ipdb
 ipython
-logzero
 pip
-pip-licenses
 pipenv
 pipx
 pyYAML
 pyflyby
-pylast
 pyperclip
 pysrt
 reorder_editable
