@@ -54,7 +54,7 @@ evry 6 hours -google-drive && {
 evry 1 day -backup-keepassdb && backup-keepass-db
 
 evry 1 day -update-projects && {
-	(cd "$REPOS/projects" && ./update)
+	(cd "$REPOS/projects" && ./update && git status)
 }
 
 evry 1 week -sync-dbsentinel && {

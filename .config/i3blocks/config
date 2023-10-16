@@ -15,6 +15,12 @@ interval=30
 label=⏸
 signal=9
 
+[page-hits]
+command=b-page-hits
+interval=300
+label=📈
+signal=12
+
 [comments]
 command=b-comments
 interval=once
