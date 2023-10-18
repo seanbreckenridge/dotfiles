@@ -38,7 +38,7 @@ return {
             -- Enable or disable logging
             logging = true,
             -- Set the log level
-            log_level = vim.log.levels.DEBUG,
+            log_level = vim.log.levels.INFO,
             -- All formatter configurations are opt-in
             filetype = {
                 html = prettier,

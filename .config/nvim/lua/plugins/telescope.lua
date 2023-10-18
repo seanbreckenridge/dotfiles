@@ -64,6 +64,11 @@ wk.register({
         M = {
             function() require('telescope.builtin').man_pages() end, 'man pages'
         },
+        n = {
+            function()
+                require('telescope').extensions.notify.notify()
+            end, 'notify'
+        },
         h = {
             function() require('telescope.builtin').command_history() end,
             'command history'
@@ -161,6 +166,7 @@ return {
         tl.load_extension('fzf') -- native fzf
         tl.load_extension('repo')
         tl.load_extension('projects')
+        tl.load_extension('notify')
         -- TODO: try https://github.com/pwntester/octo.nvim
     end
 }

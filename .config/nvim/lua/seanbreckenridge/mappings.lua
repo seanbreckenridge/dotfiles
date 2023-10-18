@@ -72,7 +72,13 @@ end
 -- misc
 wk.register({
     -- reminder, can use 'P' in netrw to open in right tab
-    e = {':wincmd v<bar> :Explore <bar> :vertical resize 30<CR>', 'netrw'},
+    e = {
+        function()
+            vim.cmd('wincmd v')
+            require('oil').open()
+            vim.cmd('vertical resize 30')
+        end, 'file explorer'
+    },
     s = {':set spell!<CR>', 'toggle spell'},
     X = {':!chmod +x %<CR>', 'chmod +x'},
     ["S"] = {reload_config, 'reload config'}
@@ -84,6 +90,8 @@ wk.register({b = {'<C-^>', 'swap buffers'}}, {prefix = '<leader>'})
 nnoremap('<leader>w', function() require('which-key').show_command('<C-w>') end,
          'window')
 nnoremap('<leader><C-n>', ':enew<CR>', 'new file')
+nnoremap('<leader>d', function() require('notify').dismiss() end,
+         'dismiss notifications')
 
 nnoremap('<C-q>', ':lua ToggleQFList(0)<CR>', 'toggle quickfix list')
 wk.register({j = {':cnext<CR>', 'qf next'}, k = {':cprev<CR>', 'qf prev'}},
