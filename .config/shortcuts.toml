@@ -834,8 +834,7 @@ command = 'exec paste -sd " "'
 [codespell-conf]
 command = '''
 declare -a args=()
-if [[ -n "$NVIM_SPELLFILE" ]];
-then
+if [[ -n "$NVIM_SPELLFILE" ]]; then
 	args+=("--ignore-words=$NVIM_SPELLFILE")
 fi
 exec codespell --config ~/.config/codespell/codespell.conf "${args[@]}" "$@"
