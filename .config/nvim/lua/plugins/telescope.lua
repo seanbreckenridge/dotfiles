@@ -80,7 +80,8 @@ wk.register({
         },
         L = {
             function() require('telescope.builtin').reloader() end, 'reload lua'
-        }
+        },
+        [' '] = {function() require('telescope.builtin').resume() end, 'resume'}
     }
 }, {prefix = '<leader>'})
 
