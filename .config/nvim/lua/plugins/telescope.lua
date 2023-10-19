@@ -25,7 +25,16 @@ wk.register({
                 }
             end, 'switch repo'
         },
-        p = {'<cmd>:Telescope projects<CR>', 'switch projects'}
+        p = {'<cmd>:Telescope projects<CR>', 'switch projects'},
+        -- mnemonic 'cd' binding
+        d = {
+            function()
+                local filename = vim.fn.expand('%:p:h')
+                local cmd = 'cd ' .. filename
+                vim.cmd(cmd)
+                vim.notify('cd ' .. filename)
+            end, 'cd to curdir'
+        }
     }
 }, {prefix = '<leader>'})
 
