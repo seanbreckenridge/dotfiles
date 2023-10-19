@@ -5,4 +5,5 @@ if [[ -n "$BLOCK_BUTTON" ]]; then
 	update-recent-page-hits >/dev/null 2>&1
 fi
 
-cat ~/.cache/recent_page_hits.txt
+today="$(date +'%Y-%m-%d')"
+jq <"$XDG_CACHE_HOME/recent_page_hits.json" '.epochs.[]' -r | epochguess | grep -c "$today"
