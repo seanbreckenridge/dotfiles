@@ -3,12 +3,12 @@
 set -e
 
 if (($# == 0)); then
-	exec ttt nvim +Explore
+	exec ttt nvim +Oil
 else
 	# if the first argument is a directory and there are no other arguments
 	# then open the directory in the vim file explorer
 	if [[ -d "$1" && -z "$2" ]]; then
-		exec ttt nvim +Explore "$@"
+		exec ttt nvim +Oil "$@"
 	fi
 	# otherwise, just track in ttt and run whatever command was passed
 	exec ttt nvim "$@"
