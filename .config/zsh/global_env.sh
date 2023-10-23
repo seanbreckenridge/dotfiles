@@ -46,6 +46,7 @@ export BGPROC_PATH="${REPOS}/HPI-personal/jobs:${HPIDATA}/jobs:${HOME}/.local/sc
 export BGPROC_DATE_FMT='+%Y-%m-%dT%H-%M-%S'
 # $PATH for https://github.com/seanbreckenridge/reminder-sink
 export REMINDER_SINK_PATH="${HPIDATA}/reminder-sink:${HOME}/.local/scripts/reminder-sink"
+export REMINDER_SINK_SILENT_FILE="${HPIDATA}/reminder-sink-silent.txt"
 # https://github.com/seanbreckenridge/my_feed
 export TMDB_CACHE_DIR="${FILES_DIR}/feed_tmdb_cache"
 export GIANTBOMB_CACHE_DIR="${FILES_DIR}/feed_giantbomb_cache"
