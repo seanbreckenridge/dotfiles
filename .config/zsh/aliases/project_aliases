@@ -78,6 +78,21 @@ conv() {
 	frinkconv "$*"
 }
 
+# https://github.com/seanbreckenridge/oh-my-stars
+alias sz='mystarsfzf'
+
+# https://github.com/seanbreckenridge/reminder-sink
+sr() {
+	case "${#@}" in
+	0) reminder-sink run ;;
+	*) reminder-sink "$@" ;;
+	esac
+}
+alias srd='REMINDER_SINK_DEBUG=1 sr'
+
+# https://github.com/seanbreckenridge/calc_ans
+alias c=calc_ans_rlwrap
+
 # https://github.com/seanbreckenridge/calcurse-load
 alias calcurse=calcursed
 

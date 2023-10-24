@@ -76,14 +76,6 @@ rgqf() {
 	rg --no-heading --with-filename --line-number "$@"
 }
 
-weather() {
-	local city cachefile
-	cachefile="$HOME/.cache/current_city"
-	evry 1h -current_city_cached && current-city >"$cachefile"
-	city="${*:-$(cat "$cachefile")}"
-	curl wttr.in/"$city"
-}
-
 # todo.txt
 alias todo='todo.sh'
 alias ft='full_todotxt -ps'
@@ -94,23 +86,10 @@ alias ghd='gh dash'
 alias rr='rifle'
 alias optipng='optipng -o5'
 alias R=ranger
-alias sz='mystarsfzf'
-sr() {
-	case "${#@}" in
-	0)
-		reminder-sink run
-		;;
-	*)
-		reminder-sink "$@"
-		;;
-	esac
-}
-alias srd='REMINDER_SINK_DEBUG=1 sr'
 alias nr='neomuttr'
 alias urban='udict'
 alias xxd='hexyl'
 alias calc='ipython3 --profile=calculator'
-alias c=calc_ans_rlwrap
 alias 'countdown=termdown'
 # shorthand for copying to clipboard
 alias cl='clipcopy'
