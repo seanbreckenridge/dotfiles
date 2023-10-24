@@ -4,6 +4,10 @@ case "${BLOCK_BUTTON}" in
 1)
 	reminder-sink-notify
 	;;
+3)
+	# shellcheck disable=SC2016
+	launch 'reminder-sink silence add "$(reminder-sink run | fzf --header="What to silence?")"'
+	;;
 esac
 
 reminder-sink run | wc -l | colorize_number
