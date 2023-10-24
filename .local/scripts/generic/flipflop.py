@@ -26,6 +26,9 @@ from enum import Enum
 from datetime import datetime
 
 import click
+
+# disable default ttally config loading when ttally.__init__ is imported
+os.environ["TTALLY_SKIP_DEFAULT_IMPORT"] = "1"
 from ttally.core import Extension
 
 
