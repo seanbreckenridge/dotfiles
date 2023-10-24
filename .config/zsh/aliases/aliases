@@ -95,7 +95,17 @@ alias rr='rifle'
 alias optipng='optipng -o5'
 alias R=ranger
 alias sz='mystarsfzf'
-alias sr='reminder-sink run'
+sr() {
+	case "${#@}" in
+	0)
+		reminder-sink run
+		;;
+	*)
+		reminder-sink "$@"
+		;;
+	esac
+}
+alias srd='REMINDER_SINK_DEBUG=1 sr'
 alias nr='neomuttr'
 alias urban='udict'
 alias xxd='hexyl'

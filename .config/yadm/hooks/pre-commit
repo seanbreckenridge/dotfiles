@@ -11,11 +11,10 @@ sh ~/.profile || {
 
 # check for spelling errors in my dotfiles
 case "$ON_OS" in
-	linux_*)
-		spell-dotfiles || exit $?
-		;;
-	*)
-		;;
+linux_*)
+	spell-dotfiles || exit $?
+	;;
+*) ;;
 esac
 
 # Copy README for git repo to $HOME so that the github repo README will be updated
