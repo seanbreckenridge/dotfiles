@@ -207,11 +207,7 @@ _job-run() {
 compdef _job-run job-run run-job job-reset
 
 job-edit() {
-	# split $BGPROC_PATH by ":"
-	# fd on all of those paths, and use fzf to select one
-	{ while read -r dir; do
-		[[ -d "$dir" ]] && fd . "$dir" --type f
-	done < <(tr ':' '\n' <<<"$BGPROC_PATH"); } | fzf-edit "$*"
+	tr ':' '\n' <<<"$BGPROC_PATH" | parallel --keep-order fd . '{}' --type f | fzf-edit "$*"
 }
 
 # search for cubing competitions near me
