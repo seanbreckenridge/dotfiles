@@ -75,7 +75,17 @@ source_if_exists "${REPOS}/my_feed/scripts/functions.sh"
 
 # https://github.com/seanbreckenridge/frinkconv
 conv() {
-	frinkconv "$*"
+	local args=()
+	for arg in "$@"; do
+		# replace '--' or with '->'. its annoying to type
+		# '->' in the shell (since you need to add quotes)
+		if [[ arg == "--" ]]; then
+			args+=("->")
+		else
+			args+=("$arg")
+		fi
+	done
+	frinkconv "${args[*]}"
 }
 
 # https://github.com/seanbreckenridge/oh-my-stars
