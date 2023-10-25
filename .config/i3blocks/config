@@ -46,7 +46,7 @@ signal=11
 
 [reminder-sink]
 command=b-reminder-sink
-interval=300
+interval=90
 label=📗
 signal=5
 
