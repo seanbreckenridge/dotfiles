@@ -1,0 +1,45 @@
+#!/usr/bin/env bash
+# takes a file and finds the corresponding syncthing conflict
+# copies the original file and the conflict to a temp dir, and lets
+# you modify them to merge them
+#
+# once that's done, previews a diff and then asks if you want to
+# replace the original file with the merged one
+#
+# and removes the syncthing conflict file
+#
+# I use this to merge stuff like my calcurse appointments and my todo.txt
+
+set -euo pipefail
+
+declare file abspath dir filename sync_conflict tmpdir
+
+file="${1?Provide the main source file to merge}"
+abspath="$(realpath "$file")"
+dir="$(dirname "$abspath")"
+filename="$(basename "$abspath")"
+
+cd "$dir" || exit 1
+
+# -print -quit only prints the first match
+sync_conflict="$(find "$dir" -name "$filename*sync-conflict*" -print -quit)"
+if [[ -z "$sync_conflict" ]]; then
+	printf "No syncthing conflict files found for '%s'\n" "$file" >&2
+	exit 1
+fi
+
+tmpdir="$(mktemp -d)"
+trap 'command rm -rf "$tmpdir"' EXIT
+cp "$file" "$tmpdir"
+cp "$sync_conflict" "$tmpdir"
+
+nvim -d "$tmpdir/$filename" "$tmpdir/$filename.sync-conflict-"*
+diff --report-identical-files --unified=3 "$tmpdir/$filename" "$abspath"
+
+if gum confirm "Replace original with merged file?"; then
+	mv -v "$tmpdir/$filename" "$file"
+fi
+
+if gum confirm "Delete conflict file?"; then
+	rm -v "$sync_conflict"
+fi

@@ -59,6 +59,7 @@ signal=4
 [calendar]
 command=b-calendar
 interval=300
+signal=13
 label=📅
 
 [calories]

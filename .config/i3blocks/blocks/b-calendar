@@ -22,15 +22,30 @@ case "$BLOCK_BUTTON" in
 	;;
 esac
 
-# Find things on my calendar that are starting after now, today
-# and meetings that are on my calendar, at any time today
-today_coming_up="$(calcurse_filter +'%m/%d/%Y %H:%M' | wc -l)"
-today_or_tomorrow="$(calcurse_filter +'%m/%d/%Y' +'%m/%d/%Y' -d '+1 day' | wc -l)"
+calcurse_status() {
+	# Find things on my calendar that are starting after now, today
+	# and meetings that are on my calendar, at any time today
+	today_coming_up="$(calcurse_filter +'%m/%d/%Y %H:%M' | wc -l)"
+	today_or_tomorrow="$(calcurse_filter +'%m/%d/%Y' +'%m/%d/%Y' -d '+1 day' | wc -l)"
 
-# if all are upcoming (later in the day), just print one
-if ((today_or_tomorrow == today_coming_up)); then
-	printf '%s\n' "$today_coming_up"
+	# if all are upcoming (later in the day), just print one
+	if ((today_or_tomorrow == today_coming_up)); then
+		printf '%s\n' "$today_coming_up"
+	else
+		# print items upcoming / total items today
+		printf '%s/%s\n' "$today_coming_up" "$today_or_tomorrow"
+	fi
+}
+
+if [[ -z "$CALCURSE_DIR" ]]; then
+	# shellcheck disable=SC2016
+	notify 'No $CALCURSE_DIR set'
+	exit 1
+fi
+
+SYNC_CONFLICTS="$(find-sync-conflicts "$CALCURSE_DIR" | wc -l)"
+if [ "$SYNC_CONFLICTS" -gt 0 ]; then
+	printf "%s \n" "$(calcurse_status)"
 else
-	# print items upcoming / total items today
-	printf '%s/%s\n' "$today_coming_up" "$today_or_tomorrow"
+	calcurse_status
 fi

@@ -11,4 +11,11 @@ esac
 
 set -u
 
-chomp <"${TODO_DIR}/todo.txt" | wc -l
+COUNT="$(chomp <"${TODO_DIR}/todo.txt" | wc -l)"
+SYNC_CONFLICTS="$(find-sync-conflicts "$TODO_DIR" | wc -l)"
+
+if [ "$SYNC_CONFLICTS" -gt 0 ]; then
+	echo "$COUNT "
+else
+	echo "$COUNT"
+fi

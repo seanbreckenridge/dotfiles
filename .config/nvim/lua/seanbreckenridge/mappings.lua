@@ -122,6 +122,13 @@ end
 -- gf to pick hunk form the left (under left index)
 wk.register({
     name = "git merge",
+    -- ]c goes to the next conflict
+    -- just the current file
+    i = {':diffput<CR>]c', 'use current file'},
+    -- if Im merging two files in a split where one is a syncthing conflict
+    -- grab from the other file
+    s = {':diffget sync-conflict<CR>]c', 'diffget sync-conflict'},
+    -- //2 and //3 are set by fugitive for when doing git merges
     j = {':diffget //3<CR>', 'diffget //3'},
     f = {':diffget //2<CR>', 'diffget //2'}
 }, {prefix = "<leader>i"})
