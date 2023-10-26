@@ -1,9 +1,0 @@
-#!/bin/zsh
-# parses a human readable time into seconds using
-# https://github.com/seanbreckenridge/evry
-
-duration() {
-	local ms
-	ms="$(EVRY_JSON=1 evry -duration "$*" | jq -r '.[] | select(.type == "duration") | .body')"
-	echo "$((ms / 1000))"
-}
