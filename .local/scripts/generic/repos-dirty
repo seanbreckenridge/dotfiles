@@ -6,4 +6,4 @@ if [[ -z "$in_dir" ]]; then
 	echo "Usage: repos-dirty <dir>"
 	exit 1
 fi
-list-git-dirs "$in_dir" | parallel -k -j+0 'cd {} && has-git-remote && git-has-changes && pwd'
+list-git-dirs "$in_dir" | parallel -k -j+0 'cd {} && has-git-remote && git-has-untracked-or-changes && pwd'

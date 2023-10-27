@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+git-has-changes && exit 0
+git-has-untracked-files && exit 0
+exit 1
