@@ -15,8 +15,6 @@ DURATION="$(gum input --placeholder="Duration [e.g. 10 hours, 5m, 1 week]")" || 
 [[ -z "$DURATION" ]] && DURATION="1d"
 DURATION_JSON="$(EVRY_JSON=1 evry duration "$DURATION")" || notify -u critical "Invalid duration: $DURATION"
 
-echo "$DURATION_JSON"
-
 DURATION_SECONDS="$(jq -r '.[] | select(.type == "duration_seconds") | .body' <<<"$DURATION_JSON")"
 DURATION_PRETTY="$(jq -r '.[] | select(.type == "duration_pretty") | .body' <<<"$DURATION_JSON")"
 
