@@ -11,14 +11,14 @@ if [[ -z "$REMINDERS" ]]; then
 fi
 
 PICKED="$(fzf --header="What to silence?" <<<"$REMINDERS")" || exit 1
-DURATION="$(gum input --placeholder="Duration [1d]")" || true
+DURATION="$(gum input --placeholder="Duration [e.g. 10 hours, 5m, 1 week]")" || true
 [[ -z "$DURATION" ]] && DURATION="1d"
-DURATION_OUT="$(duration --verbose "$DURATION")" || notify -u critical "Invalid duration: $DURATION"
+DURATION_JSON="$(EVRY_JSON=1 evry duration "$DURATION")" || notify -u critical "Invalid duration: $DURATION"
 
-# first token is duration in seconds (e.g. 86400)
-# reset is pretty print info (e.g. 1 day)
-DURATION_SECONDS="$(cut -d' ' -f1 <<<"$DURATION_OUT")"
-DURATION_PRETTY="$(cut -d' ' -f2- <<<"$DURATION_OUT")"
+echo "$DURATION_JSON"
+
+DURATION_SECONDS="$(jq -r '.[] | select(.type == "duration_seconds") | .body' <<<"$DURATION_JSON")"
+DURATION_PRETTY="$(jq -r '.[] | select(.type == "duration_pretty") | .body' <<<"$DURATION_JSON")"
 
 reminder-sink silence add "$PICKED" -d "$DURATION_SECONDS"
 notify "reminder-sink" "Silenced $PICKED for $DURATION_PRETTY"

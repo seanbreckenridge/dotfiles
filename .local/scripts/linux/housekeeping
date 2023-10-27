@@ -28,7 +28,10 @@ evry 1 day -reminders-notify && reminder-sink-notify
 evry 2 months -pythonanywhere && python3 -m pythonanywhere_3_months -c "$(which chromedriver)"
 
 # https://github.com/andreafrancia/trash-cli
-evry 1 week -empty-trash && trash-empty
+evry 1 week -empty-trash && {
+	dust ~/.local/share/Trash
+	trash-empty
+}
 
 # run https://github.com/odeke-em/drive to pull/push from google drive
 evry 6 hours -google-drive && {
