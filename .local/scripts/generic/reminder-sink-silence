@@ -13,7 +13,10 @@ fi
 PICKED="$(fzf --header="What to silence?" <<<"$REMINDERS")" || exit 1
 DURATION="$(gum input --placeholder="Duration [e.g. 10 hours, 5m, 1 week]")" || true
 [[ -z "$DURATION" ]] && DURATION="1d"
-DURATION_JSON="$(EVRY_JSON=1 evry duration "$DURATION")" || notify -u critical "Invalid duration: $DURATION"
+DURATION_JSON="$(EVRY_JSON=1 evry duration "$DURATION")" || {
+	notify -u critical "Invalid duration: $DURATION"
+	exit 1
+}
 
 DURATION_SECONDS="$(jq -r '.[] | select(.type == "duration_seconds") | .body' <<<"$DURATION_JSON")"
 DURATION_PRETTY="$(jq -r '.[] | select(.type == "duration_pretty") | .body' <<<"$DURATION_JSON")"
