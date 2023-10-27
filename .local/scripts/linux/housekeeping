@@ -16,7 +16,7 @@ wait-for-internet "${wfi_args[@]}" || exit $?
 export HAVECMD_REPORT=1
 
 # approve guestbook comments on https://github.com/seanbreckenridge/glue
-evry 6 hours -approve-comments && approve_comments
+evry 6 hours -approve-comments && approve-comments
 
 # backup cache/tokens/logs from my server
 evry 3 days -backup_fish_server && vps_backup_server
