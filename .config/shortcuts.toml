@@ -905,3 +905,9 @@ command = '''
 export TODO_DIR="${XDG_DOCUMENTS_DIR}/Notes/eventually"
 exec todo.sh "$@"
 '''
+
+[core]
+command='''
+export BASE_URL='https://sean.fish/c/'
+exec give
+'''

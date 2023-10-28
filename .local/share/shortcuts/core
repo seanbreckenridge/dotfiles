@@ -1,0 +1,3 @@
+#!/bin/sh
+export BASE_URL='https://sean.fish/c/'
+exec give

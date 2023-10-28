@@ -8,7 +8,7 @@
 pick='fzf'
 attached-to-terminal || pick='picker'
 
-readonly BASE_URL="https://sean.fish/d/"
+readonly BASE_URL="${BASE_URL:-https://sean.fish/d/}"
 declare SCRIPT_INDEX SCRIPT_CHOICE BASE_FILEPATHS
 SCRIPT_CHOICE="$(fzfcache curl -s "${BASE_URL}" | "$pick")" || exit 1
 
