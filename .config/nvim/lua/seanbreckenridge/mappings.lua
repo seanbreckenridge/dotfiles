@@ -143,6 +143,5 @@ let g:copilot_no_tab_map = v:true
 
 let g:copilot_filetypes = {'*': v:true ,
   \ 'help': v:false,
-  \ 'markdown': v:false,
   \ }
   ]])
