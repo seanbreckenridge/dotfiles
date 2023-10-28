@@ -128,8 +128,8 @@ bindsym $mod+Tab exec --no-startup-id rofi -show window -display-window "window 
 bindsym --release Print exec --no-startup-id ttt screenshot
 # take a screenshot of the entire screen
 bindsym Shift+Print exec --no-startup-id ttt screenshot --full
-# use flameshot to take a screenshot and edit it
-bindsym $alt+s exec --no-startup-id flameshot gui
+# add to my self model from https://github.com/seanbreckenridge/ttally
+bindsym $alt+s exec --no-startup-id self-picker
 # edit clipboard in vim
 bindsym $mod+Shift+c exec --no-startup-id clipedit
 # reset clipboard formatting
