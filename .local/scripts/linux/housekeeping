@@ -126,6 +126,9 @@ evry 1 week -merge-browser-history && merge-browser-history
 evry 1 week -merge-mpv-history && merge-mpv-history
 evry 1 day -review-removed-dir && review-removed-dir
 
+# other random private jobs
+bash "$HPIDATA/private.job"
+
 # run malexport update https://github.com/seanbreckenridge/malexport/
 bash "${HPIDATA}/malexport.job"
 evry 6 hours -malexport_partial_update && malexport_partial_update
