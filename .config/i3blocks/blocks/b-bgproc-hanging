@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# checks the bgproc (my background process manager) cachefile
+# to make no tasks are hanging
+
+SINCE_LOOP_FINISHED="$(echo "$(date +%s)" - "$(stat -c'%Y' ~/.cache/bgproc.lastrun)" | bc)"
+((SINCE_LOOP_FINISHED > 3600)) && echo " bgproc"
+true

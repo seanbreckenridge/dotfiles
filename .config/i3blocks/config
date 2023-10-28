@@ -4,6 +4,10 @@ markup=pango
 # anything with a signal gets refreshed by an entr
 # command in my i3 config https://sean.fish/d/i3/config
 
+[bgproc-hanging]
+command=b-bgproc-hanging
+interval=600
+
 [mpv-song]
 command=b-mpv-description
 interval=30
