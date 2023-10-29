@@ -1,9 +1,8 @@
 return {
     'github/copilot.vim',
     event = "InsertEnter",
-    enabled = false, -- takes like 1.5+ seconds to load rn, no clue why
+    tag = "v1.11.1",
     config = function()
-
         -- copilot
         vim.cmd([[
 " copilot

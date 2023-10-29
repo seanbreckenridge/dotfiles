@@ -91,16 +91,6 @@ return {
             }
         }
 
-        -- if asdf install file exists, use it
-        if vim.fn.filereadable("~/.asdf/installs/nodejs/17.0.1/") == 1 then
-            -- use asdf nodejs for copilot
-            vim.g.copilot_node_command =
-                "~/.asdf/installs/nodejs/17.0.1/bin/node"
-        else
-            -- use system nodejs for copilot
-            vim.g.copilot_node_command = "node"
-        end
-
         -- https://www.reddit.com/r/neovim/comments/w2exp5/comment/j1lbogi/?utm_source=share&utm_medium=web2x&context=3
         local copilot_on = true
         vim.api.nvim_create_user_command("CopilotToggle", function()

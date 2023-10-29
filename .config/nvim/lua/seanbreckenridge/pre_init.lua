@@ -15,3 +15,6 @@ vim.o.timeoutlen = 300
 
 -- for nvim-ts-treesitter-context
 vim.opt.updatetime = 250 -- decrease update time
+
+-- ignore checking node version for copilot
+vim.g.copilot_ignore_node_version = 1
