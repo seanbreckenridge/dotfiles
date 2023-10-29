@@ -45,6 +45,10 @@ update_ranger_plugins() {
 	clone-repos "${HOME}/.config/clone-repos/ranger-plugins.yaml"
 }
 
+update_todo_addons() {
+	clone-repos "${HOME}/.config/clone-repos/todotxt-actions.yaml"
+}
+
 update_lang_all() {
 	update_node
 	update_pip
@@ -53,4 +57,5 @@ update_lang_all() {
 	update_golang
 	update_basher
 	update_ranger_plugins
+	update_todo_addons
 }

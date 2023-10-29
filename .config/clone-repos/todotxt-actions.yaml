@@ -3,4 +3,4 @@
   preinstall: git pull
   postinstall:
     - pip install -r ./requirements.txt
-    - rsync -Pavh ./todo.actions.d/ ./../../todo-actions/
+    - rsync -Pavh ./todo.actions.d/ "$HOME/.local/share/todo-actions/"
