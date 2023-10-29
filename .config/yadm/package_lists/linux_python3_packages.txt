@@ -3,7 +3,7 @@ beets-filetote
 cython
 imgur-uploader
 iwlib
-j2cli
+jinjanator
 pyacoustid
 pyautogui
 pylast

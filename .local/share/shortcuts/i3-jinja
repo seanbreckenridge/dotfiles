@@ -2,4 +2,4 @@
 set -x
 I3_DIR="${HOME}/.config/i3"
 cd "${I3_DIR}" || exit $?
-exec j2 config.j2 -o config -f yaml <config.yaml
+exec jinjanate config.j2 -o config -f yaml <config.yaml
