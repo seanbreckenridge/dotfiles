@@ -46,7 +46,6 @@ return {
             },
             experimental = {native_menu = false, ghost_text = true},
             formatting = {
-                -- Youtube: How to set up nice formatting for your sources.
                 format = lspkind.cmp_format {
                     with_text = true,
                     menu = {
