@@ -17,7 +17,6 @@ return {
     {'tpope/vim-unimpaired', keys = {"]", "["}},
     {'tpope/vim-repeat', event = "VeryLazy"}, -- repeat plugin commands
     {'tpope/vim-sleuth'}, -- detect indentation
-    {'github/copilot.vim', event = "InsertEnter"},
     {'tpope/vim-speeddating', keys = {"<C-a>", "<C-x>"}}, -- increment/decrement dates
     {'windwp/nvim-autopairs', event = "InsertEnter", opts = {}} -- auto pair brackets
 }
