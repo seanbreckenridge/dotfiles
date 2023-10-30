@@ -529,15 +529,20 @@ command = '''
 # - if I pipe, then the pipe causes print-or-notify to always send a notification because stdin is not a tty or something
 # - if I send it like the notify below, if the data returned by ttally recent food is too long in the terminal, it will
 #   fail since the argument list is too long
+args=("$@")
+if [[ -z "$1" ]]; then
+	args+=("--human-readable")
+fi
 if attached-to-terminal; then
-	ttally recent food "$@"
+	ttally recent food "${args[@]}"
 else
-	notify "$(ttally recent food "$@")"
+	notify "$(ttally recent food "${args[@]}")"
 fi
 '''
+shebang = "#!/usr/bin/env bash"
 
 [clrs]
-command = '''exec clr -r calories "$@"'''
+command = '''exec clr -hr calories "$@"'''
 
 [mz]
 command = '''
