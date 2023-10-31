@@ -99,3 +99,4 @@ source_if_exists "${REPOS}/HPI-personal/scripts/fzf_history_widget.zsh"
 havecmd basher && eval "$(basher init - zsh)"
 
 source "${ZDOTDIR}/cache_aliases.zsh"
+true

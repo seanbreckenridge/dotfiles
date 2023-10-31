@@ -7,8 +7,18 @@ parse_git_branch() {
 	(($? == 0)) && echo -n " | %{%F{green}%}${BRANCH_NAME}%{%F{none}%}\n"
 }
 
+precmd_functions=("_exit_status" ${precmd_functions[@]})
+_exit_status() {
+	local last_exit_status=$?
+	last_exit=""
+	if ((last_exit_status != 0));  then
+		last_exit=" | %F{red}${last_exit_status}%f"
+	fi
+	export last_exit
+}
+
 setopt PROMPT_SUBST
-PROMPT='[ %9c$(parse_git_branch) ] $ '
+PROMPT='[ %9c$(parse_git_branch)$last_exit ] $ '
 
 # Change cursor shape for different vi modes.
 function zle-keymap-select() {
