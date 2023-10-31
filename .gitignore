@@ -251,6 +251,7 @@ __pycache__
 /.config/gh/state.yml
 /.config/giget
 /.config/github-copilot/
+/.config/go/
 /.config/godot/
 /.config/google-chrome*
 /.config/gtk-*
