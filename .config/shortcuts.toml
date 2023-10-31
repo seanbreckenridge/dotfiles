@@ -916,3 +916,15 @@ command='''
 export BASE_URL='https://sean.fish/c/'
 exec give
 '''
+
+[which-cat]
+command = '''
+# I have a which-cat zsh function as well, this is a fallback for scripts
+# or when I'm in nvim
+EXEC="${1:?Must provide executable as first argument}"
+if LOC="$(which "$EXEC")" >/dev/null 2>&1; then
+	cat "$LOC"
+else
+	printf "Could not find %s\n" "$EXEC" >&2
+fi
+'''
