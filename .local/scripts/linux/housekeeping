@@ -22,6 +22,7 @@ evry 6 hours -approve-comments && approve-comments
 evry 3 days -backup_fish_server && vps_backup_server
 
 evry 1 day -reminders-notify && reminder-sink-notify
+evry 1 day -reminder-silence-prune && reminder-sink --debug silence reset --if-expired
 
 # make sure my pythonanywhere website doesn't expire:
 # https://github.com/seanbreckenridge/pythonanywhere-3-months

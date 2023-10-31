@@ -11,7 +11,7 @@ precmd_functions=("_exit_status" ${precmd_functions[@]})
 _exit_status() {
 	local last_exit_status=$?
 	last_exit=""
-	if ((last_exit_status != 0));  then
+	if ((last_exit_status != 0)); then
 		last_exit=" | %F{red}${last_exit_status}%f"
 	fi
 	export last_exit
