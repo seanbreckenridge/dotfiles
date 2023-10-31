@@ -8,6 +8,12 @@ vim.cmd [[
   augroup end
 ]]
 
+vim.cmd [[
+    augroup terminal_insert
+      autocmd TermOpen * startinsert
+    augroup end
+]]
+
 -- disable copilot for .env files
 local copilot_grp = vim.api.nvim_create_augroup("copilot", {clear = true})
 vim.api.nvim_create_autocmd({"BufEnter", "BufNewFile"}, {

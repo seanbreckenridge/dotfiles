@@ -81,6 +81,7 @@ wk.register({
     },
     s = {':set spell!<CR>', 'toggle spell'},
     X = {':!chmod +x %<CR>', 'chmod +x'},
+    ["<CR>"] = {":split<CR>:term<CR>", 'open terminal'},
     ["S"] = {reload_config, 'reload config'}
 }, {prefix = '<space>'})
 
