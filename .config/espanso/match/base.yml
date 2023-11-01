@@ -8,18 +8,18 @@
 # Matches are substitution rules: when you type the "trigger" string
 # it gets replaced by the "replace" string.
 matches:
-  - trigger: "makes sense"
-    replace: "{{output}}"
-    vars:
-      - name: output
-        type: random
-        params:
-          choices:
-            - "makes sense"
-            - "got it"
-            - "i see"
-            - "understood"
-            - "gotcha"
+  # - trigger: "makes sense"
+  #   replace: "{{output}}"
+  #   vars:
+  #     - name: output
+  #       type: random
+  #       params:
+  #         choices:
+  #           - "makes sense"
+  #           - "got it"
+  #           - "i see"
+  #           - "understood"
+  #           - "gotcha"
   - trigger: ":adi"
     replace: "added MAL ID"
 
