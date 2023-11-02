@@ -26,6 +26,7 @@ Brewfile.lock.json
 /.hushlogin
 /.termux/shell
 /.termux_authinfo
+/.termux/font.ttf
 /downloads
 /storage
 
