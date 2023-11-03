@@ -18,8 +18,10 @@ DURATION_JSON="$(EVRY_JSON=1 evry duration "$DURATION")" || {
 	exit 1
 }
 
-DURATION_SECONDS="$(jq -r '.[] | select(.type == "duration_seconds") | .body' <<<"$DURATION_JSON")"
-DURATION_PRETTY="$(jq -r '.[] | select(.type == "duration_pretty") | .body' <<<"$DURATION_JSON")"
+DURATION_PARSED="$(jq -cr '[.[] | {key: .type, value: .body}] | from_entries' <<<"$DURATION_JSON")"
+
+DURATION_SECONDS="$(jq -cr '.duration_seconds' <<<"$DURATION_PARSED")"
+DURATION_PRETTY="$(jq -cr '.duration_pretty' <<<"$DURATION_PARSED")"
 
 reminder-sink silence add "$PICKED" -d "$DURATION_SECONDS"
 notify "reminder-sink" "Silenced $PICKED for $DURATION_PRETTY"
