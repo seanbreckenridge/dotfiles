@@ -99,6 +99,7 @@ sr() {
 	esac
 }
 alias srd='REMINDER_SINK_DEBUG=1 sr'
+alias rs='reminder-sink-silence'
 
 # https://github.com/seanbreckenridge/calc_ans
 alias c=calc_ans_rlwrap
