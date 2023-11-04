@@ -129,7 +129,7 @@ install_python_personal "mlength" "https://github.com/seanbreckenridge/mlength"
 
 PIPX_INSTALLED="$(pipx list --json 2>/dev/null | jq '.venvs | keys[]' -r)"
 while read -r pipx_pkg; do
-	if ! grep -qx "${pipx_pkg}" <<<"${PIPX_INSTALLED}"; then
+	if ! grep -qix "${pipx_pkg}" <<<"${PIPX_INSTALLED}"; then
 		printf "Installing %s\n" "$pipx_pkg"
 		pipx install "${pipx_pkg}"
 	fi

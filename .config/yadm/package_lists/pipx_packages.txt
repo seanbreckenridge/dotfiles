@@ -9,7 +9,7 @@ diceware
 eyeD3
 flake8
 full-todotxt
-greasyfork_archive
+greasyfork-archive
 pypyp
 setup-cfg-fmt
 speedtest-cli

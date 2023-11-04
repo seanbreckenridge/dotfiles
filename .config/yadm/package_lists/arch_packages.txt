@@ -59,7 +59,6 @@ graphviz
 inotify-tools
 java-environment-common
 java-runtime-common
-jdk-openjdk
 julia
 jupyter-notebook
 lua
