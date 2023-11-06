@@ -60,7 +60,12 @@ linux*)
 		source_if_exists /opt/asdf-vm/asdf.sh
 	}
 	source "${ZDOTDIR}/linux.zsh"
-	alias u='housekeeping-offline;rj'
+	function linux_updates() {
+		housekeeping-offline && evry 10m -update-datafiles && update_datafiles
+		rj
+		true
+	}
+	alias u=linux_updates
 	;;
 mac*)
 	# Setup fzf

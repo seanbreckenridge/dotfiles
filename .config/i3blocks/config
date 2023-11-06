@@ -8,6 +8,10 @@ markup=pango
 command=b-bgproc-hanging
 interval=600
 
+[datafiles]
+command=b-datafiles
+interval=600
+
 [mpv-song]
 command=b-mpv-description
 interval=30
