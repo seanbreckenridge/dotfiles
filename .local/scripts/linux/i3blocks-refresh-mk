@@ -38,3 +38,4 @@ fi
 
 # cache the results once every hour
 evry 1h -i3blocks-cache && cache
+exit 0
