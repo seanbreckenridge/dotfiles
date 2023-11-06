@@ -11,6 +11,7 @@ interval=600
 [datafiles]
 command=b-datafiles
 interval=600
+signal=14
 
 [mpv-song]
 command=b-mpv-description
