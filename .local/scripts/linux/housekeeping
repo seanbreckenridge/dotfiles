@@ -133,7 +133,10 @@ bash "$HPIDATA/private.job"
 
 # run malexport update https://github.com/seanbreckenridge/malexport/
 bash "${HPIDATA}/malexport.job"
-evry 6 hours -malexport_partial_update && malexport_partial_update
+evry 6 hours -malexport_partial_update && {
+	malexport_partial_update
+	rm -vf "$(evry location -update-datafiles)"
+}
 
 # https://github.com/seanbreckenridge/my_feed
 # once a week, re-index to update any scores/metadata I've updated
