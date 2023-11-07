@@ -1,8 +1,8 @@
-#!/bin/sh
+#!/usr/bin/env bash
 # === EDIT FILE LOCATIONS BELOW ===
 
 # Your todo.txt directory (this should be an absolute path)
-if [ -z "$TODO_DIR" ]; then
+if [[ -z "$TODO_DIR" ]]; then
 	export TODO_DIR="${HPIDATA}/todo"
 fi
 
