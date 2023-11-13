@@ -210,7 +210,14 @@ mal-manual() {
 	mal-manual-all "${count:-10}"
 }
 ma() {
-	malexport manual-history "$@" --at "$(epoch)"
+	local args=()
+	if [[ -n "$1" ]]; then
+		args+=("$@")
+	else
+		# default if nothing passed
+		args+=(--at "$(epoch)")
+	fi
+	malexport manual-history "${args[@]}"
 	mal-manual
 }
 
