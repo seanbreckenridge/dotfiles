@@ -61,7 +61,7 @@ linux*)
 	}
 	source "${ZDOTDIR}/linux.zsh"
 	function linux_updates() {
-		housekeeping-offline && evry 1h -update-datafiles && update_datafiles
+		housekeeping-offline
 		rj
 		true
 	}

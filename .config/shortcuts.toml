@@ -321,9 +321,6 @@ command -v tttlog >/dev/null 2>&1 && tttlog "$(basename "$0") $*"
 exec curl -s "https://cheat.sh/$*"
 '''
 
-[speedtest]
-command='wait-for-internet --text "Waiting for internet..." && exec python3 -m speedtest "$@"'
-
 [mpv-corner]
 command='''
 # mpv wrapper to open a video with mpv and put it in the bottom right corner

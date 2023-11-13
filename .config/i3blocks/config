@@ -10,7 +10,7 @@ interval=600
 
 [datafiles]
 command=b-datafiles
-interval=600
+interval=30
 signal=14
 
 [mpv-song]

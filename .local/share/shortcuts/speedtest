@@ -1,2 +1,0 @@
-#!/bin/sh
-wait-for-internet --text "Waiting for internet..." && exec python3 -m speedtest "$@"
