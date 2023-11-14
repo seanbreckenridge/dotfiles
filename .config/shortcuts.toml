@@ -925,3 +925,15 @@ else
 	printf "Could not find %s\n" "$EXEC" >&2
 fi
 '''
+
+[url-echo-redirect]
+command = '''
+# echo the URL that would be redirected to
+URL="${1:-"$(cat)"}"
+if [[ -z "$URL" ]]; then
+	echo "No URL provided" >&2
+	exit 1
+fi
+exec curl -w "%{url_effective}\n" -ILsS "$URL" -o /dev/null
+'''
+shebang = "#!/usr/bin/env bash"
