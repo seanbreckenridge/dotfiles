@@ -90,12 +90,6 @@ evry 1 day -plainplay-resolve && plainplay resolve
 evry 3 weeks -id3stuff && id3stuff -R
 evry 1 day -car-playlist && car-playlist
 
-# https://github.com/seanbreckenridge/HPI-personal/blob/master/scripts/mpv_clean_priv_frames
-evry 1 day -clean-mpv-priv-frames && {
-	echo 'Checking priv mpv frames...'
-	mpv-clean-priv-frames clean
-}
-
 # https://github.com/seanbreckenridge/albums
 # try to resolve releases to their collection URLs/refresh expired album data
 evry 1 week -discogs-update && {
@@ -127,6 +121,12 @@ evry 1 day -check-scramble-history-formats && {
 evry 1 week -merge-browser-history && merge-browser-history
 evry 1 week -merge-mpv-history && merge-mpv-history
 evry 1 day -review-removed-dir && review-removed-dir
+
+# https://github.com/seanbreckenridge/HPI-personal/blob/master/scripts/mpv_clean_priv_frames
+evry 1 day -clean-mpv-priv-frames && {
+	echo 'Checking priv mpv frames...'
+	mpv-clean-priv-frames clean
+}
 
 # other random private jobs
 bash "$HPIDATA/private.job"
