@@ -2,10 +2,10 @@
 
 case "$BLOCK_BUTTON" in
 1)
-	todo-prompt
+	todo-interactive
 	;;
 3)
-	todo-prompt add
+	launch 'full_todotxt -ps'
 	;;
 esac
 
