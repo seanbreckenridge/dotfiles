@@ -100,8 +100,17 @@ sr() {
 }
 alias srd='REMINDER_SINK_DEBUG=1 sr'
 alias rs='reminder-sink-silence'
+reminder-list() {
+	tr ':' '\n' <<<"$REMINDER_SINK_PATH" | parallel --keep-order fd . '{}' --type f
+}
 reminder-edit() {
-	tr ':' '\n' <<<"$REMINDER_SINK_PATH" | parallel --keep-order fd . '{}' --type f | fzf-edit "$*"
+	reminder-list | fzf-edit "$*"
+}
+reminder-toggle() {
+	local chosen
+	chosen="$(reminder-list | fzfp -q "$*")"
+	[[ -z "$chosen" ]] && return 1
+	reminder-sink toggle "$chosen"
 }
 
 # https://github.com/seanbreckenridge/calc_ans
