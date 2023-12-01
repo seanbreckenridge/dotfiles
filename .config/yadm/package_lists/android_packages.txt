@@ -26,6 +26,8 @@ tree
 ffmpeg
 fzf
 figlet
+file
+which
 pup
 git
 jq
