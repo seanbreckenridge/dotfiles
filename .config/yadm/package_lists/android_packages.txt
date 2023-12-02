@@ -16,7 +16,7 @@ neovim
 yarn
 glow
 nodejs
-htop-legacy
+htop
 perl
 datamash
 termux-services # sv-enable sshd

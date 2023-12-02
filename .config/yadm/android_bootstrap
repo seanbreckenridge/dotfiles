@@ -43,7 +43,7 @@ set +e
 
 for lib in $(spkglist "${TERMUX_PACKAGES}"); do
 	if ! dpkg-query -W -f='${Status}' "${lib}" | grep -q "ok installed"; then # if package isn't installed
-		apt install "${lib}"
+		yes | apt install "${lib}"
 	fi
 done
 
