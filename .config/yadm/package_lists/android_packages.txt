@@ -9,14 +9,18 @@ bat
 rust
 golang
 elixir
+binutils
 luarocks
 curl
 lua-language-server
 neovim
 yarn
 glow
+parallel
 nodejs
 htop
+rlwrap
+openjdk-17
 perl
 datamash
 termux-services # sv-enable sshd
@@ -50,3 +54,4 @@ libiconv
 clang
 fftw
 libmsgpack
+libsodium
