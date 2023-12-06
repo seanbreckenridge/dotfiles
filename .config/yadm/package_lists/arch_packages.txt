@@ -264,7 +264,6 @@ mpv
 mupdf-gl
 obs-studio
 okular
-pinta
 robo3t-bin
 simplescreenrecorder
 snes9x-gtk
