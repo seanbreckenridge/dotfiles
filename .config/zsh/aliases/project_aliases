@@ -1,6 +1,9 @@
 #!/bin/zsh
 # random aliases for some of my projects/unrelated shorthands
 
+alias trk='trakt-watch'
+alias tw='trakt-watch watch'
+
 # https://github.com/seanbreckenridge/plaintext-playlist
 source_if_exists -q "$REPOS/plaintext-playlist/functions.sh" || source_if_exists "${HOME}/.local/share/basher/cellar/packages/seanbreckenridge/plaintext-playlist/functions.sh"
 # print cover images for a playlist
