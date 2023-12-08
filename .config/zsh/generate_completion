@@ -44,6 +44,8 @@ for cmd in hpi \
 	currently_listening_py \
 	mlength \
 	time-in \
+	reminder-sink \
+	trakt-watch \
 	url_cache; do
 	havecmd "${cmd}" || continue
 	var="$(printf '_%s_COMPLETE' "$(echo "${cmd}" | upper | sed -e 's/-/_/g')")"
