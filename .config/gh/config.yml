@@ -13,3 +13,4 @@ aliases:
   prc: pr create
   rcl: repo clone
   ci: run watch
+version: "1"
