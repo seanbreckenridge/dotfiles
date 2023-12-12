@@ -2,7 +2,7 @@
 # random aliases for some of my projects/unrelated shorthands
 
 alias trk='trakt-watch'
-alias tw='trakt-watch watch'
+alias tw='trakt-watch watch --letterboxd prompt'
 alias tp='trakt-watch progress'
 
 # https://github.com/seanbreckenridge/plaintext-playlist
