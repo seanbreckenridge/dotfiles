@@ -72,7 +72,6 @@ return {
                     swap_previous = {['<leader>A'] = '@parameter.inner'}
                 }
             },
-            context_commentstring = {enable = true},
             autotag = {
                 enable = true,
                 -- disable for tsx/more complex stuff till https://github.com/windwp/nvim-ts-autotag/issues/125
