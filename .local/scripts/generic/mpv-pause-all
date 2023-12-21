@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+# pauses or unpauses all mpv instances
+# pass 'false' to unpause, 'true' to pause (default)
+
+case "$1" in
+"true" | "false" | '') ;;
+*)
+	echo "Usage: $0 [true|false]" >&2
+	exit 1
+	;;
+esac
+CMD="${1:-true}"
+
+for socket in $(mpv-active-sockets); do
+	printf '{ "command": ["set_property", "pause", %s] }\n' "$CMD" | socat - "$socket"
+done

@@ -183,6 +183,7 @@ mpv-currently-playing-mark-nsfw() {
 	touch "${playing_dir}/.nsfw"
 	echo "marked as NSFW: ${playing_dir}"
 }
+alias mpv-play-all='mpv-pause-all false'
 
 curplaying-text() {
 	python3 -m currently_listening_py print --server-url 'wss://sean.fish/currently_listening/ws' -o text
