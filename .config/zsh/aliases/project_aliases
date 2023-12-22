@@ -5,6 +5,10 @@ export URL_OPENER='openurl'
 alias trk='trakt-watch'
 alias tw='trakt-watch watch --letterboxd prompt'
 alias tp='trakt-watch progress'
+# https://github.com/seanbreckenridge/HPI-personal/blob/master/scripts/trakt-urls
+tu() {
+	trakt-urls | fzf
+}
 
 # https://github.com/seanbreckenridge/plaintext-playlist
 source_if_exists -q "$REPOS/plaintext-playlist/functions.sh" || source_if_exists "${HOME}/.local/share/basher/cellar/packages/seanbreckenridge/plaintext-playlist/functions.sh"
