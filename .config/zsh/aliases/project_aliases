@@ -1,6 +1,7 @@
 #!/bin/zsh
 # random aliases for some of my projects/unrelated shorthands
 
+export URL_OPENER='openurl'
 alias trk='trakt-watch'
 alias tw='trakt-watch watch --letterboxd prompt'
 alias tp='trakt-watch progress'
