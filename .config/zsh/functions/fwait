@@ -9,5 +9,6 @@ fwait() {
 	procs="$(ps -ef)"
 	pid="$(sed 1d <<<"${procs}" | fzf +m --tac -q "$*" | awk '{print $2}')"
 	[[ -z "$pid" ]] && return 1
+	ps -opid "${pid}" || return 1 # make sure its still running. might have exited in the time between user selection and now
 	watch -g ps -opid "${pid}"
 }
