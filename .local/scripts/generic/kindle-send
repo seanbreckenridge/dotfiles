@@ -1,8 +1,12 @@
 #!/usr/bin/env bash
 # modified from https://lyndon.codes/2021/06/10/sending-ebooks-to-kindle-from-the-terminal/
 KINDLE="${KINDLE_EMAIL?:You must set the KINDLE_EMAIL environment variable}"
-BOOK="${1?You must provide a ebook as an argument}"
+BOOK="$1"
 MUTT='neomutt'
+
+if [[ -z "$1" ]]; then
+	exec openurl 'https://www.amazon.com/sendtokindle'
+fi
 
 if [[ ! -r "$BOOK" ]]; then
 	echo "$BOOK does not exist" >&2
