@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+# modified from https://lyndon.codes/2021/06/10/sending-ebooks-to-kindle-from-the-terminal/
+KINDLE="${KINDLE_EMAIL?:You must set the KINDLE_EMAIL environment variable}"
+BOOK="${1?You must provide a ebook as an argument}"
+MUTT='neomutt'
+
+if [[ ! -r "$BOOK" ]]; then
+	echo "$BOOK does not exist" >&2
+	exit 1
+fi
+
+if file -b "$BOOK" | grep -qiE "EPUB|PDF|ASCII"; then
+	# for now don't support PDF as well,
+	# this could be done with a pattern like "PDF document"
+	echo "Sending book to Kindle: $BOOK" >&2
+	echo "Book $BOOK" | "$MUTT" -s "Book: $BOOK" -a "$BOOK" -- "$KINDLE"
+	echo "Done, should sync to kindle soon"
+	exit 0
+else
+	echo "$BOOK is not a supported file type"
+	exit 1
+fi
