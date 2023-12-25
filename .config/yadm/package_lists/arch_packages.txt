@@ -208,6 +208,7 @@ vi
 viddy
 vim
 w3m
+wezterm
 wget
 whatmp3
 wkhtmltopdf
