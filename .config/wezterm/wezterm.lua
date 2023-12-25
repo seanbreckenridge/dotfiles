@@ -2,9 +2,15 @@ local wezterm = require 'wezterm'
 local config = {}
 
 -- basic appearance
-config.color_scheme = "Dracula"
-config.font = wezterm.font("Source Code Pro")
-config.font_size = 15.0
+local color_scheme_name = "Catppuccin Mocha"
+local color_scheme = wezterm.get_builtin_color_schemes()[color_scheme_name]
+color_scheme.background = "#1e1e2e"
+config.color_schemes = {[color_scheme_name] = color_scheme}
+config.color_scheme = color_scheme_name
+config.font = wezterm.font_with_fallback({
+    "Source Code Pro", "Symbols Nerd Font Mono"
+})
+config.font_size = 16.0
 config.window_padding = {left = 0, right = 0, top = 0, bottom = 0}
 config.hide_tab_bar_if_only_one_tab = true
 config.colors = {background = "#282828"}
@@ -20,7 +26,7 @@ config.visual_bell = {
 config.audible_bell = "Disabled"
 
 -- scrollback
-config.scrollback_lines = 10000
+config.scrollback_lines = 1000000
 
 -- keybinds
 config.keys = {
