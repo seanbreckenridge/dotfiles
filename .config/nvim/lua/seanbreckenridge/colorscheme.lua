@@ -29,12 +29,8 @@ M.setup_catppuccin = function()
         },
         -- change background colors to match terminal
         color_overrides = {
-            macchiato = {
-                base = "#282828"
-            },
-            latte = {
-                base = "#fbf1c7"
-            }
+            macchiato = {base = "#282828"},
+            latte = {base = "#fbf1c7"}
         },
         custom_highlights = {},
         integrations = {

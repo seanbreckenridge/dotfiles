@@ -15,7 +15,7 @@ config.visual_bell = {
     fade_in_duration_ms = 50,
     fade_out_function = 'EaseOut',
     fade_out_duration_ms = 50,
-    target = "CursorColor",
+    target = "CursorColor"
 }
 config.audible_bell = "Disabled"
 
