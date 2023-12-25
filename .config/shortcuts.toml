@@ -633,19 +633,6 @@ exec calcurse --datadir "$CALCURSE_DIR" --confdir "$XDG_CONFIG_HOME/calcurse" "$
 '''
 shebang = "#!/usr/bin/env bash"
 
-[kitty-set-theme]
-command='''
-kitty +kitten themes --reload-in=all "${1:?Must provide theme as kwarg}" || exit $?
-echo "$1" >~/.cache/kitty-theme-name
-'''
-
-
-[light-theme]
-command = 'exec kitty-set-theme Light'
-
-[dark-theme]
-command = 'exec kitty-set-theme Dark'
-
 [cl-quickfix]
 command = '''
 # pastes text from the clipboard and creates a quickfist list

@@ -1,6 +1,6 @@
 ---
 launcher:
-  a: "ttt kitty -1"
+  a: "ttt wezterm"
   f: "ttt firefox-developer-edition"
   g: "feed-open"
   t: "trakt-progress"

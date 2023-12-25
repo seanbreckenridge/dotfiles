@@ -1,22 +1,5 @@
--- Colorscheme using https://github.com/catppuccin/nvim
--- for whatever reason, every theme I try with kitty (terminal emulator)
--- ends up having issues with the background/text combination, but
--- using a colorscheme from nvim instead of relying on the default
--- seems to fix that
 local M = {}
--- match nvim theme to terminal theme
 function M.load_current_theme()
-    -- read from ~/.cache/kitty-theme-name if it exists
-    -- set in https://sean.fish/d/kitty-set-theme?dark
-    local kitty_theme_file = io.open(os.getenv("HOME") ..
-                                         "/.cache/kitty-theme-name", "r")
-    if kitty_theme_file ~= nil then
-        local kitty_theme = string.lower(kitty_theme_file:read())
-        kitty_theme_file:close()
-        if kitty_theme == "dark" or kitty_theme == "light" then
-            return kitty_theme
-        end
-    end
     return "dark" -- default to dark
 end
 
@@ -47,11 +30,9 @@ M.setup_catppuccin = function()
         -- change background colors to match terminal
         color_overrides = {
             macchiato = {
-                -- https://sean.fish/d/Dark.conf?dark
                 base = "#282828"
             },
             latte = {
-                -- https://sean.fish/d/Light.conf?dark
                 base = "#fbf1c7"
             }
         },
@@ -69,7 +50,6 @@ M.setup_catppuccin = function()
 end
 
 M.setup_theme = function()
-    -- set the theme based on the current kitty theme
     M.terminal_theme = M.load_current_theme()
     vim.cmd("set background=" .. M.terminal_theme)
     M.setup_catppuccin()
