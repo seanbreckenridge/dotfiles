@@ -9,6 +9,9 @@ vim.g.on_os = os.getenv('ON_OS') or 'unknown'
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
+-- disable tab key for copilot
+vim.g.copilot_no_tab_map = true
+
 -- for which-key
 vim.o.timeout = true
 vim.o.timeoutlen = 300
