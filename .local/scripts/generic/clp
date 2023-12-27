@@ -4,7 +4,7 @@
 # used in vim:
 # https://exobrain.sean.fish/programming/languages/shell_tools/vim/magic_wands/
 STDIN="$(cat)"
-printf '%s' "${STDIN}"
+printf '%s\n' "${STDIN}"
 printf '%s' "${STDIN}" | clipcopy
 if [[ "$(echo "${STDIN}" | wc -l)" == 1 ]]; then
 	exec notify "${APP:-'clp'}" "$(printf 'Copied to clipboard: %s' "${STDIN}")"
