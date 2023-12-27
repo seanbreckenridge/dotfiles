@@ -1,10 +1,21 @@
 #!/bin/zsh
 # random aliases for some of my projects/unrelated shorthands
 
+# https://github.com/seanbreckenridge/trakt-watch
 export URL_OPENER='openurl'
 alias trk='trakt-watch'
-alias tw='trakt-watch watch --letterboxd prompt'
-alias tp='trakt-watch progress'
+alias tp='trk progress'
+case "$ON_OS" in
+android*)
+	# just print the URL on android, dont swap applications
+	alias tw='trk watch --letterboxd print'
+	;;
+*)
+	# ask me if I want to open the URL on desktop
+	alias tw='trk watch --letterboxd prompt'
+	;;
+esac
+
 # https://github.com/seanbreckenridge/HPI-personal/blob/master/scripts/trakt-urls
 tu() {
 	trakt-urls | fzf
