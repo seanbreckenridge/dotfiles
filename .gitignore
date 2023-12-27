@@ -207,6 +207,7 @@ __pycache__
 /.config/lazygit
 # /.config/nvim/lazy-lock.json
 /.config/audacity
+/.config/syncplay*
 /.config/age
 /.config/sops
 /.config/flameshot
