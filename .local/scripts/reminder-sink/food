@@ -13,7 +13,7 @@ TTALLY_OUTPUT="$(ttally recent food 20h -o json)" || {
 
 declare -A matchers=()
 matchers[vitamin]='.*daily multivitamin.*'
-matchers[electrolytes]='.*electrolyte.*'
+# matchers[electrolytes]='.*electrolyte.*'
 
 for name in "${!matchers[@]}"; do
 	glob="${matchers[$name]}"
