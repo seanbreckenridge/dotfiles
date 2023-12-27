@@ -1,0 +1,3 @@
+#!/bin/sh
+path="$(mpv-last-screenshot)"
+[ -n "$path" ] && exec dragon-drop -x "$path"

@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+# copy the latest mpv screenshot to clipboard
+
+path="$(mpv-currently-playing | tail -n 1)" || exit $?
+dir="$(dirname "$path")" || exit $?
+if [[ ! -d "$dir" ]]; then
+	printf 'error: %s is not a directory\n' "$dir" >&2
+	exit 1
+fi
+exec newest "$dir"
