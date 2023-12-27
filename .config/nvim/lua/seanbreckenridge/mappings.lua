@@ -80,7 +80,7 @@ wk.register({
         end, 'file explorer'
     },
     s = {':set spell!<CR>', 'toggle spell'},
-    X = {':!chmod +x %<CR>', 'chmod +x'},
+    X = {':w<CR>:!chmod +x %<CR>:edit<CR>', 'chmod +x'},
     ["<CR>"] = {":split<CR>:term<CR>", 'open terminal'},
     ["S"] = {reload_config, 'reload config'}
 }, {prefix = '<space>'})
