@@ -31,7 +31,10 @@ for file in "${all_files[@]}"; do
 done
 
 listened_to="$({
-	mlength "${listened_to_files[@]}" -d s
+	# get the length of all files before the current file
+	if [[ "${#listened_to_files[@]}" -gt 0 ]]; then
+		mlength "${listened_to_files[@]}" -d s
+	fi
 
 	# get current playback time in seconds
 	mpv-get-property "$(mpv-active-sockets)" 'playback-time'
