@@ -42,6 +42,10 @@ uu() {
 	}
 }
 
+# for building ocaml
+# https://exobrain.sean.fish/devlog/ocaml_android/
+export LD_LIBRARY_PATH=/data/data/com.termux/files/usr/lib
+
 # for building rust/ffi python packages
 export CARGO_BUILD_TARGET=aarch64-linux-android
 
