@@ -1,0 +1,11 @@
+#!/bin/zsh
+# fpick - pick a process
+# use fzf to match against a process, print its PID
+
+fpick() {
+	local pid procs
+	procs="$(ps -ef)"
+	pid="$(sed 1d <<<"${procs}" | fzf -m --tac | awk '{print $2}')"
+	[[ -z "$pid" ]] && return 1
+	printf "%s\n" "$pid"
+}
