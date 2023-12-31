@@ -1,4 +1,5 @@
 local wezterm = require 'wezterm'
+local clipboard = require 'clipboard'
 local config = {}
 
 -- basic appearance
@@ -26,7 +27,7 @@ config.visual_bell = {
     fade_in_function = 'EaseIn',
     fade_in_duration_ms = 50,
     fade_out_function = 'EaseOut',
-    fade_out_duration_ms = 50,
+    fade_out_duration_ms = 50
 }
 config.audible_bell = "Disabled"
 
@@ -43,7 +44,7 @@ config.keys = {
     }, {
         key = "v",
         mods = "SHIFT|ALT",
-        action = wezterm.action {PasteFrom = "Clipboard"}
+        action = wezterm.action_callback(clipboard.autoQuotePastedUrls)
     }, -- scrollback
     {
         key = "PageUp",
