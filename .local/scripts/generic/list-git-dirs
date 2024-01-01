@@ -6,4 +6,4 @@ if [[ -z "$DIR" ]]; then
 	exit 1
 fi
 
-exec fd --base-directory "${DIR}" -L -H --type d '^.git$' --absolute-path -x echo '{//}'
+exec fd --base-directory "${DIR}" -LIH --type d '^.git$' --absolute-path -x echo '{//}'
