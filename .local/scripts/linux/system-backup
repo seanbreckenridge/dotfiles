@@ -1,0 +1,72 @@
+#!/usr/bin/env bash
+
+# drive uuid
+UUID='ca6b7ed5-9bdc-46a5-9147-7dae6d6f6368'
+
+UUID_FILE="/dev/disk/by-uuid/$UUID"
+if [[ ! -e "$UUID_FILE" ]]; then
+	printf 'Could not find drive with UUID %s\n' "$UUID"
+	exit 1
+fi
+DISK="$(readlink -f "$UUID_FILE")"
+MOUNT_POINT="/run/media/$USER/$UUID"
+INCLUDE_FILE="$XDG_DOCUMENTS_DIR/BackupManifest/include.txt"
+EXCLUDE_FILE="$XDG_DOCUMENTS_DIR/BackupManifest/exclude.txt"
+
+shell() {
+	echo "DISK=$DISK"
+	echo "MOUNT_POINT=$MOUNT_POINT"
+	echo "RESTIC_REPOSITORY=$MOUNT_POINT/backup"
+	echo "RESTIC_PASSWORD=${RESTIC_PASSWORD?:'RESTIC_PASSWORD not set'}"
+}
+
+run_backup() {
+	shell
+	if [[ -z "$DRY" ]]; then
+		kondo ~/Repos ~/Files
+		bleanser-runall
+		merge-mpv-history
+		merge-browser-history
+	fi
+	flags=(-r "$MOUNT_POINT/backup" backup --verbose --one-file-system
+		--files-from "$INCLUDE_FILE"
+		--exclude-file "$EXCLUDE_FILE" "$@")
+	echo "Running: restic ${flags[*]}"
+	restic "${flags[@]}"
+}
+
+main() {
+	case "$1" in
+	shell)
+		# to use this, run `eval "$(system-backup shell)"` in the shell
+		# when the drive is mounted
+		shell
+		;;
+	backup)
+		if [[ ! -d "$MOUNT_POINT" ]]; then
+			echo "Drive not mounted"
+			exit 1
+		fi
+		run_backup
+		;;
+	restic)
+		# run restic directly (useful for any other commands)
+		shift
+		shell
+		exec restic -r "$MOUNT_POINT/backup" "$@"
+		;;
+	dry)
+		if [[ ! -d "$MOUNT_POINT" ]]; then
+			echo "Drive not mounted"
+			exit 1
+		fi
+		DRY=1 run_backup --dry-run
+		;;
+	*)
+		echo "Usage: $0 [shell|backup]"
+		exit 1
+		;;
+	esac
+}
+
+main "$@"

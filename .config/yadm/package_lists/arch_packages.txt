@@ -25,6 +25,9 @@ pipewire-pulse
 rebuild-detector
 redshift
 reflector
+restic
+udiskie
+udisks2
 unclutter
 wpa_supplicant
 xorg-server
