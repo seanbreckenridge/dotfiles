@@ -3,6 +3,10 @@
 # this script uses `evry duration` internally to parse a human readable duration
 # 'https://github.com/seanbreckenridge/evry'
 
+# disable debug mode, if enabled
+[[ -n "$EVRY_DEBUG" ]] && unset EVRY_DEBUG
+[[ -n "$EVRY_JSON" ]] && unset EVRY_JSON
+
 FILE="${1?Error: no file given}"
 shift
 DURATION="$*"
