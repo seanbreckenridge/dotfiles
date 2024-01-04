@@ -132,7 +132,7 @@ evry 1 day -clean-mpv-priv-frames && {
 bash "$HPIDATA/private.job"
 
 BACKUP_FILE="${HOME}/.cache/restic-backup.lastrun"
-restic-backup connected >/dev/null && DRIVE_CONNECTED=1 || DRIVE_CONNECTED=0
+restic-backup connected >/dev/null 2>&1 && DRIVE_CONNECTED=1 || DRIVE_CONNECTED=0
 RUN_BACKUP=0
 if [[ ! -e "$BACKUP_FILE" ]]; then
 	RUN_BACKUP=1
