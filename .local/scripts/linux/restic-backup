@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 
 # drive uuid
-UUID='ca6b7ed5-9bdc-46a5-9147-7dae6d6f6368'
+UUID="${RESTIC_BACKUP_DRIVE_UUID?:'RESTIC_BACKUP_DRIVE_UUID not set'}"
 
 UUID_FILE="/dev/disk/by-uuid/$UUID"
 if [[ ! -e "$UUID_FILE" ]]; then
-	printf 'Could not find drive with UUID %s\n' "$UUID"
+	printf 'Could not find drive with UUID %s\n' "$UUID" >&2
 	exit 1
 fi
 DISK="$(readlink -f "$UUID_FILE")"
@@ -62,8 +62,17 @@ main() {
 		fi
 		DRY=1 run_backup --dry-run
 		;;
+	poweroff)
+		# unmount and poweroff the drive
+		if [[ ! -d "$MOUNT_POINT" ]]; then
+			echo "Drive not mounted"
+			exit 1
+		fi
+		udisksctl unmount -b "$DISK"
+		udisksctl power-off -b "$DISK"
+		;;
 	*)
-		echo "Usage: $0 [shell|backup]"
+		echo "Usage: $0 [shell|backup|restic|dry|poweroff]"
 		exit 1
 		;;
 	esac
