@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+# checks if a file has been modified within some amount of timeJ
+# this script uses `evry duration` internally to parse a human readable duration
+# 'https://github.com/seanbreckenridge/evry'
+
+FILE="${1?Error: no file given}"
+shift
+DURATION="$*"
+
+if [[ -z "$DURATION" ]]; then
+	echo "Error: no duration given" >&2
+	exit 1
+fi
+
+if [[ ! -r "$FILE" ]]; then
+	echo "Error: cannot read file: $FILE" >&2
+	exit 1
+fi
+
+DURATION_SECS="$(evry duration "$DURATION")" || exit 1
+FILE_MODIFIED_AT="$(stat -c %Y "$FILE")" || exit 1
+CURRENT_TIME="$(date +%s)" || exit 1
+
+MODIFIED_AGO="$((CURRENT_TIME - FILE_MODIFIED_AT))"
+if [[ "$MODIFIED_AGO" -lt "$DURATION_SECS" ]]; then
+	echo "File: $FILE was modified $MODIFIED_AGO seconds ago, which is less than $DURATION_SECS seconds ago" >&2
+	exit 0
+else
+	echo "File: $FILE was modified $MODIFIED_AGO seconds ago, which is more than $DURATION_SECS seconds ago" >&2
+	exit 1
+fi

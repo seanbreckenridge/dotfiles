@@ -4,9 +4,7 @@
 # also reminds me to run housekeeping (https://sean.fish/d/.local/scripts/linux/housekeeping?redirect)
 # if it hasn't been run in the last day
 
-SINCE_LOOP_FINISHED="$(echo "$(date +%s)" - "$(stat -c'%Y' ~/.cache/bgproc.lastrun)" | bc)"
-((SINCE_LOOP_FINISHED > $(evry duration 1h))) && echo " bgproc"
-
-SINCE_HOUSEKEEPING_RUN="$(echo "$(date +%s)" - "$(stat -c'%Y' ~/.cache/housekeeping)" | bc)"
-((SINCE_HOUSEKEEPING_RUN > $(evry duration 1 day))) && echo " housekeeping"
+file-modified-within ~/.cache/bgproc.lastrun 1h || echo " bgproc"
+file-modified-within ~/.cache/housekeeping.lastrun 1d || echo " housekeeping"
+file-modified-within ~/.cache/restic-backup.lastrun 7d || echo " restic-backup"
 true

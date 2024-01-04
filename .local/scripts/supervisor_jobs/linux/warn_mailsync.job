@@ -4,15 +4,13 @@ evry 10 minutes -warn_mailsync && {
 	# dont warn if obs is open
 	pgrep -x obs >/dev/null && exit 0
 	wait-for-internet --quiet --timeout "${WFI_TIMEOUT:-5}" || exit 0
-	lastrun="$(stat -c"%Y" "${XDG_CONFIG_HOME:-$HOME/.config}/mutt/.mailsynclastrun")"
-	now="$(date +"%s")"
 	# if mailsync hasn't been run in 30 minutes, set a cache file
 	# that files' existence is checked for in my status bar, which then displays an error
 	MAILSYNC_WARN_FILE="${HOME}/.cache/mailsync_warn"
-	if ((now - lastrun > 1800)); then
-		touch "${MAILSYNC_WARN_FILE}"
-	else
+	if file-modified-within "${XDG_CONFIG_HOME:-$HOME/.config}/mutt/.mailsynclastrun" '30 minutes'; then
 		rm -f "${MAILSYNC_WARN_FILE}"
+	else
+		touch "${MAILSYNC_WARN_FILE}"
 	fi
 	i3blocks-refresh-mk mail
 }
