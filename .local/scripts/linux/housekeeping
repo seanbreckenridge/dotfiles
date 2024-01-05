@@ -104,9 +104,6 @@ evry 2 hours -data-sync-conflicts && {
 	}
 }
 
-# download any discord attachments
-evry 3 days -discord-download-attachments && discord-download-attachments
-
 # https://github.com/seanbreckenridge/HPI-personal/blob/master/scripts/backup-cubing
 backup-cubing
 # check for new formats in normalizing solves into a single schema
