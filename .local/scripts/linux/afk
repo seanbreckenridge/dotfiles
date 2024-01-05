@@ -3,5 +3,5 @@ pkill udiskie
 figlet afk
 lock-screen
 if gum confirm "re-enable disk automounting?"; then
-	i3-msg exec udiskie -t
+	i3-msg exec 'udiskie -t'
 fi

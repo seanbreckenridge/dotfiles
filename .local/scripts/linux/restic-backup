@@ -1,4 +1,20 @@
 #!/usr/bin/env bash
+# to use this, I use udiskie, which mounts the drive
+# with user permissions in /run/media
+#
+# the UUID can be found by running lsblk -f
+#
+# I keep the include/exclude lists for backups
+# in ~/Documents/BackupManifest
+#
+# to skip the cleanup process, I set SKIP_CLEANUP=1
+# kondo prompts me to removes a bunch of common
+# build/cache directories for programming languages,
+# which is useful in case Ive missed one
+#
+# the other things cleanup/remove extra data in my ~/data
+# folder, as well as merge some larger files into single
+# instances, so Im not backing up duplicate data
 
 # drive uuid
 UUID="${RESTIC_BACKUP_DRIVE_UUID?:'RESTIC_BACKUP_DRIVE_UUID not set'}"
@@ -24,7 +40,7 @@ shell() {
 
 run_backup() {
 	shell
-	if [[ -z "$DRY" ]]; then
+	if [[ -z "$DRY" ]] && [[ -z "$SKIP_CLEANUP" ]]; then
 		kondo ~/Repos ~/Files
 		bleanser-runall
 		merge-mpv-history
