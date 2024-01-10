@@ -31,6 +31,7 @@ zstyle ':completion::*:(rm|nvim|e|ls):*' ignore-line true
 # assign completions from $ZDOTDIR/completions
 
 autoload -Uz "$ZDOTDIR"/completions/*
+autoload -Uz "$HOME/.cache/"zsh_generated_completions/*
 compdef _gnu_generic \
 	exists \
 	youtube-dl \

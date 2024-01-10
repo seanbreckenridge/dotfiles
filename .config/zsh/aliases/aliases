@@ -81,6 +81,7 @@ alias df='df -h'
 alias jq='jq --monochrome-output'
 alias history='history 0'
 alias free='free --human'
+alias rb='restic-backup backup'
 rgi() {
 	rg --ignore-case "$*"
 }

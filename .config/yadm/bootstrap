@@ -257,4 +257,7 @@ clone-repos "$HOME/.config/clone-repos/ranger-plugins.yaml"
 mkdir -p "$HOME/.local/share/todotxt-addons/"
 clone-repos "$HOME/.config/clone-repos/todotxt-actions.yaml"
 
+echo "Generating completions..."
+zsh "$ZDOTDIR/generate_completion"
+
 echo "Finished bootstrapping!"

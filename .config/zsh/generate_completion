@@ -2,6 +2,16 @@
 # generate completion for projects that use click
 # https://click.palletsprojects.com/en/8.0.x/shell-completion/
 
+RECREATE=0
+case "$1" in
+	-r)
+		RECREATE=1
+		shift
+		;;
+esac
+
+mkdir -p "$HOME/.cache/zsh_generated_completions"
+
 for cmd in hpi \
 	nextalbums \
 	browserexport \
@@ -49,6 +59,8 @@ for cmd in hpi \
 	url_cache; do
 	havecmd "${cmd}" || continue
 	var="$(printf '_%s_COMPLETE' "$(echo "${cmd}" | upper | sed -e 's/-/_/g')")"
-	target="${ZDOTDIR}/completions/_${cmd}"
-	zsh -xc "$var=zsh_source ${cmd}" >"${target}"
+	target="${HOME}/.cache/zsh_generated_completions/_${cmd}"
+	if [[ $RECREATE -eq 1 || ! -f "${target}" ]]; then
+		zsh -xc "$var=zsh_source ${cmd}" >"${target}"
+	fi
 done

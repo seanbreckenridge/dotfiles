@@ -1,6 +1,6 @@
 # load zsh-completions installed with pacman,
 # user defined functions and completions
-fpath=("${ZDOTDIR}/functions" "${ZDOTDIR}/completions" "${fpath[@]}")
+fpath=("${ZDOTDIR}/functions" "${ZDOTDIR}/completions" "$HOME/.cache/zsh_generated_completions" "${fpath[@]}")
 
 case "$ON_OS" in
 linux*)
