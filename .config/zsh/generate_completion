@@ -61,6 +61,10 @@ for cmd in hpi \
 	var="$(printf '_%s_COMPLETE' "$(echo "${cmd}" | upper | sed -e 's/-/_/g')")"
 	target="${HOME}/.cache/zsh_generated_completions/_${cmd}"
 	if [[ $RECREATE -eq 1 || ! -f "${target}" ]]; then
-		zsh -xc "$var=zsh_source ${cmd}" >"${target}"
+		unset OUTPUT
+		OUTPUT="$(timeout 5s zsh -xc "$var=zsh_source ${cmd}")"
+		if [[ $? -eq 0 ]] && [[ -n "${OUTPUT}" ]]; then
+			echo "${OUTPUT}" >"${target}"
+		fi
 	fi
 done
