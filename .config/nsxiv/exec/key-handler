@@ -31,5 +31,6 @@ while read -r file; do
 	"C-c") xclip -selection clipboard -target image/png "$file" ;;        # copy image to clipboard
 	"C-w") feh --bg-fill --no-fehbg "$file" ;;                            # set as background
 	"C-n") touch "$(dirname "$file")/.nsfw" && notify "Marked as NSFW" ;; # mark as NSFW
+	"C-r") dragon-drop -x "$file" ;;                                      # drag and drop
 	esac
 done
