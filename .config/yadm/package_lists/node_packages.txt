@@ -1,6 +1,7 @@
 # language support
 @elm-tooling/elm-language-server
 @prettier/plugin-php
+@astrojs/language-server
 @prisma/language-server
 @tailwindcss/language-server
 bash-language-server

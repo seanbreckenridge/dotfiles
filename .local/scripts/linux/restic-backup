@@ -45,6 +45,7 @@ run_backup() {
 		bleanser-runall
 		merge-mpv-history
 		merge-browser-history
+		remove-broken-sms-files -v
 	fi
 	flags=(-r "$MOUNT_POINT/backup" backup --verbose --one-file-system
 		--files-from "$INCLUDE_FILE"

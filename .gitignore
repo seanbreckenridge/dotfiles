@@ -241,6 +241,7 @@ __pycache__
 /.config/clojure
 /.config/coc/
 /.config/composer/.htaccess
+/.config/UNDERTALE/
 /.config/configstore
 /.config/czkawka
 /.config/dconf
@@ -338,6 +339,7 @@ __pycache__
 /Repos
 /Documents
 /Files
+/Games
 /Postman
 /Shared
 /shared

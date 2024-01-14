@@ -32,6 +32,7 @@ return {
         lspconf.tailwindcss.setup {capabilities = capabilities}
         lspconf.tsserver.setup {capabilities = capabilities}
         lspconf.prismals.setup {capabilities = capabilities}
+        lspconf.astro.setup {capabilities = capabilities}
 
         -- python
         -- https://github.com/microsoft/pyright/blob/main/docs/configuration.md
