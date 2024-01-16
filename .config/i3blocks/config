@@ -47,11 +47,11 @@ command=b-mail
 interval=60
 signal=6
 
-[towatch]
-command=b-to-watch
-interval=600
-label=🎬
-signal=11
+# [towatch]
+# command=b-to-watch
+# interval=600
+# label=🎬
+# signal=11
 
 [reminder-sink]
 command=b-reminder-sink
