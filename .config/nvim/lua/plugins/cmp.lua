@@ -4,7 +4,7 @@ return {
     dependencies = {
         "hrsh7th/cmp-buffer", "hrsh7th/cmp-path", "onsails/lspkind.nvim",
         "hrsh7th/cmp-nvim-lua", "saadparwaiz1/cmp_luasnip",
-        "petertriho/cmp-git", "nvim-lua/plenary.nvim"
+        "petertriho/cmp-git", "nvim-lua/plenary.nvim", "hrsh7th/cmp-emoji"
     },
     config = function()
         local cmp = require('cmp')
@@ -43,6 +43,7 @@ return {
                 {name = "nvim_lua", keyword_length = 2}, -- lua completion for nvim-specific stuff
                 {name = "git"}, -- cmp_git
                 {name = "luasnip", keyword_length = 2}, -- snippets
+                {name = "emoji", keyword_length = 3}, -- emoji
                 {name = "path"}, -- complete names of files
                 {name = "buffer", keyword_length = 4}
             },
