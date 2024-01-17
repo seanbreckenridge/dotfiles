@@ -4,10 +4,10 @@
 
 RECREATE=0
 case "$1" in
-	-r)
-		RECREATE=1
-		shift
-		;;
+-r)
+	RECREATE=1
+	shift
+	;;
 esac
 
 mkdir -p "$HOME/.cache/zsh_generated_completions"
