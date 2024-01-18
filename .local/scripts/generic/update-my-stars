@@ -21,7 +21,7 @@ evry 6 hours -update_my_stars && {
 	update_stars -u
 }
 
-evry 1 month -reindex_my_stars && {
+evry 1 month -re_update_my_stars && {
 	echo 'Reindexing my github stars...' >&2
 	update_stars -r
 }
