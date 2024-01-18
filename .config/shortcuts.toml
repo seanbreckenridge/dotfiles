@@ -952,3 +952,6 @@ command = 'exec remsync-image "$(mpv-last-screenshot)"'
 
 [workout]
 command = 'exec python3 "$HPIDATA/bin/workout.py" "$@"'
+
+[markdown-list]
+command = "exec prefix '- '"
