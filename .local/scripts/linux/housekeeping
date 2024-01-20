@@ -78,7 +78,9 @@ evry 1 day -mnu && {
 	ssh vultr ~/vps/bin/mnu update && mnu sync
 }
 
-evry 1 day -add-items-to-mal-watching && mal_watching_not_on_list
+evry 1 day -auto-mal-update && {
+	auto-mal-update && rm -rvf "$(evry location -malexport_partial_update)"
+}
 
 # make sure all my music is mp3s
 evry 1 day -check-music-extensions && check-music-extensions
