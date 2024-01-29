@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+# marks a recent video as vlog, moving it to my documents folder instead
+# so I can process it later
+
+ON_OS="${ON_OS:-$(on_machine)}"
+[[ "$ON_OS" =~ ^android.* ]] || {
+	echo "This script is only for android"
+	exit 1
+}
+
+set -eux
+set -o pipefail
+
+photos-unsync-recent -7 # unsync photos from the last week in case its already synced
+STORAGE="${HOME}/storage/"
+PHOTO_DIR="${STORAGE}/dcim/Camera/"
+VLOGS_DIR="${XDG_DOCUMENTS_DIR}/VlogsRaw"
+
+if [[ -z "$VLOGS_DIR" ]]; then
+	echo "Could not find VLOGS directory" >&2
+	exit 1
+fi
+
+# use fzf to select videos from the last week to move to documents
+find "${PHOTO_DIR}" -type f -mtime -7 -name '*.mp4' | fzf --multi --preview "exiftool {}" | xargs -I{} mv -i "{}" "${VLOGS_DIR}"
+rm -f "$(evry location -run_android_jobs)"
