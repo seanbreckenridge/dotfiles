@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 # marks a recent video as vlog, moving it to my documents folder instead
 # so I can process it later
+#
+# TODO: make timeframe to check customizable
 
 ON_OS="${ON_OS:-$(on_machine)}"
 [[ "$ON_OS" =~ ^android.* ]] || {
@@ -11,7 +13,7 @@ ON_OS="${ON_OS:-$(on_machine)}"
 set -eux
 set -o pipefail
 
-photos-unsync-recent -7 # unsync photos from the last week in case its already synced
+photos-unsync-recent -3 # unsync photos from the last 3 days in case its already synced
 STORAGE="${HOME}/storage/"
 PHOTO_DIR="${STORAGE}/dcim/Camera/"
 VLOGS_DIR="${XDG_DOCUMENTS_DIR}/VlogsRaw"
@@ -23,8 +25,8 @@ fi
 
 mkdir -p "${VLOGS_DIR}"
 
-# use fzf to select videos from the last week to move to documents
-find "${PHOTO_DIR}" -type f -mtime -7 -name '*.mp4' | fzf --multi --preview "exiftool {}" | while read -r video; do
+# use fzf to select videos from the last 3 days to move to documents
+find "${PHOTO_DIR}" -type f -mtime -3 -name '*.mp4' | fzf --multi --preview "stat -c '%z' {} | cut -d'.' -f1" | while read -r video; do
 	# move the video to the vlogs directory
 	mv -v "$video" "${VLOGS_DIR}/"
 done
