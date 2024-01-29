@@ -21,6 +21,11 @@ if [[ -z "$VLOGS_DIR" ]]; then
 	exit 1
 fi
 
+mkdir -p "${VLOGS_DIR}"
+
 # use fzf to select videos from the last week to move to documents
-find "${PHOTO_DIR}" -type f -mtime -7 -name '*.mp4' | fzf --multi --preview "exiftool {}" | xargs -I{} mv -i "{}" "${VLOGS_DIR}"
+find "${PHOTO_DIR}" -type f -mtime -7 -name '*.mp4' | fzf --multi --preview "exiftool {}" | while read -r video; do
+	# move the video to the vlogs directory
+	mv -v "$video" "${VLOGS_DIR}/"
+done
 rm -f "$(evry location -run_android_jobs)"
