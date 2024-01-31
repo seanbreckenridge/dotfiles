@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 update-my-stars
 # https://github.com/seanbreckenridge/oh-my-stars
-PICKED="$(fzfcache mystars "$@" | fzf --ansi)" || exit $?
+PICKED="$(fzfcache mystars "$@" | fzf --ansi -0)" || exit $?
 printf '%s\n' "${PICKED}"
 URL="$(echo "${PICKED}" | urlextract)"
 # if a URL was extracted, copy it to my clipboard

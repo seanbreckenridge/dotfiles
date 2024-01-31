@@ -442,7 +442,7 @@ command='exec ssh-keygen -t ed25519'
 command='''
 update-my-stars
 # https://github.com/seanbreckenridge/oh-my-stars
-PICKED="$(fzfcache mystars "$@" | fzf --ansi)" || exit $?
+PICKED="$(fzfcache mystars "$@" | fzf --ansi -0)" || exit $?
 printf '%s\n' "${PICKED}"
 URL="$(echo "${PICKED}" | urlextract)"
 # if a URL was extracted, copy it to my clipboard
@@ -543,7 +543,8 @@ command = '''exec clr -hr calories "$@"'''
 command = '''
 # use cached https://github.com/seanbreckenridge/projects repository information
 # to quickly open one of my Github repositories
-jq -r '.[] | .html_url' <"${REPOS}/projects/cache.json" | fzf | clipcopy
+chosen="$(jq -r '.[] | .html_url' <"${REPOS}/projects/cache.json" | fzf -0)" || exit $?
+echo "$chosen" | clipcopy
 '''
 
 [sync-neomutt]
