@@ -121,6 +121,7 @@ evry 1 day -check-scramble-history-formats && {
 # https://github.com/seanbreckenridge/bleanser
 evry 1 week -merge-browser-history && merge-browser-history
 evry 1 week -merge-mpv-history && merge-mpv-history
+evry 1 month -dedupe-ghexport && dedupe-ghexport --move-files
 evry 1 day -review-removed-dir && review-removed-dir
 
 # https://github.com/seanbreckenridge/HPI-personal/blob/master/scripts/mpv_clean_priv_frames
