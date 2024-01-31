@@ -13,7 +13,7 @@ ON_OS="${ON_OS:-$(on_machine)}"
 set -eux
 set -o pipefail
 
-photos-unsync-recent -3 # unsync photos from the last 3 days in case its already synced
+photos-unsync-recent 3 # unsync photos from the last 3 days in case its already synced
 STORAGE="${HOME}/storage/"
 PHOTO_DIR="${STORAGE}/dcim/Camera/"
 VLOGS_DIR="${XDG_DOCUMENTS_DIR}/VlogsRaw"
