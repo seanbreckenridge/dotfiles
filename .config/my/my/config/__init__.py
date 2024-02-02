@@ -416,6 +416,7 @@ class activitywatch:
             data("aw-window/phone/*.json"),
             data("aw-window/windows/*.json"),
         )
+        error_policy = "raise"
 
 
 class smscalls:
