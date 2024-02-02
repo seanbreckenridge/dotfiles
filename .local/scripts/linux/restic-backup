@@ -74,8 +74,10 @@ main() {
 	restic)
 		# run restic directly (useful for any other commands)
 		shift
-		RESTIC_PRINT_PASSWORD=1 shell
 		exec restic -r "$MOUNT_POINT/backup" "$@"
+		;;
+	diff-latest)
+		restic -r "$MOUNT_POINT/backup" list snapshots -q | head -n 2 | xargs -n 2 restic -r "$MOUNT_POINT/backup" diff
 		;;
 	dry)
 		if [[ ! -d "$MOUNT_POINT" ]]; then
@@ -104,7 +106,7 @@ main() {
 		fi
 		;;
 	*)
-		echo "Usage: $0 [shell|backup|restic|dry|poweroff|connected]"
+		echo "Usage: $0 [shell|backup|restic|diff-latest|dry|poweroff|connected]"
 		exit 1
 		;;
 	esac
