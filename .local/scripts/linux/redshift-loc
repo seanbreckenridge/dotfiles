@@ -6,7 +6,7 @@ main() {
 	declare loc
 	declare -a args=()
 	# https://github.com/seanbreckenridge/HPI-personal/blob/master/scripts/last-gps-location
-	loc="$(last-gps-location -d ":")"
+	loc="$(last-gps-location -d ":" --fuzz 2.0)"
 	if [[ -n "$loc" ]]; then
 		args+=(-l "$loc")
 	fi
