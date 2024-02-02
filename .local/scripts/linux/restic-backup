@@ -77,7 +77,7 @@ main() {
 		exec restic -r "$MOUNT_POINT/backup" "$@"
 		;;
 	diff-latest)
-		restic -r "$MOUNT_POINT/backup" list snapshots -q | head -n 2 | xargs -n 2 restic -r "$MOUNT_POINT/backup" diff
+		restic -r "$MOUNT_POINT/backup" list snapshots -q | head -n 2 | tac | xargs -n 2 restic -r "$MOUNT_POINT/backup" diff
 		;;
 	dry)
 		if [[ ! -d "$MOUNT_POINT" ]]; then
