@@ -439,6 +439,8 @@ class discord:
 
         export_path: Paths = data("discord/*.zip")
 
+        _use_zippath = False
+
 
 class runelite:
     class screenshots:
