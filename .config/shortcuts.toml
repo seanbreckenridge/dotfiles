@@ -956,3 +956,6 @@ command = 'exec python3 "$HPIDATA/bin/workout.py" "$@"'
 
 [markdown-list]
 command = "exec prefix '- '"
+
+[qr-clipboard]
+command = 'clippaste | qr'
