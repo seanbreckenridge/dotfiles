@@ -37,9 +37,11 @@ class fzf_select(Command):
         return "{} | fzf {} {}".format(
             os.environ.get("RANGER_FZF_COMMAND", self.__class__.fd_command),
             "-m" if self.__class__.multi_select else "+m",
-            "--preview='${HOME}/.config/fzf_preview {}'"
-            if self.__class__.preview
-            else "",
+            (
+                "--preview='${HOME}/.config/fzf_preview {}'"
+                if self.__class__.preview
+                else ""
+            ),
         )
 
     # helper function to run fzf in with self.command

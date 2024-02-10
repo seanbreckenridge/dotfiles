@@ -76,6 +76,12 @@ main() {
 		shift
 		exec restic -r "$MOUNT_POINT/backup" "$@"
 		;;
+	forget-latest)
+		local snapshot
+		snapshot="$(restic -r "$MOUNT_POINT/backup" list snapshots -q | head -n 1)"
+		[[ -n "$snapshot" ]] && echo "Forgetting $snapshot"
+		restic -r "$MOUNT_POINT/backup" forget "$snapshot"
+		;;
 	diff-latest)
 		restic -r "$MOUNT_POINT/backup" list snapshots -q | head -n 2 | tac | xargs -n 2 restic -r "$MOUNT_POINT/backup" diff
 		;;
@@ -106,7 +112,8 @@ main() {
 		fi
 		;;
 	*)
-		echo "Usage: $0 [shell|backup|restic|diff-latest|dry|poweroff|connected]"
+		printf "Usage: "
+		grep -E '^\s*[A-Za-z-]+\)' <"$0" | chomp | tr -d ')' | paste -d '|' -s
 		exit 1
 		;;
 	esac
