@@ -233,7 +233,7 @@ class mpv:
     class history_daemon:
         """https://github.com/seanbreckenridge/mpv-history-daemon"""
 
-        export_path: Paths = data("mpv/*.json")
+        export_path: Paths = data("mpv")
 
         # amount of song I should have listened to to qualify it as a listen (e.g. 0.5, 0.75)
         require_percent = 0.5
