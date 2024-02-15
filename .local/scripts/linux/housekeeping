@@ -141,11 +141,7 @@ if [[ ! -e "$BACKUP_FILE" ]]; then
 else
 	# if its been more than 7 days since the last backup, or its been more
 	# than 5 days and the drive is connected
-	if ! file-modified-within "$BACKUP_FILE" 7 days 2>/dev/null; then
-		RUN_BACKUP=1
-	elif [[ "$DRIVE_CONNECTED" -eq 1 ]] && ! file-modified-within "$BACKUP_FILE" 5 days 2>/dev/null; then
-		RUN_BACKUP=1
-	fi
+	file-modified-within "$BACKUP_FILE" 7 days 2>/dev/null || RUN_BACKUP=1
 fi
 
 if [[ "$RUN_BACKUP" -eq 1 ]] && [[ "$DRIVE_CONNECTED" -eq 1 ]]; then
