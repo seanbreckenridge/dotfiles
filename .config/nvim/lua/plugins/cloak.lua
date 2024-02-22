@@ -29,5 +29,9 @@ return {
                 }
             }
         })
+
+        local wk = require('which-key')
+        wk.register({["C"] = {'<cmd>CloakToggle<cr>', 'toggle cloak'}}, {prefix = '<leader>'})
+
     end
 }

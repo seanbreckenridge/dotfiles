@@ -6,7 +6,7 @@ return {
         -- colors hex codes/html colors etc #000000
         local wk = require('which-key')
         wk.register({
-            ["C"] = {
+            ["H"] = {
                 name = 'hex colors',
                 a = {'<cmd>ColorizerAttachToBuffer<CR>', 'attach'},
                 e = {'<cmd>ColorizerAttachToBuffer<CR>', 'enable'},
