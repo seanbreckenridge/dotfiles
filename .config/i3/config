@@ -368,6 +368,8 @@ exec --no-startup-id super --daemon
 # https://sean.fish/d/cstimer-server?dark
 exec --no-startup-id cstimer-server
 
+exec --no-startup-id ~/Repos/exobrain/scripts/exobrain-launch-in-editor
+
 # Run cstimer on my machine locally
 # https://sean.fish/d/cstimer?dark
 exec --no-startup-id cstimer
