@@ -1,5 +1,4 @@
 local wezterm = require 'wezterm'
-local clipboard = require 'clipboard'
 local config = {}
 
 -- basic appearance
@@ -44,7 +43,7 @@ config.keys = {
     }, {
         key = "v",
         mods = "SHIFT|ALT",
-        action = wezterm.action_callback(clipboard.autoQuotePastedUrls)
+        action = wezterm.action {PasteFrom = "Clipboard"}
     }, -- scrollback
     {
         key = "PageUp",
