@@ -844,7 +844,7 @@ command = 'exec fd --type f "$@" --exec-batch codespell-conf --write-changes --i
 [spell]
 command = '''
 set -e
-spell-list || true
+spell-list "$@" || true
 spell-interactive "$@"
 '''
 shebang = "#!/usr/bin/env bash"
