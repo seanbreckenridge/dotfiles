@@ -10,8 +10,15 @@ shift
 
 tmpdir="$(mktemp -d -t srt-to-text.XXXXXX)" || exit 1
 
-# extract subtitles as an srt file
-ffmpeg -i "$input" "$@" "$tmpdir/subs.srt" >&2 || exit 1
+ext="$(get-extension "$input")"
+
+if [[ "$ext" == "srt" ]]; then
+	# input is already an srt file
+	cp "$input" "$tmpdir/subs.srt"
+else
+	# extract subtitles as an srt file
+	ffmpeg -i "$input" "$@" "$tmpdir/subs.srt" >&2 || exit 1
+fi
 
 # remove HTML artifacts
 srt-process -i "$tmpdir/subs.srt" -m re -f 'lambda sub: re.sub(r"<[^>]*>", "", sub)' >"$tmpdir/subs-clean.srt"

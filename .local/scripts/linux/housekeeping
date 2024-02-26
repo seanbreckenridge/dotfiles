@@ -151,7 +151,7 @@ fi
 
 # run malexport update https://github.com/seanbreckenridge/malexport/
 bash "${HPIDATA}/malexport.job"
-evry 6 hours -malexport_partial_update && {
+evry 16 hours -malexport_partial_update && {
 	malexport_partial_update
 	rm -vf "$(evry location -update-datafiles)"
 }

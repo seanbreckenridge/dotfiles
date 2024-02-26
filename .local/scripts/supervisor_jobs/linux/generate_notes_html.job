@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# update generated journal/notes HTML pages so I can reference on my phone
+
+evry 10 minutes -update-journal-vlog-html-transcripts && make -f "$HOME/.local/scripts/notes_rendered/Makefile"
