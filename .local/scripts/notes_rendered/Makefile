@@ -4,10 +4,10 @@
 # https://github.com/seanbreckenridge/markdown_stew
 
 JOURNAL_TARGET := $(shell echo "${XDG_DOCUMENTS_DIR}/NotesRendered/journal.html")
-JOURNAL_FILES := $(shell find ${XDG_DOCUMENTS_DIR}/Notes/journal -name "*.md")
+JOURNAL_FILES := $(shell find ${XDG_DOCUMENTS_DIR}/Notes/journal -name "*.md" | sort -r)
 
 VLOGS_TARGET := $(shell echo "${XDG_DOCUMENTS_DIR}/NotesRendered/vlogs.html")
-VLOGS_FILES := $(shell find "${HOME}/Files/Vlogs/" -name '*.srt')
+VLOGS_FILES := $(shell find "${HOME}/Files/Vlogs/" -name '*.srt' | sort -r)
 
 VLOG_TXT_FILES_DIR := $(shell echo "${XDG_CACHE_HOME}/vlog_txt_files")
 
