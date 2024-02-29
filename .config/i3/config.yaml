@@ -9,6 +9,7 @@ launcher:
   k: "ttt keepassxc"
   b: "bookmark-open"
   l: "largechar-clipboard"
+  x: "exo-web"
   n: "ttt launch newsboat-force"
   m: "ttt launch neomuttr"
   "Shift+m": "launch sync-neomutt"

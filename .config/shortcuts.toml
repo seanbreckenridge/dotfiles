@@ -959,3 +959,6 @@ command = "exec prefix '- '"
 
 [qr-clipboard]
 command = 'clippaste | qr'
+
+[exo-web]
+command = 'exec openurl "https://sean.fish/x/notes/?search"'
