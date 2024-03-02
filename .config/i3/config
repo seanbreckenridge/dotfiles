@@ -307,6 +307,7 @@ mode "launcher" {
     bindsym b exec --no-startup-id bookmark-open; mode "default"
     bindsym l exec --no-startup-id largechar-clipboard; mode "default"
     bindsym x exec --no-startup-id exo-web; mode "default"
+    bindsym Shift+x exec --no-startup-id exo-web-personal; mode "default"
     bindsym n exec --no-startup-id ttt launch newsboat-force; mode "default"
     bindsym m exec --no-startup-id ttt launch neomuttr; mode "default"
     bindsym Shift+m exec --no-startup-id launch sync-neomutt; mode "default"

@@ -10,6 +10,7 @@ launcher:
   b: "bookmark-open"
   l: "largechar-clipboard"
   x: "exo-web"
+  "Shift+x": "exo-web-personal"
   n: "ttt launch newsboat-force"
   m: "ttt launch neomuttr"
   "Shift+m": "launch sync-neomutt"
