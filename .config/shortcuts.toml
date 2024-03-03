@@ -962,3 +962,7 @@ command = 'clippaste | qr'
 
 [exo-web]
 command = 'exec openurl "https://sean.fish/x/notes/?search"'
+
+[render-notes]
+command = 'exec make -f "$HOME/.local/scripts/notes_rendered/Makefile"'
+
