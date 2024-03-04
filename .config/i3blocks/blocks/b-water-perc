@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Set default value for the HTML flag
-print_html=''
+declare WATER SHOULD print_html=''
 
 # Check if the '-h' flag is present
 if [[ "$1" == "-h" ]]; then

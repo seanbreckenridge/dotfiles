@@ -87,6 +87,7 @@ def main() -> None:
         elif output == "plain":
             if len(statuses) == 0:
                 click.echo("No items are on.", err=True)
+                exit(1)
             for k, v in statuses.items():
                 print("{}\t{}".format(k, v))
         else:
