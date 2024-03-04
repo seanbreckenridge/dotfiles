@@ -4,6 +4,7 @@
     - shortcuts create
 "https://github.com/seanbreckenridge/ttally":
   pip: install
+"https://github.com/seanbreckenridge/personal":
 "https://github.com/seanbreckenridge/reminder-sink":
   pip: install
 "https://github.com/seanbreckenridge/seanb-utils":

@@ -29,9 +29,10 @@ HPIDATA="${HOME}/data"
 
 # common path modifications
 export PATH="\
-${REPOS}/vps/bin:\
 ${XDG_DATA_HOME}/basher/cellar/bin:\
+${REPOS}/personal/bin:\
 ${HPIDATA}/bin:\
+${REPOS}/vps/bin:\
 ${REPOS}/HPI-personal/scripts:\
 ${REPOS}/bleanser/bin:\
 ${REPOS}/plaintext_playlist_py/bin:\
