@@ -1,10 +1,22 @@
 #!/usr/bin/env bash
-# how many water I've drank today, out of how much I should
+
+# Set default value for the HTML flag
+print_html=''
+
+# Check if the '-h' flag is present
+if [[ "$1" == "-h" ]]; then
+	print_html=1
+fi
 
 WATER="$(b-water)"
 SHOULD="$(water-should-drink)"
+
 if [[ "$WATER" -lt "$SHOULD" ]]; then
-	printf '<span color="#00ffff">%d/%d</span>\n' "$WATER" "$SHOULD"
+	if [[ -n "$print_html" ]]; then
+		printf '<span color="#00ffff">%d/%d</span>\n' "$WATER" "$SHOULD"
+	else
+		printf '%d/%d\n' "$WATER" "$SHOULD"
+	fi
 else
 	printf '%d/%d\n' "$WATER" "$SHOULD"
 fi

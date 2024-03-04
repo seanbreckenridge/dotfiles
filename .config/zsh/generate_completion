@@ -49,6 +49,7 @@ for cmd in hpi \
 	piazza_scraper \
 	shebang \
 	clone-repos \
+	ttally-when \
 	scramble_history \
 	feed-cli \
 	currently_listening_py \
