@@ -1,6 +1,10 @@
 #!/bin/zsh
 # random aliases for some of my projects/unrelated shorthands
 
+# https://github.com/seanbreckenridge/shortcuts
+alias journal-render='render-notes'
+alias vlogs-render='render-notes'
+
 # https://github.com/seanbreckenridge/trakt-watch
 export URL_OPENER='openurl'
 alias trk='trakt-watch'
