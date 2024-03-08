@@ -18,7 +18,7 @@ $(JOURNAL_TARGET): $(JOURNAL_FILES)
 
 $(VLOGS_TARGET): $(VLOGS_FILES)
 	mkdir -p $(VLOG_TXT_FILES_DIR)
-	$(foreach file, $(VLOGS_FILES), srt-to-text $(file) > $(VLOG_TXT_FILES_DIR)/$(shell basename $(file) .srt).txt;)
+	$(foreach file, $(VLOGS_FILES), srt-to-text $(file) | uniq > $(VLOG_TXT_FILES_DIR)/$(shell basename $(file) .srt).txt;)
 	FILES=$$(find $(VLOG_TXT_FILES_DIR) -name "*.txt" | sort -r); \
 		markdown_stew -dark-mode -title Vlogs $$FILES > $(VLOGS_TARGET)
 
