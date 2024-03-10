@@ -97,6 +97,7 @@ export CACHEW_DISABLE='my.browser.export:my.location.gpslogger:my.zsh:my.chess'
 # options for enabling features for autotui
 export AUTOTUI_DATETIME_LIVE=1
 export AUTOTUI_ENUM_FZF=1
+export AUTOTUI_CLICK_PROMPT=1
 alias self-edit='editor "$HPIDATA/self_types.txt"'
 
 # ignore less history
