@@ -90,7 +90,6 @@ rgqf() {
 }
 
 # todo.txt
-alias todo='todo.sh'
 alias ft='todo full'
 alias ti='todo interactive'
 alias td='todo edit'

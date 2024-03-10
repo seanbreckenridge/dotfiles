@@ -39,3 +39,5 @@ export TODO_DIR="$BASE_DIR_QUOTED"
 exec todo.sh "\$@"
 EOF
 } >"$SCRIPT_DIR/$NAME"
+
+chmod +x "$SCRIPT_DIR/$NAME"

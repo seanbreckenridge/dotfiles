@@ -59,6 +59,12 @@ interval=90
 label=📗
 signal=5
 
+[work]
+command=b-todo work
+interval=600
+signal=15
+label=📑
+
 [todo]
 command=b-todo
 interval=once

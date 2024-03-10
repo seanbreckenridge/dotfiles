@@ -1,15 +1,21 @@
 #!/bin/sh
 
+if [ -n "$1" ]; then
+	TODO_DIR="$XDG_DOCUMENTS_DIR/todos/$1"
+fi
+
+if [ -z "$TODO_DIR" ]; then
+	notify -u critical "TODO_DIR not set"
+fi
+
 case "$BLOCK_BUTTON" in
 1)
-	todo-interactive
+	todo.sh interactive
 	;;
 3)
-	launch 'full_todotxt -ps'
+	launch 'todo.sh full'
 	;;
 esac
-
-set -u
 
 COUNT="$(chomp <"${TODO_DIR}/todo.txt" | wc -l)"
 SYNC_CONFLICTS="$(find-sync-conflicts "$TODO_DIR" | wc -l)"
