@@ -1,0 +1,41 @@
+#!/usr/bin/env bash
+# a script which creates a todo.txt wrapper with a given directory
+
+DEFAULT_SCRIPT_DIR="$REPOS/personal/bin/"
+NAME="$(gum input --prompt "Name of script/todo.txt directory> ")" || exit 1
+
+if [[ ! -d "$DEFAULT_SCRIPT_DIR" ]]; then
+	SCRIPT_DIR="$(gum input --prompt "Directory to generate script to> ")"
+fi
+
+if [[ -z "$SCRIPT_DIR" && -d "$DEFAULT_SCRIPT_DIR" ]]; then
+	SCRIPT_DIR="$DEFAULT_SCRIPT_DIR"
+fi
+
+if [[ -z "$SCRIPT_DIR" ]]; then
+	echo "No script directory given, and default directory not found" >&2
+	exit 1
+fi
+
+if [[ ! -d "$SCRIPT_DIR" ]]; then
+	echo "Script directory $SCRIPT_DIR does not exist" >&2
+	exit 1
+fi
+
+BASE_DIR="$XDG_DOCUMENTS_DIR/todos/$NAME"
+BASE_DIR_QUOTED="\$XDG_DOCUMENTS_DIR/todos/$NAME"
+
+if [[ -d "$BASE_DIR" ]]; then
+	echo "Directory $BASE_DIR already exists" >&2
+	exit 1
+fi
+
+mkdir -p "$BASE_DIR" || exit 1
+
+{
+	cat <<EOF
+#!/usr/bin/env bash
+export TODO_DIR="$BASE_DIR_QUOTED"
+exec todo.sh "\$@"
+EOF
+} >"$SCRIPT_DIR/$NAME"
