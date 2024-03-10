@@ -153,7 +153,7 @@ fi
 bash "${HPIDATA}/malexport.job"
 evry 16 hours -malexport_partial_update && {
 	malexport_partial_update
-	rm -vf "$(evry location -update-datafiles)"
+	# rm -vf "$(evry location -update-datafiles)"
 }
 
 # https://github.com/seanbreckenridge/my_feed
