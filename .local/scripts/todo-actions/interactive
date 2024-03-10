@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+set -e
+
+if attached-to-terminal; then
+	"$TODO_FULL_SH" fzf
+else
+	"$TODO_FULL_SH" rofi
+fi

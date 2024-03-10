@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+set -e
+
+if [[ -z "$TODO_DIR" ]]; then
+	echo "TODO_DIR is not set" >&2
+	exit 1
+fi
+
+export TODO_DIR="$TODO_DIR"
+full_todotxt -ps || exit $?
