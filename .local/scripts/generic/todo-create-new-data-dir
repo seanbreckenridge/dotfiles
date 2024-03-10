@@ -25,12 +25,10 @@ fi
 BASE_DIR="$XDG_DOCUMENTS_DIR/todos/$NAME"
 BASE_DIR_QUOTED="\$XDG_DOCUMENTS_DIR/todos/$NAME"
 
-if [[ -d "$BASE_DIR" ]]; then
-	echo "Directory $BASE_DIR already exists" >&2
+mkdir -p "$BASE_DIR" || {
+	echo "Error creating directory $BASE_DIR" >&2
 	exit 1
-fi
-
-mkdir -p "$BASE_DIR" || exit 1
+}
 
 {
 	cat <<EOF
