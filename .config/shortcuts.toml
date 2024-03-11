@@ -12,7 +12,7 @@ cd # home
 	yadm list | sed "s#^#$HOME/#"
 	echo "$HOME/.config/yadm/README.md"
 	echo "$HPIDATA/personal_aliases"
-	fd --type=file -H -E '__pycache__' -E '.mypy_cache' --full-path "${HOME}" "${XDG_CONFIG_HOME}/todo" "${XDG_CONFIG_HOME}/bookmark.txt" "${ZDOTDIR}"
+	fd --type=file -H -E '__pycache__' -E '.mypy_cache' --full-path "${HOME}" "${XDG_CONFIG_HOME}/todo" "${ZDOTDIR}"
 } | grep -v "system-config" | exists | sort -u
 '''
 
