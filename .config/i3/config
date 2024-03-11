@@ -107,8 +107,8 @@ bindsym XF86AudioMicMute exec --no-startup-id volume micmute
 
 # todo list - mark as complete with rofi
 # https://git.sr.ht/~proycon/todotxt-more
-bindsym $mod+t exec --no-startup-id todo-interactive
-bindsym $mod+Shift+t exec --no-startup-id launch 'full_todotxt -ps'
+bindsym $mod+t exec --no-startup-id todo interactive
+bindsym $mod+Shift+t exec --no-startup-id launch 'todo full'
 
 # bookmark list - add/open with rofi
 bindsym $mod+b exec --no-startup-id todo-prompt bookmark list
