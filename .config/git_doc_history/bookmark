@@ -1,4 +1,0 @@
-SOURCE_DIR=~/data/bookmarks/  # copy from
-BACKUP_DIR="${HPIDATA}/doc/bookmark_git_history" # copy to
-COPY_FILES="bookmarks.txt
-done.txt"
