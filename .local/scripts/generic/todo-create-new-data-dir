@@ -3,7 +3,12 @@
 # this puts a script in $REPOS/personal/bin/ and a directory in $XDG_DOCUMENTS_DIR/todos/
 
 SCRIPT_DIR="$REPOS/personal/bin/"
-NAME="$(gum input --prompt "Name of script/todo.txt directory> ")" || exit 1
+NAME="$(gum input --prompt "Name of script/todo.txt directory> " | chomp)" || exit 1
+
+if [[ -z "$NAME" ]]; then
+	echo "Name cannot be empty" >&2
+	exit 1
+fi
 
 if [[ ! -d "$SCRIPT_DIR" ]]; then
 	echo "Script directory '$SCRIPT_DIR' does not exist" >&2
