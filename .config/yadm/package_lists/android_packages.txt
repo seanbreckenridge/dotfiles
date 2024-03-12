@@ -19,6 +19,7 @@ glow
 parallel
 nodejs
 htop
+boxes
 rlwrap
 openjdk-17
 perl
