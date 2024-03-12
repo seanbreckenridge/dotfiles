@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+set -euo pipefail
+chomp <"$XDG_DOCUMENTS_DIR/.todo_names.txt" | while read -r name; do
+	figlet -f slant "${name/_/ }"
+	"$name" list
+done

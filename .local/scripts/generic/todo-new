@@ -32,3 +32,4 @@ EOF
 } >"$SCRIPT_DIR/$NAME"
 
 chmod +x "$SCRIPT_DIR/$NAME"
+echo "$NAME" >>"$XDG_DOCUMENTS_DIR/.todo_names.txt"
