@@ -1,6 +1,15 @@
 #!/usr/bin/env bash
 set -euo pipefail
+
+maybe_boxes() {
+	if havecmd boxes; then
+		boxes -pv1h1 -dshell
+	else
+		cat
+	fi
+}
+
 chomp <"$XDG_DOCUMENTS_DIR/.todo_names.txt" | while read -r name; do
-	figlet -f slant "${name/_/ }"
+	maybe_boxes <<<"${name/_/ }"
 	"$name" list
 done
