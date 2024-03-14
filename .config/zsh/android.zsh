@@ -39,7 +39,7 @@ uu() {
 	wait-for-internet --timeout 1 --quiet && {
 		yadm pull || true
 		repos-pull-all || true
-	}
+	} || true
 }
 
 # for building ocaml
