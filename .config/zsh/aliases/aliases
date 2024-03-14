@@ -102,6 +102,7 @@ alias nr='neomuttr'
 alias urban='udict'
 alias xxd='hexyl'
 alias calc='ipython3 --profile=calculator'
+alias XMODMAP-RESET='xmodmap-reset' # in case Im stuck in capslock
 alias 'countdown=termdown'
 # shorthand for copying to clipboard
 alias cl='clipcopy'
