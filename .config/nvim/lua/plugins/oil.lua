@@ -3,6 +3,6 @@ return {
     opts = {
         default_file_explorer = true,
         columns = {"icon"},
-        delete_to_trash = true,
+        delete_to_trash = true
     }
 }
