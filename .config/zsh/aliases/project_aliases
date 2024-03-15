@@ -184,6 +184,7 @@ b-() {
 	b-water "$@"
 }
 alias sn='self-now'
+alias self-edit='editor "$HPIDATA/.self_types.txt"'
 alias snl='while self-now; do; done'
 alias fl='flipflop.py'
 alias fls='fl status'
@@ -192,6 +193,7 @@ flf() {
 	fl flip
 	fls
 }
+alias flip-edit='editor "$HPIDATA/.flipflop.txt"'
 
 # https://github.com/seanbreckenridge/tts
 alias tts-say='tts -d /tmp/tts.mpeg && plaympeg /tmp/tts.mpeg'

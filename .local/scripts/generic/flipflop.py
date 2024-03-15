@@ -32,8 +32,12 @@ os.environ["TTALLY_SKIP_DEFAULT_IMPORT"] = "1"
 from ttally.core import Extension
 
 
+with open(os.path.join(os.environ["HPIDATA"], ".flipflop.txt")) as f:
+    flipflop_choices = f.read().strip().splitlines()
+
+
 # create enum from environment variable
-FlipT = Enum("FlipT", os.environ["FLIPFLOP_CHOICES"].split(":"))
+FlipT = Enum("FlipT", flipflop_choices)
 
 
 class Flip(NamedTuple):
@@ -105,15 +109,20 @@ def main() -> None:
                 )
             )
 
-    @cli_group.command(short_help="flip status on an item")
-    def flip() -> None:
+    @cli_group.command(short_help="flip status on an item", name="flip")
+    def _flip() -> None:
         from autotui.namedtuple_prompt import namedtuple_prompt_funcs
         from autotui.shortcuts import load_prompt_and_writeback
+        from autotui.exceptions import AutoTUIException
 
         statuses = compute_current_statuses()
 
-        # prompt for 'what'
-        what = namedtuple_prompt_funcs(Flip)["what"]()
+        try:
+            # prompt for 'what'
+            what = namedtuple_prompt_funcs(Flip)["what"]()
+        except AutoTUIException:
+            click.secho(f"Did not select anything", err=True, fg="red")
+            exit(1)
 
         # flip the 'on' value and write back
         load_prompt_and_writeback(

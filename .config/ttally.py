@@ -44,7 +44,7 @@ import os
 from enum import Enum
 
 # dynamically create an enum using each line of the file as an option
-with open(os.path.join(os.environ["HPIDATA"], "self_types.txt")) as f:
+with open(os.path.join(os.environ["HPIDATA"], ".self_types.txt")) as f:
     SelfT = Enum("SelfT", [s.rstrip().upper() for s in f])
 
 
