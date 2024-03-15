@@ -10,6 +10,7 @@ pyflyby
 pyperclip
 pysrt
 reorder_editable
+rich
 rifleman
 rsa
 selenium
