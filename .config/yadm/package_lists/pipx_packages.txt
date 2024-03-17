@@ -8,7 +8,6 @@ currencyconverter
 diceware
 eyeD3
 flake8
-full-todotxt
 greasyfork-archive
 pypyp
 setup-cfg-fmt
