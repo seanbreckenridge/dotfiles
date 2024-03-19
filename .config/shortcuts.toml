@@ -537,7 +537,7 @@ fi
 shebang = "#!/usr/bin/env bash"
 
 [clrs]
-command = '''exec clr -hr calories "$@"'''
+command = '''exec clr -hr calories,water "$@"'''
 
 [mz]
 command = '''
