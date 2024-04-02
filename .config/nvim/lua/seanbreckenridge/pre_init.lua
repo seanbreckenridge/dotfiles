@@ -7,7 +7,7 @@ vim.g.on_os = os.getenv('ON_OS') or 'unknown'
 
 -- lazy.nvim/which-key wants a leader to be set before setting up mappings
 vim.g.mapleader = ' '
-vim.g.maplocalleader = ' '
+vim.g.maplocalleader = ','
 
 -- disable tab key for copilot
 vim.g.copilot_no_tab_map = true

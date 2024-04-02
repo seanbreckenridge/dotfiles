@@ -11,6 +11,8 @@ imap <silent><script><expr> <M-c> copilot#Accept("\<CR>")
 
 let g:copilot_filetypes = {'*': v:true ,
   \ 'help': v:false,
+  \ 'markdown': v:false,
+  \ 'norg': v:false,
   \ }
   ]])
     end

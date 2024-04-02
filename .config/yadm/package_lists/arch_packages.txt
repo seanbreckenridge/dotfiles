@@ -277,11 +277,6 @@ tor-browser
 vbam-wx
 zoom
 
-# for sonic pi
-
-qjackctl
-sonic-pi
-
 # fonts
 
 all-repository-fonts

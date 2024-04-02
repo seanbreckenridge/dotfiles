@@ -76,7 +76,8 @@ config.keys = {
         key = "l",
         mods = "SHIFT|ALT",
         action = wezterm.action {ActivatePaneDirection = "Right"}
-    }
+    }, -- disable the alt+enter keybind to make fullscreen
+    {key = "Enter", mods = "ALT", action = "DisableDefaultAssignment"}
 }
 
 return config
