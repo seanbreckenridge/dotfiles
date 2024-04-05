@@ -215,7 +215,6 @@ bar {
     }
 }
 
-# temp, launch a terminal so I have access to one in wayland
-exec foot
+exec wezterm  # temporarily
 
 include /etc/sway/config.d/*

@@ -67,7 +67,7 @@ check_service() {
 # Check services
 echo "Checking if default services are running..."
 # CUPS and avahi are for printing
-SERVICES=("NetworkManager" "ntpd" "paccache.timer")
+SERVICES=("NetworkManager" "ntpd")
 for serv in "${SERVICES[@]}"; do
 	check_service "${serv}"
 done

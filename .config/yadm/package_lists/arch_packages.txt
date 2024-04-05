@@ -72,7 +72,6 @@ redis
 ruby
 ruby-bundler
 rust
-rust-racer
 sbcl
 sbt
 scala
@@ -162,8 +161,6 @@ qrencode
 ranger-git
 ripgrep
 rlwrap
-rofi
-rofi-dmenu
 rsync
 sc-im
 # scrot
@@ -189,7 +186,7 @@ vim
 wezterm
 wget
 whatmp3
-wkhtmltopdf
+# wkhtmltopdf
 yadm
 yq
 ytop
