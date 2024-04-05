@@ -286,6 +286,7 @@ __pycache__
 /.config/rncbc.org
 /.config/slack-term/
 /.config/snes9x
+/.config/systemd/
 /.config/snes9x
 /.config/so/config.yml
 /.config/sonic-pi.net/

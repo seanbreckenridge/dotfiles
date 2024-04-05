@@ -1,40 +1,27 @@
 # os
 
-arandr
-autorandr
-autotiling
 avahi
+sway
+fuzzel
+autotiling
 cups
 cups-pdf
-dunst
-exfat-utils
+dunst  # switch to mako?
 flatpak
-fuse-exfat
 gnome-keyring
-i3-wm
 i3blocks
-i3lock
-light
-network-manager-applet
 networkmanager
 nss-mdns
 pacman-contrib
-picom
 pipewire-alsa
 pipewire-pulse
-rebuild-detector
-redshift
+# redshift  # try gammastep instead
 reflector
 restic
 udiskie
 udisks2
-unclutter
 wpa_supplicant
-xorg-server
-xorg-xev
-xorg-xinput
-xorg-xmodmap
-xorg-xwininfo
+wev
 
 # language support
 
@@ -53,11 +40,9 @@ docker
 elixir
 elixir-ls
 elm-bin
-erlang
 ghc
 go
 gopls
-goreleaser-bin
 graphviz
 inotify-tools
 java-environment-common
@@ -99,7 +84,6 @@ yarn
 
 # utils
 
-alacritty-git
 aspell
 aspell-en
 at
@@ -145,7 +129,6 @@ imagemagick
 jq
 keynav
 khinsider
-kitty
 ldm
 lftp
 libjpeg-turbo # for jpegtran
@@ -159,7 +142,6 @@ mlocate
 moreutils
 neovim
 net-tools
-networkmanager-dmenu-git
 newsboat
 nmap
 nsxiv
@@ -184,20 +166,14 @@ rofi
 rofi-dmenu
 rsync
 sc-im
-screenkey-git
-scrot
+# scrot
 shellcheck-bin
 smpeg
 socat
-sshpass
 strace
 syncthing
 task-spooler
-texlive-bin
-texlive-core
 the_silver_searcher
-tk
-tmux
 todotxt-git
 toilet
 tree
@@ -210,18 +186,10 @@ util-linux
 vi
 viddy
 vim
-w3m
 wezterm
 wget
 whatmp3
 wkhtmltopdf
-xclip
-xcolor
-xdotool
-xorg-xdpyinfo
-xorg-xwininfo
-xterm
-xvkbd
 yadm
 yq
 ytop
@@ -239,9 +207,9 @@ pass
 
 # battery performance
 
-tlp
-tp_smapi
-acpi_call
+# tlp  try auto-cpufreq?
+# tp_smapi
+# acpi_call
 
 # shell
 
@@ -250,36 +218,20 @@ zsh
 zsh-autosuggestions
 zsh-completions
 zsh-syntax-highlighting
-zsh-you-should-use
 
 # gui applications
 
-balena-etcher
 chromedriver
-czkawka-gui-bin
-filezilla
 firefox-developer-edition
-gimp
 google-chrome
-gparted
 gpxsee
 keepassxc
 mpv
-mupdf-gl
 obs-studio
 okular
-robo3t-bin
-simplescreenrecorder
-snes9x-gtk
 sqlitebrowser
-thunar
-tor-browser
-vbam-wx
-zoom
 
 # fonts
 
 all-repository-fonts
 ttf-ms-fonts
-xorg-font-util
-xorg-fonts-encodings

@@ -58,7 +58,6 @@ done < <(on_machine -cmd match -print0 -filter file -base "${YADM_DIR}" '%o_boot
 
 declare -rx PYTHON_PACKAGE_LIST="${PACKAGE_DIR}/python3_packages.txt"
 declare -rx PIPX_PACKAGE_LIST="${PACKAGE_DIR}/pipx_packages.txt"
-declare -rx GLOBAL_GEM_LIST="${PACKAGE_DIR}/ruby_packages.txt"
 declare -rx NODE_PACKAGE_LIST="${PACKAGE_DIR}/node_packages.txt"
 declare -rx COMPUTER_NODE_PACKAGE_LIST="${PACKAGE_DIR}/computer_node_packages.txt"
 declare -rx BASH_PACKAGE_LIST="${PACKAGE_DIR}/bash_packages.txt"
@@ -179,7 +178,8 @@ install_yarn_packages
 command rm -f "${HOME}/.local/bin/yarn.lock"
 
 # install pistol manually
-havecmd pistol || env GO111MODULE=on go install -v 'github.com/doronbehar/pistol/cmd/pistol@latest'
+#
+havecmd pistol || go install github.com/doronbehar/pistol/cmd/pistol@latest
 
 havecmd go || exit $?
 GO_PACKAGE_LIST="${PACKAGE_DIR}/go_packages.txt"
