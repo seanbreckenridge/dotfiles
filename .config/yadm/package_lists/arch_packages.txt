@@ -13,7 +13,6 @@ i3blocks
 networkmanager
 nss-mdns
 pacman-contrib
-pipewire-alsa
 pipewire-pulse
 # redshift  # try gammastep instead
 reflector
@@ -30,7 +29,6 @@ bc
 cabal-install
 ccls
 checkbashisms
-clojure
 cmake
 composer
 dart
@@ -67,7 +65,6 @@ pyenv
 python-gobject
 python-pip
 python3
-rebar3-git
 redis
 ruby
 ruby-bundler
@@ -103,7 +100,6 @@ drive-bin
 dust
 emacs
 entr
-espanso
 exa
 fd
 feh
@@ -230,5 +226,5 @@ sqlitebrowser
 
 # fonts
 
-all-repository-fonts
+# all-repository-fonts
 ttf-ms-fonts

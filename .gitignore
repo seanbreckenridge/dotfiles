@@ -318,6 +318,12 @@ __pycache__
 /.local/*.md
 /.local/bin
 /.local/etc
+/.local/*.txt
+/.local/LICENSE
+/.local/*.toml
+/.local/*.py
+/.local/makefile
+/.local/requirements*
 /.local/libexec
 /.local/src
 /.local/*lock
