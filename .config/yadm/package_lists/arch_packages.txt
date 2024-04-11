@@ -236,8 +236,12 @@ ttf-ms-fonts
 noto-fonts
 noto-fonts-emoji
 noto-fonts-cjk
+adobe-source-han-sans-jp-fonts
+otf-ipafont
+ttf-hanazono
 ttf-freefont
 ttf-linux-libertine
 ttf-dejavu
 ttf-inconsolata
 ttf-ubuntu-font-family
+ttf-baekmuk
