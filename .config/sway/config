@@ -300,9 +300,9 @@ exec cstimer-server
 # start supervisor background processes
 exec super --daemon
 exec ~/Repos/exobrain/scripts/exobrain-launch-in-editor
-exec super --daemon
 exec autotiling
 exec warn-battery BAT1
+exec gammastep-loc
 
 # Scratchpad:
 #

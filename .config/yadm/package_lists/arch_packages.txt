@@ -6,7 +6,6 @@ swaylock
 swaybg
 rofi-lbonn-wayland-git
 brightnessctl
-fuzzel
 autotiling
 cups
 cups-pdf
@@ -18,7 +17,7 @@ networkmanager
 nss-mdns
 pacman-contrib
 pipewire-pulse
-# redshift  # try gammastep instead
+gammastep
 reflector
 restic
 udiskie
@@ -207,10 +206,7 @@ notmuch
 pass
 
 # battery performance
-
-# tlp  try auto-cpufreq?
-# tp_smapi
-# acpi_call
+auto-cpufreq
 
 # shell
 
