@@ -4,8 +4,8 @@
 # Give a battery name (e.g. BAT0) as an argument.
 
 declare color capacity status emoji_status warn
-capacity="$(cat /sys/class/power_supply/"$1"/capacity)" || exit
-status="$(cat /sys/class/power_supply/"$1"/status)"
+capacity="$(cat /sys/class/power_supply/*/capacity)" || exit
+status="$(cat /sys/class/power_supply/*/status)"
 emoji_status="$(sed -e "s/,//;s/Discharging/🔋/;s/Not charging/♻️/;s/Charging/🔌/;s/Unknown/🛑/;s/Full/⚡/;s/ 0*/ /g;s/ :/ /g" <<<"$status")"
 
 if ((capacity >= 75)); then

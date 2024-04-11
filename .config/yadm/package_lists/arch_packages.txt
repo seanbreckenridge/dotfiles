@@ -2,6 +2,10 @@
 
 avahi
 sway
+swaylock
+swaybg
+rofi-lbonn-wayland-git
+brightnessctl
 fuzzel
 autotiling
 cups
@@ -19,8 +23,12 @@ reflector
 restic
 udiskie
 udisks2
+libappindicator-gtk3  # for udiskie
 wpa_supplicant
+wireless_tools
 wev
+xorg-xwayland
+wl-clipboard
 
 # language support
 
@@ -148,7 +156,7 @@ parallel
 pastel
 patch
 perl-image-exiftool
-phantomjs
+# phantomjs
 pkgfile
 primesieve
 pulsemixer
@@ -159,7 +167,8 @@ ripgrep
 rlwrap
 rsync
 sc-im
-# scrot
+grim
+slurp
 shellcheck-bin
 smpeg
 socat
@@ -179,13 +188,12 @@ util-linux
 vi
 viddy
 vim
-wezterm
+wezterm-git
 wget
 whatmp3
 # wkhtmltopdf
 yadm
 yq
-ytop
 zip
 
 # mail
@@ -228,3 +236,11 @@ sqlitebrowser
 
 # all-repository-fonts
 ttf-ms-fonts
+noto-fonts
+noto-fonts-emoji
+noto-fonts-cjk
+ttf-freefont
+ttf-linux-libertine
+ttf-dejavu
+ttf-inconsolata
+ttf-ubuntu-font-family

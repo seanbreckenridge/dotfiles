@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 # Takes a screenshot, saves it in ~/Pictures/Screenshots/
 # and puts it on clipboard
 
@@ -9,20 +9,31 @@ camera_shutter() {
 SCREENSHOT_DIR="${SCREENSHOTS:?No SCREENSHOTS environment variable set}"
 OUTPUT_FILENAME="${SCREENSHOT_DIR}/$(date '+%Y-%m-%d--%H_%M_%S').png"
 
-# take screenshot, save it and put it on clipboard
-if [ "$1" = "-f" ] || [ "$1" = "--full" ]; then
-	# fullscreen
-	scrot -z "${OUTPUT_FILENAME}"
-	xclip -t image/png -selection clipboard <"${OUTPUT_FILENAME}"
-	camera_shutter
-else
-	# selection
-	maim --hidecursor -s | tee "${OUTPUT_FILENAME}" | xclip -t image/png -selection clipboard
-	# if screenshot was cancelled, an empty png file
-	# is still created; delete it
-	if [ "$(stat --printf="%s" "${OUTPUT_FILENAME}")" = "0" ]; then
-		rm "${OUTPUT_FILENAME}"
+FULL=0
+[[ "$1" == "--full" ]] && FULL=1
+
+if [[ -n "$WAYLAND_DISPLAY" ]]; then
+	if ((FULL)); then
+		wayshot -c "$OUTPUT_FILENAME"
 	else
-		camera_shutter
+		wayshot -c -s "$OUTPUT_FILENAME"
 	fi
+else
+	# take screenshot, save it and put it on clipboard
+	if ((FULL)); then
+		# fullscreen
+		scrot -z "${OUTPUT_FILENAME}"
+		xclip -t image/png -selection clipboard <"${OUTPUT_FILENAME}"
+	else
+		# selection
+		maim --hidecursor -s | tee "${OUTPUT_FILENAME}" | xclip -t image/png -selection clipboard
+	fi
+fi
+
+# if screenshot was cancelled, an empty png file
+# is still created; delete it
+if [ "$(stat --printf="%s" "${OUTPUT_FILENAME}")" = "0" ]; then
+	rm "${OUTPUT_FILENAME}"
+else
+	camera_shutter
 fi

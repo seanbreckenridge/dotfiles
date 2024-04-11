@@ -33,6 +33,8 @@ if [[ -n "${BLOCK_SIGNAL}" ]]; then
 	echo "Refreshed ${BLOCK_NAME}... (${BLOCK_SIGNAL})"
 else
 	printf 'Could not find block %s\n' "${BLOCK_NAME}"
+	# in case this is being run the first time, cache
+	cache
 	exit 1
 fi
 

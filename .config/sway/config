@@ -6,24 +6,30 @@
 set $mod Mod4
 set $alt Mod1
 
+font pango:Source Code Pro 8
+
 # Home row direction keys, like vim
 set $left h
 set $down j
 set $up k
 set $right l
-# Your preferred terminal emulator
-set $term wezterm
 
-# Your preferred application launcher
+set $term wezterm
+set $browser firefox-developer-edition
+
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
-set $menu dmenu_path | fuzzel | xargs swaymsg exec --
+bindsym $mod+Tab exec rofi -show window -display-window "window > "
 
 ### Output configuration
-#
-# Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
-#
+
+# Wallpaper
+output * bg `find "${FILES_DIR}/wallpapers" -type f | shuf -n 1` fill
+
+# turn screen on/off when I close the lid
+bindswitch --reload --locked lid:on output $laptop disable
+bindswitch --reload --locked lid:off output $laptop enable
+
 # Example configuration:
 #
 #   output HDMI-A-1 resolution 1920x1080 position 1920,0
@@ -62,21 +68,78 @@ input "type:keyboard" {
     xkb_options caps:escape
 }
 
-## Launch on startup
-exec_always autotiling
+input * {
+    natural_scroll enabled
+        dwt true  # disable while typing
+        tap enabled
+        accel_profile "flat"
+        pointer_accel 1
+}
+
+# hide cursor after 3 seconds
+seat seat0 hide_cursor 3000
 
 ### Key bindings
 #
-# Basics:
-#
 # Start a terminal
 bindsym $mod+Return exec $term
+bindsym $mod+Shift+Return exec $browser
 
 # Kill focused window
 bindsym $mod+Shift+q kill
 
-# Start your launcher
-bindsym $mod+d exec $menu
+# application launcher
+bindsym $mod+r exec rofi -show run -display-run "run >" | xargs swaymsg exec --
+
+# todo list - mark as complete with rofi
+# https://git.sr.ht/~proycon/todotxt-more
+bindsym $mod+t exec todo interactive
+bindsym $mod+Shift+t exec launch 'todo full'
+
+bindsym $mod+b exec todo-prompt bookmark list
+bindsym $mod+Shift+b exec todo-prompt bookmark add
+
+# screenshots
+bindsym --release Print exec ttt screenshot
+bindsym Shift+Print exec ttt screenshot --full
+# upload latest screenshot to my server
+bindsym $mod+Print exec ttt screenshot-upload
+
+# add to my self model from https://github.com/seanbreckenridge/ttally
+bindsym $alt+s exec self-picker
+# edit clipboard in vim
+bindsym $mod+Shift+c exec clipedit
+# reset clipboard formatting
+bindsym $mod+$alt+c exec clipreset
+
+# mpv commands
+# https://github.com/seanbreckenridge/mpv-sockets.git
+bindsym $mod+XF86AudioMute exec mpv-play-pause && i3blocks-refresh-mpv
+bindsym $mod+XF86AudioMicMute exec mpv-next-song && i3blocks-refresh-mpv
+bindsym $mod+Shift+XF86AudioMute exec mpv-quit-latest && i3blocks-refresh-mpv
+bindsym $mod+m exec notify-send "$(mpv-song-description-py)"
+bindsym $alt+m exec mpv-play-pause && i3blocks-refresh-mpv
+bindsym $mod+Shift+m exec mpv-next-song && i3blocks-refresh-mpv
+
+# on 'volume up', move forward in the file
+bindsym $mod+XF86AudioRaiseVolume exec mpv-seek '5'
+bindsym $mod+XF86AudioLowerVolume exec mpv-seek '-5'
+
+bindsym $mod+Shift+s exec reminder-sink-notify
+
+# volume
+bindsym XF86AudioRaiseVolume exec volume up
+bindsym XF86AudioLowerVolume exec volume down
+bindsym XF86AudioMute exec volume mute
+
+# brightness
+bindsym XF86MonBrightnessUp exec brightnessctl set 5%+
+bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
+
+# send all signals listed in the i3blocks config file to i3blocks
+# causing re-renders to all the blocks
+bindsym $mod+$alt+r exec i3blocks-refresh-all
+
 
 # Drag floating windows by holding down $mod and left mouse button.
 # Resize them with right mouse button + $mod.
@@ -90,131 +153,189 @@ bindsym $mod+Shift+r reload
 
 # Exit sway (logs you out of your Wayland session)
 bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
-#
-# Moving around:
-    # Move your focus around
-    bindsym $mod+$left focus left
-    bindsym $mod+$down focus down
-    bindsym $mod+$up focus up
-    bindsym $mod+$right focus right
 
-    # Move the focused window with the same, but add Shift
-    bindsym $mod+Shift+$left move left
-    bindsym $mod+Shift+$down move down
-    bindsym $mod+Shift+$up move up
-    bindsym $mod+Shift+$right move right
-    # Ditto, with arrow keys
-    bindsym $mod+Shift+Left move left
-    bindsym $mod+Shift+Down move down
-    bindsym $mod+Shift+Up move up
-    bindsym $mod+Shift+Right move right
+# gaps config
+smart_borders on
+smart_gaps on
+smart_borders no_gaps
+gaps inner 5
+gaps outer 0
+
+# Moving around:
+#
+# Move your focus around
+bindsym $mod+$left focus left
+bindsym $mod+$down focus down
+bindsym $mod+$up focus up
+bindsym $mod+$right focus right
+
+# Move the focused window with the same, but add Shift
+bindsym $mod+Shift+$left move left
+bindsym $mod+Shift+$down move down
+bindsym $mod+Shift+$up move up
+bindsym $mod+Shift+$right move right
+# Ditto, with arrow keys
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
 #
 # Workspaces:
 #
-    # Switch to workspace
-    bindsym $mod+1 workspace number 1
-    bindsym $mod+2 workspace number 2
-    bindsym $mod+3 workspace number 3
-    bindsym $mod+4 workspace number 4
-    bindsym $mod+5 workspace number 5
-    bindsym $mod+6 workspace number 6
-    bindsym $mod+7 workspace number 7
-    bindsym $mod+8 workspace number 8
-    bindsym $mod+9 workspace number 9
-    bindsym $mod+0 workspace number 10
-    # Move focused container to workspace
-    bindsym $mod+Shift+1 move container to workspace number 1
-    bindsym $mod+Shift+2 move container to workspace number 2
-    bindsym $mod+Shift+3 move container to workspace number 3
-    bindsym $mod+Shift+4 move container to workspace number 4
-    bindsym $mod+Shift+5 move container to workspace number 5
-    bindsym $mod+Shift+6 move container to workspace number 6
-    bindsym $mod+Shift+7 move container to workspace number 7
-    bindsym $mod+Shift+8 move container to workspace number 8
-    bindsym $mod+Shift+9 move container to workspace number 9
-    bindsym $mod+Shift+0 move container to workspace number 10
-    # Note: workspaces can have any name you want, not just numbers.
-    # We just use 1-10 as the default.
+
+workspace_auto_back_and_forth yes
+
+# Switch to workspace
+bindsym $mod+1 workspace number 1
+bindsym $mod+2 workspace number 2
+bindsym $mod+3 workspace number 3
+bindsym $mod+4 workspace number 4
+bindsym $mod+5 workspace number 5
+bindsym $mod+6 workspace number 6
+bindsym $mod+7 workspace number 7
+bindsym $mod+8 workspace number 8
+bindsym $mod+9 workspace number 9
+bindsym $mod+0 workspace number 10
+# Move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace number 1
+bindsym $mod+Shift+2 move container to workspace number 2
+bindsym $mod+Shift+3 move container to workspace number 3
+bindsym $mod+Shift+4 move container to workspace number 4
+bindsym $mod+Shift+5 move container to workspace number 5
+bindsym $mod+Shift+6 move container to workspace number 6
+bindsym $mod+Shift+7 move container to workspace number 7
+bindsym $mod+Shift+8 move container to workspace number 8
+bindsym $mod+Shift+9 move container to workspace number 9
+bindsym $mod+Shift+0 move container to workspace number 10
+# Note: workspaces can have any name you want, not just numbers.
+# We just use 1-10 as the default.
 #
 # Layout stuff:
 #
-    # You can "split" the current object of your focus with
-    # $mod+b or $mod+v, for horizontal and vertical splits
-    # respectively.
-    bindsym $mod+b splith
-    bindsym $mod+v splitv
+# You can "split" the current object of your focus with
+# $mod+b or $mod+v, for horizontal and vertical splits
+# respectively.
 
-    # Switch the current container between different layout styles
-    bindsym $mod+s layout stacking
-    bindsym $mod+w layout tabbed
-    bindsym $mod+e layout toggle split
+# Make the current focus fullscreen
+bindsym $mod+f fullscreen
 
-    # Make the current focus fullscreen
-    bindsym $mod+f fullscreen
+# Toggle the current focus between tiling and floating mode
+bindsym $mod+Shift+space focus mode_toggle
 
-    # Toggle the current focus between tiling and floating mode
-    bindsym $mod+Shift+space floating toggle
+# Swap focus between the tiling area and the floating area
+bindsym $mod+space floating toggle
 
-    # Swap focus between the tiling area and the floating area
-    bindsym $mod+space focus mode_toggle
+# split in horizontal orientation
+bindsym $mod+Shift+z split h
 
-    # Move focus to the parent container
-    bindsym $mod+a focus parent
+# split in vertical orientation
+bindsym $mod+Shift+v split v
+
+# focus the parent container
+bindsym $mod+a focus parent
+
+# focus the child container
+bindsym $mod+z focus child
+
+# launcher binding
+bindsym $mod+d mode "launcher"
+bindsym $mod+Shift+d exec notify-send -t 15000 "$(i3-launcher)"; mode "launcher"
+
+mode "launcher" {
+    bindsym a exec ttt wezterm; mode "default"
+    bindsym f exec ttt firefox-developer-edition; mode "default"
+    bindsym g exec feed-open; mode "default"
+    bindsym t exec trakt-progress; mode "default"
+    bindsym y exec mal-recent; mode "default"
+    bindsym d exec ttt discord; mode "default"
+    bindsym k exec ttt keepassxc; mode "default"
+    bindsym b exec bookmark-open; mode "default"
+    bindsym l exec largechar-clipboard; mode "default"
+    bindsym x exec exo-web; mode "default"
+    bindsym Shift+x exec exo-web-personal; mode "default"
+    bindsym n exec ttt launch newsboat-force; mode "default"
+    bindsym m exec ttt launch neomuttr; mode "default"
+    bindsym Shift+m exec launch sync-neomutt; mode "default"
+    bindsym h exec ttt launch htop; mode "default"
+    bindsym v exec ttt launch keyvol; mode "default"
+    bindsym u exec urlview; mode "default"
+    bindsym p exec launch plainplay; mode "default"
+    bindsym Shift+s exec launch splayall; mode "default"
+    bindsym s exec stream-corner; mode "default"
+    bindsym $mod+f exec ttt launch full_todotxt; mode "default"
+    bindsym 4 exec stream-corner-480; mode "default"
+    bindsym 7 exec stream-corner-720; mode "default"
+    bindsym 0 exec stream-corner-1080; mode "default"
+    bindsym Shift+f exec flatpak-run; mode "default"
+    bindsym c exec ttt clrs; mode "default"
+    bindsym Shift+n exec launch sn; mode "default"
+    bindsym $mod+c exec SKIP_RECENT=1 launch cz; mode "default"
+    bindsym Shift+c exec SKIP_RECENT=1 launch czd; mode "default"
+    bindsym $alt+c exec SKIP_RECENT=1 launch czl; mode "default"
+    bindsym Escape mode "default"
+    bindsym Return mode "default"
+}
+
+bindsym $mod+s mode "server_clipboard"
+mode "server_clipboard" {
+    bindsym c exec with-secrets server_clipboard_notify copy; mode "default"
+    bindsym v exec with-secrets server_clipboard_notify paste; mode "default"
+    bindsym p exec with-secrets server_clipboard_notify paste; mode "default"
+    bindsym Escape mode "default"
+    bindsym Return mode "default"
+}
+
+# keyboard shortcut to check if I have a remote internet connection
+bindsym $mod+Shift+w exec wfi
+
+# move chromedriver (webscraping) instances to 9
+assign [class="Chromium-browser"] 9
+assign [class="Chromium"] 9
+assign [class="Google-chrome"] 9
+
+# background processes
 #
+# https://sean.fish/d/cstimer-server?dark
+exec cstimer-server
+# start supervisor background processes
+exec super --daemon
+exec ~/Repos/exobrain/scripts/exobrain-launch-in-editor
+exec super --daemon
+exec autotiling
+exec warn-battery BAT1
+
 # Scratchpad:
 #
-    # Sway has a "scratchpad", which is a bag of holding for windows.
-    # You can send windows there and get them back later.
+# Sway has a "scratchpad", which is a bag of holding for windows.
+# You can send windows there and get them back later.
 
-    # Move the currently focused window to the scratchpad
-    bindsym $mod+Shift+minus move scratchpad
+# Move the currently focused window to the scratchpad
+bindsym $mod+Shift+minus move scratchpad
 
-    # Show the next scratchpad window or hide the focused scratchpad window.
-    # If there are multiple scratchpad windows, this command cycles through them.
-    bindsym $mod+minus scratchpad show
-#
-# Resizing containers:
-#
-mode "resize" {
-    # left will shrink the containers width
-    # right will grow the containers width
-    # up will shrink the containers height
-    # down will grow the containers height
-    bindsym $left resize shrink width 10px
-    bindsym $down resize grow height 10px
-    bindsym $up resize shrink height 10px
-    bindsym $right resize grow width 10px
+# Show the next scratchpad window or hide the focused scratchpad window.
+# If there are multiple scratchpad windows, this command cycles through them.
+bindsym $mod+minus scratchpad show
 
-    # Ditto, with arrow keys
-    bindsym Left resize shrink width 10px
-    bindsym Down resize grow height 10px
-    bindsym Up resize shrink height 10px
-    bindsym Right resize grow width 10px
+bindsym $mod+Shift+y exec sway-resize left
+bindsym $mod+Shift+u exec sway-resize down
+bindsym $mod+Shift+i exec sway-resize up
+bindsym $mod+Shift+o exec sway-resize right
 
-    # Return to default mode
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
-}
-bindsym $mod+r mode "resize"
-
-#
 # Status Bar:
 #
 # Read `man 5 sway-bar` for more information about this section.
 bar {
     position top
 
-    # When the status_command prints a new line to stdout, swaybar updates.
-    # The default just shows the current date and time.
-    status_command while date +'%Y-%m-%d %X'; do sleep 1; done
+# When the status_command prints a new line to stdout, swaybar updates.
+# The default just shows the current date and time.
+        status_command i3blocks
 
-    colors {
-        statusline #ffffff
-        background #323232
-        inactive_workspace #32323200 #32323200 #5c5c5c
-    }
+        colors {
+            statusline #ffffff
+                background #323232
+                inactive_workspace #323232 #323232 #5c5c5c
+        }
 }
-
-exec wezterm  # temporarily
 
 include /etc/sway/config.d/*
