@@ -6,7 +6,6 @@
 set $mod Mod4
 set $alt Mod1
 
-font pango:Source Code Pro 8
 
 # Home row direction keys, like vim
 set $left h
@@ -30,6 +29,9 @@ output * bg `find "${FILES_DIR}/wallpapers" -type f | shuf -n 1` fill
 bindswitch --reload --locked lid:on output $laptop disable
 bindswitch --reload --locked lid:off output $laptop enable
 
+# lock/turnoff screen
+bindsym $mod+Shift+Escape exec sway-display-off
+
 # Example configuration:
 #
 #   output HDMI-A-1 resolution 1920x1080 position 1920,0
@@ -44,6 +46,16 @@ bindswitch --reload --locked lid:off output $laptop enable
 #          timeout 300 'swaylock -f -c 000000' \
 #          timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
 #          before-sleep 'swaylock -f -c 000000'
+#   set $locker 'swaylock -f -e -c 1d2021 --inside-color 000000b3 -s fill -i ~/.cache/lockscreen'
+#
+set $locker 'swaylock -f -e -c 1d2021 --inside-color 000000b3 -s fill -i ~/.cache/lockscreen'
+exec swayidle -w \
+    timeout 1800 'mpv-pause-all' \
+    timeout 1800 $locker \
+    timeout 900 'swaymsg "output * dpms off"' \
+    timeout 15 'if pgrep -x swaylock; then swaymsg "output * dpms off"; fi' \
+    resume 'swaymsg "output * dpms on"' \
+    before-sleep $locker
 #
 # This will lock your screen after 300 seconds of inactivity, then turn off
 # your displays after another 300 seconds, and turn your screens back on when
@@ -337,5 +349,28 @@ bar {
                 inactive_workspace #323232 #323232 #5c5c5c
         }
 }
+
+# Appearance
+default_border none
+default_floating_border none
+font pango:Source Code Pro 8
+titlebar_padding 1
+titlebar_border_thickness 0
+hide_edge_borders --i3 smart
+
+set $background #332b2b
+set $color_urgent #fb4934
+set $text_color #ffffff
+set $title_bg_unfocused #666666
+set $title_outline_active #0e844e
+set $title_outline_unfocused #332b2b
+
+default_border pixel 1
+
+# Set Colors:           Border                   Background          Text          Indicator             Child Border
+client.background       $background
+client.focused_inactive $title_outline_unfocused $background         $text_color   $text_color           $title_outline_unfocused
+client.unfocused        $title_outline_unfocused $title_bg_unfocused $text_color   $title_outline_active
+client.urgent           $color_urgent            $color_urgent       $color_urgent $color_urgent         $color_urgent
 
 include /etc/sway/config.d/*

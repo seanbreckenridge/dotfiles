@@ -4,6 +4,7 @@ avahi
 sway
 swaylock
 swaybg
+swayidle
 rofi-lbonn-wayland-git
 brightnessctl
 autotiling
