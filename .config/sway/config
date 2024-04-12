@@ -30,7 +30,7 @@ bindswitch --reload --locked lid:on output $laptop disable
 bindswitch --reload --locked lid:off output $laptop enable
 
 # lock/turnoff screen
-bindsym $mod+Shift+Escape exec sway-display-off
+bindsym $mod+Shift+Escape sway-display-off
 
 # Example configuration:
 #

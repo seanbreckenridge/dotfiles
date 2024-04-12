@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-openurl 'https://discordapp.com'
+openurl 'https://discord.com/channels/@me'

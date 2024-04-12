@@ -14,7 +14,10 @@ else
 	# open a new terminal, load zsh configuration (for zsh functions/environment), then launch the passed command
 	case "$ON_OS" in
 	linux* | mac*)
-		if havecmd wezterm; then
+		if havecmd kitty; then
+			kitty -1 -e zsh -ic "$@"
+			exit $?
+		elif havecmd wezterm; then
 			wezterm --config 'enable_tab_bar=false' start -- zsh -ic "$@"
 			exit $?
 		fi

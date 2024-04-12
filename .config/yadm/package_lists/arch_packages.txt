@@ -1,7 +1,6 @@
 # os
 
 avahi
-sway
 swaylock
 swaybg
 swayidle
@@ -17,6 +16,14 @@ i3blocks
 networkmanager
 nss-mdns
 pacman-contrib
+kitty
+pipewire
+hyprland-git
+xdg-desktop-portal-hyprland
+polkit-kde-agent
+qt5-wayland
+qt6-wayland
+wireplumber
 pipewire-pulse
 gammastep
 reflector
@@ -245,3 +252,4 @@ ttf-dejavu
 ttf-inconsolata
 ttf-ubuntu-font-family
 ttf-baekmuk
+otf-font-awesome  # for waybar
