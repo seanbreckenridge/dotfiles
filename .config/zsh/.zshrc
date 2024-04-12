@@ -53,7 +53,6 @@ linux*)
 	source_if_exists /usr/share/fzf/completion.zsh
 	# other plugins
 	source_if_exists /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-	source_if_exists /usr/share/doc/pkgfile/command-not-found.zsh
 	asdf-enable() {
 		source_if_exists /opt/asdf-vm/asdf.sh
 	}
