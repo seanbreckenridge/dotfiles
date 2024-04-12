@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+set -o pipefail
+
+main() {
+	declare loc
+	declare -a args=()
+	# https://github.com/seanbreckenridge/HPI-personal/blob/master/scripts/last-gps-location
+	loc="$(last-gps-location -d ":" --fuzz 2.0 --precision 0)"
+	if [[ -n "$loc" ]]; then
+		args+=(-l "$loc")
+	fi
+	exec gammastep -t 6500:4000 "${args[@]}" "$@"
+}
+
+main "$@" || exit $?

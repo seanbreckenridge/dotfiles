@@ -9,7 +9,9 @@ mac*)
 	exit 0
 	;;
 linux*)
-	if [ "$1" = "-b" ]; then # daemon
+	if [ -n "$WAYLAND_DISPLAY" ]; then
+		swaylock
+	elif [ "$1" = "-b" ]; then # daemon
 		while true; do
 			scrot --silent --overwrite "${HOME}/.cache/desktop.png"
 			convert -scale 2% -scale 5000% "${HOME}/.cache/desktop.png" "${HOME}/.cache/pixel.png"

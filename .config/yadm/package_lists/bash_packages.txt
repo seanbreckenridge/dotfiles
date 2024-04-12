@@ -9,3 +9,4 @@ paulirish/git-open
 dylanaraps/neofetch
 kadwanev/retry
 kdheepak/panvimdoc
+reinefjord/wayshot

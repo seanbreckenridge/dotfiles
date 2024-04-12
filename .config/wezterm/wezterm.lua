@@ -14,6 +14,7 @@ else
     error("Color scheme '" .. color_scheme_name .. "' not found")
 end
 
+config.enable_wayland = false -- temporarily, run under xwayland instead
 config.font = wezterm.font_with_fallback({
     "Source Code Pro", "Symbols Nerd Font Mono"
 })

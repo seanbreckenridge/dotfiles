@@ -286,6 +286,7 @@ __pycache__
 /.config/rncbc.org
 /.config/slack-term/
 /.config/snes9x
+/.config/systemd/
 /.config/snes9x
 /.config/so/config.yml
 /.config/sonic-pi.net/
@@ -317,6 +318,12 @@ __pycache__
 /.local/*.md
 /.local/bin
 /.local/etc
+/.local/*.txt
+/.local/LICENSE
+/.local/*.toml
+/.local/*.py
+/.local/makefile
+/.local/requirements*
 /.local/libexec
 /.local/src
 /.local/*lock

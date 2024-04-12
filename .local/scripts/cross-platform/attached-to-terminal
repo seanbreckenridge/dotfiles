@@ -17,9 +17,14 @@ TTY_OUT="$(tty)"
 # awk cmd - if the first session matches my user, print the tty
 # if that's tty1, Aseems to signify this was launched with
 # startx? may be totally wrong, just what I've noticed so far
-[ '/dev/tty1' = "${TTY_OUT}" ] &&
-	[ "$(who | awk -v user="$(whoami)" 'NR == 1 && user == $1 { print $2 }')" = 'tty1' ] &&
-	exit 1
+
+if [ -n "$WAYLAND_DISPLAY" ]; then
+	[ '/dev/tty1' = "$TTY_OUT" ] && exit 1
+else
+	[ '/dev/tty1' = "${TTY_OUT}" ] &&
+		[ "$(who | awk -v user="$(whoami)" 'NR == 1 && user == $1 { print $2 }')" = 'tty1' ] &&
+		exit 1
+fi
 
 # didn't match any checks for running in the background, should be attached to terminal
 exit 0

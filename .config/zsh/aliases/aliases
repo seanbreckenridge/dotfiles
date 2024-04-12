@@ -28,6 +28,8 @@ alias killall-nvim='killall -9 nvim'
 
 alias ccat='/bin/cat'
 
+alias yay='paru'
+
 # yadm aliases to work like git aliases, to manage dotfiles
 alias yds='yadm diff --staged'
 alias yst='yadm status'

@@ -1,0 +1,25 @@
+#!/bin/sh
+# From: https://github.com/LukeSmithxyz/voidrice/blob/archi3/.local/bin/i3cmds/i3resize
+
+[ -z "$1" ] && echo "No direction provided" && exit 1
+distanceStr="15 px or 5 ppt"
+
+moveChoice() {
+	swaymsg resize "$1" "$2" "${distanceStr}" | grep '"success":true' ||
+		swaymsg resize "$3" "$4" "${distanceStr}"
+}
+
+case "$1" in
+up)
+	moveChoice grow up shrink down
+	;;
+down)
+	moveChoice shrink up grow down
+	;;
+left)
+	moveChoice shrink right grow left
+	;;
+right)
+	moveChoice grow right shrink left
+	;;
+esac

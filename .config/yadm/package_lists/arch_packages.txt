@@ -1,40 +1,19 @@
 # os
 
-arandr
-autorandr
-autotiling
 avahi
 cups
 cups-pdf
 dunst
-exfat-utils
 flatpak
-fuse-exfat
 gnome-keyring
-i3-wm
-i3blocks
-i3lock
-light
-network-manager-applet
 networkmanager
 nss-mdns
 pacman-contrib
-picom
-pipewire-alsa
 pipewire-pulse
-rebuild-detector
-redshift
 reflector
 restic
-udiskie
-udisks2
-unclutter
 wpa_supplicant
-xorg-server
-xorg-xev
-xorg-xinput
-xorg-xmodmap
-xorg-xwininfo
+wireless_tools
 
 # language support
 
@@ -43,7 +22,6 @@ bc
 cabal-install
 ccls
 checkbashisms
-clojure
 cmake
 composer
 dart
@@ -53,11 +31,9 @@ docker
 elixir
 elixir-ls
 elm-bin
-erlang
 ghc
 go
 gopls
-goreleaser-bin
 graphviz
 inotify-tools
 java-environment-common
@@ -82,12 +58,10 @@ pyenv
 python-gobject
 python-pip
 python3
-rebar3-git
 redis
 ruby
 ruby-bundler
 rust
-rust-racer
 sbcl
 sbt
 scala
@@ -99,7 +73,6 @@ yarn
 
 # utils
 
-alacritty-git
 aspell
 aspell-en
 at
@@ -120,7 +93,6 @@ drive-bin
 dust
 emacs
 entr
-espanso
 exa
 fd
 feh
@@ -159,7 +131,6 @@ mlocate
 moreutils
 neovim
 net-tools
-networkmanager-dmenu-git
 newsboat
 nmap
 nsxiv
@@ -171,7 +142,6 @@ parallel
 pastel
 patch
 perl-image-exiftool
-phantomjs
 pkgfile
 primesieve
 pulsemixer
@@ -184,20 +154,14 @@ rofi
 rofi-dmenu
 rsync
 sc-im
-screenkey-git
 scrot
 shellcheck-bin
 smpeg
 socat
-sshpass
 strace
 syncthing
 task-spooler
-texlive-bin
-texlive-core
 the_silver_searcher
-tk
-tmux
 todotxt-git
 toilet
 tree
@@ -210,21 +174,10 @@ util-linux
 vi
 viddy
 vim
-w3m
-wezterm
 wget
 whatmp3
-wkhtmltopdf
-xclip
-xcolor
-xdotool
-xorg-xdpyinfo
-xorg-xwininfo
-xterm
-xvkbd
 yadm
 yq
-ytop
 zip
 
 # mail
@@ -237,12 +190,6 @@ neomutt
 notmuch
 pass
 
-# battery performance
-
-tlp
-tp_smapi
-acpi_call
-
 # shell
 
 bash
@@ -250,35 +197,33 @@ zsh
 zsh-autosuggestions
 zsh-completions
 zsh-syntax-highlighting
-zsh-you-should-use
 
 # gui applications
 
 chromedriver
-czkawka-gui-bin
-filezilla
 firefox-developer-edition
 gimp
 google-chrome
-gparted
 gpxsee
 keepassxc
 mpv
-mupdf-gl
 obs-studio
 okular
-robo3t-bin
-simplescreenrecorder
-snes9x-gtk
 sqlitebrowser
-thunar
-tor-browser
-vbam-wx
-zoom
 
 # fonts
 
-all-repository-fonts
 ttf-ms-fonts
-xorg-font-util
-xorg-fonts-encodings
+ttf-ms-fonts
+noto-fonts
+noto-fonts-emoji
+noto-fonts-cjk
+adobe-source-han-sans-jp-fonts
+otf-ipafont
+ttf-hanazono
+ttf-freefont
+ttf-linux-libertine
+ttf-dejavu
+ttf-inconsolata
+ttf-ubuntu-font-family
+ttf-baekmuk
