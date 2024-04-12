@@ -254,7 +254,6 @@ zsh-you-should-use
 
 # gui applications
 
-balena-etcher
 chromedriver
 czkawka-gui-bin
 filezilla
