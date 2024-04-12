@@ -19,7 +19,7 @@ In general:
 
 I use [`syncthing`](https://github.com/syncthing/syncthing) to sync my files/data across my computers.
 
-On Arch:
+On Arch/X11:
 
 - [`i3-gaps`](https://github.com/Airblader/i3) - window manager; [config file](.config/i3/config) - [`i3-launcher`](https://sean.fish/d/i3-launcher?dark) reminds me of [my bindings for my launcher mode](https://i.imgur.com/m6q3L37.png)
 - [`rofi`](https://github.com/davatorium/rofi) - application launcher
@@ -27,6 +27,12 @@ On Arch:
 - [`dunst`](https://dunst-project.org/) for notifications
 - [`picom`](https://github.com/yshui/picom) for window compositing
 - [`i3blocks`](https://github.com/vivien/i3blocks) as a status bar
+
+On Arch/[Hyprland](https://github.com/hyprwm/Hyprland):
+
+- [`rofi` wayland fork](https://github.com/lbonn/rofi#wayland-support)
+- [`waybar`](https://github.com/Alexays/Waybar) as a status bar
+- [`kitty`](https://sw.kovidgoyal.net/kitty/) as a terminal (has better wayland support)
 
 On Mac:
 
