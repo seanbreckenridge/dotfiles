@@ -1,41 +1,19 @@
 # os
 
 avahi
-swaylock
-swaybg
-swayidle
-rofi-lbonn-wayland-git
-brightnessctl
-autotiling
 cups
 cups-pdf
-dunst  # switch to mako?
+dunst
 flatpak
 gnome-keyring
-i3blocks
 networkmanager
 nss-mdns
 pacman-contrib
-kitty
-pipewire
-hyprland-git
-xdg-desktop-portal-hyprland
-polkit-kde-agent
-qt5-wayland
-qt6-wayland
-wireplumber
 pipewire-pulse
-gammastep
 reflector
 restic
-udiskie
-udisks2
-libappindicator-gtk3  # for udiskie
 wpa_supplicant
 wireless_tools
-wev
-xorg-xwayland
-wl-clipboard
 
 # language support
 
@@ -139,6 +117,7 @@ imagemagick
 jq
 keynav
 khinsider
+kitty
 ldm
 lftp
 libjpeg-turbo # for jpegtran
@@ -163,7 +142,6 @@ parallel
 pastel
 patch
 perl-image-exiftool
-# phantomjs
 pkgfile
 primesieve
 pulsemixer
@@ -172,10 +150,11 @@ qrencode
 ranger-git
 ripgrep
 rlwrap
+rofi
+rofi-dmenu
 rsync
 sc-im
-grim
-slurp
+scrot
 shellcheck-bin
 smpeg
 socat
@@ -195,10 +174,8 @@ util-linux
 vi
 viddy
 vim
-wezterm-git
 wget
 whatmp3
-# wkhtmltopdf
 yadm
 yq
 zip
@@ -213,9 +190,6 @@ neomutt
 notmuch
 pass
 
-# battery performance
-auto-cpufreq
-
 # shell
 
 bash
@@ -228,6 +202,7 @@ zsh-syntax-highlighting
 
 chromedriver
 firefox-developer-edition
+gimp
 google-chrome
 gpxsee
 keepassxc
@@ -238,7 +213,7 @@ sqlitebrowser
 
 # fonts
 
-# all-repository-fonts
+ttf-ms-fonts
 ttf-ms-fonts
 noto-fonts
 noto-fonts-emoji
@@ -252,4 +227,3 @@ ttf-dejavu
 ttf-inconsolata
 ttf-ubuntu-font-family
 ttf-baekmuk
-otf-font-awesome  # for waybar

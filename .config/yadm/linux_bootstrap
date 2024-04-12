@@ -6,6 +6,8 @@
 # to have my $PATH and other stuff updated for system processes
 
 declare -rx PACKAGE_LIST="${PACKAGE_DIR}/arch_packages.txt"
+declare -rx X11_LIST="${PACKAGE_DIR}/arch_packages_x11.txt"
+declare -rx WAYLAND_LIST="${PACKAGE_DIR}/arch_packages_wayland.txt"
 declare -rx LINUX_PYTHON_PACKAGE_LIST="${PACKAGE_DIR}/linux_python3_packages.txt"
 
 # set zsh as shell
@@ -35,13 +37,29 @@ done
 install_go_cmds || exit $?
 
 # paru/pacman to install packages from arch repos
-echo "Checking ~/.config/yadm/package_lists/arch_packages.txt for any packages to install..."
+echo "Checking ~/.config/yadm/package_lists for any system packages to install..."
 # have to use for loop, while loop times out instantly
 for lib in $(spkglist "${PACKAGE_LIST}"); do
 	if [[ ! $(paru -Q "${lib}" 2>/dev/null) ]]; then # if package isn't installed
 		paru -S --noconfirm "${lib}"
 	fi
 done
+
+if [[ -n "$WAYLAND_DISPLAY" ]]; then
+	echo "Installing wayland packages..."
+	for lib in $(spkglist "${WAYLAND_LIST}"); do
+		if [[ ! $(paru -Q "${lib}" 2>/dev/null) ]]; then # if package isn't installed
+			paru -S --noconfirm "${lib}"
+		fi
+	done
+else
+	echo "Installing X11 packages..."
+	for lib in $(spkglist "${X11_LIST}"); do
+		if [[ ! $(paru -Q "${lib}" 2>/dev/null) ]]; then # if package isn't installed
+			paru -S --noconfirm "${lib}"
+		fi
+	done
+fi
 
 # install linux related python packages
 havecmd python3 || exit $?
