@@ -1,22 +1,21 @@
 # os
 
-swaylock
-swaybg
-swayidle
-rofi-lbonn-wayland-git
-brightnessctl
-pipewire
+gammastep
 hyprland-git
-xdg-desktop-portal-hyprland
+pipewire
+pipewire-pulse
 polkit-kde-agent
 qt5-wayland
 qt6-wayland
-wireplumber
-pipewire-pulse
-gammastep
+rofi-lbonn-wayland-git
+swaybg
+swayidle
+swaylock
 wev
-xorg-xwayland
+wireplumber
 wl-clipboard
+xdg-desktop-portal-hyprland
+xorg-xwayland
 
 auto-cpufreq  # for battery life
 otf-font-awesome  # for waybar

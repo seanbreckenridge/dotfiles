@@ -1,13 +1,12 @@
 # os
 
-exfat-utils
 arandr
 autorandr
 autotiling
+exfat-utils
 i3-wm
 i3blocks
 i3lock
-light
 network-manager-applet
 picom
 pipewire-alsa
@@ -21,12 +20,12 @@ xorg-xinput
 xorg-xmodmap
 xorg-xwininfo
 
+# utilities
+
 screenkey-git
 scrot
-
 w3m
 wezterm
-
 xclip
 xcolor
 xdotool
@@ -35,24 +34,24 @@ xorg-xwininfo
 xterm
 xvkbd
 
-
 # battery performance
 
 tlp
 tp_smapi
 acpi_call
 
+# applications
+
 gparted
 mupdf-gl
-
 robo3t-bin
 simplescreenrecorder
 snes9x-gtk
-
 thunar
 tor-browser
 vbam-wx
 zoom
 
+# fonts
 xorg-font-util
 xorg-fonts-encodings

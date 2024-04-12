@@ -1,6 +1,7 @@
 # os
 
 avahi
+brightnessctl
 cups
 cups-pdf
 dunst
@@ -12,8 +13,8 @@ pacman-contrib
 pipewire-pulse
 reflector
 restic
-wpa_supplicant
 wireless_tools
+wpa_supplicant
 
 # language support
 
@@ -71,7 +72,7 @@ tidy
 valgrind
 yarn
 
-# utils
+# utilities
 
 aspell
 aspell-en
@@ -213,17 +214,16 @@ sqlitebrowser
 
 # fonts
 
-ttf-ms-fonts
-ttf-ms-fonts
-noto-fonts
-noto-fonts-emoji
-noto-fonts-cjk
 adobe-source-han-sans-jp-fonts
+noto-fonts
+noto-fonts-cjk
+noto-fonts-emoji
 otf-ipafont
-ttf-hanazono
-ttf-freefont
-ttf-linux-libertine
-ttf-dejavu
-ttf-inconsolata
-ttf-ubuntu-font-family
 ttf-baekmuk
+ttf-dejavu
+ttf-freefont
+ttf-hanazono
+ttf-inconsolata
+ttf-linux-libertine
+ttf-ms-fonts
+ttf-ubuntu-font-family

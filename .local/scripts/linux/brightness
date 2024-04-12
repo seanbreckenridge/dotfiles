@@ -1,5 +1,4 @@
 #!/bin/sh
-# increases/decreases brightness and refreshes i3blocks
 # call like:
 # brightness up 5
 # brightness down 10
@@ -9,9 +8,9 @@ STEP="${2:-5}" # default to 5%
 
 case "${CMD}" in
 up)
-	light -A "${STEP}"
+	brightnessctl set "${STEP}%+"
 	;;
 down)
-	light -U "${STEP}"
+	brightnessctl set "${STEP}%-"
 	;;
 esac
