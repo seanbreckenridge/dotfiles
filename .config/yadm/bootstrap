@@ -258,7 +258,7 @@ mkdir -p "$HOME/.local/share/todotxt-addons/"
 clone-repos "$HOME/.config/clone-repos/todotxt-actions.yaml"
 
 # sync my personal todo actions
-make -f "$HOME/.local/scripts/todo-actions/Makefile"
+(cd ~/.local/scripts/todo-actions/ && make)
 
 echo "Generating completions..."
 zsh "$ZDOTDIR/generate_completion"
