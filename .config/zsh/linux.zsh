@@ -16,8 +16,8 @@ alias sysderrors='sudo systemctl --failed'
 # remove packages that aren't being used for anything
 alias list-orphans='pacman -Qtdq'
 alias remove-orphans='sudo pacman -Rns $(list-orphans)'
-# clear yay tar.gz cache
-alias yay-clear-cache='yay -Syu && yay -Sc'
+# clear paru tar.gz cache
+alias paru-clear-cache='paru -Syu && paru -Sc'
 alias rnm='sudo systemctl restart NetworkManager' # restart networkmanager
 
 clean-cache() {
@@ -25,6 +25,6 @@ clean-cache() {
 	pip cache purge
 	pipenv --clear
 	kondo ~/data ~/Pictures ~/Movies ~/Music ~/Documents ~/Downloads
-	yay && yay -Sc --noconfirm
+	paru && paru -Sc --noconfirm
 	du -h --summarize ~/.cache/yarn ~/.cache/pip ~/.npm 2>/dev/null | boxes
 }

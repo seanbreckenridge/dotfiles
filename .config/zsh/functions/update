@@ -3,14 +3,14 @@
 
 function update() {
 	wait-for-internet --text "(waiting for internet)"
-	echo "Updating system (pacman/yay/brew/termux) packages..."
+	echo "Updating system (pacman/brew/termux) packages..."
 	case "$ON_OS" in
 	mac*)
 		brew update && brew upgrade
 		brew upgrade --cask
 		;;
 	linux_arch*)
-		yay -Syu
+		paru -Syu
 		housekeeping-info
 		havecmd flatpak && flatpak update
 		;;
