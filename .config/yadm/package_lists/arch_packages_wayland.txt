@@ -1,7 +1,7 @@
 # os
 
 gammastep
-hyprland-git
+hyprland
 pipewire
 pipewire-pulse
 polkit-kde-agent
