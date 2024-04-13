@@ -13,7 +13,7 @@ kill_hanging_background_tasks() {
 
 trap 'kill_hanging_background_tasks' EXIT
 
-if [[ -n "$WAYLAND_DISPLAY" ]]; then
+if [[ -n "${WAYLAND_DISPLAY:-}" ]]; then
 	echo ~/.cache/guestbook-comments | entr -n pkill -RTMIN+1 waybar &
 	(find "${TTALLY_DATA_DIR}" -type f | entr -n ttally update-cache) &
 	(find "${TTALLY_DATA_DIR}" "${HPIDATA}/flipflop/" -type f | entr -n pkill -RTMIN+2 waybar) &
