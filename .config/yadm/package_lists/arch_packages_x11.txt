@@ -48,7 +48,6 @@ robo3t-bin
 simplescreenrecorder
 snes9x-gtk
 thunar
-tor-browser
 vbam-wx
 zoom
 

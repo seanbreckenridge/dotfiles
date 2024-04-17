@@ -1,3 +1,4 @@
+Pygments
 geopy
 idna
 ipdb
