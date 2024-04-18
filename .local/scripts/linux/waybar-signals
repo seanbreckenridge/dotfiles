@@ -1,0 +1,19 @@
+#!/usr/bin/env python3
+
+import os
+from jsonc_parser.parser import JsoncParser
+
+
+def main() -> None:
+    config_dir = os.environ.get("XDG_CONFIG_HOME", os.path.expanduser("~/.config"))
+    config_file = os.path.join(config_dir, "waybar/config.jsonc")
+    data = JsoncParser.parse_file(config_file)
+    for k, v in data.items():
+        if not isinstance(v, dict):
+            continue
+        if "signal" in v:
+            print(f"{k}={v['signal']}")
+
+
+if __name__ == "__main__":
+    main()

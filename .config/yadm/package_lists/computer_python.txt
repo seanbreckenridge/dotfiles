@@ -1,7 +1,8 @@
-# things I would only want to install on a computer, not on android -- they can't build
+# things I would only want to install on a computer
 pandas
 matplotlib
 numpy
 scipy
 orjson
 lxml[html_clean]
+jsonc-parser

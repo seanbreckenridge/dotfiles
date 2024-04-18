@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+chosen="${1?Usage: $0 <signal>}"
+signal="$(waybar-signals | grep -m1 "$chosen")"
+if [[ -z "$signal" ]]; then
+	echo "Invalid signal: $chosen" >&2
+	exit 1
+fi
+
+# split by '=' into name and value
+readarray -d= -t parts < <(printf '%s' "$signal")
+name="${parts[0]}"
+signal="${parts[1]}"
+
+pkill -RTMIN+"$signal" waybar
+printf "Refreshed %s (%d)\n" "$name" "$signal" >&2

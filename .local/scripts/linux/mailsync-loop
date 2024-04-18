@@ -18,20 +18,28 @@ while true; do
 	if pgrep -x neomutt; then
 		echo "Ignoring, neomutt is open..." >&2
 	else
-		evry 5 minutes -mailsync && {
-			wait-for-internet
-			printf '%s: Running mailsync...\n' "$(date)"
-			# ignore Junk system flags warning -- spams the log a bunch. --quiet doesn't stop it as it uses
-			# the error() function in isync instead of a warning which would be silenced by that...
-			# https://sourceforge.net/p/isync/mailman/isync-devel/thread/20191102164509.dxayakg3hrmozjnm%40carbon/#msg36798732
-			# seems apple as always is doing something non-standard and flagging with a Junk
-			# Flag message attribute when one doesn't exist according to the IETF standard
-			# https://datatracker.ietf.org/doc/html/rfc3501#section-2.3.2
-			mailsync 2>&1 | grep -v '^IMAP warning: unknown system flag \\Junk$' && {
-				rm -f "${HOME}/.cache/mailsync_warn" # remove warning file -- mailsync has been run recently
-				i3blocks-refresh-mk mail
+		{
+			evry 5 minutes -mailsync && {
+				wait-for-internet
+				printf '%s: Running mailsync...\n' "$(date)"
+				# ignore Junk system flags warning -- spams the log a bunch. --quiet doesn't stop it as it uses
+				# the error() function in isync instead of a warning which would be silenced by that...
+				# https://sourceforge.net/p/isync/mailman/isync-devel/thread/20191102164509.dxayakg3hrmozjnm%40carbon/#msg36798732
+				# seems apple as always is doing something non-standard and flagging with a Junk
+				# Flag message attribute when one doesn't exist according to the IETF standard
+				# https://datatracker.ietf.org/doc/html/rfc3501#section-2.3.2
+				if mailsync; then
+					rm -f "${HOME}/.cache/mailsync_warn" # remove warning file -- mailsync has been run recently
+					if pgrep -x i3blocks; then
+						i3blocks-refresh-mk mail
+					else
+						waybar-refresh-block mail
+					fi
+				else
+					echo "Failed to sync mail..." >&2
+				fi
 			}
-		}
+		} 2>&1 | grep -v '^IMAP warning: unknown system flag \\Junk$'
 	fi
 	sleep 1m
 done

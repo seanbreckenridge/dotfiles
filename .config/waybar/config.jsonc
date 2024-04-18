@@ -141,7 +141,7 @@
     },
     "pulseaudio": {
         // "scroll-step": 1, // %, can be a float
-        "format": "{volume}",
+        "format": "{icon} {volume}",
         "format-source": "{volume}% ",
         "format-source-muted": "",
         "format-icons": {
@@ -155,18 +155,6 @@
         },
         "on-click": "pamixer --toggle-mute"
     },
-    "custom/media": {
-        "format": "{icon} {}",
-        "return-type": "json",
-        "max-length": 40,
-        "format-icons": {
-            "spotify": "",
-            "default": "🎜"
-        },
-        "escape": true,
-        "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null" // Script in resources folder
-        // "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
-    },
     "custom/calcurse": {
         // run by b-calendar script
         "format": "{icon} {}",
@@ -176,7 +164,8 @@
         "exec": "b-calendar",
         "interval": 600,
         "on-click-right": "launch calcursed",
-        "on-click": "BLOCK_BUTTON=1 b-calendar"
+        "on-click": "BLOCK_BUTTON=1 b-calendar",
+        "signal": 5
     },
     "custom/mail": {
         // run by b-mail script
@@ -209,6 +198,7 @@
     "custom/reminders": {
         "format": "{}",
         "exec": "b-bgproc-hanging",
-        "interval": 60
+        "interval": 60,
+        "signal": 4
     }
 }
