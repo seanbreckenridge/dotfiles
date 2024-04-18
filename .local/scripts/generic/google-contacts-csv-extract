@@ -1,0 +1,84 @@
+#!/usr/bin/env python
+
+"""
+Cleans up the Google Contacts CSV export and extracts the Name, E-mail and Phone
+"""
+
+import typing
+import csv
+
+from pathlib import Path
+import click
+
+
+def _add_to_set(data: str, s: set[str]) -> None:
+    if data.strip():
+        s.add(data.strip())
+
+
+def _dedupe(data: set[str]) -> list[str]:
+    separators = [",", ":::"]
+    parts = set()
+    for d in data:
+        for sep in separators:
+            if sep in d:
+                for part in d.split(sep):
+                    parts.add(part.strip())
+                break
+        else:
+            parts.add(d.strip())
+
+    return list([d for d in parts if d])
+
+
+OutputFormat = typing.Literal["json", "abook"]
+
+
+class Contact(typing.NamedTuple):
+    name: str
+    emails: list[str]
+    phones: list[str]
+
+
+@click.command()
+@click.option(
+    "-o",
+    "--output-format",
+    type=click.Choice(typing.get_args(OutputFormat)),
+    default="json",
+)
+@click.argument(
+    "INPUT_CSV", type=click.Path(exists=True, path_type=Path), required=True
+)
+def main(input_csv: Path, output_format: OutputFormat) -> None:
+    with open(input_csv, "r") as f:
+        reader = csv.DictReader(f)
+        items = []
+        for row in reader:
+            name = row["Name"]
+            emails = set()
+            phones = set()
+            targets = ["E-mail", "Phone"]
+            for key, value in row.items():
+                for t in targets:
+                    if key.startswith(t) and key.endswith("Value"):
+                        _add_to_set(value, emails if t == "E-mail" else phones)
+
+            items.append(Contact(name, _dedupe(emails), _dedupe(phones)))
+
+        match output_format:
+            case "json":
+                import json
+
+                print(json.dumps([item._asdict() for item in items], indent=4))
+            case "abook":
+                for item in items:
+                    print("[]")
+                    print(f"name={item.name}")
+                    print(f"email={','.join(item.emails)}")
+                    print(f"phone={','.join(item.phones)}")
+                    print()
+
+
+if __name__ == "__main__":
+    main(prog_name="google-contacts-csv-extract")

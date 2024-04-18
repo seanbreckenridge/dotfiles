@@ -9,3 +9,8 @@ set mailcap_path = ~/.config/muttc/mailcap
 # uses urlscan to extract/rofi to prompt me
 macro index,pager \cb "<pipe-message> urlhandler<Enter>" "call urlhandler to extract URLs out of a message"
 macro attach,compose \cb "<pipe-entry> urlhandler<Enter>" "call urlhandler to extract URLs out of a message"
+
+# custom abook which stores stuff in ~/Documents/
+macro index,pager  a "<pipe-message>abookc --add-email<return>" "Add this sender to Abook"
+set query_command= "abookc --mutt-query '%s'"
+bind editor        <Tab> complete-query
