@@ -1,3 +1,3 @@
 SOURCE_DIR=~/.cache
-BACKUP_DIR="${HPIDATA}/doc/mysql_history"
+BACKUP_DIR="${HPIDATA}/doc/${ON_OS}/mysql_history"
 COPY_FILES="mysql_history"

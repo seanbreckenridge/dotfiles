@@ -1,3 +1,3 @@
 SOURCE_DIR=~/.cache
-BACKUP_DIR="${HPIDATA}/doc/node_repl"
+BACKUP_DIR="${HPIDATA}/doc/${ON_OS}/node_repl"
 COPY_FILES="node_repl_history"
