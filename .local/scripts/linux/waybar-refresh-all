@@ -1,4 +1,7 @@
 #!/usr/bin/env bash
 
-waybar-signals | cut -d'=' -f2 | while read -r signal; do pkill "-RTMIN+${signal}" waybar; done
+waybar-signals | cut -d'=' -f2 | while read -r signal; do
+	pkill "-RTMIN+${signal}" waybar &
+done
+wait
 notify "Refreshed all blocks"
