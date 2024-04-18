@@ -2,7 +2,8 @@
 chosen="${1?Usage: $0 <signal>}"
 signal="$(waybar-signals | grep -m1 "$chosen")"
 if [[ -z "$signal" ]]; then
-	echo "Invalid signal: $chosen" >&2
+	echo "Could not find signal for query: $chosen" >&2
+	printf "Known signals:\n%s\n" "$(waybar-signals)" >&2
 	exit 1
 fi
 

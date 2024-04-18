@@ -30,11 +30,7 @@ while true; do
 				# https://datatracker.ietf.org/doc/html/rfc3501#section-2.3.2
 				if mailsync; then
 					rm -f "${HOME}/.cache/mailsync_warn" # remove warning file -- mailsync has been run recently
-					if pgrep -x i3blocks; then
-						i3blocks-refresh-mk mail
-					else
-						waybar-refresh-block mail
-					fi
+					refresh-block mail
 				else
 					echo "Failed to sync mail..." >&2
 				fi

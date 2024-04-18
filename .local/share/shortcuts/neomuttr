@@ -1,9 +1,3 @@
 #!/bin/sh
-# neomutt and refresh the i3 block
-neomutt && {
-	if pgrep -x i3blocks; then
-		i3blocks-refresh-mk mail
-	else
-		waybar-refresh-block mail
-	fi
-}
+# neomutt and refresh my menu bar block
+neomutt && refresh-block mail

@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+BLOCK="${1?Block name required}"
+
+if pgrep -x i3blocks >/dev/null; then
+	i3blocks-refresh-mk "$BLOCK"
+else
+	waybar-refresh-block "$BLOCK"
+fi
