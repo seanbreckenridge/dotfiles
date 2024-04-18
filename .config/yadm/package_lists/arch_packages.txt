@@ -130,7 +130,7 @@ maim
 man-db
 mlocate
 moreutils
-neovim
+neovim-git
 net-tools
 newsboat
 nmap
