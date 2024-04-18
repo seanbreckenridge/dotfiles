@@ -29,7 +29,7 @@ cache() {
 BLOCK_SIGNAL="$(grep -m1 "${BLOCK_NAME} " <"${SIGNAL_CACHE}/cache" | cut -d' ' -f2)"
 
 if [[ -n "${BLOCK_SIGNAL}" ]]; then
-	pkill -RTMIN+"$BLOCK_SIGNAL" i3blocks || exit $?
+	pkill -RTMIN+"$BLOCK_SIGNAL" i3blocks
 	echo "Refreshed ${BLOCK_NAME}... (${BLOCK_SIGNAL})"
 else
 	printf 'Could not find block %s\n' "${BLOCK_NAME}"

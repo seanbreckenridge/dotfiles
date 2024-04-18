@@ -26,4 +26,4 @@ DURATION_PRETTY="$(jq -cr '.duration_pretty' <<<"$DURATION_PARSED")"
 reminder-sink silence add "$PICKED" -d "$DURATION_SECONDS"
 notify "reminder-sink" "Silenced $PICKED for $DURATION_PRETTY"
 
-refresh-block reminder-sin
+refresh-block reminder-sink

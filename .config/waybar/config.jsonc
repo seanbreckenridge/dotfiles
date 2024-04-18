@@ -197,8 +197,8 @@
     },
     "custom/reminders": {
         "format": "{}",
-        "exec": "b-bgproc-hanging",
-        "interval": 60,
+        "exec": "b-reminders",
+        "interval": 600,
         "signal": 4
     }
 }

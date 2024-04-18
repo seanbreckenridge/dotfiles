@@ -107,7 +107,7 @@ main-machine && {
 		ssh vultr ~/vps/bin/mnu update && mnu sync
 	}
 
-	evry 1 day -auto-mal-update && {
+	evry 3 days -auto-mal-update && {
 		auto-mal-update && rm -rvf "$(evry location -malexport_partial_update)"
 	}
 
@@ -154,9 +154,8 @@ main-machine && {
 
 	# run malexport update https://github.com/seanbreckenridge/malexport/
 	bash "${HPIDATA}/malexport.job"
-	evry 16 hours -malexport_partial_update && {
+	evry 1 day -malexport_partial_update && {
 		malexport_partial_update
-		# rm -vf "$(evry location -update-datafiles)"
 	}
 
 	# https://github.com/seanbreckenridge/my_feed
