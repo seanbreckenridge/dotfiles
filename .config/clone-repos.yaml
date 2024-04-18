@@ -9,6 +9,8 @@
   pip: install
 "https://github.com/seanbreckenridge/seanb-utils":
   postinstall: make install
+"https://github.com/seanbreckenridge/plaintext_playlist_py":
+  pip: install
 "https://github.com/seanbreckenridge/calcurse-load":
   pip: install
 "https://github.com/seanbreckenridge/oh-my-stars":
