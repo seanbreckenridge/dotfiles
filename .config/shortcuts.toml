@@ -417,7 +417,13 @@ exec i3-msg exec update-rss # update rss afterwards, to update menu bar icon
 [neomuttr]
 command='''
 # neomutt and refresh the i3 block
-neomutt && i3blocks-refresh-mk mail
+neomutt && {
+	if pgrep -x i3blocks; then
+		i3blocks-refresh-mk mail
+	else
+		waybar-refresh-block mail
+	fi
+}
 '''
 
 [alacritty-tmux]

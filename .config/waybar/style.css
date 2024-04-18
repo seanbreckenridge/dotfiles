@@ -1,20 +1,21 @@
 * {
-    /* `otf-font-awesome` is required to be installed for icons */
-    /* can find the name of the font with `fc-list | rg -i FontAwesome` */
-    font-family: 'Source Code Pro Medium', 'Font Awesome 6 Free Solid', Roboto, Helvetica, Arial, sans-serif;
-    font-size: 13px;
+  /* `otf-font-awesome` is required to be installed for icons */
+  /* can find the name of the font with `fc-list | rg -i FontAwesome` */
+  font-family: "Source Code Pro Medium", "Font Awesome 6 Free Solid", Roboto,
+    Helvetica, Arial, sans-serif;
+  font-size: 13px;
 }
 
 window#waybar {
-    background-color: rgba(43, 48, 59, 0.8);
-    border-bottom: 3px solid rgba(100, 114, 125, 0.5);
-    color: #ffffff;
-    transition-property: background-color;
-    transition-duration: .5s;
+  background-color: rgba(43, 48, 59, 0.8);
+  border-bottom: 3px solid rgba(100, 114, 125, 0.5);
+  color: #ffffff;
+  transition-property: background-color;
+  transition-duration: 0.5s;
 }
 
 window#waybar.hidden {
-    opacity: 0.2;
+  opacity: 0.2;
 }
 
 /*
@@ -27,46 +28,46 @@ window#waybar.solo {
 */
 
 window#waybar.chromium {
-    background-color: #000000;
-    border: none;
+  background-color: #000000;
+  border: none;
 }
 
 button {
-    /* Use box-shadow instead of border so the text isn't offset */
-    box-shadow: inset 0 -3px transparent;
-    /* Avoid rounded borders under each button name */
-    border: none;
-    border-radius: 0;
+  /* Use box-shadow instead of border so the text isn't offset */
+  box-shadow: inset 0 -3px transparent;
+  /* Avoid rounded borders under each button name */
+  border: none;
+  border-radius: 0;
 }
 
 /* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
 button:hover {
-    background: inherit;
-    box-shadow: inset 0 -3px #ffffff;
+  background: inherit;
+  box-shadow: inset 0 -3px #ffffff;
 }
 
 #workspaces button {
-    padding: 0 5px;
-    background-color: transparent;
-    color: #ffffff;
+  padding: 0 5px;
+  background-color: transparent;
+  color: #ffffff;
 }
 
 #workspaces button:hover {
-    background: rgba(0, 0, 0, 0.2);
+  background: rgba(0, 0, 0, 0.2);
 }
 
 #workspaces button.active {
-    background-color: #64727D;
-    box-shadow: inset 0 -3px #ffffff;
+  background-color: #64727d;
+  box-shadow: inset 0 -3px #ffffff;
 }
 
 #workspaces button.urgent {
-    background-color: #eb4d4b;
+  background-color: #eb4d4b;
 }
 
 #mode {
-    background-color: #64727D;
-    box-shadow: inset 0 -3px #ffffff;
+  background-color: #64727d;
+  box-shadow: inset 0 -3px #ffffff;
 }
 
 #clock,
@@ -88,93 +89,93 @@ button:hover {
 #mode,
 #idle_inhibitor,
 #scratchpad {
-    padding: 0 8px;
-    border-right: 1px solid rgba(100, 114, 125, 0.5);
-    color: #ffffff;
+  padding: 0 8px;
+  border-right: 1px solid rgba(100, 114, 125, 0.5);
+  color: #ffffff;
 }
 
 #window,
 #workspaces {
-    margin: 0 4px;
+  margin: 0 4px;
 }
 
 /* If workspaces is the leftmost module, omit left margin */
 .modules-left > widget:first-child > #workspaces {
-    margin-left: 0;
+  margin-left: 0;
 }
 
 /* If workspaces is the rightmost module, omit right margin */
 .modules-right > widget:last-child > #workspaces {
-    margin-right: 0;
+  margin-right: 0;
 }
 
 @keyframes blink {
-    to {
-        background-color: #ffffff;
-        color: #000000;
-    }
+  to {
+    background-color: #ffffff;
+    color: #000000;
+  }
 }
 
 /* Using steps() instead of linear as a timing function to limit cpu usage */
 #battery.critical:not(.charging) {
-    background-color: #f53c3c;
-    color: #ffffff;
-    animation-name: blink;
-    animation-duration: 0.5s;
-    animation-timing-function: steps(12);
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
+  background-color: #f53c3c;
+  color: #ffffff;
+  animation-name: blink;
+  animation-duration: 0.5s;
+  animation-timing-function: steps(12);
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
 }
 
 #power-profiles-daemon {
-    padding-right: 15px;
+  padding-right: 15px;
 }
 
 #power-profiles-daemon.performance {
-    background-color: #f53c3c;
-    color: #ffffff;
+  background-color: #f53c3c;
+  color: #ffffff;
 }
 
 #power-profiles-daemon.balanced {
-    background-color: #2980b9;
-    color: #ffffff;
+  background-color: #2980b9;
+  color: #ffffff;
 }
 
 #power-profiles-daemon.power-saver {
-    background-color: #2ecc71;
-    color: #000000;
+  background-color: #2ecc71;
+  color: #000000;
 }
 
 label:focus {
-    background-color: #000000;
+  background-color: #000000;
 }
 
 #custom-reminders {
-    padding: 0 6px;
+  padding: 0 6px;
 }
 
 #tray {
-    background-color: #2980b9;
+  background-color: #2980b9;
 }
 
 #tray > .passive {
-    -gtk-icon-effect: dim;
+  -gtk-icon-effect: dim;
 }
 
 #tray > .needs-attention {
-    -gtk-icon-effect: highlight;
-    background-color: #eb4d4b;
+  -gtk-icon-effect: highlight;
+  background-color: #eb4d4b;
 }
 
 #idle_inhibitor.activated {
-    background-color: #ecf0f1;
-    color: #2d3436;
+  background-color: #ecf0f1;
+  color: #2d3436;
 }
 
 #scratchpad {
-    background: rgba(0, 0, 0, 0.2);
+  background: rgba(0, 0, 0, 0.2);
 }
 
 #scratchpad.empty {
-	background-color: transparent;
+  background-color: transparent;
 }

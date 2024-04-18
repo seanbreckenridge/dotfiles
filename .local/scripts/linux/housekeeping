@@ -25,10 +25,6 @@ evry 3 days -backup_fish_server && vps_backup_server
 evry 1 day -reminders-notify && reminder-sink-notify
 evry 1 day -reminder-silence-prune && reminder-sink --debug silence reset --if-expired
 
-# make sure my pythonanywhere website doesn't expire:
-# https://github.com/seanbreckenridge/pythonanywhere-3-months
-evry 2 months -pythonanywhere && python3 -m pythonanywhere_3_months -c "$(which chromedriver)"
-
 # https://github.com/andreafrancia/trash-cli
 evry 1 week -empty-trash && {
 	dust ~/.local/share/Trash
@@ -56,30 +52,16 @@ evry 6 hours -google-drive && {
 	)
 }
 
-evry 1 day -backup-keepassdb && backup-keepass-db
-
-evry 1 day -update-projects && {
-	(cd "$REPOS/projects" && ./update && git status)
-}
-
-evry 1 week -sync-dbsentinel && {
-	(cd "$REPOS/dbsentinel" && ./scripts/sync_from_remote)
-}
-
-# https://github.com/seanbreckenridge/grouvee_export
-evry 2 months -grouvee-export && python3 -m grouvee_export export
-
 # refresh https://dev.twitch.tv/docs/api/
 # so that https://github.com/seanbreckenridge/twitchlive continues to work
 evry 2 months -twitch_cli && twitch token
 
-# update https://github.com/seanbreckenridge/mnu_gsheets
-evry 1 day -mnu && {
-	ssh vultr ~/vps/bin/mnu update && mnu sync
-}
-
-evry 1 day -auto-mal-update && {
-	auto-mal-update && rm -rvf "$(evry location -malexport_partial_update)"
+evry 2 hours -data-sync-conflicts && {
+	SYNC_CONFLICTS="$(find-sync-conflicts "$HPIDATA")"
+	[[ -n "$SYNC_CONFLICTS" ]] && {
+		echo "Sync conflicts in ~/data:"
+		echo "$SYNC_CONFLICTS"
+	}
 }
 
 # make sure all my music is mp3s
@@ -94,22 +76,8 @@ evry 1 day -plainplay-resolve && plainplay resolve
 evry 3 weeks -id3stuff && id3stuff -R
 evry 1 day -car-playlist && car-playlist
 
-# https://github.com/seanbreckenridge/albums
-# try to resolve releases to their collection URLs/refresh expired album data
-evry 1 week -discogs-update && {
-	(cd "$REPOS/albums" && ./update -r)
-}
+evry 1 day -backup-keepassdb && backup-keepass-db
 
-evry 2 hours -data-sync-conflicts && {
-	SYNC_CONFLICTS="$(find-sync-conflicts "$HPIDATA")"
-	[[ -n "$SYNC_CONFLICTS" ]] && {
-		echo "Sync conflicts in ~/data:"
-		echo "$SYNC_CONFLICTS"
-	}
-}
-
-# https://github.com/seanbreckenridge/HPI-personal/blob/master/scripts/backup-cubing
-backup-cubing
 # check for new formats in normalizing solves into a single schema
 # https://github.com/seanbreckenridge/scramble-history
 evry 1 day -check-scramble-history-formats && {
@@ -117,57 +85,94 @@ evry 1 day -check-scramble-history-formats && {
 	rifleman "$XDG_CONFIG_HOME/scramble_history/sourcemap.json"
 }
 
-# remove redundant backups, merge browser/mpv history
-# https://github.com/seanbreckenridge/bleanser
-evry 1 week -merge-browser-history && merge-browser-history
-evry 1 week -merge-mpv-history && merge-mpv-history
-evry 1 month -dedupe-ghexport && dedupe-ghexport --move-files
-evry 1 day -review-removed-dir && review-removed-dir
+main-machine && {
 
-# https://github.com/seanbreckenridge/HPI-personal/blob/master/scripts/mpv_clean_priv_frames
-evry 1 day -clean-mpv-priv-frames && {
-	echo 'Checking priv mpv frames...'
-	mpv-clean-priv-frames clean
+	# make sure my pythonanywhere website doesn't expire:
+	# https://github.com/seanbreckenridge/pythonanywhere-3-months
+	evry 2 months -pythonanywhere && python3 -m pythonanywhere_3_months -c "$(which chromedriver)"
+
+	evry 1 day -update-projects && {
+		(cd "$REPOS/projects" && ./update && git status)
+	}
+
+	evry 1 week -sync-dbsentinel && {
+		(cd "$REPOS/dbsentinel" && ./scripts/sync_from_remote)
+	}
+
+	# https://github.com/seanbreckenridge/grouvee_export
+	evry 2 months -grouvee-export && python3 -m grouvee_export export
+
+	# update https://github.com/seanbreckenridge/mnu_gsheets
+	evry 1 day -mnu && {
+		ssh vultr ~/vps/bin/mnu update && mnu sync
+	}
+
+	evry 1 day -auto-mal-update && {
+		auto-mal-update && rm -rvf "$(evry location -malexport_partial_update)"
+	}
+
+	# https://github.com/seanbreckenridge/albums
+	# try to resolve releases to their collection URLs/refresh expired album data
+	evry 1 week -discogs-update && {
+		(cd "$REPOS/albums" && ./update -r)
+	}
+
+	# https://github.com/seanbreckenridge/HPI-personal/blob/master/scripts/backup-cubing
+	backup-cubing
+
+	# remove redundant backups, merge browser/mpv history
+	# https://github.com/seanbreckenridge/bleanser
+	evry 1 week -merge-browser-history && merge-browser-history
+	evry 1 week -merge-mpv-history && merge-mpv-history
+	evry 1 month -dedupe-ghexport && dedupe-ghexport --move-files
+	evry 1 day -review-removed-dir && review-removed-dir
+
+	# https://github.com/seanbreckenridge/HPI-personal/blob/master/scripts/mpv_clean_priv_frames
+	evry 1 day -clean-mpv-priv-frames && {
+		echo 'Checking priv mpv frames...'
+		mpv-clean-priv-frames clean
+	}
+
+	# other random private jobs
+	bash "$HPIDATA/private.job"
+
+	BACKUP_FILE="${HOME}/.cache/restic-backup.lastrun"
+	restic-backup connected >/dev/null 2>&1 && DRIVE_CONNECTED=1 || DRIVE_CONNECTED=0
+	RUN_BACKUP=0
+	if [[ ! -e "$BACKUP_FILE" ]]; then
+		RUN_BACKUP=1
+	else
+		# if its been more than 7 days since the last backup, or its been more
+		# than 5 days and the drive is connected
+		file-modified-within "$BACKUP_FILE" 7 days 2>/dev/null || RUN_BACKUP=1
+	fi
+
+	if [[ "$RUN_BACKUP" -eq 1 ]] && [[ "$DRIVE_CONNECTED" -eq 1 ]]; then
+		figlet -f slant "Starting backup..." 2>/dev/null
+		restic-backup backup
+	fi
+
+	# run malexport update https://github.com/seanbreckenridge/malexport/
+	bash "${HPIDATA}/malexport.job"
+	evry 16 hours -malexport_partial_update && {
+		malexport_partial_update
+		# rm -vf "$(evry location -update-datafiles)"
+	}
+
+	# https://github.com/seanbreckenridge/my_feed
+	# once a week, re-index to update any scores/metadata I've updated
+	if evry 1 week -my-feed-re-index; then
+		FEED_REINDEX=1 "${REPOS}/my_feed/index"
+	else
+		# if we didn't just re-index, do a regular index
+		evry 1 day -my-feed-index && "${REPOS}/my_feed/index"
+		# evry 6 hours -timezone-has-changed && timezone-has-changed && {
+		# 	# shellcheck disable=SC2016
+		# 	notify 'Timezone has changed, should run timedatectl set-timezone "$(current-timezone)"'
+		# }
+	fi
+
 }
-
-# other random private jobs
-bash "$HPIDATA/private.job"
-
-BACKUP_FILE="${HOME}/.cache/restic-backup.lastrun"
-restic-backup connected >/dev/null 2>&1 && DRIVE_CONNECTED=1 || DRIVE_CONNECTED=0
-RUN_BACKUP=0
-if [[ ! -e "$BACKUP_FILE" ]]; then
-	RUN_BACKUP=1
-else
-	# if its been more than 7 days since the last backup, or its been more
-	# than 5 days and the drive is connected
-	file-modified-within "$BACKUP_FILE" 7 days 2>/dev/null || RUN_BACKUP=1
-fi
-
-if [[ "$RUN_BACKUP" -eq 1 ]] && [[ "$DRIVE_CONNECTED" -eq 1 ]]; then
-	figlet -f slant "Starting backup..." 2>/dev/null
-	restic-backup backup
-fi
-
-# run malexport update https://github.com/seanbreckenridge/malexport/
-bash "${HPIDATA}/malexport.job"
-evry 16 hours -malexport_partial_update && {
-	malexport_partial_update
-	# rm -vf "$(evry location -update-datafiles)"
-}
-
-# https://github.com/seanbreckenridge/my_feed
-# once a week, re-index to update any scores/metadata I've updated
-if evry 1 week -my-feed-re-index; then
-	FEED_REINDEX=1 "${REPOS}/my_feed/index"
-else
-	# if we didn't just re-index, do a regular index
-	evry 1 day -my-feed-index && "${REPOS}/my_feed/index"
-	# evry 6 hours -timezone-has-changed && timezone-has-changed && {
-	# 	# shellcheck disable=SC2016
-	# 	notify 'Timezone has changed, should run timedatectl set-timezone "$(current-timezone)"'
-	# }
-fi
 
 touch ~/.cache/housekeeping.lastrun
 true
