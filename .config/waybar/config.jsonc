@@ -16,6 +16,7 @@
         "custom/reminder-sink",
         "custom/comments",
         "custom/calcurse",
+        "custom/mail",
         "network",
         "battery",
         "clock",
@@ -176,6 +177,14 @@
         "interval": 600,
         "on-click-right": "launch calcursed",
         "on-click": "BLOCK_BUTTON=1 b-calendar"
+    },
+    "custom/mail": {
+        // run by b-mail script
+        "format": "{}",
+        "exec": "b-mail",
+        "interval": 600,
+        "on-click": "launch neomutt",
+        "signal": 3
     },
     "custom/comments": {
         "format": "{icon} {}",
