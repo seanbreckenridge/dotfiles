@@ -1,5 +1,5 @@
 "https://git.sr.ht/~proycon/todotxt-more":
-  base: ~/.local/share/todotxt-addons
+  base: ~/.cache/todotxt-addons/
   preinstall: git pull
   postinstall:
     - pip install -r ./requirements.txt
