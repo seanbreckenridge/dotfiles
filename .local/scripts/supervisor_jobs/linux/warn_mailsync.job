@@ -12,5 +12,5 @@ evry 10 minutes -warn_mailsync && {
 	else
 		touch "${MAILSYNC_WARN_FILE}"
 	fi
-	i3blocks-refresh-mk mail
+	refresh-block mail
 }
