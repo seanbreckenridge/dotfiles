@@ -1,3 +1,0 @@
-SOURCE_DIR=~/.local/share/eva
-BACKUP_DIR="${HPIDATA}/doc/${ON_OS}/eva_history"
-COPY_FILES="history.txt"
