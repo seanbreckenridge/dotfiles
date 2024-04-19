@@ -13,6 +13,7 @@ pipewire-alsa
 redshift
 udiskie
 udisks2
+ueberzug
 unclutter
 xorg-server
 xorg-xev
