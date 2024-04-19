@@ -2,15 +2,14 @@
 
 gammastep
 hyprland
+hyprlock
+swaybg
 pipewire
 pipewire-pulse
 polkit-kde-agent
 qt5-wayland
 qt6-wayland
 rofi-lbonn-wayland-git
-swaybg
-swayidle
-swaylock
 wev
 wireplumber
 wl-clipboard

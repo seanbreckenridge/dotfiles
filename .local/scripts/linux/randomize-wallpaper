@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
-if [[ "$1" == "wayland" ]]; then
+if havecmd swaybg; then
 	random_wallpaper="$(find "$FILES_DIR/wallpapers" -type f | shuf -n 1)"
-	swaymsg output '*' bg "$random_wallpaper" fill
+	oldid="$(pgrep swaybg)"
+	setsid -f swaybg -i "$random_wallpaper" -m fill
+	kill "$oldid"
 else
 	# Randomize the wallpaper using feh
 	exec feh --randomize --bg-fill --no-fehbg "${FILES_DIR}/wallpapers"
