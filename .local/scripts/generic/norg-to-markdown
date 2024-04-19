@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+# converts neorg file to markdown
+# https://github.com/nvim-neorg/neorg
+
+FILENAME="${1?Error: No filename given}"
+FULL_PATH="$(realpath "$FILENAME")"
+TARGET="$(replace-extension "$FULL_PATH" md)"
+
+GIT_DIR="$XDG_CACHE_HOME/norg-pandoc"
+
+if [[ ! -d "$GIT_DIR" ]]; then
+	git clone https://github.com/boltlessengineer/norg-pandoc "$GIT_DIR" || exit 1
+fi
+
+cd "$GIT_DIR" || exit 1
+exec pandoc --from ./init.lua --to gfm "$FULL_PATH" -o "$TARGET"

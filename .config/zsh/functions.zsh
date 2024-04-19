@@ -54,12 +54,6 @@ bindkey -s '^G' "R --cmd='chain set show_hidden true; fzf_select_hidden'^M"
 # Alt+R to launch ranger (file manager) (aliased to 'R')
 bindkey -s '^[r' '^uR^M'
 
-#  open ranger inside nvim using rnvimr
-function E() {
-	editor "$@" '+RnvimrToggle'
-}
-bindkey -s '^[e' '^uE^M'
-
 # Alt+F to rg-nvim
 f-rg-nvim() {
 	rg-nvim "$@"
