@@ -12,4 +12,3 @@ python-language-server
 python-xlib
 thefuck
 twine
-ueberzug
