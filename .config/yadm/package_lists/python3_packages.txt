@@ -1,5 +1,6 @@
 Pygments
 geopy
+giturlparse
 idna
 ipdb
 ipython
