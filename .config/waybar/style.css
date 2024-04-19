@@ -154,6 +154,12 @@ label:focus {
   padding: 0 6px;
 }
 
+#custom-mail {
+  /* incrase kerning*/
+  letter-spacing: 3px;
+  padding: 0 8px;
+}
+
 #tray {
   background-color: #2980b9;
 }
