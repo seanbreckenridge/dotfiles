@@ -8,6 +8,9 @@ windows* | android*)
 	;;
 esac
 
+havecmd promneisa || exit 0
+
+
 evry 1 day -promnesia_index && {
 	# source environment variables that may be needed (e.g. ipinfo token)
 	printlog "promnesia_index:running index..."
