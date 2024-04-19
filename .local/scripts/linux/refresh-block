@@ -3,6 +3,6 @@ BLOCK="${1?Block name required}"
 
 if pgrep -x i3blocks >/dev/null; then
 	i3blocks-refresh-mk "$BLOCK"
-else
+elif pgrep -x waybar >/dev/null; then
 	waybar-refresh-block "$BLOCK"
 fi
