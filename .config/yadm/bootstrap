@@ -255,20 +255,21 @@ TARGET="${XDG_CONFIG_HOME}/ranger/preview.rc"
 case "$ON_OS" in
 android*)
 	# dont think there's any way to do this right now
-	echo >"${TARGET}"
+	echo 'set preview_images false' >"${TARGET}"
 	;;
 linux_arch*)
+	echo 'set preview_images true' >"${TARGET}"
 	if [[ "$TERM" == xterm-kitty ]]; then
 		# use kitty to preview images
-		echo 'set preview_images_method kitty' >"${TARGET}"
+		echo 'set preview_images_method kitty' >>"${TARGET}"
 	else
 		# use ueberzug to preview images
-		echo 'set preview_images_method ueberzug' >"${TARGET}"
+		echo 'set preview_images_method ueberzug' >>"${TARGET}"
 	fi
 	;;
 *)
 	# fallback to w3m?
-	echo 'set preview_images_method w3m' >"${TARGET}"
+	echo -e 'set preview_images true\nset preview_images_method w3m' >"${TARGET}"
 	;;
 esac
 
