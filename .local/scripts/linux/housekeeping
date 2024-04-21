@@ -157,21 +157,19 @@ main-machine && {
 	evry 1 day -malexport_partial_update && {
 		malexport_partial_update
 	}
-
-	# https://github.com/seanbreckenridge/my_feed
-	# once a week, re-index to update any scores/metadata I've updated
-	if evry 1 week -my-feed-re-index; then
-		FEED_REINDEX=1 "${REPOS}/my_feed/index"
-	else
-		# if we didn't just re-index, do a regular index
-		evry 1 day -my-feed-index && "${REPOS}/my_feed/index"
-		# evry 6 hours -timezone-has-changed && timezone-has-changed && {
-		# 	# shellcheck disable=SC2016
-		# 	notify 'Timezone has changed, should run timedatectl set-timezone "$(current-timezone)"'
-		# }
-	fi
-
 }
+
+# https://github.com/seanbreckenridge/my_feed
+# once a week, re-index to update any scores/metadata I've updated
+if evry 1 week -my-feed-re-index; then
+	FEED_REINDEX=1 "${REPOS}/my_feed/index"
+else
+	evry 1 day -my-feed-index && "${REPOS}/my_feed/index"
+	# evry 6 hours -timezone-has-changed && timezone-has-changed && {
+	# 	# shellcheck disable=SC2016
+	# 	notify 'Timezone has changed, should run timedatectl set-timezone "$(current-timezone)"'
+	# }
+fi
 
 touch ~/.cache/housekeeping.lastrun
 true
