@@ -33,13 +33,45 @@ run_watcher() {
 
 }
 
+prunefiles() {
+	set -x
+	(
+		cd "${datadir}" || exit $?
+		pwd
+	# delete anything in the data dir that is older than 45 days
+		find . -type f -mtime +45 -exec mv -v -t ~/.cache/removed {} \;
+	)
+}
+
 syncfiles() {
+	set -x
 	rsync -Pavh "${datadir}"/ "$(backup_to window_watcher)"
+}
+
+compress() {
+	set -x
+	(
+		cd "$(backup_to window_watcher)" || exit $?
+		pwd
+	  find . -name '*.csv' -mtime +90 -exec gzip --best {} \;
+	)
+	
 }
 
 case "$1" in
 run)
 	run_watcher
+	;;
+tasks)
+	syncfiles
+	prunefiles
+	compress
+	;;
+compress)
+	compress
+	;;
+prune)
+	prunefiles
 	;;
 sync)
 	syncfiles

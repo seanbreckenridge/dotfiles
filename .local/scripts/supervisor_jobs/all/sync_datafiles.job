@@ -7,7 +7,7 @@
 evry 1 hour -sync-window-watcher && {
 	FROM="${HOME}/.local/share/window_watcher"
 	[[ -e "${FROM}" ]] || exit 0
-	run_window_watcher sync || send-error 'couldnt sync window_watcher files'
+	run_window_watcher tasks || send-error 'couldnt sync window_watcher files'
 }
 
 evry 1 hour -sync-ttt && {
