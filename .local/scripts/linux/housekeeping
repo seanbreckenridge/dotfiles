@@ -85,7 +85,7 @@ evry 1 day -check-scramble-history-formats && {
 	rifleman "$XDG_CONFIG_HOME/scramble_history/sourcemap.json"
 }
 
-main-machine && {
+if main-machine; then
 
 	# make sure my pythonanywhere website doesn't expire:
 	# https://github.com/seanbreckenridge/pythonanywhere-3-months
@@ -105,10 +105,6 @@ main-machine && {
 	# update https://github.com/seanbreckenridge/mnu_gsheets
 	evry 1 day -mnu && {
 		ssh vultr ~/vps/bin/mnu update && mnu sync
-	}
-
-	evry 3 days -auto-mal-update && {
-		auto-mal-update && rm -rvf "$(evry location -malexport_partial_update)"
 	}
 
 	# https://github.com/seanbreckenridge/albums
@@ -152,12 +148,16 @@ main-machine && {
 		restic-backup backup
 	fi
 
+else
+	evry 3 days -auto-mal-update && {
+		auto-mal-update && rm -rvf "$(evry location -malexport_partial_update)"
+	}
 	# run malexport update https://github.com/seanbreckenridge/malexport/
 	bash "${HPIDATA}/malexport.job"
 	evry 1 day -malexport_partial_update && {
 		malexport_partial_update
 	}
-}
+fi
 
 # https://github.com/seanbreckenridge/my_feed
 # once a week, re-index to update any scores/metadata I've updated

@@ -25,7 +25,12 @@ run_watcher() {
 	sleep 5
 	mkdir -p "$datadir"
 
-	exec window_watcher -d "$(timestamp_filename)" -p 3 -i 'Private Browsing'
+	if pgrep -x Hyprland; then
+		exec hyprland-active-window -d "$(timestamp_filename)" -i 'Private Browsing'
+	else
+		exec window_watcher -d "$(timestamp_filename)" -p 3 -i 'Private Browsing'
+	fi
+
 }
 
 syncfiles() {
