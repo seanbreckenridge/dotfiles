@@ -1,10 +1,10 @@
 # lazy load shell tools that otherwise
 # cause a bunch of lag on start up
 
-fuck() {
-	eval $(thefuck --alias) # redefines the function
-	fuck "$@"
-}
+# fuck() {
+# 	eval $(thefuck --alias) # redefines the function
+# 	fuck "$@"
+# }
 
 nvm() {
 	unset NPM_CONFIG_PREFIX
