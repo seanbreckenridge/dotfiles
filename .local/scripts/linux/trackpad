@@ -10,7 +10,7 @@
 # calling without any options toggles the trackpad
 
 # remove '~ ' from the beginning of the line if its there
-tpad_name="$(xinput list --name-only | grep -i 'touchpad' | sed -E -e 's/^.\s*//g')"
+tpad_name="$(xinput list --name-only | grep -i 'touchpad' | sed -E -e 's/^[^A-Za-z]\s*//g')"
 # ~/.cache/trackpad exists if the trackpad is enabled
 cache_file="${HOME}/.cache/trackpad"
 
