@@ -38,7 +38,7 @@ prunefiles() {
 	(
 		cd "${datadir}" || exit $?
 		pwd
-	# delete anything in the data dir that is older than 45 days
+		# delete anything in the data dir that is older than 45 days
 		find . -type f -mtime +45 -exec mv -v -t ~/.cache/removed {} \;
 	)
 }
@@ -53,9 +53,9 @@ compress() {
 	(
 		cd "$(backup_to window_watcher)" || exit $?
 		pwd
-	  find . -name '*.csv' -mtime +90 -exec gzip --best {} \;
+		find . -name '*.csv' -mtime +90 -exec gzip --best {} \;
 	)
-	
+
 }
 
 case "$1" in
