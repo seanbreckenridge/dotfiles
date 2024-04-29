@@ -16,6 +16,7 @@
         "custom/reminder-sink",
         "custom/comments",
         "custom/calcurse",
+        "custom/todo",
         "custom/mail",
         "network",
         "battery",
@@ -200,5 +201,14 @@
         "exec": "b-reminders",
         "interval": 600,
         "signal": 4
+    },
+    "custom/todo": {
+        "format": "{icon} {}",
+        "exec": "b-todo",
+        "interval": 600,
+        "signal": 6,
+        "format-icons": {
+            "default": ""
+        }
     }
 }
