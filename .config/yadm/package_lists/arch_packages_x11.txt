@@ -2,7 +2,7 @@
 
 arandr
 autorandr
-autotiling
+autotiling-git
 exfat-utils
 i3-wm
 i3blocks
