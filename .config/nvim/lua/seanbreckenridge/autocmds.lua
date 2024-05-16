@@ -41,7 +41,7 @@ vim.api.nvim_create_autocmd({"BufRead", "BufNewFile"}, {
 
 vim.api.nvim_create_autocmd({"BufRead", "BufNewFile"}, {
     group = ft_grp,
-    pattern = {"todo.txt", "done.txt", "bookmarks.txt"},
+    pattern = {"todo.txt", "done.txt"},
     -- set filetype to todotxt
     callback = function(_) vim.bo.filetype = "todotxt" end
 })

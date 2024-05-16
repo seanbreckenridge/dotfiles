@@ -7,7 +7,9 @@ return {
     },
     build = ':TSUpdate',
     config = function()
-        require'nvim-treesitter.configs'.setup {
+        -- Prefer git instead of curl in order to improve connectivity in some environments
+        require('nvim-treesitter.install').prefer_git = true
+        require('nvim-treesitter.configs').setup {
             modules = {},
             ignore_install = {},
             sync_install = false,

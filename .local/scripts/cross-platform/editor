@@ -3,7 +3,7 @@
 set -e
 
 if (($# == 0)); then
-	exec ttt nvim +Oil
+	exec ttt nvim
 else
 	# if the first argument is a directory and there are no other arguments
 	# then open the directory in the vim file explorer

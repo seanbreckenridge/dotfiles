@@ -1,6 +1,10 @@
 return {
-    {'junegunn/goyo.vim', cmd = "Goyo"},
-    -- colorscheme, 1000 makes things load early
+    {
+        'folke/zen-mode.nvim',
+        dependencies = {'folke/twilight.nvim'},
+        cmd = "ZenMode",
+        opts = {}
+    }, -- colorscheme, 1000 makes things load early
     {
         "catppuccin/nvim",
         name = "catppuccin",
@@ -15,5 +19,5 @@ return {
         priority = 1000,
         dependencies = {'nvim-tree/nvim-web-devicons'},
         opts = {options = {theme = 'dracula'}}
-    }
+    }, {'j-hui/fidget.nvim', event = "LspAttach", opts = {}}
 }
