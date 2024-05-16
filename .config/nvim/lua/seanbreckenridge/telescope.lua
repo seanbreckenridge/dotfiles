@@ -48,7 +48,7 @@ function M.grep_help()
 end
 
 function M.repo_bases()
-    -- cache/roots.txt gets populated by a bgproc job
+    -- cache/repo_bases.txt gets populated by a bgproc job
     -- https://sean.fish/d/cached_repo_bases.job?dark
     local cache_dir = os.getenv('XDG_CACHE_HOME')
     local cache_file = cache_dir .. '/repo_bases.txt'

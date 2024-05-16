@@ -1,6 +1,6 @@
 local wk = require('which-key')
 
--- project/config mappings
+-- config/repo mappings
 -- seanbreckenridge (personal functions/plugins)
 wk.register({
     -- can change this to a different prefix if something ever conflicts
@@ -25,7 +25,6 @@ wk.register({
                 }
             end, 'switch repo'
         },
-        -- p = {'<cmd>:Telescope projects<CR>', 'switch projects'},
         -- mnemonic 'cd' binding
         d = {
             function()
@@ -175,7 +174,6 @@ return {
 
         tl.load_extension('fzf') -- native fzf
         tl.load_extension('repo')
-        tl.load_extension('projects')
         tl.load_extension('notify')
     end
 }

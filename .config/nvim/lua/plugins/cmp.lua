@@ -56,7 +56,8 @@ return {
                         nvim_lsp = "[lsp]",
                         nvim_lua = "[lua]",
                         path = "[path]",
-                        luasnip = "[snip]"
+                        luasnip = "[snip]",
+                        emoji = "[emoji]"
                     }
                 }
             },
