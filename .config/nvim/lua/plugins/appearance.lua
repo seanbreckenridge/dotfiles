@@ -4,10 +4,10 @@ return {
         dependencies = {'folke/twilight.nvim'},
         cmd = "ZenMode",
         opts = {}
-    }, -- colorscheme, 1000 makes things load early
-    {
+    }, {
         "catppuccin/nvim",
         name = "catppuccin",
+        -- colorscheme, 1000 makes things load early
         priority = 1000,
         config = function()
             local clr = require 'seanbreckenridge.colorscheme'
