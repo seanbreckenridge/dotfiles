@@ -44,7 +44,7 @@ vim.opt.winblend = 10
 -- searching
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
-vim.opt.showmatch = true
+vim.opt.showmatch = false -- I don't like the cursor jumping back, is distracting. also looks strange with ghosttext
 
 -- spacing/tabs/newlines
 vim.opt.list = true

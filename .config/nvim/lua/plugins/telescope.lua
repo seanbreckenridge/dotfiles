@@ -25,7 +25,7 @@ wk.register({
                 }
             end, 'switch repo'
         },
-        p = {'<cmd>:Telescope projects<CR>', 'switch projects'},
+        -- p = {'<cmd>:Telescope projects<CR>', 'switch projects'},
         -- mnemonic 'cd' binding
         d = {
             function()
@@ -96,7 +96,7 @@ wk.register({
 
 return {
     'nvim-telescope/telescope.nvim',
-    tag = '0.1.2',
+    tag = '0.1.6',
     dependencies = {
         'nvim-lua/plenary.nvim',
         {
@@ -177,6 +177,5 @@ return {
         tl.load_extension('repo')
         tl.load_extension('projects')
         tl.load_extension('notify')
-        -- TODO: try https://github.com/pwntester/octo.nvim
     end
 }

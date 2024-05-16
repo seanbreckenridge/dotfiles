@@ -34,7 +34,7 @@ def main(output_type: OutputType, file: Path) -> None:
     for section in config.sections():
         data[section] = dict(config.items(section))
 
-    assert "format" in data
+    assert "format" in data, f"format section not found in {data}"
     format = data.pop("format")
 
     has_sort_key = []
