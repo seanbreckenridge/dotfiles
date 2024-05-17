@@ -27,9 +27,6 @@ return {
         table.insert(runtime_path, "lua/?.lua")
         table.insert(runtime_path, "lua/?/init.lua")
 
-        -- check if we have elixir-ls installed
-        local elixir_ls_bin = vim.fn.exepath("elixir-ls")
-
         local servers = {
             jsonls = true,
             pyright = {flags = {debounce_text_changes = 100}},
@@ -52,6 +49,8 @@ return {
         }
         -- disable some LSPs on android
         if not vim.g.on_android then
+            -- find elixir-ls binary
+            local elixir_ls_bin = vim.fn.exepath("elixir-ls")
             if elixir_ls_bin ~= nil then
                 servers.elixirls = {cmd = {elixir_ls_bin}}
             end
