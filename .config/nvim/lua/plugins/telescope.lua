@@ -95,7 +95,7 @@ wk.register({
 
 return {
     'nvim-telescope/telescope.nvim',
-    commit = '52f5001',
+    commit = '33f04c3',
     dependencies = {
         'nvim-lua/plenary.nvim',
         {

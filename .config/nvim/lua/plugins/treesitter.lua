@@ -1,8 +1,8 @@
 return {
     'nvim-treesitter/nvim-treesitter',
     dependencies = {
-        -- 'nvim-treesitter/nvim-treesitter-context',
-        'nvim-treesitter/nvim-treesitter-textobjects',
+        'nvim-treesitter/nvim-treesitter-context',
+        -- 'nvim-treesitter/nvim-treesitter-textobjects',
         'JoosepAlviste/nvim-ts-context-commentstring', 'windwp/nvim-ts-autotag'
     },
     build = ':TSUpdate',
@@ -80,5 +80,16 @@ return {
                 filetypes = {'html', 'javascript', 'typescript'}
             }
         }
+
+        local ctx_group = vim.api.nvim_create_augroup("disable-context",
+                                                      {clear = true})
+        vim.api.nvim_create_autocmd("FileType", {
+            pattern = {"markdown"},
+            group = ctx_group,
+            ---@diagnostic disable-next-line: unused-local
+            callback = function(ev)
+                require("treesitter-context").disable()
+            end
+        })
     end
 }
