@@ -32,21 +32,9 @@ return {
 
         local servers = {
             jsonls = true,
-            cssls = true,
-            html = true,
-            eslint = true,
-            cssmodules_ls = true,
-            tailwindcss = true,
-            tsserver = true,
-            prismals = true,
-            astro = true,
             pyright = {flags = {debounce_text_changes = 100}},
             yamlls = {settings = {yaml = {keyOrdering = false}}},
-            clangd = true,
             bashls = true,
-            gopls = true,
-            ocamllsp = true,
-            rust_analyzer = true,
             lua_ls = {
                 settings = {
                     Lua = {
@@ -62,7 +50,24 @@ return {
                 }
             }
         }
-        if elixir_ls_bin then servers.elixirls = {cmd = {elixir_ls_bin}} end
+        -- disable some LSPs on android
+        if vim.split(vim.g.on_os, "_")[1] ~= "android" then
+            if elixir_ls_bin ~= nil then
+                servers.elixirls = {cmd = {elixir_ls_bin}}
+            end
+            servers.clangd = true
+            servers.gopls = true
+            servers.ocamllsp = true
+            servers.rust_analyzer = true
+            servers.cssls = true
+            servers.html = true
+            servers.eslint = true
+            servers.cssmodules_ls = true
+            servers.tailwindcss = true
+            servers.tsserver = true
+            servers.prismals = true
+            servers.astro = true
+        end
 
         for server, config in pairs(servers) do
             if config == true then
