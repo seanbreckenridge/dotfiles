@@ -51,7 +51,7 @@ return {
             }
         }
         -- disable some LSPs on android
-        if vim.split(vim.g.on_os, "_")[1] ~= "android" then
+        if not vim.g.on_android then
             if elixir_ls_bin ~= nil then
                 servers.elixirls = {cmd = {elixir_ls_bin}}
             end

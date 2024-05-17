@@ -6,6 +6,7 @@ return {
         'typescript', 'javascript', 'typescriptreact', 'javascriptreact',
         'typescriptreact'
     },
+    lazy = not vim.g.on_android, -- only load if on android, on an old version of nvim
     dependencies = {'JoosepAlviste/nvim-ts-context-commentstring'},
     config = function()
         require('ts_context_commentstring').setup {enable_autocmd = false}
