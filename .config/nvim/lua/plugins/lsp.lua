@@ -175,19 +175,21 @@ return {
                     K = {ShowDocumentation, "show documentation"}
                 })
                 local client = vim.lsp.get_client_by_id(event.data.client_id)
-                if client and client.server_capabilities.inlayHintProvider and
-                    vim.lsp.inlay_hint then
-                    wk.register({
-                        ['ft'] = {
-                            function()
-                                vim.lsp.inlay_hint.enable(
-                                    not vim.lsp.inlay_hint.is_enabled({}))
-                            end, "toggle inlay hints"
-                        }
-                    }, {prefix = "<leader>"})
-                    -- toggle on by default, for now
-                    vim.lsp.inlay_hint.enable(true)
-                end
+                -- BUG: hmm... doesn't actually seem to display for me
+                --
+                -- if client and vim.lsp.inlay_hint and
+                --     client.supports_method('textDocument/inlayHint') then
+                --     wk.register({
+                --         ['ft'] = {
+                --             function()
+                --                 vim.lsp.inlay_hint.enable(
+                --                     not vim.lsp.inlay_hint.is_enabled({}))
+                --             end, "toggle inlay hints"
+                --         }
+                --     }, {prefix = "<leader>"})
+                --     -- toggle on by default, for now
+                --     vim.lsp.inlay_hint.enable(true)
+                -- end
 
             end
         })
