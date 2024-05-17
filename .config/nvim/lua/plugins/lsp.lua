@@ -45,7 +45,6 @@ return {
             clangd = true,
             bashls = true,
             gopls = true,
-            elixirls = {cmd = {elixir_ls_bin}},
             ocamllsp = true,
             rust_analyzer = true,
             lua_ls = {
@@ -63,6 +62,7 @@ return {
                 }
             }
         }
+        if elixir_ls_bin then servers.elixirls = {cmd = {elixir_ls_bin}} end
 
         for server, config in pairs(servers) do
             if config == true then
