@@ -22,90 +22,57 @@ return {
 
         -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
         local lspconf = require("lspconfig")
-
-        -- web stuff
-        lspconf.jsonls.setup {capabilities = capabilities}
-        lspconf.cssls.setup {capabilities = capabilities}
-        lspconf.html.setup {capabilities = capabilities}
-        lspconf.eslint.setup {capabilities = capabilities}
-        lspconf.cssmodules_ls.setup {capabilities = capabilities}
-        lspconf.tailwindcss.setup {capabilities = capabilities}
-        lspconf.tsserver.setup {capabilities = capabilities}
-        lspconf.prismals.setup {capabilities = capabilities}
-        lspconf.astro.setup {capabilities = capabilities}
-
-        -- python
-        -- https://github.com/microsoft/pyright/blob/main/docs/configuration.md
-        lspconf.pyright.setup {
-            capabilities = capabilities,
-            flags = {debounce_text_changes = 100}
-        }
-
-        -- yaml
-        lspconf.yamlls.setup {
-            capabilities = capabilities,
-            settings = {yaml = {keyOrdering = false}}
-        }
-
-        -- c/c++
-        lspconf.clangd.setup {capabilities = capabilities}
-
-        -- shell
-        lspconf.bashls.setup {capabilities = capabilities}
-
-        -- golang
-        lspconf.gopls.setup {capabilities = capabilities}
-
-        -- elixir
-        local elixir_ls_bin = vim.fn.exepath("elixir-ls")
-        if elixir_ls_bin ~= "" then
-            lspconf.elixirls.setup {
-                cmd = {elixir_ls_bin},
-                capabilities = capabilities
-            }
-        end
-
-        -- ocaml
-        lspconf.ocamllsp.setup {capabilities = capabilities}
-
-        -- rust
-        lspconf.rust_analyzer.setup {capabilities = capabilities}
-
-        -- lua
+        -- lua config
         local runtime_path = vim.split(package.path, ";")
         table.insert(runtime_path, "lua/?.lua")
         table.insert(runtime_path, "lua/?/init.lua")
 
-        lspconf.lua_ls.setup {
-            capabilities = capabilities,
-            settings = {
-                Lua = {
-                    runtime = {version = "LuaJIT", path = runtime_path},
-                    diagnostics = {globals = {"vim"}},
-                    workspace = {
-                        -- Make the server aware of Neovim runtime files
-                        library = vim.api.nvim_get_runtime_file("", true),
-                        -- disable prompts for luv/luassert
-                        checkThirdParty = false
+        -- check if we have elixir-ls installed
+        local elixir_ls_bin = vim.fn.exepath("elixir-ls")
+
+        local servers = {
+            jsonls = true,
+            cssls = true,
+            html = true,
+            eslint = true,
+            cssmodules_ls = true,
+            tailwindcss = true,
+            tsserver = true,
+            prismals = true,
+            astro = true,
+            pyright = {flags = {debounce_text_changes = 100}},
+            yamlls = {settings = {yaml = {keyOrdering = false}}},
+            clangd = true,
+            bashls = true,
+            gopls = true,
+            elixirls = {cmd = {elixir_ls_bin}},
+            ocamllsp = true,
+            rust_analyzer = true,
+            lua_ls = {
+                settings = {
+                    Lua = {
+                        runtime = {version = "LuaJIT", path = runtime_path},
+                        diagnostics = {globals = {"vim"}},
+                        workspace = {
+                            -- Make the server aware of Neovim runtime files
+                            library = vim.api.nvim_get_runtime_file("", true),
+                            -- disable prompts for luv/luassert
+                            checkThirdParty = false
+                        }
                     }
                 }
             }
         }
 
-        -- https://www.reddit.com/r/neovim/comments/w2exp5/comment/j1lbogi/?utm_source=share&utm_medium=web2x&context=3
-        -- local copilot_on = true
-        -- vim.api.nvim_create_user_command("CopilotToggle", function()
-        --     if copilot_on then
-        --         vim.cmd("Copilot disable")
-        --         print("Copilot OFF")
-        --     else
-        --         vim.cmd("Copilot enable")
-        --         print("Copilot ON")
-        --     end
-        --     copilot_on = not copilot_on
-        -- end, {nargs = 0})
-        -- vim.keymap.set("", "<M-\\>", ":CopilotToggle<CR>",
-        --                {noremap = true, silent = true})
+        for server, config in pairs(servers) do
+            if config == true then
+                lspconf[server].setup {capabilities = capabilities}
+            else
+                lspconf[server].setup(vim.tbl_extend("force", {
+                    capabilities = capabilities
+                }, config))
+            end
+        end
 
         -- disable lsp diagnostics for .env files
         local lsp_grp = vim.api.nvim_create_augroup("lsp_disable",
@@ -174,9 +141,9 @@ return {
                     gr = {vim.lsp.buf.references, "goto references"},
                     K = {ShowDocumentation, "show documentation"}
                 })
-                local client = vim.lsp.get_client_by_id(event.data.client_id)
                 -- BUG: hmm... doesn't actually seem to display for me
                 --
+                -- local client = vim.lsp.get_client_by_id(event.data.client_id)
                 -- if client and vim.lsp.inlay_hint and
                 --     client.supports_method('textDocument/inlayHint') then
                 --     wk.register({
