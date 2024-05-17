@@ -1,10 +1,11 @@
--- TODO: gc{motion} is now a built-in, can I just
--- use ts_context_commentstring for react/js/js and
--- the defaults for everything else?
---
--- language aware comment/uncomment lines
+-- the default 'gc' (:help commenting) binding works for most things, but react/web frameworks
+-- have a different comment syntax, so this plugin only loads on those filetypes
 return {
     'numToStr/Comment.nvim',
+    ft = {
+        'typescript', 'javascript', 'typescriptreact', 'javascriptreact',
+        'typescriptreact'
+    },
     dependencies = {'JoosepAlviste/nvim-ts-context-commentstring'},
     config = function()
         require('ts_context_commentstring').setup {enable_autocmd = false}
