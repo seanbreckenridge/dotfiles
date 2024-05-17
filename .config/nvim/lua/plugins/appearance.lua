@@ -19,5 +19,6 @@ return {
         priority = 1000,
         dependencies = {'nvim-tree/nvim-web-devicons'},
         opts = {options = {theme = 'dracula'}}
-    }, {'j-hui/fidget.nvim', event = "LspAttach", opts = {}}
+    }, {'j-hui/fidget.nvim', event = "LspAttach", opts = {}},
+    {{'stevearc/dressing.nvim', opts = {}}}
 }

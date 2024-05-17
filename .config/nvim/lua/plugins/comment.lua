@@ -1,3 +1,7 @@
+-- TODO: gc{motion} is now a built-in, can I just
+-- use ts_context_commentstring for react/js/js and
+-- the defaults for everything else?
+--
 -- language aware comment/uncomment lines
 return {
     'numToStr/Comment.nvim',
