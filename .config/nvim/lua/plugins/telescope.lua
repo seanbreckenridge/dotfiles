@@ -97,6 +97,7 @@ return {
     'nvim-telescope/telescope.nvim',
     dependencies = {
         'nvim-lua/plenary.nvim',
+        'nvim-telescope/telescope-ui-select.nvim',
         {
             'nvim-telescope/telescope-fzf-native.nvim',
             build = 'make',
@@ -174,5 +175,6 @@ return {
         tl.load_extension('fzf') -- native fzf
         tl.load_extension('repo')
         tl.load_extension('notify')
+        tl.load_extension('ui-select')
     end
 }
