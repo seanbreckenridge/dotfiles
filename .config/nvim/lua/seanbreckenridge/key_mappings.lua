@@ -63,14 +63,13 @@ vnoremap('<C-f>', ':s///gcI' .. leftn(5),
 nnoremap('<Esc>', '<cmd>nohlsearch<CR>', 'clear search highlight')
 
 local reload_config = function()
-    vim.cmd(':source ~/.config/nvim/lua/seanbreckenridge/init.lua')
-    vim.cmd(':source ~/.config/nvim/lua/seanbreckenridge/key_mappings.lua')
+    dofile(vim.fn.expand('~/.config/nvim/lua/seanbreckenridge/init.lua'))
+    dofile(vim.fn.expand('~/.config/nvim/lua/seanbreckenridge/key_mappings.lua'))
     print('Reloaded config')
 end
 
 -- misc
 wk.register({
-    -- reminder, can use 'P' in netrw to open in right tab
     e = {
         function()
             vim.cmd('wincmd v')
