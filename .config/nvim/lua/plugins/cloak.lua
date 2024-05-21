@@ -1,6 +1,7 @@
 -- 'https://github.com/laytan/cloak.nvim?tab=readme-ov-file#configuration'
 return {
     'laytan/cloak.nvim',
+    event = 'BufRead',
     config = function()
         require('cloak').setup({
             patterns = {

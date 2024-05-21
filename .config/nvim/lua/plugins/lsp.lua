@@ -70,11 +70,15 @@ return {
 
         for server, config in pairs(servers) do
             if config == true then
+                -- vim.log.info("LSP config: " .. server ..
+                --                      vim.inspect({capabilities = capabilities}))
                 lspconf[server].setup {capabilities = capabilities}
             else
-                lspconf[server].setup(vim.tbl_extend("force", {
-                    capabilities = capabilities
-                }, config))
+                local combined = vim.tbl_extend("force",
+                                                {capabilities = capabilities},
+                                                config)
+                -- vim.log.info("LSP config: " .. server .. vim.inspect(combined))
+                lspconf[server].setup(combined)
             end
         end
 

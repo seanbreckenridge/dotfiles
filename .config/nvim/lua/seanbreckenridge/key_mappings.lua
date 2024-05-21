@@ -72,9 +72,7 @@ end
 wk.register({
     e = {
         function()
-            vim.cmd('wincmd v')
             require('oil').open()
-            vim.cmd('vertical resize 30')
         end, 'file explorer'
     },
     s = {':set spell!<CR>', 'toggle spell'},

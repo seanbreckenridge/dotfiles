@@ -1,5 +1,7 @@
 return {
     "stevearc/oil.nvim",
+    leader = "<leader>e",
+    cmd = "Oil",
     opts = {
         default_file_explorer = true,
         columns = {"icon"},

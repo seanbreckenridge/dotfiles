@@ -26,5 +26,9 @@ return {
         dependencies = {'nvim-tree/nvim-web-devicons'},
         opts = {options = {theme = 'catppuccin'}}
     }, {'j-hui/fidget.nvim', event = "LspAttach", opts = {}},
-    {{'stevearc/dressing.nvim', opts = {}}}
+    {'stevearc/dressing.nvim', opts = {}, event = "VeryLazy"}, {
+        "rcarriga/nvim-notify",
+        event = "VeryLazy",
+        config = function() vim.notify = require("notify") end
+    }
 }

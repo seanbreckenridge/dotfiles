@@ -5,6 +5,7 @@ return {
     {
         'seanbreckenridge/yadm-git.vim',
         enabled = vim.g.has_yadm,
+        event = "VeryLazy",
         -- dir = "/home/sean/Files/OldRepos/yadm-git.vim",
         config = function()
             vim.g.yadm_git_verbose = 0
@@ -17,7 +18,6 @@ return {
     -- []xx to encode/decode HTML, []uu to encode/decode URLs, []y to do C-style escaping
     {'tpope/vim-unimpaired', keys = {"]", "["}},
     {'tpope/vim-repeat', event = "VeryLazy"}, -- repeat plugin commands
-    {'tpope/vim-sleuth'}, -- detect indentation
+    {'tpope/vim-sleuth', event = "VeryLazy"}, -- detect indentation
     {'tpope/vim-speeddating', keys = {"<C-a>", "<C-x>"}} -- increment/decrement dates
-    -- {'windwp/nvim-autopairs', event = "InsertEnter", opts = {}} -- auto pair brackets
 }
