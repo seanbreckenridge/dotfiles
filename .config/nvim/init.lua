@@ -11,7 +11,7 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 -- some config before loading plugins, to control how they load
-require 'seanbreckenridge.pre_init'
+require 'user.pre_init'
 
 -- load plugins from the 'lua/plugins' directory
 require('lazy').setup('plugins', {
@@ -20,4 +20,4 @@ require('lazy').setup('plugins', {
 })
 
 -- load my lua options/mappings
-require 'seanbreckenridge'
+require 'user'

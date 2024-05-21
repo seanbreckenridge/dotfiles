@@ -1,6 +1,6 @@
 -- automatically compile/run commands when I edit particular [config] files
 vim.cmd [[
-  augroup seanbreckenridge_autocompile
+  augroup user_autocompile
     autocmd!
     autocmd BufWritePost ~/.config/shortcuts.toml !reshortcuts
     autocmd BufWritePost ~/.config/i3/config.* !i3-jinja
@@ -48,7 +48,7 @@ vim.api.nvim_create_autocmd({"BufRead", "BufNewFile"}, {
 
 -- use loclist for lsp diagnostics
 vim.cmd([[
-augroup seanbreckenridge_diagnostics
+augroup user_diagnostics
   autocmd!
   autocmd! BufWrite,BufEnter,InsertLeave * lua vim.diagnostic.setloclist({open=false, severity = {min=vim.diagnostic.severity.HINT}})
 augroup END

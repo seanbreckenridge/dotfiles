@@ -1,3 +1,6 @@
+-- change directory in the window's local directory instead of the whole application
+vim.g.rooter_cd_cmd = 'lcd'
+
 return {
     {'folke/which-key.nvim', lazy = true}, -- keybindings
     -- yadm integration (needs to be loaded early since uses BufWinEnter to detect)
@@ -19,5 +22,6 @@ return {
     {'tpope/vim-unimpaired', keys = {"]", "["}},
     {'tpope/vim-repeat', event = "VeryLazy"}, -- repeat plugin commands
     {'tpope/vim-sleuth', event = "VeryLazy"}, -- detect indentation
-    {'tpope/vim-speeddating', keys = {"<C-a>", "<C-x>"}} -- increment/decrement dates
+    {'tpope/vim-speeddating', keys = {"<C-a>", "<C-x>"}}, -- increment/decrement dates
+    {'airblade/vim-rooter', event = "VeryLazy"}
 }

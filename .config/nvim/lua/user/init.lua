@@ -83,5 +83,5 @@ vim.opt.wildignore:append({
 })
 
 -- load other configuration
-require "seanbreckenridge.key_mappings"
-require "seanbreckenridge.autocmds"
+require "user.key_mappings"
+require "user.autocmds"

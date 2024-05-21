@@ -14,7 +14,7 @@ return {
             enable_autosnippets = true
         }
 
-        require("seanbreckenridge.snippets")
+        require("user.snippets")
 
         -- Temporarily prevent this from erroring on older versions of neovim
         -- I don't *need* to have snippets on my phone

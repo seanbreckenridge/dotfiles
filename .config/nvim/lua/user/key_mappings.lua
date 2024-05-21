@@ -1,6 +1,6 @@
 local wk = require('which-key')
 
-local mh = require('seanbreckenridge.mapping_helpers')
+local mh = require('user.mapping_helpers')
 local map_key = mh.map_key
 local nnoremap = mh.nnoremap
 local vnoremap = mh.vnoremap
@@ -63,18 +63,14 @@ vnoremap('<C-f>', ':s///gcI' .. leftn(5),
 nnoremap('<Esc>', '<cmd>nohlsearch<CR>', 'clear search highlight')
 
 local reload_config = function()
-    dofile(vim.fn.expand('~/.config/nvim/lua/seanbreckenridge/init.lua'))
-    dofile(vim.fn.expand('~/.config/nvim/lua/seanbreckenridge/key_mappings.lua'))
+    dofile(vim.fn.expand('~/.config/nvim/lua/user/init.lua'))
+    dofile(vim.fn.expand('~/.config/nvim/lua/user/key_mappings.lua'))
     print('Reloaded config')
 end
 
 -- misc
 wk.register({
-    e = {
-        function()
-            require('oil').open()
-        end, 'file explorer'
-    },
+    e = {function() require('oil').open() end, 'file explorer'},
     s = {':set spell!<CR>', 'toggle spell'},
     X = {':w<CR>:!chmod +x %<CR>:edit<CR>', 'chmod +x'},
     ["<CR>"] = {":split<CR>:term<CR>", 'open terminal'},

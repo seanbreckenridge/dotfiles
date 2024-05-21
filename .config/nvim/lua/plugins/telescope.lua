@@ -1,25 +1,22 @@
 local wk = require('which-key')
 
 -- config/repo mappings
--- seanbreckenridge (personal functions/plugins)
+-- personal functions/plugins
 wk.register({
     -- can change this to a different prefix if something ever conflicts
     c = {
         name = "change files",
         e = {
-            function()
-                require("seanbreckenridge.telescope").edit_config()
-            end, 'edit config'
+            function() require("user.telescope").edit_config() end,
+            'edit config'
         },
         g = {
-            function()
-                require("seanbreckenridge.telescope").grep_config()
-            end, 'grep config'
+            function() require("user.telescope").grep_config() end,
+            'grep config'
         },
         r = {
             function()
-                local repo_bases =
-                    require("seanbreckenridge.telescope").repo_bases_cached()
+                local repo_bases = require("user.telescope").repo_bases_cached()
                 require('telescope').extensions.repo.list {
                     search_dirs = repo_bases
                 }
@@ -50,11 +47,7 @@ wk.register({
             'references'
         },
         b = {function() require('telescope.builtin').buffers() end, 'buffers'},
-        H = {
-            function()
-                require('seanbreckenridge.telescope').grep_help()
-            end, 'help'
-        },
+        H = {function() require('user.telescope').grep_help() end, 'help'},
         q = {function() require('telescope.builtin').quickfix() end, 'quickfix'},
         l = {function() require('telescope.builtin').loclist() end, 'loclist'},
         p = {
@@ -96,8 +89,7 @@ wk.register({
 return {
     'nvim-telescope/telescope.nvim',
     dependencies = {
-        'nvim-lua/plenary.nvim',
-        'nvim-telescope/telescope-ui-select.nvim',
+        'nvim-lua/plenary.nvim', 'nvim-telescope/telescope-ui-select.nvim',
         {
             'nvim-telescope/telescope-fzf-native.nvim',
             build = 'make',

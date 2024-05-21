@@ -1,6 +1,7 @@
+-- g? : show help
 return {
     "stevearc/oil.nvim",
-    leader = "<leader>e",
+    keys = "<leader>e",
     cmd = "Oil",
     opts = {
         default_file_explorer = true,

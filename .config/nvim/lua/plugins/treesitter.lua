@@ -73,14 +73,10 @@ return {
                     swap_next = {['<leader>a'] = '@parameter.inner'},
                     swap_previous = {['<leader>A'] = '@parameter.inner'}
                 }
-            },
-            -- TODO: migrate to new config
-            autotag = {
-                enable = true,
-                -- disable for tsx/more complex stuff till https://github.com/windwp/nvim-ts-autotag/issues/125
-                filetypes = {'html', 'javascript', 'typescript'}
             }
         }
+
+        require('nvim-ts-autotag').setup()
 
         local ctx_group = vim.api.nvim_create_augroup("disable-context",
                                                       {clear = true})
