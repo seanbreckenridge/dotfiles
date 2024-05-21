@@ -51,7 +51,7 @@ return {
         if not vim.g.on_android then
             -- find elixir-ls binary
             local elixir_ls_bin = vim.fn.exepath("elixir-ls")
-            if elixir_ls_bin ~= nil then
+            if elixir_ls_bin ~= "" then
                 servers.elixirls = {cmd = {elixir_ls_bin}}
             end
             servers.clangd = true
