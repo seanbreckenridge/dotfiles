@@ -65,7 +65,6 @@ nnoremap('<Esc>', '<cmd>nohlsearch<CR>', 'clear search highlight')
 local reload_config = function()
     vim.cmd(':source ~/.config/nvim/lua/seanbreckenridge/init.lua')
     vim.cmd(':source ~/.config/nvim/lua/seanbreckenridge/key_mappings.lua')
-    require('seanbreckenridge.colorscheme').setup_theme()
     print('Reloaded config')
 end
 

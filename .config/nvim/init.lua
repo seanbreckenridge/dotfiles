@@ -19,5 +19,5 @@ require('lazy').setup('plugins', {
     change_detection = {enabled = false, notify = false}
 })
 
--- load my lua options/mappings/colorscheme
+-- load my lua options/mappings
 require 'seanbreckenridge'

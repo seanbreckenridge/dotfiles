@@ -73,6 +73,7 @@ return {
                     swap_previous = {['<leader>A'] = '@parameter.inner'}
                 }
             },
+            -- TODO: migrate to new config
             autotag = {
                 enable = true,
                 -- disable for tsx/more complex stuff till https://github.com/windwp/nvim-ts-autotag/issues/125
