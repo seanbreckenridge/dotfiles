@@ -18,6 +18,7 @@ function M.list_config()
 end
 
 --- Edit one of my config files
+--- @return nil
 function M.edit_config()
     local pickers = require('telescope.pickers')
     local finders = require('telescope.finders')
