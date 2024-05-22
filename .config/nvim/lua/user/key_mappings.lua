@@ -63,8 +63,8 @@ vnoremap('<C-f>', ':s///gcI' .. leftn(5),
 nnoremap('<Esc>', '<cmd>nohlsearch<CR>', 'clear search highlight')
 
 local reload_config = function()
-    dofile(vim.fn.expand('~/.config/nvim/lua/user/init.lua'))
-    dofile(vim.fn.expand('~/.config/nvim/lua/user/key_mappings.lua'))
+    vim.cmd('source ~/.config/nvim/lua/user/settings.lua')
+    vim.cmd('source ~/.config/nvim/lua/user/key_mappings.lua')
     print('Reloaded config')
 end
 
