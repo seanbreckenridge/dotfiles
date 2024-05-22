@@ -31,28 +31,9 @@ vim.api.nvim_create_autocmd({"BufEnter", "BufNewFile"}, {
     callback = function(_) vim.b['copilot_enabled'] = 0 end
 })
 
--- hmm I can't get this working...
--- vim.filetype.add {pattern = {[".*/.*%.job$"] = "sh"}}
--- use autocmd for now...
-local ft_grp = vim.api.nvim_create_augroup("filetype_cmds", {clear = true})
-
-vim.api.nvim_create_autocmd({"BufEnter", "BufNewFile"}, {
-    group = ft_grp,
-    pattern = {"*.job", "*.job.disabled"},
-    callback = function(_) vim.bo.filetype = "sh" end
-})
-
-vim.api.nvim_create_autocmd({"BufRead", "BufNewFile"}, {
-    group = ft_grp,
-    pattern = {"COMMIT_EDITMSG"},
-    callback = function(_) vim.cmd("set spell") end
-})
-
-vim.api.nvim_create_autocmd({"BufRead", "BufNewFile"}, {
-    group = ft_grp,
-    pattern = {"todo.txt", "done.txt"},
-    -- set filetype to todotxt
-    callback = function(_) vim.bo.filetype = "todotxt" end
+-- set filetype for todo.txt files
+vim.filetype.add({
+    filename = {['todo.txt'] = 'todotxt', ['done.txt'] = 'todotxt'}
 })
 
 -- use loclist for lsp diagnostics
