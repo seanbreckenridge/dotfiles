@@ -1,5 +1,10 @@
 local M = {}
 
+-- A lot of the commands here are wrapped with
+-- https://github.com/seanbreckenridge/fzfcache
+-- That is an external command which caches the results
+-- of the previous run, so it can prompt you with the choices faster
+
 --- Get a list of all of my config files tracked by yadm
 --- @return string[]
 function M.list_config()
@@ -14,15 +19,16 @@ end
 
 --- Edit one of my config files
 function M.edit_config()
-    require('telescope.builtin').find_files({
-        shorten_path = true,
+    local pickers = require('telescope.pickers')
+    local finders = require('telescope.finders')
+    local conf = require('telescope.config').values
+
+    pickers.new({}, {
         prompt_title = 'Edit Config',
-        cwd = '~/',
-        find_command = {"list-config-no-hist"},
-        hidden = false,
-        -- use my default settings from telescope setup
+        finder = finders.new_oneshot_job({"fzfcache", "list-config-no-hist"}, {}),
+        sorter = conf.generic_sorter({}),
         preview = require('telescope.config').values.preview
-    })
+    }):find()
 end
 
 --- Grep all of my config files
@@ -50,31 +56,36 @@ function M.grep_help()
     })
 end
 
---- Get a list of all of my base directories for my repos
---- This is something like:
---- { "~/Repos", "~/Files/OldRepos", "~/.local/share/go/.../seanbreckenridge/..." }
+--- Pick one of my git repos, cd to it, and open telescope to pick a file
 ---
--- ~/.cache/repo_bases.txt gets populated by a bgproc job
--- https://sean.fish/d/cached_repo_bases.job?redirect
---- @return string[]
-function M.repo_bases()
-    local cache_dir = os.getenv('XDG_CACHE_HOME')
-    local cache_file = cache_dir .. '/repo_bases.txt'
-    local f = io.open(cache_file, 'r')
-    if f == nil then return {} end
-    local roots = {} ---@type string[]
-    for line in f:lines() do table.insert(roots, line) end
-    return roots
-end
+--- @param opts table|nil: options to pass to telescope
+--- @return nil
+function M.switch_to_repo(opts)
+    local pickers = require('telescope.pickers')
+    local finders = require('telescope.finders')
+    local actions = require('telescope.actions')
+    local builtins = require('telescope.builtin')
+    local action_state = require('telescope.actions.state')
+    opts = opts or {}
 
-M._repo_bases = nil
-
---- Cached version of the base directories for all my repositories,
---- if its already been called once
---- @return string[]
-function M.repo_bases_cached()
-    if M._repo_bases == nil then M._repo_bases = M.repo_bases() end
-    return M._repo_bases
+    pickers.new(opts, {
+        prompt_title = 'Pick Repo',
+        cwd = '~/',
+        -- list my git repos runs a parallel search across all my git repos
+        finder = finders.new_oneshot_job({"fzfcache", "list-my-git-repos"}, {}),
+        sorter = require("telescope.config").values.generic_sorter(opts),
+        ---@diagnostic disable-next-line: unused-local
+        attach_mappings = function(prompt_bufnr, map)
+            actions.select_default:replace(function()
+                actions.close(prompt_bufnr)
+                local selection = action_state.get_selected_entry()
+                -- cd to this directory, and open telescope to pick a file
+                vim.cmd('lcd ' .. selection.value)
+                builtins.find_files()
+            end)
+            return true
+        end
+    }):find()
 end
 
 return M

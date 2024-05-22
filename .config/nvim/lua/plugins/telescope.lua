@@ -15,11 +15,8 @@ wk.register({
             'grep config'
         },
         r = {
-            function()
-                require('telescope').extensions.repo.list {
-                    search_dirs = require("user.telescope").repo_bases_cached()
-                }
-            end, 'switch repo'
+            function() require('user.telescope').switch_to_repo() end,
+            'switch repo'
         },
         -- mnemonic 'cd' binding
         d = {
@@ -93,7 +90,7 @@ return {
             'nvim-telescope/telescope-fzf-native.nvim',
             build = 'make',
             lazy = true
-        }, {'cljoly/telescope-repo.nvim', lazy = true}
+        }
     },
     cmd = 'Telescope',
     event = {"BufReadPre", "BufNewFile"},
@@ -159,12 +156,10 @@ return {
                     override_file_sorter = true, -- override the file sorter
                     case_mode = "smart_case" -- or "ignore_case" or "respect_case"
                 },
-                repo = {list = {fd_opts = {}, previewer = false}}
             }
         }
 
         tl.load_extension('fzf') -- native fzf
-        tl.load_extension('repo')
         tl.load_extension('notify')
         tl.load_extension('ui-select')
     end
