@@ -2,7 +2,9 @@ return {
     'neovim/nvim-lspconfig',
     event = {"BufReadPre", "BufNewFile"},
     cmd = {"LspInfo", "LspInstall", "LspUninstall"},
-    dependencies = {"hrsh7th/nvim-cmp", "hrsh7th/cmp-nvim-lsp"},
+    dependencies = {
+        "hrsh7th/nvim-cmp", "hrsh7th/cmp-nvim-lsp", "b0o/schemastore.nvim"
+    },
     config = function()
         -- https://github.com/hrsh7th/cmp-nvim-lsp
         local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -28,9 +30,29 @@ return {
         table.insert(runtime_path, "lua/?/init.lua")
 
         local servers = {
-            jsonls = true,
+            jsonls = {
+                settings = {
+                    json = {
+                        schemas = require('schemastore').json.schemas(),
+                        validate = {enable = true}
+                    }
+                }
+            },
             pyright = {flags = {debounce_text_changes = 100}},
-            yamlls = {settings = {yaml = {keyOrdering = false}}},
+            yamlls = {
+                settings = {
+                    yaml = {
+                        keyOrdering = false,
+                        schemaStore = {
+                            -- Disable built-in schemaStore support
+                            enable = false,
+                            -- Avoid TypeError: Cannot read properties of undefined (reading 'length')
+                            url = ""
+                        },
+                        schemas = require('schemastore').yaml.schemas()
+                    }
+                }
+            },
             bashls = true,
             lua_ls = {
                 settings = {
@@ -108,6 +130,8 @@ return {
                                                 {clear = true}),
             ---@diagnostic disable-next-line: unused-local
             callback = function(event)
+                -- set omnifunc to lsp omnifunc
+                vim.opt_local.omnifunc = 'v:lua.vim.lsp.omnifunc'
                 -- when the client attaches, add keybindings
                 -- lsp commands with leader prefix
                 wk.register({

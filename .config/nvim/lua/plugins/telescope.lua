@@ -16,9 +16,8 @@ wk.register({
         },
         r = {
             function()
-                local repo_bases = require("user.telescope").repo_bases_cached()
                 require('telescope').extensions.repo.list {
-                    search_dirs = repo_bases
+                    search_dirs = require("user.telescope").repo_bases_cached()
                 }
             end, 'switch repo'
         },

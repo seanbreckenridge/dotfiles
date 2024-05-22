@@ -16,7 +16,15 @@ require 'user.pre_init'
 -- load plugins from the 'lua/plugins' directory
 require('lazy').setup('plugins', {
     browser = 'openurl',
-    change_detection = {enabled = false, notify = false}
+    change_detection = {enabled = false, notify = false},
+    performance = {
+        rtp = {
+            disabled_plugins = {
+                "gzip", "netrwPlugin", "tarPlugin", "tohtml", "zipPlugin"
+            }
+        }
+    }
+
 })
 
 -- load my lua options/mappings
