@@ -14,6 +14,15 @@ vim.cmd [[
     augroup end
 ]]
 
+-- See `:help vim.highlight.on_yank()`
+local highlight_group = vim.api.nvim_create_augroup('YankHighlight',
+                                                    {clear = true})
+vim.api.nvim_create_autocmd('TextYankPost', {
+    callback = function() vim.highlight.on_yank() end,
+    group = highlight_group,
+    pattern = '*'
+})
+
 -- disable copilot for .env files
 local copilot_grp = vim.api.nvim_create_augroup("copilot", {clear = true})
 vim.api.nvim_create_autocmd({"BufEnter", "BufNewFile"}, {
