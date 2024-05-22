@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-exec parallel -j+0 'cd {}; list-git-dirs .' <~/.cache/repo_bases.txt
+exec parallel -j+0 'list-git-dirs {}' <~/.cache/repo_bases.txt
