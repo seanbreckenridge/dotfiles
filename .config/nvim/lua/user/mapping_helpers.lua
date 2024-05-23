@@ -1,8 +1,9 @@
 local M = {}
--- shorter helper w/ types to warn me for mapping keys
--- tried to use which-key but doesn't always work (e.g. for
--- incremental search and search/replace with selected text)
 
+--- shorter helper w/ types to warn me for mapping keys
+--- tried to use which-key but doesn't always work (e.g. for
+--- incremental search and search/replace with selected text)
+---
 ---@param key string the key to map
 ---@param cmd string|function the command to run
 ---@param desc string the description to show in which-key

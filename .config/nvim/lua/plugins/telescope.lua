@@ -1,31 +1,23 @@
 local wk = require('which-key')
 
--- project/config mappings
--- seanbreckenridge (personal functions/plugins)
+-- config/repo mappings
+-- personal functions/plugins
 wk.register({
     -- can change this to a different prefix if something ever conflicts
     c = {
         name = "change files",
         e = {
-            function()
-                require("seanbreckenridge.telescope").edit_config()
-            end, 'edit config'
+            function() require("user.telescope").edit_config() end,
+            'edit config'
         },
         g = {
-            function()
-                require("seanbreckenridge.telescope").grep_config()
-            end, 'grep config'
+            function() require("user.telescope").grep_config() end,
+            'grep config'
         },
         r = {
-            function()
-                local repo_bases =
-                    require("seanbreckenridge.telescope").repo_bases_cached()
-                require('telescope').extensions.repo.list {
-                    search_dirs = repo_bases
-                }
-            end, 'switch repo'
+            function() require('user.telescope').switch_to_repo() end,
+            'switch repo'
         },
-        p = {'<cmd>:Telescope projects<CR>', 'switch projects'},
         -- mnemonic 'cd' binding
         d = {
             function()
@@ -51,11 +43,7 @@ wk.register({
             'references'
         },
         b = {function() require('telescope.builtin').buffers() end, 'buffers'},
-        H = {
-            function()
-                require('seanbreckenridge.telescope').grep_help()
-            end, 'help'
-        },
+        H = {function() require('user.telescope').grep_help() end, 'help'},
         q = {function() require('telescope.builtin').quickfix() end, 'quickfix'},
         l = {function() require('telescope.builtin').loclist() end, 'loclist'},
         p = {
@@ -96,14 +84,13 @@ wk.register({
 
 return {
     'nvim-telescope/telescope.nvim',
-    tag = '0.1.2',
     dependencies = {
-        'nvim-lua/plenary.nvim',
+        'nvim-lua/plenary.nvim', 'nvim-telescope/telescope-ui-select.nvim',
         {
             'nvim-telescope/telescope-fzf-native.nvim',
             build = 'make',
             lazy = true
-        }, {'cljoly/telescope-repo.nvim', lazy = true}
+        }
     },
     cmd = 'Telescope',
     event = {"BufReadPre", "BufNewFile"},
@@ -168,15 +155,12 @@ return {
                     override_generic_sorter = true, -- override the generic sorter
                     override_file_sorter = true, -- override the file sorter
                     case_mode = "smart_case" -- or "ignore_case" or "respect_case"
-                },
-                repo = {list = {fd_opts = {}, previewer = false}}
+                }
             }
         }
 
         tl.load_extension('fzf') -- native fzf
-        tl.load_extension('repo')
-        tl.load_extension('projects')
         tl.load_extension('notify')
-        -- TODO: try https://github.com/pwntester/octo.nvim
+        tl.load_extension('ui-select')
     end
 }

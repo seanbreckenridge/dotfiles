@@ -4,6 +4,7 @@ vim.g.has_yadm = vim.fn.executable('yadm') == 1
 
 -- https://github.com/seanbreckenridge/on_machine
 vim.g.on_os = os.getenv('ON_OS') or 'unknown'
+vim.g.on_android = vim.split(vim.g.on_os, "_")[1] == "android"
 
 -- lazy.nvim/which-key wants a leader to be set before setting up mappings
 vim.g.mapleader = ' '

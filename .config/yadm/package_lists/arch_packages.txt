@@ -94,7 +94,7 @@ drive-bin
 dust
 emacs
 entr
-exa
+eza
 fd
 feh
 ffmpeg

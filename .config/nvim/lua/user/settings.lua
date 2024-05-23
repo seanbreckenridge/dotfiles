@@ -1,4 +1,3 @@
--- get home directory
 -- vim.o sets global options, vim.opt sets buffer-local options
 -- see :help vim-differences for some defaults set in nvim
 -- for :help syntax, treesitter will disable this for filetypes it knows, otherwise
@@ -44,7 +43,7 @@ vim.opt.winblend = 10
 -- searching
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
-vim.opt.showmatch = true
+vim.opt.showmatch = false -- I don't like the cursor jumping back, is distracting. also looks strange with ghosttext
 
 -- spacing/tabs/newlines
 vim.opt.list = true
@@ -60,15 +59,6 @@ vim.opt.viminfo = "'20,<1000,s1000"
 -- marks
 vim.opt.shada = "'1000,f1,<100"
 
--- See `:help vim.highlight.on_yank()`
-local highlight_group = vim.api.nvim_create_augroup('YankHighlight',
-                                                    {clear = true})
-vim.api.nvim_create_autocmd('TextYankPost', {
-    callback = function() vim.highlight.on_yank() end,
-    group = highlight_group,
-    pattern = '*'
-})
-
 -- enable persistent undo (save undo history across file closes) if possible
 vim.opt.undofile = true
 
@@ -82,7 +72,9 @@ vim.opt.wildignore:append({
     '**/build/*', '**/.git/*'
 })
 
--- load other configuration
-require "seanbreckenridge.key_mappings"
-require "seanbreckenridge.autocmds"
-require "seanbreckenridge.colorscheme"
+-- set filetype for todo.txt files
+vim.filetype.add({
+    filename = {['todo.txt'] = 'todotxt', ['done.txt'] = 'todotxt'}
+})
+
+vim.filetype.add({filename = {['*.mdx'] = 'markdown.mdx'}})

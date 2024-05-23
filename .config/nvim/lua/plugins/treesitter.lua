@@ -1,13 +1,15 @@
 return {
     'nvim-treesitter/nvim-treesitter',
+    event = {"BufRead", "BufNewFile"},
     dependencies = {
-        -- 'nvim-treesitter/nvim-treesitter-context',
-        'nvim-treesitter/nvim-treesitter-textobjects',
-        'JoosepAlviste/nvim-ts-context-commentstring', 'windwp/nvim-ts-autotag'
+        'nvim-treesitter/nvim-treesitter-context',
+        'nvim-treesitter/nvim-treesitter-textobjects', 'windwp/nvim-ts-autotag'
     },
     build = ':TSUpdate',
     config = function()
-        require'nvim-treesitter.configs'.setup {
+        -- Prefer git instead of curl in order to improve connectivity in some environments
+        require('nvim-treesitter.install').prefer_git = true
+        require('nvim-treesitter.configs').setup {
             modules = {},
             ignore_install = {},
             sync_install = false,
@@ -16,7 +18,7 @@ return {
                 "bash", "cpp", "css", "html", "lua", "perl", "python", "rust",
                 "go", "javascript", "json", "regex", "toml", "yaml", "vim",
                 "todotxt", "typescript", "tsx", "c", "java", "php", "ruby",
-                "dart", "elixir", "query", "prisma"
+                "dart", "elixir", "query", "prisma", "vimdoc", "gitcommit"
             },
             highlight = {
                 enable = true -- false will disable the whole extension
@@ -71,12 +73,20 @@ return {
                     swap_next = {['<leader>a'] = '@parameter.inner'},
                     swap_previous = {['<leader>A'] = '@parameter.inner'}
                 }
-            },
-            autotag = {
-                enable = true,
-                -- disable for tsx/more complex stuff till https://github.com/windwp/nvim-ts-autotag/issues/125
-                filetypes = {'html', 'javascript', 'typescript'}
             }
         }
+
+        require('nvim-ts-autotag').setup()
+
+        local ctx_group = vim.api.nvim_create_augroup("disable-context",
+                                                      {clear = true})
+        vim.api.nvim_create_autocmd("FileType", {
+            pattern = {"markdown"},
+            group = ctx_group,
+            ---@diagnostic disable-next-line: unused-local
+            callback = function(ev)
+                require("treesitter-context").disable()
+            end
+        })
     end
 }

@@ -1,5 +1,5 @@
 local wk = require("which-key")
-wk.register({':Format<CR>', 'format'}, {prefix = '<leader>t'})
+wk.register({':write | Format<CR>', 'format'}, {prefix = '<leader>t'})
 
 local cfg_format = function()
     local util = require('formatter.util')
