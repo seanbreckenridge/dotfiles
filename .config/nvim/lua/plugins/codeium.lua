@@ -5,6 +5,11 @@ return {
         require("codeium").setup()
         local Source = require("codeium.source")
 
+        -- below is functionality to toggle the codeium_enabled variable
+        -- if its set on vim.b (buffer-local), it toggles that, otherwise
+        -- it toggles it globally. For example, I have an autocmd that disables
+        -- this when I load into an .env file, see ../user/autocmds.lua
+
         local function is_codeium_enabled()
             local enabled = vim.b["codeium_enabled"]
             if enabled == nil then
