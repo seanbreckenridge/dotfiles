@@ -76,3 +76,5 @@ vim.opt.wildignore:append({
 vim.filetype.add({
     filename = {['todo.txt'] = 'todotxt', ['done.txt'] = 'todotxt'}
 })
+
+vim.filetype.add({filename = {['*.mdx'] = 'markdown.mdx'}})

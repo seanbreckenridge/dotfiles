@@ -28,6 +28,7 @@ vim.api.nvim_create_autocmd('BufWritePost', {
     pattern = {'.config/i3blocks/config.*', 'i3blocks/config.*'}
 })
 
+-- enter insert mode when I open a terminal
 local terminal_insert = vim.api.nvim_create_augroup('terminal_insert',
                                                     {clear = true})
 vim.api.nvim_create_autocmd('TermOpen', {
@@ -44,6 +45,7 @@ vim.api.nvim_create_autocmd({"BufEnter", "BufNewFile"}, {
     callback = function(_) vim.b['copilot_enabled'] = 0 end
 })
 
+-- use the loclist for vim.diagnostics
 local user_diagnostic = vim.api.nvim_create_augroup('user_diagnostic',
                                                     {clear = true})
 
