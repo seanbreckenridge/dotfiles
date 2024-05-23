@@ -37,12 +37,12 @@ vim.api.nvim_create_autocmd('TermOpen', {
     pattern = '*'
 })
 
--- disable copilot for .env files
-local copilot_grp = vim.api.nvim_create_augroup("copilot", {clear = true})
+-- disable LLM-generation for .env files
+local llm_grp = vim.api.nvim_create_augroup("llm_group", {clear = true})
 vim.api.nvim_create_autocmd({"BufEnter", "BufNewFile"}, {
-    group = copilot_grp,
+    group = llm_grp,
     pattern = {".env", ".env.*"},
-    callback = function(_) vim.b['copilot_enabled'] = 0 end
+    callback = function(_) vim.b['codeium_enabled'] = false end
 })
 
 -- use the loclist for vim.diagnostics

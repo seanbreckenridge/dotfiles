@@ -102,6 +102,7 @@ __pycache__
 /.cookiecutter_replay
 /.cookiecutters/
 /.credentials
+/.codeium
 /.cups
 /.dart
 /.dmrc

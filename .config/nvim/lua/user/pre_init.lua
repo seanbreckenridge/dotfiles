@@ -10,22 +10,9 @@ vim.g.on_android = vim.split(vim.g.on_os, "_")[1] == "android"
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
--- disable tab key for copilot
-vim.g.copilot_no_tab_map = true
-
 -- for which-key
 vim.o.timeout = true
 vim.o.timeoutlen = 300
 
 -- for nvim-ts-treesitter-context
 vim.opt.updatetime = 250 -- decrease update time
-
--- copilot node version config
-vim.g.copilot_ignore_node_version = 1
-local nv = "~/.asdf/installs/nodejs/18.18.0/bin/node"
--- if asdf node install exists, use it
-if vim.fn.filereadable(vim.fn.expand(nv)) == 1 then
-    vim.g.copilot_node_command = nv
-else
-    vim.g.copilot_node_command = "node"
-end

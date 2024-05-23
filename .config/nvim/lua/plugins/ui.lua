@@ -61,5 +61,11 @@ return {
             columns = {"icon"},
             delete_to_trash = true
         }
+    }, {
+        '2kabhishek/nerdy.nvim',
+        dependencies = {
+            'stevearc/dressing.nvim', 'nvim-telescope/telescope.nvim'
+        },
+        cmd = 'Nerdy'
     }
 }

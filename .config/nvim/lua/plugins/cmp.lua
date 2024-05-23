@@ -9,7 +9,7 @@ return {
     config = function()
         local cmp = require('cmp')
         local lspkind = require('lspkind')
-        lspkind.init()
+        lspkind.init({symbol_map = {Codeium = ""}})
         cmp.setup({
             mapping = {
                 ["<C-u>"] = cmp.mapping.scroll_docs(-4),
@@ -41,6 +41,7 @@ return {
             sources = {
                 {name = "nvim_lsp"}, -- update neovim lsp capabilities https://github.com/hrsh7th/cmp-nvim-lsp
                 {name = "nvim_lua", keyword_length = 2}, -- lua completion for nvim-specific stuff
+                {name = "codeium"}, -- codeium completion
                 {name = "luasnip", keyword_length = 2}, -- snippets
                 {name = "emoji", keyword_length = 3}, -- emoji
                 {name = "path"}, -- complete names of files
@@ -51,6 +52,7 @@ return {
                 format = lspkind.cmp_format {
                     with_text = true,
                     menu = {
+                        codeium = "[ai]",
                         buffer = "[buf]",
                         nvim_lsp = "[lsp]",
                         nvim_lua = "[lua]",
