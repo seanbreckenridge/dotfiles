@@ -52,13 +52,13 @@ return {
         vim.keymap.set({"i", "n"}, "<M-z>", toggle_codeium_enabled,
                        {noremap = true})
 
+        --- save reference to library available function
+        local superclass_is_available = Source.is_available
         --- overwrite the library built-in is_available function
         --- so that I can disable when I want to
         ---@diagnostic disable-next-line: duplicate-set-field
         function Source:is_available()
-            local enabled = is_codeium_enabled()
-            ---@diagnostic disable-next-line: undefined-field
-            return enabled and self.server.is_healthy()
+            return is_codeium_enabled() and superclass_is_available(self)
         end
     end
 }
