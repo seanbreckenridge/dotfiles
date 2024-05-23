@@ -23,18 +23,5 @@ return {
     {'tpope/vim-repeat', event = "VeryLazy"}, -- repeat plugin commands
     {'tpope/vim-sleuth', event = "VeryLazy"}, -- detect indentation
     {'tpope/vim-speeddating', keys = {"<C-a>", "<C-x>"}}, -- increment/decrement dates
-    {'airblade/vim-rooter', event = "VeryLazy"}, {
-        -- g? : show help
-        "stevearc/oil.nvim",
-        event = "VeryLazy",
-        -- hmm.. doesn't seem to work when trying to trigger multiple times
-        -- keys = "<leader>e",
-        -- cmd = "Oil",
-        opts = {
-            default_file_explorer = true,
-            columns = {"icon"},
-            delete_to_trash = true
-        }
-    }
-
+    {'airblade/vim-rooter', event = "VeryLazy"}
 }

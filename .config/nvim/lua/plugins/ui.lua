@@ -49,5 +49,17 @@ return {
                 ["p"] = {"<cmd>MarkdownPreview<cr>", "preview markdown"}
             }, {prefix = "<leader>"})
         end
+    }, {
+        -- g? : show help
+        "stevearc/oil.nvim",
+        event = "VeryLazy",
+        -- hmm.. doesn't seem to work when trying to trigger multiple times
+        -- keys = "<leader>e",
+        -- cmd = "Oil",
+        opts = {
+            default_file_explorer = true,
+            columns = {"icon"},
+            delete_to_trash = true
+        }
     }
 }
