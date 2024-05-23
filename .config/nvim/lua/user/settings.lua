@@ -71,3 +71,8 @@ vim.opt.wildignore:append({
     '*_build/*', '**/coverage/*', '**/node_modules/*', '**/dist/*',
     '**/build/*', '**/.git/*'
 })
+
+-- set filetype for todo.txt files
+vim.filetype.add({
+    filename = {['todo.txt'] = 'todotxt', ['done.txt'] = 'todotxt'}
+})
