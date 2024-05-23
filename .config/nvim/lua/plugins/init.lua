@@ -26,8 +26,8 @@ return {
     {'airblade/vim-rooter', event = "VeryLazy"}, {
         -- g? : show help
         "stevearc/oil.nvim",
-				event = "VeryLazy",
-				-- hmm.. doesn't seem to work when trying to trigger multiple times
+        event = "VeryLazy",
+        -- hmm.. doesn't seem to work when trying to trigger multiple times
         -- keys = "<leader>e",
         -- cmd = "Oil",
         opts = {
