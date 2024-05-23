@@ -1,5 +1,9 @@
+local wk = require("which-key")
+
+wk.register({["<leader>u"] = {"<cmd>UndotreeToggle<cr>", "undotree"}})
+
 return {
-    {
+    {"mbbill/undotree", cmd = {"UndotreeToggle"}, keys = {"<leader>u"}}, {
         'folke/zen-mode.nvim',
         dependencies = {'folke/twilight.nvim'},
         cmd = "ZenMode",
@@ -30,5 +34,20 @@ return {
         "rcarriga/nvim-notify",
         event = "VeryLazy",
         config = function() vim.notify = require("notify") end
+    }, {
+        "folke/todo-comments.nvim",
+        event = "VeryLazy",
+        dependencies = {"nvim-lua/plenary.nvim"},
+        opts = {}
+    }, {
+        "iamcco/markdown-preview.nvim",
+        build = "cd app && yarn install",
+        ft = "markdown",
+        config = function()
+            local wk = require("which-key")
+            wk.register({
+                ["p"] = {"<cmd>MarkdownPreview<cr>", "preview markdown"}
+            }, {prefix = "<leader>"})
+        end
     }
 }
