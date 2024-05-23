@@ -70,7 +70,6 @@ end
 
 -- misc
 wk.register({
-    e = {function() require('oil').open() end, 'file explorer'},
     s = {':set spell!<CR>', 'toggle spell'},
     X = {':w<CR>:!chmod +x %<CR>:edit<CR>', 'chmod +x'},
     ["<CR>"] = {":split<CR>:term<CR>", 'open terminal'},

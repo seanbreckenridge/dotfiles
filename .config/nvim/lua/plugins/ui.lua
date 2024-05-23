@@ -1,6 +1,10 @@
 local wk = require("which-key")
 
-wk.register({["<leader>u"] = {"<cmd>UndotreeToggle<cr>", "undotree"}})
+wk.register({
+    e = {function() require('oil').open() end, 'file explorer'},
+    p = {"<cmd>MarkdownPreview<cr>", "preview markdown"},
+    u = {"<cmd>UndotreeToggle<cr>", "undotree"}
+}, {prefix = "<leader>"})
 
 return {
     {"mbbill/undotree", cmd = {"UndotreeToggle"}, keys = {"<leader>u"}}, {
@@ -42,13 +46,7 @@ return {
     }, {
         "iamcco/markdown-preview.nvim",
         build = "cd app && yarn install",
-        ft = "markdown",
-        config = function()
-            local wk = require("which-key")
-            wk.register({
-                ["p"] = {"<cmd>MarkdownPreview<cr>", "preview markdown"}
-            }, {prefix = "<leader>"})
-        end
+        ft = "markdown"
     }, {
         -- g? : show help
         "stevearc/oil.nvim",
