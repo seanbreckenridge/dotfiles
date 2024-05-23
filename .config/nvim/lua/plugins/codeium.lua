@@ -16,9 +16,11 @@ return {
             return enabled
         end
 
+        ---@return boolean
         local function toggle_codeium_enabled()
             ---@param status boolean
             ---@param locality string
+            ---@return boolean
             local function log_result(status, locality)
                 local msg = "Codeium: " .. (status and "enabled" or "disabled")
                 if locality == "global" then
@@ -28,11 +30,9 @@ return {
                 end
 
                 vim.notify(msg)
-
                 return status
             end
 
-            ---@return boolean
             local buffer_enabled = vim.b["codeium_enabled"]
             if buffer_enabled ~= nil then
                 vim.b["codeium_enabled"] = not buffer_enabled
