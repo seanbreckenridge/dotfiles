@@ -78,11 +78,16 @@ function M.switch_to_repo(opts)
         ---@diagnostic disable-next-line: unused-local
         attach_mappings = function(prompt_bufnr, map)
             actions.select_default:replace(function()
-                actions.close(prompt_bufnr)
                 local selection = action_state.get_selected_entry()
-                -- cd to this directory, and open telescope to pick a file
-                vim.cmd('lcd ' .. selection.value)
-                builtins.find_files()
+                if selection == nil then
+                    vim.notify("No repository selected", vim.log.levels.ERROR,
+                               {title = "Repo"})
+                else
+                    actions.close(prompt_bufnr)
+                    -- cd to this directory, and open telescope to pick a file
+                    vim.cmd('lcd ' .. selection.value)
+                    builtins.find_files()
+                end
             end)
             return true
         end

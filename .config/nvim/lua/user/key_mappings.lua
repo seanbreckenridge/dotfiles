@@ -48,7 +48,7 @@ vnoremap('K', ':move \'<-2<CR>gv=gv', 'move selected text up')
 
 nnoremap('J', "mzJ`z", 'append to line')
 
-local leftn = function(n) return string.rep('<Left>', n) end
+local function leftn(n) return string.rep('<Left>', n) end
 
 -- start a :%s/ search with the selected text, prompting for the replacement
 vnoremap('<C-n>', 'y:%s/<C-r>"//gc' .. leftn(3), 'search and replace')
@@ -62,7 +62,7 @@ vnoremap('<C-f>', ':s///gcI' .. leftn(5),
 
 nnoremap('<Esc>', '<cmd>nohlsearch<CR>', 'clear search highlight')
 
-local reload_config = function()
+local function reload_config()
     vim.cmd('source ~/.config/nvim/lua/user/settings.lua')
     vim.cmd('source ~/.config/nvim/lua/user/key_mappings.lua')
     print('Reloaded config')

@@ -102,7 +102,7 @@ return {
 
         -- this is a no-op for now, just here in case I want to modify things
         -- https://github.com/nvim-telescope/telescope.nvim/wiki/Configuration-Recipes#previewers
-        local buffer_previewer = function(filepath, bufnr, opts)
+        local function buffer_previewer(filepath, bufnr, opts)
             opts = opts or {}
             return previewers.buffer_previewer_maker(filepath, bufnr, opts)
         end

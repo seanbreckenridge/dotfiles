@@ -1,7 +1,7 @@
 local wk = require("which-key")
 wk.register({':write | Format<CR>', 'format'}, {prefix = '<leader>t'})
 
-local cfg_format = function()
+local function cfg_format()
     local util = require('formatter.util')
     if util.get_current_buffer_file_name() == "setup.cfg" then
         return {
