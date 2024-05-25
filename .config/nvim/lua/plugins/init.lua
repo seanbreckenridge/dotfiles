@@ -8,8 +8,8 @@ return {
     {
         'seanbreckenridge/yadm-git.vim',
         cond = vim.g.has_yadm,
-        event = "VeryLazy",
-        -- dir = "/home/sean/Files/OldRepos/yadm-git.vim",
+        -- dir = "~/Files/OldRepos/yadm-git.vim",
+        event = "BufWinEnter",
         config = function()
             vim.g.yadm_git_verbose = 0
             vim.g.yadm_git_gitgutter_enabled = 0 -- I use gitsigns instead
