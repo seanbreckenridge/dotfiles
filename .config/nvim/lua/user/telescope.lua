@@ -57,6 +57,17 @@ function M.grep_help()
     })
 end
 
+function M.find_lazy_plugins()
+    local basedir = vim.fn.stdpath("data") .. "/lazy"
+    require('telescope.builtin').find_files({
+        cwd = basedir,
+        prompt_title = 'Search Lazy Plugins',
+        search_dirs = {basedir},
+        path_display = {"relative"},
+        preview = require('telescope.config').values.preview
+    })
+end
+
 --- Pick one of my git repos, cd to it, and open telescope to pick a file
 ---
 --- @param opts table|nil: options to pass to telescope
@@ -73,7 +84,8 @@ function M.switch_to_repo(opts)
         prompt_title = 'Pick Repo',
         cwd = '~/',
         -- list my git repos runs a parallel search across all my git repos
-        finder = finders.new_oneshot_job({"fzfcache", "list-my-git-repos"}, {}),
+        finder = finders.new_oneshot_job(
+            {"fzfcache", "list-my-git-repos", "-r"}, {}),
         sorter = require("telescope.config").values.generic_sorter(opts),
         ---@diagnostic disable-next-line: unused-local
         attach_mappings = function(prompt_bufnr, map)
@@ -85,7 +97,7 @@ function M.switch_to_repo(opts)
                 else
                     actions.close(prompt_bufnr)
                     -- cd to this directory, and open telescope to pick a file
-                    vim.cmd('lcd ' .. selection.value)
+                    vim.cmd('lcd ' .. vim.fn.expand(selection.value))
                     builtins.find_files()
                 end
             end)

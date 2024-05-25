@@ -1,3 +1,15 @@
 #!/usr/bin/env bash
 
-exec parallel -j+0 'list-git-dirs {}' <~/.cache/repo_bases.txt
+set -e
+
+RELATIVE=0
+# accept -r to print relative to home directory
+[[ "$1" == "-r" ]] && RELATIVE=1
+
+parallel -j+0 'list-git-dirs {}' <~/.cache/repo_bases.txt | {
+	if ((RELATIVE)); then
+		sed -e "s@^$HOME/@~/@"
+	else
+		cat
+	fi
+}

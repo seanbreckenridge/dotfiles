@@ -7,7 +7,7 @@ return {
     -- if yadm is not installed, this will be disabled
     {
         'seanbreckenridge/yadm-git.vim',
-        enabled = vim.g.has_yadm,
+        cond = vim.g.has_yadm,
         event = "VeryLazy",
         -- dir = "/home/sean/Files/OldRepos/yadm-git.vim",
         config = function()

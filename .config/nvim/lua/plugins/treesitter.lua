@@ -15,10 +15,12 @@ return {
             sync_install = false,
             auto_install = true,
             ensure_installed = {
-                "bash", "cpp", "css", "html", "lua", "perl", "python", "rust",
-                "go", "javascript", "json", "regex", "toml", "yaml", "vim",
-                "todotxt", "typescript", "tsx", "c", "java", "php", "ruby",
-                "dart", "elixir", "query", "prisma", "vimdoc", "gitcommit"
+                "astro", "awk", "bash", "c", "commonlisp", "cpp", "css", "csv",
+                "dart", "diff", "dockerfile", "eex", "elixir", "erlang",
+                "git_config", "gitcommit", "gitignore", "go", "graphql", "html",
+                "java", "javascript", "jq", "json", "lua", "make", "perl",
+                "php", "prisma", "python", "query", "regex", "ruby", "rust",
+                "todotxt", "toml", "tsx", "typescript", "vim", "vimdoc", "yaml"
             },
             highlight = {
                 enable = true -- false will disable the whole extension

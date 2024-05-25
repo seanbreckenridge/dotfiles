@@ -1,11 +1,12 @@
 local M = {}
 M._is_patched = false
 
--- below is functionality to toggle the codeium_enabled variable
--- if its set on vim.b (buffer-local), it toggles that, otherwise
--- it toggles it globally. For example, I have an autocmd that disables
--- this when I load into an .env file, see ./autocmds.lua
+--- Codeium provides no way to toggle the client on or off. This lets the
+--- user set the variable codeium_enabled to do that, and patches the
+--- library function to prevent it from running when disabled.
 
+--- Checks the buffer or global options to see if codeium_enabled is set
+---@return boolean
 M.is_codeium_enabled = function()
     local enabled = vim.b["codeium_enabled"]
     if enabled == nil then
@@ -17,6 +18,8 @@ M.is_codeium_enabled = function()
     return enabled
 end
 
+--- toggles the state of codeium_enabled. first checks buffer, else
+--- toggles global state. Sends a notification with vim.notify
 ---@return boolean
 M.toggle_codeium_enabled = function()
     M.patch_codeium()
@@ -52,6 +55,9 @@ M.toggle_codeium_enabled = function()
     return log_result(vim.g["codeium_enabled"], "global")
 end
 
+--- Overwrite the library is_available function to prevent it from
+--- running when codeium_enabled is set to false
+--- @return nil
 M.patch_codeium = function()
     if M._is_patched == true then return end
 

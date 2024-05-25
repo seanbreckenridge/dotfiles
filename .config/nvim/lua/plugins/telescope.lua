@@ -75,8 +75,10 @@ wk.register({
             function() require('telescope.builtin').diagnostics() end,
             'diagnostics'
         },
+        t = {':Telescope<CR>', 'telescope'},
         L = {
-            function() require('telescope.builtin').reloader() end, 'reload lua'
+            function() require('user.telescope').find_lazy_plugins() end,
+            'lazy files'
         },
         [' '] = {function() require('telescope.builtin').resume() end, 'resume'}
     }
@@ -111,7 +113,7 @@ return {
         tl.setup {
             defaults = {
                 winblend = 20, -- transparency
-                path_display = {'smart'},
+                path_display = {'relative'},
                 -- Default configuration for telescope goes here:
                 -- config_key = value,
                 mappings = {

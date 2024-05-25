@@ -7,6 +7,7 @@ return {
     "Exafunction/codeium.nvim",
     event = "InsertEnter",
     cmd = {"Codeium", "CodeiumToggle"},
+    cond = not vim.g.on_android,
     dependencies = {"nvim-lua/plenary.nvim", "hrsh7th/nvim-cmp"},
     config = function()
         require("codeium").setup()
