@@ -60,7 +60,7 @@ havecmd dart && {
 
 MIX_PACKAGE_LIST="${PACKAGE_DIR}/mix_archive_packages.txt"
 havecmd mix && {
-	echo "Installing global pheonix mix archives..."
+	echo "Installing global phoenix mix archives..."
 	MIX_ARCHIVE_LIST="$(mix archive | tac | sed -e '1d; s/^* //; s/-.*//')"
 	while read -r mix_pkg; do
 		if ! grep -qx "${mix_pkg}" <<<"${MIX_ARCHIVE_LIST}"; then

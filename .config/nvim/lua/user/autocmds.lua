@@ -1,14 +1,12 @@
 -- See `:help vim.highlight.on_yank()`
-local highlight_group = vim.api.nvim_create_augroup('YankHighlight',
-                                                    {clear = true})
 vim.api.nvim_create_autocmd('TextYankPost', {
     callback = function() vim.highlight.on_yank() end,
-    group = highlight_group,
+    group = vim.api.nvim_create_augroup('YankHighlight', {clear = true}),
     pattern = '*'
 })
 
 -- automatically compile/run commands when I edit particular [config] files
-local user_autocompile = vim.api.nvim_create_augroup('user_autocompile',
+local user_autocompile = vim.api.nvim_create_augroup('UserAutocompile',
                                                      {clear = true})
 vim.api.nvim_create_autocmd('BufWritePost', {
     command = '!reshortcuts',
@@ -29,28 +27,22 @@ vim.api.nvim_create_autocmd('BufWritePost', {
 })
 
 -- enter insert mode when I open a terminal
-local terminal_insert = vim.api.nvim_create_augroup('terminal_insert',
-                                                    {clear = true})
 vim.api.nvim_create_autocmd('TermOpen', {
     command = 'startinsert',
-    group = terminal_insert,
+    group = vim.api.nvim_create_augroup('TerminalInsert', {clear = true}),
     pattern = '*'
 })
 
 -- disable LLM-generation for .env files
-local llm_grp = vim.api.nvim_create_augroup("llm_group", {clear = true})
 vim.api.nvim_create_autocmd({"BufEnter", "BufNewFile"}, {
-    group = llm_grp,
+    group = vim.api.nvim_create_augroup("LlmGroup", {clear = true}),
     pattern = {".env", ".env.*"},
     callback = function(_) vim.b['codeium_enabled'] = false end
 })
 
 -- use the loclist for vim.diagnostics
-local user_diagnostic = vim.api.nvim_create_augroup('user_diagnostic',
-                                                    {clear = true})
-
 vim.api.nvim_create_autocmd({'BufWrite', 'BufEnter', 'InsertLeave'}, {
-    group = user_diagnostic,
+    group = vim.api.nvim_create_augroup('SetDiagnostic', {clear = true}),
     pattern = '*',
     callback = function()
         vim.diagnostic.setloclist({
