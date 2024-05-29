@@ -1,13 +1,19 @@
--- See `:help vim.highlight.on_yank()`
+---@param name string
+local function clear_group(name)
+    return vim.api.nvim_create_augroup(name, { clear = true })
+end
+
+
 vim.api.nvim_create_autocmd('TextYankPost', {
+    desc = "highlight when yanking (copying) text",
     callback = function() vim.highlight.on_yank() end,
-    group = vim.api.nvim_create_augroup('YankHighlight', {clear = true}),
+    group = clear_group('YankHighlight'),
     pattern = '*'
 })
 
 -- automatically compile/run commands when I edit particular [config] files
-local user_autocompile = vim.api.nvim_create_augroup('UserAutocompile',
-                                                     {clear = true})
+local user_autocompile = clear_group('UserAutocompile')
+
 vim.api.nvim_create_autocmd('BufWritePost', {
     command = '!reshortcuts',
     group = user_autocompile,
@@ -26,23 +32,23 @@ vim.api.nvim_create_autocmd('BufWritePost', {
     pattern = {'.config/i3blocks/config.*', 'i3blocks/config.*'}
 })
 
--- enter insert mode when I open a terminal
 vim.api.nvim_create_autocmd('TermOpen', {
+    desc = "enter insert mode when I open a terminal",
     command = 'startinsert',
-    group = vim.api.nvim_create_augroup('TerminalInsert', {clear = true}),
+    group = clear_group('TerminalInsert'),
     pattern = '*'
 })
 
--- disable LLM-generation for .env files
 vim.api.nvim_create_autocmd({"BufEnter", "BufNewFile"}, {
-    group = vim.api.nvim_create_augroup("LlmGroup", {clear = true}),
+    desc = "disable LLM-generation for .env files",
+    group = clear_group("LlmGroup"),
     pattern = {".env", ".env.*"},
-    callback = function(_) vim.b['codeium_enabled'] = false end
+    callback = function() vim.b['codeium_enabled'] = false end
 })
 
--- use the loclist for vim.diagnostics
 vim.api.nvim_create_autocmd({'BufWrite', 'BufEnter', 'InsertLeave'}, {
-    group = vim.api.nvim_create_augroup('SetDiagnostic', {clear = true}),
+    desc = "use the loclist for vim.diagnostics",
+    group = clear_group('SetDiagnostic'),
     pattern = '*',
     callback = function()
         vim.diagnostic.setloclist({
