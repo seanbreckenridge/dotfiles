@@ -1,8 +1,10 @@
+---create an autocmd group, clearing any existing commands
+---test something  else here
+---
 ---@param name string
 local function clear_group(name)
-    return vim.api.nvim_create_augroup(name, { clear = true })
+    return vim.api.nvim_create_augroup(name, {clear = true})
 end
-
 
 vim.api.nvim_create_autocmd('TextYankPost', {
     desc = "highlight when yanking (copying) text",

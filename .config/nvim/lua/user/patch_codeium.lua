@@ -21,7 +21,7 @@ end
 --- toggles the state of codeium_enabled. first checks buffer, else
 --- toggles global state. Sends a notification with vim.notify
 ---@return boolean
-M.toggle_codeium_enabled = function()
+function M.toggle_codeium_enabled()
     M.patch_codeium()
 
     ---@param status boolean
@@ -58,7 +58,7 @@ end
 --- Overwrite the library is_available function to prevent it from
 --- running when codeium_enabled is set to false
 --- @return nil
-M.patch_codeium = function()
+function M.patch_codeium()
     if M._is_patched == true then return end
 
     local Source = require("codeium.source")
