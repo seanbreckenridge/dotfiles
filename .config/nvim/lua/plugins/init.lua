@@ -15,12 +15,8 @@ return {
             vim.g.yadm_git_gitgutter_enabled = 0 -- I use gitsigns instead
         end
     }, {"machakann/vim-sandwich", keys = {"sa", "sr", "sd"}}, -- surround text (e.g. quotes/brackets)
-    -- vim-unimpaired reminders:
-    -- []f to go to next/prev file
-    -- []q quickfix, , []Space to add newlines, []e to swap lines
-    -- []xx to encode/decode HTML, []uu to encode/decode URLs, []y to do C-style escaping
-    {'tpope/vim-unimpaired', keys = {"]", "["}},
-    {'tpope/vim-repeat', event = "VeryLazy"}, -- repeat plugin commands
+    -- []x to encode/decode HTML, []u to encode/decode URLs, []y to do C-style escaping
+    {'seanbreckenridge/vim-unimpaired-conversions', keys = {"[", "]"}},
     {'tpope/vim-sleuth', event = "VeryLazy"}, -- detect indentation
     {'tpope/vim-speeddating', keys = {"<C-a>", "<C-x>"}}, -- increment/decrement dates
     {'airblade/vim-rooter', event = "VeryLazy"}

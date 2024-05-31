@@ -100,7 +100,6 @@ return {
         local tl = require('telescope')
         local actions = require('telescope.actions')
         local previewers = require('telescope.previewers')
-        local trouble = require('trouble.providers.telescope')
 
         -- this is a no-op for now, just here in case I want to modify things
         -- https://github.com/nvim-telescope/telescope.nvim/wiki/Configuration-Recipes#previewers
@@ -124,7 +123,6 @@ return {
                         -- fzf-like up/down (remember, can also switch to normal mode and use j/k)
                         ["<C-j>"] = actions.move_selection_next,
                         ["<C-k>"] = actions.move_selection_previous,
-                        ["<C-x>"] = trouble.open_with_trouble
                     }
                 },
                 -- ignore some directory caches with lots of file results

@@ -2,9 +2,28 @@ return {
     "folke/trouble.nvim",
     event = "VeryLazy",
     dependencies = {"nvim-lua/plenary.nvim", "nvim-tree/nvim-web-devicons"},
+    keys = {
+        {
+            "<leader>xx",
+            "<cmd>Trouble diagnostics toggle<cr>",
+            desc = "diagnostics"
+        }, {
+            "<leader>xX",
+            "<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
+            desc = "buffer diagnostics"
+        },
+        {
+            "<leader>xl",
+            "<cmd>Trouble loclist toggle<cr>",
+            desc = "location list"
+        },
+        {"<leader>xq", "<cmd>Trouble qflist toggle<cr>", desc = "quickfix list"}
+    },
     config = function()
+        -- TODO: try more commands here to figure out which ones I want:
+        -- https://github.com/folke/trouble.nvim?tab=readme-ov-file#commands
         local trouble = require("trouble")
-        trouble.setup {}
+        trouble.setup({})
 
         local wk = require("which-key")
 
@@ -13,35 +32,7 @@ return {
                 name = "trouble",
                 -- git diff file with gitsigns (opens in trouble if installed)
                 D = {function() require("gitsigns").setqflist() end, "git diff"},
-                x = {
-                    function() require("trouble").toggle() end, "toggle trouble"
-                },
-                w = {
-                    function()
-                        require("trouble").toggle("workspace_diagnostics")
-                    end, "toggle workspace"
-                },
-                d = {
-                    function()
-                        require("trouble").toggle("document_diagnostics")
-                    end, "toggle document"
-                },
-                q = {
-                    function()
-                        require("trouble").toggle("quickfix")
-                    end, "toggle quickfix"
-                },
-                l = {
-                    function()
-                        require("trouble").toggle("loclist")
-                    end, "toggle loclist"
-                },
-                r = {
-                    function()
-                        require("trouble").toggle("lsp_references")
-                    end, "toggle lsp references"
-                },
-                t = {'<Cmd>:TodoTrouble<CR>', "show todos"}
+                t = {"<Cmd>:TodoTrouble<CR>", "show todos"}
             }
         }, {prefix = "<leader>"})
     end

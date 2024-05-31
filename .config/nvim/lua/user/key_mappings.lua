@@ -70,7 +70,7 @@ end
 
 -- misc
 wk.register({
-    s = {':set spell!<CR>', 'toggle spell'},
+    s = {':setlocal spell!<CR>', 'toggle spell'},
     X = {':w<CR>:!chmod +x %<CR>:edit<CR>', 'chmod +x'},
     ["<CR>"] = {":split<CR>:term<CR>", 'open terminal'},
     ["S"] = {reload_config, 'reload config'}
@@ -98,6 +98,13 @@ wk.register({
         l = {function() ToggleQFList(0) end, 'toggle loc list'}
     }
 }, {prefix = '<leader>'})
+
+-- vim-unimpaired-like for basic stuff
+nnoremap('[q', ':cprev', 'qf prev')
+nnoremap(']q', ':cnext', 'qf next')
+nnoremap('[l', ':lprev', 'll prev')
+nnoremap(']l', ':lnext', 'll next')
+-- TODO: add '[]f' binding?
 
 function ToggleQFList(is_quickfix)
     -- quickfix
