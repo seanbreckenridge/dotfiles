@@ -53,7 +53,7 @@
   "vim-sandwich": { "branch": "master", "commit": "74cf93d58ccc567d8e2310a69860f1b93af19403" },
   "vim-sleuth": { "branch": "master", "commit": "1cc4557420f215d02c4d2645a748a816c220e99b" },
   "vim-speeddating": { "branch": "master", "commit": "5a36fd29df63ea3f65562bd2bb837be48a5ec90b" },
-  "vim-unimpaired-conversions": { "branch": "master", "commit": "46820a032a601d0ba42d497929c829f279e4c09f" },
+  "vim-unimpaired-conversions": { "branch": "master", "commit": "e3e5cd399c6bebaff39737b67d64d77b7329b813" },
   "which-key.nvim": { "branch": "main", "commit": "4b7167f8fb2dba3d01980735e3509e172c024c29" },
   "yadm-git.vim": { "branch": "master", "commit": "5d64e70e00267d97bf88b49fe3ca046357b92763" },
   "zen-mode.nvim": { "branch": "main", "commit": "78557d972b4bfbb7488e17b5703d25164ae64e6a" }

@@ -115,6 +115,29 @@ function ToggleQFList(is_quickfix)
     end
 end
 
+-- nicer vim-unimpaired-conversion descriptions
+local visualMaps = {
+    ["[u"] = "url encode",
+    ["[x"] = "xml encode",
+    ["[y"] = "c-string encode",
+    ["]u"] = "url decode",
+    ["]x"] = "xml decode",
+    ["]y"] = "c-string decode"
+}
+
+-- combine visual maps and add normal mode ones
+local normalMaps = vim.tbl_extend("force", visualMaps, {
+    ["[uu"] = "url encode line",
+    ["[xx"] = "xml encode line",
+    ["[yy"] = "c-string encode line",
+    ["]uu"] = "url decode line",
+    ["]xx"] = "xml decode line",
+    ["]yy"] = "c-string decode line"
+})
+
+wk.register(visualMaps, {mode = "v"})
+wk.register(normalMaps, {mode = "n"})
+
 -- for picking which files to merge from while resolving merge conflicts
 -- middle is what the final merged file is
 -- gj to pick hunk from the right (under right index)

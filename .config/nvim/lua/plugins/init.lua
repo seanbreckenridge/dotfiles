@@ -1,12 +1,12 @@
 -- change directory in the window's local directory instead of the whole application
-vim.g.rooter_cd_cmd = 'lcd'
+vim.g.rooter_cd_cmd = "lcd"
 
 return {
-    {'folke/which-key.nvim'}, -- keybindings
+    {"folke/which-key.nvim"}, -- keybindings
     -- yadm integration (needs to be loaded early since uses BufWinEnter to detect)
     -- if yadm is not installed, this will be disabled
     {
-        'seanbreckenridge/yadm-git.vim',
+        "seanbreckenridge/yadm-git.vim",
         cond = vim.g.has_yadm,
         -- dir = "~/Files/OldRepos/yadm-git.vim",
         event = "BufWinEnter",
@@ -16,8 +16,8 @@ return {
         end
     }, {"machakann/vim-sandwich", keys = {"sa", "sr", "sd"}}, -- surround text (e.g. quotes/brackets)
     -- []x to encode/decode HTML, []u to encode/decode URLs, []y to do C-style escaping
-    {'seanbreckenridge/vim-unimpaired-conversions', keys = {"[", "]"}},
-    {'tpope/vim-sleuth', event = "VeryLazy"}, -- detect indentation
-    {'tpope/vim-speeddating', keys = {"<C-a>", "<C-x>"}}, -- increment/decrement dates
-    {'airblade/vim-rooter', event = "VeryLazy"}
+    {"seanbreckenridge/vim-unimpaired-conversions", keys = {"[", "]"}},
+    {"tpope/vim-sleuth", event = "VeryLazy"}, -- detect indentation
+    {"tpope/vim-speeddating", keys = {"<C-a>", "<C-x>"}}, -- increment/decrement dates
+    {"airblade/vim-rooter", event = "VeryLazy"}
 }
