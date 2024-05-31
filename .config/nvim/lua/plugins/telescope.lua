@@ -122,7 +122,7 @@ return {
                         ["<Esc>"] = actions.close,
                         -- fzf-like up/down (remember, can also switch to normal mode and use j/k)
                         ["<C-j>"] = actions.move_selection_next,
-                        ["<C-k>"] = actions.move_selection_previous,
+                        ["<C-k>"] = actions.move_selection_previous
                     }
                 },
                 -- ignore some directory caches with lots of file results

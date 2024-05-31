@@ -143,19 +143,20 @@ return {
                 wk.register({
                     [']w'] = {
                         function()
-                            vim.diagnostic.goto_next()
+                            vim.diagnostic.jump({count = 1})
                             vim.api.nvim_feedkeys("zz", "n", false)
                         end, "next diagnostic"
                     },
                     ['[w'] = {
                         function()
-                            vim.diagnostic.goto_prev()
+                            vim.diagnostic.jump({count = -1})
                             vim.api.nvim_feedkeys("zz", "n", false)
                         end, "prev diagnostic"
                     },
                     [']e'] = {
                         function()
-                            vim.diagnostic.goto_next({
+                            vim.diagnostic.jump({
+                                count = 1,
                                 severity = vim.diagnostic.severity.ERROR
                             })
                             vim.api.nvim_feedkeys("zz", "n", false)
@@ -163,7 +164,8 @@ return {
                     },
                     ['[e'] = {
                         function()
-                            vim.diagnostic.goto_prev({
+                            vim.diagnostic.jump({
+                                count = -1,
                                 severity = vim.diagnostic.severity.ERROR
                             })
                             vim.api.nvim_feedkeys("zz", "n", false)

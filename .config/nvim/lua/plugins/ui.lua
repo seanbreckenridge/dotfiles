@@ -1,13 +1,9 @@
-local wk = require("which-key")
-
-wk.register({
-    e = {function() require('oil').open() end, 'file explorer'},
-    p = {"<cmd>MarkdownPreview<cr>", "preview markdown"},
-    u = {"<cmd>UndotreeToggle<cr>", "undotree"}
-}, {prefix = "<leader>"})
-
 return {
-    {"mbbill/undotree", cmd = {"UndotreeToggle"}, keys = {"<leader>u"}}, {
+    {
+        "mbbill/undotree",
+        cmd = {"UndotreeToggle"},
+        keys = {{"<leader>u", '<cmd>UndotreeToggle<cr>', desc = "undotree"}}
+    }, {
         'folke/zen-mode.nvim',
         dependencies = {'folke/twilight.nvim'},
         cmd = "ZenMode",
@@ -46,14 +42,21 @@ return {
     }, {
         "iamcco/markdown-preview.nvim",
         build = "cd app && yarn install",
-        ft = "markdown"
+        ft = "markdown",
+        keys = {
+            {"<leader>p", "<cmd>MarkdownPreview<cr>", desc = "preview markdown"}
+        }
     }, {
         -- g? : show help
         "stevearc/oil.nvim",
         event = "VeryLazy",
-        -- hmm.. doesn't seem to work when trying to trigger multiple times
-        -- keys = "<leader>e",
-        -- cmd = "Oil",
+        keys = {
+            {
+                "<leader>e",
+                function() require('oil').open() end,
+                desc = 'file explorer'
+            }
+        },
         opts = {
             default_file_explorer = true,
             columns = {"icon"},
