@@ -1,6 +1,5 @@
 return {
     'nvim-pack/nvim-spectre',
-    event = "InsertEnter",
     keys = {{"S", function() require('spectre').open() end, desc = "spectre"}},
     cmd = "Spectre",
     dependencies = {'nvim-lua/plenary.nvim'},

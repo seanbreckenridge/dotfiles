@@ -48,6 +48,7 @@ vnoremap('K', ':move \'<-2<CR>gv=gv', 'move selected text up')
 
 nnoremap('J', "mzJ`z", 'append to line')
 
+---@param n number
 local function leftn(n) return string.rep('<Left>', n) end
 
 -- start a :%s/ search with the selected text, prompting for the replacement
@@ -85,58 +86,35 @@ nnoremap('<leader><C-n>', ':enew<CR>', 'new file')
 nnoremap('<leader>d', function() require('notify').dismiss() end,
          'dismiss notifications')
 
-nnoremap('<C-q>', ':lua ToggleQFList(0)<CR>', 'toggle quickfix list')
+---@param is_quickfix boolean|nil
+local function toggle_list(is_quickfix)
+    if is_quickfix then
+        require("trouble").toggle("quickfix")
+    else
+        require("trouble").toggle("loclist")
+    end
+end
+
+nnoremap('<C-q>', function() toggle_list(true) end, 'toggle quickfix list')
 wk.register({j = {':cnext<CR>', 'qf next'}, k = {':cprev<CR>', 'qf prev'}},
             {prefix = '<leader>'})
 
-nnoremap('<C-l>', ':lua ToggleQFList(0)<CR>', 'toggle loc list')
+nnoremap('<C-l>', toggle_list, 'toggle loc list')
 wk.register({
     l = {
         name = 'loc list',
         j = {':lnext', 'next'},
         k = {':lprev', 'prev'},
-        l = {function() ToggleQFList(0) end, 'toggle loc list'}
+        l = {toggle_list, 'toggle loc list'}
     }
 }, {prefix = '<leader>'})
 
 -- vim-unimpaired-like for basic stuff
-nnoremap('[q', ':cprev', 'qf prev')
-nnoremap(']q', ':cnext', 'qf next')
-nnoremap('[l', ':lprev', 'll prev')
-nnoremap(']l', ':lnext', 'll next')
+nnoremap('[q', ':cprev<CR>', 'qf prev')
+nnoremap(']q', ':cnext<CR>', 'qf next')
+nnoremap('[l', ':lprev<CR>', 'll prev')
+nnoremap(']l', ':lnext<CR>', 'll next')
 -- TODO: add '[]f' binding?
-
-function ToggleQFList(is_quickfix)
-    -- quickfix
-    if is_quickfix == 1 then
-        require("trouble").toggle("quickfix")
-    else -- loclist
-        require("trouble").toggle("loclist")
-    end
-end
-
--- nicer vim-unimpaired-conversion descriptions
-local visualMaps = {
-    ["[u"] = "url encode",
-    ["[x"] = "xml encode",
-    ["[y"] = "c-string encode",
-    ["]u"] = "url decode",
-    ["]x"] = "xml decode",
-    ["]y"] = "c-string decode"
-}
-
--- combine visual maps and add normal mode ones
-local normalMaps = vim.tbl_extend("force", visualMaps, {
-    ["[uu"] = "url encode line",
-    ["[xx"] = "xml encode line",
-    ["[yy"] = "c-string encode line",
-    ["]uu"] = "url decode line",
-    ["]xx"] = "xml decode line",
-    ["]yy"] = "c-string decode line"
-})
-
-wk.register(visualMaps, {mode = "v"})
-wk.register(normalMaps, {mode = "n"})
 
 -- for picking which files to merge from while resolving merge conflicts
 -- middle is what the final merged file is
@@ -154,4 +132,3 @@ wk.register({
     j = {':diffget //3<CR>', 'diffget //3'},
     f = {':diffget //2<CR>', 'diffget //2'}
 }, {prefix = "<leader>i"})
-

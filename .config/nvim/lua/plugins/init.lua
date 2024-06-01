@@ -16,8 +16,11 @@ return {
         end
     }, {"machakann/vim-sandwich", keys = {"sa", "sr", "sd"}}, -- surround text (e.g. quotes/brackets)
     -- []x to encode/decode HTML, []u to encode/decode URLs, []y to do C-style escaping
-    {"seanbreckenridge/vim-unimpaired-conversions", keys = {"[", "]"}},
-    {"tpope/vim-sleuth", event = "VeryLazy"}, -- detect indentation
+    {
+        "seanbreckenridge/vim-unimpaired-conversions",
+        keys = {"[", "]"}
+        -- dir = "~/Repos/vim-unimpaired-conversions"
+    }, {"tpope/vim-sleuth", event = "VeryLazy"}, -- detect indentation
     {"tpope/vim-speeddating", keys = {"<C-a>", "<C-x>"}}, -- increment/decrement dates
     {"airblade/vim-rooter", event = "VeryLazy"}
 }

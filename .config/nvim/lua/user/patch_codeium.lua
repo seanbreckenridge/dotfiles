@@ -7,7 +7,7 @@ M._is_patched = false
 
 --- Checks the buffer or global options to see if codeium_enabled is set
 ---@return boolean
-M.is_codeium_enabled = function()
+function M.is_codeium_enabled()
     local enabled = vim.b["codeium_enabled"]
     if enabled == nil then
         enabled = vim.g["codeium_enabled"]
