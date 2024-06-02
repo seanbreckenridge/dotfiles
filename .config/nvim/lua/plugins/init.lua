@@ -19,7 +19,7 @@ return {
     {
         "seanbreckenridge/vim-unimpaired-conversions",
         keys = {"[", "]"}
-        -- dir = "~/Repos/vim-unimpaired-conversions"
+        -- dir = "~/Files/OldRepos/vim-unimpaired-conversions"
     }, {"tpope/vim-sleuth", event = "VeryLazy"}, -- detect indentation
     {"tpope/vim-speeddating", keys = {"<C-a>", "<C-x>"}}, -- increment/decrement dates
     {"airblade/vim-rooter", event = "VeryLazy"}
