@@ -47,7 +47,8 @@ return {
                         ['af'] = '@function.outer',
                         ['if'] = '@function.inner',
                         ['ac'] = '@class.outer',
-                        ['ic'] = '@class.inner'
+                        ['ic'] = '@class.inner',
+                        ['co'] = '@comment.outer'
                     }
                 },
                 move = {
@@ -78,7 +79,7 @@ return {
             }
         }
 
-        require('nvim-ts-autotag').setup({})
+        require('nvim-ts-autotag').setup()
 
         local ctx_group = vim.api.nvim_create_augroup("disable-context",
                                                       {clear = true})
