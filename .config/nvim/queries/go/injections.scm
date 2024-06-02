@@ -1,10 +1,10 @@
 ;; highlight embedded SQL queries in go
 (call_expression
  function: (selector_expression
-    operand: (identifier) @module
-    (#any-of? @module "db" "tx")
-    field: (field_identifier) @name
-    (#any-of? @name "Exec" "Query"))
+    operand: (identifier) @db_object
+    (#any-of? @db_object "db" "tx")
+    field: (field_identifier) @db_func
+    (#any-of? @db_func "Exec" "Query"))
  arguments: (argument_list
    [
      (interpreted_string_literal)
