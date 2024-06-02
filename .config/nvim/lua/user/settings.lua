@@ -2,8 +2,6 @@
 -- see :help vim-differences for some defaults set in nvim
 -- for :help syntax, treesitter will disable this for filetypes it knows, otherwise
 -- syntax highlighting is enabled by default
--- Don't execute arbitrary modelines
-vim.opt.modelines = 0
 vim.opt.number = true
 vim.opt.relativenumber = true -- line number
 -- Blink cursor on error instead of beeping
