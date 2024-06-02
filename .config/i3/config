@@ -375,3 +375,5 @@ exec --no-startup-id cstimer
 
 # enable tap to click
 exec_always --no-startup-id trackpad-tap-to-click enable
+
+# vim:ft=i3config

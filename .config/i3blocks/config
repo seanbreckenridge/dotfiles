@@ -102,3 +102,5 @@ interval=5
 [ssid]
 command=b-network
 interval=5
+
+# vim:ft=dosini
