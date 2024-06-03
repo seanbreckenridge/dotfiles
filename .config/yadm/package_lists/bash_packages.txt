@@ -11,3 +11,4 @@ kadwanev/retry
 kdheepak/panvimdoc
 reinefjord/wayshot
 eschulte/lisp-format
+github.com/rupa/z

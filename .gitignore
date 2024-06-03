@@ -197,6 +197,7 @@ __pycache__
 /.xsession-errors*
 /.yarn
 /.yarnrc
+/.z
 /.zoom
 
 # Top level config/local files to ignore

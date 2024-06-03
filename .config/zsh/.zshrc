@@ -95,6 +95,8 @@ windows*)
 	;;
 esac
 
+source_if_exists "${XDG_DATA_HOME}/basher/cellar/packages/rupa/z/z.sh"
+
 # override the CTRL+R widget using my hpi zsh history
 source_if_exists "${REPOS}/HPI-personal/scripts/fzf_history_widget.zsh"
 
