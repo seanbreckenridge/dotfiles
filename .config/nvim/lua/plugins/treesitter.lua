@@ -19,8 +19,9 @@ return {
                 "dart", "diff", "dockerfile", "eex", "elixir", "erlang",
                 "git_config", "gitcommit", "gitignore", "go", "graphql", "html",
                 "java", "javascript", "jq", "json", "lua", "make", "perl",
-                "php", "prisma", "python", "query", "regex", "ruby", "rust", "sql",
-                "todotxt", "toml", "tsx", "typescript", "vim", "vimdoc", "yaml"
+                "php", "prisma", "python", "query", "regex", "ruby", "rust",
+                "sql", "todotxt", "toml", "tsx", "typescript", "vim", "vimdoc",
+                "yaml"
             },
             highlight = {
                 enable = true -- false will disable the whole extension
@@ -81,13 +82,11 @@ return {
 
         require('nvim-ts-autotag').setup()
 
-        local ctx_group = vim.api.nvim_create_augroup("disable-context",
-                                                      {clear = true})
         vim.api.nvim_create_autocmd("FileType", {
             pattern = {"markdown"},
-            group = ctx_group,
-            ---@diagnostic disable-next-line: unused-local
-            callback = function(ev)
+            group = vim.api.nvim_create_augroup("disable-ts-context",
+                                                {clear = true}),
+            callback = function()
                 require("treesitter-context").disable()
             end
         })

@@ -42,6 +42,7 @@ return {
                 {name = "codeium"}, -- codeium completion
                 {name = "nvim_lsp"}, -- update neovim lsp capabilities https://github.com/hrsh7th/cmp-nvim-lsp
                 {name = "nvim_lua", keyword_length = 2}, -- lua completion for nvim-specific stuff
+                {name = "lazydev", group_index = 0, keyword_length = 2}, -- https://github.com/folke/lazydev.nvim
                 {name = "luasnip", keyword_length = 2}, -- snippets
                 {name = "emoji", keyword_length = 3}, -- emoji
                 {name = "path"}, -- complete names of files

@@ -147,7 +147,6 @@ return {
                 --   picker_config_key = value,
                 --   ...
                 -- }
-                find_files = {find_command = {"rg", "--files", "--follow"}}
             },
             extensions = {
                 fzf = {

@@ -24,7 +24,6 @@ require('lazy').setup('plugins', {
             }
         }
     }
-
 })
 
 -- load my lua options/mappings
