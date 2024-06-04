@@ -57,7 +57,7 @@ return {
                 sh = {"shfmt"},
                 bash = {"shfmt"},
                 -- run on all filetypes
-                ["*"] = {"codespell"},
+                -- ["*"] = {"codespell"},
                 ["_"] = {"trim_whitespace"}
             },
             -- Set the log level. Use `:ConformInfo` to see the location of the log file.
