@@ -64,7 +64,7 @@ return {
                     -- override the PWD environment variable to the directory of the setup.cfg
                     -- file. this is needed to discover stuff like the LICENSE/README
                     env = function()
-                        return {["PWD"] = vim.fn.expand('%:h')}
+                        return {PWD = vim.fn.expand('%:h')}
                     end,
                     stdin = true,
                     cwd = require("conform.util").root_file({"setup.cfg"}),
