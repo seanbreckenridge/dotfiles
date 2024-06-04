@@ -13,7 +13,7 @@ vim.opt.shortmess:append('I')
 -- Whitespace
 vim.opt.wrap = true
 vim.opt.textwidth = 0 -- stop line wrapping
-vim.o.formatoptions = 'tcqrn1'
+vim.opt.formatoptions = 'tcqrn1'
 
 -- set tab config local to buffer
 vim.opt.tabstop = 2
@@ -29,7 +29,7 @@ vim.opt.matchpairs:append('<:>')
 -- save spellfile to my Documents
 local os = require('os')
 local spellfile = os.getenv('NVIM_SPELLFILE')
-if spellfile then vim.o.spellfile = spellfile end
+if spellfile then vim.opt.spellfile = spellfile end
 
 -- only show status line for last window
 vim.opt.laststatus = 3
