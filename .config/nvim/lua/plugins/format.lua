@@ -31,38 +31,35 @@ return {
             end)
         end, {range = true})
 
-        local prettier = {"prettier"}
+        local prettier_filetypes = {
+            "javascript", "typescript", "yaml", "toml", "css", "scss", "html",
+            "javascriptreact", "typescriptreact", "markdown"
+        }
 
-        require("conform").setup({
-            -- Map of filetype to formatters
-            formatters_by_ft = {
+        local prettier_fts = {}
+        for _, ft in ipairs(prettier_filetypes) do
+            prettier_fts[ft] = {{"prettierd", "prettier"}}
+        end
+
+        local conform = require("conform")
+        -- Use `:ConformInfo` to see the location of the log file.
+        conform.setup({
+            formatters_by_ft = vim.tbl_extend("keep", prettier_fts, {
                 lua = {"lua-format"},
                 go = {"goimports", "gofmt"},
-                javascript = prettier,
-                typescript = prettier,
-                yaml = prettier,
-                toml = prettier,
-                dosini = {"setup_cfg"}, -- often is misdetected
-                html = prettier,
+                dosini = {"setup_cfg"},
                 json = {"fixjson"},
-                javascriptreact = prettier,
-                typescriptreact = prettier,
-                css = prettier,
-                elixir = {" mix"},
-                scss = prettier,
+                elixir = {"mix"},
                 c = {"clang-format"},
                 cpp = {"clang-format"},
-                markdown = prettier,
+                rust = {"rustfmt"},
                 python = {"black"},
                 sh = {"shfmt"},
                 bash = {"shfmt"},
                 -- run on all filetypes
-                -- ["*"] = {"codespell"},
                 ["_"] = {"trim_whitespace"}
-            },
-            -- Set the log level. Use `:ConformInfo` to see the location of the log file.
+            }),
             log_level = vim.log.levels.INFO,
-            -- Conform will notify you when a formatter errors
             notify_on_error = true,
             formatters = {
                 setup_cfg = {
@@ -83,5 +80,20 @@ return {
                 }
             }
         })
+
+        conform.formatters.injected = {
+            ignore_errors = false,
+            lang_to_ext = {
+                bash = "sh",
+                javascript = "js",
+                javascriptreact = "jsx",
+                typescript = "ts",
+                typescriptreact = "tsx",
+                python = "py",
+                rust = "rs",
+                markdown = "md",
+                elixir = "exs"
+            }
+        }
     end
 }

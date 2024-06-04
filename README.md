@@ -6,7 +6,6 @@ This was originally linux-only, but over the months and years I've added a compa
 
 In general:
 
-
 - [`zsh`](http://zsh.sourceforge.net/), plugins/configuration handled manually in [`.config/zsh`](.config/zsh) (split across multiple files)
 - [`yadm`](https://yadm.io) to manage dotfiles, see [`yadm-with-README.md`](.config/yadm/yadm-with-README.md)
 - [`wezterm`](https://wezfurlong.org/wezterm/index.html) as terminal, [`alacritty`](https://github.com/alacritty/alacritty) on windows
