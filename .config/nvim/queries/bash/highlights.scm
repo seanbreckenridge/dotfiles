@@ -14,4 +14,4 @@
   (#match? @evry_flag "^-")) @evry
 
 ; can then use a command like this to highlight it specifically:
-; highlight @evry_flag cterm=italic gui=italic guifg=grey
+; vim.api.nvim_set_hl(0, "@evry_flag", {italic = true, fg = "lightgrey"})

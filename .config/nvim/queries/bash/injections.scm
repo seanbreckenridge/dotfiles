@@ -1,3 +1,5 @@
+; extends
+
 ; Highlight awk strings in shell scripts using the AWK syntax
 ; TODO: only do this when the raw_string is the last argument in the command
 (command
@@ -30,3 +32,4 @@
   argument: (string
     (string_content) @injection.content)
   (#set! injection.language "bash")) @sh_embedded_fzfcache
+

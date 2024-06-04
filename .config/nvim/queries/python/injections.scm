@@ -1,3 +1,5 @@
+; extends
+
 ; highlight sqlite commands in python
 (call
   function: (attribute
@@ -20,3 +22,8 @@
     (string
       (string_content) @injection.content))
   (#set! injection.language "bash")) @python_highlight_shlex
+
+((string_content) @injection.content
+  (#match? @injection.content
+    "(SELECT|INSERT|UPDATE|DELETE).+(FROM|INTO|VALUES|SET).*(WHERE|GROUP BY)?")
+  (#set! injection.language "sql"))
