@@ -71,9 +71,9 @@ return {
                 setup_cfg = {
                     command = "setup-cfg-fmt-tempfile",
                     stdin = true,
-                    -- cwd = require("conform.util").root_file({"setup.cfg"}),
-                    -- -- When cwd is not found, don't run the formatter (default false)
-                    -- require_cwd = true,
+                    cwd = require("conform.util").root_file({"setup.cfg"}),
+                    -- When cwd is not found, don't run the formatter (default false)
+                    require_cwd = true,
                     -- When returns false, the formatter will not be used
                     condition = function(_, ctx)
                         return vim.fs.basename(ctx.filename) == "setup.cfg"
