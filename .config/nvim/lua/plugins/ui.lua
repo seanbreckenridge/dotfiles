@@ -49,7 +49,7 @@ return {
     }, {
         -- g? : show help
         "stevearc/oil.nvim",
-        event = "VeryLazy",
+        event = "BufWinEnter",
         keys = {
             {
                 "<leader>e",
