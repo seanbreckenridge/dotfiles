@@ -7,6 +7,7 @@
     (word) @cmd_name
     (#eq? @cmd_name "awk"))
   argument: (raw_string) @injection.content
+  (#offset! @injection.content 0 1 0 -1)
   (#set! injection.language "awk")) @sh_embedded_awk
 
 ; NOTE: This does not do a *ton*, but it does highlight ^ and $ nicely
@@ -15,6 +16,7 @@
     (word) @cmd_name
     (#eq? @cmd_name "sed"))
   argument: (raw_string) @injection.content
+  (#offset! @injection.content 0 1 0 -1)
   (#set! injection.language "regex")) @sh_embedded_sed
 
 (command
@@ -22,6 +24,7 @@
     (word) @cmd_name
     (#eq? @cmd_name "jq"))
   argument: (raw_string) @injection.content
+  (#offset! @injection.content 0 1 0 -1)
   (#set! injection.language "jq")) @sh_embedded_jq
 
 ; https://github.com/seanbreckenridge/fzfcache
@@ -32,4 +35,3 @@
   argument: (string
     (string_content) @injection.content)
   (#set! injection.language "bash")) @sh_embedded_fzfcache
-
