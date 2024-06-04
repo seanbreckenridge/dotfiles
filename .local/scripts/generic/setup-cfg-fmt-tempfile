@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+set -e
+# https://github.com/asottile/setup-cfg-fmt/ STDIN should be the contents of
+# the file. This needs the $PWD variable to be set properly since setup-cfg-fmt
+# uses the directory of the file to find related (README/LICENSE) files, but we
+# want to be able to pipe the current buffer (disregarding if its saved or not)
+# to the formatter
+dname="$PWD" # callee can override this if its not the same dir
+if [[ ! -e "${dname}/setup.cfg" ]]; then
+	printf 'No setup.cfg found at %s\n' "$dname" >&2
+fi
+notify "$dname"
+tfile="$(mktemp -t setup.cfg.XXXXXX -p "$dname")"
+notify "$tfile"
+cat >"$tfile"
+setup-cfg-fmt --include-version-classifiers "$@" "$tfile" >&2 || true
+cat "$tfile"
+command rm -f "$tfile"
