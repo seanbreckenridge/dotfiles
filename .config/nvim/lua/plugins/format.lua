@@ -64,12 +64,14 @@ return {
             log_level = vim.log.levels.INFO,
             -- Conform will notify you when a formatter errors
             notify_on_error = true,
-            -- override the PWD environment variable to the directory of the setup.cfg
-            -- file. this is needed to discover stuff like the LICENSE/README
-            env = function() return {["PWD"] = vim.fn.expand('%:h')} end,
             formatters = {
                 setup_cfg = {
                     command = "setup-cfg-fmt-tempfile",
+                    -- override the PWD environment variable to the directory of the setup.cfg
+                    -- file. this is needed to discover stuff like the LICENSE/README
+                    env = function()
+                        return {["PWD"] = vim.fn.expand('%:h')}
+                    end,
                     stdin = true,
                     cwd = require("conform.util").root_file({"setup.cfg"}),
                     -- When cwd is not found, don't run the formatter (default false)
