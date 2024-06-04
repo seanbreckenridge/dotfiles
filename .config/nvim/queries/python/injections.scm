@@ -9,3 +9,14 @@
     (string
       (string_content) @injection.content))
   (#set! injection.language "sql")) @python_highlight_sqlite
+
+(call
+  function: (attribute
+    object: (identifier) @py_object
+    attribute: (identifier) @py_function)
+  (#match? @py_object "shlex")
+  (#match? @py_function "split")
+  arguments: (argument_list
+    (string
+      (string_content) @injection.content))
+  (#set! injection.language "bash")) @python_highlight_shlex
