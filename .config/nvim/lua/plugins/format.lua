@@ -1,10 +1,8 @@
-local wk = require("which-key")
-
-wk.register({':Format<CR>', 'format'}, {prefix = '<leader>t'})
-
 return {
     'stevearc/conform.nvim',
-    event = "VeryLazy",
+    event = {"BufWritePre"},
+    cmd = {"ConformInfo"},
+    keys = {{"<leader>t", "<cmd>Format<cr>", desc = "format"}},
     config = function()
 
         vim.api.nvim_create_user_command("Format", function(args)
@@ -24,9 +22,9 @@ return {
             }, function(err, did_edit)
                 if err ~= nil then return end
                 if did_edit then
-                    vim.notify("Format successful", vim.log.levels.INFO)
+                    vim.print("Formatted successful")
                 else
-                    vim.notify("No formatting needed", vim.log.levels.INFO)
+                    vim.print("No formatting needed")
                 end
             end)
         end, {range = true})
@@ -52,7 +50,6 @@ return {
                 elixir = {"mix"},
                 c = {"clang-format"},
                 cpp = {"clang-format"},
-                rust = {"rustfmt"},
                 python = {"black"},
                 sh = {"shfmt"},
                 bash = {"shfmt"},
