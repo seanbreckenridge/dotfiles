@@ -6,8 +6,6 @@
   (#any-of? @query_cond "match" "any-match" "vim-match" "any-match"
    "any-vim-match" "lua-match" "any-lua-match")
   parameters: (parameters
-    (capture
-      name: (identifier))
     (string
       (string_content) @injection.content))
   (#set! injection.language "regex"))
