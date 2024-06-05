@@ -47,15 +47,3 @@ vim.api.nvim_create_autocmd({"BufEnter", "BufNewFile"}, {
     pattern = {".env", ".env.*"},
     callback = function() vim.b['codeium_enabled'] = false end
 })
-
-vim.api.nvim_create_autocmd({'BufWrite', 'BufEnter', 'InsertLeave'}, {
-    desc = "use the loclist for vim.diagnostics",
-    group = clear_group('SetDiagnostic'),
-    pattern = '*',
-    callback = function()
-        vim.diagnostic.setloclist({
-            open = false,
-            severity = vim.diagnostic.severity.HINT
-        })
-    end
-})

@@ -16,8 +16,8 @@
   function: (attribute
     object: (identifier) @py_object
     attribute: (identifier) @py_function)
-  (#match? @py_object "shlex")
-  (#match? @py_function "split")
+  (#eq? @py_object "shlex")
+  (#eq? @py_function "split")
   arguments: (argument_list
     (string
       (string_content) @injection.content))

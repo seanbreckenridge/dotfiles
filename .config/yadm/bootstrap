@@ -103,7 +103,7 @@ havecmd python3 || exit $?
 # Install python packages -- even when on android, I use this enough/do
 # enough scripting here that its worth it
 echo "Installing global python site-packages..."
-INSTALLED_PYTHON_PACKAGES="$(python3 -m pip list --format=freeze | cut -d'=' -f1)"
+INSTALLED_PYTHON_PACKAGES="$(python3 -m pip list --format=json | jq '.[] | select(.editable_project_location | not) | .name' -r)"
 python_install_missing() {
 	local -r pkg="$1"
 	if ! grep -qx "${pkg}" <<<"${INSTALLED_PYTHON_PACKAGES}"; then
@@ -155,7 +155,7 @@ yarn_install_from_pkglist() {
 yarn_installed() {
 	local yarn_package_json="${HOME}/.local/share/yarn/global/package.json"
 	if [[ -e "${yarn_package_json}" ]]; then
-		jq <"${yarn_package_json}" '.dependencies | keys[]' -r
+		jq '.dependencies | keys[]' -r <"${yarn_package_json}"
 	fi
 }
 

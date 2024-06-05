@@ -18,10 +18,10 @@ return {
                 "astro", "awk", "bash", "c", "commonlisp", "cpp", "css", "csv",
                 "dart", "diff", "dockerfile", "eex", "elixir", "erlang",
                 "git_config", "gitcommit", "gitignore", "go", "graphql", "html",
-                "java", "javascript", "jq", "json", "lua", "make", "perl",
-                "php", "prisma", "python", "query", "regex", "ruby", "rust",
-                "sql", "todotxt", "toml", "tsx", "typescript", "vim", "vimdoc",
-                "yaml"
+                "java", "javascript", "jq", "json", "lua", "make", "markdown",
+                "markdown_inline", "perl", "php", "prisma", "python", "query",
+                "regex", "ruby", "rust", "sql", "todotxt", "toml", "tsx",
+                "typescript", "vim", "vimdoc", "yaml"
             },
             highlight = {
                 enable = true -- false will disable the whole extension
