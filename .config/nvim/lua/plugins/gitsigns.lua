@@ -21,30 +21,30 @@ return {
             end
 
             -- Navigation
-            map('n', ']h', "&diff ? ']c' : '<cmd>Gitsigns next_hunk<CR>'",
+            map('n', ']h', "&diff ? ']c' : '<Cmd>Gitsigns next_hunk<CR>'",
                 {expr = true})
-            map('n', '[h', "&diff ? '[c' : '<cmd>Gitsigns prev_hunk<CR>'",
+            map('n', '[h', "&diff ? '[c' : '<Cmd>Gitsigns prev_hunk<CR>'",
                 {expr = true})
 
             -- Text objects
             wk.register({
                 h = {
                     name = "git hunk",
-                    s = {"<cmd>Gitsigns stage_hunk<CR>", "stage hunk"},
-                    r = {"<cmd>Gitsigns reset_hunk<CR>", "reset hunk"},
-                    S = {"<cmd>Gitsigns stage_buffer<CR>", "stage buffer"},
-                    R = {"<cmd>Gitsigns reset_buffer<CR>", "reset buffer"},
-                    p = {"<cmd>Gitsigns preview_hunk<CR>", "preview hunk"},
+                    s = {"<Cmd>Gitsigns stage_hunk<CR>", "stage hunk"},
+                    r = {"<Cmd>Gitsigns reset_hunk<CR>", "reset hunk"},
+                    S = {"<Cmd>Gitsigns stage_buffer<CR>", "stage buffer"},
+                    R = {"<Cmd>Gitsigns reset_buffer<CR>", "reset buffer"},
+                    p = {"<Cmd>Gitsigns preview_hunk<CR>", "preview hunk"},
                     b = {
-                        "<cmd>lua require'gitsigns'.blame_line{full=true}<CR>",
+                        "<Cmd>lua require'gitsigns'.blame_line{full=true}<CR>",
                         "blame line"
                     },
                     t = {
-                        "<cmd>Gitsigns toggle_current_line_blame<CR>",
+                        "<Cmd>Gitsigns toggle_current_line_blame<CR>",
                         "toggle line blame"
                     },
-                    d = {"<cmd>Gitsigns diffthis<CR>", "diff this"},
-                    T = {"<cmd>Gitsigns toggle_deleted<CR>", "toggle deleted"}
+                    d = {"<Cmd>Gitsigns diffthis<CR>", "diff this"},
+                    T = {"<Cmd>Gitsigns toggle_deleted<CR>", "toggle deleted"}
                 }
             }, {prefix = '<leader>', buffer = bufnr})
         end,

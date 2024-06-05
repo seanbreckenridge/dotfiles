@@ -1,12 +1,13 @@
 return {
     {
         "mbbill/undotree",
-        cmd = {"UndotreeToggle"},
-        keys = {{"<leader>u", '<cmd>UndotreeToggle<cr>', desc = "undotree"}}
+        cmd = "UndotreeToggle",
+        keys = {{"<leader>u", '<Cmd>UndotreeToggle<CR>', desc = "undotree"}}
     }, {
         'folke/zen-mode.nvim',
         dependencies = {'folke/twilight.nvim'},
         cmd = "ZenMode",
+        keys = {{"<leader>Z", '<Cmd>ZenMode<CR>', desc = "zen mode"}},
         opts = {}
     }, {
         "catppuccin/nvim",
@@ -44,7 +45,7 @@ return {
         build = "cd app && yarn install",
         ft = "markdown",
         keys = {
-            {"<leader>p", "<cmd>MarkdownPreview<cr>", desc = "preview markdown"}
+            {"<leader>p", "<Cmd>MarkdownPreview<CR>", desc = "preview markdown"}
         }
     }, {
         -- g? : show help

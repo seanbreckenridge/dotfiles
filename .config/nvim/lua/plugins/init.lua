@@ -2,7 +2,7 @@
 vim.g.rooter_cd_cmd = "lcd"
 
 return {
-    {"folke/which-key.nvim"}, -- keybindings
+    {"folke/which-key.nvim", lazy = true}, -- keybindings
     -- yadm integration (needs to be loaded early since uses BufWinEnter to detect)
     -- if yadm is not installed, this will be disabled
     {

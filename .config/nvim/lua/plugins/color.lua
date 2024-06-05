@@ -6,11 +6,11 @@ return {
         'norcalli/nvim-colorizer.lua',
         cmd = {'ColorizerAttachToBuffer', 'ColorizerDetachFromBuffer'},
         keys = {
-            {'<leader>Ha', '<cmd>ColorizerAttachToBuffer<CR>', desc = 'attach'},
-            {'<leader>He', '<cmd>ColorizerAttachToBuffer<CR>', desc = 'enable'},
+            {'<leader>Ha', '<Cmd>ColorizerAttachToBuffer<CR>', desc = 'attach'},
+            {'<leader>He', '<Cmd>ColorizerAttachToBuffer<CR>', desc = 'enable'},
             {
                 '<leader>Hd',
-                '<cmd>ColorizerDetachFromBuffer<CR>',
+                '<Cmd>ColorizerDetachFromBuffer<CR>',
                 desc = 'disable'
             }
         },
@@ -23,7 +23,7 @@ return {
         }
     }, {
         "uga-rosa/ccc.nvim",
-        keys = {{'<leader>HH', ':<cmd>CccPick<CR>', desc = 'pick color'}},
+        keys = {{'<leader>HH', '<Cmd>CccPick<CR>', desc = 'pick color'}},
         cmd = 'CccPick',
         opts = {highlighter = {auto_enable = false, lsp = false}}
     }

@@ -61,7 +61,7 @@ nnoremap('<C-f>', ':%s///gcI' .. leftn(5), 'empty search and replace')
 vnoremap('<C-f>', ':s///gcI' .. leftn(5),
          'empty search and replace on selection')
 
-nnoremap('<Esc>', '<cmd>nohlsearch<CR>', 'clear search highlight')
+nnoremap('<Esc>', '<Cmd>nohlsearch<CR>', 'clear search highlight')
 
 local function reload_config()
     vim.cmd('source ~/.config/nvim/lua/user/settings.lua')
@@ -82,7 +82,7 @@ wk.register({b = {'<C-^>', 'swap buffers'}}, {prefix = '<leader>'})
 -- use WhichKey so I can see the mappings
 nnoremap('<leader>w', function() require('which-key').show_command('<C-w>') end,
          'window')
-nnoremap('<leader><C-n>', ':enew<CR>', 'new file')
+nnoremap('<leader><C-n>', '<Cmd>enew<CR>', 'new file')
 nnoremap('<leader>d', function() require('notify').dismiss() end,
          'dismiss notifications')
 

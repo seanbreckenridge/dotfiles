@@ -2,7 +2,7 @@
 return {
     'laytan/cloak.nvim',
     event = 'BufRead',
-    keys = {{"<leader>C", "<cmd>:CloakToggle<CR>", "toggle cloak"}},
+    keys = {{"<leader>C", "<Cmd>CloakToggle<CR>", "toggle cloak"}},
     opts = {
         patterns = {
             {
