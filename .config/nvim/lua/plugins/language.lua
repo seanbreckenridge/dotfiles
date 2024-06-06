@@ -16,5 +16,10 @@ return {
     }, -- update lua workspace libraries
     {"Bilal2453/luvit-meta", lazy = true},
     {'jceb/vim-orgmode', ft = 'org', dependencies = {"tpope/vim-speeddating"}}, -- orgmode
-    {'jxnblk/vim-mdx-js', ft = 'mdx'} -- extended markdown
+    {'jxnblk/vim-mdx-js', ft = 'mdx'}, -- extended markdown
+    {
+        'seanbreckenridge/tree-sitter-rifleconfig',
+        ft = 'rifleconfig'
+        -- dir = '~/Repos/tree-sitter-rifleconfig'
+    }
 }
