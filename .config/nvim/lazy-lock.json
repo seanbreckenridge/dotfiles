@@ -44,7 +44,7 @@
   "telescope-ui-select.nvim": { "branch": "master", "commit": "6e51d7da30bd139a6950adf2a47fda6df9fa06d2" },
   "telescope.nvim": { "branch": "master", "commit": "dfa230be84a044e7f546a6c2b0a403c739732b86" },
   "todo-comments.nvim": { "branch": "main", "commit": "70a93ce66083699571adc361166504b03cc39c2b" },
-  "tree-sitter-rifleconfig": { "branch": "main", "commit": "63e7c87bbfed8c674ec914f0c7516f5c7b5f9744" },
+  "tree-sitter-rifleconfig": { "branch": "main", "commit": "3d80b5052a67d12861338bbeff56ee8a660e986e" },
   "trouble.nvim": { "branch": "main", "commit": "6ce015ea999879364e35f20da3e8687583d3b719" },
   "twilight.nvim": { "branch": "main", "commit": "8b7b50c0cb2dc781b2f4262a5ddd57571556d1e4" },
   "undotree": { "branch": "master", "commit": "56c684a805fe948936cda0d1b19505b84ad7e065" },

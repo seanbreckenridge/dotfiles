@@ -75,4 +75,5 @@ vim.filetype.add({
     filename = {['todo.txt'] = 'todotxt', ['done.txt'] = 'todotxt'}
 })
 
+vim.filetype.add({filename = {['rifle.conf'] = 'rifleconfig'}})
 vim.filetype.add({filename = {['*.mdx'] = 'markdown.mdx'}})

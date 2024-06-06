@@ -7,9 +7,6 @@ return {
     },
     build = ':TSUpdate',
     config = function()
-
-        vim.filetype.add({extension = {rifleconfig = "rifleconfig"}})
-
         local parser_config =
             require("nvim-treesitter.parsers").get_parser_configs()
         parser_config['rifleconfig'] = {
