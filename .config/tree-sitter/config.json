@@ -1,0 +1,52 @@
+{
+  "parser-directories": ["/home/sean/Repos", "/home/sean/Files/OldRepos"],
+  "theme": {
+    "attribute": {
+      "italic": true,
+      "color": 124
+    },
+    "punctuation.delimiter": 239,
+    "keyword": 56,
+    "operator": {
+      "color": 239,
+      "bold": true
+    },
+    "constant": 94,
+    "function.builtin": {
+      "bold": true,
+      "color": 26
+    },
+    "tag": 18,
+    "module": 136,
+    "property": 124,
+    "constant.builtin": {
+      "color": 94,
+      "bold": true
+    },
+    "punctuation.bracket": 239,
+    "string": 28,
+    "constructor": 136,
+    "number": {
+      "bold": true,
+      "color": 94
+    },
+    "type.builtin": {
+      "bold": true,
+      "color": 23
+    },
+    "function": 26,
+    "embedded": null,
+    "comment": {
+      "color": 245,
+      "italic": true
+    },
+    "variable.parameter": {
+      "underline": true
+    },
+    "variable.builtin": {
+      "bold": true
+    },
+    "type": 23,
+    "string.special": 30
+  }
+}

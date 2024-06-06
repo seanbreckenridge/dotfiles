@@ -7,17 +7,16 @@ return {
     },
     build = ':TSUpdate',
     config = function()
-        local parser_config =
-            require("nvim-treesitter.parsers").get_parser_configs()
-        parser_config['rifleconfig'] = {
-            install_info = {
-                url = "~/Repos/tree-sitter-rifleconfig",
-                -- url = "https://github.com/seanbreckenridge/tree-sitter-rifleconfig",
-                files = {"src/parser.c"},
-                requires_generate_from_grammar = false,
-                branch = "main"
+        require("nvim-treesitter.parsers").get_parser_configs()['rifleconfig'] =
+            {
+                install_info = {
+                    url = "~/Repos/tree-sitter-rifleconfig",
+                    -- url = "https://github.com/seanbreckenridge/tree-sitter-rifleconfig",
+                    files = {"src/parser.c"},
+                    requires_generate_from_grammar = false,
+                    branch = "main"
+                }
             }
-        }
         -- Prefer git instead of curl in order to improve connectivity in some environments
         require('nvim-treesitter.install').prefer_git = true
         require('nvim-treesitter.configs').setup {
