@@ -14,10 +14,10 @@ return {
             require("nvim-treesitter.parsers").get_parser_configs()
         parser_config['rifleconfig'] = {
             install_info = {
-                -- url = "~/Repos/tree-sitter-rifleconfig",
-                url = "https://github.com/seanbreckenridge/tree-sitter-rifleconfig",
+                url = "~/Repos/tree-sitter-rifleconfig",
+                -- url = "https://github.com/seanbreckenridge/tree-sitter-rifleconfig",
                 files = {"src/parser.c"},
-                -- requires_generate_from_grammar = false,
+                requires_generate_from_grammar = false,
                 branch = "main"
             }
         }
