@@ -86,7 +86,7 @@ nnoremap('<leader><C-n>', '<Cmd>enew<CR>', 'new file')
 nnoremap('<leader>d', function() require('notify').dismiss() end,
          'dismiss notifications')
 
----@param is_quickfix boolean|nil
+---@param is_quickfix boolean?
 local function toggle_list(is_quickfix)
     if is_quickfix then
         require("trouble").toggle("quickfix")

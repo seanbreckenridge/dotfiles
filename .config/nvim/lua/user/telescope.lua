@@ -70,7 +70,7 @@ end
 
 --- Pick one of my git repos, cd to it, and open telescope to pick a file
 ---
---- @param opts table|nil: options to pass to telescope
+--- @param opts table?: options to pass to telescope
 --- @return nil
 function M.switch_to_repo(opts)
     local pickers = require('telescope.pickers')

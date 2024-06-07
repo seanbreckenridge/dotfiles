@@ -11,6 +11,37 @@ return {
             changedelete = {text = '~'},
             untracked = {text = '┆'}
         },
+        _on_attach_pre = function(_, callback)
+            if not vim.g.has_yadm then
+                callback()
+                return
+            end
+            vim.schedule(function()
+                local Job = require('plenary.job')
+                -- if buffer is not a file, don't change anything
+                local file = vim.fn.expand('%:p')
+                if not vim.fn.filereadable(file) then
+                    callback()
+                    return
+                end
+                local repo = vim.fn.expand("~/.local/share/yadm/repo.git")
+                Job:new({
+                    command = "yadm",
+                    args = {"ls-files", "--error-unmatch", file},
+                    on_exit = vim.schedule_wrap(
+                        function(_, return_val)
+                            if return_val == 0 then
+                                callback({
+                                    gitdir = repo,
+                                    toplevel = os.getenv('HOME')
+                                })
+                            else
+                                callback()
+                            end
+                        end)
+                }):sync()
+            end)
+        end,
         on_attach = function(bufnr)
             local wk = require('which-key')
 
@@ -47,8 +78,6 @@ return {
                     T = {"<Cmd>Gitsigns toggle_deleted<CR>", "toggle deleted"}
                 }
             }, {prefix = '<leader>', buffer = bufnr})
-        end,
-        -- yadm, if it is installed
-        yadm = {enable = vim.g.has_yadm}
+        end
     }
 }
