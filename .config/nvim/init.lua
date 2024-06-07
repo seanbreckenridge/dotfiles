@@ -10,8 +10,14 @@ end
 ---@diagnostic disable-next-line: undefined-field
 vim.opt.rtp:prepend(lazypath)
 
--- some config before loading plugins, to control how they load
-require 'user.pre_init'
+-- lazy.nvim/which-key wants a leader to be set before setting up mappings
+vim.g.mapleader = ' '
+vim.g.maplocalleader = ' '
+
+-- https://github.com/seanbreckenridge/on_machine
+-- what operating system I'm on controls how some plugins load
+vim.g.on_os = os.getenv('ON_OS') or 'unknown' ---@type string
+vim.g.on_android = vim.split(vim.g.on_os, "_")[1] == "android" ---@type boolean
 
 -- load plugins from the 'lua/plugins' directory
 require('lazy').setup('plugins', {

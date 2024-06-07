@@ -76,4 +76,4 @@ vim.filetype.add({
 })
 
 vim.filetype.add({filename = {['rifle.conf'] = 'rifleconfig'}})
-vim.filetype.add({filename = {['*.mdx'] = 'markdown.mdx'}})
+vim.filetype.add({extension = {mdx = 'markdown'}})

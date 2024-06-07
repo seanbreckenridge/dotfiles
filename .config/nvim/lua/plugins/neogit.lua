@@ -49,7 +49,8 @@ return {
                 "<leader>gb",
                 function()
                     require("telescope.builtin").git_branches()
-                end, 'telescope branch'
+                end,
+                desc = 'telescope branch'
             }
         }
     }

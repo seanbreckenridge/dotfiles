@@ -1,3 +1,5 @@
+local has_yadm = vim.fn.executable('yadm') == 1
+
 return {
     'lewis6991/gitsigns.nvim',
     event = {"BufReadPost", "VeryLazy"},
@@ -11,32 +13,33 @@ return {
             changedelete = {text = '~'},
             untracked = {text = '┆'}
         },
+        -- yadm support. checks if the current file is tracked by yadm.
+        -- If it is, set the gitdir and toplevel, otherwise just return
+        -- and call callback with no arguments
         _on_attach_pre = function(_, callback)
-            if not vim.g.has_yadm then
-                callback()
-                return
-            end
+            -- a global I set on nvim launch, so I dont have to check
+            -- each time this is run
+            if not has_yadm then return callback() end
             vim.schedule(function()
-                local Job = require('plenary.job')
                 -- if buffer is not a file, don't change anything
                 local file = vim.fn.expand('%:p')
                 if not vim.fn.filereadable(file) then
-                    callback()
-                    return
+                    return callback()
                 end
                 local repo = vim.fn.expand("~/.local/share/yadm/repo.git")
-                Job:new({
+                -- use yadm ls-files to check if the file is tracked
+                require('plenary.job'):new({
                     command = "yadm",
                     args = {"ls-files", "--error-unmatch", file},
                     on_exit = vim.schedule_wrap(
                         function(_, return_val)
                             if return_val == 0 then
-                                callback({
+                                return callback({
                                     gitdir = repo,
                                     toplevel = os.getenv('HOME')
                                 })
                             else
-                                callback()
+                                return callback()
                             end
                         end)
                 }):sync()
