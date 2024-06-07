@@ -43,7 +43,7 @@ return {
     }, {
         "toppair/peek.nvim",
         ft = "markdown",
-        cond = not vim.g.android,
+        cond = not vim.g.on_android,
         build = "deno task --quiet build:fast",
         keys = {
             {
