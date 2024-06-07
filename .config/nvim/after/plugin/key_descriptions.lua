@@ -12,12 +12,6 @@ wk.register({
     ["srb"] = "auto"
 }, {mode = {"v", "n", "x"}})
 
--- https://github.com/tpope/vim-speeddating
-wk.register({
-    ["<C-A>"] = "increment date/time",
-    ["<C-X>"] = "decrement date/time"
-})
-
 -- https://github.com/seanbreckenridge/vim-unimpaired-conversions
 local visualMaps = {
     ["[u"] = "url encode",

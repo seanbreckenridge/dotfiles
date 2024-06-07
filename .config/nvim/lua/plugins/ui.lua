@@ -41,12 +41,21 @@ return {
         dependencies = {"nvim-lua/plenary.nvim"},
         opts = {}
     }, {
-        "iamcco/markdown-preview.nvim",
-        build = "cd app && yarn install",
+        "toppair/peek.nvim",
         ft = "markdown",
+        cond = not vim.g.android,
+        build = "deno task --quiet build:fast",
         keys = {
-            {"<leader>p", "<Cmd>MarkdownPreview<CR>", desc = "preview markdown"}
-        }
+            {
+                "<leader>p",
+                function()
+                    vim.notify("launching preview...")
+                    require("peek").open()
+                end,
+                desc = 'preview markdown'
+            }
+        },
+        config = function() require("peek").setup() end
     }, {
         -- g? : show help
         "stevearc/oil.nvim",
