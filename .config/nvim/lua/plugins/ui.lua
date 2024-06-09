@@ -73,7 +73,7 @@ return {
             delete_to_trash = true
         }
     }, {
-        '2kabhishek/nerdy.nvim',
+        '2KAbhishek/nerdy.nvim',
         dependencies = {
             'stevearc/dressing.nvim', 'nvim-telescope/telescope.nvim'
         },
