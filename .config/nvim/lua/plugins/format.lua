@@ -67,6 +67,7 @@ return {
             log_level = vim.log.levels.INFO,
             notify_on_error = true,
             formatters = {
+                -- https://sean.fish/d/styluac?redirect
                 stylua = {
                     command = "styluac",
                 },
