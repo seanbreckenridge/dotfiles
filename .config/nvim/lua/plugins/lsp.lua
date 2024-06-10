@@ -1,25 +1,25 @@
 return {
-    'neovim/nvim-lspconfig',
-    event = {"BufReadPost", "BufNewFile"},
-    cmd = {"LspInfo", "LspInstall", "LspUninstall"},
+    "neovim/nvim-lspconfig",
+    event = { "BufReadPost", "BufNewFile" },
+    cmd = { "LspInfo", "LspInstall", "LspUninstall" },
     dependencies = {
-        "hrsh7th/nvim-cmp", "hrsh7th/cmp-nvim-lsp", "b0o/SchemaStore.nvim"
+        "hrsh7th/nvim-cmp",
+        "hrsh7th/cmp-nvim-lsp",
+        "b0o/SchemaStore.nvim",
     },
     config = function()
         -- https://github.com/hrsh7th/cmp-nvim-lsp
         local capabilities = vim.lsp.protocol.make_client_capabilities()
-        capabilities =
-            require("cmp_nvim_lsp").default_capabilities(capabilities)
+        capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 
-        capabilities.textDocument.completion.completionItem.snippetSupport =
-            true
+        capabilities.textDocument.completion.completionItem.snippetSupport = true
         capabilities.workspace = {
             didChangeWatchedFiles = {
                 -- https://github.com/neovim/neovim/issues/23725#issuecomment-1561364086
                 -- https://github.com/neovim/neovim/issues/23291
                 -- disable watchfiles for lsp, runs slow on linux
-                dynamicRegistration = false
-            }
+                dynamicRegistration = false,
+            },
         }
 
         -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
@@ -33,12 +33,12 @@ return {
             jsonls = {
                 settings = {
                     json = {
-                        schemas = require('schemastore').json.schemas(),
-                        validate = {enable = true}
-                    }
-                }
+                        schemas = require("schemastore").json.schemas(),
+                        validate = { enable = true },
+                    },
+                },
             },
-            pyright = {flags = {debounce_text_changes = 100}},
+            pyright = { flags = { debounce_text_changes = 100 } },
             yamlls = {
                 settings = {
                     yaml = {
@@ -47,34 +47,34 @@ return {
                             -- Disable built-in schemaStore support
                             enable = false,
                             -- Avoid TypeError: Cannot read properties of undefined (reading 'length')
-                            url = ""
+                            url = "",
                         },
-                        schemas = require('schemastore').yaml.schemas()
-                    }
-                }
+                        schemas = require("schemastore").yaml.schemas(),
+                    },
+                },
             },
             bashls = true,
             lua_ls = {
                 settings = {
                     Lua = {
-                        runtime = {version = "LuaJIT", path = runtime_path},
-                        diagnostics = {globals = {"vim"}},
+                        runtime = { version = "LuaJIT", path = runtime_path },
+                        diagnostics = { globals = { "vim" } },
                         workspace = {
                             -- Make the server aware of Neovim runtime files
                             library = vim.api.nvim_get_runtime_file("", true),
                             -- disable prompts for luv/luassert
-                            checkThirdParty = false
-                        }
-                    }
-                }
-            }
+                            checkThirdParty = false,
+                        },
+                    },
+                },
+            },
         }
         -- disable some LSPs on android
         if not vim.g.on_android then
             -- find elixir-ls binary
             local elixir_ls_bin = vim.fn.exepath("elixir-ls")
             if elixir_ls_bin ~= "" then
-                servers.elixirls = {cmd = {elixir_ls_bin}}
+                servers.elixirls = { cmd = { elixir_ls_bin } }
             end
             servers.clangd = true
             servers.gopls = true
@@ -94,29 +94,28 @@ return {
             if config == true then
                 -- vim.log.info("LSP config: " .. server ..
                 --                      vim.inspect({capabilities = capabilities}))
-                lspconf[server].setup {capabilities = capabilities}
+                lspconf[server].setup({ capabilities = capabilities })
             else
-                local combined = vim.tbl_extend("force",
-                                                {capabilities = capabilities},
-                                                config)
+                local combined = vim.tbl_extend("force", { capabilities = capabilities }, config)
                 -- vim.log.info("LSP config: " .. server .. vim.inspect(combined))
                 lspconf[server].setup(combined)
             end
         end
 
         -- disable lsp diagnostics for .env files
-        local lsp_grp = vim.api.nvim_create_augroup("lsp_disable",
-                                                    {clear = true})
-        vim.api.nvim_create_autocmd({"BufEnter", "BufNewFile"}, {
+        local lsp_grp = vim.api.nvim_create_augroup("lsp_disable", { clear = true })
+        vim.api.nvim_create_autocmd({ "BufEnter", "BufNewFile" }, {
             group = lsp_grp,
-            pattern = {".env", ".env.*"},
-            callback = function() vim.diagnostic.enable(false) end
+            pattern = { ".env", ".env.*" },
+            callback = function()
+                vim.diagnostic.enable(false)
+            end,
         })
 
         -- lsp bindings
         function ShowDocumentation()
-            if vim.tbl_contains({'vim', 'help'}, vim.bo.filetype) then
-                vim.cmd('h ' .. vim.fn.expand('<cword>'))
+            if vim.tbl_contains({ "vim", "help" }, vim.bo.filetype) then
+                vim.cmd("h " .. vim.fn.expand("<cword>"))
             else
                 vim.lsp.buf.hover()
             end
@@ -125,56 +124,59 @@ return {
         local wk = require("which-key")
 
         -- run on any client connecting
-        vim.api.nvim_create_autocmd('LspAttach', {
-            group = vim.api.nvim_create_augroup('custom-lsp-attach',
-                                                {clear = true}),
+        vim.api.nvim_create_autocmd("LspAttach", {
+            group = vim.api.nvim_create_augroup("custom-lsp-attach", { clear = true }),
             ---@diagnostic disable-next-line: unused-local
             callback = function(event)
                 -- set omnifunc to lsp omnifunc
-                vim.opt_local.omnifunc = 'v:lua.vim.lsp.omnifunc'
+                vim.opt_local.omnifunc = "v:lua.vim.lsp.omnifunc"
                 -- when the client attaches, add keybindings
                 -- lsp commands with leader prefix
                 wk.register({
-                    T = {vim.lsp.buf.code_action, "lsp code action"},
-                    r = {vim.lsp.buf.rename, "lsp rename"}
-                }, {prefix = "<leader>"})
+                    T = { vim.lsp.buf.code_action, "lsp code action" },
+                    r = { vim.lsp.buf.rename, "lsp rename" },
+                }, { prefix = "<leader>" })
 
                 -- lsp commands in normal mode
                 wk.register({
-                    [']w'] = {
+                    ["]w"] = {
                         function()
-                            vim.diagnostic.jump({count = 1})
+                            vim.diagnostic.jump({ count = 1 })
                             vim.api.nvim_feedkeys("zz", "n", false)
-                        end, "next diagnostic"
+                        end,
+                        "next diagnostic",
                     },
-                    ['[w'] = {
+                    ["[w"] = {
                         function()
-                            vim.diagnostic.jump({count = -1})
+                            vim.diagnostic.jump({ count = -1 })
                             vim.api.nvim_feedkeys("zz", "n", false)
-                        end, "prev diagnostic"
+                        end,
+                        "prev diagnostic",
                     },
-                    [']e'] = {
+                    ["]e"] = {
                         function()
                             vim.diagnostic.jump({
                                 count = 1,
-                                severity = vim.diagnostic.severity.ERROR
+                                severity = vim.diagnostic.severity.ERROR,
                             })
                             vim.api.nvim_feedkeys("zz", "n", false)
-                        end, "next error"
+                        end,
+                        "next error",
                     },
-                    ['[e'] = {
+                    ["[e"] = {
                         function()
                             vim.diagnostic.jump({
                                 count = -1,
-                                severity = vim.diagnostic.severity.ERROR
+                                severity = vim.diagnostic.severity.ERROR,
                             })
                             vim.api.nvim_feedkeys("zz", "n", false)
-                        end, "prev error"
+                        end,
+                        "prev error",
                     },
-                    gd = {vim.lsp.buf.definition, "goto definition"},
-                    gt = {vim.lsp.buf.type_definition, "goto type definition"},
-                    gr = {vim.lsp.buf.references, "goto references"},
-                    K = {ShowDocumentation, "show documentation"}
+                    gd = { vim.lsp.buf.definition, "goto definition" },
+                    gt = { vim.lsp.buf.type_definition, "goto type definition" },
+                    gr = { vim.lsp.buf.references, "goto references" },
+                    K = { ShowDocumentation, "show documentation" },
                 })
                 -- BUG: hmm... doesn't actually seem to display for me
                 --
@@ -192,8 +194,7 @@ return {
                 --     -- toggle on by default, for now
                 --     vim.lsp.inlay_hint.enable(true)
                 -- end
-
-            end
+            end,
         })
-    end
+    end,
 }

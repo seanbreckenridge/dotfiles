@@ -1,7 +1,7 @@
 --- Adds descriptions to which-key's popup interface
 --- to help describe the commands for vim plugins
 --- which just show the command/function name
-local wk = require('which-key')
+local wk = require("which-key")
 
 -- https://github.com/machakann/vim-sandwich
 wk.register({
@@ -9,8 +9,8 @@ wk.register({
     ["sd"] = "sandwich delete",
     ["sdb"] = "auto",
     ["sr"] = "sandwich replace",
-    ["srb"] = "auto"
-}, {mode = {"v", "n", "x"}})
+    ["srb"] = "auto",
+}, { mode = { "v", "n", "x" } })
 
 -- https://github.com/seanbreckenridge/vim-unimpaired-conversions
 local visualMaps = {
@@ -21,10 +21,9 @@ local visualMaps = {
     ["]u"] = "url decode",
     ["]x"] = "xml decode",
     ["]y"] = "c-string decode",
-    ["]C"] = "c-string-decode"
-
+    ["]C"] = "c-string-decode",
 }
-wk.register(visualMaps, {mode = "v"})
+wk.register(visualMaps, { mode = "v" })
 
 local normalMaps = vim.tbl_extend("keep", visualMaps, {
     ["[uu"] = "url encode line",
@@ -34,6 +33,6 @@ local normalMaps = vim.tbl_extend("keep", visualMaps, {
     ["]uu"] = "url decode line",
     ["]xx"] = "xml decode line",
     ["]yy"] = "c-string decode line",
-    ["]CC"] = "c-string-decode line"
+    ["]CC"] = "c-string-decode line",
 })
-wk.register(normalMaps, {mode = "n"})
+wk.register(normalMaps, { mode = "n" })

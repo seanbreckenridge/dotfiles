@@ -1,23 +1,24 @@
 return {
     "folke/trouble.nvim",
     event = "VeryLazy",
-    dependencies = {"nvim-lua/plenary.nvim", "nvim-tree/nvim-web-devicons"},
+    dependencies = { "nvim-lua/plenary.nvim", "nvim-tree/nvim-web-devicons" },
     keys = {
         {
             "<leader>xx",
             "<Cmd>Trouble diagnostics toggle<CR>",
-            desc = "diagnostics"
-        }, {
+            desc = "diagnostics",
+        },
+        {
             "<leader>xX",
             "<Cmd>Trouble diagnostics toggle filter.buf=0<CR>",
-            desc = "buffer diagnostics"
+            desc = "buffer diagnostics",
         },
         {
             "<leader>xl",
             "<Cmd>Trouble loclist toggle<CR>",
-            desc = "location list"
+            desc = "location list",
         },
-        {"<leader>xq", "<Cmd>Trouble qflist toggle<CR>", desc = "quickfix list"}
+        { "<leader>xq", "<Cmd>Trouble qflist toggle<CR>", desc = "quickfix list" },
     },
     config = function()
         -- TODO: try more commands here to figure out which ones I want:
@@ -31,9 +32,14 @@ return {
             x = {
                 name = "trouble",
                 -- git diff file with gitsigns (opens in trouble if installed)
-                D = {function() require("gitsigns").setqflist() end, "git diff"},
-                t = {"<Cmd>TodoTrouble<CR>", "show todos"}
-            }
-        }, {prefix = "<leader>"})
-    end
+                D = {
+                    function()
+                        require("gitsigns").setqflist()
+                    end,
+                    "git diff",
+                },
+                t = { "<Cmd>TodoTrouble<CR>", "show todos" },
+            },
+        }, { prefix = "<leader>" })
+    end,
 }

@@ -59,7 +59,9 @@ end
 --- running when codeium_enabled is set to false
 --- @return nil
 function M.patch_codeium()
-    if M._is_patched == true then return end
+    if M._is_patched == true then
+        return
+    end
 
     local Source = require("codeium.source")
 

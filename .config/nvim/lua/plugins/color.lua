@@ -1,31 +1,31 @@
-local wk = require('which-key')
-wk.register({["H"] = {name = 'hex colors'}}, {prefix = '<leader>'})
+local wk = require("which-key")
+wk.register({ ["H"] = { name = "hex colors" } }, { prefix = "<leader>" })
 
 return {
     {
-        'norcalli/nvim-colorizer.lua',
-        cmd = {'ColorizerAttachToBuffer', 'ColorizerDetachFromBuffer'},
+        "norcalli/nvim-colorizer.lua",
+        cmd = { "ColorizerAttachToBuffer", "ColorizerDetachFromBuffer" },
         keys = {
-            {'<leader>Ha', '<Cmd>ColorizerAttachToBuffer<CR>', desc = 'attach'},
-            {'<leader>He', '<Cmd>ColorizerAttachToBuffer<CR>', desc = 'enable'},
+            { "<leader>Ha", "<Cmd>ColorizerAttachToBuffer<CR>", desc = "attach" },
+            { "<leader>He", "<Cmd>ColorizerAttachToBuffer<CR>", desc = "enable" },
             {
-                '<leader>Hd',
-                '<Cmd>ColorizerDetachFromBuffer<CR>',
-                desc = 'disable'
-            }
+                "<leader>Hd",
+                "<Cmd>ColorizerDetachFromBuffer<CR>",
+                desc = "disable",
+            },
         },
         -- https://github.com/norcalli/nvim-colorizer.lua
         -- colors hex codes/html colors etc #000000
         opts = {
-            '*', -- Highlight all files, but customize some others.
-            css = {rgb_fn = true}, -- Enable parsing rgb(...) functions in css.
-            html = {names = false} -- Disable parsing "names" like Blue or Gray
-        }
-    }, {
+            "*", -- Highlight all files, but customize some others.
+            css = { rgb_fn = true }, -- Enable parsing rgb(...) functions in css.
+            html = { names = false }, -- Disable parsing "names" like Blue or Gray
+        },
+    },
+    {
         "uga-rosa/ccc.nvim",
-        keys = {{'<leader>HH', '<Cmd>CccPick<CR>', desc = 'pick color'}},
-        cmd = 'CccPick',
-        opts = {highlighter = {auto_enable = false, lsp = false}}
-    }
+        keys = { { "<leader>HH", "<Cmd>CccPick<CR>", desc = "pick color" } },
+        cmd = "CccPick",
+        opts = { highlighter = { auto_enable = false, lsp = false } },
+    },
 }
-

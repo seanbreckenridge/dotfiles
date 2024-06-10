@@ -1,0 +1,2 @@
+#!/bin/sh
+exec stylua --config-path "$HOME/.config/nvim/stylua.toml" "$@"

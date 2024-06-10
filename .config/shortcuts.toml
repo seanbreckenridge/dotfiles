@@ -596,6 +596,11 @@ command='''
 exec flake8 --config ~/.config/flake8 "$@"
 '''
 
+[styluac]
+command='''
+exec stylua --config-path "$HOME/.config/nvim/stylua.toml" "$@"
+'''
+
 [yadm-format]
 command='''
 # autoformat all my dotfiles

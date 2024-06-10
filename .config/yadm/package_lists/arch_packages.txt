@@ -69,6 +69,7 @@ sbt
 scala
 scalafmt
 shfmt
+stylua
 tidy
 valgrind
 yarn
