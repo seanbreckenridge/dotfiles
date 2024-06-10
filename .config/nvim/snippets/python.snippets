@@ -1,4 +1,4 @@
-snippet click
+snippet click_path
 	from pathlib import Path
 	import click
 
@@ -12,3 +12,18 @@ snippet click
 
 	if __name__ == "__main__":
 		main(prog_name="$1")
+
+snippet click
+	from pathlib import Path
+    import click
+
+    @click.command()
+    def main() -> None:
+        """
+        """
+
+    if __name__ == "__main__":
+        main(prog_name="$1")
+
+snippet typ
+    from typing import $1
