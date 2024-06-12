@@ -43,7 +43,7 @@ return {
                         end
                     end,
                 }),
-                ["<tab>"] = cmp.config.disable,
+                -- ["<tab>"] = cmp.config.disable,
             },
             -- order ranks priority in completion drop-down -- higher has more priority
             sources = {
@@ -56,8 +56,10 @@ return {
                 { name = "path" }, -- complete names of files
                 { name = "buffer", keyword_length = 4 },
             },
-            experimental = { native_menu = false, ghost_text = true },
+            experimental = { ghost_text = true },
             formatting = {
+                fields = { "abbr", "kind", "menu" },
+                expandable_indicator = true,
                 format = lspkind.cmp_format({
                     with_text = true,
                     menu = {

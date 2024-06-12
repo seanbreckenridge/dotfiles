@@ -3,15 +3,6 @@
 --- which just show the command/function name
 local wk = require("which-key")
 
--- https://github.com/machakann/vim-sandwich
-wk.register({
-    ["sa"] = "sandwich add",
-    ["sd"] = "sandwich delete",
-    ["sdb"] = "auto",
-    ["sr"] = "sandwich replace",
-    ["srb"] = "auto",
-}, { mode = { "v", "n", "x" } })
-
 -- https://github.com/seanbreckenridge/vim-unimpaired-conversions
 local visualMaps = {
     ["[u"] = "url encode",

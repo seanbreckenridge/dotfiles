@@ -17,6 +17,8 @@ nnoremap("/", "/\\v", "incremental search")
 nnoremap("<leader>y", 'V"+y', "copy to clipboard")
 vnoremap("<leader>y", '"+y', "copy to clipboard")
 
+nnoremap("<C-s>", ":w<CR>", "save")
+
 -- swap wrapped lines behavior:
 nnoremap("j", "gj", "move wrapped line down")
 nnoremap("k", "gk", "move wrapped line up")

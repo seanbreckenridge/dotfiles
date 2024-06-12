@@ -10,11 +10,12 @@ return {
                 -- Or relative, which means they will be resolved as a plugin
                 -- "LazyVim",
                 -- When relative, you can also provide a path to the library in the plugin dir
-                "luvit-meta/library", -- see below
+                { path = "luvit-meta/library", words = { "vim%.uv" } },
             },
         },
     }, -- update lua workspace libraries
     { "Bilal2453/luvit-meta", lazy = true },
+    { "tpope/vim-sleuth", event = "VeryLazy" }, -- detect indentation
     {
         "seanbreckenridge/tree-sitter-rifleconfig",
         ft = "rifleconfig",

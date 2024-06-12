@@ -3,9 +3,8 @@
 return {
     "numToStr/Comment.nvim",
     ft = {
-        "typescript",
         "javascript",
-        "typescriptreact",
+        "typescript",
         "javascriptreact",
         "typescriptreact",
     },
