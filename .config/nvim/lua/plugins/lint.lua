@@ -1,3 +1,14 @@
+---@return boolean
+local function codespell_enabled()
+    -- disable on android
+    if vim.g.on_android == true then
+        return false
+    end
+
+    -- disable if my helper script isn't installed
+    return vim.fn.executable("codespell-conf") == 1
+end
+
 return {
     "mfussenegger/nvim-lint",
     event = { "BufReadPre", "BufNewFile" },
@@ -30,11 +41,9 @@ return {
             "make",
         }
 
-        local codespell_enabled = not vim.g.on_android
-
         -- some custom wrapper commands that use my global config files
         require("lint.linters.flake8").cmd = "flake8c"
-        if codespell_enabled then
+        if codespell_enabled() then
             require("lint.linters.codespell").cmd = "codespell-conf"
             for _, ft in pairs(codespell_fts) do
                 if lint.linters_by_ft[ft] then
