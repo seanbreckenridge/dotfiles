@@ -102,7 +102,6 @@ return {
             end
         end
 
-        -- disable lsp diagnostics for .env files
         local lsp_grp = vim.api.nvim_create_augroup("lsp_disable", { clear = true })
         vim.api.nvim_create_autocmd({ "BufEnter", "BufNewFile" }, {
             group = lsp_grp,
@@ -110,6 +109,7 @@ return {
             callback = function()
                 vim.diagnostic.enable(false)
             end,
+            desc = "disable lsp diagnostics for .env files",
         })
 
         -- lsp bindings
@@ -195,6 +195,7 @@ return {
                 --     vim.lsp.inlay_hint.enable(true)
                 -- end
             end,
+            desc = "lsp keybindings",
         })
     end,
 }

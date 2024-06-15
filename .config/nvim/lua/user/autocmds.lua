@@ -15,25 +15,27 @@ vim.api.nvim_create_autocmd("TextYankPost", {
     pattern = "*",
 })
 
--- automatically compile/run commands when I edit particular [config] files
 local user_autocompile = clear_group("UserAutocompile")
 
 vim.api.nvim_create_autocmd("BufWritePost", {
     command = "!reshortcuts",
     group = user_autocompile,
     pattern = { ".config/shortcuts.toml", "shortcuts.toml" },
+    desc = "create shortcuts script when I save config file",
 })
 
 vim.api.nvim_create_autocmd("BufWritePost", {
     command = "!i3-jinja",
     group = user_autocompile,
     pattern = { ".config/i3/config.j2", "i3/config.j2" },
+    desc = "create i3 config when I save config file",
 })
 
 vim.api.nvim_create_autocmd("BufWritePost", {
     command = "!rm -f $(evry location -i3blocks-cache)",
     group = user_autocompile,
     pattern = { ".config/i3blocks/config.*", "i3blocks/config.*" },
+    desc = "clear i3blocks cache file when I save config",
 })
 
 vim.api.nvim_create_autocmd("TermOpen", {

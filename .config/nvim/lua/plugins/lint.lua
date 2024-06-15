@@ -63,6 +63,7 @@ return {
             callback = function()
                 lint.try_lint()
             end,
+            desc = "run linter",
         })
 
         vim.api.nvim_create_user_command("Codespell", function()

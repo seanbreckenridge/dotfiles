@@ -134,6 +134,7 @@ return {
             callback = function()
                 require("treesitter-context").disable()
             end,
+            desc = "disable treesitter context for markdown files",
         })
     end,
 }
