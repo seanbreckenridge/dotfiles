@@ -1,4 +1,6 @@
 Pygments
+codespell
+flake8
 geopy
 giturlparse
 idna
@@ -19,4 +21,5 @@ selenium
 setuptools
 srt
 toml
+watchfiles
 yt-dlp

@@ -24,6 +24,9 @@ esac
 tu() {
 	trakt-urls | fzf
 }
+lb() {
+	trk letterboxd --action open "$@"
+}
 
 # https://github.com/seanbreckenridge/plaintext-playlist
 source_if_exists -q "$REPOS/plaintext-playlist/functions.sh" || source_if_exists "${HOME}/.local/share/basher/cellar/packages/seanbreckenridge/plaintext-playlist/functions.sh"

@@ -1,13 +1,12 @@
 black
-codespell
 cookiecutter
 csvkit
 cube-scramble-cli
 currencyconverter
 diceware
 eyeD3
-flake8
 greasyfork-archive
+mat2
 pypyp
 setup-cfg-fmt
 speedtest-cli
@@ -17,4 +16,3 @@ termgraph
 time-in
 trash-cli
 urlscan
-watchfiles
