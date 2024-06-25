@@ -3,7 +3,14 @@ local has_yadm = vim.fn.executable("yadm") == 1
 return {
     "lewis6991/gitsigns.nvim",
     event = { "BufReadPost", "VeryLazy" },
-    dependencies = { "nvim-lua/plenary.nvim" },
+    dependencies = {
+        "nvim-lua/plenary.nvim",
+        {
+            "seanbreckenridge/gitsigns-yadm.nvim",
+            -- dir = "~/Repos/gitsigns-yadm.nvim",
+            opts = {},
+        },
+    },
     opts = {
         signs = {
             add = { text = "│" },
@@ -13,40 +20,14 @@ return {
             changedelete = { text = "~" },
             untracked = { text = "┆" },
         },
-        -- yadm support. checks if the current file is tracked by yadm.
-        -- If it is, set the gitdir and toplevel, otherwise just return
-        -- and call callback with no arguments
         _on_attach_pre = function(_, callback)
-            -- a global I set on nvim launch, so I dont have to check
-            -- each time this is run
-            if not has_yadm then
-                return callback()
+            if vim.fn.executable("yadm") == 1 then
+                vim.schedule(function()
+                    require("gitsigns-yadm").yadm_signs(callback)
+                end)
+            else
+                callback()
             end
-            vim.schedule(function()
-                -- if buffer is not a file, don't change anything
-                local file = vim.fn.expand("%:p")
-                if not vim.fn.filereadable(file) then
-                    return callback()
-                end
-                local repo = vim.fn.expand("~/.local/share/yadm/repo.git")
-                -- use yadm ls-files to check if the file is tracked
-                require("plenary.job")
-                    :new({
-                        command = "yadm",
-                        args = { "ls-files", "--error-unmatch", file },
-                        on_exit = vim.schedule_wrap(function(_, return_val)
-                            if return_val == 0 then
-                                return callback({
-                                    gitdir = repo,
-                                    toplevel = os.getenv("HOME"),
-                                })
-                            else
-                                return callback()
-                            end
-                        end),
-                    })
-                    :sync()
-            end)
         end,
         on_attach = function(bufnr)
             local wk = require("which-key")

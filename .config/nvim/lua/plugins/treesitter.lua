@@ -128,6 +128,8 @@ return {
 
         require("nvim-ts-autotag").setup()
 
+        -- TODO: need to re-enable this when switching back to other filetypes?
+        -- not just on FileType cmd but maybe on BufEnter?
         vim.api.nvim_create_autocmd("FileType", {
             pattern = { "markdown" },
             group = vim.api.nvim_create_augroup("disable-ts-context", { clear = true }),

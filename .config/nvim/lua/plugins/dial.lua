@@ -84,6 +84,8 @@ return {
             -- do we cycle back and forth (tenth to first on increment, first to tenth on decrement).
             -- Otherwise nothing will happen when there are no further values
             cyclic = true,
+            -- allow upper or lower case
+            preserve_case = true,
         })
 
         local weekdays = augend.constant.new({
@@ -96,6 +98,7 @@ return {
                 "Saturday",
                 "Sunday",
             },
+            preserve_case = true,
             word = true,
             cyclic = true,
         })
@@ -115,6 +118,7 @@ return {
                 "November",
                 "December",
             },
+            preserve_case = true,
             word = true,
             cyclic = true,
         })
@@ -176,6 +180,17 @@ return {
                         elements = { "and", "or" },
                         word = true, -- if false, "sand" is incremented into "sor", "doctor" into "doctand", etc.
                         cyclic = true, -- "or" is incremented into "and".
+                    }),
+                    augend.constant.new({
+                        elements = {
+                            "if",
+                            "then",
+                            "elseif",
+                            "else",
+                            "end",
+                        },
+                        word = true,
+                        cyclic = true,
                     }),
                     ordinal_numbers,
                     weekdays,
