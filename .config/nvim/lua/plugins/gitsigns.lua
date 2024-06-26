@@ -1,5 +1,3 @@
-local has_yadm = vim.fn.executable("yadm") == 1
-
 return {
     "lewis6991/gitsigns.nvim",
     event = { "BufReadPost", "VeryLazy" },
