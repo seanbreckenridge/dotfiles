@@ -4,9 +4,9 @@ return {
         cmd = "UndotreeToggle",
         keys = { { "<leader>u", "<Cmd>UndotreeToggle<CR>", desc = "undotree" } },
     },
+    { "folke/twilight.nvim", lazy = true },
     {
         "folke/zen-mode.nvim",
-        dependencies = { "folke/twilight.nvim" },
         cmd = "ZenMode",
         keys = { { "<leader>Z", "<Cmd>ZenMode<CR>", desc = "zen mode" } },
         opts = {},

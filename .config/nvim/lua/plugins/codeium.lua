@@ -10,7 +10,6 @@ return {
     event = "InsertEnter",
     cmd = { "Codeium", "CodeiumToggle" },
     cond = not vim.g.on_android,
-    -- dependencies = { "hrsh7th/nvim-cmp" },
     config = function()
         require("codeium").setup()
         require("user.patch_codeium").patch_codeium()

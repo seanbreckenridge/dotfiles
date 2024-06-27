@@ -20,6 +20,7 @@ return {
         init = function()
             -- change directory in the window's local directory instead of the whole application
             vim.g.rooter_cd_cmd = "lcd"
+            vim.g.rooter_silent_chdir = 1
             vim.g.rooter_patterns = {
                 ".git",
                 "Makefile",

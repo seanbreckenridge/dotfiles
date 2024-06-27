@@ -40,20 +40,11 @@ return {
         end)
 
         -- Extend with https://github.com/rafamadriz/friendly-snippets
-        -- ls.filetype_extend("html", {})
-        -- ls.filetype_extend("shell", {})
-        -- ls.filetype_extend("gitcommit", {})
-        -- ls.filetype_extend("markdown", {})
-        -- ls.filetype_extend("go", {})
-        -- ls.filetype_extend("go", {})
-        -- ls.filetype_extend("css", {})
-        -- ls.filetype_extend("python", {})
-        -- ls.filetype_extend("javascript", {})
-        -- ls.filetype_extend("typescript", {})
-        -- require("luasnip.loaders.from_vscode").lazy_load()
+        ls.filetype_extend("gitcommit", {})
+        require("luasnip.loaders.from_vscode").lazy_load()
 
         -- load some personal snippest (I use the snipmate for basic text-based snippets)
         require("luasnip.loaders.from_snipmate").lazy_load()
     end,
-    -- dependencies = { "rafamadriz/friendly-snippets" },
+    dependencies = { "rafamadriz/friendly-snippets" },
 }

@@ -6,9 +6,6 @@ return {
     { "sindrets/diffview.nvim", cmd = "DiffviewOpen", config = true, lazy = true },
     {
         "NeogitOrg/neogit",
-        dependencies = {
-            "nvim-telescope/telescope.nvim",
-        },
         config = true,
         cmd = "Neogit",
         keys = {

@@ -2,7 +2,6 @@ return {
     {
         "seanbreckenridge/gitsigns-yadm.nvim",
         -- dir = "~/Repos/gitsigns-yadm.nvim",
-        -- opts = {},
         lazy = true,
     },
     {
