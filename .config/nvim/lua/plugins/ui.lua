@@ -28,10 +28,10 @@ return {
             vim.cmd.colorscheme("catppuccin")
         end,
     },
+    { "nvim-tree/nvim-web-devicons", lazy = true },
     {
         "nvim-lualine/lualine.nvim",
         priority = 1000,
-        dependencies = { "nvim-tree/nvim-web-devicons" },
         opts = { options = { theme = "catppuccin" } },
     },
     { "j-hui/fidget.nvim", event = "LspAttach", opts = {} },
@@ -46,7 +46,6 @@ return {
     {
         "folke/todo-comments.nvim",
         event = "VeryLazy",
-        dependencies = { "nvim-lua/plenary.nvim" },
         opts = {},
     },
     {
@@ -91,7 +90,6 @@ return {
         "2KAbhishek/nerdy.nvim",
         dependencies = {
             "stevearc/dressing.nvim",
-            "nvim-telescope/telescope.nvim",
         },
         cmd = "Nerdy",
     },

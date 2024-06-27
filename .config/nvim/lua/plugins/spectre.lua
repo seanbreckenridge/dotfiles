@@ -10,6 +10,5 @@ return {
         },
     },
     cmd = "Spectre",
-    dependencies = { "nvim-lua/plenary.nvim" },
     opts = {},
 }

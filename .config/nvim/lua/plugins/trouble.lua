@@ -1,7 +1,6 @@
 return {
     "folke/trouble.nvim",
     event = "VeryLazy",
-    dependencies = { "nvim-lua/plenary.nvim", "nvim-tree/nvim-web-devicons" },
     keys = {
         {
             "<leader>xx",

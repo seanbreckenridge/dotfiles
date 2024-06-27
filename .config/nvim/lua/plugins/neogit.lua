@@ -3,12 +3,10 @@ local wk = require("which-key")
 wk.register({ name = "git", { prefix = "<leader>g" } })
 
 return {
-    { "sindrets/diffview.nvim", cmd = "DiffviewOpen", config = true },
+    { "sindrets/diffview.nvim", cmd = "DiffviewOpen", config = true, lazy = true },
     {
         "NeogitOrg/neogit",
         dependencies = {
-            "nvim-lua/plenary.nvim",
-            "sindrets/diffview.nvim",
             "nvim-telescope/telescope.nvim",
         },
         config = true,

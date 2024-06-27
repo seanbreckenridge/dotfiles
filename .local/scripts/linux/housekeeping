@@ -148,7 +148,6 @@ if main-machine; then
 		restic-backup backup
 	fi
 
-else
 	evry 3 days -auto-mal-update && {
 		auto-mal-update && rm -rvf "$(evry location -malexport_partial_update)"
 	}

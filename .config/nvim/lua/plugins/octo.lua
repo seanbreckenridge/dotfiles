@@ -16,11 +16,6 @@ return {
     "pwntester/octo.nvim",
     keys = { "<leader>o" },
     cmd = "Octo",
-    dependencies = {
-        "nvim-lua/plenary.nvim",
-        "nvim-telescope/telescope.nvim",
-        "nvim-tree/nvim-web-devicons",
-    },
     config = function()
         require("octo").setup({ enable_builtin = true })
     end,

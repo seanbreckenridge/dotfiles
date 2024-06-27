@@ -1,142 +1,158 @@
 return {
-    "nvim-treesitter/nvim-treesitter",
-    event = { "BufRead", "BufNewFile" },
-    dependencies = {
-        "nvim-treesitter/nvim-treesitter-context",
-        "nvim-treesitter/nvim-treesitter-textobjects",
+    {
         "windwp/nvim-ts-autotag",
+        lazy = true,
     },
-    build = ":TSUpdate",
-    config = function()
-        require("nvim-treesitter.parsers").get_parser_configs()["rifleconfig"] = {
-            install_info = {
-                -- url = "~/Repos/tree-sitter-rifleconfig",
-                url = "https://github.com/seanbreckenridge/tree-sitter-rifleconfig",
-                files = { "src/parser.c" },
-                requires_generate_from_grammar = false,
-                branch = "main",
-            },
-        }
-
-        require("nvim-treesitter.configs").setup({
-            modules = {},
-            ignore_install = {},
-            sync_install = false,
-            auto_install = true,
-            ensure_installed = {
-                "astro",
-                "awk",
-                "bash",
-                "c",
-                "commonlisp",
-                "cpp",
-                "css",
-                "csv",
-                "dart",
-                "diff",
-                "dockerfile",
-                "eex",
-                "elixir",
-                "erlang",
-                "git_config",
-                "gitcommit",
-                "gitignore",
-                "go",
-                "graphql",
-                "html",
-                "java",
-                "javascript",
-                "jq",
-                "json",
-                "lua",
-                "make",
-                "markdown",
-                "markdown_inline",
-                "perl",
-                "php",
-                "prisma",
-                "python",
-                "query",
-                "regex",
-                "ruby",
-                "rust",
-                "sql",
-                "todotxt",
-                "toml",
-                "tsx",
-                "typescript",
-                "vim",
-                "vimdoc",
-                "yaml",
-            },
-            highlight = {
-                enable = true, -- false will disable the whole extension
-            },
-            indent = { enable = true },
-            incremental_selection = {
-                enable = true,
-                -- if you have some text visually selected, can use these keymaps to expand/reduce the selection
-                keymaps = {
-                    init_selection = "<c-space>",
-                    node_incremental = "<c-space>",
-                    scope_incremental = "<c-s>",
-                    node_decremental = "<c-backspace>",
+    {
+        "nvim-treesitter/nvim-treesitter-context",
+        lazy = true,
+    },
+    {
+        "nvim-treesitter/nvim-treesitter",
+        event = { "BufRead", "BufNewFile" },
+        dependencies = {
+            "nvim-treesitter/nvim-treesitter-textobjects",
+        },
+        build = ":TSUpdate",
+        config = function()
+            require("nvim-treesitter.parsers").get_parser_configs()["rifleconfig"] = {
+                install_info = {
+                    -- url = "~/Repos/tree-sitter-rifleconfig",
+                    url = "https://github.com/seanbreckenridge/tree-sitter-rifleconfig",
+                    files = { "src/parser.c" },
+                    requires_generate_from_grammar = false,
+                    branch = "main",
                 },
-            },
-            textobjects = {
-                select = {
+            }
+
+            require("nvim-treesitter.configs").setup({
+                modules = {},
+                ignore_install = {},
+                sync_install = false,
+                auto_install = true,
+                ensure_installed = {
+                    "astro",
+                    "awk",
+                    "bash",
+                    "c",
+                    "commonlisp",
+                    "cpp",
+                    "css",
+                    "csv",
+                    "dart",
+                    "diff",
+                    "dockerfile",
+                    "eex",
+                    "elixir",
+                    "erlang",
+                    "git_config",
+                    "gitcommit",
+                    "gitignore",
+                    "go",
+                    "graphql",
+                    "html",
+                    "java",
+                    "javascript",
+                    "jq",
+                    "json",
+                    "lua",
+                    "make",
+                    "markdown",
+                    "markdown_inline",
+                    "perl",
+                    "php",
+                    "prisma",
+                    "python",
+                    "query",
+                    "regex",
+                    "ruby",
+                    "rust",
+                    "sql",
+                    "todotxt",
+                    "toml",
+                    "tsx",
+                    "typescript",
+                    "vim",
+                    "vimdoc",
+                    "yaml",
+                },
+                highlight = {
+                    enable = true, -- false will disable the whole extension
+                },
+                indent = { enable = true },
+                incremental_selection = {
                     enable = true,
-                    lookahead = true, -- Automatically jump forward to textobj, similar to targets.vim
+                    -- if you have some text visually selected, can use these keymaps to expand/reduce the selection
                     keymaps = {
-                        -- You can use the capture groups defined in textobjects.scm
-                        ["aa"] = "@parameter.outer",
-                        ["ia"] = "@parameter.inner",
-                        ["af"] = "@function.outer",
-                        ["if"] = "@function.inner",
-                        ["ac"] = "@class.outer",
-                        ["ic"] = "@class.inner",
-                        ["co"] = "@comment.outer",
+                        init_selection = "<c-space>",
+                        node_incremental = "<c-space>",
+                        scope_incremental = "<c-s>",
+                        node_decremental = "<c-backspace>",
                     },
                 },
-                move = {
-                    enable = true,
-                    set_jumps = true, -- whether to set jumps in the jumplist
-                    goto_next_start = {
-                        ["]m"] = "@function.outer",
-                        ["]]"] = "@class.outer",
+                textobjects = {
+                    select = {
+                        enable = true,
+                        lookahead = true, -- Automatically jump forward to textobj, similar to targets.vim
+                        keymaps = {
+                            -- You can use the capture groups defined in textobjects.scm
+                            ["aa"] = "@parameter.outer",
+                            ["ia"] = "@parameter.inner",
+                            ["af"] = "@function.outer",
+                            ["if"] = "@function.inner",
+                            ["ac"] = "@class.outer",
+                            ["ic"] = "@class.inner",
+                            ["co"] = "@comment.outer",
+                        },
                     },
-                    goto_next_end = {
-                        ["]M"] = "@function.outer",
-                        ["]["] = "@class.outer",
+                    move = {
+                        enable = true,
+                        set_jumps = true, -- whether to set jumps in the jumplist
+                        goto_next_start = {
+                            ["]m"] = "@function.outer",
+                            ["]]"] = "@class.outer",
+                        },
+                        goto_next_end = {
+                            ["]M"] = "@function.outer",
+                            ["]["] = "@class.outer",
+                        },
+                        goto_previous_start = {
+                            ["[m"] = "@function.outer",
+                            ["[["] = "@class.outer",
+                        },
+                        goto_previous_end = {
+                            ["[M"] = "@function.outer",
+                            ["[]"] = "@class.outer",
+                        },
                     },
-                    goto_previous_start = {
-                        ["[m"] = "@function.outer",
-                        ["[["] = "@class.outer",
-                    },
-                    goto_previous_end = {
-                        ["[M"] = "@function.outer",
-                        ["[]"] = "@class.outer",
+                    swap = {
+                        enable = true,
+                        swap_next = { ["<leader>a"] = "@parameter.inner" },
+                        swap_previous = { ["<leader>A"] = "@parameter.inner" },
                     },
                 },
-                swap = {
-                    enable = true,
-                    swap_next = { ["<leader>a"] = "@parameter.inner" },
-                    swap_previous = { ["<leader>A"] = "@parameter.inner" },
-                },
-            },
-        })
+            })
 
-        require("nvim-ts-autotag").setup()
+            require("treesitter-context").setup({
+                enable = true,
+                max_lines = 10,
+                multiline_threshold = 5,
+                -- TODO: use on attach to disable based on filetype?
+                on_attach = nil,
+            })
 
-        -- TODO: need to re-enable this when switching back to other filetypes?
-        -- not just on FileType cmd but maybe on BufEnter?
-        vim.api.nvim_create_autocmd("FileType", {
-            pattern = { "markdown" },
-            group = vim.api.nvim_create_augroup("disable-ts-context", { clear = true }),
-            callback = function()
-                require("treesitter-context").disable()
-            end,
-            desc = "disable treesitter context for markdown files",
-        })
-    end,
+            require("nvim-ts-autotag").setup()
+
+            -- TODO: need to re-enable this when switching back to other filetypes?
+            -- not just on FileType cmd but maybe on BufEnter?
+            vim.api.nvim_create_autocmd("FileType", {
+                pattern = { "markdown" },
+                group = vim.api.nvim_create_augroup("disable-ts-context", { clear = true }),
+                callback = function()
+                    require("treesitter-context").disable()
+                end,
+                desc = "disable treesitter context for markdown files",
+            })
+        end,
+    },
 }

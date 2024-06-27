@@ -85,6 +85,10 @@ main() {
 	diff-latest)
 		restic -r "$MOUNT_POINT/backup" list snapshots -q | head -n 2 | tac | xargs -n 2 restic -r "$MOUNT_POINT/backup" diff
 		;;
+	last-snapshot)
+		local snapshot
+		restic -r "$MOUNT_POINT/backup" list snapshots -q | head -n 1
+		;;
 	dry)
 		if [[ ! -d "$MOUNT_POINT" ]]; then
 			echo "Drive not mounted"
