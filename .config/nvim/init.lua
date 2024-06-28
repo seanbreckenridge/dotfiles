@@ -1,6 +1,4 @@
--- bootstrap lazy
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
----@diagnostic disable-next-line: undefined-field
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
     vim.fn.system({
         "git",
@@ -11,7 +9,6 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
         lazypath,
     })
 end
----@diagnostic disable-next-line: undefined-field
 vim.opt.rtp:prepend(lazypath)
 
 -- lazy.nvim/which-key wants a leader to be set before setting up mappings

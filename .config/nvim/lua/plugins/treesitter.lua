@@ -137,21 +137,26 @@ return {
                 enable = true,
                 max_lines = 10,
                 multiline_threshold = 5,
-                -- TODO: use on attach to disable based on filetype?
-                on_attach = nil,
             })
 
             require("nvim-ts-autotag").setup()
 
-            -- TODO: need to re-enable this when switching back to other filetypes?
-            -- not just on FileType cmd but maybe on BufEnter?
-            vim.api.nvim_create_autocmd("FileType", {
-                pattern = { "markdown" },
+            vim.api.nvim_create_autocmd({ "FileType", "BufEnter" }, {
                 group = vim.api.nvim_create_augroup("disable-ts-context", { clear = true }),
-                callback = function()
-                    require("treesitter-context").disable()
+                callback = function(e)
+                    local ft ---@type string
+                    if e.event == "FileType" then
+                        ft = e.match
+                    else
+                        ft = vim.bo.filetype
+                    end
+                    if ft == "markdown" then
+                        require("treesitter-context").disable()
+                    else
+                        require("treesitter-context").enable()
+                    end
                 end,
-                desc = "disable treesitter context for markdown files",
+                desc = "disable treesitter context for markdown files, re-enable it when attaching other buffers",
             })
         end,
     },
