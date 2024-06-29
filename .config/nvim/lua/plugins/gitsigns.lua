@@ -2,6 +2,7 @@ return {
     {
         "seanbreckenridge/gitsigns-yadm.nvim",
         -- dir = "~/Repos/gitsigns-yadm.nvim",
+        -- opts = { yadm_repo_git = "~/.config/yadm/repo.git", shell_timeout_ms = 1000 },
         lazy = true,
     },
     {
@@ -18,12 +19,7 @@ return {
             },
             _on_attach_pre = function(_, callback)
                 if vim.fn.executable("yadm") == 1 then
-                    -- leaving the schedule here so that I notice breaking
-                    -- changes if any happen. otherwise gitsigns might suppress
-                    -- errors that happen in _on_attach_pre
-                    vim.schedule(function()
-                        require("gitsigns-yadm").yadm_signs(callback)
-                    end)
+                    require("gitsigns-yadm").yadm_signs(callback)
                 else
                     callback()
                 end

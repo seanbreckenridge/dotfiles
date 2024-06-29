@@ -181,6 +181,7 @@ return {
                         gt = { vim.lsp.buf.type_definition, "goto type definition" },
                         gr = { vim.lsp.buf.references, "goto references" },
                         K = { ShowDocumentation, "show documentation" },
+                        D = { vim.diagnostic.open_float, "diagnostic hover" },
                     })
                     -- BUG: hmm... doesn't actually seem to display for me
                     --
