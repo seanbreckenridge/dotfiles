@@ -2,7 +2,6 @@ return {
     {
         "folke/lazydev.nvim",
         ft = "lua",
-        cond = not vim.g.on_android,
         opts = {
             library = {
                 -- Library items can be absolute paths
