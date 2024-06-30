@@ -1,0 +1,34 @@
+#!/usr/bin/env python3
+
+"""
+Parse first arg as a JSON file, autoformat
+and write it back to the file.
+
+If it couldn't be parsed, dont write.
+"""
+
+import sys
+import json
+
+from pathlib import Path
+import click
+
+
+@click.command(help=__doc__)
+@click.argument(
+    "JSON_FILE", type=click.Path(exists=True, dir_okay=False, path_type=Path)
+)
+def main(json_file: Path) -> None:
+    try:
+        with json_file.open("r") as f:
+            json_data = json.load(f)
+    except json.decoder.JSONDecodeError:
+        click.echo(f"Couldn't parse {json_file} as JSON", err=True)
+        raise SystemExit(1)
+
+    json_str = json.dumps(json_data, indent=4, sort_keys=True)
+    json_file.write_text(json_str)
+
+
+if __name__ == "__main__":
+    main(prog_name="autoformat-json")

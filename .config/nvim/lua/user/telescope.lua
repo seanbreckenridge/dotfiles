@@ -93,8 +93,7 @@ function M.switch_to_repo(opts)
             -- list my git repos runs a parallel search across all my git repos
             finder = finders.new_oneshot_job({ "fzfcache", "list-my-git-repos", "-r" }, {}),
             sorter = require("telescope.config").values.generic_sorter(opts),
-            ---@diagnostic disable-next-line: unused-local
-            attach_mappings = function(prompt_bufnr, map)
+            attach_mappings = function(prompt_bufnr, _)
                 actions.select_default:replace(function()
                     local selection = action_state.get_selected_entry()
                     if selection == nil then
