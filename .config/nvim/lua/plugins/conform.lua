@@ -15,7 +15,7 @@ return {
             end
             require("conform").format({
                 async = true,
-                lsp_fallback = true,
+                lsp_format = "fallback",
                 range = range,
             }, function(err, did_edit)
                 if err ~= nil then

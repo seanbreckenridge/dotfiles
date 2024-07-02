@@ -7,7 +7,6 @@ and write it back to the file.
 If it couldn't be parsed, dont write.
 """
 
-import sys
 import json
 
 from pathlib import Path
