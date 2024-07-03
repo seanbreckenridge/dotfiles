@@ -116,15 +116,6 @@ return {
                 desc = "disable lsp diagnostics for .env files",
             })
 
-            -- lsp bindings
-            function ShowDocumentation()
-                if vim.tbl_contains({ "vim", "help" }, vim.bo.filetype) then
-                    vim.cmd("h " .. vim.fn.expand("<cword>"))
-                else
-                    vim.lsp.buf.hover()
-                end
-            end
-
             local wk = require("which-key")
 
             -- run on any client connecting
@@ -180,10 +171,10 @@ return {
                         gd = { vim.lsp.buf.definition, "goto definition" },
                         gt = { vim.lsp.buf.type_definition, "goto type definition" },
                         gr = { vim.lsp.buf.references, "goto references" },
-                        K = { ShowDocumentation, "show documentation" },
                         D = { vim.diagnostic.open_float, "diagnostic hover" },
                     })
                     -- BUG: hmm... doesn't actually seem to display for me
+                    -- may have to enable these for each language server
                     --
                     -- local client = vim.lsp.get_client_by_id(event.data.client_id)
                     -- if client and vim.lsp.inlay_hint and

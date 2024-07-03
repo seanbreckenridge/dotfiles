@@ -10,6 +10,7 @@ return {
             "javascriptreact",
             "typescriptreact",
         },
+        keys = { { "gc", mode = { "n", "v" } }, { "gbc", mode = { "n", "v" } } },
         lazy = not vim.g.on_android, -- only load if on android, on an old version of nvim
         config = function()
             require("ts_context_commentstring").setup({ enable_autocmd = false })
