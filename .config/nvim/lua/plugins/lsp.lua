@@ -116,8 +116,7 @@ return {
             -- run on any client connecting
             vim.api.nvim_create_autocmd("LspAttach", {
                 group = vim.api.nvim_create_augroup("custom-lsp-attach", { clear = true }),
-                ---@diagnostic disable-next-line: unused-local
-                callback = function(event)
+                callback = function()
                     -- set omnifunc to lsp omnifunc
                     vim.opt_local.omnifunc = "v:lua.vim.lsp.omnifunc"
                     -- when the client attaches, add keybindings
