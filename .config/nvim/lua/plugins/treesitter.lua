@@ -84,10 +84,10 @@ return {
                     enable = true,
                     -- if you have some text visually selected, can use these keymaps to expand/reduce the selection
                     keymaps = {
-                        init_selection = "<c-space>",
-                        node_incremental = "<c-space>",
-                        scope_incremental = "<c-s>",
-                        node_decremental = "<c-backspace>",
+                        init_selection = "gnn",
+                        node_incremental = "grn",
+                        scope_incremental = "grc",
+                        node_decremental = "grm",
                     },
                 },
                 textobjects = {

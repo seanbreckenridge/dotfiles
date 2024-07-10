@@ -5,7 +5,7 @@
 # uses the 'star' script in this directory which uses 'gh' internally
 
 lazy-plugins() {
-	list-git-dirs "${HOME}/.local/share/nvim/lazy" | parallel -j+0 'cd {}; giturl' | sed -e 's/.git$//' | sort
+	list-git-dirs "${HOME}/.local/share/nvim/lazy" -d 2 | parallel -j+0 'cd {}; giturl' | sed -e 's/.git$//' | sort
 }
 
 already-starred() {

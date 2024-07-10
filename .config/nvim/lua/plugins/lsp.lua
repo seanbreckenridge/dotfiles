@@ -96,19 +96,14 @@ return {
 
             for server, config in pairs(servers) do
                 if config == true then
-                    -- vim.log.info("LSP config: " .. server ..
-                    --                      vim.inspect({capabilities = capabilities}))
                     lspconf[server].setup({ capabilities = capabilities })
                 else
-                    local combined = vim.tbl_extend("force", { capabilities = capabilities }, config)
-                    -- vim.log.info("LSP config: " .. server .. vim.inspect(combined))
-                    lspconf[server].setup(combined)
+                    lspconf[server].setup(vim.tbl_extend("force", { capabilities = capabilities }, config))
                 end
             end
 
-            local lsp_grp = vim.api.nvim_create_augroup("lsp_disable", { clear = true })
             vim.api.nvim_create_autocmd({ "BufEnter", "BufNewFile" }, {
-                group = lsp_grp,
+                group = vim.api.nvim_create_augroup("lsp_disable", { clear = true }),
                 pattern = { ".env", ".env.*" },
                 callback = function()
                     vim.diagnostic.enable(false)
@@ -134,40 +129,6 @@ return {
 
                     -- lsp commands in normal mode
                     wk.register({
-                        ["]w"] = {
-                            function()
-                                vim.diagnostic.jump({ count = 1 })
-                                vim.api.nvim_feedkeys("zz", "n", false)
-                            end,
-                            "next diagnostic",
-                        },
-                        ["[w"] = {
-                            function()
-                                vim.diagnostic.jump({ count = -1 })
-                                vim.api.nvim_feedkeys("zz", "n", false)
-                            end,
-                            "prev diagnostic",
-                        },
-                        ["]e"] = {
-                            function()
-                                vim.diagnostic.jump({
-                                    count = 1,
-                                    severity = vim.diagnostic.severity.ERROR,
-                                })
-                                vim.api.nvim_feedkeys("zz", "n", false)
-                            end,
-                            "next error",
-                        },
-                        ["[e"] = {
-                            function()
-                                vim.diagnostic.jump({
-                                    count = -1,
-                                    severity = vim.diagnostic.severity.ERROR,
-                                })
-                                vim.api.nvim_feedkeys("zz", "n", false)
-                            end,
-                            "prev error",
-                        },
                         gd = { vim.lsp.buf.definition, "goto definition" },
                         gt = { vim.lsp.buf.type_definition, "goto type definition" },
                         gr = { vim.lsp.buf.references, "goto references" },

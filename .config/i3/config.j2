@@ -68,6 +68,8 @@ exec_always --no-startup-id ~/.config/screenlayout/auto.sh
 # dunst, for Notifications
 {{ ex }} dunst
 
+bindsym $mod+grave {{ ex }} dunstctl close-all
+
 # command to display/run i3 key bindings
 bindsym $mod+Shift+Tab {{ ex }} ttt i3binds-prompt
 

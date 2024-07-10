@@ -88,7 +88,7 @@ nnoremap("<leader>w", function()
 end, "window")
 nnoremap("<leader><C-n>", "<Cmd>enew<CR>", "new file")
 nnoremap("<leader>d", function()
-    require("notify").dismiss()
+    require("notify").dismiss({ pending = true, silent = true })
 end, "dismiss notifications")
 
 ---@param is_quickfix boolean?
@@ -115,12 +115,50 @@ wk.register({
     },
 }, { prefix = "<leader>" })
 
+wk.register({
+    ["]w"] = {
+        function()
+            vim.diagnostic.jump({ count = 1 })
+            vim.api.nvim_feedkeys("zz", "n", false)
+        end,
+        "next diagnostic",
+    },
+    ["[w"] = {
+        function()
+            vim.diagnostic.jump({ count = -1 })
+            vim.api.nvim_feedkeys("zz", "n", false)
+        end,
+        "prev diagnostic",
+    },
+    ["]e"] = {
+        function()
+            vim.diagnostic.jump({
+                count = 1,
+                severity = vim.diagnostic.severity.ERROR,
+            })
+            vim.api.nvim_feedkeys("zz", "n", false)
+        end,
+        "next error",
+    },
+    ["[e"] = {
+        function()
+            vim.diagnostic.jump({
+                count = -1,
+                severity = vim.diagnostic.severity.ERROR,
+            })
+            vim.api.nvim_feedkeys("zz", "n", false)
+        end,
+        "prev error",
+    },
+})
+
 -- vim-unimpaired-like for basic stuff
-nnoremap("[q", ":cprev<CR>", "qf prev")
-nnoremap("]q", ":cnext<CR>", "qf next")
-nnoremap("[l", ":lprev<CR>", "ll prev")
-nnoremap("]l", ":lnext<CR>", "ll next")
--- TODO: add '[]f' binding?
+nnoremap("[q", "<Cmd>:cprev<CR>", "qf prev")
+nnoremap("]q", "<Cmd>:cnext<CR>", "qf next")
+nnoremap("[l", "<Cmd>:lprev<CR>", "ll prev")
+nnoremap("]l", "<Cmd>:lnext<CR>", "ll next")
+nnoremap("[n", "<Cmd>:prev<CR>", "file prev")
+nnoremap("]n", "<Cmd>:next<CR>", "file next")
 
 -- for picking which files to merge from while resolving merge conflicts
 -- middle is what the final merged file is
