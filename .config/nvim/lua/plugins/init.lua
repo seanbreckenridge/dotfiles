@@ -2,11 +2,13 @@ return {
     -- keybindings
     {
         "folke/which-key.nvim",
+        commit = "af4ded85542d40e190014c732fa051bdbf88be3d",
         lazy = true,
         init = function()
             vim.o.timeout = true
             vim.o.timeoutlen = 300
         end,
+        opts = {},
     },
     -- []x to encode/decode HTML, []u to encode/decode URLs, []y to do C-style escaping
     {

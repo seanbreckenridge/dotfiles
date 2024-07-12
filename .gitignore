@@ -4,6 +4,7 @@
 # video files
 *.mkv
 *.mp4
+*.env
 *.webm
 
 # Emacs
