@@ -128,10 +128,10 @@ return {
 
                     -- lsp commands in normal mode
                     wk.add({
-                        { "<leader>gd", vim.lsp.buf.definition, desc = "goto definition" },
-                        { "<leader>gt", vim.lsp.buf.type_definition, desc = "goto type definition" },
-                        { "<leader>gr", vim.lsp.buf.references, desc = "goto references" },
-                        { "<leader>D", vim.diagnostic.open_float, desc = "diagnostic hover" },
+                        { "gd", vim.lsp.buf.definition, desc = "goto definition" },
+                        { "gt", vim.lsp.buf.type_definition, desc = "goto type definition" },
+                        { "gr", vim.lsp.buf.references, desc = "goto references" },
+                        { "D", vim.diagnostic.open_float, desc = "diagnostic hover" },
                     })
                     -- BUG: hmm... doesn't actually seem to display for me
                     -- may have to enable these for each language server
@@ -156,3 +156,4 @@ return {
         end,
     },
 }
+
