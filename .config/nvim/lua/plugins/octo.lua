@@ -1,20 +1,36 @@
 local wk = require("which-key")
 
-wk.register({
-    o = {
-        name = "octo",
-        i = { "<Cmd>Octo issue list<CR>", "list issues" },
-        I = { "<Cmd>Octo issue list --mine<CR>", "list my issues" },
-        c = { "<Cmd>Octo issue create<CR>", "create issue" },
-        p = { "<Cmd>Octo pr list<CR>", "list pull requests" },
-        P = { "<Cmd>Octo pr list --mine<CR>", "list my pull requests" },
-        o = { "<Cmd>Octo<CR>", "octo" },
-    },
-}, { prefix = "<leader>" })
+wk.add({ { "<leader>o", group = "octo" }, { "<leader>oi", group = "issue" }, { "<leader>op", group = "pr" } })
 
 return {
     "pwntester/octo.nvim",
-    keys = { "<leader>o" },
+    keys = {
+        {
+            "<leader>oil",
+            "<Cmd>Octo issue list<CR>",
+            desc = "list issues",
+        },
+        {
+            "<leader>oic",
+            "<Cmd>Octo issue create<CR>",
+            desc = "create issue",
+        },
+        {
+            "<leader>opl",
+            "<Cmd>Octo pr list<CR>",
+            desc = "list pull requests",
+        },
+        {
+            "<leader>opm",
+            "<Cmd>Octo pr list --mine<CR>",
+            desc = "list my pull requests",
+        },
+        {
+            "<leader>oo",
+            "<Cmd>Octo<CR>",
+            desc = "octo",
+        },
+    },
     cmd = "Octo",
     config = function()
         require("octo").setup({ enable_builtin = true })

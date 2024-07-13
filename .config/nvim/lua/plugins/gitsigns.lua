@@ -33,30 +33,23 @@ return {
                 end
 
                 -- Navigation
-                map("n", "]h", "&diff ? ']c' : '<Cmd>Gitsigns next_hunk<CR>'", { expr = true })
-                map("n", "[h", "&diff ? '[c' : '<Cmd>Gitsigns prev_hunk<CR>'", { expr = true })
+                map("n", "]h", "&diff ? ']c' : '<Cmd>Gitsigns next_hunk<CR>'", { desc = "next git hunk", expr = true })
+                map("n", "[h", "&diff ? '[c' : '<Cmd>Gitsigns prev_hunk<CR>'", { desc = "prev git hunk", expr = true })
+
+                wk.add({ "<leader>h", group = "git hunk", buffer = bufnr })
 
                 -- Text objects
-                wk.register({
-                    h = {
-                        name = "git hunk",
-                        s = { "<Cmd>Gitsigns stage_hunk<CR>", "stage hunk" },
-                        r = { "<Cmd>Gitsigns reset_hunk<CR>", "reset hunk" },
-                        S = { "<Cmd>Gitsigns stage_buffer<CR>", "stage buffer" },
-                        R = { "<Cmd>Gitsigns reset_buffer<CR>", "reset buffer" },
-                        p = { "<Cmd>Gitsigns preview_hunk<CR>", "preview hunk" },
-                        b = {
-                            "<Cmd>lua require'gitsigns'.blame_line{full=true}<CR>",
-                            "blame line",
-                        },
-                        t = {
-                            "<Cmd>Gitsigns toggle_current_line_blame<CR>",
-                            "toggle line blame",
-                        },
-                        d = { "<Cmd>Gitsigns diffthis<CR>", "diff this" },
-                        T = { "<Cmd>Gitsigns toggle_deleted<CR>", "toggle deleted" },
-                    },
-                }, { prefix = "<leader>", buffer = bufnr })
+                wk.add({
+                    { "<leader>hs", "<Cmd>Gitsigns stage_hunk<CR>", desc = "stage hunk", buffer = bufnr },
+                    { "<leader>hr", "<Cmd>Gitsigns reset_hunk<CR>", desc = "reset hunk", buffer = bufnr },
+                    { "<leader>hS", "<Cmd>Gitsigns stage_buffer<CR>", desc = "stage buffer", buffer = bufnr },
+                    { "<leader>hR", "<Cmd>Gitsigns reset_buffer<CR>", desc = "reset buffer", buffer = bufnr },
+                    { "<leader>hp", "<Cmd>Gitsigns preview_hunk<CR>", desc = "preview hunk", buffer = bufnr },
+                    { "<leader>hb", "<Cmd>lua require'gitsigns'.blame_line{full=true}<CR>", desc = "blame line", buffer = bufnr },
+                    { "<leader>ht", "<Cmd>Gitsigns toggle_current_line_blame<CR>", desc = "toggle line blame", buffer = bufnr },
+                    { "<leader>hd", "<Cmd>Gitsigns diffthis<CR>", desc = "diff this", buffer = bufnr },
+                    { "<leader>hT", "<Cmd>Gitsigns toggle_deleted<CR>", desc = "toggle deleted", buffer = bufnr },
+                })
             end,
         },
     },

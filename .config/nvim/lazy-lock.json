@@ -17,7 +17,7 @@
   "dial.nvim": { "branch": "master", "commit": "750f802879c90ea51f92b68c35fa562ee575804a" },
   "diffview.nvim": { "branch": "main", "commit": "4516612fe98ff56ae0415a259ff6361a89419b0a" },
   "dressing.nvim": { "branch": "master", "commit": "6741f1062d3dc6e4755367a7e9b347b553623f04" },
-  "fidget.nvim": { "branch": "main", "commit": "c12f8a58ee472ce5983c3a3f3aad0ff6c49a6a83" },
+  "fidget.nvim": { "branch": "main", "commit": "bc34563a50c4d05e2d35a0db246e611d0ac95161" },
   "friendly-snippets": { "branch": "main", "commit": "45a1b96e46efe5fce8af325d4bed45feb9d29d0f" },
   "gitsigns-yadm.nvim": { "branch": "main", "commit": "7400593e0155ed919ddb25fa21daac9fb6552019" },
   "gitsigns.nvim": { "branch": "main", "commit": "e9c4187c3774a46df2d086a66cf3a7e6bea4c432" },
@@ -57,6 +57,6 @@
   "vim-sleuth": { "branch": "master", "commit": "1cc4557420f215d02c4d2645a748a816c220e99b" },
   "vim-unimpaired-conversions": { "branch": "master", "commit": "5b57e14603ebac11c9f42232f213363b86b96638" },
   "vim_faq": { "branch": "master", "commit": "088b3e4f683279a91c096969d527fb61af7f05f3" },
-  "which-key.nvim": { "branch": "main", "commit": "af4ded85542d40e190014c732fa051bdbf88be3d" },
+  "which-key.nvim": { "branch": "main", "commit": "a86e9d3c0023f985344014bf2b7cb15e0be8fa2b" },
   "zen-mode.nvim": { "branch": "main", "commit": "21976479c7a0146b05a42707cf91c86b1e510945" }
 }

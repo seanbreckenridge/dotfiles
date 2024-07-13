@@ -1,5 +1,5 @@
 local wk = require("which-key")
-wk.register({ ["H"] = { name = "hex colors" } }, { prefix = "<leader>" })
+wk.add({ { "<leader>H", group = "hex colors" } })
 
 return {
     {

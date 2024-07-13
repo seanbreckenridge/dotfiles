@@ -73,18 +73,18 @@ local function reload_config()
 end
 
 -- misc
-wk.register({
-    s = { ":setlocal spell!<CR>", "toggle spell" },
-    X = { ":w<CR>:!chmod +x %<CR>:edit<CR>", "chmod +x" },
-    ["<CR>"] = { ":split<CR>:term<CR>", "open terminal" },
-    ["S"] = { reload_config, "reload config" },
+wk.add({
+    { "<leader>s", ":setlocal spell!<CR>", desc = "toggle spell" },
+    { "<leader>X", ":w<CR>:!chmod +x %<CR>:edit<CR>", desc = "chmod +x" },
+    { "<leader><CR>", ":split<CR>:term<CR>", desc = "open terminal" },
+    { "<leader>S", reload_config, desc = "reload config" },
 }, { prefix = "<leader>" })
 
 -- window/buffers
-wk.register({ b = { "<C-^>", "swap buffers" } }, { prefix = "<leader>" })
+wk.add({ "<leader>b", "<C-^>", desc = "swap buffers" })
 -- use WhichKey so I can see the mappings
 nnoremap("<leader>w", function()
-    require("which-key").show_command("<C-w>")
+    wk.show("<C-w>")
 end, "window")
 nnoremap("<leader><C-n>", "<Cmd>enew<CR>", "new file")
 nnoremap("<leader>d", function()
@@ -103,34 +103,36 @@ end
 nnoremap("<C-q>", function()
     toggle_list(true)
 end, "toggle quickfix list")
-wk.register({ j = { ":cnext<CR>", "qf next" }, k = { ":cprev<CR>", "qf prev" } }, { prefix = "<leader>" })
+wk.add({ "<leader>j", ":cnext<CR>", desc = "qf next" }, { "<leader>k", ":cprev<CR>", desc = "qf prev" })
+
+wk.add({ "<leader>l", group = "loc list" })
 
 nnoremap("<C-l>", toggle_list, "toggle loc list")
-wk.register({
-    l = {
-        name = "loc list",
-        j = { ":lnext", "next" },
-        k = { ":lprev", "prev" },
-        l = { toggle_list, "toggle loc list" },
-    },
-}, { prefix = "<leader>" })
+wk.add({
+    { "<leader>lj", "<Cmd>:lnext<CR>", desc = "next" },
+    { "<leader>lk", "<Cmd>:lprev<CR>", desc = "prev" },
+    { "<leader>ll", toggle_list, desc = "toggle loc list" },
+})
 
-wk.register({
-    ["]w"] = {
+wk.add({
+    {
+        "]w",
         function()
             vim.diagnostic.jump({ count = 1 })
             vim.api.nvim_feedkeys("zz", "n", false)
         end,
-        "next diagnostic",
+        desc = "next diagnostic",
     },
-    ["[w"] = {
+    {
+        "[w",
         function()
             vim.diagnostic.jump({ count = -1 })
             vim.api.nvim_feedkeys("zz", "n", false)
         end,
-        "prev diagnostic",
+        desc = "prev diagnostic",
     },
-    ["]e"] = {
+    {
+        "]e",
         function()
             vim.diagnostic.jump({
                 count = 1,
@@ -138,9 +140,10 @@ wk.register({
             })
             vim.api.nvim_feedkeys("zz", "n", false)
         end,
-        "next error",
+        desc = "next error",
     },
-    ["[e"] = {
+    {
+        "[e",
         function()
             vim.diagnostic.jump({
                 count = -1,
@@ -148,7 +151,7 @@ wk.register({
             })
             vim.api.nvim_feedkeys("zz", "n", false)
         end,
-        "prev error",
+        desc = "prev error",
     },
 })
 
@@ -164,15 +167,15 @@ nnoremap("]n", "<Cmd>:next<CR>", "file next")
 -- middle is what the final merged file is
 -- gj to pick hunk from the right (under right index)
 -- gf to pick hunk form the left (under left index)
-wk.register({
-    name = "git merge",
-    -- ]c goes to the next conflict
-    -- just the current file
-    i = { ":diffput<CR>]c", "use current file" },
-    -- if Im merging two files in a split where one is a syncthing conflict
-    -- grab from the other file
-    s = { ":diffget sync-conflict<CR>]c", "diffget sync-conflict" },
-    -- //2 and //3 are set by fugitive for when doing git merges
-    j = { ":diffget //3<CR>", "diffget //3" },
-    f = { ":diffget //2<CR>", "diffget //2" },
-}, { prefix = "<leader>i" })
+-- wk.add({
+--     name = "git merge",
+--     -- ]c goes to the next conflict
+--     -- just the current file
+--     i = { ":diffput<CR>]c", desc = "use current file" },
+--     -- if Im merging two files in a split where one is a syncthing conflict
+--     -- grab from the other file
+--     s = { ":diffget sync-conflict<CR>]c", desc = "diffget sync-conflict" },
+--     -- //2 and //3 are set by fugitive for when doing git merges
+--     j = { ":diffget //3<CR>", desc = "diffget //3" },
+--     f = { ":diffget //2<CR>", desc = "diffget //2" },
+-- }, { prefix = "<leader>i" })

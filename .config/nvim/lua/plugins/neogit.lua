@@ -1,6 +1,6 @@
 local wk = require("which-key")
 
-wk.register({ name = "git", { prefix = "<leader>g" } })
+wk.add({ "<leader>g", group = "git" })
 
 return {
     { "sindrets/diffview.nvim", cmd = "DiffviewOpen", config = true, lazy = true },

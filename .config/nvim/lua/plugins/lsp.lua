@@ -121,17 +121,17 @@ return {
                     vim.opt_local.omnifunc = "v:lua.vim.lsp.omnifunc"
                     -- when the client attaches, add keybindings
                     -- lsp commands with leader prefix
-                    wk.register({
-                        T = { vim.lsp.buf.code_action, "lsp code action" },
-                        r = { vim.lsp.buf.rename, "lsp rename" },
-                    }, { prefix = "<leader>" })
+                    wk.add({
+                        { "<leader>T", vim.lsp.buf.code_action, desc = "lsp code action" },
+                        { "<leader>r", vim.lsp.buf.rename, desc = "lsp rename" },
+                    })
 
                     -- lsp commands in normal mode
-                    wk.register({
-                        gd = { vim.lsp.buf.definition, "goto definition" },
-                        gt = { vim.lsp.buf.type_definition, "goto type definition" },
-                        gr = { vim.lsp.buf.references, "goto references" },
-                        D = { vim.diagnostic.open_float, "diagnostic hover" },
+                    wk.add({
+                        { "<leader>gd", vim.lsp.buf.definition, desc = "goto definition" },
+                        { "<leader>gt", vim.lsp.buf.type_definition, desc = "goto type definition" },
+                        { "<leader>gr", vim.lsp.buf.references, desc = "goto references" },
+                        { "<leader>D", vim.diagnostic.open_float, desc = "diagnostic hover" },
                     })
                     -- BUG: hmm... doesn't actually seem to display for me
                     -- may have to enable these for each language server
@@ -139,14 +139,14 @@ return {
                     -- local client = vim.lsp.get_client_by_id(event.data.client_id)
                     -- if client and vim.lsp.inlay_hint and
                     --     client.supports_method('textDocument/inlayHint') then
-                    --     wk.register({
+                    --     wk.add({
                     --         ['ft'] = {
                     --             function()
                     --                 vim.lsp.inlay_hint.enable(
                     --                     not vim.lsp.inlay_hint.is_enabled({}))
-                    --             end, "toggle inlay hints"
+                    --             end, desc = "toggle inlay hints"
                     --         }
-                    --     }, {prefix = "<leader>"})
+                    --     })
                     --     -- toggle on by default, for now
                     --     vim.lsp.inlay_hint.enable(true)
                     -- end

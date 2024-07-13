@@ -1,6 +1,13 @@
+local wk = require("which-key")
+
+wk.add({ "<leader>x", group = "trouble" })
+
 return {
     "folke/trouble.nvim",
     event = "VeryLazy",
+
+    -- TODO: try more commands here to figure out which ones I want:
+    -- https://github.com/folke/trouble.nvim?tab=readme-ov-file#commands
     keys = {
         {
             "<leader>xx",
@@ -17,28 +24,16 @@ return {
             "<Cmd>Trouble loclist toggle<CR>",
             desc = "location list",
         },
+        { "<leader>xt", "<Cmd>TodoTrouble<CR>", desc = "show todos" },
         { "<leader>xq", "<Cmd>Trouble qflist toggle<CR>", desc = "quickfix list" },
+        -- git diff file with gitsigns (opens in trouble if installed)
+        {
+            "<leader>xD",
+            function()
+                require("gitsigns").setqflist()
+            end,
+            desc = "git diff",
+        },
     },
-    config = function()
-        -- TODO: try more commands here to figure out which ones I want:
-        -- https://github.com/folke/trouble.nvim?tab=readme-ov-file#commands
-        local trouble = require("trouble")
-        trouble.setup({})
-
-        local wk = require("which-key")
-
-        wk.register({
-            x = {
-                name = "trouble",
-                -- git diff file with gitsigns (opens in trouble if installed)
-                D = {
-                    function()
-                        require("gitsigns").setqflist()
-                    end,
-                    "git diff",
-                },
-                t = { "<Cmd>TodoTrouble<CR>", "show todos" },
-            },
-        }, { prefix = "<leader>" })
-    end,
+    opts = {},
 }

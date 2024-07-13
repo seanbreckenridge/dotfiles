@@ -2,7 +2,6 @@ return {
     -- keybindings
     {
         "folke/which-key.nvim",
-        commit = "af4ded85542d40e190014c732fa051bdbf88be3d",
         lazy = true,
         init = function()
             vim.o.timeout = true
