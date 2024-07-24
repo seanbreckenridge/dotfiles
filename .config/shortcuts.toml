@@ -27,7 +27,7 @@ fzfcache list-config-no-hist | sed "s#^$HOME/##g" | fzf-edit
 command='''
 # open the dotfiles git repository
 cd "${HOME}/.local/share/yadm/repo.git" || exit 1
-exec git open
+git open --print | openurl
 '''
 
 [i3binds]

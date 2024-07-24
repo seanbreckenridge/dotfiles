@@ -1,4 +1,4 @@
 #!/bin/sh
 # open the dotfiles git repository
 cd "${HOME}/.local/share/yadm/repo.git" || exit 1
-exec git open
+git open --print | openurl
