@@ -44,7 +44,7 @@ return {
 
         local prettier_fts = {}
         for _, ft in ipairs(prettier_filetypes) do
-            prettier_fts[ft] = { { "prettierd", "prettier" } }
+            prettier_fts[ft] = { "prettierd", "prettier" }
         end
 
         local conform = require("conform")
