@@ -5,5 +5,5 @@
 
 evry 5 minutes -copy_images && {
 	rsync -Pavh --exclude=".*" "${HPIDATA}/phone_pictures" "${XDG_PICTURES_DIR}" &&
-		find "${HPIDATA}/phone_pictures" -type f -mtime +28 -print -delete
+		find "${HPIDATA}/phone_pictures" -type f -mtime +180 -print -delete
 }
