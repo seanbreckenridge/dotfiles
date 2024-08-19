@@ -44,7 +44,7 @@ exec --no-startup-id unclutter --timeout 2
 # keynav
 exec --no-startup-id keynav
 
-bindsym $mod+c exec --no-startup-id xdotool click 1
+bindsym $mod+c exec --no-startup-id sleep 0.1  && xdotool click 1
 bindsym $mod+v exec --no-startup-id sleep 0.2 && xdotool click --clearmodifiers 3
 
 # set a random wallpaper

@@ -78,18 +78,6 @@ interval=300
 signal=13
 label=📅
 
-[calories]
-command=b-calories
-interval=600
-label=🍍
-signal=3
-
-[water]
-command=b-water-perc -h
-interval=600
-label=💧
-signal=2
-
 [battery]
 command=b-battery BAT0
 interval=60

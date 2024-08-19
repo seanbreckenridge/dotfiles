@@ -206,6 +206,7 @@ __pycache__
 /.config/3T
 /.config/kdiff3rc
 /.config/kconf_updaterc
+/.config/create-next-app-nodejs/
 /.config/kdeglobals
 /.config/lazygit
 # /.config/nvim/lazy-lock.json
