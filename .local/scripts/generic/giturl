@@ -11,7 +11,7 @@ if in-gitdir; then
 		exit 1
 	fi
 	verify_giturlparse || {
-		echo "Couldn't import giturlparse" >&2
+		echo "Couldn't import giturlparse, 'pip install giturlparse'" >&2
 		exit 1
 	}
 	if https_url="$(printf '%s' "${remote_url}" | /usr/bin/env python3 -c "import sys, giturlparse; print(giturlparse.parse(sys.stdin.read().strip()).urls['https'])" 2>/dev/null)"; then

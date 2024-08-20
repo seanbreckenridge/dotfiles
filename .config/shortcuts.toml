@@ -26,8 +26,7 @@ fzfcache list-config-no-hist | sed "s#^$HOME/##g" | fzf-edit
 [dotfiles]
 command='''
 # open the dotfiles git repository
-cd "${HOME}/.local/share/yadm/repo.git" || exit 1
-exec git open
+yadm open --print | openurl
 '''
 
 [i3binds]
@@ -596,6 +595,11 @@ command='''
 exec flake8 --config ~/.config/flake8 "$@"
 '''
 
+[styluac]
+command='''
+exec stylua --config-path "$HOME/.config/nvim/stylua.toml" "$@"
+'''
+
 [yadm-format]
 command='''
 # autoformat all my dotfiles
@@ -846,29 +850,6 @@ command = '''
 set -e
 spell-list "$@" || true
 spell-interactive "$@"
-'''
-shebang = "#!/usr/bin/env bash"
-
-[setup-cfg-fmt-tempfile]
-command = '''
-set -e
-# first arg is the setup.cfg file
-# rest of the arguments are passed on to
-# https://github.com/asottile/setup-cfg-fmt/
-# STDIN should be the contents of the file
-# this accepts both the filename and the contents
-# since setup-cfg-fmt uses the directory of the file
-# to find related (README/LICENSE) files, but
-# we want to be able to pipe the current buffer (disregarding
-# if its saved or not) to the formatter
-setup_cfg_file="$1"
-shift
-dname="$(dirname "$setup_cfg_file")"
-tfile="$(mktemp -t setup.cfg.XXXXXX -p "$dname")"
-cat >"$tfile"
-setup-cfg-fmt "$@" "$tfile" >&2 || true
-cat "$tfile"
-command rm -f "$tfile"
 '''
 shebang = "#!/usr/bin/env bash"
 

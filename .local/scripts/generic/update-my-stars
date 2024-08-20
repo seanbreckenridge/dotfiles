@@ -6,7 +6,7 @@ wait-for-internet --timeout 1 || {
 }
 
 update_stars() {
-	mystars "$@" -c=never >>"${TMPDIR:-/tmp}"/mystars_update.log 2>&1
+	mystars "$@" -c=never | tee -a "${TMPDIR:-/tmp}"/mystars_update.log 2>&1
 }
 
 case "$1" in

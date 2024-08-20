@@ -2,20 +2,18 @@
 -- see :help vim-differences for some defaults set in nvim
 -- for :help syntax, treesitter will disable this for filetypes it knows, otherwise
 -- syntax highlighting is enabled by default
--- Don't execute arbitrary modelines
-vim.opt.modelines = 0
 vim.opt.number = true
 vim.opt.relativenumber = true -- line number
 -- Blink cursor on error instead of beeping
 vim.opt.visualbell = true
 
 -- disable intro message
-vim.opt.shortmess:append('I')
+vim.opt.shortmess:append("I")
 
 -- Whitespace
 vim.opt.wrap = true
 vim.opt.textwidth = 0 -- stop line wrapping
-vim.o.formatoptions = 'tcqrn1'
+vim.opt.formatoptions = "tcqrn1"
 
 -- set tab config local to buffer
 vim.opt.tabstop = 2
@@ -24,14 +22,21 @@ vim.opt.softtabstop = 2
 
 -- cursor motion
 vim.opt.scrolloff = 8
-vim.opt.matchpairs:append('<:>')
+vim.opt.matchpairs:append("<:>")
 -- dont think I ever use this...
 -- vim.cmd('runtime! macros/matchit.vim')
 
 -- save spellfile to my Documents
-local os = require('os')
-local spellfile = os.getenv('NVIM_SPELLFILE')
-if spellfile then vim.o.spellfile = spellfile end
+local os = require("os")
+local spellfile = os.getenv("NVIM_SPELLFILE")
+if spellfile then
+    vim.opt.spellfile = spellfile
+    vim.api.nvim_create_user_command("Spellfile", function()
+        vim.cmd.edit(spellfile)
+    end, {
+        desc = "open the spellfile for me to edit",
+    })
+end
 
 -- only show status line for last window
 vim.opt.laststatus = 3
@@ -47,9 +52,9 @@ vim.opt.showmatch = false -- I don't like the cursor jumping back, is distractin
 
 -- spacing/tabs/newlines
 vim.opt.list = true
-vim.opt.listchars:append({tab = '▸ ', eol = '¬'})
+vim.opt.listchars:append({ tab = "▸ ", eol = "¬" })
 vim.opt.breakindent = true -- wrapped lines indent
-vim.opt.signcolumn = 'yes'
+vim.opt.signcolumn = "yes"
 
 -- prevents truncated yanks, deletes, etc.
 -- makes sure that you can have lots of lines across
@@ -63,18 +68,26 @@ vim.opt.shada = "'1000,f1,<100"
 vim.opt.undofile = true
 
 -- path
-vim.opt.path:append('**')
-vim.opt.wildmode = {'longest', 'list', 'full'}
-vim.opt.completeopt = 'menuone,noselect'
+vim.opt.path:append("**")
+vim.opt.wildmode = { "longest", "list", "full" }
+vim.opt.completeopt = "menuone,noselect"
 vim.opt.wildignore:append({
-    '*__pycache__/*', '*.mypy_cache/*', '*.pytest_cache/*', '*egg-info/*',
-    '*_build/*', '**/coverage/*', '**/node_modules/*', '**/dist/*',
-    '**/build/*', '**/.git/*'
+    "*__pycache__/*",
+    "*.mypy_cache/*",
+    "*.pytest_cache/*",
+    "*egg-info/*",
+    "*_build/*",
+    "**/coverage/*",
+    "**/node_modules/*",
+    "**/dist/*",
+    "**/build/*",
+    "**/.git/*",
 })
 
 -- set filetype for todo.txt files
 vim.filetype.add({
-    filename = {['todo.txt'] = 'todotxt', ['done.txt'] = 'todotxt'}
+    filename = { ["todo.txt"] = "todotxt", ["done.txt"] = "todotxt" },
 })
 
-vim.filetype.add({filename = {['*.mdx'] = 'markdown.mdx'}})
+vim.filetype.add({ filename = { ["rifle.conf"] = "rifleconfig" } })
+vim.filetype.add({ extension = { mdx = "markdown" } })

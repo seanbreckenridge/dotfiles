@@ -1,5 +1,23 @@
 return {
-    {'folke/neodev.nvim', ft = 'lua'}, -- neovim/plugin docs/signatures
-    {'jceb/vim-orgmode', ft = 'org', dependencies = {"tpope/vim-speeddating"}}, -- orgmode
-    {'jxnblk/vim-mdx-js', ft = 'mdx'} -- extended markdown
+    {
+        "folke/lazydev.nvim",
+        ft = "lua",
+        opts = {
+            library = {
+                -- Library items can be absolute paths
+                -- "~/projects/my-awesome-lib",
+                -- Or relative, which means they will be resolved as a plugin
+                -- "LazyVim",
+                -- When relative, you can also provide a path to the library in the plugin dir
+                { path = "luvit-meta/library", words = { "vim%.uv", "vim%.loop" } },
+            },
+        },
+    }, -- update lua workspace libraries
+    { "Bilal2453/luvit-meta", lazy = true },
+    { "tpope/vim-sleuth", event = "VeryLazy" }, -- detect indentation
+    {
+        "seanbreckenridge/tree-sitter-rifleconfig",
+        ft = "rifleconfig",
+        -- dir = '~/Repos/tree-sitter-rifleconfig'
+    },
 }

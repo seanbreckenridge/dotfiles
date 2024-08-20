@@ -152,7 +152,7 @@ def filter_mail_path(p: Path) -> bool:
 class mail:
     # locally synced IMAP mailboxes using mbsync
     class imap:
-        # path[s]/glob to the the mailboxes/IMAP files
+        # path[s]/glob to the mailboxes/IMAP files
         # you could also just do something like:
         # mailboxes = "~/Documents/mail/*@*"
         # to match any files in that directory with '@' in them
@@ -371,7 +371,7 @@ class spotify:
 class twitch:
     class overrustle:
         """
-        my chatlogs from the overrustle_logs dump
+        my chat logs from the overrustle_logs dump
         https://github.com/seanbreckenridge/overrustle_parser
         """
 

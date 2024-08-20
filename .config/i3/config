@@ -41,13 +41,10 @@ exec --no-startup-id warn-battery BAT0
 # hide mouse after 2 seconds
 exec --no-startup-id unclutter --timeout 2
 
-# text expander
-exec --no-startup-id espanso service start --unmanaged
-
 # keynav
 exec --no-startup-id keynav
 
-bindsym $mod+c exec --no-startup-id xdotool click 1
+bindsym $mod+c exec --no-startup-id sleep 0.1  && xdotool click 1
 bindsym $mod+v exec --no-startup-id sleep 0.2 && xdotool click --clearmodifiers 3
 
 # set a random wallpaper
@@ -70,6 +67,8 @@ exec_always --no-startup-id ~/.config/screenlayout/auto.sh
 
 # dunst, for Notifications
 exec --no-startup-id dunst
+
+bindsym $mod+grave exec --no-startup-id dunstctl close-all
 
 # command to display/run i3 key bindings
 bindsym $mod+Shift+Tab exec --no-startup-id ttt i3binds-prompt
@@ -378,3 +377,5 @@ exec --no-startup-id cstimer
 
 # enable tap to click
 exec_always --no-startup-id trackpad-tap-to-click enable
+
+# vim:ft=i3config

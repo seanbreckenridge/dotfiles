@@ -10,6 +10,7 @@ gnome-keyring
 networkmanager
 nss-mdns
 pacman-contrib
+pacman-static
 pipewire-pulse
 reflector
 restic
@@ -68,6 +69,7 @@ sbt
 scala
 scalafmt
 shfmt
+stylua
 tidy
 valgrind
 yarn

@@ -121,7 +121,7 @@ def main() -> None:
             # prompt for 'what'
             what = namedtuple_prompt_funcs(Flip)["what"]()
         except AutoTUIException:
-            click.secho(f"Did not select anything", err=True, fg="red")
+            click.secho("Did not select anything", err=True, fg="red")
             exit(1)
 
         # flip the 'on' value and write back

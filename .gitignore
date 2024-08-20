@@ -4,6 +4,7 @@
 # video files
 *.mkv
 *.mp4
+*.env
 *.webm
 
 # Emacs
@@ -102,6 +103,7 @@ __pycache__
 /.cookiecutter_replay
 /.cookiecutters/
 /.credentials
+/.codeium
 /.cups
 /.dart
 /.dmrc
@@ -196,6 +198,7 @@ __pycache__
 /.xsession-errors*
 /.yarn
 /.yarnrc
+/.z
 /.zoom
 
 # Top level config/local files to ignore
@@ -203,6 +206,7 @@ __pycache__
 /.config/3T
 /.config/kdiff3rc
 /.config/kconf_updaterc
+/.config/create-next-app-nodejs/
 /.config/kdeglobals
 /.config/lazygit
 # /.config/nvim/lazy-lock.json

@@ -60,7 +60,7 @@ def main(limit: int, output: Path, path: Path) -> None:
         gpx_track.segments.append(gpx_segment)
         for point in points[i : i + limit]:
             gpx_segment.points.append(point)
-        output_path = output.joinpath(f"{path.stem}-{i//limit:03d}{path.suffix}")
+        output_path = output.joinpath(f"{path.stem}-{i // limit:03d}{path.suffix}")
         with output_path.open("w") as output_file:
             click.echo(f"Writing to {output_path}")
             output_file.write(gpx.to_xml())

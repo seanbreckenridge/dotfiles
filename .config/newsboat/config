@@ -1,3 +1,4 @@
+# vim ft: conf
 auto-reload yes
 refresh-on-startup yes
 notify-always no

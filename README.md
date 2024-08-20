@@ -1,11 +1,12 @@
 # dotfiles
 
-I have a separate repository ([`seanb-utils`](https://github.com/seanbreckenridge/seanb-utils)) I sync scripts up to with checks for dependencies to make them easier to install. That includes some cross-platform scripts which handle prompting for input/sending notifications etc. -- this repository is more application configuration files and personal scripts
+This is my personal configuration, I don't expect anyone else to use this, it is up here as reference.
+
+I have a [separate repository](https://github.com/seanbreckenridge/seanb-utils) I push scripts up to with checks for dependencies to make them easier to install. That includes some cross-platform scripts which handle prompting for input/sending notifications etc. -- this repository is more application configuration files and personal scripts
 
 This was originally linux-only, but over the months and years I've added a compatibility layer of sorts; A global `ON_OS` variable which uses [on_machine](https://github.com/seanbreckenridge/on_machine) to figure out which machine/operating system I'm on. (`linux_arch`, `mac`, `android` ([termux](https://termux.com/)) or `windows` (WSL)) is set on X server/terminal launch. The bootstrap scripts in [`.config/yadm`](.config/yadm) dispatch against that to install different packages
 
 In general:
-
 
 - [`zsh`](http://zsh.sourceforge.net/), plugins/configuration handled manually in [`.config/zsh`](.config/zsh) (split across multiple files)
 - [`yadm`](https://yadm.io) to manage dotfiles, see [`yadm-with-README.md`](.config/yadm/yadm-with-README.md)
@@ -60,7 +61,7 @@ Similar to Termux, does an `apt`-based install. Installs a bunch of languages/pr
   - [.local/scripts/linux](.local/scripts/linux/)
   - [.local/scripts/cross-platform](.local/scripts/cross-platform/)
 
-For a summary of tools I use often, see [here](https://exobrain.sean.fish/tools/).
+For a summary of tools I use often, see [here](https://sean.fish/x/notes/tools/).
 
 ### Install
 

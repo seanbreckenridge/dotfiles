@@ -4,7 +4,7 @@
 
 wait-for-internet -q --timeout "${WFI_TIMEOUT:-10}" || exit 0
 
-evry 30 minutes -update-rss && {
+evry 1 hour -update-rss && {
 	if update-rss; then
 		printlog "updaterss:updated RSS feeds:$(cat ~/.cache/rss-unread)"
 	else

@@ -2,7 +2,10 @@
 # cd to a new tmp directory
 
 cdtmp() {
-	local CDTO
-	CDTO="$(mktemp -p "${TMPDIR:-/tmp}" -d XXXXXXXXXX)"
-	cd "$CDTO"
+	local cdto
+	local basetemp="${TMPDIR:-/tmp}"
+	local cdtmpbase="${basetemp}/cdtmp"
+	mkdir -p "$cdtmpbase"
+	cdto="$(mktemp -p "$cdtmpbase" -d XXXXXXXXXX)"
+	cd "$cdto"
 }
