@@ -516,6 +516,7 @@ class location:
 
 class time:
     class tz:
+        force_abbreviations = ("PST", "PDT")
         policy = "convert"
 
         class via_location:
