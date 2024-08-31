@@ -3,6 +3,8 @@
 #
 # https://github.com/seanbreckenridge/markdown_stew
 
+ROOT_DIR:=$(shell dirname $(realpath $(firstword $(MAKEFILE_LIST))))
+
 JOURNAL_TARGET := $(shell echo "${XDG_DOCUMENTS_DIR}/NotesRendered/journal.html")
 JOURNAL_FILES := $(shell find ${XDG_DOCUMENTS_DIR}/Notes/journal -name "*.md" | sort -r)
 
@@ -22,7 +24,7 @@ $(JOURNAL_TARGET): $(JOURNAL_FILES)
 
 $(VLOGS_TARGET): $(VLOGS_FILES)
 	mkdir -p $(VLOG_TXT_FILES_DIR)
-	$(foreach file, $(VLOGS_FILES), srt-to-text $(file) | uniq > $(VLOG_TXT_FILES_DIR)/$(shell basename $(file) .srt).txt;)
+	$(foreach file, $(VLOGS_FILES), bash "${ROOT_DIR}/cache-srt-to-text" $(file) $(VLOG_TXT_FILES_DIR)/$(shell basename $(file) .srt).txt;)
 	FILES=$$(find $(VLOG_TXT_FILES_DIR) -name "*.txt" | sort -r); \
 		markdown_stew -dark-mode -title Vlogs $$FILES > $(VLOGS_TARGET)
 
