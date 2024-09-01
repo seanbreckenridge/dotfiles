@@ -25,6 +25,8 @@ evry 3 days -backup_fish_server && vps_backup_server
 evry 1 day -reminders-notify && reminder-sink-notify
 evry 1 day -reminder-silence-prune && reminder-sink --debug silence reset --if-expired
 
+evry 1 day -save-sms-images && sms-images
+
 # https://github.com/andreafrancia/trash-cli
 evry 1 week -empty-trash && {
 	dust ~/.local/share/Trash

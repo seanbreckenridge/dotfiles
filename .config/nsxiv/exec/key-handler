@@ -32,5 +32,6 @@ while read -r file; do
 	"C-w") feh --bg-fill --no-fehbg "$file" ;;                            # set as background
 	"C-n") touch "$(dirname "$file")/.nsfw" && notify "Marked as NSFW" ;; # mark as NSFW
 	"C-r") dragon-drop -x "$file" ;;                                      # drag and drop
+	"C-v") launch 'favorite-picture "$file"' ;;                           # copy favorite to documents dir
 	esac
 done
