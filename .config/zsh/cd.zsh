@@ -12,3 +12,11 @@ bindkey '^[h' up-dir
 # Alt+right arrow/Alt+L to launch fzf cd (move into dir)
 bindkey '^[[1;3C' fzf-cd-widget
 bindkey '^[l' fzf-cd-widget
+
+CD() {
+	local chosen
+	cd ~
+	chosen="$(fd --type d | fzf --no-multi --height=10 --reverse --preview="tree -C {}")"
+	[[ -z "$chosen" ]] && return 1
+	cd "$chosen" || return $?
+}
