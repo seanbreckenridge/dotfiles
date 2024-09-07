@@ -25,8 +25,8 @@ else
 	(echo "${TODO_DIR}/todo.txt" | entr -n i3blocks-refresh-mk todo LINUX_TASK) &
 	(echo "${HOME}/.cache/rss-unread" | entr -n i3blocks-refresh-mk rss LINUX_TASK) &
 	(echo "${HOME}/.cache/guestbook-comments" | entr -n i3blocks-refresh-mk comments LINUX_TASK) &
-	(find "${TTALLY_DATA_DIR}" -type f | entr -n i3blocks-refresh-mk calories LINUX_TASK) &
-	(find "${TTALLY_DATA_DIR}" -type f | entr -n i3blocks-refresh-mk water LINUX_TASK) &
+	# (find "${TTALLY_DATA_DIR}" -type f | entr -n i3blocks-refresh-mk calories LINUX_TASK) &
+	# (find "${TTALLY_DATA_DIR}" -type f | entr -n i3blocks-refresh-mk water LINUX_TASK) &
 	(find "${TTALLY_DATA_DIR}" "${HPIDATA}/flipflop/" -type f | entr -n i3blocks-refresh-mk reminder-sink LINUX_TASK) &
 	(find "${TTALLY_DATA_DIR}" -type f | entr -n ttally update-cache) &
 	FILES=(
