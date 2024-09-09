@@ -221,6 +221,7 @@ __pycache__
 /.config/ranger/plugins
 /.config/CrossCode
 /.config/Electron
+/.config/krita*
 /.config/GIMP
 /.config/Microsoft Teams - Preview/
 /.config/Microsoft/
