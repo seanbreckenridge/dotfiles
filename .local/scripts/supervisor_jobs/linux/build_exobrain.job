@@ -12,5 +12,5 @@ evry 6 hours -exobrain && {
 	}
 	make link_personal_notes
 	make built_and_stork
-	make sync_to_server
+	./scripts/sync_with_retry
 }
