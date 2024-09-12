@@ -204,6 +204,7 @@ zsh-syntax-highlighting
 # gui applications
 
 chromedriver
+digikam
 firefox-developer-edition
 gimp
 google-chrome
