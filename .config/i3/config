@@ -29,9 +29,6 @@ exec --no-startup-id redshift-loc
 # disk mounter
 exec --no-startup-id udiskie -t
 
-# discord
-exec --no-startup-id wait-for-internet && discord
-
 # autotiling
 exec_always --no-startup-id autotiling
 

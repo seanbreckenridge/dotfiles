@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+INPUT="${1:?Give .srt file as input}"
+TARGET="${2:?Give .txt file as target}"
+
+# if SRT file modification time is newer than target file, then we need to re-convert
+CONVERT=0
+if [[ ! -e "$TARGET" ]]; then
+	CONVERT=1
+elif (($(stat -c %Y "$INPUT") > $(stat -c %Y "$TARGET"))); then
+	CONVERT=1
+fi
+
+if ((CONVERT)); then
+	echo "Converting $INPUT to $TARGET" >&2
+	srt-to-text "$1" | uniq >"$TARGET"
+fi

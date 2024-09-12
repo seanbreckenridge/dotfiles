@@ -104,6 +104,10 @@ source_if_exists "${REPOS}/HPI/scripts/functions.sh"
 source_if_exists "${REPOS}/HPI-personal/scripts/functions.sh"
 source_if_exists "${REPOS}/my_feed/scripts/functions.sh"
 
+sms-images-review() {
+	find "${HOME}/.cache/sms-images" -type f -mtime -"${1:-28}"
+}
+
 # https://github.com/seanbreckenridge/frinkconv
 conv() {
 	local args=()

@@ -89,7 +89,7 @@ return {
                 servers.eslint = true
                 servers.cssmodules_ls = true
                 servers.tailwindcss = true
-                servers.tsserver = true
+                servers.ts_ls = true
                 servers.prismals = true
                 servers.astro = true
             end

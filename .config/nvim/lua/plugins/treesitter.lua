@@ -9,6 +9,7 @@ return {
     },
     {
         "nvim-treesitter/nvim-treesitter",
+        cmd = { "TSUpdate", "TSInstall", "TSBufEnable", "TSBufDisable", "TSModuleInfo" },
         event = { "BufRead", "BufNewFile" },
         dependencies = {
             "nvim-treesitter/nvim-treesitter-textobjects",

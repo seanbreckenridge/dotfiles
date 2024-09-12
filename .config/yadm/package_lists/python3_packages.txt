@@ -1,5 +1,6 @@
 Pygments
 codespell
+exifread
 flake8
 geopy
 giturlparse
