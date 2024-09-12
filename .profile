@@ -53,7 +53,7 @@ ${PATH}"
 # defaults, some of these are overwrriten in the case below
 XDG_MUSIC_DIR="${HOME}/Music"
 BROWSER='firefox-developer-edition'
-SCREENSHOTS="${XDG_PICTURES_DIR}/Screenshots"
+SCREENSHOTS="${FILES}/Screenshots"
 
 if hash on_machine; then
 	ON_OS="$(on_machine)"
