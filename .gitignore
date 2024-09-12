@@ -219,6 +219,7 @@ __pycache__
 /.config/BraveSoftware/
 /.config/Code - OSS/
 /.config/ranger/plugins
+/.config/digikam*
 /.config/CrossCode
 /.config/Electron
 /.config/krita*
