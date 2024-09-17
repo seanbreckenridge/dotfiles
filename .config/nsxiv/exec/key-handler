@@ -25,7 +25,7 @@ notify "$desc"
 
 while read -r file; do
 	case "$1" in
-	"C-f") realpath "$file" | xclip -in -selection clipboard ;;           # copy full path
+	"C-f") realpath "$file" | clipcopy ;;           # copy full path
 	"C-i") setsid -f pinta "$file" ;;                                     # edit image
 	"C-d") mv "$file" "/tmp" ;;                                           # delete
 	"C-c") xclip -selection clipboard -target image/png "$file" ;;        # copy image to clipboard
