@@ -27,7 +27,7 @@ while read -r file; do
 	case "$1" in
 	"C-f") realpath "$file" | clipcopy ;;           # copy full path
 	"C-i") setsid -f pinta "$file" ;;                                     # edit image
-	"C-d") mv "$file" "/tmp" ;;                                           # delete
+	"C-d") mkdir -p ~/.cache/removed && mv "$file" ~/.cache/removed ;;    # delete
 	"C-c") xclip -selection clipboard -target image/png "$file" ;;        # copy image to clipboard
 	"C-w") feh --bg-fill --no-fehbg "$file" ;;                            # set as background
 	"C-n") touch "$(dirname "$file")/.nsfw" && notify "Marked as NSFW" ;; # mark as NSFW
