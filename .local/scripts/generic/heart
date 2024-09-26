@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 
 import click
-import random
 
 HEARTS = [
     "❤️",
@@ -19,9 +18,13 @@ HEARTS = [
 @click.command()
 @click.option("-a", "--all", "all", is_flag=True, help="Print all hearts")
 def main(all: bool) -> None:
+    chosen: str
     if all:
         chosen = "".join(HEARTS)
     else:
+
+        import random
+
         chosen = random.choice(HEARTS)
     print(chosen)
 
