@@ -926,7 +926,7 @@ command = 'clippaste | qr'
 command = 'exec openurl "https://sean.fish/x/notes/?search"'
 
 [render-notes]
-command = 'exec make -f "$HOME/.local/scripts/notes_rendered/Makefile"'
+command = 'exec make -f "$HOME/.local/scripts/notes_rendered/Makefile" "$@"'
 
 [todo]
 command = 'exec todo.sh "$@"'
@@ -950,3 +950,9 @@ exec kitty-set-theme Dark
 
 [abookc]
 command = 'exec abook -C "$XDG_CONFIG_HOME/abook/abookrc" -f "$XDG_DOCUMENTS_DIR/addressbook" "$@"'
+
+[epoch-from]
+command='''
+exec dates-stdin -Fepoch <<<"$@"
+'''
+shebang='#!/usr/bin/env bash'

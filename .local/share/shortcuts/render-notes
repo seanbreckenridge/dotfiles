@@ -1,2 +1,2 @@
 #!/bin/sh
-exec make -f "$HOME/.local/scripts/notes_rendered/Makefile"
+exec make -f "$HOME/.local/scripts/notes_rendered/Makefile" "$@"
