@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+import click
 import random
 
 HEARTS = [
@@ -14,5 +15,16 @@ HEARTS = [
     "💖",
 ]
 
+
+@click.command()
+@click.option("-a", "--all", "all", is_flag=True, help="Print all hearts")
+def main(all: bool) -> None:
+    if all:
+        chosen = "".join(HEARTS)
+    else:
+        chosen = random.choice(HEARTS)
+    print(chosen)
+
+
 if __name__ == "__main__":
-    print(random.choice(HEARTS))
+    main()

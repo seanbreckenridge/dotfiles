@@ -956,3 +956,8 @@ command='''
 exec dates-stdin -Fepoch <<<"$@"
 '''
 shebang='#!/usr/bin/env bash'
+
+[heart-cl]
+command='''
+heart | APP=heart clp
+'''
