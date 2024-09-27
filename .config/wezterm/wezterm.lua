@@ -1,14 +1,19 @@
 local wezterm = require("wezterm")
 local config = {}
 
+local dark_theme = true
+
 -- basic appearance
-local color_scheme_name = "Catppuccin Macchiato"
+local color_scheme_name = dark_theme and "Catppuccin Macchiato" or "Catppuccin Latte"
 -- make sure the color scheme exists
 local color_scheme = wezterm.get_builtin_color_schemes()[color_scheme_name]
 
 if color_scheme ~= nil then
     config.color_scheme = color_scheme_name
-    config.colors = { background = "#282828" }
+    if dark_theme then
+        config.colors = { background = "#282828" }
+    end
+
     config.color_schemes = { [color_scheme_name] = color_scheme }
 else
     error("Color scheme '" .. color_scheme_name .. "' not found")

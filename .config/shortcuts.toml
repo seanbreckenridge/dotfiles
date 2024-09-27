@@ -938,12 +938,12 @@ echo "$1" >~/.cache/kitty-theme-name
 '''
 shebang = "#!/usr/bin/env bash"
 
-[light-theme]
+[light-theme-kitty]
 command = '''
 exec kitty-set-theme Light
 '''
 
-[dark-theme]
+[dark-theme-kitty]
 command = '''
 exec kitty-set-theme Dark
 '''
