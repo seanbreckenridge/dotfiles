@@ -20,6 +20,7 @@ export XDG_DATA_HOME="${HOME}/.local/share"
 #
 # that way I can nicely sync my ~/Documents across machines
 export FILES_DIR="${HOME}/Files"
+SCREENSHOTS="${FILES_DIR}/Screenshots"
 
 export REPOS="${HOME}/Repos"
 
@@ -53,7 +54,6 @@ ${PATH}"
 # defaults, some of these are overwrriten in the case below
 XDG_MUSIC_DIR="${HOME}/Music"
 BROWSER='firefox-developer-edition'
-SCREENSHOTS="${FILES}/Screenshots"
 
 if hash on_machine; then
 	ON_OS="$(on_machine)"
