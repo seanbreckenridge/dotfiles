@@ -961,3 +961,6 @@ shebang='#!/usr/bin/env bash'
 command='''
 heart | APP=heart clp
 '''
+
+[bashx]
+command='bash -x "$(which "$1")"'
