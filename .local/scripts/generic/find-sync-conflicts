@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 set -e
-DIR="${1:-$HPIDATA}"
-shift
-find "$DIR" -name '*sync-conflict*' "$@"
+DIR="${1:-.}"
+shift || true
+exec find "$DIR" -name '*sync-conflict*' "$@"

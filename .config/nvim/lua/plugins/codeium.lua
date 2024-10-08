@@ -7,6 +7,7 @@ mh.map_key("<M-z>", toggle, "toggle codeium", { "i", "n" })
 
 return {
     "Exafunction/codeium.nvim",
+    commit = "937667b2cadc7905e6b9ba18ecf84694cf227567",
     event = "InsertEnter",
     cmd = { "Codeium", "CodeiumToggle" },
     cond = not vim.g.on_android,
