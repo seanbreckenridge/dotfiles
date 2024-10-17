@@ -266,7 +266,7 @@ ma() {
 		# default if nothing passed
 		args+=(--at "$(epoch)")
 	fi
-	malexport manual-history "${args[@]}"
+	malexport manual-history "${args[@]}" || return $?
 	mal-manual
 }
 
