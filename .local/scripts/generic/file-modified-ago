@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+# prints how long a file was modified ago in human readable text
+
+# disable debug mode, if enabled
+[[ -n "$EVRY_DEBUG" ]] && unset EVRY_DEBUG
+[[ -n "$EVRY_JSON" ]] && unset EVRY_JSON
+
+FILE="${1?Error: no file given}"
+shift
+
+if [[ ! -r "$FILE" ]]; then
+	echo "Error: cannot read file: $FILE" >&2
+	exit 1
+fi
+
+FILE_MODIFIED_AT="$(stat -c %Y "$FILE")" || exit 1
+CURRENT_TIME="$(date +%s)" || exit 1
+
+MODIFIED_AGO="$((CURRENT_TIME - FILE_MODIFIED_AT))"
+MODIFIED_PRETTY="$(EVRY_JSON=1 evry duration "$MODIFIED_AGO"s | jq '[.[] | {key: .type, value: .body}] | from_entries | .duration_pretty' -r)"
+echo "$MODIFIED_PRETTY"
