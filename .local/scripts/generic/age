@@ -19,7 +19,7 @@ else:
         age_in_years = (
             today.year
             - birthdate.year
-            - ((today.month, today.day) < (birthdate.month, birthdate.day))
+            - int((today.month, today.day) < (birthdate.month, birthdate.day))
         )
 
         last_birthday = datetime(today.year, birthdate.month, birthdate.day)
