@@ -267,6 +267,7 @@ __pycache__
 /.config/gtk-*
 /.config/hub
 /.config/imgur_uploader
+/.config/tree-sitter/
 /.config/keepassxc/keepassxc.ini
 /.config/kid3rc
 /.config/kwalletrc
