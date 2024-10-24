@@ -18,7 +18,7 @@ class Food(NamedTuple):
     @staticmethod
     def attr_validators() -> dict:
         # https://sean.fish/d/ttally_types.py?redirect
-        from my.config.seanb.ttally_types import prompt_float_default  # type: ignore
+        from my.config.pura.ttally_types import prompt_float_default  # type: ignore
 
         # if I don't supply a quantity, default to 1
         return {"quantity": lambda: prompt_float_default("quantity")}
@@ -35,7 +35,7 @@ class Event(NamedTuple):
 
     @staticmethod
     def attr_validators() -> dict:
-        from my.config.seanb.ttally_types import edit_in_vim  # type: ignore
+        from my.config.pura.ttally_types import edit_in_vim  # type: ignore
 
         return {"comments": edit_in_vim}
 
