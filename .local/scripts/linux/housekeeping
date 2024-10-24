@@ -39,7 +39,9 @@ evry 6 hours -google-drive && {
 	(
 		cd "${HOME}/GoogleDrive/" || exit $?
 		echo "Syncing Google Drive..."
-		drive pull -ignore-conflict -no-prompt
+		drive pull -ignore-conflict -no-prompt || {
+			drive pull -fix-clashes -no-prompt && drive pull -no-prompt
+		}
 		drive push -no-prompt
 		# if there's a new google takeout, unzip it
 		# https://github.com/seanbreckenridge/google_takeout_parser
