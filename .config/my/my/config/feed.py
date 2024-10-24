@@ -1,9 +1,9 @@
 """
-Config file for https://github.com/seanbreckenridge/my_feed
+Config file for https://github.com/purarue/my_feed
 """
 
 from .feed_secret import broken_tags, ignore_specific_files  # noqa
-from .seanb.feed_transform_secret import TRANSFORMS  # noqa
+from .pura.feed_transform_secret import TRANSFORMS  # noqa
 
 ignore_mpv_prefixes: set[str] = {
     "/home/sean/Repos/",

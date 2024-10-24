@@ -12,7 +12,7 @@ uqf() {
 }
 
 # run bgproc jobs
-# https://github.com/seanbreckenridge/bgproc
+# https://github.com/purarue/bgproc
 evry 1 hour -run_android_jobs && {
 	echo 'running jobs...' >&2
 	uqf || true
